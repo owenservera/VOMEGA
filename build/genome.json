@@ -1,0 +1,1986 @@
+{
+  "genomeVersion": 1,
+  "kind": "the vivim-omega system genome — the machine-readable constitution (D-425); derived, committed, byte-verified; hand edits are gate failures",
+  "lineage": {
+    "note": "Two numbering systems, never conflated. treeId = THIS repo's ledger (docs/decisions/D-<n>-*.md, contiguous, authoritative for record files). specId = the external upgrade-spec lineage (paper ids; cite them backticked in prose). Where a paper id collides with a tree id the fields keep them distinct — the runbook's build-time renumbering rule, made mechanical.",
+    "specLineage": "Ω-0 paper D-449 (upgrade doc delivered 2026-09-21); Ω-DEV.1..5 paper D-450..D-454 (that wave); Ω-DEV.6 has no paper id — the owner's 2026-09-22 directives (session stream + structured lessons; timestamps for bottlenecks) landed directly as tree D-430; Ω-1..Ω-8 paper D-425..D-432; Ω-9 paper D-433; Ω-10..Ω-16 paper D-442..D-448; builder-gap reservations paper D-434..D-440 (D-441 unassigned reserve); Ω-0.5 candidate D-455. The tree ledger assigns D-425..D-429 to the Ω-DEV family — the collision is recorded here, not hidden.",
+    "assumedDirective": "The owner directed (2026-09-21): the Ω-1..Ω-16 layers are assume-implemented for continuation purposes per their ratified external specs. The genome records BOTH facts honestly: the directive (this field) and the tree evidence (null record / null falsifier file per layer, reported by the fold). external-assumed is a claim about paper, never about this tree."
+  },
+  "counts": {
+    "layers": 32,
+    "implemented": 23,
+    "externalAssumed": 0,
+    "ratifiedUnimplemented": 1,
+    "queued": 8,
+    "decisions": 153,
+    "ratified": 152,
+    "proposed": 1,
+    "records": 127,
+    "testFiles": 134,
+    "gateStages": 15,
+    "plugins": 25,
+    "compositions": 19
+  },
+  "layers": [
+    {
+      "id": "CORE",
+      "name": "The constitutional core program",
+      "status": "implemented",
+      "dependsOn": [],
+      "note": "µhost, law, vault, run, sdk/testkit, surfaces, discovery, mind, nlcl, director — the built program (status.json wave registry Ω0..Ω13; the gate itself is the falsifier)",
+      "specId": null,
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "program"
+      }
+    },
+    {
+      "id": "Ω-0",
+      "name": "Hermetic bootstrap",
+      "status": "ratified-unimplemented",
+      "dependsOn": [
+        "CORE"
+      ],
+      "note": "the boot chain (archive hash → manifest walk → toolchain pin → hermeticity → gate digest); upgrade doc delivered 2026-09-21 (omega-upgrades/OMEGA-0-HERMETIC-BOOTSTRAP.md); no hash, no boot — no proof, no verify",
+      "specId": "D-449",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": "F-BOOT",
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-DEV.1",
+      "name": "System genome",
+      "status": "implemented",
+      "dependsOn": [
+        "CORE"
+      ],
+      "note": "the machine-readable constitution: one fold over the registry + the ledger + the test tree, emitted as build/genome.json + build/genome.md, byte-verified by the genome gate stage",
+      "specId": "D-450",
+      "evidence": {
+        "treeId": 425,
+        "recordFile": "docs/decisions/D-425-genome-fold.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-GENOME",
+        "falsifierFile": "tooling/gates/test/f-genome.test.ts",
+        "falsifierClauses": [
+          "F-GENOME.1 (fold-completeness)",
+          "F-GENOME.2 (no-hand-edits)",
+          "F-GENOME.3 (falsifier-resolution)",
+          "F-GENOME.4 (dag-validity)",
+          "F-GENOME.5 (budget)",
+          "F-GENOME.6 (live-lock)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-DEV.2",
+      "name": "Falsifier-first loop",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-DEV.1"
+      ],
+      "note": "records declare named falsifiers; omega:loop generates RED stubs at scaffold time, never clobbers implemented files, and audits coverage",
+      "specId": "D-451",
+      "evidence": {
+        "treeId": 426,
+        "recordFile": "docs/decisions/D-426-falsifier-first-loop.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-LOOP",
+        "falsifierFile": "tooling/gates/test/f-loop.test.ts",
+        "falsifierClauses": [
+          "F-LOOP.1 (determinism)",
+          "F-LOOP.2 (red-by-construction)",
+          "F-LOOP.3 (coverage-audit)",
+          "F-LOOP.4 (no-clobber)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-DEV.3",
+      "name": "Orchestration graph",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-DEV.1"
+      ],
+      "note": "the layer DAG made loadable: omega:orchestrate plans done/inFlight/verifyQueue/buildQueue/specQueue/blocked; the constitutional merge check IS the full gate",
+      "specId": "D-452",
+      "evidence": {
+        "treeId": 427,
+        "recordFile": "docs/decisions/D-427-orchestration-graph.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-ORCH",
+        "falsifierFile": "tooling/gates/test/f-orch.test.ts",
+        "falsifierClauses": [
+          "F-ORCH.1 (plan-determinism)",
+          "F-ORCH.2 (bucket-correctness)",
+          "F-ORCH.3 (assumed-deps-honesty)",
+          "F-ORCH.4 (merge-is-the-gate)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-DEV.4",
+      "name": "Development vault",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-DEV.1"
+      ],
+      "note": "ns.dev as environment-local agent memory (dev-vault/, gitignored by pre-existing reservation): append-only, hash-chained, evidence-required, never committed — law is committed, memory is local",
+      "specId": "D-453",
+      "evidence": {
+        "treeId": 428,
+        "recordFile": "docs/decisions/D-428-development-vault.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-DEVAULT",
+        "falsifierFile": "tooling/gates/test/f-devault.test.ts",
+        "falsifierClauses": [
+          "F-DEVAULT.1 (append-only-witness)",
+          "F-DEVAULT.2 (evidence-required)",
+          "F-DEVAULT.3 (fold-derived)",
+          "F-DEVAULT.4 (query-precision)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-DEV.5",
+      "name": "Design simulation sandbox",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-DEV.1"
+      ],
+      "note": "try-before-you-build as falsifier red-case rehearsal: omega:simulate mutates a layer's registry entry through the genome verifier and receipts which clauses bite; advisory, never blocking; runtime behavioral simulation stays with Ω-8 (paper D-432)",
+      "specId": "D-454",
+      "evidence": {
+        "treeId": 429,
+        "recordFile": "docs/decisions/D-429-design-simulation-sandbox.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-PRESIM",
+        "falsifierFile": "tooling/gates/test/f-presim.test.ts",
+        "falsifierClauses": [
+          "F-PRESIM.1 (determinism)",
+          "F-PRESIM.2 (mutation-coverage)",
+          "F-PRESIM.3 (advisory-never-blocking)",
+          "F-PRESIM.4 (unknown-layer-refusal)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-DEV.6",
+      "name": "Session ledger",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-DEV.4"
+      ],
+      "note": "the intake protocol for the dev-vault: every agent session opens with a mission, streams chain-witnessed time-stamped events (at + tMs, regress refused; gates.log auto-import), and closes with a structured retrospective whose lessons graduate to the dev-vault; round-close refuses while a session is open — no retrospective, no publish; the close derives the bottleneck report (top silence gaps, slowest ops) so lessons cite measured friction (owner directives 2026-09-22)",
+      "specId": null,
+      "evidence": {
+        "treeId": 430,
+        "recordFile": "docs/decisions/D-430-session-ledger.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-SESSION",
+        "falsifierFile": "tooling/gates/test/f-session.test.ts",
+        "falsifierClauses": [
+          "F-SESSION.1 (single-open)",
+          "F-SESSION.2 (append-only-witness)",
+          "F-SESSION.3 (time-stamped-events)",
+          "F-SESSION.4 (publish-gate)",
+          "F-SESSION.5 (structured-retrospective)",
+          "F-SESSION.6 (bottleneck-report)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-0.5",
+      "name": "Vault durability, compaction and migration",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-0"
+      ],
+      "note": "crash-consistent WAL, migration dry-runs, compaction-never-deletes (D-410 item C mechanized), selective namespace export; candidate paper id D-455; spec pending, sequenced behind the Ω-DEV wave by the owner's 2026-09-21 directive",
+      "specId": null,
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": "F-DURABILITY",
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-1",
+      "name": "Substrate: watch (namespaced process/signal watch)",
+      "status": "implemented",
+      "dependsOn": [
+        "CORE"
+      ],
+      "note": "ported in tree D-431 (tooling/gates/watch.ts + f-watch.test.ts, F-WATCH.1-6 green); paper D-425 lineage kept distinct per the two-numbering rule",
+      "specId": "D-425",
+      "evidence": {
+        "treeId": 431,
+        "recordFile": "docs/decisions/D-431-watch-substrate.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-WATCH",
+        "falsifierFile": "tooling/gates/test/f-watch.test.ts",
+        "falsifierClauses": [
+          "F-WATCH.1 (register-fire-route)",
+          "F-WATCH.2 (onfire-is-intent)",
+          "F-WATCH.3 (retention-required)",
+          "F-WATCH.4 (granted-observation)",
+          "F-WATCH.5 (sole-writer-lifecycle)",
+          "F-WATCH.6 (headless-idempotent)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-2",
+      "name": "Substrate: governance",
+      "status": "implemented",
+      "dependsOn": [
+        "CORE"
+      ],
+      "note": "ported in tree D-432 (tooling/gates/gov.ts + f-gov.test.ts, F-GOV.1-8 green); paper D-426 lineage kept distinct per the two-numbering rule",
+      "specId": "D-426",
+      "evidence": {
+        "treeId": 432,
+        "recordFile": "docs/decisions/D-432-resource-governor.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-GOV",
+        "falsifierFile": "tooling/gates/test/f-gov.test.ts",
+        "falsifierClauses": [
+          "F-GOV.1 (claim-refusal)",
+          "F-GOV.2 (pressure-eviction)",
+          "F-GOV.3 (coldness-real)",
+          "F-GOV.4 (provisional-ceiling)",
+          "F-GOV.5 (watchdog-enforcement)",
+          "F-GOV.6 (headless-inspect)",
+          "F-GOV.7 (locality)",
+          "F-GOV.8 (healing-reclaim)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-3",
+      "name": "Substrate: context",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-1",
+        "Ω-2",
+        "Ω-4"
+      ],
+      "note": "ported in tree D-433 (tooling/gates/ctx.ts + f-ctx.test.ts, F-CTX.1-8 green); paper D-427 lineage kept distinct; tree D-433 collides with paper Ω-9 specId D-433, recorded not hidden",
+      "specId": "D-427",
+      "evidence": {
+        "treeId": 433,
+        "recordFile": "docs/decisions/D-433-context-spine.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-CTX",
+        "falsifierFile": "tooling/gates/test/f-ctx.test.ts",
+        "falsifierClauses": [
+          "F-CTX.1 (artifact-inspect)",
+          "F-CTX.2 (determinism)",
+          "F-CTX.3 (replay-substitution)",
+          "F-CTX.4 (forensics)",
+          "F-CTX.5 (fetch-refusal)",
+          "F-CTX.6 (honest-forgetting)",
+          "F-CTX.7 (tunable-spine)",
+          "F-CTX.8 (token-accounting)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-4",
+      "name": "Substrate: trust",
+      "status": "implemented",
+      "dependsOn": [
+        "CORE"
+      ],
+      "note": "ported in tree D-434 (tooling/gates/trust.ts + f-trust.test.ts, F-TRUST.1-5 green); paper D-428 lineage kept distinct; tree D-434 collides with paper builder-gap D-434 (Ω-2.5), recorded not hidden",
+      "specId": "D-428",
+      "evidence": {
+        "treeId": 434,
+        "recordFile": "docs/decisions/D-434-trust-mesh.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-TRUST",
+        "falsifierFile": "tooling/gates/test/f-trust.test.ts",
+        "falsifierClauses": [
+          "F-TRUST.1 (hardware-bound)",
+          "F-TRUST.2 (local-pairing)",
+          "F-TRUST.3 (causal-revocation)",
+          "F-TRUST.4 (scoped-grants)",
+          "F-TRUST.5 (shard-recovery)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-5",
+      "name": "Substrate: analytics",
+      "status": "implemented",
+      "dependsOn": [
+        "CORE"
+      ],
+      "note": "ported in tree D-435 (tooling/gates/analytics.ts + f-analytics.test.ts, F-ANALYTICS.1-5 green); paper D-429 lineage kept distinct; tree D-435 collides with paper builder-gap D-435 (Ω-2.6), recorded not hidden",
+      "specId": "D-429",
+      "evidence": {
+        "treeId": 435,
+        "recordFile": "docs/decisions/D-435-vault-analytics.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-ANALYTICS",
+        "falsifierFile": "tooling/gates/test/f-analytics.test.ts",
+        "falsifierClauses": [
+          "F-ANALYTICS.1 (honest-heatmap)",
+          "F-ANALYTICS.2 (forensic-join)",
+          "F-ANALYTICS.3 (no-second-truth)",
+          "F-ANALYTICS.4 (semantic-topology)",
+          "F-ANALYTICS.5 (rebuild-ashes)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-6",
+      "name": "Substrate: layout",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-5"
+      ],
+      "note": "ported in tree D-436 (tooling/gates/layout.ts + f-layout.test.ts, F-LAYOUT.1-8 green); paper D-430 lineage kept distinct; tree D-436 collides with paper builder-gap D-436 (Ω-3.5), recorded not hidden",
+      "specId": "D-430",
+      "evidence": {
+        "treeId": 436,
+        "recordFile": "docs/decisions/D-436-layout-predicate.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-LAYOUT",
+        "falsifierFile": "tooling/gates/test/f-layout.test.ts",
+        "falsifierClauses": [
+          "F-LAYOUT.1 (badge-arrangement)",
+          "F-LAYOUT.2 (pin-immunity)",
+          "F-LAYOUT.3 (concealment-refusal)",
+          "F-LAYOUT.4 (temporal-scrub)",
+          "F-LAYOUT.5 (forged-rule)",
+          "F-LAYOUT.6 (semantic-arrangement)",
+          "F-LAYOUT.7 (headless-integrity)",
+          "F-LAYOUT.8 (conflict-visibility)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-7",
+      "name": "Substrate: badge",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-6"
+      ],
+      "note": "ported in tree D-437 (tooling/gates/badge.ts + f-badge.test.ts, F-BADGE.1-6 green); paper D-431 lineage kept distinct; tree D-437 collides with paper builder-gap D-437 (Ω-4.5), recorded not hidden",
+      "specId": "D-431",
+      "evidence": {
+        "treeId": 437,
+        "recordFile": "docs/decisions/D-437-badge-provenance.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-BADGE",
+        "falsifierFile": "tooling/gates/test/f-badge.test.ts",
+        "falsifierClauses": [
+          "F-BADGE.1 (proposal-engine)",
+          "F-BADGE.2 (ratification-gate)",
+          "F-BADGE.3 (loud-demotion)",
+          "F-BADGE.4 (transitive-scar)",
+          "F-BADGE.5 (forensic-history)",
+          "F-BADGE.6 (orphan-born-scarred)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-8",
+      "name": "Substrate: simulation (the rehearsal engine)",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-7"
+      ],
+      "note": "ported in tree D-438 (tooling/gates/rehearse.ts + f-sim.test.ts, F-SIM.1-6 green; module named rehearse.ts — simulate.ts belongs to Ω-DEV.5); paper D-432 lineage kept distinct; tree D-438 collides with paper builder-gap D-438 (Ω-5.5), recorded not hidden",
+      "specId": "D-432",
+      "evidence": {
+        "treeId": 438,
+        "recordFile": "docs/decisions/D-438-failure-simulation.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-SIM",
+        "falsifierFile": "tooling/gates/test/f-sim.test.ts",
+        "falsifierClauses": [
+          "F-SIM.1 (context-corruption)",
+          "F-SIM.2 (starvation)",
+          "F-SIM.3 (lineage-cascade)",
+          "F-SIM.4 (lost-laptop)",
+          "F-SIM.5 (negative-proof)",
+          "F-SIM.6 (live-immunity)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-9",
+      "name": "The aperture (progressive disclosure)",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-2",
+        "Ω-3",
+        "Ω-5"
+      ],
+      "note": "ported in tree D-439 (tooling/gates/aperture.ts + f-disclosure.test.ts, F-DISCLOSURE.1-8 green); paper D-433 lineage kept distinct; tree D-439 collides with paper builder-gap D-439 (Ω-6.5), recorded not hidden",
+      "specId": "D-433",
+      "evidence": {
+        "treeId": 439,
+        "recordFile": "docs/decisions/D-439-aperture-disclosure.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-DISCLOSURE",
+        "falsifierFile": "tooling/gates/test/f-disclosure.test.ts",
+        "falsifierClauses": [
+          "F-DISCLOSURE.1 (seed-manifest)",
+          "F-DISCLOSURE.2 (pull-trail)",
+          "F-DISCLOSURE.3 (no-unrowed-byte)",
+          "F-DISCLOSURE.4 (prefetch-staged)",
+          "F-DISCLOSURE.5 (budget-itemized)",
+          "F-DISCLOSURE.6 (profile-receipted)",
+          "F-DISCLOSURE.7 (policy-principal-only)",
+          "F-DISCLOSURE.8 (retention-vacated)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-10",
+      "name": "Boundary: partial evaluation",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-9"
+      ],
+      "note": "ported in tree D-440 (tooling/gates/partial.ts + f-partial.test.ts, F-PARTIAL.1-4 green); paper D-442 lineage kept distinct; tree D-440 collides with paper builder-gap D-440 (Ω-7.5), recorded not hidden",
+      "specId": "D-442",
+      "evidence": {
+        "treeId": 440,
+        "recordFile": "docs/decisions/D-440-partial-turn.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-PARTIAL",
+        "falsifierFile": "tooling/gates/test/f-partial.test.ts",
+        "falsifierClauses": [
+          "F-PARTIAL.1 (network-sever)",
+          "F-PARTIAL.2 (governor-ceiling)",
+          "F-PARTIAL.3 (midstream-kill)",
+          "F-PARTIAL.4 (crash-reclaim)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-11",
+      "name": "Boundary: aperture privacy",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-10"
+      ],
+      "note": "ported in tree D-441 (tooling/gates/priv.ts + f-aperture-privacy.test.ts, F-APERTURE-PRIVACY.1-4 green); paper D-443 lineage kept distinct; tree D-441 collides with paper unassigned reserve D-441, recorded not hidden",
+      "specId": "D-443",
+      "evidence": {
+        "treeId": 441,
+        "recordFile": "docs/decisions/D-441-aperture-privacy.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-APERTURE-PRIVACY",
+        "falsifierFile": "tooling/gates/test/f-aperture-privacy.test.ts",
+        "falsifierClauses": [
+          "F-APERTURE-PRIVACY.1 (oracle-test)",
+          "F-APERTURE-PRIVACY.2 (manifest-blindness)",
+          "F-APERTURE-PRIVACY.3 (portrait-purge)",
+          "F-APERTURE-PRIVACY.4 (profile-isolation)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-12",
+      "name": "Boundary: invocation",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-11"
+      ],
+      "note": "ported in tree D-442 (tooling/gates/invoke.ts + f-invoke.test.ts, F-INVOKE.1-4 green); paper D-444 lineage kept distinct; tree D-442 collides with paper Ω-10 specId D-442, recorded not hidden",
+      "specId": "D-444",
+      "evidence": {
+        "treeId": 442,
+        "recordFile": "docs/decisions/D-442-invocation-grant.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-INVOKE",
+        "falsifierFile": "tooling/gates/test/f-invoke.test.ts",
+        "falsifierClauses": [
+          "F-INVOKE.1 (unauthorized)",
+          "F-INVOKE.2 (scoped-denial)",
+          "F-INVOKE.3 (midstream-revocation)",
+          "F-INVOKE.4 (public-exception)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-13",
+      "name": "Boundary: standing",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-12"
+      ],
+      "note": "ported in tree D-443 (tooling/gates/standing.ts + f-standing.test.ts, F-STANDING.1-4 green); paper D-445 lineage kept distinct; tree D-443 collides with paper Ω-11 specId D-443, recorded not hidden",
+      "specId": "D-445",
+      "evidence": {
+        "treeId": 443,
+        "recordFile": "docs/decisions/D-443-standing-state.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-STANDING",
+        "falsifierFile": "tooling/gates/test/f-standing.test.ts",
+        "falsifierClauses": [
+          "F-STANDING.1 (direct-arm-refused)",
+          "F-STANDING.2 (proposal-flow)",
+          "F-STANDING.3 (ratification)",
+          "F-STANDING.4 (cascade-pause)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-14",
+      "name": "Boundary: liveness",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-13"
+      ],
+      "note": "ported in tree D-444 (tooling/gates/live.ts + f-liveness.test.ts, F-LIVENESS.1-5 green); paper D-446 lineage kept distinct; tree D-444 collides with paper Ω-12 specId D-444, recorded not hidden",
+      "specId": "D-446",
+      "evidence": {
+        "treeId": 444,
+        "recordFile": "docs/decisions/D-444-liveness-health.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-LIVENESS",
+        "falsifierFile": "tooling/gates/test/f-liveness.test.ts",
+        "falsifierClauses": [
+          "F-LIVENESS.1 (latency-injection)",
+          "F-LIVENESS.2 (schema-drift)",
+          "F-LIVENESS.3 (zombie-probe)",
+          "F-LIVENESS.4 (handoff)",
+          "F-LIVENESS.5 (ledger-query)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-15",
+      "name": "Boundary: delegation",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-14"
+      ],
+      "note": "ported in tree D-445 (tooling/gates/delegate.ts + f-delegate.test.ts, F-DELEGATE.1-5 green); paper D-447 lineage kept distinct; tree D-445 collides with paper Ω-13 specId D-445, recorded not hidden",
+      "specId": "D-447",
+      "evidence": {
+        "treeId": 445,
+        "recordFile": "docs/decisions/D-445-consent-delegation.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-DELEGATE",
+        "falsifierFile": "tooling/gates/test/f-delegate.test.ts",
+        "falsifierClauses": [
+          "F-DELEGATE.1 (headless-loop)",
+          "F-DELEGATE.2 (scope-containment)",
+          "F-DELEGATE.3 (midnight-revocation)",
+          "F-DELEGATE.4 (transitive-block)",
+          "F-DELEGATE.5 (audit-query)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-16",
+      "name": "Boundary: adaptation governance",
+      "status": "implemented",
+      "dependsOn": [
+        "Ω-15"
+      ],
+      "note": "ported in tree D-446 (tooling/gates/adapt.ts + f-adapt.test.ts, F-ADAPT.1-4 green); paper D-448 lineage kept distinct; tree D-446 collides with paper Ω-14 specId D-446, recorded not hidden",
+      "specId": "D-448",
+      "evidence": {
+        "treeId": 446,
+        "recordFile": "docs/decisions/D-446-adaptation-constitution.md",
+        "recordStatus": "RATIFIED",
+        "falsifier": "F-ADAPT",
+        "falsifierFile": "tooling/gates/test/f-adapt.test.ts",
+        "falsifierClauses": [
+          "F-ADAPT.1 (propose-dispose)",
+          "F-ADAPT.2 (global-dumb)",
+          "F-ADAPT.3 (transparency-audit)",
+          "F-ADAPT.4 (fallback-survival)"
+        ],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-2.5",
+      "name": "Builder gap: policy conflict / safety scan",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-2"
+      ],
+      "note": "reserved paper id; spec pending — fill before building",
+      "specId": "D-434",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-2.6",
+      "name": "Builder gap: intent debugging / personalization",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-2"
+      ],
+      "note": "reserved paper id; spec pending — fill before building",
+      "specId": "D-435",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-3.5",
+      "name": "Builder gap: execution debugging / capability deprecation",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-3"
+      ],
+      "note": "reserved paper id; spec pending — fill before building",
+      "specId": "D-436",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-4.5",
+      "name": "Builder gap: surface sync / drift",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-4"
+      ],
+      "note": "reserved paper id; spec pending — fill before building",
+      "specId": "D-437",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-5.5",
+      "name": "Builder gap: auto-librarian verification / doc drift",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-5"
+      ],
+      "note": "reserved paper id; spec pending — fill before building (docscan/D-403 covers part of the surface already)",
+      "specId": "D-438",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-6.5",
+      "name": "Builder gap: performance / benchmarks",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-6"
+      ],
+      "note": "reserved paper id; spec pending — fill before building (tooling/bench covers part of the surface already)",
+      "specId": "D-439",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    },
+    {
+      "id": "Ω-7.5",
+      "name": "Builder gap: decision-record validation / architecture metrics",
+      "status": "queued",
+      "dependsOn": [
+        "Ω-7"
+      ],
+      "note": "reserved paper id; spec pending — fill before building (decisions/docscan tooling covers part of the surface already)",
+      "specId": "D-440",
+      "evidence": {
+        "treeId": null,
+        "recordFile": null,
+        "recordStatus": null,
+        "falsifier": null,
+        "falsifierFile": null,
+        "falsifierClauses": [],
+        "evidenceKind": "record"
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "n": 210,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 211,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 212,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 213,
+      "status": "PROPOSED",
+      "file": null
+    },
+    {
+      "n": 214,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 215,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 216,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 217,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 218,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 219,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 220,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 221,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 222,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 300,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 301,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 302,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 303,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 304,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 305,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 306,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 307,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 308,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 309,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 310,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 311,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 312,
+      "status": "RATIFIED",
+      "file": null
+    },
+    {
+      "n": 313,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-313-agent-runtime.md"
+    },
+    {
+      "n": 314,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-314-db-conformance.md"
+    },
+    {
+      "n": 315,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-315-quarantine-semantics.md"
+    },
+    {
+      "n": 316,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-316-composition-flagship.md"
+    },
+    {
+      "n": 317,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-317-test-budget.md"
+    },
+    {
+      "n": 318,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-318-phase-a-placement.md"
+    },
+    {
+      "n": 319,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-319-g1-spike.md"
+    },
+    {
+      "n": 320,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-320-ci-workflow.md"
+    },
+    {
+      "n": 321,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-321-resource-limits.md"
+    },
+    {
+      "n": 322,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-322-daemon-warm-path.md"
+    },
+    {
+      "n": 323,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-323-computation-routing.md"
+    },
+    {
+      "n": 324,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-324-provenance-linkage.md"
+    },
+    {
+      "n": 325,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-325-forbidden-durability.md"
+    },
+    {
+      "n": 326,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-326-healing-writes.md"
+    },
+    {
+      "n": 327,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-327-agent-execution.md"
+    },
+    {
+      "n": 328,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-328-control-plane.md"
+    },
+    {
+      "n": 329,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-329-worker-pool.md"
+    },
+    {
+      "n": 330,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-330-content-hash-cache.md"
+    },
+    {
+      "n": 331,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-331-lazy-activation.md"
+    },
+    {
+      "n": 332,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-332-contract-call-sites.md"
+    },
+    {
+      "n": 333,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-333-migration-substrate.md"
+    },
+    {
+      "n": 334,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-334-freshtree-pin.md"
+    },
+    {
+      "n": 335,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-335-storage-scale.md"
+    },
+    {
+      "n": 336,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-336-human-principal.md"
+    },
+    {
+      "n": 337,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-337-resolution-rule.md"
+    },
+    {
+      "n": 338,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-338-browser-realization.md"
+    },
+    {
+      "n": 339,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-339-streaming-primitive.md"
+    },
+    {
+      "n": 340,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-340-kernel-layer-placement.md"
+    },
+    {
+      "n": 341,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-341-boot-reverify-at-scale.md"
+    },
+    {
+      "n": 350,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-350-self-portrait.md"
+    },
+    {
+      "n": 351,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-351-risk-parity.md"
+    },
+    {
+      "n": 352,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-352-streaming-reland.md"
+    },
+    {
+      "n": 353,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-353-human-principal-reland.md"
+    },
+    {
+      "n": 354,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-354-parser-isolation.md"
+    },
+    {
+      "n": 355,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-355-parser-governance.md"
+    },
+    {
+      "n": 356,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-356-credentials-spine.md"
+    },
+    {
+      "n": 357,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-357-browser-realization.md"
+    },
+    {
+      "n": 358,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-358-chat-storage.md"
+    },
+    {
+      "n": 359,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-359-chat-resolution.md"
+    },
+    {
+      "n": 360,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-360-watchdog.md"
+    },
+    {
+      "n": 361,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-361-bun-surface-containment.md"
+    },
+    {
+      "n": 362,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-362-gate-reproducibility.md"
+    },
+    {
+      "n": 363,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-363-boot-event-wiring.md"
+    },
+    {
+      "n": 364,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-364-decision-process.md"
+    },
+    {
+      "n": 365,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-365-host-budget.md"
+    },
+    {
+      "n": 366,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-366-watchdog-hardening.md"
+    },
+    {
+      "n": 367,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-367-decision-simplification.md"
+    },
+    {
+      "n": 368,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-368-test-lanes.md"
+    },
+    {
+      "n": 369,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-369-small-hardening.md"
+    },
+    {
+      "n": 370,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-370-node-boot-plan.md"
+    },
+    {
+      "n": 371,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-371-windows-takeover.md"
+    },
+    {
+      "n": 372,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-372-multi-os-platform-seam.md"
+    },
+    {
+      "n": 373,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-373-db-agnostic-storage-core.md"
+    },
+    {
+      "n": 374,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-374-polyglot-process-tier.md"
+    },
+    {
+      "n": 375,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-375-foundation-drafts-arbitration.md"
+    },
+    {
+      "n": 376,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-376-conformance-net.md"
+    },
+    {
+      "n": 377,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-377-authoring-generator.md"
+    },
+    {
+      "n": 378,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-378-vault-index-probe.md"
+    },
+    {
+      "n": 379,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-379-sharing-boundary.md"
+    },
+    {
+      "n": 380,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-380-provider-bar.md"
+    },
+    {
+      "n": 381,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-381-parser-bar.md"
+    },
+    {
+      "n": 382,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-382-observability-spine.md"
+    },
+    {
+      "n": 383,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-383-surface-pointer.md"
+    },
+    {
+      "n": 384,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-384-assessment-remediation.md"
+    },
+    {
+      "n": 385,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-385-w1-parser-carriers-fence.md"
+    },
+    {
+      "n": 386,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-386-containment-probe.md"
+    },
+    {
+      "n": 387,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-387-perf-remediation.md"
+    },
+    {
+      "n": 388,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-388-perf-remediation-2.md"
+    },
+    {
+      "n": 389,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-389-intent-mechanism.md"
+    },
+    {
+      "n": 390,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-390-history-reset-evidence-recitation.md"
+    },
+    {
+      "n": 391,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-391-lineage-unification-kernel-adoption.md"
+    },
+    {
+      "n": 392,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-392-port-admission-priority.md"
+    },
+    {
+      "n": 393,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-393-watchdog-memory-leg.md"
+    },
+    {
+      "n": 394,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-394-law-saturation-ceiling.md"
+    },
+    {
+      "n": 395,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-395-vault-saturation-ceiling.md"
+    },
+    {
+      "n": 396,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-396-threshold-tuning.md"
+    },
+    {
+      "n": 397,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-397-supervisor.md"
+    },
+    {
+      "n": 398,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-398-signal-bus.md"
+    },
+    {
+      "n": 399,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-399-steward.md"
+    },
+    {
+      "n": 400,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-400-proposal-only.md"
+    },
+    {
+      "n": 401,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-401-soak.md"
+    },
+    {
+      "n": 402,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-402-windows-test-hygiene.md"
+    },
+    {
+      "n": 403,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-403-doc-drift-gate-constants.md"
+    },
+    {
+      "n": 404,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-404-anvil-freeze.md"
+    },
+    {
+      "n": 405,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-405-generality-axis.md"
+    },
+    {
+      "n": 406,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-406-wave0-landing.md"
+    },
+    {
+      "n": 407,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-407-endstate-vision.md"
+    },
+    {
+      "n": 408,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-408-endstate-amendment.md"
+    },
+    {
+      "n": 409,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-409-capture-vs-read-split.md"
+    },
+    {
+      "n": 410,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-410-core-first-resequence.md"
+    },
+    {
+      "n": 411,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-411-intent-seam.md"
+    },
+    {
+      "n": 412,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-412-principal-seam.md"
+    },
+    {
+      "n": 413,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-413-program-tooling-round.md"
+    },
+    {
+      "n": 414,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-414-round-close-automator.md"
+    },
+    {
+      "n": 415,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-415-invariants-pass2-freshness.md"
+    },
+    {
+      "n": 416,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-416-evidence-store.md"
+    },
+    {
+      "n": 417,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-417-plugin-identification.md"
+    },
+    {
+      "n": 418,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-418-v1-substrate-chrome-first.md"
+    },
+    {
+      "n": 419,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-419-cdp-substrate-lane.md"
+    },
+    {
+      "n": 420,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-420-shippable-composition-fence.md"
+    },
+    {
+      "n": 421,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-421-governor-host-budget-scoping.md"
+    },
+    {
+      "n": 422,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-422-efficiency-tooling-round.md"
+    },
+    {
+      "n": 423,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-423-process-self-model.md"
+    },
+    {
+      "n": 424,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-424-process-publish-seam.md"
+    },
+    {
+      "n": 425,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-425-genome-fold.md"
+    },
+    {
+      "n": 426,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-426-falsifier-first-loop.md"
+    },
+    {
+      "n": 427,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-427-orchestration-graph.md"
+    },
+    {
+      "n": 428,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-428-development-vault.md"
+    },
+    {
+      "n": 429,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-429-design-simulation-sandbox.md"
+    },
+    {
+      "n": 430,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-430-session-ledger.md"
+    },
+    {
+      "n": 431,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-431-watch-substrate.md"
+    },
+    {
+      "n": 432,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-432-resource-governor.md"
+    },
+    {
+      "n": 433,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-433-context-spine.md"
+    },
+    {
+      "n": 434,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-434-trust-mesh.md"
+    },
+    {
+      "n": 435,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-435-vault-analytics.md"
+    },
+    {
+      "n": 436,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-436-layout-predicate.md"
+    },
+    {
+      "n": 437,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-437-badge-provenance.md"
+    },
+    {
+      "n": 438,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-438-failure-simulation.md"
+    },
+    {
+      "n": 439,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-439-aperture-disclosure.md"
+    },
+    {
+      "n": 440,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-440-partial-turn.md"
+    },
+    {
+      "n": 441,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-441-aperture-privacy.md"
+    },
+    {
+      "n": 442,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-442-invocation-grant.md"
+    },
+    {
+      "n": 443,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-443-standing-state.md"
+    },
+    {
+      "n": 444,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-444-liveness-health.md"
+    },
+    {
+      "n": 445,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-445-consent-delegation.md"
+    },
+    {
+      "n": 446,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-446-adaptation-constitution.md"
+    },
+    {
+      "n": 447,
+      "status": "RATIFIED",
+      "file": "docs/decisions/D-447-windows-canon-symlink.md"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "F-BOOT",
+      "layer": "Ω-0",
+      "file": null,
+      "clauses": []
+    },
+    {
+      "id": "F-GENOME",
+      "layer": "Ω-DEV.1",
+      "file": "tooling/gates/test/f-genome.test.ts",
+      "clauses": [
+        "F-GENOME.1 (fold-completeness)",
+        "F-GENOME.2 (no-hand-edits)",
+        "F-GENOME.3 (falsifier-resolution)",
+        "F-GENOME.4 (dag-validity)",
+        "F-GENOME.5 (budget)",
+        "F-GENOME.6 (live-lock)"
+      ]
+    },
+    {
+      "id": "F-LOOP",
+      "layer": "Ω-DEV.2",
+      "file": "tooling/gates/test/f-loop.test.ts",
+      "clauses": [
+        "F-LOOP.1 (determinism)",
+        "F-LOOP.2 (red-by-construction)",
+        "F-LOOP.3 (coverage-audit)",
+        "F-LOOP.4 (no-clobber)"
+      ]
+    },
+    {
+      "id": "F-ORCH",
+      "layer": "Ω-DEV.3",
+      "file": "tooling/gates/test/f-orch.test.ts",
+      "clauses": [
+        "F-ORCH.1 (plan-determinism)",
+        "F-ORCH.2 (bucket-correctness)",
+        "F-ORCH.3 (assumed-deps-honesty)",
+        "F-ORCH.4 (merge-is-the-gate)"
+      ]
+    },
+    {
+      "id": "F-DEVAULT",
+      "layer": "Ω-DEV.4",
+      "file": "tooling/gates/test/f-devault.test.ts",
+      "clauses": [
+        "F-DEVAULT.1 (append-only-witness)",
+        "F-DEVAULT.2 (evidence-required)",
+        "F-DEVAULT.3 (fold-derived)",
+        "F-DEVAULT.4 (query-precision)"
+      ]
+    },
+    {
+      "id": "F-PRESIM",
+      "layer": "Ω-DEV.5",
+      "file": "tooling/gates/test/f-presim.test.ts",
+      "clauses": [
+        "F-PRESIM.1 (determinism)",
+        "F-PRESIM.2 (mutation-coverage)",
+        "F-PRESIM.3 (advisory-never-blocking)",
+        "F-PRESIM.4 (unknown-layer-refusal)"
+      ]
+    },
+    {
+      "id": "F-SESSION",
+      "layer": "Ω-DEV.6",
+      "file": "tooling/gates/test/f-session.test.ts",
+      "clauses": [
+        "F-SESSION.1 (single-open)",
+        "F-SESSION.2 (append-only-witness)",
+        "F-SESSION.3 (time-stamped-events)",
+        "F-SESSION.4 (publish-gate)",
+        "F-SESSION.5 (structured-retrospective)",
+        "F-SESSION.6 (bottleneck-report)"
+      ]
+    },
+    {
+      "id": "F-DURABILITY",
+      "layer": "Ω-0.5",
+      "file": null,
+      "clauses": []
+    },
+    {
+      "id": "F-WATCH",
+      "layer": "Ω-1",
+      "file": "tooling/gates/test/f-watch.test.ts",
+      "clauses": [
+        "F-WATCH.1 (register-fire-route)",
+        "F-WATCH.2 (onfire-is-intent)",
+        "F-WATCH.3 (retention-required)",
+        "F-WATCH.4 (granted-observation)",
+        "F-WATCH.5 (sole-writer-lifecycle)",
+        "F-WATCH.6 (headless-idempotent)"
+      ]
+    },
+    {
+      "id": "F-GOV",
+      "layer": "Ω-2",
+      "file": "tooling/gates/test/f-gov.test.ts",
+      "clauses": [
+        "F-GOV.1 (claim-refusal)",
+        "F-GOV.2 (pressure-eviction)",
+        "F-GOV.3 (coldness-real)",
+        "F-GOV.4 (provisional-ceiling)",
+        "F-GOV.5 (watchdog-enforcement)",
+        "F-GOV.6 (headless-inspect)",
+        "F-GOV.7 (locality)",
+        "F-GOV.8 (healing-reclaim)"
+      ]
+    },
+    {
+      "id": "F-CTX",
+      "layer": "Ω-3",
+      "file": "tooling/gates/test/f-ctx.test.ts",
+      "clauses": [
+        "F-CTX.1 (artifact-inspect)",
+        "F-CTX.2 (determinism)",
+        "F-CTX.3 (replay-substitution)",
+        "F-CTX.4 (forensics)",
+        "F-CTX.5 (fetch-refusal)",
+        "F-CTX.6 (honest-forgetting)",
+        "F-CTX.7 (tunable-spine)",
+        "F-CTX.8 (token-accounting)"
+      ]
+    },
+    {
+      "id": "F-TRUST",
+      "layer": "Ω-4",
+      "file": "tooling/gates/test/f-trust.test.ts",
+      "clauses": [
+        "F-TRUST.1 (hardware-bound)",
+        "F-TRUST.2 (local-pairing)",
+        "F-TRUST.3 (causal-revocation)",
+        "F-TRUST.4 (scoped-grants)",
+        "F-TRUST.5 (shard-recovery)"
+      ]
+    },
+    {
+      "id": "F-ANALYTICS",
+      "layer": "Ω-5",
+      "file": "tooling/gates/test/f-analytics.test.ts",
+      "clauses": [
+        "F-ANALYTICS.1 (honest-heatmap)",
+        "F-ANALYTICS.2 (forensic-join)",
+        "F-ANALYTICS.3 (no-second-truth)",
+        "F-ANALYTICS.4 (semantic-topology)",
+        "F-ANALYTICS.5 (rebuild-ashes)"
+      ]
+    },
+    {
+      "id": "F-LAYOUT",
+      "layer": "Ω-6",
+      "file": "tooling/gates/test/f-layout.test.ts",
+      "clauses": [
+        "F-LAYOUT.1 (badge-arrangement)",
+        "F-LAYOUT.2 (pin-immunity)",
+        "F-LAYOUT.3 (concealment-refusal)",
+        "F-LAYOUT.4 (temporal-scrub)",
+        "F-LAYOUT.5 (forged-rule)",
+        "F-LAYOUT.6 (semantic-arrangement)",
+        "F-LAYOUT.7 (headless-integrity)",
+        "F-LAYOUT.8 (conflict-visibility)"
+      ]
+    },
+    {
+      "id": "F-BADGE",
+      "layer": "Ω-7",
+      "file": "tooling/gates/test/f-badge.test.ts",
+      "clauses": [
+        "F-BADGE.1 (proposal-engine)",
+        "F-BADGE.2 (ratification-gate)",
+        "F-BADGE.3 (loud-demotion)",
+        "F-BADGE.4 (transitive-scar)",
+        "F-BADGE.5 (forensic-history)",
+        "F-BADGE.6 (orphan-born-scarred)"
+      ]
+    },
+    {
+      "id": "F-SIM",
+      "layer": "Ω-8",
+      "file": "tooling/gates/test/f-sim.test.ts",
+      "clauses": [
+        "F-SIM.1 (context-corruption)",
+        "F-SIM.2 (starvation)",
+        "F-SIM.3 (lineage-cascade)",
+        "F-SIM.4 (lost-laptop)",
+        "F-SIM.5 (negative-proof)",
+        "F-SIM.6 (live-immunity)"
+      ]
+    },
+    {
+      "id": "F-DISCLOSURE",
+      "layer": "Ω-9",
+      "file": "tooling/gates/test/f-disclosure.test.ts",
+      "clauses": [
+        "F-DISCLOSURE.1 (seed-manifest)",
+        "F-DISCLOSURE.2 (pull-trail)",
+        "F-DISCLOSURE.3 (no-unrowed-byte)",
+        "F-DISCLOSURE.4 (prefetch-staged)",
+        "F-DISCLOSURE.5 (budget-itemized)",
+        "F-DISCLOSURE.6 (profile-receipted)",
+        "F-DISCLOSURE.7 (policy-principal-only)",
+        "F-DISCLOSURE.8 (retention-vacated)"
+      ]
+    },
+    {
+      "id": "F-PARTIAL",
+      "layer": "Ω-10",
+      "file": "tooling/gates/test/f-partial.test.ts",
+      "clauses": [
+        "F-PARTIAL.1 (network-sever)",
+        "F-PARTIAL.2 (governor-ceiling)",
+        "F-PARTIAL.3 (midstream-kill)",
+        "F-PARTIAL.4 (crash-reclaim)"
+      ]
+    },
+    {
+      "id": "F-APERTURE-PRIVACY",
+      "layer": "Ω-11",
+      "file": "tooling/gates/test/f-aperture-privacy.test.ts",
+      "clauses": [
+        "F-APERTURE-PRIVACY.1 (oracle-test)",
+        "F-APERTURE-PRIVACY.2 (manifest-blindness)",
+        "F-APERTURE-PRIVACY.3 (portrait-purge)",
+        "F-APERTURE-PRIVACY.4 (profile-isolation)"
+      ]
+    },
+    {
+      "id": "F-INVOKE",
+      "layer": "Ω-12",
+      "file": "tooling/gates/test/f-invoke.test.ts",
+      "clauses": [
+        "F-INVOKE.1 (unauthorized)",
+        "F-INVOKE.2 (scoped-denial)",
+        "F-INVOKE.3 (midstream-revocation)",
+        "F-INVOKE.4 (public-exception)"
+      ]
+    },
+    {
+      "id": "F-STANDING",
+      "layer": "Ω-13",
+      "file": "tooling/gates/test/f-standing.test.ts",
+      "clauses": [
+        "F-STANDING.1 (direct-arm-refused)",
+        "F-STANDING.2 (proposal-flow)",
+        "F-STANDING.3 (ratification)",
+        "F-STANDING.4 (cascade-pause)"
+      ]
+    },
+    {
+      "id": "F-LIVENESS",
+      "layer": "Ω-14",
+      "file": "tooling/gates/test/f-liveness.test.ts",
+      "clauses": [
+        "F-LIVENESS.1 (latency-injection)",
+        "F-LIVENESS.2 (schema-drift)",
+        "F-LIVENESS.3 (zombie-probe)",
+        "F-LIVENESS.4 (handoff)",
+        "F-LIVENESS.5 (ledger-query)"
+      ]
+    },
+    {
+      "id": "F-DELEGATE",
+      "layer": "Ω-15",
+      "file": "tooling/gates/test/f-delegate.test.ts",
+      "clauses": [
+        "F-DELEGATE.1 (headless-loop)",
+        "F-DELEGATE.2 (scope-containment)",
+        "F-DELEGATE.3 (midnight-revocation)",
+        "F-DELEGATE.4 (transitive-block)",
+        "F-DELEGATE.5 (audit-query)"
+      ]
+    },
+    {
+      "id": "F-ADAPT",
+      "layer": "Ω-16",
+      "file": "tooling/gates/test/f-adapt.test.ts",
+      "clauses": [
+        "F-ADAPT.1 (propose-dispose)",
+        "F-ADAPT.2 (global-dumb)",
+        "F-ADAPT.3 (transparency-audit)",
+        "F-ADAPT.4 (fallback-survival)"
+      ]
+    }
+  ],
+  "tests": {
+    "files": [
+      "examples/plugin-notes/test/notes.test.ts",
+      "host/test/adversarial.test.ts",
+      "host/test/canon.test.ts",
+      "host/test/ghost-deep.test.ts",
+      "host/test/ghost.test.ts",
+      "host/test/kernel.test.ts",
+      "host/test/lazy.test.ts",
+      "host/test/pool.test.ts",
+      "host/test/runtime.test.ts",
+      "host/test/steward.test.ts",
+      "packs/builder/test/schema.test.ts",
+      "packs/domain-email/test/pack.test.ts",
+      "packs/domain-import/test/pack.test.ts",
+      "platform/test/containment.test.ts",
+      "platform/test/platform.test.ts",
+      "plugins/discovery-healing/test/heal.test.ts",
+      "plugins/discovery-healing/test/integration.test.ts",
+      "plugins/discovery-healing/test/realization-writes.test.ts",
+      "plugins/discovery-inference/test/infer.test.ts",
+      "plugins/discovery-inference/test/integration.test.ts",
+      "plugins/discovery-mapping/test/map.test.ts",
+      "plugins/discovery-mapping/test/variations.test.ts",
+      "plugins/discovery-observation/test/observe.test.ts",
+      "plugins/discovery-perception/test/perceive.test.ts",
+      "plugins/discovery-verification/test/verify.test.ts",
+      "plugins/forge-author/test/happy/self-host.test.ts",
+      "plugins/forge-author/test/refusal/init-refusals.test.ts",
+      "plugins/provider-browser/test/browser-falsifier.test.ts",
+      "plugins/provider-browser/test/m13-containment.test.ts",
+      "plugins/provider-browser/test/parsers.test.ts",
+      "plugins/provider-email-file/test/integration.test.ts",
+      "plugins/provider-email-file/test/pack-provider.test.ts",
+      "plugins/provider-llm/test/llm.test.ts",
+      "plugins/vivim-agent/test/agent.test.ts",
+      "plugins/vivim-agent/test/control.test.ts",
+      "plugins/vivim-agent/test/decision-ref.test.ts",
+      "plugins/vivim-agent/test/exec.test.ts",
+      "plugins/vivim-chat/test/chat.test.ts",
+      "plugins/vivim-chat/test/harvest.test.ts",
+      "plugins/vivim-chat/test/pilot.test.ts",
+      "plugins/vivim-chat/test/resolve.test.ts",
+      "plugins/vivim-credentials/test/credentials.test.ts",
+      "plugins/vivim-director/test/d388-tick-batching.test.ts",
+      "plugins/vivim-director/test/director.test.ts",
+      "plugins/vivim-director/test/lang-mirror.test.ts",
+      "plugins/vivim-director/test/resolve.test.ts",
+      "plugins/vivim-intent/test/intent-phase3-4.test.ts",
+      "plugins/vivim-intent/test/intent-seam.test.ts",
+      "plugins/vivim-intent/test/intent.test.ts",
+      "plugins/vivim-kernel-lens/test/signals.test.ts",
+      "plugins/vivim-law/test/d387-policy.test.ts",
+      "plugins/vivim-law/test/d411-citation.test.ts",
+      "plugins/vivim-law/test/d412-principal.test.ts",
+      "plugins/vivim-law/test/d416-evidence-store.test.ts",
+      "plugins/vivim-law/test/forbidden-durability.test.ts",
+      "plugins/vivim-law/test/integration.test.ts",
+      "plugins/vivim-law/test/law.test.ts",
+      "plugins/vivim-law/test/policy-parity.test.ts",
+      "plugins/vivim-mind/test/mind.test.ts",
+      "plugins/vivim-mind/test/portrait.test.ts",
+      "plugins/vivim-nlcl/test/nlcl.test.ts",
+      "plugins/vivim-providers/test/providers.test.ts",
+      "plugins/vivim-run/test/integration.test.ts",
+      "plugins/vivim-run/test/process-broker.test.ts",
+      "plugins/vivim-run/test/run.test.ts",
+      "plugins/vivim-vault/test/d387-perf.test.ts",
+      "plugins/vivim-vault/test/driver-conformance.test.ts",
+      "plugins/vivim-vault/test/integration.test.ts",
+      "plugins/vivim-vault/test/vault.test.ts",
+      "sdk/test/client.test.ts",
+      "sdk/test/generality.test.ts",
+      "sdk/test/provider-vocab.test.ts",
+      "sdk/test/schema.test.ts",
+      "sdk/test/sign.test.ts",
+      "sdk/test/stream-boot.test.ts",
+      "sdk/test/stream.test.ts",
+      "sdk/test/validate.test.ts",
+      "surfaces/cli/test/cli.test.ts",
+      "surfaces/daemon/test/cache.test.ts",
+      "surfaces/daemon/test/daemon.test.ts",
+      "surfaces/daemon/test/pool.test.ts",
+      "surfaces/mcp/test/mcp.test.ts",
+      "surfaces/web/test/d387-perf.test.ts",
+      "surfaces/web/test/web.test.ts",
+      "testkit/test/conformance.test.ts",
+      "testkit/test/differential.test.ts",
+      "testkit/test/fake-host.test.ts",
+      "tooling/builder/test/builder.test.ts",
+      "tooling/ci/canon-canary.test.mjs",
+      "tooling/gates/test/anvil.test.ts",
+      "tooling/gates/test/compositions.test.ts",
+      "tooling/gates/test/contract-sites.test.ts",
+      "tooling/gates/test/decisions.test.ts",
+      "tooling/gates/test/efficiency-tooling.test.ts",
+      "tooling/gates/test/explain.test.ts",
+      "tooling/gates/test/f-adapt.test.ts",
+      "tooling/gates/test/f-analytics.test.ts",
+      "tooling/gates/test/f-aperture-privacy.test.ts",
+      "tooling/gates/test/f-badge.test.ts",
+      "tooling/gates/test/f-ctx.test.ts",
+      "tooling/gates/test/f-delegate.test.ts",
+      "tooling/gates/test/f-devault.test.ts",
+      "tooling/gates/test/f-disclosure.test.ts",
+      "tooling/gates/test/f-genome.test.ts",
+      "tooling/gates/test/f-gov.test.ts",
+      "tooling/gates/test/f-invoke.test.ts",
+      "tooling/gates/test/f-layout.test.ts",
+      "tooling/gates/test/f-liveness.test.ts",
+      "tooling/gates/test/f-loop.test.ts",
+      "tooling/gates/test/f-orch.test.ts",
+      "tooling/gates/test/f-partial.test.ts",
+      "tooling/gates/test/f-presim.test.ts",
+      "tooling/gates/test/f-session.test.ts",
+      "tooling/gates/test/f-sim.test.ts",
+      "tooling/gates/test/f-standing.test.ts",
+      "tooling/gates/test/f-trust.test.ts",
+      "tooling/gates/test/f-watch.test.ts",
+      "tooling/gates/test/forge-surface.test.ts",
+      "tooling/gates/test/generate.test.ts",
+      "tooling/gates/test/import-surface.test.ts",
+      "tooling/gates/test/invariants-freshness.test.ts",
+      "tooling/gates/test/new-decision.test.ts",
+      "tooling/gates/test/plugin-identification.test.ts",
+      "tooling/gates/test/process.test.ts",
+      "tooling/gates/test/round-close.test.ts",
+      "tooling/gates/test/shippable-fence.test.ts",
+      "tooling/gates/test/v1-substrate-sweep.test.ts",
+      "tooling/harvest/test/harvest.test.ts",
+      "tooling/portrait/test/posture.test.ts",
+      "tooling/propose/test/propose.test.ts",
+      "tooling/supervise/test/supervise.test.ts",
+      "tooling/test/spine.test.ts",
+      "tooling/watchdog/test/watchdog-hog-spike.test.ts",
+      "tooling/watchdog/test/watchdog.test.ts"
+    ]
+  },
+  "gate": {
+    "stages": [
+      "host-loc",
+      "anvil-loc",
+      "anvil-surface",
+      "fresh-tree",
+      "decisions",
+      "compositions",
+      "bun-surface",
+      "os-surface",
+      "import-surface",
+      "forge-surface",
+      "invariants-freshness",
+      "process",
+      "genome",
+      "tests",
+      "attest"
+    ]
+  }
+}
