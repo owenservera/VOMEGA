@@ -6,7 +6,7 @@ The purpose of this seed is to let a new ZCode project start from a known Ω imp
 
 ## Read these first
 
-The project-level seed is now nine documents, each with a deliberately different job:
+The project-level seed is a layered set of documents with deliberately different jobs:
 
 - **AGENTS.md** — operating mandate for the autonomous build.
 - **START-HERE.md** — this orientation and documentation map.
