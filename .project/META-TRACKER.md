@@ -16,6 +16,16 @@ VOMEGA currently has three different planning layers that must not be confused:
 
 This file is layer **1**.
 
+### Authority and openness rule
+
+The meta map preserves important possibilities; it does **not** prescribe the path.
+
+Only explicit product/constitutional invariants and protected Lab/proof boundaries constrain strategy. Everything else — meta-program decomposition, execution lanes, Locks, roadmap milestones, task IDs, sequencing, agent/model assignment, worktree topology, orchestration tools and development habitats — is a **current hypothesis or coordination aid** and may be merged, split, reordered, replaced or retired when evidence supports a better approach.
+
+The owner-selected first-release shape is the current product mission, not constitutional architecture. It may be changed explicitly by the owner; implementation strategy remains open.
+
+Daintree and ZCode are separate development habitats. Daintree can manage Git worktrees and the CLI agents it actually supports; it does **not** launch, supervise or manage ZCode. ZCode runs its own sessions/workers. If both are used, they coordinate through Git, task artifacts and evidence rather than a parent/child control relationship.
+
 A meta program may:
 - span several execution lanes;
 - contain many roadmap tasks;
@@ -133,12 +143,12 @@ Priority:
 | ID | Meta program | What it exists to make true | Current state | Priority | Execution owner(s) | Main dependencies / notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | MP-46 | **Local Agentic Development System** | Many local agents can work in parallel, hand off through Git/artifacts, and integrate without owner reconstructing everything manually. | **PROVEN first launch slice:** ≥6 bounded ZCode workers completed first wave. | NOW / continuous | DEV + TRU | Bounded workers succeeded; unbounded heavy background agents stalled. |
-| MP-47 | **Workstream/dependency/Lock orchestration** | SDW/LNC/VFX/SKW/EXP/PRV/RTE/DEV/TRU coordinate through explicit contracts rather than waiting for whole subsystems. | ACTIVE; Locks A–E candidate/recon. | NOW | DEV | Ownership lanes are not the meta-program list. |
+| MP-47 | **Workstream/dependency/Lock orchestration** | Enable temporary low-handoff coordination through explicit, falsifiable interface hypotheses rather than waiting for whole subsystems. | ACTIVE; Locks A–E candidate/recon. | NOW | DEV | Lanes and Locks are coordination devices, not permanent architecture; a Lock stabilizes interoperability long enough to work and remains replaceable by evidence. |
 | MP-48 | **Model routing / heterogeneous intelligence pool** | Use abundant models for work and scarce frontier models for mature review/adjudication; record actual routed model when known. | ACTIVE policy; ZCode currently `openrouter/auto`; concrete model hidden. | continuous | DEV + TRU | Harness ≠ router ≠ model. |
 | MP-49 | **ZCode / OpenRouter Auto execution substrate** | Use measured ZCode concurrency/workflows safely without assuming historical provider-account topology. | ACTIVE; ≥6 bounded concurrency verified. | NOW | DEV | Keep config read-only; bounded tasks currently outperform unbounded background workers. |
 | MP-50 | **Codex / Claude Code specialist integration** | Use separate harnesses for implementation/integration/review where diversity adds value. | Reachable; not yet deeply benchmarked in new launch. | PARALLEL | DEV + TRU | Cross-provider review preferred for load-bearing contracts. |
 | MP-51 | **Grok Build / Grok model integration** | Add Grok as both model resource and execution harness without mistaking harness capability for free capacity. | Binary reachable, not configured/benchmarked. | PARALLEL experiment | DEV + TRU | Shared SuperGrok usage pool; measure output per allowance. |
-| MP-52 | **Daintree execution habitat evaluation** | Test whether Daintree can own task worktrees, agent launch/monitoring, Review Hub and interactive fleet control so DEV remains thin. | RESEARCH COMPLETE enough for assay; not installed/adopted in repo truth. | **PARALLEL high-value experiment** | DEV + TRU | Test on Windows/VOMEGA; likely custom ZCode agent plugin; do not make it project truth. |
+| MP-52 | **Daintree execution habitat evaluation** | Test whether Daintree usefully manages Git worktrees, Review Hub and supported CLI-agent panels without creating a new source of project truth. | LIVE on the Linux box and available for assay; adoption remains an experiment, not strategy law. | **PARALLEL high-value experiment** | DEV + TRU | Daintree does not launch/manage ZCode. Evaluate Daintree and ZCode as separate habitats that may coexist through shared Git/task/evidence surfaces. Retain either only while it improves validated progress. |
 | MP-53 | **Development Reality Layer / Dev Black Box** | Capture minimal local structural development events that can power context, debugging, regressions and throughput learning. | EXPERIMENT hypothesis only. | OPTIONAL when bottleneck measured | DEV + TRU | Privacy/local retention first; potential multiplier. |
 | MP-54 | **Automatic Context Bundles** | Give fresh workers compact task-specific context derived from current repo reality. | EXPERIMENT hypothesis. | OPTIONAL / likely before Elephant | DEV | Compare against ordinary repo reading and elephant residency. |
 | MP-55 | **Failure Capsules / reproducible debugging packets** | Package failure, environment, changed files and evidence so another worker can reproduce quickly. | EXPERIMENT hypothesis. | OPTIONAL high-value | DEV + TRU | Candidate companion to simulator/EXP. |
@@ -399,4 +409,8 @@ If they disagree about **product intent/invariants**, the seed documents remain 
 
 > **Track the whole destination; execute only the next evidence-bearing slice.**
 
-The tracker exists so VOMEGA does not lose major programs merely because the current release and agent launch deliberately narrow the active work.
+> **The map preserves possibilities; it does not prescribe the path.**
+
+Except for explicit invariants and Lab/proof boundaries, architecture, work decomposition, sequencing, team topology, tools, models and orchestration remain falsifiable hypotheses.
+
+The tracker exists so VOMEGA does not lose major programs merely because current execution deliberately narrows the active work.
