@@ -316,3 +316,127 @@ The owner subsequently defined a standalone modular testing environment for the 
 The Lab is the intended experimental home for comparing the candidate visual grammar in this document. It should be possible to replay the same semantic trace through different annotation, icon, disclosure and interaction packs without changing canonical command meaning. Conversely, language/grounding/executable variants should be testable while holding the visual treatment constant.
 
 This relationship does not make the Lab part of the shipped VIVIM runtime. It creates a deterministic development bench where this visual language can evolve against realistic Worlds, command corpora, execution events and evidence.
+
+
+## 16. MVP Visualization Sandbox and VisualSpec vNext
+
+The next design/proof environment is defined in [MVP Visualization Sandbox](MVP-VISUALIZATION-SANDBOX.md).
+
+The sandbox should evolve the current preliminary `VisualSpec` rather than create a parallel UI truth model.
+
+Current baseline reality:
+
+- `nlcl-pure/src/types.ts` already defines Interpretation, token annotations, IR, effects, suggestions, gaps and preliminary VisualSpec types;
+- `nlcl-pure/src/project.ts` currently projects token annotations and coarse effect previews only;
+- Provider / Account / Model identity, semantic Wiki handles, interpretation revision identity and multidimensional consequence/evidence projection are not yet expressed strongly enough for the owner-directed MVP;
+- `surfaces/web` provides an existing semantic API path but not the intended floating-box visual product.
+
+### VisualSpec evolution target
+
+A future VisualSpec candidate should carry, without becoming execution authority:
+
+- interpretation session + revision;
+- World version;
+- exact input annotation spans;
+- semantic handles;
+- capability;
+- Provider;
+- Account;
+- Model;
+- realization where relevant;
+- typed parameters/payload;
+- validation state;
+- unresolved choices;
+- consequence facets;
+- expected evidence;
+- contextual Wiki references;
+- permitted semantic interaction actions.
+
+The renderer should consume this projection and nothing more semantic.
+
+### Provider / Account / Model distinction
+
+The first MVP must visually distinguish:
+
+```
+Provider
+  ↓
+Account
+  ↓
+Model (optional/selected route dimension)
+  ↓
+Capability
+```
+
+This is a relationship, not an identity collapse.
+
+A Model should not be rendered as if it were an Account or a Provider.
+
+### Consequence projection refinement
+
+Recent OS-taxonomy harvest exposed that a single READ/MUTATION/EXTERNAL_MUTATION badge is too coarse for human explanation.
+
+The visual system should be able to present independent consequence concepts such as:
+
+- external data transfer;
+- destructive local effect;
+- secret reveal;
+- network interaction;
+- physical effect;
+- session-ending effect;
+- authority/consent requirement;
+- realization fidelity;
+- evidence maturity.
+
+Current law risk remains a useful input. It should not become the entire visual semantic model.
+
+### Interaction parity
+
+Clicks that change meaning become semantic edits.
+
+Examples:
+
+```
+click Claude Work
+→ route.account = account:claude-work
+
+click another Model
+→ route.model = model:<id>
+```
+
+The command is then recompiled and revalidated.
+
+The UI must not keep a hidden routing truth outside the semantic session.
+
+### Research lineage
+
+The old VIVIM symbolic harvest is useful evidence for:
+
+- ambiguity as an interactive handle;
+- progressive disclosure;
+- compact semantic chips;
+- explicit risk gates;
+- distinct confidence/proof representation;
+- structural rather than prose-only interpretation feedback.
+
+Historical claims such as “canvas is the source of truth” do not carry forward. In current Ω, a surface is a projection, never canonical reality.
+
+### Design experiments
+
+Visual refinements should be tested through [Automated Semantic Experiments](AUTOMATED-SEMANTIC-EXPERIMENTS.md), including semantic-churn measurement, ambiguity honesty, multiple presentation packs and contextual Wiki relevance.
+
+## 17. Semantic Data Engine relationship
+
+The semantic identities displayed by the visual system are defined by [Semantic Data Engine](SEMANTIC-DATA-ENGINE.md).
+
+The visual layer should not own:
+
+- Provider inventory;
+- Account inventory;
+- Model inventory;
+- capability schemas;
+- route validity;
+- consequence semantics;
+- source/Wiki truth.
+
+It projects them.
