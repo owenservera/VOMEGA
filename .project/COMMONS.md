@@ -144,3 +144,34 @@ Local-agent roadmap seeds:
 Coordination should reconcile these into the live roadmap rather than treating the seed IDs as automatically adopted.
 
 Truth: documentation/design evidence only. No VisualSpec vNext implementation, sandbox renderer, Reflection extractor, Wiki runtime, Model routing implementation, provider automation, Windows realization verification, or experiment engine is claimed complete.
+
+## Local agentic team launch overlay — 2026-10-05
+
+Owner request: read the complete current design/project corpus and derive the development workstreams, dependencies and parallel execution shape as the seed launch for the owner's local agentic teams.
+
+Status: team-launch design landed; no local agent is claimed/running by this documentation change.
+
+Canonical launch entry: `.project/agentic-launch/README.md`.
+
+Launch overlay:
+- `STATUS.md` — compact current launch state;
+- `WORKSTREAMS.md` — nine ownership boundaries: SDW, LNC, VFX, SKW, EXP, PRV, RTE, DEV, TRU;
+- `DEPENDENCY-GRAPH.md` — Locks A–E, critical paths and waves;
+- `FIRST-WAVE.md` — initial fan-out over five ZCode lanes + Codex + Claude Code;
+- `TEAM-PROMPTS.md` — fresh-session prompts for each head;
+- `launch-manifest.json` — machine-readable topology/triggers.
+
+Key execution decision: retain existing CMD/REG/SHL/HLP/PRV/GOV/REL/TRU/OPS roadmap task IDs as release/proof references, but regroup execution ownership around newer low-handoff boundaries. The simulated semantic product twin (SDW/LNC/VFX/SKW/EXP) can advance independently of live Provider execution (PRV/RTE).
+
+Five interface locks coordinate fan-in:
+- Lock A: semantic IDs/entity relations (SDW);
+- Lock B: UseCommand + validation outcomes (LNC);
+- Lock C: VisualSpec vNext (VFX);
+- Lock D: minimal Reflection Graph (SKW);
+- Lock E: live Provider/Account evidence contract (PRV).
+
+Default first occupancy if healthy: five ZCode lanes → SDW/LNC/VFX/SKW/EXP; Codex → DEV launch + PRV reconnaissance if safe; Claude Code → independent TRU review. RTE takes the first suitable free executor. Allocation is dynamic, not hierarchy.
+
+Git policy: no permanent workstream branches. Use short-lived task worktrees only when concurrent writes require isolation; one integration queue; delete task branch/worktree after accepted merge.
+
+Truth: this launch overlay is operational design, not proof that ZCode lanes are reachable or that any team has begun execution. DEV-L1 must verify lane health read-only before dispatch; do not alter provider/auth/model configuration.
