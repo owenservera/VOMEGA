@@ -761,3 +761,21 @@ When a measured development bottleneck appears:
 6. retain, change, or delete it.
 
 **Accelerate the bottleneck, not the imagination.**
+
+# 31. Elephant Context Network
+
+## Hypothesis
+
+A distributed set of persistent, large-context cognitive domain sessions may serve as an intelligent contextual memory layer for development workers.
+
+See `ELEPHANT-CONTEXT-NETWORK.md` for the full concept.
+
+The important idea is not simply “load the repo into a large context.” It is to maintain epoch-aware contextual models of coherent project domains that workers can query, submit patches/files to, and use for review, impact analysis, debugging, historical reasoning, reconciliation, and onboarding.
+
+Repository/Git/test/runtime evidence remains canonical. Elephant sessions are derived cognitive services and may be stale or wrong.
+
+The topology, node count, domain partitioning, refresh cadence, context representation, service catalog, model/provider, orchestration, and whether persistent sessions are even the best final implementation are all experiment variables.
+
+A promising initial test is one domain elephant versus an equivalently capable fresh worker on real review/onboarding tasks, measuring reconstruction time, defects found, revisions avoided, stale-answer risk, and maintenance cost.
+
+Do not reserve the development pool or build an elephant network merely because large contexts are available.
