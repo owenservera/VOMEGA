@@ -133,3 +133,13 @@ The doctrine does not mandate reuse. It requires informed invention.
 Meaningful candidates should be dispositioned as **reuse directly / adapt / wrap / port / behavioral reimplementation / research-only / reject**, with provenance, licensing, security, and Ω-fit considered at a depth proportional to the risk and expected engineering cost.
 
 The seed now contains **20 documents**.
+
+## Development acceleration hypotheses
+
+**DEVELOPMENT-ACCELERATION-HYPOTHESES.md** is an optional idea portfolio for reducing development cycle time and reconstruction cost.
+
+It includes candidate mechanisms such as a local Development Reality Layer / Dev Black Box, automatic context bundles, failure capsules, human-demonstration-to-test compilation, regression harvesting, friction detection, dynamic worker routing, hypothesis arenas, disposable experiment universes, runtime impact graphs, fault injection, session chronicles, product-opportunity mining, and acceleration measurement.
+
+These are **not requirements**. They should be activated only against measured bottlenecks and retained only when evidence shows useful leverage.
+
+The seed now contains **21 documents**.
