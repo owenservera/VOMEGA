@@ -590,5 +590,70 @@
     "integration": "single merge queue; no force pushes; post-merge targeted proof",
     "teamIdentityLivesIn": ".project/agentic-launch + Commons, not branch topology"
   },
-  "promotionRule": "implementation owner makes mechanism work; TRU owns evidence-level challenge; owner retains product-authority decisions"
+  "promotionRule": "implementation owner makes mechanism work; TRU owns evidence-level challenge; owner retains product-authority decisions",
+  "modelRouting": {
+    "researched": "2026-10-05",
+    "policyDoc": ".project/agentic-launch/MODEL-ROUTING.md",
+    "tiers": {
+      "frontierScarce": [
+        "GPT-6 Astra",
+        "Claude Fable 5.1"
+      ],
+      "premiumWorkhorse": [
+        "GPT-6.1 Sol",
+        "Claude Opus 5.5"
+      ],
+      "strongWorker": [
+        "Claude Sonnet 5.5",
+        "GPT-6 Luna",
+        "GPT-5.6 Sol",
+        "GPT-5.6 Terra",
+        "Space Bunny Free lanes"
+      ]
+    },
+    "rule": "Use frontier models to improve decisions and unblock hard failures; use abundant models to perform the work.",
+    "crossProviderReview": "For load-bearing contracts, prefer primary proposal from one provider and independent premium review by the other; use frontier adjudication only if disagreement remains.",
+    "workstreamDefaults": {
+      "SDW": [
+        "Claude Opus 5.5",
+        "GPT-6.1 Sol"
+      ],
+      "LNC": [
+        "GPT-6.1 Sol",
+        "Claude Opus 5.5"
+      ],
+      "VFX": [
+        "Claude Sonnet 5.5",
+        "GPT-6.1 Sol"
+      ],
+      "SKW": [
+        "Claude Opus 5.5",
+        "GPT-6.1 Sol"
+      ],
+      "EXP": [
+        "GPT-6 Luna",
+        "Claude Sonnet 5.5",
+        "Space Bunny Free"
+      ],
+      "PRV": [
+        "GPT-6.1 Sol",
+        "Claude Sonnet 5.5",
+        "GPT-6 Astra on hard browser escalation"
+      ],
+      "RTE": [
+        "GPT-6.1 Sol",
+        "Claude Opus 5.5"
+      ],
+      "DEV": [
+        "Space Bunny Free",
+        "GPT-6 Luna",
+        "Claude Sonnet 5.5"
+      ],
+      "TRU": [
+        "Claude Opus 5.5",
+        "GPT-6.1 Sol",
+        "Astra/Fable selectively"
+      ]
+    }
+  }
 }
