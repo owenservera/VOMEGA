@@ -235,3 +235,29 @@ Each worker: read-only infra, no provider/auth change, no git writes, disjoint w
 Merge queue: DEV integrates worker handoffs and new-file artifacts; no worker commits. Integration and independent review follow fan-in on Locks A-D + EXP baseline.
 
 Truth: dispatch proves only that 6 workers started concurrently on the route. It does not claim any worker's output is correct, merged, or live-provider-valid.
+
+### DEV-L1 first-wave results + fan-in — 2026-10-05
+
+All six bounded first-wave workers completed (28-49s each) and produced a candidate artifact plus handoff each; independent TRU-L1 review followed. All ran on ZCode route `openrouter/auto` (concrete resolved model not exposed). No product code, config or git state was touched by any worker; all artifacts are new files under `omega-baseline/experimental/` and `.project/agentic-launch/handoffs/`.
+
+Artifacts:
+- SDW-L1 -> LOCK-A-CANDIDATE.md (Provider/Account/Model/Capability/Realization records, world/0 fixture schema, 6 MVP Worlds, F1-F5 falsifiers)
+- LNC-L1 -> LOCK-B-CANDIDATE.md (UseCommand v0, validation outcomes, revision/session contract, 6 corpus cases)
+- VFX-L1 -> LOCK-C-CANDIDATE.md (VisualSpec vNext candidate, Handle model, 3 variants, no-parse rules)
+- SKW-L1 -> LOCK-D-CANDIDATE.md (24-manifest inventory, Reflection node/edge, parity findings; source read-only)
+- EXP-L1 -> EXP-BASELINE.md (scenario-runner shape, diff format, metric definitions, metamorphic candidates)
+- PRV-L1 -> LOCK-E-ASSAY.md (transport inventory, Harvest-First A/B/C comparison, account hypothesis, falsifiers; recon only)
+
+Independent TRU-L1 verdict (handoffs/TRU-L1.md): all six artifacts are SAFE AS CANDIDATES; **none is safe to freeze.** Load-bearing findings:
+- Lock A's own falsifiers (F2/F4) run against the interpretation validator, which has a verified false-READY defect (corpus `U1`, CMD-06). Fix/pin the validator before Lock A falsifier evidence is valid.
+- `prompt.send` has 0 occurrences in all 24 plugin manifests and in plugin src — it is design/corpus expectation only, not a registered capability (Lock D's CANDIDATE_SEMANTIC label is correct).
+- `contentHash` is empty in all 24 manifests -> source-anchor binding unmet; blocks Lock D source-anchor/Phase-B.
+- Late-revision-overwrite prevention (Lock C rule 6) and `source:"fixture"` enforcement are asserted, not evidenced (single-input corpus, no runtime-sourced world).
+- EXP `falseReadyRate`/`wrongTargetRate` are not computable without a required-field/capability spec.
+- Account `defaultFor` vs world `defaults` have two default sources with no stated precedence.
+
+Dispatcher note (harness behavior, evidence not guess): unbounded heavy background subagents stalled (no artifacts, calls ceased); bounded workers (<=8 tool calls) on the same route all completed. First-wave tasks must stay explicitly budgeted.
+
+Next bounded steps (need Commons claims; not started): (1) PRODUCT/Truth: fix or pin the CMD-06 validator defect, then rerun Lock A F2/F4; (2) SDW: materialize world/0 fixtures W1-W6 + source-tagged loader; (3) resolve Account.defaultFor vs world.defaults precedence; (4) EXP: add multi-revision corpus + required-field metadata; (5) PRV: no live observation until TRU-05 + consent envelope; (6) decide VisualSpec extend-vs-replace.
+
+Truth: these are design/candidate artifacts and a candidate-level review. No lock is frozen, no product code changed, no live provider evidence exists.

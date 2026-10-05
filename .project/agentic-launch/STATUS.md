@@ -109,3 +109,14 @@ On completion, record:
 - downstream trigger.
 
 No completed agent is implied to remain running after its task ends.
+
+## First-wave results — 2026-10-05
+
+DEV-L1 claimed and executed 2026-10-05 (ZCode `sess_673eb8fa`, source HEAD `dffbbe9`).
+
+- Preflight: route `openrouter/auto`; measured **>=6 concurrent** workers; Codex/Claude Code/Grok Build reachable. No config changed.
+- Dispatched 6 bounded first-wave workers; all produced candidate artifact + handoff: Locks A/B/C/D candidates, EXP baseline, Lock E recon.
+- Independent **TRU-L1** review completed: all artifacts safe as candidates, **none safe to freeze**; headline blocker is the known false-READY validator defect (corpus U1 / CMD-06) under Lock A's own falsifiers; `prompt.send` verified absent from manifests+src; `contentHash` empty in all 24 manifests.
+- Harness note: unbounded heavy background subagents stalled; bounded (<=8 tool-call) workers all completed on the same route.
+
+Artifacts: `.project/agentic-launch/handoffs/*.md`, `omega-baseline/experimental/*/`. Next: fix/pin CMD-06 validator, materialize world fixtures, resolve default precedence, add multi-revision corpus; PRV stays recon-only until TRU-05.
