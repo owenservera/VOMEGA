@@ -246,3 +246,21 @@ The anchor is intentionally connected to the destination semantic path:
 The first product only needs a thin, useful slice of that universe.
 
 It should nevertheless use the same concepts so that the beta grows into the destination rather than becoming a throwaway prototype.
+
+## MVP as the steering mechanism
+
+Minimum Viable Product is not a frozen list of V1 features. It is how the autonomous build repeatedly chooses what to make real next.
+
+For each product cycle, search for the smallest genuinely useful, installable slice that:
+- creates recognizable user value;
+- reaches a real observable result where external reality matters;
+- can be understood by a normal user;
+- exercises or falsifies important Ω assumptions;
+- maximizes learning and reusable capability;
+- has credible time-to-market;
+- opens useful expansion paths;
+- is supported by current implementation reality rather than wishful completeness.
+
+Keep the visible product surface minimal when possible while allowing deeper architecture to evolve behind it. A tiny real slice is preferable to a broad simulated product.
+
+Use `PRODUCT-JOURNEYS.md` as the outcome space and `PROOF-AND-MATURITY.md` to prevent “minimum” from becoming a lower proof standard.
