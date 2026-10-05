@@ -221,3 +221,11 @@ The goal is a trustworthy, tangible product, not a monument to the current archi
 ## Continuous Product Release Gym
 
 The canonical Product Release Gym is defined in `BUILD-FOCUS.md`. It is a product-discovery and release mechanism, not a predetermined roadmap.
+
+## A priori knowledge discipline
+
+Before major architecture, roadmap, or organization decisions, incorporate the expanded seed context in `CONCEPTUAL-MODEL.md`, `KNOWN-REALITY-AND-OPEN-FRONTIER.md`, `PRODUCT-JOURNEYS.md`, `WORKSTREAM-LANDSCAPE.md`, `RESEARCH-FRONTIER.md`, `PROOF-AND-MATURITY.md`, and `HISTORICAL-KNOWLEDGE-MAP.md`.
+
+Treat this knowledge as a map of intent, knowns, evidence, likely problem domains, and open questions—not as a hidden implementation specification. Preserve explicit uncertainty. When a high-risk frontier becomes relevant, use research, competing hypotheses, experiments, and independent verification rather than silently selecting the historical answer.
+
+The expected workstream landscape is coverage guidance only. The project owns its organization and may structure the work differently if it can show better validated throughput and coverage.
