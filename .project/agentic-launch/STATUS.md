@@ -24,16 +24,37 @@ Run the semantic MVP twin and live Provider-reality work in parallel.
 | PRV | PRV-L1 transport/account assay | ready / unclaimed | safe browser access | Lock E |
 | RTE | RTE-L1 independent runtime assays | ready / queued | none for assay; A/B/C/E for integration | trust/shell/packaging findings |
 
+## Runtime pool status
+
+Runtime capacity is discovered, not assumed.
+
+Current owner-reported routing change:
+
+- ZCode is now using **OpenRouter Auto** (`openrouter/auto`) rather than treating the previously configured five Space Bunny provider accounts as the fixed scheduling topology.
+- This is a routing/input fact, not yet a verified local capability measurement.
+- DEV-L1 must record the effective routed model where the harness exposes it and the actual safe concurrency before dispatch.
+- Previously documented Space Bunny accounts remain historical/configuration evidence only until live preflight shows they are relevant to the current route.
+- Grok Build remains candidate capacity until local preflight succeeds.
+
+### Runtime observations
+
+| Harness / route | Current state | Evidence needed |
+| --- | --- | --- |
+| ZCode + `openrouter/auto` | owner-reported current route; live task capacity unverified in repo | bounded read-only/task probe, effective routed-model capture where exposed, concurrency observation |
+| Codex | installed previously; current task capacity to re-check | version/mode + bounded probe |
+| Claude Code | installed/authenticated previously; model execution previously untested | current version/model/mode + bounded probe |
+| Grok Build | owner installing / candidate | `grok version`, `grok inspect`, bounded comparison task |
+| deterministic local tools | known substrate; versions may drift | record exact versions with proof |
+
 ## First fan-out
 
-Preferred initial occupancy if all local systems prove reachable:
+Preferred initial occupancy is now **capacity-driven**, not account-driven.
 
-- five ZCode lanes → SDW, LNC, VFX, SKW, EXP;
-- Codex → DEV launch + PRV reconnaissance if safe;
-- Claude Code → TRU independent review;
-- RTE takes the first suitable freed lane or a separately available executor.
+If ZCode/OpenRouter Auto safely supports five independent workers, SDW/LNC/VFX/SKW/EXP remain the natural first five tasks. If actual concurrency is lower, DEV dispatches the highest-unlocking tasks first: SDW → LNC → SKW/EXP/VFX as adapters permit.
 
-This is not permanent assignment.
+Codex remains a strong DEV/integration + PRV candidate, Claude Code a strong independent TRU candidate, and Grok Build an additional candidate once verified.
+
+This is not permanent assignment, and no provider-account count is itself proof of usable concurrency.
 
 ## Fan-in condition
 
