@@ -148,3 +148,11 @@ Before making a major product or architectural commitment, also read the seven c
 - use `HISTORICAL-KNOWLEDGE-MAP.md` when older BCP-dev knowledge could prevent rediscovery.
 
 The VOMEGA seed has two top-level parts: `omega-baseline/` and `seed-docs/`. The old BCP-dev `docs/` corpus is intentionally external historical evidence, not inherited project truth.
+
+## Provider Lab strategic hypothesis
+
+Read `PROVIDER-LAB-STRATEGY.md` before making major provider/browser architecture decisions.
+
+The Provider Lab is an approved high-leverage development hypothesis: use instrumented local provider pages to make provider discovery, live execution, shadow validation of real human interactions, conformance testing, drift detection, and healing much faster.
+
+Do not mistake approval of the experiment for approval of its eventual architecture. The Lab exists to generate evidence and reusable mechanisms.
