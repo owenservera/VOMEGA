@@ -1,5 +1,7 @@
 # Frontier Model Routing — OpenAI + Anthropic
 
+> **Routing status:** heuristic and revisable. Harness ≠ router ≠ model ≠ account, and no model family permanently owns a workstream. Route from current availability, measured task fit, cost/capacity and independent-review value.
+
 Status: **CURRENT EXTERNAL RESEARCH / LOCAL-TEAM ROUTING POLICY**  
 Research date: 2026-10-05
 
