@@ -68,3 +68,11 @@ Bounded file ownership: `seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md` (new), a r
 Research / Product handoff: [initial blueprint](../seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md) committed at `a1e3298d1549b2b66a16d8810ac29333ddb05141`; first-release design cross-link added. Owner requirements are distinguished from candidate visual treatments. Next action: WS-SHL / Research compare minimal interaction treatments, reconcile with existing command/session/VisualSpec contracts, and test Account correction, assumptions, scope and accessibility. No implementation task has been adopted by this documentation change.
 
 Truth handoff: checked against current first-release scope and repository instructions; Windows commands and fan-out remain future design probes, not new release prerequisites. Documentation/link verification only; no code, runtime tests, live provider proof or usability validation claimed. No active background worker is implied.
+
+### Customization follow-up — 2026-10-05
+
+Coordination request: owner requires the visual system to adhere to reprogrammability and customization principles; swapping icon libraries must be simple.
+
+Owner: ChatGPT design session. Status: claimed; documentation only. Bounded ownership: the command visual language design and this Commons entry.
+
+Next action: document replaceable presentation and interaction mappings, semantic invariants, portable preferences, and a concrete icon-library replacement experiment. Implementation mechanism remains open.
