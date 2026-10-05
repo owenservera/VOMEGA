@@ -1,6 +1,6 @@
-# VIVIM-Ω — Fresh ZCode Seed
+# VIVIM-Ω — Fresh Autonomous Build Seed
 
-This directory is a fresh project seed for a new autonomous ZCode build.
+This directory is a fresh project seed for a new autonomous VIVIM-Ω build.
 
 Start with **START-HERE.md**.
 
@@ -41,7 +41,7 @@ Distinguish law, evidence, design candidates, historical decisions, implementati
 
 ## The fresh-project premise
 
-The new ZCode project must derive its own:
+The new autonomous project must derive its own:
 
 - architecture;
 - development organization;
@@ -140,4 +140,13 @@ It includes candidate mechanisms such as a local Development Reality Layer / Dev
 
 These are **not requirements**. They should be activated only against measured bottlenecks and retained only when evidence shows useful leverage.
 
-The seed now contains **21 documents**.
+The seed now contains **22 documents**.
+
+
+## First bootstrap executor
+
+The first real bootstrap is expected to be run by **local Codex from the local VOMEGA checkout**.
+
+Point Codex first to **CODEX-BOOTSTRAP-START-HERE.md**. That document is the execution entry point for the initial bootstrap and tells Codex how to read the broader seed, establish machine/repository reality, discover Claude Code/ZCode/the five Space Bunny lanes, create minimal durable project truth, run the first Product Release Gym, and transition into real implementation.
+
+Codex is the first executor, not a permanent master or constitutional authority.
