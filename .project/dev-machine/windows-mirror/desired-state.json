@@ -3,8 +3,10 @@
   "generated_at": "2026-10-06T00:10+02:00",
   "timezone": "Europe/Paris",
   "source_of_truth": {
-    "process": ".project/dev-machine/ (VOMEGA repo, main)",
-    "windows_pack": "mirror-to-windows/VOMEGA-dev-machine/ == .project/dev-machine/windows-mirror/ (snapshot in git)"
+    "meta_governance": ".project/META-TRACKER.md (program map + openness rule)",
+    "launch_runtime_state": ".project/agentic-launch/STATUS.md",
+    "dev_machine_snapshot": ".project/dev-machine/ (reproducible operating experiment, not strategy authority)",
+    "windows_pack": ".project/dev-machine/windows-mirror/ (reconstruction snapshot)"
   },
   "status_vocabulary": {
     "LIVE_ON_LINUX": "executed and passed on shared Linux box this session",
@@ -19,7 +21,7 @@
       "os": "Debian-like Linux x64 (kernel 6.12)",
       "repo_root": "/workspace/VOMEGA",
       "worktree_root": "/workspace/vomega-worktrees",
-      "habitat": "daintree",
+      "habitat": "Daintree available for Git worktrees + supported CLI-agent panels; independent of ZCode",
       "display": ":16"
     },
     "windows": {
@@ -27,7 +29,7 @@
       "os": "Windows 10/11 x64",
       "repo_root_default": "C:\\0-BlackBoxProject-0\\VOMEGA",
       "worktree_root_default": "C:\\0-BlackBoxProject-0\\vomega-worktrees",
-      "habitat": "zcode (primary), daintree (secondary)",
+      "habitat": "ZCode and Daintree are independent optional habitats; no parent/child relationship",
       "status": "UNVERIFIED_ON_WINDOWS"
     }
   },
@@ -347,7 +349,7 @@
     {
       "name": "daintree",
       "command": "daintree",
-      "role": "Linux press-go habitat: worktrees, agent PTYs, Review Hub",
+      "role": "Git worktree / Review Hub / supported CLI-agent habitat; not a ZCode manager",
       "required": true,
       "desired": {
         "version": ">=0.41.0"
@@ -368,12 +370,12 @@
         "type": "none"
       },
       "repair_required": false,
-      "notes": "Linux: running on DISPLAY=:16, open via .project/dev-machine/bootstrap/open-in-daintree.sh. Windows: secondary habitat."
+      "notes": "Linux: running on DISPLAY=:16, open via .project/dev-machine/bootstrap/open-in-daintree.sh. Windows: secondary habitat. Daintree does not launch, supervise or manage ZCode."
     },
     {
       "name": "zcode",
       "command": "zcode",
-      "role": "Windows press-go habitat (proven >=6 concurrent bounded workers on openrouter/auto)",
+      "role": "Independent Windows ZCode session/worker habitat",
       "required": true,
       "desired": {
         "version": ">=3.14.4"
@@ -397,7 +399,7 @@
         "secret_material": "NEVER_EXPORT"
       },
       "repair_required": false,
-      "notes": "router openrouter/auto hides underlying model: record router-selected/unknown"
+      "notes": "router openrouter/auto hides underlying model: record router-selected/unknown Managed by ZCode itself; Daintree is not its control plane."
     }
   ],
   "routers": [
@@ -450,7 +452,7 @@
     "export_policy": "locations only; contents NEVER_EXPORT"
   },
   "worktree_policy": {
-    "pattern": "bounded task -> disposable worktree -> implement -> test -> independent review (.dev-machine/REVIEW_OK) -> ff-merge/PR to main -> remove worktree + branch",
+    "pattern": "Current safe default when isolation is useful: bounded task -> disposable worktree -> implement -> proof/review proportional to consequence -> integrate -> remove. Not every task requires a worktree.",
     "branch": "task/<task-id>",
     "root_linux": "/workspace/vomega-worktrees/<task-id>",
     "root_windows": "C:\\0-BlackBoxProject-0\\vomega-worktrees\\<task-id>",
@@ -461,7 +463,8 @@
       "linux_daintree": "2-3 worktrees (historical playground)",
       "linux_cli_fallback": "2 default"
     },
-    "review_rule": "implementer != reviewer; prefer cross-provider (claude<->grok<->codex)"
+    "review_rule": "Independent challenge is preferred for consequential work; cross-provider review is a useful option, not ceremony.",
+    "default_parallel_implementers_note": "Conservative helper-script default only, not project policy; tune or bypass from measured capacity."
   },
   "health_checks": {
     "linux": ".project/dev-machine/health-check.sh (VOMEGA_HEALTH_FULL=1 for omega:quick)",
@@ -470,8 +473,8 @@
   },
   "press_go": {
     "linux": ".project/dev-machine/press-go.sh [--dry-run] [--product] [--max=N] [--no-daintree]; prefers Daintree when cli --status reports running",
-    "windows": "press-go-vomega.ps1 [-DryRun] [-Habitat zcode|daintree|cli]; ZCode preferred",
-    "default_scope": "platform-only DEV smoke; --product / -Product enqueues lane tasks from STATUS"
+    "windows": "press-go-vomega.ps1 may open one selected UI (zcode|daintree|cli) as a convenience. It does not make one habitat the manager of another.",
+    "default_scope": "platform-only smoke by default; product task selection is advisory and may be overridden by current evidence/META-TRACKER."
   },
   "manual_steps": [
     "Sign in: gh auth login; claude /login; grok login; codex login; opencode auth login (optional); ZCode app sign-in + OpenRouter key in ZCode UI",
@@ -486,5 +489,7 @@
   "validation": {
     "linux": "LIVE_ON_LINUX: health-check pass, press-go --dry-run exit 0, fallback worktree smoke create/remove OK (2026-10-06 00:05 CEST)",
     "windows": "UNVERIFIED_ON_WINDOWS: run bootstrap-vomega-dev.ps1 then verify-vomega-dev.ps1 and return verify-report.json"
-  }
+  },
+  "operating_principle": "The map preserves possibilities; it does not prescribe the path. Only explicit invariants and Lab/proof boundaries are hard constraints.",
+  "habitat_boundary": "ZCode and Daintree are independent habitats. Daintree does not launch, supervise or manage ZCode. Coordinate through Git/task/evidence surfaces when both are used."
 }
