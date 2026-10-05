@@ -2,14 +2,16 @@
 
 **Status: UNVERIFIED_ON_WINDOWS.** Scripts were generated on the Linux box, parse-checked with PowerShell 7.4.6, and smoke-run under pwsh-on-Linux (verify + press-go `-DryRun`, exit 0). Nothing here has run on Windows yet.
 
-## Two sources of truth
+## Authority hierarchy
 
 | What | Where |
 | --- | --- |
-| **Process** (architecture, roles, dispatch, review, integration, ledger) | VOMEGA repo `.project/dev-machine/`: start at `README.md`, `PROCESS.md`, `ARCHITECTURE.md`, `WINDOWS-PARITY.md` |
-| **Windows reconstruction** (this folder) | `mirror-to-windows/VOMEGA-dev-machine/` on the box, with a git snapshot at `.project/dev-machine/windows-mirror/` |
+| **Program map / openness rule** | `.project/META-TRACKER.md` |
+| **Current launch state** | `.project/agentic-launch/STATUS.md` |
+| **Dev-machine operating snapshot** | `.project/dev-machine/` |
+| **Windows reconstruction snapshot** | this folder |
 
-If they disagree, the git copy on `main` wins.
+The dev-machine and Windows pack reproduce a useful current setup; they do not define VOMEGA strategy. If an operating file conflicts with META-TRACKER's authority/openness rule, the meta layer wins.
 
 ## Files
 
@@ -18,7 +20,7 @@ If they disagree, the git copy on `main` wins.
 | `desired-state.json` | Machine-readable spec: tools, versions, install methods, env var **names**, symbolic auth, habitats, worktree policy, health checks, Linux vs Windows status |
 | `bootstrap-vomega-dev.ps1` | Safe to re-run: installs the toolchain and CLIs, clones the repo or fast-forwards `main`, runs `bun install`, creates the worktree root, finds ZCode and Daintree, prints the MANUAL_AUTH list, then runs verify |
 | `verify-vomega-dev.ps1` | Fixed-order checks. Writes a secret-free `verify-report.json`. Add `-Full` to run `omega:quick` and `-ProbeModels` for live claude/grok pings |
-| `press-go-vomega.ps1` | Windows press-go: verify → select tasks → disposable worktrees → open **ZCode** (preferred), Daintree, or print CLI commands |
+| `press-go-vomega.ps1` | Windows helper: verify → suggest tasks → optional disposable worktrees → open one selected UI (ZCode or Daintree) or print CLI commands. Selecting a UI does not make it manager of the other. |
 
 ## Owen: plug and play on Windows
 
