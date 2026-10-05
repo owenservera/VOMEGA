@@ -62,3 +62,23 @@ No elephant network has been instantiated and no provider lane has been reserved
 The owner's first-release roadmap pack is on disk at [roadmap/README.md](roadmap/README.md): milestones M0–M10, 74 tasks across nine workstreams, a baseline harvest assay and a proof-traceability matrix. It is an operational plan and revisable evidence, not product law; the seed still constrains it.
 
 It is placed but not yet adopted: no roadmap task is claimed, and the "Next actions" above are unchanged until someone claims OPS-01. The seed determinism corpus (task CMD-02) runs under `bun test plugins/vivim-nlcl` and is not part of `omega:quick`. What landed where, and what was deferred, is in `../INCORPORATION-NOTES.md`.
+
+
+## Local agentic team launch update
+
+The owner has asked that the next development phase launch as a coordinated local multi-agent program.
+
+The execution overlay is now at [agentic-launch/README.md](agentic-launch/README.md).
+
+It does not replace the release roadmap. It regroups current and newly designed work into low-handoff ownership boundaries and defines the first parallel fan-out across the local heterogeneous pool.
+
+Immediate launch order:
+
+1. DEV-L1 verifies ZCode/Codex/Claude execution reality and task isolation without changing provider/auth configuration.
+2. TRU-L1 establishes independent launch falsifiers/proof boundaries.
+3. Dispatch SDW-L1, LNC-L1, VFX-L1, SKW-L1 and EXP-L1 in parallel across healthy ZCode lanes.
+4. Run PRV-L1 read-only transport/Account reconnaissance in parallel when safe.
+5. Start RTE-L1 on the first suitable available executor.
+6. Fan in on Locks A–D to produce one integrated replayable semantic MVP scenario; Provider live proof remains a parallel independent track.
+
+No team is claimed or implied running merely because the launch files exist.
