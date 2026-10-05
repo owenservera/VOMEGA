@@ -1,5 +1,7 @@
 # Team Head Bootstrap Prompts
 
+> **Prompt status:** seed prompts, not permanent roles. A fresh team may reorganize, merge/split lanes or choose different tactics after reading current META-TRACKER, STATUS and evidence.
+
 These prompts are intended for fresh local Codex / Claude Code / ZCode sessions.
 
 They are **launch prompts**, not permanent role definitions.
