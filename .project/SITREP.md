@@ -82,3 +82,14 @@ Immediate launch order:
 6. Fan in on Locks A–D to produce one integrated replayable semantic MVP scenario; Provider live proof remains a parallel independent track.
 
 No team is claimed or implied running merely because the launch files exist.
+
+
+## Complete meta-program map
+
+The canonical whole-program index is now [META-TRACKER.md](META-TRACKER.md), with a machine-readable companion at [meta-tracker.json](meta-tracker.json).
+
+This corrects an important scope ambiguity: the nine agentic-launch workstreams are only low-handoff **execution ownership lanes**, and the 74 first-release roadmap tasks are only the **release slice**. Neither is the complete VOMEGA program.
+
+The meta tracker currently preserves 67 major programs across product/release, semantic runtime/simulation, Reflection/Wiki migration, provider reality, authority/Work/runtime/extensibility, truth/research, and the local agent-development factory. It also preserves all 31 named development-acceleration hypotheses.
+
+Current convergence is deliberately narrower than the complete map: executable Ω Simulator + semantic product twin, minimal Reflection/Wiki/Migrator slice, validator/revision/experiment truth, and the independent real Provider/Account path. Major destination programs such as durable Work, Forge/evolution, full sovereign exit, Canvas, Elephant context and optional DevOps accelerators remain visible without blocking the current release.
