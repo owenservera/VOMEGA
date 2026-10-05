@@ -1334,3 +1334,22 @@ The value is the ability to **change one part of Ω, replay the consequences acr
 ## 31. Change record
 
 - **2026-10-05:** Initial owner-directed design. Reframed the requested modular database as a standalone semantic runtime laboratory: versioned taxonomy/language/command/executable/World/visual/interaction/test/harvest/governance libraries; composable Profiles; virtual Ω runtime; deterministic replay; realtime interpretation traces; structured knowledge harvesting; bounded self-evolution; tiny non-reprogrammable constitutional kernel.
+
+
+## 32. Self-description / Reflection integration
+
+The Lab should consume the same core Reflection ABI defined in [Self-Describing Runtime & Source-Native Contextual Wiki](SELF-DESCRIBING-RUNTIME-WIKI.md).
+
+Every Lab module/Pack/Profile should therefore be inspectable through source-native semantic declarations rather than a second Lab documentation schema.
+
+Consequences:
+
+- installing an experimental Pack automatically extends Lab self-knowledge;
+- changing a Profile immediately changes the Wiki projection of what the experimental runtime contains;
+- harvested artifacts can be linked to the exact source declarations they influence;
+- explainability completeness becomes an experiment dimension;
+- the Lab can falsify plugins that expose behavior not visible through reflection;
+- visual help handles and Wiki pages resolve to the same semantic IDs used by interpretation/execution;
+- no Markdown/README/Wiki file is required for an experimental capability to become explainable.
+
+The Lab should include the synthetic-plugin proof described in the self-describing runtime design: install a never-before-seen capability with zero documentation files and verify that its capability, parameters, effects, authority requirement, evidence expectations, source links, related concepts and contextual help become available automatically.
