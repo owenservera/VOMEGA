@@ -14,7 +14,11 @@ This preserves a vocabulary for reasoning about VIVIM. It is not a database sche
 **Capability** — semantic power available to the environment.
 **Provider** — external system/service.
 **Account** — person's authenticated relationship with a provider.
+**Model** — provider-scoped computational/model choice that may participate in routing; not the Provider, Account, Session, capability, or authority.
 **Realization** — concrete implementation of a capability.
+**Consequence** — structured description of what an operation may affect (mutability, externality, sensitivity, transfer, reversibility, visibility); distinct from the current authority decision.
+**Fidelity** — how exactly a realization fulfills a capability (for example exact, approximate, or handoff).
+**Evidence maturity** — how strongly a realization/claim has been verified in its intended substrate; distinct from fidelity.
 **Session** — concrete active execution relationship/resource.
 **Routing** — policy for choosing among valid candidate realizations.
 **Authority** — what may happen, for whom, under what scope/approval.
@@ -29,6 +33,7 @@ This preserves a vocabulary for reasoning about VIVIM. It is not a database sche
 **Self-description** — derived, source-bound description of what Ω and its loaded contributions are, expose, require and currently know; descriptive, never authority.
 **Reflection** — the machine-readable read-only projection by which loaded core/plugin structure, schemas, relationships and source anchors become inspectable.
 **Contextual Wiki** — ephemeral human-facing projection of Reflection plus current registry/evidence/interpretation state; not a separately authored knowledge authority.
+**Semantic handle** — stable reference carried through interpretation, visual projection and Wiki navigation so surfaces can point at meaning without owning it.
 **Forge** — ability to create, modify, compose, repair, replace, and evolve governed capabilities/surfaces.
 
 A useful reasoning chain is:
@@ -36,6 +41,6 @@ A useful reasoning chain is:
 
 This is not an implementation pipeline.
 
-Protect useful distinctions: reality ≠ representation; evidence ≠ authority; intent ≠ execution; capability ≠ realization; provider ≠ account; account ≠ session; discovery ≠ routing; routing ≠ authority; memory ≠ context; Work ≠ worker; World ≠ surface; Space ≠ World; confidence ≠ proof; self-description ≠ authority; source commentary ≠ evidence; Wiki projection ≠ canonical truth.
+Protect useful distinctions: reality ≠ representation; evidence ≠ authority; intent ≠ execution; capability ≠ realization; provider ≠ account; provider ≠ model; account ≠ model; account ≠ session; discovery ≠ routing; routing ≠ authority; consequence ≠ authority; fidelity ≠ evidence maturity; memory ≠ context; Work ≠ worker; World ≠ surface; Space ≠ World; confidence ≠ proof; self-description ≠ authority; source commentary ≠ evidence; Wiki projection ≠ canonical truth; semantic identity ≠ current policy classification.
 
 Candidate human verbs: See · navigate · focus · inspect · address · ask · create · connect · configure · run · delegate · approve · refuse · verify · remember · replay · recover · share · export · forge.
