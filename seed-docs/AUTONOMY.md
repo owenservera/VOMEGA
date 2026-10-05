@@ -130,3 +130,13 @@ That is not failure. Failing to discover it is.
 The project is expected to exploit the prior-knowledge seed and historical BCP-dev mine before spending large effort rediscovering solved or well-characterized problems. It is equally expected to reject historical answers when current evidence or better experiments warrant it.
 
 The autonomous team's job is to choose the how. The seed's job is to make sure that choice is informed by the full problem space, durable intent, known evidence, and unresolved frontier.
+
+## Autonomy across development systems
+
+The autonomous build may use ZCode, the configured Space Bunny lanes, local Codex, local Claude Code, and ordinary deterministic development tools as complementary resources.
+
+It has authority to design coordination, delegation, review, handoff, worktree, and evidence practices across those systems, but it does not have blanket authority to reconfigure their accounts, credentials, subscriptions, provider definitions, or authentication.
+
+No development system receives permanent architectural authority merely because it coordinates work. The project should be able to change which tool plans, implements, reviews, researches, or verifies as evidence about their strengths evolves.
+
+Where consequential decisions are difficult to verify deterministically, independent reasoning from materially different model/tool systems is an available verification strategy—not a substitute for evidence, but a way to expose blind spots before promotion.
