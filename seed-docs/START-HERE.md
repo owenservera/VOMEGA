@@ -164,3 +164,11 @@ Read `HARVEST-FIRST-ENGINEERING.md` before starting a substantial new subsystem 
 The project should not pay full discovery and implementation cost while still ignorant of existing working solutions. Search and assay existing implementations first, then deliberately choose whether to reuse, adapt, wrap, port, behaviorally reimplement, or invent.
 
 Keep the harvest pass proportional: a small reversible change needs little ceremony; a multi-week or load-bearing subsystem deserves deep archaeology and comparison.
+
+## Optional acceleration portfolio
+
+Read `DEVELOPMENT-ACCELERATION-HYPOTHESES.md` when development friction, reconstruction cost, multi-agent coordination, debugging cost, or verification latency becomes material.
+
+Do not bootstrap every idea.
+
+The document is an experiment menu. Measure the bottleneck first, harvest existing solutions, test the smallest useful accelerator, and keep it only if validated product throughput improves.
