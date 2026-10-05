@@ -274,3 +274,13 @@ A provider-specific extension mirror may deliberately expose far more provider-n
 The product should harvest the semantic capability, account/session, realization, evidence, and recovery knowledge that survives testing—not inherit the Lab UI by default.
 
 Shadow observation of normal real provider use is especially useful because it supplies live reference behavior and helps prioritize the provider capabilities that matter in practice.
+
+## Concrete first-release realization
+
+The current owner-directed concrete realization of this anchor is specified in `FIRST-PRODUCT-RELEASE-DESIGN.md`.
+
+The first release target is a floating Windows command box whose visible capability surface grows from registered Provider Accounts. Natural language is the human input surface; explicit semantic commands are the executable truth. Provider/account setup, capability invocation, UI actions, visual guidance, and contextual help should converge on the same command/capability machinery.
+
+The first external capability is `prompt.send`.
+
+Treat that document as the active first-release product design while preserving this file's broader long-horizon anchor and replaceability tests.
