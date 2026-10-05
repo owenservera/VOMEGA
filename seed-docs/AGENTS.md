@@ -265,3 +265,19 @@ Do not produce link dumps. Assay the strongest candidates and decide explicitly 
 Preserve provenance and licensing/security awareness. Marketplace availability or locally accessible source does not imply permission to copy it into Ω.
 
 Scale harvest effort with expected implementation cost, uncertainty, external coupling, and architectural leverage. The objective is faster validated progress, not research ceremony or originality.
+
+## Optional development acceleration experiments
+
+`DEVELOPMENT-ACCELERATION-HYPOTHESES.md` contains approved candidate ideas, not mandatory infrastructure.
+
+When a repeated bottleneck appears, you may experiment with local development observation, automatic context reconstruction, failure capsules, demonstration-to-test conversion, regression harvesting, dynamic worker routing, isolated experiment universes, hypothesis arenas, runtime impact analysis, fault injection, development chronicles, interactive control surfaces, or other acceleration mechanisms.
+
+Before building a substantial accelerator:
+1. state the bottleneck;
+2. establish a baseline where practical;
+3. harvest existing solutions;
+4. implement the smallest useful experiment;
+5. measure whether validated throughput or reliability improved;
+6. remove or simplify the accelerator if it does not earn its cost.
+
+Do not turn development telemetry into uncontrolled capture of the owner's personal activity. Locality, minimization, explicit exclusion, bounded retention, and inspectability are default design expectations.
