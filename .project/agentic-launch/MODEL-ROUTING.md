@@ -720,3 +720,99 @@ Measure:
 - amount of correction needed.
 
 This gives DEV evidence for future routing instead of treating Grok 4.7 as automatically superior or inferior.
+
+
+# OpenRouter Auto in ZCode — runtime routing note
+
+The owner currently reports ZCode is using **OpenRouter Auto** (`openrouter/auto`).
+
+OpenRouter documents Auto as a task-aware model router. Its current selection uses aggregate recent market/spend behavior and can change as models and usage patterns change. It can therefore select different underlying models for different tasks even though the ZCode-facing model name remains `openrouter/auto`.
+
+Official reference:
+- https://openrouter.ai/openrouter/auto/api
+- https://openrouter.ai/blog/announcements/introducing-the-new-auto-router/
+
+## Consequence for VOMEGA development evidence
+
+Do not treat:
+
+```
+harness = ZCode
+configured model = openrouter/auto
+```
+
+as sufficient model-attribution evidence.
+
+Where the runtime/API exposes the selected underlying model, record:
+
+```
+harness
+router
+actual routed model
+task class
+source HEAD
+result/review
+```
+
+If the selected model is not exposed, record it as **router-selected / unknown concrete model** rather than guessing.
+
+This matters for the dynamic-worker-routing experiment: otherwise the project could mistakenly credit or blame ZCode/OpenRouter Auto as one model when it is actually a moving ensemble.
+
+## Role of OpenRouter Auto
+
+OpenRouter Auto is useful for:
+
+- bulk/bounded ZCode work;
+- tasks where dynamic cost/quality routing is acceptable;
+- empirical comparison against fixed premium models;
+- reducing manual model selection.
+
+It should not automatically replace explicit fixed-model selection when the experiment requires:
+
+- reproducibility;
+- independent cross-provider review;
+- a named frontier adjudicator;
+- exact model capability attribution;
+- controlled A/B comparison.
+
+For a load-bearing contract review, DEV/TRU may deliberately request a fixed named model through an already-approved route if available. Do not alter owner provider configuration solely to satisfy this preference.
+
+## Scheduling implication
+
+The launch scheduler should classify **worker capacity** independently from **model identity**.
+
+For example:
+
+```
+worker:
+  harness = ZCode
+  route = openrouter/auto
+  actualModel = observed-per-run-or-unknown
+
+task:
+  workstream = EXP
+  requiredTier = W
+  reproducibility = low
+
+→ suitable
+```
+
+versus:
+
+```
+task:
+  workstream = TRU
+  purpose = independent Lock A adjudication
+  requiredModel = Claude Fable 5.1
+  reproducibility = high
+
+→ use explicit frontier route, not Auto
+```
+
+## Cost-tier note
+
+OpenRouter Auto supports a cost-tier control. The owner/runtime's existing setting should be treated as read-only configuration during launch preflight.
+
+Do not silently raise cost tier in order to get a stronger model.
+
+Any future cost-tier policy belongs in DEV routing policy and requires explicit owner budget intent.
