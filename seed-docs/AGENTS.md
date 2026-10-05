@@ -281,3 +281,12 @@ Before building a substantial accelerator:
 6. remove or simplify the accelerator if it does not earn its cost.
 
 Do not turn development telemetry into uncontrolled capture of the owner's personal activity. Locality, minimization, explicit exclusion, bounded retention, and inspectability are default design expectations.
+
+
+## First bootstrap executor
+
+The first bootstrap run is expected to be performed by **local Codex from the local VOMEGA checkout** using `CODEX-BOOTSTRAP-START-HERE.md` as its operational entry point.
+
+During that first run, Codex should establish machine/repository reality, discover the available heterogeneous development pool, create the minimum durable project truth/coordination needed for fresh-session continuity, run the first evidence-backed product-selection cycle, and begin real implementation or the smallest critical unblocker.
+
+Do not let the bootstrap executor become the permanent master by inertia. Once durable project continuity exists, allocate work among Codex, Claude Code, ZCode, the five Space Bunny lanes, and deterministic tools according to task fit and evidence.
