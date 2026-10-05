@@ -151,3 +151,22 @@ Proof: Manual test record
 
 ---
 Back to [roadmap index](../README.md) · [TASKS.md](../TASKS.md)
+
+
+## Owner design refinement — semantic visualization sandbox (2026-10-05)
+
+Before product/native shell decisions are overfit to a visual mock, use [MVP Visualization Sandbox](../../../seed-docs/MVP-VISUALIZATION-SANDBOX.md) as the design/proof environment for the floating-box interaction contract.
+
+The sandbox should:
+
+- simulate the three-Provider MVP World (ChatGPT / Claude / Gemini);
+- include Provider / Account / Model as distinct route identities;
+- exercise registration/configuration through the command system;
+- evolve the existing preliminary VisualSpec into a semantic VisualSpec vNext;
+- support multiple presentation variants over identical semantic state;
+- stop at a simulated `prompt.send` boundary;
+- record per-revision semantic/visual traces.
+
+SHL-02/SHL-03 should consume the resulting evidence rather than invent a second mock semantic model.
+
+The local-agent task family `VSX-01…VSX-12` in the sandbox design is a roadmap seed for Coordination; integrate/rename it deliberately rather than treating the IDs as already adopted.
