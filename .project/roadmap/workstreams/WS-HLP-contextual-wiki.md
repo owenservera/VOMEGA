@@ -146,3 +146,17 @@ HLP-02 should rank graph nodes from the active interpretation/validation/executi
 HLP-04 should additionally falsify missing reflected public behavior and invented source relationships.
 
 A new implementation task should be carved with the core/plugin-boundary owner for the Reflection ABI and completeness gate before final HLP-01 implementation. Exact task ownership/ID remains for Coordination to assign.
+
+
+## Owner design refinement — Reflection migration utility (2026-10-05)
+
+The existing codebase should be brought toward source-native Wiki compliance through the design in [Self-Knowledge Reflection Migrator](../../../seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md).
+
+Important boundary:
+
+- the migration utility is a development/build conformance tool;
+- runtime Wiki consumes compiled/installed Reflection + live state;
+- runtime should not reparsed the repository on each help request;
+- the utility defaults read-only and distinguishes extracted structural facts from candidate semantic suggestions.
+
+The local-agent `REF-01…REF-12` tasks are a roadmap seed. HLP implementation should coordinate with whichever workstream owns the Reflection ABI/core boundary.
