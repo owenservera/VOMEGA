@@ -1,6 +1,8 @@
 # Meta-workstream dispatch procedure
 
-**This file is procedure only.** It does not execute SDW/LNC/… product work by itself. `press-go.sh` uses it to enqueue bounded tasks.
+**This file is procedure only and advisory.** It does not execute SDW/LNC/… product work by itself and does not have scheduling authority. `press-go.sh` may use it to suggest bounded tasks.
+
+META-TRACKER is the governing program map. STATUS and current evidence may justify a task not listed here, a different lane decomposition, or no dispatch at all. The reference candidate queue is a historical convenience, not a backlog that must be consumed.
 
 ## Sources of truth (read in order)
 
@@ -9,9 +11,11 @@
 3. `.project/roadmap/` task cards when a STATUS gate names them  
 4. Optional reference list: `bootstrap/first-wave-candidates.REFERENCE.json` (may drift; STATUS wins)
 
-## Lanes (ownership, not permanent departments)
+## Lanes (optional ownership vocabulary, not permanent departments)
 
 `SDW LNC VFX SKW EXP PRV RTE DEV TRU`
+
+Merge, split or bypass these labels when another decomposition reduces handoffs or better matches the current problem.
 
 ## Algorithm (`select-tasks.py`)
 
