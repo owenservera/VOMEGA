@@ -220,3 +220,9 @@ The clean VOMEGA repository intentionally does not carry the hundreds of BCP-dev
 The strongest historical clusters cover destination/system intelligence, provider/browser migration forensics, autonomous agent-system experiments, Reality Engine work, legacy behavior harvest, world/object/surface research, core-vs-plugin boundaries, Product Instance, self-knowledge, agency, Forge, and evolution.
 
 This material should reduce rediscovery cost. It should not dictate VOMEGA's file tree, agent organization, roadmap, architecture, or sequencing.
+
+## Local development substrate
+
+The owner's current development environment is intentionally richer than a single agent harness. In addition to ZCode and its five configured 1M-context Space Bunny Free lanes, **OpenAI Codex is installed locally with ChatGPT Plus access** and **Claude Code is installed locally with Claude Pro access**; both are expected to participate actively in repository work.
+
+These facts are development-environment context, not Ω architecture. The autonomous build should inspect the actual installed clients and decide how best to use the heterogeneous pool. It should not turn the presence of OpenAI, Anthropic, ZCode, or any current model into a product dependency or constitutional assumption.
