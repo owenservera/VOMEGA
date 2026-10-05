@@ -14,3 +14,11 @@ These are coverage areas, not a mandated organization chart. Decide whether each
 - **Development-system effectiveness:** ZCode, parallelism, context, Git/worktrees, automation, test throughput, observability, collaboration, bottlenecks, validated throughput.
 
 Split, merge, rename, or discard workstreams when evidence supports it. Coverage does not grant authority.
+
+## Provider Lab coverage
+
+The Provider / Account / Browser / Routing workstream should treat live human interaction evidence as a first-class research input alongside automated tests.
+
+A persistent Provider Lab function may cover provider archaeology, capability mapping, Shadow observation, conformance, drift, recovery/healing, usage-weighted coverage, and promotion of proven provider knowledge into Ω.
+
+This does not require a permanent department or a permanent extension architecture.
