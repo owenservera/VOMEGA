@@ -12,17 +12,19 @@ Run the semantic MVP twin and live Provider-reality work in parallel.
 
 ## Launch state
 
-| Workstream | First task | State | Dependency needed to start | First major handoff |
-| --- | --- | --- | --- | --- |
-| DEV | DEV-L1 preflight/dispatch | claimed 2026-10-05 (ZCode session sess_673eb8fa) | none | healthy pool + merge queue |
-| TRU | TRU-L1 launch falsifiers | ready / unclaimed | none | independent review framework |
-| SDW | SDW-L1 semantic contract + Worlds | ready / unclaimed | none | Lock A |
-| LNC | LNC-L1 compiler/UseCommand nucleus | ready / unclaimed | none; adapter until Lock A | Lock B |
-| VFX | VFX-L1 VisualSpec/sandbox scaffold | ready / unclaimed | fixture contract sufficient | Lock C |
-| SKW | SKW-L1 Reflection audit | ready / unclaimed | none | Lock D |
-| EXP | EXP-L1 scenario runner/diff | ready / unclaimed | existing corpus | experiment baseline |
-| PRV | PRV-L1 transport/account assay | ready / unclaimed | safe browser access | Lock E |
-| RTE | RTE-L1 independent runtime assays | ready / queued | none for assay; A/B/C/E for integration | trust/shell/packaging findings |
+| Workstream | First task | State | Current handoff / next gate |
+| --- | --- | --- | --- |
+| DEV | DEV-L1 preflight/dispatch | **completed / handed off** | >=6 bounded ZCode workers verified on `openrouter/auto`; keep integration/status current |
+| TRU | TRU-L1 launch review | **completed** | all first-wave artifacts safe as candidates; none frozen |
+| SDW | SDW-L1 semantic contract + Worlds | **candidate increment complete** | Lock A candidate; next materialize W1–W6 and close validator/default/source prerequisites |
+| LNC | LNC-L1 compiler/UseCommand nucleus | **candidate increment complete** | Lock B candidate; CMD-06 false-READY is immediate choke point |
+| VFX | VFX-L1 VisualSpec/sandbox scaffold | **candidate increment complete** | Lock C candidate; decide extend-vs-replace and implement pure projector |
+| SKW | SKW-L1 Reflection audit | **candidate increment complete** | Lock D candidate; source digest/contentHash path and Migrator implementation next |
+| EXP | EXP-L1 scenario runner/diff | **baseline candidate complete** | add required-field metadata, multi-revision scenarios and executable Lab runner |
+| PRV | PRV-L1 transport/account assay | **recon complete** | no live observation until TRU-05 + consent/evidence boundary |
+| RTE | RTE-L1 runtime assays | **ready / queued** | authority/execution-envelope work can proceed without waiting for live provider send |
+
+The first fan-out is therefore **complete**. These rows describe the current state; historical claim/dispatch details remain below and in the handoff files.
 
 ## Runtime pool status
 
