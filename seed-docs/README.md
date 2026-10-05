@@ -97,3 +97,19 @@ These are descriptive of the seeded baseline, not a declaration that the fresh p
 Preserve the durable product meaning.
 
 Challenge the mechanisms.
+
+## Expanded a priori knowledge layer
+
+The seed also contains seven deliberately non-prescriptive context documents:
+
+- **CONCEPTUAL-MODEL.md** — shared vocabulary, explicitly not a schema.
+- **KNOWN-REALITY-AND-OPEN-FRONTIER.md** — epistemic status and unresolved questions.
+- **PRODUCT-JOURNEYS.md** — user outcomes that architecture must eventually serve.
+- **WORKSTREAM-LANDSCAPE.md** — expected problem domains, not an organization chart.
+- **RESEARCH-FRONTIER.md** — areas where deep research/experimentation is likely to matter.
+- **PROOF-AND-MATURITY.md** — honest evidence ladder and MVP proof discipline.
+- **HISTORICAL-KNOWLEDGE-MAP.md** — how to mine BCP-dev without inheriting its accidental structure.
+
+The 18 seed documents together define the problem space, accumulated knowledge, constraints, aspirations, evidence, and unresolved questions. They do **not** prescribe the solution architecture, organization, implementation sequence, or technical mechanism unless a genuine invariant requires it.
+
+The clean VOMEGA repository intentionally does **not** contain the historical `docs/` corpus. Historical material remains available in BCP-dev through the knowledge map. Likewise, implementation-only folders omitted from `omega-baseline/` should not be assumed present because older seed text names them.
