@@ -30,3 +30,15 @@ Useful distinctions include:
 - **regression/conformance evidence** — repeated tests continue to satisfy the expected capability contract.
 
 A manual trace can reveal the right behavior and falsify an outdated model. Promotion of an automated realization still requires its own evidence.
+
+## Harvested evidence versus Ω proof
+
+A working third-party or historical implementation is **prior evidence**, not proof that the same mechanism is correct in Ω.
+
+Keep distinct:
+- **source evidence** — the mechanism/behavior worked in another context;
+- **harvest assessment** — the project understands what can be reused or learned;
+- **Ω verification** — the selected mechanism works against Ω's actual requirements/environment;
+- **Ω integration/product proof** — it composes correctly with neighboring semantics, authority, state, and user journeys.
+
+Popularity, stars, downloads, or marketplace presence are not maturity levels.
