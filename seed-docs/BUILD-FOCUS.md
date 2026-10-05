@@ -283,3 +283,13 @@ Near-term technical work should increasingly converge on proving:
 Setup itself must exercise the same command system. Capability UI and contextual help should project actual registered Provider/Account/capability state rather than forming parallel action systems.
 
 The Release Gym still exists to challenge sequencing, blockers, and implementation choices. It should not repeatedly reopen the owner-selected first-release product shape unless contradictory product evidence appears.
+
+## Context leverage as a development multiplier
+
+If repeated worker onboarding, architectural rediscovery, or context-poor review becomes a measured bottleneck, `ELEPHANT-CONTEXT-NETWORK.md` is an approved acceleration hypothesis to test.
+
+The intended value is already-contextualized reasoning over maintained project domains, not simply bigger prompts.
+
+Start with the smallest discriminating experiment. Do not build network topology, routing, synchronization, or persistent memory infrastructure before a single resident domain node demonstrates material advantage over fresh-worker alternatives.
+
+Keep product delivery ahead of context infrastructure.
