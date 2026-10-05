@@ -1,10 +1,10 @@
 # VOMEGA development machine
 
-Press-go habitat for advancing VOMEGA with minimal Grok Bot token use.
+Reproducible **development-system experiment snapshot** for advancing VOMEGA. It is subordinate to `.project/META-TRACKER.md` and is not the project's permanent operating architecture.
 
-**Primary habitat (Linux):** [Daintree](https://daintree.org) 0.41.0 — worktrees, agent PTY launch, Review Hub.  
-**Fallback (Linux):** disposable `git worktree` + `claude` / `grok` / `codex` one-shots.  
-**Primary habitat (Windows):** ZCode (proven ≥6 concurrent workers) + Daintree if installed; Windows pack = [`windows-mirror/`](windows-mirror/) (`press-go-vomega.ps1`). Windows paths are **UNVERIFIED_ON_WINDOWS** until Owen runs the verify procedure.
+**Linux observed habitat:** [Daintree](https://daintree.org) 0.41.0 for Git worktrees, Review Hub and supported CLI-agent PTY panels.  
+**Linux fallback:** disposable `git worktree` + direct `claude` / `grok` / `codex` one-shots.  
+**Windows observed/candidate habitats:** ZCode and Daintree are **separate** tools. ZCode has proven ≥6 bounded workers historically; Daintree can independently manage Git worktrees and supported CLI agents if installed. **Daintree does not launch or manage ZCode.** Windows pack = [`windows-mirror/`](windows-mirror/) (`press-go-vomega.ps1`). Windows paths are **UNVERIFIED_ON_WINDOWS** until Owen runs the verify procedure.
 
 ## Quick start (Linux box)
 
@@ -49,7 +49,7 @@ cd <repo>\.project\dev-machine\windows-mirror
 ## Truth boundaries
 
 - Git `main` + repo artifacts + tests = durable project truth.
-- Daintree / ZCode = execution habitat, **not** project truth.
+- Daintree / ZCode = separate, replaceable execution habitats, **not** project truth and not a parent/child control stack.
 - Simulated evidence ≠ live provider evidence.
 - `HARNESS ≠ ROUTER ≠ MODEL ≠ ACCOUNT`.
 
