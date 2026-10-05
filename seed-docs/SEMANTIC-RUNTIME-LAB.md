@@ -1353,3 +1353,102 @@ Consequences:
 - no Markdown/README/Wiki file is required for an experimental capability to become explainable.
 
 The Lab should include the synthetic-plugin proof described in the self-describing runtime design: install a never-before-seen capability with zero documentation files and verify that its capability, parameters, effects, authority requirement, evidence expectations, source links, related concepts and contextual help become available automatically.
+
+
+## 33. External OS-taxonomy harvest as generalization benchmark
+
+The 2026-10-05 `External-temp` OS-taxonomy candidate should be treated as a high-value **benchmark/harvest input**, not automatically merged as product architecture.
+
+It contributes useful evidence:
+
+- 291 platform-neutral capability definitions;
+- 305 Windows realizations;
+- typed parameters;
+- 164-task coverage corpus;
+- exact / approximate / handoff fidelity;
+- authored / verified-local / regressed evidence vocabulary;
+- deterministic planning;
+- generated manifest/catalog/SQLite projections.
+
+### Preferred dispositions
+
+**Harvest into Lab concepts:**
+
+- capability/realization separation;
+- parameter schemas;
+- fidelity;
+- evidence maturity;
+- coverage corpora;
+- deterministic plans;
+- source-data → generated projection pattern.
+
+**Challenge before adoption:**
+
+- embedding risk class in operation identity (`os.r.* / os.m.* / os.x.*`);
+- treating one risk label as the complete consequence model;
+- generated one-frame-per-capability language quality at scale;
+- hundreds of static composition grants as a long-term scaling mechanism;
+- any Windows realization whose evidence remains only `authored`.
+
+### Lab use
+
+The Lab should import or adapt this material into experimental artifacts and run selected subsets as an independent domain stress test.
+
+Success means the same semantic engine can represent:
+
+```
+AI prompt routing
+and
+OS volume/brightness/file operations
+```
+
+without forcing AI-specific or Windows-specific concepts into the kernel.
+
+## 34. MVP Visualization Sandbox
+
+The first human-facing Lab application is [MVP Visualization Sandbox](MVP-VISUALIZATION-SANDBOX.md).
+
+It should run a narrow, realistic simulated Ω:
+
+```
+Provider / Account / Model fixture World
+→ NCL/NLCL
+→ candidate command
+→ deterministic validator
+→ VisualSpec
+→ contextual Wiki
+→ simulated prompt.send boundary
+```
+
+The sandbox is intentionally product-shaped but development-only.
+
+It allows the team to refine interaction design before provider/browser execution exists.
+
+## 35. Automated semantic experimentation
+
+[Automated Semantic Experiments](AUTOMATED-SEMANTIC-EXPERIMENTS.md) defines the experiment layer for:
+
+- language/frame tournaments;
+- ambiguity/defaulting tests;
+- Model routing;
+- semantic churn;
+- visual projection variants;
+- Wiki relevance;
+- icon-pack invariance;
+- Reflection migration completeness.
+
+The Lab should make experiment artifacts, negative results and promotion history first-class.
+
+## 36. Semantic Data Engine
+
+[Semantic Data Engine](SEMANTIC-DATA-ENGINE.md) provides the shared conceptual substrate for:
+
+- semantic identities;
+- Reflection;
+- World;
+- commands;
+- consequences;
+- fidelity/evidence maturity;
+- VisualSpec/Wiki handles.
+
+The Lab may use SQLite/JSON/content-addressed blobs as a practical implementation, but those physical stores are not the ontology.
