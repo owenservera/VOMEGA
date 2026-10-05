@@ -1,68 +1,68 @@
-# Operating process (control plane + workers)
+# Operating process — current safe defaults
 
-## Roles
+**Status:** revisable operating guidance under `.project/META-TRACKER.md`, not a permanent org chart.
 
-| Role | Who | Does |
+## Roles are functions, not permanent actors
+
+| Function | Current examples | Responsibility |
 | --- | --- | --- |
-| Owner | Owen | Product authority, auth mutation, spend, irreversible actions |
-| Control plane | Chief Of Staff (Grok Bot) | Bootstrap, health, wake specialists sparingly, escalate owner decisions |
-| Habitat | Daintree (Linux) / ZCode (Windows) | Worktrees, agent panels, review UX |
-| Implementer | Claude / Codex / Grok / ZCode worker | Bounded task in isolated worktree |
-| Reviewer | Different harness/provider when possible | Accept/reject consequential work; never final-signoff own implementation |
-| Truth surfaces | `.project/META-TRACKER.md`, `agentic-launch/STATUS.md`, tests | Durable state |
+| Product authority | Owen | Product-direction choices, auth/spend/irreversible decisions |
+| Coordination | human, temporary agent, script, or other tool | Select next evidence-bearing work and resolve collisions |
+| Daintree habitat | Daintree | Git worktrees, Review Hub, supported CLI-agent panels |
+| ZCode habitat | ZCode | Independent ZCode sessions/workers; high-throughput work when useful |
+| Direct worker | Claude / Codex / Grok / OpenCode / others | Bounded implementation/research/review |
+| Truth surfaces | repo + tests/evidence + current STATUS | Durable state |
 
-## Freeze / token rules
+There is no required Grok Bot Chief-of-Staff role. Grok Bots may be used as a thin control plane when useful/available, but the project must not depend on them.
 
-1. Do **not** wake the whole Grok Bot fleet.
-2. Activate specialists only for a concrete setup failure (write ask into `HANDOFF-NEEDED.md` for CoS — do not self-wake).
-3. No recurring 5-minute status chatter from bots.
-4. Prefer CLI workers over Grok Bots for coding.
-5. Bounded tasks: explicit artifacts, stop conditions, path references (not pasted corpora).
-6. Persist context in repo files; pass task IDs + paths in prompts.
-7. Shut/freeze supervisory bots when their job is done.
-8. Do not use scarce frontier models for routine setup, boilerplate, or status prose.
+**Daintree does not launch, supervise or manage ZCode.**
+
+## Constitutional/process boundaries
+
+- Preserve explicit product invariants and evidence distinctions.
+- Do not mutate auth/credentials/provider wiring as an incidental setup step.
+- Fixture/simulated evidence is never reported as live.
+- Repository/evidence state outranks agent self-report.
+- Irreversible, security/privacy, spend and product-authority choices escalate to Owen.
+
+## Current efficiency defaults
+
+These are defaults, not laws:
+
+1. Prefer bounded tasks with clear evidence/stop conditions.
+2. Persist useful context in repo artifacts rather than depending on one session.
+3. Use disposable worktrees when concurrent writers would otherwise collide.
+4. Use the cheapest/most abundant adequate worker; escalate scarce models where expected value is high.
+5. For consequential changes, prefer an independent challenge/review. Cross-provider review is useful when it adds real independence, not as ceremony.
+6. Retire coordination machinery that does not improve validated progress.
 
 ## HARNESS ≠ ROUTER ≠ MODEL ≠ ACCOUNT
 
-Record all four when observable. If a router hides the underlying model, write `model_or_unknown: router-selected/unknown`. Never guess.
+Record all four when observable. If a router hides the underlying model, write `router-selected/unknown`. Never guess.
 
-Routing policy (consume what is actually available; see HARNESS-MATRIX):
+No model family permanently owns a workstream.
 
-- **Abundant / high-volume:** Claude Sonnet-class, GPT mid-tier, OpenRouter routes, Grok default when live.
-- **Premium workhorses:** stronger Claude / GPT / Grok variants for hard implementation and serious review.
-- **Scarce frontier:** mature high-impact adjudication only.
+## Isolation and integration
 
-Prefer **cross-provider** implementer vs reviewer for consequential changes.
+Current safe pattern:
 
-## Implementer ≠ reviewer
+- one claimed writer for a shared contract at a time;
+- independent tasks may use separate disposable worktrees;
+- main remains the durable integration branch;
+- tests/evidence follow the claim being made, not a universal ritual.
 
-For consequential code or contract changes:
+## Runtime state
 
-1. Implementer lands patch + tests in a worktree.
-2. Reviewer (other harness, or same harness with explicit `ROLE=REVIEWER` prompt and no write to the same files until verdict) records accept/reject in handoff or `runs.jsonl`.
-3. Integrate only if tests green **and** review accepts.
+`.project/agentic-launch/STATUS.md` records current launch state when that overlay is in use.
 
-Docs-only / obviously trivial typos may use a lighter review, but still log who signed.
+On claim, record enough to avoid collisions. On completion, record the concrete artifact/commit, evidence, residual risks and downstream trigger.
 
-## Isolation
-
-- Concurrent writers → disposable worktrees under `/workspace/vomega-worktrees/<task-id>` (or Daintree-managed paths).
-- Branch name: `task/<task-id>`.
-- Main is the durable integration branch.
-- Protect shared contracts: one claimed writer in STATUS.
-
-## STATUS update rules
-
-File: `.project/agentic-launch/STATUS.md`
-
-On claim: owner/session/tool, source HEAD, worktree path, expected handoff.  
-On completion: commit SHA, tests run, reviewer, proof level (`fixture` | `simulated` | `live`), downstream trigger.  
-Never claim simulated/fixture evidence as live provider proof.
+Do not infer that a lane, worker, Daintree panel, ZCode session or bot is alive merely because a document names it.
 
 ## When to escalate to Owen
 
-- Destructive/irreversible action
-- Credential / auth mutation
-- Spend / subscription change
-- Material security/privacy tradeoff
-- Product-authority choices not resolvable by evidence
+- destructive/irreversible action;
+- credential/auth mutation;
+- spend/subscription change;
+- material security/privacy tradeoff;
+- product-authority choice that evidence alone cannot resolve.
