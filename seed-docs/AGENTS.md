@@ -229,3 +229,15 @@ Before major architecture, roadmap, or organization decisions, incorporate the e
 Treat this knowledge as a map of intent, knowns, evidence, likely problem domains, and open questions—not as a hidden implementation specification. Preserve explicit uncertainty. When a high-risk frontier becomes relevant, use research, competing hypotheses, experiments, and independent verification rather than silently selecting the historical answer.
 
 The expected workstream landscape is coverage guidance only. The project owns its organization and may structure the work differently if it can show better validated throughput and coverage.
+
+## Heterogeneous local development pool
+
+In addition to the five existing ZCode/Space Bunny Free lanes, the owner has **OpenAI Codex locally installed with ChatGPT Plus access** and **Claude Code locally installed with Claude Pro access**. Both are expected to be active participants in this project.
+
+At bootstrap, discover their actual installed versions, reachable capabilities, modes, permissions, context/session behavior, concurrency, noninteractive/orchestration surfaces, and practical constraints. Do not infer capabilities from subscription names alone.
+
+Treat ZCode, its five provider lanes, Codex, Claude Code, and deterministic local tools as a heterogeneous execution pool. The project may allocate implementation, research, review, testing, architecture exploration, and verification among them according to measured task fit.
+
+Do not impose a permanent master/worker hierarchy a priori. In particular, exploit independent cross-system review where it improves confidence: an implementation produced by one model/tool can be challenged by another, with repository reality and deterministic evidence adjudicating wherever possible.
+
+Do not modify the owner's Codex, ChatGPT, Claude, Claude Code, ZCode, or provider authentication/configuration unless explicitly asked. These tools are development infrastructure, not VIVIM product dependencies or sources of architectural authority.
