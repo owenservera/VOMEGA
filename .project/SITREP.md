@@ -39,3 +39,13 @@ Detailed truth: [REALITY.md](REALITY.md), [RELEASE-GYM.md](RELEASE-GYM.md),
 [DECISIONS.md](DECISIONS.md), [COMMONS.md](COMMONS.md), and
 [evidence/bootstrap.json](evidence/bootstrap.json). Seed intent constrains the
 work; these operational artifacts are revisable evidence, not product law.
+
+## Product target update
+
+The owner has now selected the first public product shape: a floating Windows command box defined in `../seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md`.
+
+The first release should let a user register Provider Accounts through natural language, see evidence-backed capabilities appear, receive real-time command interpretation/options/help, and invoke the same deterministic semantic command system used by visible UI actions.
+
+The first external capability is `prompt.send`.
+
+Immediate next technical work should still prove real browser transport and Account identity, because the product cannot truthfully register or target an Account until that seam is evidenced.
