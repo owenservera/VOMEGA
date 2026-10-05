@@ -926,3 +926,84 @@ It has proven the first useful instance of:
 [Command Visual Language — Real-Time Interpretation and Guidance](COMMAND-VISUAL-LANGUAGE-DESIGN.md) develops the owner's visual-feedback brief, including interactive icons for devices, applications, AI Providers and Accounts; phrase annotations; scope; assumptions; correction; and execution/evidence feedback.
 
 It is an evolving interaction blueprint, not an implemented feature or a frozen visual specification. Windows-command and fan-out examples test future generalization and do not expand the first-release requirements above.
+
+
+# 28. MVP Visualization Sandbox — design twin before provider execution
+
+Before the native floating shell is coupled to real Provider automation, the team should build the development-only [MVP Visualization Sandbox](MVP-VISUALIZATION-SANDBOX.md).
+
+The sandbox is a **semantic product twin** for the narrow release slice, not a second product architecture.
+
+It should simulate:
+
+```
+register ChatGPT / Claude / Gemini Accounts through language
+→ label/default Accounts
+→ expose fixture Model choices
+→ interpret ordinary prompt-routing language per keystroke
+→ show capability + Provider + Account + Model explicitly
+→ preserve ambiguity
+→ accept semantic correction by text or click
+→ project contextual Wiki
+→ compile READY prompt.send
+→ stop at a clearly marked simulated submission boundary
+```
+
+No real provider login, read, browser automation or external prompt submission is required for this design sandbox.
+
+The purpose is to settle and experimentally refine the semantic/visual interaction contract **before** provider realization complexity obscures UI mistakes.
+
+## Design twin invariants
+
+The sandbox must reuse the intended semantic concepts:
+
+- Provider;
+- Account;
+- Model;
+- Capability;
+- Realization;
+- command;
+- World;
+- validation;
+- consequence;
+- Reflection/Wiki.
+
+It may use synthetic fixtures for runtime state.
+
+It may not use fixture truth to make claims about current real provider/model availability.
+
+A visual treatment that only works because semantic logic is hidden inside the mock UI is not acceptable evidence for the product.
+
+## Model routing
+
+The first release design should admit Model as an optional first-class routing dimension where the relevant Provider/Account realization supports it.
+
+Keep:
+
+```
+Provider ≠ Account ≠ Model ≠ Session
+```
+
+The product does not have to expose every model option immediately.
+
+But the semantic design should not force Model selection later into an opaque provider-specific UI escape hatch.
+
+## Automated design experiments
+
+Language and visual refinements should use [Automated Semantic Experiments](AUTOMATED-SEMANTIC-EXPERIMENTS.md).
+
+Particularly important MVP metrics include:
+
+- wrong Provider/Account/Model target;
+- false READY state;
+- ambiguity honesty;
+- semantic stability across keystrokes;
+- typed/clicked parity;
+- consequence visibility;
+- contextual Wiki relevance.
+
+## Semantic substrate
+
+[Semantic Data Engine](SEMANTIC-DATA-ENGINE.md) describes the data/identity relationships behind the release interaction.
+
+It incorporates recent harvest lessons without expanding MVP scope.
