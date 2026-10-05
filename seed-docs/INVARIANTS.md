@@ -52,6 +52,8 @@ Do not casually collapse:
 | Intent / Execution | what was meant is not what was done |
 | Capability / Realization | semantic ability is not an implementation |
 | Provider / Account | external service is not the user's relationship to it |
+| Provider / Model | service identity is not a model/routing option it exposes |
+| Account / Model | authenticated relationship is not the model selected within that relationship |
 | Account / Session | durable relationship is not transient execution state |
 | Discovery / Routing | knowing what exists is not choosing among it |
 | Routing / Authority | selecting a realization is not permission to act |
@@ -64,6 +66,8 @@ Do not casually collapse:
 | Activity / Progress | more activity is not more value |
 | Successful execution / Correct outcome | a completed mechanism can still produce the wrong result |
 | Product importance / Kernel necessity | important does not mean it belongs in the constitutional core |
+| Semantic identity / Policy classification | a stable capability or entity must not need a new identity merely because risk, consent, routing or policy changes |
+| Fidelity / Evidence maturity | what a realization claims to accomplish is distinct from how strongly that claim has been verified |
 
 These distinctions may be implemented differently over time. The relationships they protect are the important part.
 
@@ -243,3 +247,36 @@ The project must be able to represent “unknown,” “historical evidence,” 
 A repeated assertion does not become a fact through repetition. A current mechanism does not become an invariant through existence. A useful historical decision does not become current law without current authority/evidence.
 
 Use `KNOWN-REALITY-AND-OPEN-FRONTIER.md` as the seed-level discipline for this distinction.
+
+
+## Self-description and semantic identity
+
+Loaded product behavior should be inspectable enough that the system can explain what it is, what it accepts, what it may affect, where it comes from, and how it relates to other semantic objects.
+
+The product should move toward the invariant:
+
+> **If Ω can load a public product capability, Ω can reflect and explain it.**
+
+This does not make self-description authority.
+
+Reflection remains descriptive and source-bound.
+
+Stable semantic identity should avoid embedding replaceable policy or implementation choices. In particular, capability identity should not encode current risk class, Provider/platform realization, icon library, availability state, or current evidence maturity.
+
+## Consequence dimensions
+
+Do not assume that one risk label completely describes an action.
+
+The system may need to preserve independently:
+
+- mutability/destructiveness;
+- local versus external/network/physical effect;
+- privacy/sensitivity;
+- data transfer;
+- reversibility;
+- visibility;
+- authority/consent requirement.
+
+Policy may derive current gates from these dimensions.
+
+The dimensions themselves should not be collapsed merely because the current law implementation uses a smaller risk vocabulary.
