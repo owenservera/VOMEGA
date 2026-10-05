@@ -15,6 +15,8 @@ observed external result → durable local continuity**
 This roadmap is a learning sequence (design §25), re-ranked at every milestone
 exit. It never lowers the proof standard to hit a date.
 
+The milestone graph, task dependencies, executor choices and implementation mechanisms below are **current coordination hypotheses**, not architectural law. Preserve the goal and proof boundary; change the path when evidence supports a better one.
+
 ---
 
 ## 1. Current position (evidence, 2026-10-05)
