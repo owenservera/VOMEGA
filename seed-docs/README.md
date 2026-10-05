@@ -198,3 +198,29 @@ The seed now contains **25 documents**.
 The proposed core primitive is a narrow Reflection ABI/completeness obligation. Executable declarations, schemas, manifests, source anchors, registry state and evidence derive a read-only Reflection Graph; Wiki pages and realtime relevant links are ephemeral projections of that graph. Plugins require no separate Wiki/README/help files to become understandable, and reflection metadata never grants authority.
 
 The seed now contains **26 documents**.
+
+## Semantic data engine
+
+**SEMANTIC-DATA-ENGINE.md** consolidates the shared semantic substrate behind Reflection, World state, NCL/NLCL interpretation, validated commands, visual projection and the contextual Wiki.
+
+It incorporates the strongest lessons from the external OS-taxonomy candidate without importing its architecture wholesale: stable semantic identity, Capability ≠ realization, typed parameters, explicit realization fidelity, explicit evidence maturity, and multidimensional consequence semantics. It also adds Model as a routing identity distinct from Provider, Account and Session.
+
+## MVP visualization sandbox
+
+**MVP-VISUALIZATION-SANDBOX.md** defines the development-only semantic twin of the first product: a floating command-box simulation over ChatGPT / Claude / Gemini fixture Worlds, Account registration/configuration, optional Model routing, `prompt.send`, per-keystroke interpretation, VisualSpec vNext, semantic correction, contextual Wiki and a clearly simulated pre-execution boundary.
+
+The sandbox is intended to settle the interaction contract before real provider/browser automation obscures UI and semantic design errors.
+
+## Automated semantic experiments
+
+**AUTOMATED-SEMANTIC-EXPERIMENTS.md** defines an experiment system for NCL/NLCL, grounding, defaulting, Model/Account routing, semantic churn, VisualSpec variants, ambiguity affordances and Wiki relevance.
+
+It favors pinned Profile comparisons, corpus-first regression, semantic diffing, false-ready/wrong-target metrics, metamorphic tests and explicit promotion evidence.
+
+## Self-knowledge Reflection Migrator
+
+**SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md** defines a read-first development utility for converting the existing Ω codebase toward source-native Reflection/Wiki compliance.
+
+It scans manifests, contracts, op registration, schemas, config, language contributions, visual contracts and tests; extracts structurally provable facts with exact source anchors; identifies gaps/conflicts/duplication; proposes migration changes; and eventually verifies completeness. It is not a Wiki database and does not invent semantics to reach coverage.
+
+The seed now contains **30 documents**.
