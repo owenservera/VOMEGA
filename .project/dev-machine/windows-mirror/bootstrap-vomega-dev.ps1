@@ -116,10 +116,10 @@ if (-not (Test-Path $WorktreeRoot)) {
 # 6. Habitats
 $z = $spec.tools | Where-Object name -eq 'zcode'
 $zexe = $z.windows.executable_candidates | ForEach-Object { [Environment]::ExpandEnvironmentVariables($_) } | Where-Object { Test-Path $_ } | Select-Object -First 1
-if ($zexe) { Write-Host "    ZCode found: $zexe (primary Windows habitat)" -ForegroundColor Green }
-else { Write-Warning 'ZCode not found at known paths — install/locate ZCode (primary habitat). Fallback: Daintree or CLI worktrees.' }
+if ($zexe) { Write-Host "    ZCode found: $zexe (independent ZCode habitat)" -ForegroundColor Green }
+else { Write-Warning 'ZCode not found at known paths — install/locate it if you want the ZCode habitat. Daintree/CLI are separate alternatives, not ZCode fallbacks/managers.' }
 $dt = @("$env:LOCALAPPDATA\Programs\Daintree\Daintree.exe","$env:ProgramFiles\Daintree\Daintree.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
-if ($dt) { Write-Host "    Daintree found: $dt (secondary habitat)" -ForegroundColor Green }
+if ($dt) { Write-Host "    Daintree found: $dt (independent Git-worktree/supported-CLI habitat; does not manage ZCode)" -ForegroundColor Green }
 else { Write-Host '    Daintree not found. Optional: https://updates.daintree.org/releases/Daintree-0.41.0-x64-setup.exe (SmartScreen: More info -> Run anyway)' }
 
 # 7. Manual auth checklist (never automated)
