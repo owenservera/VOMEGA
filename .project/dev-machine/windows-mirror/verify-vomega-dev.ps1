@@ -58,9 +58,9 @@ if (Get-Command gh -ErrorAction SilentlyContinue) {
 # Habitats
 $z = $spec.tools | Where-Object name -eq 'zcode'
 $zexe = $z.windows.executable_candidates | ForEach-Object { [Environment]::ExpandEnvironmentVariables($_) } | Where-Object { Test-Path $_ } | Select-Object -First 1
-Add-Result 'habitat:zcode' ($(if ($zexe) {'PASS'} else {'WARN'})) ($(if ($zexe) {$zexe} else {'not found'})) $false 'primary Windows habitat'
+Add-Result 'habitat:zcode' ($(if ($zexe) {'PASS'} else {'WARN'})) ($(if ($zexe) {$zexe} else {'not found'})) $false 'independent ZCode habitat'
 $dt = @("$env:LOCALAPPDATA\Programs\Daintree\Daintree.exe","$env:ProgramFiles\Daintree\Daintree.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
-Add-Result 'habitat:daintree' ($(if ($dt) {'PASS'} else {'INFO'})) ($(if ($dt) {$dt} else {'not found'})) $false 'secondary habitat (optional)'
+Add-Result 'habitat:daintree' ($(if ($dt) {'PASS'} else {'INFO'})) ($(if ($dt) {$dt} else {'not found'})) $false 'independent Daintree habitat; does not manage ZCode'
 
 # Repo
 $gitOk = Test-Path (Join-Path $RepoRoot '.git')
