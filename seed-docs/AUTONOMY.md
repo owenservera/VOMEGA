@@ -2,9 +2,11 @@
 
 This document exists so the autonomous build does not confuse "baseline" with "boundary."
 
-## ZCode capability-space mandate
+## Development capability-space mandate
 
-At project start, inspect the actual ZCode runtime and its available native and extension capabilities. The project may design its own agents, workflows, skills, plugins, MCP servers, hooks, background jobs, schedules, remote workspaces, testing infrastructure, observability, memory conventions, and other DevOps machinery. Discover what is available before deciding what to build.
+At project start, inspect the actual local development environment rather than assuming a single harness. The first bootstrap executor is local Codex; Claude Code, ZCode, the five configured Space Bunny lanes, and deterministic local tools are additional available resources whose actual capabilities must be discovered.
+
+The project may design its own agents, workflows, skills, plugins, MCP servers, hooks, background jobs, schedules, remote workspaces, testing infrastructure, observability, memory conventions, and other DevOps machinery. Discover what is available before deciding what to build.
 
 Maximize capability space, not authority. Broad access to optional mechanisms is useful; consequential authority remains explicit, scoped, observable, and governed. Development machinery is replaceable and must not become confused with VIVIM product architecture.
 
@@ -140,3 +142,10 @@ It has authority to design coordination, delegation, review, handoff, worktree, 
 No development system receives permanent architectural authority merely because it coordinates work. The project should be able to change which tool plans, implements, reviews, researches, or verifies as evidence about their strengths evolves.
 
 Where consequential decisions are difficult to verify deterministically, independent reasoning from materially different model/tool systems is an available verification strategy—not a substitute for evidence, but a way to expose blind spots before promotion.
+
+
+## First-executor boundary
+
+Codex is authorized to perform the first bootstrap and to create the minimum durable project/development structure required for continuity and real product execution.
+
+That bootstrap role does not grant Codex permanent coordination authority. The project may later use Codex, Claude Code, ZCode, deterministic tooling, or combinations of them for planning, implementation, review, research, and verification according to evidence and task fit.
