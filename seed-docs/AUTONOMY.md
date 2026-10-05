@@ -8,7 +8,7 @@ At project start, inspect the actual ZCode runtime and its available native and 
 
 Maximize capability space, not authority. Broad access to optional mechanisms is useful; consequential authority remains explicit, scoped, observable, and governed. Development machinery is replaceable and must not become confused with VIVIM product architecture.
 
-`## You may change Ω
+## You may change Ω
 
 The autonomous build has permission to change:
 
@@ -124,3 +124,9 @@ assume → organize → plan extensively → build the plan → rationalize the 
 The project is allowed to discover that an assumption was wrong.
 
 That is not failure. Failing to discover it is.
+
+## Autonomy does not mean amnesia
+
+The project is expected to exploit the prior-knowledge seed and historical BCP-dev mine before spending large effort rediscovering solved or well-characterized problems. It is equally expected to reject historical answers when current evidence or better experiments warrant it.
+
+The autonomous team's job is to choose the how. The seed's job is to make sure that choice is informed by the full problem space, durable intent, known evidence, and unresolved frontier.
