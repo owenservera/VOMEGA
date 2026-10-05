@@ -478,3 +478,18 @@ ZCode is a major development substrate, but it is not assumed to be the process 
 The first bootstrap will be initiated by local Codex using `CODEX-BOOTSTRAP-START-HERE.md`. Codex should inspect the installed ZCode runtime and its configured five Space Bunny lanes as part of the capability census, then decide how to exploit ZCode without rewriting its configuration.
 
 After bootstrap, ZCode may coordinate, execute, research, verify, or run persistent workflows wherever its measured capabilities make it the strongest fit. No permanent hierarchy is implied.
+
+## Large-context cognitive service hypothesis
+
+The five configured large-context Space Bunny lanes make the `ELEPHANT-CONTEXT-NETWORK.md` hypothesis practically testable, subject to live reachability and actual model behavior.
+
+A future experiment may reserve one or more large-context sessions as maintained cognitive domain services while Codex, Claude Code, ZCode workers, or other sessions perform ordinary tasks.
+
+Do not infer that:
+- one configured lane should equal one elephant;
+- all five lanes should be reserved;
+- Space Bunny is the optimal model;
+- ZCode must host the pattern;
+- persistent sessions are necessarily better than reconstructed contexts.
+
+Treat the current pool as an opportunity to test the hypothesis without changing provider/auth configuration.
