@@ -26,13 +26,13 @@ Before dispatching write-capable workers:
    - Codex version;
    - Claude Code version.
 
-2. Verify, read-only:
-   - Owen ZCode lane reachable;
-   - OpenCode acct 2 reachable;
-   - OpenCode acct 3 reachable;
-   - OpenCode acct 4 reachable;
-   - OpenCode acct 5 reachable;
-   - named `space bunny free` model resolves on each.
+2. Verify, read-only, the **current effective ZCode route**:
+   - ZCode starts successfully;
+   - current configured model/router is observed without changing it;
+   - owner-reported current route `openrouter/auto` resolves;
+   - a bounded probe succeeds;
+   - actual safe concurrency is measured rather than inferred from historical provider-account count;
+   - where exposed, capture the concrete model selected by the router for each probe.
 
 3. Do not modify:
    - provider configuration;
@@ -65,11 +65,13 @@ Do not assign Astra or Fable as permanent workers. Use GPT-6.1 Sol / Opus 5.5 fo
 
 ## 2. Default initial allocation
 
+Workers A–E are **logical concurrent task slots**, not provider-account identities. Dispatch as many as the current ZCode/OpenRouter Auto runtime safely proves. Do not assume workers A–E map to five provider accounts or five distinct underlying models.
+
 This allocation is a launch default, not a permanent hierarchy.
 
 If observed tool capability suggests a better allocation, DEV may reroute while preserving task ownership.
 
-### ZCode lane 1 — SDW
+### ZCode worker A — SDW
 
 **Task:** SDW-L1 — MVP semantic contract + fixture Worlds
 
@@ -100,7 +102,7 @@ Do not:
 
 **Primary handoff:** Lock A.
 
-### ZCode lane 2 — LNC
+### ZCode worker B — LNC
 
 **Task:** LNC-L1 — compiler/UseCommand/InterpretationSession nucleus
 
@@ -134,7 +136,7 @@ Do not wait for a complete SDW implementation; use an adapter/fixture against th
 
 **Primary handoff:** Lock B.
 
-### ZCode lane 3 — VFX
+### ZCode worker C — VFX
 
 **Task:** VFX-L1 — VisualSpec vNext + sandbox scaffold
 
@@ -172,7 +174,7 @@ Do not hide routing state inside React/component state.
 
 **Primary handoff:** Lock C.
 
-### ZCode lane 4 — SKW
+### ZCode worker D — SKW
 
 **Task:** SKW-L1 — Reflection Migrator audit + minimal graph
 
@@ -205,7 +207,7 @@ Do not treat comments/README prose as structural truth.
 
 **Primary handoff:** Lock D.
 
-### ZCode lane 5 — EXP
+### ZCode worker E — EXP
 
 **Task:** EXP-L1 — scenario runner + semantic diff baseline
 
