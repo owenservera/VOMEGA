@@ -207,3 +207,19 @@ Use `WORKSTREAM-LANDSCAPE.md` to check that important problem domains are not be
 Neither file is a roadmap. Re-rank attention continuously based on the current MVP candidate, current-code readiness, observed failures, uncertainty, dependency reach, product reach, and expected learning value.
 
 When an important frontier is unresolved, prefer a small discriminating experiment over prolonged architectural argument.
+
+## Provider Lab as an acceleration environment
+
+The Provider / Account / Browser / Routing / Healing domain has an approved fast-development strategy described in `PROVIDER-LAB-STRATEGY.md`.
+
+Use a live instrumented provider environment to collapse discovery, capability mapping, implementation, testing, drift observation, and healing into a tight loop.
+
+Especially valuable evidence includes:
+- normal manual provider interactions observed in Shadow mode;
+- the same capability exercised through the Lab;
+- differential comparison of manual and automated semantic outcomes;
+- provider drift observed before outright failure;
+- second-provider and third-provider pressure on alleged shared abstractions;
+- deliberate failure injection followed by diagnosis/repair/verification.
+
+Optimize the Lab for validated learning speed, not UI polish. If it becomes a separate product architecture or stops accelerating real provider progress, change or discard it.
