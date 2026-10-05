@@ -29,3 +29,16 @@ The Provider Lab itself creates a useful research frontier:
 - What second/third provider best falsifies the current abstraction?
 
 Treat these as experiment targets, not requirements for a particular extension architecture.
+
+## Harvest research frontier
+
+For each major research domain, include an **existing-solution archaeology** question:
+
+- What working implementations already exist?
+- Which solution families differ materially?
+- What have others already proven or failed to prove?
+- What tests, fixtures, protocols, state machines, recovery paths, or operational lessons can be harvested?
+- Which candidates are reusable, adaptable, wrappable, portable, behaviorally reproducible, or evidence-only?
+- What licensing, provenance, security, maintenance, or dependency constraints change the answer?
+
+Use the heterogeneous development pool to fan out across distinct source classes rather than having every worker search the same GitHub keywords.
