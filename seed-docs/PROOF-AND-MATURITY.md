@@ -42,3 +42,17 @@ Keep distinct:
 - **Ω integration/product proof** — it composes correctly with neighboring semantics, authority, state, and user journeys.
 
 Popularity, stars, downloads, or marketplace presence are not maturity levels.
+
+## Proof of acceleration
+
+A development accelerator should have an evidence claim too.
+
+Useful distinctions:
+- **plausible accelerator** — mechanism exists or is hypothesized;
+- **operational accelerator** — it works in the development environment;
+- **measured accelerator** — before/after evidence shows improvement on a relevant bottleneck;
+- **generalized accelerator** — it improves more than one independent workstream or task class without unacceptable overhead.
+
+Do not call an accelerator successful because it generated more sessions, events, dashboards, agents, tests, or automation.
+
+The relevant question is whether it improved **validated product progress**.
