@@ -209,7 +209,7 @@ The detailed destination corpus is there to accelerate understanding, not to bec
 
 The project can be developed on Windows and should preserve genuine runtime-neutrality where it matters.
 
-The ZCode harness is intentionally outside the product architecture described here.
+Codex, Claude Code, ZCode, and other development harnesses are intentionally outside the product architecture described here.
 
 Build whatever development machinery the work proves necessary.
 
@@ -252,3 +252,10 @@ A current optional direction is a local **Development Reality Layer / Dev Black 
 This is a hypothesis, not a required subsystem. The full candidate portfolio lives in `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`.
 
 The intent is to make real work produce useful evidence automatically—not to build a surveillance product or make development telemetry part of Ω's constitutional model.
+
+
+## First bootstrap execution fact
+
+The first autonomous bootstrap will be run by **local Codex from the local VOMEGA checkout**.
+
+Codex should use the dedicated `CODEX-BOOTSTRAP-START-HERE.md` execution guide, establish reality and durable project continuity, and then move into real product work. This is a pragmatic bootstrap choice, not a statement that Codex is the long-term coordinator or that OpenAI becomes part of Ω's product architecture.
