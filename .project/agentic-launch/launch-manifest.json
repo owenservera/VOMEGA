@@ -736,6 +736,17 @@
         "exact model attribution"
       ],
       "configRule": "do not change cost tier/provider restrictions during preflight without owner request"
-    }
-  }
+    },
+    "workstreamDefaultsAreHeuristics": true
+  },
+  "metaGrounding": {
+    "authority": ".project/META-TRACKER.md",
+    "status": "revisable execution overlay; not strategy law",
+    "principle": "The map preserves possibilities; it does not prescribe the path.",
+    "hardConstraints": "explicit invariants and Lab/proof boundaries",
+    "revisable": "workstreams, Locks, waves, task decomposition, sequencing, harness/model routing and concurrency",
+    "habitatBoundary": "Daintree and ZCode are separate habitats; Daintree does not launch, supervise or manage ZCode."
+  },
+  "wavesArePlanningHypotheses": true,
+  "workstreamTopologyIsTemporary": true
 }
