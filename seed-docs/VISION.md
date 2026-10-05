@@ -255,3 +255,11 @@ They can see what the environment knows, what it is doing, what it was allowed t
 The environment can use the best available intelligence without becoming dependent on any one model or provider.
 
 And the environment can extend, repair, replace, and evolve its own capabilities without creating a privileged backdoor or losing the person's continuity.
+
+## A priori destination context
+
+The vision should be tested through the outcome journeys in `PRODUCT-JOURNEYS.md`, not through loyalty to today's architecture. The shared nouns in `CONCEPTUAL-MODEL.md` are a language for reasoning about this destination, not an obligation to implement a matching object model.
+
+The historical corpus suggests several durable experiential ambitions worth keeping visible: VIVIM should feel like a persistent digital environment rather than disconnected apps; external things should retain source identity while participating in one local world; the universal prompt and direct manipulation should reach the same semantic substrate; authorized work may continue while the person is away; returning should restore truthful continuity; and ordinary users should eventually be able to reshape or extend their environment without becoming software engineers.
+
+These are aspirations to make real incrementally, not a requirement that the first MVP expose the entire destination.
