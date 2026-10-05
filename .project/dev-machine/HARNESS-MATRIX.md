@@ -7,7 +7,7 @@ Legend: **LIVE** = verified on this Linux box this session · **REPAIR_REQUIRED*
 
 | Tool | Linux status | Invoke (one-shot / habitat) | Auth (symbolic) | Notes |
 | --- | --- | --- | --- | --- |
-| **Daintree 0.41.0** | **LIVE** (`ii`, running `:16`) | `bash /opt/Daintree/resources/daintree-cli.sh /workspace/VOMEGA` · `--status` · helpers in `/workspace/daintree-master-automation/scripts/` | existing-login / local config under `~/.config/Daintree` (NEVER_EXPORT) | Primary Linux habitat. Worktrees + agent PTY + Review Hub. |
+| **Daintree 0.41.0** | **LIVE** (`ii`, running `:16`) | `bash /opt/Daintree/resources/daintree-cli.sh /workspace/VOMEGA` · `--status` · helpers in `/workspace/daintree-master-automation/scripts/` | existing-login / local config under `~/.config/Daintree` (NEVER_EXPORT) | Linux habitat for Git worktrees + supported CLI-agent PTYs + Review Hub. **Does not launch/manage ZCode.** |
 | **claude** (Claude Code 2.1.289) | **LIVE** (`CLAUDE_OK`) | `claude -p "<prompt>" --output-format text\|json` · in Daintree: pin CLI Agents / Ctrl+Alt+C | `~/.claude/.credentials.json` existing-login | Preferred implementer/reviewer while Codex limited. |
 | **grok** (Grok Build 1.0.46) | **LIVE** (`GROK_OK`, model grok-4.7) | `grok -p "<prompt>" --output-format plain --max-turns N` | `~/.grok/auth.json` existing-login (grok.com) | Usable one-shot; also Daintree PTY. |
 | **codex** (0.160.0) | **LIMITED** | `codex exec -s read-only\|workspace-write -C <dir> -o last.txt "<prompt>"` | `~/.codex/auth.json` existing-login | Auth OK; **usage limit** observed until ~2026-10-06 00:19 CEST; model seen `gpt-6.1-sol`. Retry after window. |
@@ -24,8 +24,8 @@ Legend: **LIVE** = verified on this Linux box this session · **REPAIR_REQUIRED*
 
 | Tool | Desired Windows path | Install hint (mirror pack) |
 | --- | --- | --- |
-| ZCode | primary habitat | Vendor installer / existing Owen install; document version after verify |
-| Daintree 0.41.0 | secondary habitat | `https://updates.daintree.org/releases/Daintree-0.41.0-x64-setup.exe` (SmartScreen → More info → Run anyway) |
+| ZCode | independent ZCode worker/session habitat | Vendor installer / existing Owen install; document version after verify |
+| Daintree 0.41.0 | independent Git-worktree / supported-CLI habitat; not a ZCode manager | `https://updates.daintree.org/releases/Daintree-0.41.0-x64-setup.exe` (SmartScreen → More info → Run anyway) |
 | claude / codex / grok | PATH | `PACKAGES/install-stack.ps1` + `PLAYBOOKS/02-auth-checklist.md` |
 | bun / git / gh | PATH | winget via install-stack |
 | OpenRouter | ZCode route `openrouter/auto` | MANUAL_AUTH in ZCode; never put key in repo |
