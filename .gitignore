@@ -3,3 +3,6 @@
 omega-baseline/testkit/test/fixtures/ghosts/.gen-*/
 node_modules/
 dev-vault/
+
+# Local attach unpack + agent panel prompts (optional)
+.incoming/

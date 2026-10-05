@@ -56,3 +56,9 @@ Immediate next technical work should still prove real browser transport and Acco
 The seed now includes `../seed-docs/ELEPHANT-CONTEXT-NETWORK.md`, preserving the distributed large-context “elephant” cognitive-memory concept as an optional experiment-driven DevOps acceleration hypothesis.
 
 No elephant network has been instantiated and no provider lane has been reserved by this decision. Test it only when context reconstruction/review becomes a measured bottleneck; repository/test/runtime evidence remains authoritative.
+
+## First-release roadmap update
+
+The owner's first-release roadmap pack is on disk at [roadmap/README.md](roadmap/README.md): milestones M0–M10, 74 tasks across nine workstreams, a baseline harvest assay and a proof-traceability matrix. It is an operational plan and revisable evidence, not product law; the seed still constrains it.
+
+It is placed but not yet adopted: no roadmap task is claimed, and the "Next actions" above are unchanged until someone claims OPS-01. The seed determinism corpus (task CMD-02) runs under `bun test plugins/vivim-nlcl` and is not part of `omega:quick`. What landed where, and what was deferred, is in `../INCORPORATION-NOTES.md`.
