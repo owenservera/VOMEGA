@@ -235,3 +235,11 @@ When an important claim is uncertain, prefer the smallest experiment that could 
 Do not equate documentation volume, process complexity, test count, or organizational structure with rigor.
 
 The fresh project should continually seek compact evidence that invalidates bad assumptions early.
+
+## Epistemic status is part of truth
+
+The project must be able to represent “unknown,” “historical evidence,” “hypothesis,” “contradicted,” and “experiment required” without coercing them into true/false certainty.
+
+A repeated assertion does not become a fact through repetition. A current mechanism does not become an invariant through existence. A useful historical decision does not become current law without current authority/evidence.
+
+Use `KNOWN-REALITY-AND-OPEN-FRONTIER.md` as the seed-level discipline for this distinction.
