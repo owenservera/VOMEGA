@@ -212,3 +212,11 @@ The project can be developed on Windows and should preserve genuine runtime-neut
 The ZCode harness is intentionally outside the product architecture described here.
 
 Build whatever development machinery the work proves necessary.
+
+## Historical knowledge without historical control
+
+The clean VOMEGA repository intentionally does not carry the hundreds of BCP-dev historical documents. They remain available as an external knowledge mine described by `HISTORICAL-KNOWLEDGE-MAP.md`.
+
+The strongest historical clusters cover destination/system intelligence, provider/browser migration forensics, autonomous agent-system experiments, Reality Engine work, legacy behavior harvest, world/object/surface research, core-vs-plugin boundaries, Product Instance, self-knowledge, agency, Forge, and evolution.
+
+This material should reduce rediscovery cost. It should not dictate VOMEGA's file tree, agent organization, roadmap, architecture, or sequencing.
