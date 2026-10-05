@@ -72,6 +72,12 @@ For team execution, the new work is better grouped around **change ownership bou
 
 The existing task IDs remain valid references and evidence obligations.
 
+## Program map versus launch lanes
+
+The complete VOMEGA program is tracked in [../META-TRACKER.md](../META-TRACKER.md). It currently enumerates the major product, architecture, laboratory, provider, runtime, research and development-system programs, including programs intentionally deferred from the first release.
+
+The nine workstreams in this directory are **execution ownership lanes only**. They are deliberately fewer and broader than the meta-program map.
+
 ## Launch documents
 
 Read in this order:
@@ -90,6 +96,7 @@ The launch overlay deliberately separates **policy/topology** from **live runtim
 
 Use these sources for different questions:
 
+- `../META-TRACKER.md` — canonical map of **what programs exist** across VOMEGA; not a runtime claim surface.
 - `STATUS.md` — **only mutable launch-state surface**: who has claimed what, current runtime pool observations, blockers, current fan-in readiness.
 - `launch-manifest.json` — machine-readable topology, workstream ownership, interface locks, routing policy defaults and triggers. It is not proof that a model/harness is currently reachable.
 - `MODEL-ROUTING.md` — model/harness selection policy and current external research. It is not the current account quota/availability ledger.
