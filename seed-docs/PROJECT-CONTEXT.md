@@ -226,3 +226,11 @@ This material should reduce rediscovery cost. It should not dictate VOMEGA's fil
 The owner's current development environment is intentionally richer than a single agent harness. In addition to ZCode and its five configured 1M-context Space Bunny Free lanes, **OpenAI Codex is installed locally with ChatGPT Plus access** and **Claude Code is installed locally with Claude Pro access**; both are expected to participate actively in repository work.
 
 These facts are development-environment context, not Ω architecture. The autonomous build should inspect the actual installed clients and decide how best to use the heterogeneous pool. It should not turn the presence of OpenAI, Anthropic, ZCode, or any current model into a product dependency or constitutional assumption.
+
+## Provider Lab development strategy
+
+A current strategic hypothesis is to build a local **Provider Lab** using one or more developer-mode Chrome extensions and supporting local instrumentation.
+
+The Lab can place an Ω-controlled semantic mirror beside real provider pages while also observing normal human interaction in Shadow mode. This creates an unusually tight development loop around provider capability mapping, account/session behavior, live realization, conformance, drift, and healing.
+
+The Lab is intentionally outside Ω's constitutional authority. It is a proving ground whose successful mechanisms and knowledge may later graduate into Ω through normal evidence and architectural review.
