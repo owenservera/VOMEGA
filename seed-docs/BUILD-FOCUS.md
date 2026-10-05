@@ -271,3 +271,15 @@ High-potential multiplier hypotheses include:
 - fault injection and live architectural falsifiers.
 
 Do not build the acceleration platform ahead of the bottleneck. Accelerators compete for engineering time like any other feature and must prove leverage.
+
+## First-release convergence
+
+The current first-release product design is now explicit in `FIRST-PRODUCT-RELEASE-DESIGN.md`.
+
+Near-term technical work should increasingly converge on proving:
+
+**floating Windows command box → natural-language interpretation → canonical deterministic USE command → Provider/Account resolution → governed `prompt.send` → observed external result → local continuity**
+
+Setup itself must exercise the same command system. Capability UI and contextual help should project actual registered Provider/Account/capability state rather than forming parallel action systems.
+
+The Release Gym still exists to challenge sequencing, blockers, and implementation choices. It should not repeatedly reopen the owner-selected first-release product shape unless contradictory product evidence appears.
