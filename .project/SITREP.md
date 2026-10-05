@@ -3,7 +3,7 @@
 As of 2026-10-05. Seed commit: `f03905e`. Start here on a fresh session.
 
 The initially empty workspace now contains the cloned VOMEGA seed. Bootstrap
-reconnaissance read all 22 seed documents and traced executable baseline seams.
+reconnaissance read the complete seed corpus at bootstrap and traced executable baseline seams.
 The first local continuity/isolation slice is implemented and verified; it is not
 yet a provider-webapp beta.
 
@@ -49,3 +49,10 @@ The first release should let a user register Provider Accounts through natural l
 The first external capability is `prompt.send`.
 
 Immediate next technical work should still prove real browser transport and Account identity, because the product cannot truthfully register or target an Account until that seam is evidenced.
+
+
+## DevOps acceleration hypothesis update
+
+The seed now includes `../seed-docs/ELEPHANT-CONTEXT-NETWORK.md`, preserving the distributed large-context “elephant” cognitive-memory concept as an optional experiment-driven DevOps acceleration hypothesis.
+
+No elephant network has been instantiated and no provider lane has been reserved by this decision. Test it only when context reconstruction/review becomes a measured bottleneck; repository/test/runtime evidence remains authoritative.
