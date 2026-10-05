@@ -163,3 +163,15 @@ The first real bootstrap is expected to be run by **local Codex from the local V
 Point Codex first to **CODEX-BOOTSTRAP-START-HERE.md**. That document is the execution entry point for the initial bootstrap and tells Codex how to read the broader seed, establish machine/repository reality, discover Claude Code/ZCode/the five Space Bunny lanes, create minimal durable project truth, run the first Product Release Gym, and transition into real implementation.
 
 Codex is the first executor, not a permanent master or constitutional authority.
+
+## First product release design
+
+**FIRST-PRODUCT-RELEASE-DESIGN.md** is the owner-directed design target for the first VIVIM-Ω product release.
+
+It defines the concrete first-release experience: a small floating Windows command box where the user can register Provider Accounts through natural language, see evidence-backed capabilities appear as relationships are established, invoke those capabilities through the same semantic command system, receive real-time interpretation/disambiguation feedback, and access contextual Wiki/help grounded in actual capability/account state.
+
+The first external capability is **prompt.send** against a known supported Provider Account.
+
+This document is more concrete than `PRODUCT-ANCHOR.md` but remains a first-release design, not permanent Ω architecture.
+
+The seed now contains **23 documents**.
