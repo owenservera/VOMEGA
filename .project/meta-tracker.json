@@ -5,7 +5,11 @@
     "programMap": ".project/META-TRACKER.md",
     "launchRuntimeState": ".project/agentic-launch/STATUS.md",
     "firstReleaseTasks": ".project/roadmap/",
-    "productIntent": "seed-docs/"
+    "productIntent": "seed-docs/",
+    "operatingPrinciple": "The map preserves possibilities; it does not prescribe the path.",
+    "hardConstraints": "Explicit product/constitutional invariants and protected Lab/proof boundaries.",
+    "revisableMechanisms": "Programs, lanes, Locks, milestones, tasks, sequencing, harness/model allocation, worktrees, orchestration and habitats are hypotheses/coordination aids.",
+    "habitatBoundary": "Daintree and ZCode are separate habitats. Daintree does not launch, supervise or manage ZCode; coordinate through Git/task/evidence surfaces."
   },
   "counts": {
     "metaPrograms": 67,
@@ -429,11 +433,11 @@
     {
       "id": "MP-47",
       "name": "Workstream/dependency/Lock orchestration",
-      "purpose": "SDW/LNC/VFX/SKW/EXP/PRV/RTE/DEV/TRU coordinate through explicit contracts rather than waiting for whole subsystems.",
+      "purpose": "Enable temporary low-handoff coordination through explicit, falsifiable interface hypotheses rather than waiting for whole subsystems.",
       "state": "ACTIVE; Locks A–E candidate/recon.",
       "priority": "NOW",
       "owners": "DEV",
-      "notes": "Ownership lanes are not the meta-program list."
+      "notes": "Lanes and Locks are coordination devices, not permanent architecture; a Lock stabilizes interoperability long enough to work and remains replaceable by evidence."
     },
     {
       "id": "MP-48",
@@ -474,11 +478,11 @@
     {
       "id": "MP-52",
       "name": "Daintree execution habitat evaluation",
-      "purpose": "Test whether Daintree can own task worktrees, agent launch/monitoring, Review Hub and interactive fleet control so DEV remains thin.",
-      "state": "RESEARCH COMPLETE enough for assay; not installed/adopted in repo truth.",
+      "purpose": "Test whether Daintree usefully manages Git worktrees, Review Hub and supported CLI-agent panels without creating a new source of project truth.",
+      "state": "LIVE on the Linux box and available for assay; adoption remains an experiment, not strategy law.",
       "priority": "PARALLEL high-value experiment",
       "owners": "DEV + TRU",
-      "notes": "Test on Windows/VOMEGA; likely custom ZCode agent plugin; do not make it project truth."
+      "notes": "Daintree does not launch/manage ZCode. Evaluate Daintree and ZCode as separate habitats that may coexist through shared Git/task/evidence surfaces. Retain either only while it improves validated progress."
     },
     {
       "id": "MP-53",
