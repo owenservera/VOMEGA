@@ -123,3 +123,13 @@ It proposes an instrumented local Chrome-extension Provider Lab that can combine
 The Lab is explicitly a development environment, not a new source of Ω authority or a commitment to Chrome-extension product architecture.
 
 The seed now contains **19 documents**.
+
+## Harvest-first engineering
+
+**HARVEST-FIRST-ENGINEERING.md** defines a program-wide doctrine: before substantial invention, search for existing working implementations, tests, failures, protocols, extension behavior, libraries, historical VIVIM/BCP mechanisms, and other evidence that can materially accelerate the work.
+
+The doctrine does not mandate reuse. It requires informed invention.
+
+Meaningful candidates should be dispositioned as **reuse directly / adapt / wrap / port / behavioral reimplementation / research-only / reject**, with provenance, licensing, security, and Ω-fit considered at a depth proportional to the risk and expected engineering cost.
+
+The seed now contains **20 documents**.
