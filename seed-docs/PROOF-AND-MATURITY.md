@@ -56,3 +56,30 @@ Useful distinctions:
 Do not call an accelerator successful because it generated more sessions, events, dashboards, agents, tests, or automation.
 
 The relevant question is whether it improved **validated product progress**.
+
+
+## Fidelity is not evidence maturity
+
+The OS-taxonomy harvest exposed a useful general distinction.
+
+A realization may have a **fidelity claim**:
+
+- exact;
+- approximate;
+- handoff;
+
+and an independent **evidence maturity**:
+
+- authored;
+- verified-local;
+- automated-live;
+- regressed;
+- unknown.
+
+These dimensions must not be collapsed.
+
+An exact realization that has never been exercised is not proven.
+
+A handoff realization may be extremely well verified while honestly claiming only that it opens the right place for the user.
+
+Product surfaces, Wiki projections and experiment reports should be able to expose both where relevant.
