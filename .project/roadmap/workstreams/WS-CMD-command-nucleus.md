@@ -226,3 +226,24 @@ Proof: Corpus report
 
 ---
 Back to [roadmap index](../README.md) · [TASKS.md](../TASKS.md)
+
+
+## Owner design refinement — Model routing and semantic experiments (2026-10-05)
+
+The first-release semantic design now explicitly admits **Model** as an optional routing dimension distinct from Provider, Account and Session.
+
+The Visualization Sandbox should prove the command shape before product implementation hardens it:
+
+```
+prompt.send
++ Provider
++ Account
++ optional Model
++ prompt payload
+```
+
+Model fixture data in the sandbox is synthetic and must not be presented as current provider truth.
+
+Language/grounding changes should increasingly be evaluated through [Automated Semantic Experiments](../../../seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md), using pinned Worlds/Profiles, semantic diffs, false-ready/wrong-target metrics and corpus-first regression discipline.
+
+The local-agent `EXP-*` tasks are a roadmap seed; they do not supersede CMD-02/CMD-13.
