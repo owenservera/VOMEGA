@@ -7,7 +7,9 @@ hands-on review of `omega-baseline/` at commit `769544e`.
 **Status: operational plan, revisable evidence — not product law.** Seed intent
 and invariants constrain this plan; this plan constrains nothing in the seed.
 Per `BUILD-FOCUS.md` the Release Gym re-ranks it at every milestone exit
-(task OPS-04). The owner-selected *product shape* is fixed; the *sequence* is not.
+(task OPS-04). The owner-selected product shape is the **current release mission**, not constitutional architecture. The owner may change it explicitly. Sequence, decomposition, mechanism, tools and strategy remain open to evidence.
+
+Task IDs and milestones are a useful current decomposition, not a mandatory path. Agents may propose merges, splits, replacement tasks or reordered milestones when they preserve proof obligations and record the evidence for the change.
 
 ## Read in this order
 
