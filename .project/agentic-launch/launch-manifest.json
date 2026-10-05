@@ -28,7 +28,33 @@
       "Codex",
       "Claude Code"
     ],
-    "rule": "verify reachability read-only before dispatch; do not modify provider/auth/model configuration"
+    "rule": "verify reachability read-only before dispatch; do not modify provider/auth/model configuration",
+    "candidate_local_participants": [
+      "Grok Build"
+    ],
+    "grok_build": {
+      "status": "owner installing; verify locally before dispatch",
+      "verification": [
+        "grok version",
+        "grok inspect"
+      ],
+      "configRule": "read-only; do not change ~/.grok/config.toml, auth, plugins, or provider wiring without owner request",
+      "notableCapabilities": [
+        "headless JSON",
+        "ACP",
+        "worktrees",
+        "subagents",
+        "workflows",
+        "Agent Dashboard",
+        "skills",
+        "plugins",
+        "hooks",
+        "MCP",
+        "memory",
+        "AGENTS.md",
+        "Claude Code compatibility"
+      ]
+    }
   },
   "interfaceLocks": [
     {
@@ -601,7 +627,8 @@
       ],
       "premiumWorkhorse": [
         "GPT-6.1 Sol",
-        "Claude Opus 5.5"
+        "Claude Opus 5.5",
+        "Grok 4.7"
       ],
       "strongWorker": [
         "Claude Sonnet 5.5",
@@ -611,49 +638,72 @@
         "Space Bunny Free lanes"
       ]
     },
-    "rule": "Use frontier models to improve decisions and unblock hard failures; use abundant models to perform the work.",
+    "rule": "Use Astra/Fable as scarce adjudicators; use GPT-6.1 Sol, Claude Opus 5.5, and Grok 4.7 as premium workhorses; use abundant models and Space Bunny lanes for bulk execution.",
     "crossProviderReview": "For load-bearing contracts, prefer primary proposal from one provider and independent premium review by the other; use frontier adjudication only if disagreement remains.",
     "workstreamDefaults": {
       "SDW": [
         "Claude Opus 5.5",
-        "GPT-6.1 Sol"
+        "GPT-6.1 Sol",
+        "Grok 4.7 review"
       ],
       "LNC": [
         "GPT-6.1 Sol",
-        "Claude Opus 5.5"
+        "Claude Opus 5.5",
+        "Grok 4.7"
       ],
       "VFX": [
         "Claude Sonnet 5.5",
-        "GPT-6.1 Sol"
+        "GPT-6.1 Sol",
+        "Grok 4.7"
       ],
       "SKW": [
         "Claude Opus 5.5",
-        "GPT-6.1 Sol"
+        "GPT-6.1 Sol",
+        "Grok 4.7"
       ],
       "EXP": [
         "GPT-6 Luna",
         "Claude Sonnet 5.5",
-        "Space Bunny Free"
+        "Space Bunny Free",
+        "Grok Build bounded workflows"
       ],
       "PRV": [
         "GPT-6.1 Sol",
+        "Grok 4.7",
         "Claude Sonnet 5.5",
         "GPT-6 Astra on hard browser escalation"
       ],
       "RTE": [
         "GPT-6.1 Sol",
-        "Claude Opus 5.5"
+        "Claude Opus 5.5",
+        "Grok 4.7"
       ],
       "DEV": [
         "Space Bunny Free",
+        "Grok Build",
         "GPT-6 Luna",
         "Claude Sonnet 5.5"
       ],
       "TRU": [
         "Claude Opus 5.5",
         "GPT-6.1 Sol",
+        "Grok 4.7",
         "Astra/Fable selectively"
       ]
+    },
+    "xai": {
+      "researched": "2026-10-05",
+      "currentFlagship": "Grok 4.7",
+      "harness": "Grok Build",
+      "superGrokPlans": [
+        "Free",
+        "SuperGrok Lite",
+        "SuperGrok ($30/mo official public price)",
+        "SuperGrok Plus ($100/mo official public price)",
+        "SuperGrok Heavy"
+      ],
+      "usage": "paid SuperGrok uses one shared weekly allowance across products; verify remaining percentage in account UI",
+      "workflowPolicy": "start with small agent budgets; measure weekly-pool cost before scaling fan-out"
     }
   }
 }
