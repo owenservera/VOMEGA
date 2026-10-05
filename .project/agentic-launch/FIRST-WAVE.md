@@ -47,6 +47,14 @@ Before dispatching write-capable workers:
 
 If a lane fails, mark it unavailable and continue with the healthy pool.
 
+### Grok Build candidate lane
+
+The owner is installing Grok Build. Treat it as a candidate additional local harness, not as available capacity until DEV verifies `grok version` and `grok inspect`.
+
+If healthy, add Grok Build to the pool for one bounded comparative task before giving it persistent ownership. Prefer a first task in EXP, TRU, SKW audit, or a bounded implementation worktree where its headless/workflow/worktree capabilities can be measured.
+
+Do not run `grok setup` or rewrite user/global Grok configuration during preflight.
+
 Do not repair provider configuration automatically.
 
 ## Frontier model routing
@@ -227,6 +235,15 @@ Do not define “accuracy” as the single success metric.
 Do not auto-promote candidate grammar.
 
 **Primary handoff:** EXP baseline + contract tests for Locks A/B/C/D.
+
+### Additional verified Grok Build capacity
+
+If Grok Build preflight succeeds before first fan-out, DEV may either:
+
+- assign Grok Build a bounded independent TRU/EXP/SKW task for comparative evidence; or
+- use it as an additional implementation worker where write-set isolation is clear.
+
+Do not displace a healthy existing worker solely because Grok 4.7 is newer. Measure task quality and SuperGrok weekly-pool consumption first.
 
 ## 3. Codex — DEV launch + PRV reconnaissance
 
