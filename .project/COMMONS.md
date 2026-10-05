@@ -261,3 +261,16 @@ Dispatcher note (harness behavior, evidence not guess): unbounded heavy backgrou
 Next bounded steps (need Commons claims; not started): (1) PRODUCT/Truth: fix or pin the CMD-06 validator defect, then rerun Lock A F2/F4; (2) SDW: materialize world/0 fixtures W1-W6 + source-tagged loader; (3) resolve Account.defaultFor vs world.defaults precedence; (4) EXP: add multi-revision corpus + required-field metadata; (5) PRV: no live observation until TRU-05 + consent envelope; (6) decide VisualSpec extend-vs-replace.
 
 Truth: these are design/candidate artifacts and a candidate-level review. No lock is frozen, no product code changed, no live provider evidence exists.
+
+
+## Complete meta-program tracker — 2026-10-05
+
+Owner correction: the nine agentic-launch workstreams are execution ownership lanes, not the complete program list.
+
+Canonical whole-program map: `.project/META-TRACKER.md`; machine-readable companion: `.project/meta-tracker.json`.
+
+The tracker was reconstructed from the current seed, project truth, release roadmap/workstream charters, agentic-launch files, first-wave handoffs/candidates, and Elephant plan. It currently records 67 major meta programs plus all 31 development-acceleration hypotheses.
+
+Use the meta tracker to answer **what important programs exist**. Use `.project/agentic-launch/STATUS.md` to answer **what is currently claimed/running/completed**. Use `.project/roadmap/` for **first-release task cards/proof obligations**. Seed intent/invariants remain above all three.
+
+No new permanent departments are created by the meta tracker.
