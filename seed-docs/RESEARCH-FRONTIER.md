@@ -42,3 +42,22 @@ For each major research domain, include an **existing-solution archaeology** que
 - What licensing, provenance, security, maintenance, or dependency constraints change the answer?
 
 Use the heterogeneous development pool to fan out across distinct source classes rather than having every worker search the same GitHub keywords.
+
+## Development acceleration frontier
+
+Potential research questions include:
+- What minimum local activity signals provide enough development reality without invasive capture?
+- Can a shared event stream reliably align Git, shell, browser, tests, and agent activity?
+- How much can automatic context bundles reduce fresh-worker onboarding?
+- Can failure capsules materially improve cross-model debugging?
+- Can real successful episodes be converted into useful tests/workflows with low correction cost?
+- What evidence is sufficient to route work empirically among ZCode, Codex, and Claude Code?
+- When does independent multi-model review pay for itself?
+- What isolation primitive makes parallel experiment universes cheap on Windows?
+- Can runtime traces identify architecture violations that static analysis misses?
+- How much build/test latency can be removed without weakening release gates?
+- Which captured development data deserves promotion and which should expire?
+- What privacy/retention boundary makes a Development Reality Layer safe to leave enabled?
+- Which accelerator measurably changes validated throughput rather than merely increasing activity?
+
+Use `HARVEST-FIRST-ENGINEERING.md` before implementing any substantial acceleration substrate.
