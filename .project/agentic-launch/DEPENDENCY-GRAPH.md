@@ -1,5 +1,7 @@
 # Dependency Graph & Parallel Execution Plan
 
+> **Interpretation rule:** dependencies and Locks describe the best current interoperability hypothesis. A Lock freezes a boundary only long enough to coordinate work; it does not freeze architecture and remains falsifiable/revisable.
+
 Status: **TEAM-LAUNCH DESIGN**  
 Parent: [README.md](README.md)
 
