@@ -92,3 +92,20 @@ Bounded file ownership: `seed-docs/SEMANTIC-RUNTIME-LAB.md`, seed index cross-li
 Research / Product handoff: the design treats nearly all Lab intelligence as versioned/composable artifacts assembled into pinned Lab Profiles: taxonomy, language, interpretation pipeline, grounding/defaulting, command/capability, World fixtures, deterministic executables, visual/interaction packs, corpus/evaluators, harvest records and governance state. A tiny non-reprogrammable kernel is reserved for identity/lineage, append-only evidence, module loading, isolation, deterministic replay, promotion/rollback and constitutional boundary enforcement.
 
 Truth handoff: this is a development-lab hypothesis, not a claim that the architecture exists or that SQLite/pack formats are selected product architecture. The document explicitly separates Lab adoption from VOMEGA product adoption and preserves evidence ≠ authority, intent ≠ execution, capability ≠ realization, confidence ≠ proof. First proof should be a narrow standalone vertical slice using existing NLCL corpus material, simulated Provider/Account Worlds, deterministic virtual executables, and two replaceable visual/icon treatments.
+
+
+## Self-describing runtime / source-native Wiki — 2026-10-05
+
+Coordination request: owner merged the Semantic Runtime Lab concept into Ω self-knowledge and required that the realtime Wiki be generated from the system itself rather than maintained as a parallel documentation layer. Plugins should automatically wire their Wiki/self-knowledge contribution when installed.
+
+Owner: ChatGPT design session. Status: architecture design committed; documentation only.
+
+Bounded files: `seed-docs/SELF-DESCRIBING-RUNTIME-WIKI.md`, Semantic Runtime Lab cross-link, Contextual Wiki workstream refinement, seed index and this Commons entry.
+
+Architecture handoff: proposed invariant is **if Ω can load it, Ω can explain it**. A narrow core/plugin-boundary Reflection ABI should require every public/routable/configurable contribution to expose machine-readable self-description bound to exact plugin version/content hash. Source-native typed declarations and runtime schemas provide structural truth; linked inline comments may enrich explanations but cannot override permissions, risk, availability, authority or evidence.
+
+Derived layer: a read-only Reflection Graph is assembled automatically from installed contributions plus live registry/evidence. Contextual Wiki pages are not stored documents; they are ephemeral projections of graph nodes/relationships and current semantic state. Realtime interpretation supplies the semantic IDs used to rank the currently relevant pages/links.
+
+Product/DevOps next: Coordination should assign a small cross-boundary task to assay the existing `PluginManifest`, contribution `doc` fields, kernel graph/lens machinery and Forge validators, then design the smallest additive Reflection ABI + completeness gate. Do not build a separate Wiki content service.
+
+Truth: architecture remains a hypothesis. No Reflection ABI, Wiki projection, completeness gate or source-link pipeline is claimed implemented. Reflection must stay descriptive only; self-knowledge ≠ authority, source commentary ≠ evidence, description ≠ availability.
