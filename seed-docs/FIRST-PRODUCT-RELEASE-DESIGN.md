@@ -508,6 +508,8 @@ the Help surface should derive the answer from the actual capability registry an
 
 The contextual Wiki should be grounded in deterministic product/capability metadata and current evidence.
 
+Architecture refinement: see [Self-Describing Runtime & Source-Native Contextual Wiki](SELF-DESCRIBING-RUNTIME-WIKI.md). The long-term source of that metadata should be the same source-native declarations, schemas, manifests and reflection records that make the capability real. A plugin should not require a separately authored Wiki/help file in order to become explainable.
+
 A model may summarize or phrase help naturally.
 
 It must not invent capabilities, Account state, authority, or provider facts.
