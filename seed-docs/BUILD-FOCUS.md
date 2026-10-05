@@ -199,3 +199,11 @@ Keep these questions alive across every build cycle:
 - Does a real person get more useful control of their digital world?
 
 These questions are more important than preserving any particular current roadmap.
+
+## Cross-cutting frontier discipline
+
+Use `WORKSTREAM-LANDSCAPE.md` to check that important problem domains are not being accidentally ignored and `RESEARCH-FRONTIER.md` to identify questions that deserve disproportionate research or experimentation.
+
+Neither file is a roadmap. Re-rank attention continuously based on the current MVP candidate, current-code readiness, observed failures, uncertainty, dependency reach, product reach, and expected learning value.
+
+When an important frontier is unresolved, prefer a small discriminating experiment over prolonged architectural argument.
