@@ -469,3 +469,12 @@ In particular, ZCode workflows/background tasks, Codex, Claude Code, Git/worktre
 - reusable regression artifacts.
 
 These combinations are development experiments, not assumed ZCode features or Ω product requirements. Inspect each tool's actual runtime capabilities before designing around it.
+
+
+## Bootstrap relationship
+
+ZCode is a major development substrate, but it is not assumed to be the process that performs the very first VOMEGA bootstrap.
+
+The first bootstrap will be initiated by local Codex using `CODEX-BOOTSTRAP-START-HERE.md`. Codex should inspect the installed ZCode runtime and its configured five Space Bunny lanes as part of the capability census, then decide how to exploit ZCode without rewriting its configuration.
+
+After bootstrap, ZCode may coordinate, execute, research, verify, or run persistent workflows wherever its measured capabilities make it the strongest fit. No permanent hierarchy is implied.
