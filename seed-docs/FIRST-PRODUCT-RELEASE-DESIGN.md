@@ -918,3 +918,9 @@ If that works, VIVIM has proven far more than “AI prompt forwarding.”
 It has proven the first useful instance of:
 
 **human language → deterministic semantic control → governed external capability → durable local continuity.**
+
+## Related interaction design — active proposal
+
+[Command Visual Language — Real-Time Interpretation and Guidance](COMMAND-VISUAL-LANGUAGE-DESIGN.md) develops the owner's visual-feedback brief, including interactive icons for devices, applications, AI Providers and Accounts; phrase annotations; scope; assumptions; correction; and execution/evidence feedback.
+
+It is an evolving interaction blueprint, not an implemented feature or a frozen visual specification. Windows-command and fan-out examples test future generalization and do not expand the first-release requirements above.
