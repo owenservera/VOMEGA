@@ -397,3 +397,59 @@ It measures whether that DevOps works.
 It changes the DevOps when evidence says it should.
 
 And it remains free to replace the development machinery without confusing the machinery with the VIVIM product itself.
+
+## Additional local development participants
+
+ZCode and its configured provider lanes are **not** the complete development execution environment.
+
+The owner also has two separately authenticated local development systems available to work actively on this repository:
+
+- **OpenAI Codex CLI / local Codex**, backed by the owner's **ChatGPT Plus** access where supported by the installed tool and account.
+- **Claude Code**, backed by the owner's **Claude Pro** access where supported by the installed tool and account.
+
+Treat both as first-class available development participants alongside ZCode—not merely as rare escalation endpoints and not as product dependencies.
+
+### Bootstrap discovery requirement
+
+At bootstrap, inspect rather than assume:
+- whether each CLI is installed and reachable;
+- installed version;
+- authentication/account state that can be safely observed;
+- available models/modes exposed by the installed client;
+- repository/worktree behavior;
+- permission/sandbox modes;
+- context/session behavior;
+- concurrency and background-operation characteristics;
+- command/noninteractive surfaces useful for orchestration;
+- extension, hook, MCP, skill, subagent, or other integration surfaces actually exposed;
+- practical strengths, failure modes, rate/usage constraints, and interoperability with the rest of the development environment.
+
+Do **not** modify credentials, subscription/account configuration, provider wiring, or authentication unless the owner explicitly requests configuration work.
+
+### Heterogeneous execution pool
+
+The development system should reason about an available heterogeneous pool:
+
+**ZCode orchestration/runtime + five existing Space Bunny Free provider lanes + local Codex + local Claude Code + deterministic local tools/tests**
+
+This is a capability pool, not a hierarchy.
+
+Do not hard-code ZCode, Codex, Claude Code, Space Bunny, OpenAI, Anthropic, or any individual model as the permanent master, planner, implementer, reviewer, or truth authority. Discover allocation policy from measured performance and task fit.
+
+Useful patterns to investigate include:
+- independent implementation proposals from different systems;
+- one system implementing while another independently reviews;
+- parallel repository archaeology/research;
+- cross-model adversarial review;
+- independent test/falsifier generation;
+- assigning long-context synthesis separately from bounded code changes;
+- deterministic tests/gates adjudicating disagreements where possible;
+- using different systems for second-opinion verification before consequential architectural promotion.
+
+Avoid wasteful duplication. Redundancy should buy information, verification, speed, or risk reduction.
+
+### Development infrastructure is not product architecture
+
+Codex and Claude Code are development resources. Their availability does not make OpenAI or Anthropic a VIVIM product dependency, does not grant their models authority over Ω, and does not alter the sovereignty requirements of the product.
+
+The development system itself should remain replaceable.
