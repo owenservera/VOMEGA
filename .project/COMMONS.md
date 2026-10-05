@@ -188,3 +188,10 @@ Usage caution: paid SuperGrok uses one shared weekly pool across products, inclu
 Updated: `.project/agentic-launch/MODEL-ROUTING.md`, `launch-manifest.json`, and `FIRST-WAVE.md`.
 
 Truth: installation/reachability is not yet claimed by repository evidence. DEV must verify `grok version` and `grok inspect` locally; do not modify Grok auth/global config during preflight.
+### Launch runtime-resource correction — 2026-10-05
+
+Supersedes the earlier launch shorthand `five ZCode lanes → SDW/LNC/VFX/SKW/EXP` as a capacity assumption.
+
+Owner reports ZCode now uses OpenRouter Auto (`openrouter/auto`). The five previously configured Space Bunny accounts remain historical/configuration evidence, not guaranteed current worker slots. DEV must discover actual safe concurrency and effective routed models at runtime. Logical task slots A–E remain useful, but they are not provider-account identities.
+
+`STATUS.md` is the only mutable launch-state surface; historical Commons entries are not current runtime inventory.
