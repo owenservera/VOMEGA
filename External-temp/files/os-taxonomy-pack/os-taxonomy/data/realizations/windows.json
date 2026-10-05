@@ -1,0 +1,6069 @@
+[
+ {
+  "id": "windows:power.device.shutdown",
+  "capability": "power.device.shutdown",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Stop-Computer"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Applications are asked to close; unsaved work may block or be lost.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.device.restart",
+  "capability": "power.device.restart",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Restart-Computer"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.session.lock",
+  "capability": "power.session.lock",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "rundll32.exe",
+   "args": [
+    "user32.dll,LockWorkStation"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.session.sign-out",
+  "capability": "power.session.sign-out",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "shutdown.exe",
+   "args": [
+    "/l"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.device.sleep",
+  "capability": "power.device.sleep",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Add-Type -AssemblyName System.Windows.Forms; [void][System.Windows.Forms.Application]::SetSuspendState('Suspend', $false, $false)"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.device.hibernate",
+  "capability": "power.device.hibernate",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Add-Type -AssemblyName System.Windows.Forms; [void][System.Windows.Forms.Application]::SetSuspendState('Hibernate', $false, $false)"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Requires hibernation to be enabled (powercfg /hibernate on).",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.shutdown.schedule",
+  "capability": "power.shutdown.schedule",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "shutdown.exe /s /t ({{minutes}} * 60); if ($LASTEXITCODE -ne 0) { throw \"shutdown.exe exit $LASTEXITCODE\" }; 'scheduled'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.shutdown.cancel",
+  "capability": "power.shutdown.cancel",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "shutdown.exe",
+   "args": [
+    "/a"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.restart.advanced-startup",
+  "capability": "power.restart.advanced-startup",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "shutdown.exe",
+   "args": [
+    "/r",
+    "/o",
+    "/t",
+    "0"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.restart.firmware",
+  "capability": "power.restart.firmware",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "shutdown.exe",
+   "args": [
+    "/r",
+    "/fw",
+    "/t",
+    "0"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Only on UEFI systems that support firmware boot requests.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.plan.show",
+  "capability": "power.plan.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "powercfg.exe",
+   "args": [
+    "/getactivescheme"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.plan.list",
+  "capability": "power.plan.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "powercfg.exe",
+   "args": [
+    "/list"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.plan.set",
+  "capability": "power.plan.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "powercfg.exe",
+   "args": [
+    "/setactive",
+    "{{plan}}"
+   ]
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "On Modern Standby devices the Settings power-mode slider is separate from classic plans; high-performance/power-saver plans may be hidden.",
+  "paramMap": {
+   "plan": {
+    "balanced": "SCHEME_BALANCED",
+    "high-performance": "SCHEME_MIN",
+    "power-saver": "SCHEME_MAX"
+   }
+  },
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.plan.set#2",
+  "capability": "power.plan.set",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:powersleep"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.settings.open",
+  "capability": "power.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:powersleep"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.battery.status",
+  "capability": "power.battery.status",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-CimInstance Win32_Battery | Select-Object @{n='percent';e={$_.EstimatedChargeRemaining}}, @{n='minutesRemaining';e={$_.EstimatedRunTime}}, @{n='status';e={$_.BatteryStatus}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Returns nothing on desktops without a battery. EstimatedRunTime is 71582788 while charging.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.battery.report",
+  "capability": "power.battery.report",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$p = Join-Path $env:USERPROFILE 'battery-report.html'; powercfg.exe /batteryreport /output $p | Out-Null; Invoke-Item $p; $p"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.battery-saver.settings",
+  "capability": "power.battery-saver.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:batterysaver"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.screen-timeout.set",
+  "capability": "power.screen-timeout.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "powercfg.exe /change monitor-timeout-ac {{minutes}}; powercfg.exe /change monitor-timeout-dc {{minutes}}; 'ok'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Applies to both plugged-in and battery for the active plan.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.sleep-timeout.set",
+  "capability": "power.sleep-timeout.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "powercfg.exe /change standby-timeout-ac {{minutes}}; powercfg.exe /change standby-timeout-dc {{minutes}}; 'ok'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:power.lid-action.settings",
+  "capability": "power.lid-action.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "/name",
+    "Microsoft.PowerOptions",
+    "/page",
+    "pageGlobalSettings"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.settings.open",
+  "capability": "display.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:display"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.brightness.set",
+  "capability": "display.brightness.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-CimInstance -Namespace root/WMI -ClassName WmiMonitorBrightnessMethods | Invoke-CimMethod -MethodName WmiSetBrightness -Arguments @{ Timeout = 1; Brightness = [byte]{{level}} } | Out-Null; {{level}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Built-in laptop/tablet panels only; external monitors usually do not expose WMI brightness.",
+  "verify": "(Get-CimInstance -Namespace root/WMI -ClassName WmiMonitorBrightness).CurrentBrightness",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.brightness.increase",
+  "capability": "display.brightness.increase",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$c = (Get-CimInstance -Namespace root/WMI -ClassName WmiMonitorBrightness).CurrentBrightness; $n = [math]::Min(100, $c + {{step}}); Get-CimInstance -Namespace root/WMI -ClassName WmiMonitorBrightnessMethods | Invoke-CimMethod -MethodName WmiSetBrightness -Arguments @{ Timeout = 1; Brightness = [byte]$n } | Out-Null; $n"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Built-in panels only.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.brightness.decrease",
+  "capability": "display.brightness.decrease",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$c = (Get-CimInstance -Namespace root/WMI -ClassName WmiMonitorBrightness).CurrentBrightness; $n = [math]::Max(0, $c - {{step}}); Get-CimInstance -Namespace root/WMI -ClassName WmiMonitorBrightnessMethods | Invoke-CimMethod -MethodName WmiSetBrightness -Arguments @{ Timeout = 1; Brightness = [byte]$n } | Out-Null; $n"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Built-in panels only.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.brightness.show",
+  "capability": "display.brightness.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(Get-CimInstance -Namespace root/WMI -ClassName WmiMonitorBrightness).CurrentBrightness"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.night-light.settings",
+  "capability": "display.night-light.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:nightlight"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "No supported command-line toggle; opens the setting for the user.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.resolution.settings",
+  "capability": "display.resolution.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:display"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.scale.settings",
+  "capability": "display.scale.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:display"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.orientation.settings",
+  "capability": "display.orientation.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:display"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.refresh-rate.settings",
+  "capability": "display.refresh-rate.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:display-advanced"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.graphics.settings",
+  "capability": "display.graphics.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:display-advancedgraphics"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.projection.set",
+  "capability": "display.projection.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "DisplaySwitch.exe",
+   "args": [
+    "{{mode}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "paramMap": {
+   "mode": {
+    "extend": "/extend",
+    "duplicate": "/clone",
+    "second-screen-only": "/external",
+    "pc-screen-only": "/internal"
+   }
+  },
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.projection.menu",
+  "capability": "display.projection.menu",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "P"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.wireless.connect",
+  "capability": "display.wireless.connect",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "K"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.adapters.info",
+  "capability": "display.adapters.info",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-CimInstance Win32_VideoController | Select-Object Name, CurrentHorizontalResolution, CurrentVerticalResolution, CurrentRefreshRate, DriverVersion"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:display.screen.turn-off",
+  "capability": "display.screen.turn-off",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$t = Add-Type -Name VivimMon -Namespace Vivim -PassThru -MemberDefinition '[DllImport(\"user32.dll\")] public static extern int SendMessage(int hWnd, int msg, int wParam, int lParam);'; [void]$t::SendMessage(0xFFFF, 0x0112, 0xF170, 2); 'off'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Moving the mouse or pressing a key wakes the display.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.settings.open",
+  "capability": "sound.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:sound"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.volume.up",
+  "capability": "sound.volume.up",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "VOLUME_UP"
+   ],
+   "repeat": "steps"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.volume.down",
+  "capability": "sound.volume.down",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "VOLUME_DOWN"
+   ],
+   "repeat": "steps"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.volume.set",
+  "capability": "sound.volume.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Send-VivimKey 0xAE 50; Send-VivimKey 0xAF ([math]::Round({{level}} / 2)); {{level}}"
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Uses media volume keys (2% steps). Exact Core Audio control needs a native helper.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.volume.mute",
+  "capability": "sound.volume.mute",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "VOLUME_MUTE"
+   ]
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Toggles: mutes if unmuted, unmutes if muted.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.output.choose",
+  "capability": "sound.output.choose",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "CTRL",
+    "V"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.output.choose#2",
+  "capability": "sound.output.choose",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:sound"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.devices.list",
+  "capability": "sound.devices.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-CimInstance Win32_SoundDevice | Select-Object Name, Status"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.app-volume.settings",
+  "capability": "sound.app-volume.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:apps-volume"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.app-volume.settings#2",
+  "capability": "sound.app-volume.settings",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "launch",
+  "spec": {
+   "file": "sndvol.exe",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.classic-panel.open",
+  "capability": "sound.classic-panel.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "mmsys.cpl"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:sound.microphone.settings",
+  "capability": "sound.microphone.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:sound"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:media.playback.toggle",
+  "capability": "media.playback.toggle",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "MEDIA_PLAY_PAUSE"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:media.track.next",
+  "capability": "media.track.next",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "MEDIA_NEXT"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:media.track.previous",
+  "capability": "media.track.previous",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "MEDIA_PREV"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:media.playback.stop",
+  "capability": "media.playback.stop",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "MEDIA_STOP"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.settings.open",
+  "capability": "network.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-status"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.settings",
+  "capability": "network.wifi.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-wifi"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.status",
+  "capability": "network.wifi.status",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "wlan",
+    "show",
+    "interfaces"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.available",
+  "capability": "network.wifi.available",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "wlan",
+    "show",
+    "networks"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.available#2",
+  "capability": "network.wifi.available",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-availablenetworks:"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.connect",
+  "capability": "network.wifi.connect",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "wlan",
+    "connect",
+    "name={{ssid}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Works for networks with a saved profile; new networks need the flyout.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.connect#2",
+  "capability": "network.wifi.connect",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-availablenetworks:"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.disconnect",
+  "capability": "network.wifi.disconnect",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "wlan",
+    "disconnect"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.saved",
+  "capability": "network.wifi.saved",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "wlan",
+    "show",
+    "profiles"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.forget",
+  "capability": "network.wifi.forget",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "wlan",
+    "delete",
+    "profile",
+    "name={{ssid}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.password",
+  "capability": "network.wifi.password",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "wlan",
+    "show",
+    "profile",
+    "name={{ssid}}",
+    "key=clear"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Output includes 'Key Content'.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.toggle",
+  "capability": "network.wifi.toggle",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "netsh.exe",
+   "args": [
+    "interface",
+    "set",
+    "interface",
+    "name=Wi-Fi",
+    "admin={{state}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Assumes the adapter is named 'Wi-Fi'.",
+  "paramMap": {
+   "state": {
+    "on": "enabled",
+    "off": "disabled"
+   }
+  },
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.wifi.toggle#2",
+  "capability": "network.wifi.toggle",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-wifi"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.airplane-mode.settings",
+  "capability": "network.airplane-mode.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-airplanemode"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.adapters.status",
+  "capability": "network.adapters.status",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-NetAdapter | Select-Object Name, InterfaceDescription, Status, LinkSpeed"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.ip.show",
+  "capability": "network.ip.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.IPAddress -notlike '127.*' -and $_.IPAddress -notlike '169.254.*' } | Select-Object InterfaceAlias, IPAddress"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.ip.public",
+  "capability": "network.ip.public",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Invoke-RestMethod -Uri 'https://api.ipify.org' -TimeoutSec 10"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Contacts api.ipify.org.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.connectivity.test",
+  "capability": "network.connectivity.test",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$r = Test-NetConnection -ComputerName 'www.msftconnecttest.com' -Port 80 -WarningAction SilentlyContinue; [pscustomobject]@{ online = $r.TcpTestSucceeded; interface = $r.InterfaceAlias; source = \"$($r.SourceAddress.IPAddress)\" }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Contacts Microsoft's connectivity-test host.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.host.ping",
+  "capability": "network.host.ping",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Test-Connection -ComputerName {{host}} -Count 4 | Select-Object Address, ResponseTime"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.dns.flush",
+  "capability": "network.dns.flush",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Clear-DnsClientCache; 'flushed'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.reset.settings",
+  "capability": "network.reset.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-status"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Network reset is under Advanced network settings.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.vpn.settings",
+  "capability": "network.vpn.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-vpn"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.vpn.list",
+  "capability": "network.vpn.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-VpnConnection | Select-Object Name, ServerAddress, ConnectionStatus"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.vpn.connect",
+  "capability": "network.vpn.connect",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "rasdial.exe",
+   "args": [
+    "{{name}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Built-in Windows VPN profiles only; third-party VPN clients use their own apps.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.vpn.disconnect",
+  "capability": "network.vpn.disconnect",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "rasdial.exe",
+   "args": [
+    "/disconnect"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.hotspot.settings",
+  "capability": "network.hotspot.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-mobilehotspot"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.proxy.settings",
+  "capability": "network.proxy.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:network-proxy"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.data-usage.show",
+  "capability": "network.data-usage.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:datausage"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:network.connections.panel",
+  "capability": "network.connections.panel",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "ncpa.cpl"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.bluetooth.settings",
+  "capability": "devices.bluetooth.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:bluetooth"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.bluetooth.pair",
+  "capability": "devices.bluetooth.pair",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings-connectabledevices:devicediscovery"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.bluetooth.pair#2",
+  "capability": "devices.bluetooth.pair",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:bluetooth"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.bluetooth.toggle",
+  "capability": "devices.bluetooth.toggle",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:bluetooth"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "No supported command-line radio toggle; opens the switch for the user.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.bluetooth.list",
+  "capability": "devices.bluetooth.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-PnpDevice -Class Bluetooth | Where-Object { $_.FriendlyName -notmatch 'Enumerator|Adapter|Radio|Transport|Service' } | Select-Object FriendlyName, Status"
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.printers.list",
+  "capability": "devices.printers.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-CimInstance Win32_Printer | Select-Object Name, Default, WorkOffline, PrinterStatus"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.printer.default",
+  "capability": "devices.printer.default",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$p = Get-CimInstance Win32_Printer | Where-Object Name -eq {{printer}}; if (-not $p) { throw 'printer not found' }; Invoke-CimMethod -InputObject $p -MethodName SetDefaultPrinter | Out-Null; $p.Name"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "If 'Let Windows manage my default printer' is on, Windows may change it again.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.printers.settings",
+  "capability": "devices.printers.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:printers"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.print-queue.open",
+  "capability": "devices.print-queue.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "rundll32.exe",
+   "args": [
+    "printui.dll,PrintUIEntry",
+    "/o",
+    "/n",
+    "{{printer}}"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.print.file",
+  "capability": "devices.print.file",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Start-Process -FilePath {{path}} -Verb Print; 'sent'"
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Uses the file type's registered print verb and the default printer.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.print.test-page",
+  "capability": "devices.print.test-page",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "rundll32.exe",
+   "args": [
+    "printui.dll,PrintUIEntry",
+    "/k",
+    "/n",
+    "{{printer}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.manager.open",
+  "capability": "devices.manager.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "devmgmt.msc",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.drives.removable",
+  "capability": "devices.drives.removable",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Volume | Where-Object DriveType -eq 'Removable' | Select-Object DriveLetter, FileSystemLabel, SizeRemaining, Size"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.drive.eject",
+  "capability": "devices.drive.eject",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(New-Object -ComObject Shell.Application).Namespace(17).ParseName({{drive}}).InvokeVerb('Eject'); 'ejected'"
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Fails silently if files are open on the drive; verify the drive disappeared.",
+  "verify": "(Get-Volume -ErrorAction SilentlyContinue | Where-Object { ($_.DriveLetter + ':') -eq {{drive}} }) -eq $null",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.mouse.settings",
+  "capability": "devices.mouse.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:mousetouchpad"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.touchpad.settings",
+  "capability": "devices.touchpad.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:devices-touchpad"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.pen.settings",
+  "capability": "devices.pen.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:pen"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.autoplay.settings",
+  "capability": "devices.autoplay.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:autoplay"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.camera.settings",
+  "capability": "devices.camera.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:camera"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.phone.settings",
+  "capability": "devices.phone.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:mobile-devices"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:devices.game-controllers.open",
+  "capability": "devices.game-controllers.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "joy.cpl"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.known-folder.open",
+  "capability": "files.known-folder.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "explorer.exe",
+   "args": [
+    "{{folder}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "paramMap": {
+   "folder": {
+    "downloads": "shell:Downloads",
+    "documents": "shell:Personal",
+    "desktop": "shell:Desktop",
+    "pictures": "shell:My Pictures",
+    "music": "shell:My Music",
+    "videos": "shell:My Video",
+    "home": "shell:Profile",
+    "recent": "shell:Recent",
+    "screenshots": "shell:Screenshots",
+    "onedrive": "shell:OneDrive",
+    "this-pc": "shell:MyComputerFolder",
+    "startup": "shell:Startup",
+    "fonts": "shell:Fonts"
+   }
+  },
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.explorer.open",
+  "capability": "files.explorer.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "explorer.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.folder.open",
+  "capability": "files.folder.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "explorer.exe",
+   "args": [
+    "{{path}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.open",
+  "capability": "files.item.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$x = [IO.Path]::GetExtension({{path}}).ToLowerInvariant(); if (@('.exe','.bat','.cmd','.com','.ps1','.vbs','.vbe','.js','.jse','.wsf','.msi','.scr','.lnk','.hta','.cpl') -contains $x) { throw 'refusing to launch an executable through files.item.open; use apps.app.open' }; Invoke-Item -LiteralPath {{path}}; {{path}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Executable file types are refused: opening a document must never become running a program.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.reveal",
+  "capability": "files.item.reveal",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Start-Process explorer.exe -ArgumentList ('/select,\"' + {{path}} + '\"'); {{path}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.open-with",
+  "capability": "files.item.open-with",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "rundll32.exe",
+   "args": [
+    "shell32.dll,OpenAs_RunDLL",
+    "{{path}}"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.info",
+  "capability": "files.item.info",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Item -LiteralPath {{path}} | Select-Object Name, FullName, Length, CreationTime, LastWriteTime, Attributes"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.folder.list",
+  "capability": "files.folder.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-ChildItem -LiteralPath {{path}} | Select-Object -First 200 Name, Mode, Length, LastWriteTime"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.folder.create",
+  "capability": "files.folder.create",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "if (Test-Path -LiteralPath {{path}}) { throw 'already exists' }; (New-Item -ItemType Directory -Path {{path}}).FullName"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.file.create",
+  "capability": "files.file.create",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "if (Test-Path -LiteralPath {{path}}) { throw 'already exists' }; (New-Item -ItemType File -Path {{path}} -Value {{text}}).FullName"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.rename",
+  "capability": "files.item.rename",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(Rename-Item -LiteralPath {{path}} -NewName {{newName}} -PassThru).FullName"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.move",
+  "capability": "files.item.move",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "if (-not (Test-Path -LiteralPath {{destination}} -PathType Container)) { throw 'destination folder not found' }; (Move-Item -LiteralPath {{path}} -Destination {{destination}} -PassThru).FullName"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.copy",
+  "capability": "files.item.copy",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "if (-not (Test-Path -LiteralPath {{destination}} -PathType Container)) { throw 'destination folder not found' }; (Copy-Item -LiteralPath {{path}} -Destination {{destination}} -Recurse -PassThru | Select-Object -First 1).FullName"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.delete",
+  "capability": "files.item.delete",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Add-Type -AssemblyName Microsoft.VisualBasic; $p = (Resolve-Path -LiteralPath {{path}}).ProviderPath; if (Test-Path -LiteralPath $p -PathType Container) { [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteDirectory($p, 'OnlyErrorDialogs', 'SendToRecycleBin') } else { [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile($p, 'OnlyErrorDialogs', 'SendToRecycleBin') }; $p"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Recoverable from the Recycle Bin (unless the drive has no Recycle Bin, e.g. some USB/network drives).",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.item.delete-permanently",
+  "capability": "files.item.delete-permanently",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Remove-Item -LiteralPath {{path}} -Recurse -Force; {{path}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Not recoverable from the Recycle Bin.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.recycle-bin.open",
+  "capability": "files.recycle-bin.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "explorer.exe",
+   "args": [
+    "shell:RecycleBinFolder"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.recycle-bin.empty",
+  "capability": "files.recycle-bin.empty",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Clear-RecycleBin -Force -ErrorAction SilentlyContinue; 'emptied'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.recycle-bin.count",
+  "capability": "files.recycle-bin.count",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(New-Object -ComObject Shell.Application).Namespace(10).Items().Count"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.archive.create",
+  "capability": "files.archive.create",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Compress-Archive -LiteralPath {{path}} -DestinationPath {{destination}}; {{destination}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.archive.extract",
+  "capability": "files.archive.extract",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Expand-Archive -LiteralPath {{path}} -DestinationPath {{destination}}; {{destination}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Built-in support is .zip only.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.items.search",
+  "capability": "files.items.search",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-ChildItem -LiteralPath {{location}} -Recurse -File -Filter ('*' + {{query}} + '*') -ErrorAction SilentlyContinue | Select-Object -First 50 FullName, Length, LastWriteTime"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.search.ui",
+  "capability": "files.search.ui",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "search-ms:query={{query}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.recent.list",
+  "capability": "files.recent.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-ChildItem -LiteralPath (Join-Path $env:APPDATA 'Microsoft\\Windows\\Recent') -File | Sort-Object LastWriteTime -Descending | Select-Object -First 20 @{n='Name';e={$_.BaseName}}, LastWriteTime"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.folder.size",
+  "capability": "files.folder.size",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$s = (Get-ChildItem -LiteralPath {{path}} -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum); [pscustomobject]@{ files = $s.Count; bytes = [int64]$s.Sum }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.path.copy",
+  "capability": "files.path.copy",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Set-Clipboard -Value {{path}}; {{path}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.shortcut.create",
+  "capability": "files.shortcut.create",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$l = Join-Path ([Environment]::GetFolderPath('Desktop')) ({{name}} + '.lnk'); $s = (New-Object -ComObject WScript.Shell).CreateShortcut($l); $s.TargetPath = {{target}}; $s.Save(); $l"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.hidden-items.set",
+  "capability": "files.hidden-items.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name Hidden -Value ($(if ({{visible}}) { 1 } else { 2 })); 'ok'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Open Explorer windows update after refresh (F5).",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.extensions.set",
+  "capability": "files.extensions.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name HideFileExt -Value ($(if ({{visible}}) { 0 } else { 1 })); 'ok'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Open Explorer windows update after refresh (F5).",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:files.terminal.here",
+  "capability": "files.terminal.here",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "wt.exe",
+   "args": [
+    "-d",
+    "{{path}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Windows Terminal (default on Windows 11).",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:storage.settings.open",
+  "capability": "storage.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:storagesense"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:storage.drives.list",
+  "capability": "storage.drives.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Volume | Where-Object DriveLetter | Select-Object DriveLetter, FileSystemLabel, @{n='freeGB';e={[math]::Round($_.SizeRemaining/1GB,1)}}, @{n='sizeGB';e={[math]::Round($_.Size/1GB,1)}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:storage.cleanup.open",
+  "capability": "storage.cleanup.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "cleanmgr.exe",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:storage.optimize.open",
+  "capability": "storage.optimize.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "dfrgui.exe",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:storage.disk-management.open",
+  "capability": "storage.disk-management.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "diskmgmt.msc",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Prompts for administrator approval.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:storage.large-files.find",
+  "capability": "storage.large-files.find",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-ChildItem -LiteralPath {{location}} -Recurse -File -ErrorAction SilentlyContinue | Sort-Object Length -Descending | Select-Object -First 20 FullName, @{n='MB';e={[math]::Round($_.Length/1MB,1)}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:storage.temp.clear",
+  "capability": "storage.temp.clear",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$before = (Get-ChildItem -LiteralPath $env:TEMP -Recurse -Force -ErrorAction SilentlyContinue | Measure-Object Length -Sum).Sum; Get-ChildItem -LiteralPath $env:TEMP -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue; $after = (Get-ChildItem -LiteralPath $env:TEMP -Recurse -Force -ErrorAction SilentlyContinue | Measure-Object Length -Sum).Sum; [pscustomobject]@{ freedMB = [math]::Round(($before - $after)/1MB,1) }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Files in use are skipped.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.builtin.open",
+  "capability": "apps.builtin.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "builtin-map",
+  "spec": {
+   "param": "app",
+   "map": {
+    "calculator": {
+     "strategy": "launch",
+     "spec": {
+      "file": "calc.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "notepad": {
+     "strategy": "launch",
+     "spec": {
+      "file": "notepad.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "paint": {
+     "strategy": "launch",
+     "spec": {
+      "file": "mspaint.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "settings": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "ms-settings:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "camera": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "microsoft.windows.camera:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "clock": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "ms-clock:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "calendar": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "outlookcal:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "mail": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "outlookmail:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "photos": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "ms-photos:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "store": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "ms-windows-store:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "maps": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "bingmaps:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "weather": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "msnweather:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "media-player": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "mswindowsmusic:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "browser": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "microsoft-edge:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "file-explorer": {
+     "strategy": "launch",
+     "spec": {
+      "file": "explorer.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "terminal": {
+     "strategy": "launch",
+     "spec": {
+      "file": "wt.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "command-prompt": {
+     "strategy": "launch",
+     "spec": {
+      "file": "cmd.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "powershell": {
+     "strategy": "launch",
+     "spec": {
+      "file": "powershell.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "task-manager": {
+     "strategy": "launch",
+     "spec": {
+      "file": "taskmgr.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "control-panel": {
+     "strategy": "launch",
+     "spec": {
+      "file": "control.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "snipping-tool": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "ms-screenclip:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "character-map": {
+     "strategy": "launch",
+     "spec": {
+      "file": "charmap.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "remote-desktop": {
+     "strategy": "launch",
+     "spec": {
+      "file": "mstsc.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "system-information": {
+     "strategy": "launch",
+     "spec": {
+      "file": "msinfo32.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "get-help": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "ms-contact-support:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "tips": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "ms-get-started:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "feedback-hub": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "feedback-hub:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "xbox": {
+     "strategy": "uri",
+     "spec": {
+      "uri": "xbox:"
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "on-screen-keyboard": {
+     "strategy": "launch",
+     "spec": {
+      "file": "osk.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "magnifier": {
+     "strategy": "launch",
+     "spec": {
+      "file": "magnify.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    },
+    "quick-assist": {
+     "strategy": "launch",
+     "spec": {
+      "file": "quickassist.exe",
+      "args": []
+     },
+     "fidelity": "exact",
+     "elevation": "none",
+     "os": [
+      "10",
+      "11"
+     ]
+    }
+   }
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "'browser' opens Microsoft Edge, not necessarily the default browser.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.open",
+  "capability": "apps.app.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$m = @(Get-StartApps | Where-Object { $_.Name -like ('*' + {{app}} + '*') }); if ($m.Count -eq 0) { throw 'no installed app matches' }; if ($m.Count -gt 1) { $e = @($m | Where-Object { $_.Name -eq {{app}} }); if ($e.Count -eq 1) { $m = $e } else { throw ('ambiguous: ' + (($m | Select-Object -First 8 -ExpandProperty Name) -join '; ')) } }; Start-Process ('shell:AppsFolder\\' + $m[0].AppID); $m[0].Name"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Ambiguous names are refused with the candidate list so the caller can ask the user.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.close",
+  "capability": "apps.app.close",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$p = @(Get-Process -Name {{process}} -ErrorAction Stop | Where-Object MainWindowHandle -ne 0); if ($p.Count -eq 0) { throw 'no window for that app' }; foreach ($x in $p) { [void]$x.CloseMainWindow() }; $p.Count"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Asks the app to close normally; it may prompt to save.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.force-quit",
+  "capability": "apps.app.force-quit",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$p = @(Get-Process -Name {{process}} -ErrorAction Stop); $p | Stop-Process -Force; $p.Count"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Unsaved work in that app is lost.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.installed.list",
+  "capability": "apps.installed.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-StartApps | Sort-Object Name | Select-Object Name"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.running.list",
+  "capability": "apps.running.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Process | Where-Object MainWindowTitle | Select-Object Name, MainWindowTitle, Id"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.catalog.search",
+  "capability": "apps.catalog.search",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "winget.exe",
+   "args": [
+    "search",
+    "{{query}}",
+    "--source",
+    "winget",
+    "--accept-source-agreements"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Contacts the winget community repository.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.install",
+  "capability": "apps.app.install",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "winget.exe",
+   "args": [
+    "install",
+    "--exact",
+    "--id",
+    "{{packageId}}",
+    "--source",
+    "winget",
+    "--accept-package-agreements",
+    "--accept-source-agreements",
+    "--disable-interactivity"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Some installers raise their own administrator prompt.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.install#2",
+  "capability": "apps.app.install",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-windows-store:"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.uninstall",
+  "capability": "apps.app.uninstall",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "winget.exe",
+   "args": [
+    "uninstall",
+    "--exact",
+    "--id",
+    "{{packageId}}",
+    "--disable-interactivity"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.uninstall#2",
+  "capability": "apps.app.uninstall",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:appsfeatures"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.app.update",
+  "capability": "apps.app.update",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "winget.exe",
+   "args": [
+    "upgrade",
+    "--exact",
+    "--id",
+    "{{packageId}}",
+    "--accept-package-agreements",
+    "--accept-source-agreements",
+    "--disable-interactivity"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.updates.list",
+  "capability": "apps.updates.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "winget.exe",
+   "args": [
+    "upgrade",
+    "--accept-source-agreements"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.updates.install-all",
+  "capability": "apps.updates.install-all",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "winget.exe",
+   "args": [
+    "upgrade",
+    "--all",
+    "--accept-package-agreements",
+    "--accept-source-agreements",
+    "--disable-interactivity"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.store.search",
+  "capability": "apps.store.search",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-windows-store://search/?query={{query}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.settings.open",
+  "capability": "apps.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:appsfeatures"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.defaults.settings",
+  "capability": "apps.defaults.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:defaultapps"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.startup.settings",
+  "capability": "apps.startup.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:startupapps"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.startup.list",
+  "capability": "apps.startup.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-CimInstance Win32_StartupCommand | Select-Object Name, Command, Location"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:apps.optional-features.settings",
+  "capability": "apps.optional-features.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:optionalfeatures"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.desktop.show",
+  "capability": "windows.desktop.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(New-Object -ComObject Shell.Application).ToggleDesktop(); 'toggled'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.all.minimize",
+  "capability": "windows.all.minimize",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(New-Object -ComObject Shell.Application).MinimizeAll(); 'ok'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.all.restore",
+  "capability": "windows.all.restore",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(New-Object -ComObject Shell.Application).UndoMinimizeALL(); 'ok'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.active.close",
+  "capability": "windows.active.close",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "ALT",
+    "F4"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.active.minimize",
+  "capability": "windows.active.minimize",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "DOWN"
+   ]
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "On a maximized window the first press restores, the second minimizes.",
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.active.maximize",
+  "capability": "windows.active.maximize",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "UP"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.active.snap",
+  "capability": "windows.active.snap",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "{{side}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "paramMap": {
+   "side": {
+    "left": "LEFT",
+    "right": "RIGHT"
+   }
+  },
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.active.move-monitor",
+  "capability": "windows.active.move-monitor",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "SHIFT",
+    "{{direction}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "paramMap": {
+   "direction": {
+    "left": "LEFT",
+    "right": "RIGHT"
+   }
+  },
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.snap-layouts.open",
+  "capability": "windows.snap-layouts.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "Z"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.overview.open",
+  "capability": "windows.overview.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "TAB"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.virtual-desktop.new",
+  "capability": "windows.virtual-desktop.new",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "CTRL",
+    "D"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.virtual-desktop.close",
+  "capability": "windows.virtual-desktop.close",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "CTRL",
+    "F4"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Windows move to the neighbouring desktop; nothing is closed.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.virtual-desktop.switch",
+  "capability": "windows.virtual-desktop.switch",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "CTRL",
+    "{{direction}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "paramMap": {
+   "direction": {
+    "next": "RIGHT",
+    "previous": "LEFT"
+   }
+  },
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:windows.multitasking.settings",
+  "capability": "windows.multitasking.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:multitasking"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.clipboard.get",
+  "capability": "input.clipboard.get",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Clipboard -Raw"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.clipboard.set",
+  "capability": "input.clipboard.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Set-Clipboard -Value {{text}}; 'copied'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.clipboard.clear",
+  "capability": "input.clipboard.clear",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Clipboard]::Clear(); 'cleared'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.clipboard.history",
+  "capability": "input.clipboard.history",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "V"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Clipboard history must be enabled in Settings.",
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.clipboard.settings",
+  "capability": "input.clipboard.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:clipboard"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.emoji.open",
+  "capability": "input.emoji.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "PERIOD"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.dictation.start",
+  "capability": "input.dictation.start",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "H"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.text.type",
+  "capability": "input.text.type",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(({{text}} -replace '([+^%~(){}\\[\\]])', '{$1}')); 'typed'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Types into whichever window has focus.",
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.keyboard-layout.switch",
+  "capability": "input.keyboard-layout.switch",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "SPACE"
+   ]
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Cycles to the next installed layout.",
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.typing.settings",
+  "capability": "input.typing.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:typing"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:input.speech.settings",
+  "capability": "input.speech.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:speech"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.color-mode.set",
+  "capability": "personalize.color-mode.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$v = $(if ({{mode}} -eq 'light') { 1 } else { 0 }); $k = 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize'; Set-ItemProperty -Path $k -Name AppsUseLightTheme -Value $v; Set-ItemProperty -Path $k -Name SystemUsesLightTheme -Value $v; {{mode}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "verify": "$(if ((Get-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize').AppsUseLightTheme -eq 0) { 'dark' } else { 'light' })",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.color-mode.show",
+  "capability": "personalize.color-mode.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$(if ((Get-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize').AppsUseLightTheme -eq 0) { 'dark' } else { 'light' })"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.wallpaper.set",
+  "capability": "personalize.wallpaper.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$t = Add-Type -Name VivimWall -Namespace Vivim -PassThru -MemberDefinition '[DllImport(\"user32.dll\", CharSet = CharSet.Unicode)] public static extern int SystemParametersInfo(int a, int b, string c, int d);'; $prev = (Get-ItemProperty 'HKCU:\\Control Panel\\Desktop').WallPaper; $p = (Resolve-Path -LiteralPath {{path}}).ProviderPath; if ($t::SystemParametersInfo(0x14, 0, $p, 3) -eq 0) { throw 'SystemParametersInfo failed' }; [pscustomobject]@{ wallpaper = $p; previous = $prev }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Result includes the previous wallpaper so the change can be undone.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.wallpaper.show",
+  "capability": "personalize.wallpaper.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "(Get-ItemProperty 'HKCU:\\Control Panel\\Desktop').WallPaper"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.background.settings",
+  "capability": "personalize.background.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:personalization-background"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.accent.settings",
+  "capability": "personalize.accent.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:colors"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.themes.settings",
+  "capability": "personalize.themes.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:themes"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.lock-screen.settings",
+  "capability": "personalize.lock-screen.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:lockscreen"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.taskbar.settings",
+  "capability": "personalize.taskbar.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:taskbar"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.taskbar.alignment",
+  "capability": "personalize.taskbar.alignment",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name TaskbarAl -Type DWord -Value ($(if ({{alignment}} -eq 'left') { 0 } else { 1 })); {{alignment}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.start.settings",
+  "capability": "personalize.start.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:personalization-start"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.fonts.settings",
+  "capability": "personalize.fonts.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:fonts"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.transparency.set",
+  "capability": "personalize.transparency.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' -Name EnableTransparency -Value ($(if ({{enabled}}) { 1 } else { 0 })); 'ok'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.screensaver.settings",
+  "capability": "personalize.screensaver.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "desk.cpl,,@screensaver"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:personalize.sounds.settings",
+  "capability": "personalize.sounds.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "mmsys.cpl,,2"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.settings.open",
+  "capability": "a11y.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.text-size.settings",
+  "capability": "a11y.text-size.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-display"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.magnifier.start",
+  "capability": "a11y.magnifier.start",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "magnify.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.magnifier.stop",
+  "capability": "a11y.magnifier.stop",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Process -Name Magnify -ErrorAction SilentlyContinue | Stop-Process; 'stopped'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.magnifier.zoom",
+  "capability": "a11y.magnifier.zoom",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "{{direction}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Starts Magnifier if it is not running.",
+  "paramMap": {
+   "direction": {
+    "in": "PLUS",
+    "out": "MINUS"
+   }
+  },
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.narrator.start",
+  "capability": "a11y.narrator.start",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "narrator.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.narrator.stop",
+  "capability": "a11y.narrator.stop",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Process -Name Narrator -ErrorAction SilentlyContinue | Stop-Process; 'stopped'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.narrator.settings",
+  "capability": "a11y.narrator.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-narrator"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.contrast.settings",
+  "capability": "a11y.contrast.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-highcontrast"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.contrast.settings#2",
+  "capability": "a11y.contrast.settings",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "LALT",
+    "LSHIFT",
+    "PRINTSCREEN"
+   ]
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Toggles; Windows asks for confirmation.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.color-filters.settings",
+  "capability": "a11y.color-filters.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-colorfilter"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.captions.settings",
+  "capability": "a11y.captions.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-closedcaptioning"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.live-captions.start",
+  "capability": "a11y.live-captions.start",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "CTRL",
+    "L"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.mouse-pointer.settings",
+  "capability": "a11y.mouse-pointer.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-mousepointer"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.text-cursor.settings",
+  "capability": "a11y.text-cursor.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-cursor"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.keyboard.settings",
+  "capability": "a11y.keyboard.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-keyboard"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.on-screen-keyboard.open",
+  "capability": "a11y.on-screen-keyboard.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "osk.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.audio.settings",
+  "capability": "a11y.audio.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:easeofaccess-audio"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:a11y.voice-access.start",
+  "capability": "a11y.voice-access.start",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "voiceaccess.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:privacy.settings.open",
+  "capability": "privacy.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:privacy"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:privacy.camera.settings",
+  "capability": "privacy.camera.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:privacy-webcam"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:privacy.microphone.settings",
+  "capability": "privacy.microphone.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:privacy-microphone"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:privacy.location.settings",
+  "capability": "privacy.location.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:privacy-location"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:privacy.activity-history.settings",
+  "capability": "privacy.activity-history.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:privacy-activityhistory"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:privacy.diagnostics.settings",
+  "capability": "privacy.diagnostics.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:privacy-feedback"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.center.open",
+  "capability": "security.center.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "windowsdefender:"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.virus.quick-scan",
+  "capability": "security.virus.quick-scan",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "$env:ProgramFiles\\Windows Defender\\MpCmdRun.exe",
+   "args": [
+    "-Scan",
+    "-ScanType",
+    "1"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Microsoft Defender only; may be disabled when another antivirus is active.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.virus.full-scan",
+  "capability": "security.virus.full-scan",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "$env:ProgramFiles\\Windows Defender\\MpCmdRun.exe",
+   "args": [
+    "-Scan",
+    "-ScanType",
+    "2"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Can take an hour or more.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.virus.update",
+  "capability": "security.virus.update",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "$env:ProgramFiles\\Windows Defender\\MpCmdRun.exe",
+   "args": [
+    "-SignatureUpdate"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.virus.status",
+  "capability": "security.virus.status",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-MpComputerStatus | Select-Object AntivirusEnabled, RealTimeProtectionEnabled, AntivirusSignatureLastUpdated, QuickScanAge"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.virus.threats",
+  "capability": "security.virus.threats",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-MpThreatDetection | Select-Object -First 20 InitialDetectionTime, ActionSuccess, @{n='resources';e={$_.Resources -join '; '}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.firewall.status",
+  "capability": "security.firewall.status",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-NetFirewallProfile | Select-Object Name, Enabled"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.firewall.settings",
+  "capability": "security.firewall.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "firewall.cpl"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.find-device.settings",
+  "capability": "security.find-device.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:findmydevice"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:security.encryption.settings",
+  "capability": "security.encryption.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:deviceencryption"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Some editions show BitLocker in Control Panel instead.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.user.show",
+  "capability": "accounts.user.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "[pscustomobject]@{ user = $env:USERNAME; domain = $env:USERDOMAIN; computer = $env:COMPUTERNAME }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.info.settings",
+  "capability": "accounts.info.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:yourinfo"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.sign-in.settings",
+  "capability": "accounts.sign-in.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:signinoptions"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.email.settings",
+  "capability": "accounts.email.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:emailandaccounts"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.other-users.settings",
+  "capability": "accounts.other-users.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:otherusers"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.local.list",
+  "capability": "accounts.local.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-LocalUser | Select-Object Name, Enabled, LastLogon"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.user.switch",
+  "capability": "accounts.user.switch",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "rundll32.exe",
+   "args": [
+    "user32.dll,LockWorkStation"
+   ]
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Locks the session; choose another user on the sign-in screen.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:accounts.backup.settings",
+  "capability": "accounts.backup.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:backup"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.now.show",
+  "capability": "time.now.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-Date -Format 'F'"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.zone.show",
+  "capability": "time.zone.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-TimeZone | Select-Object Id, DisplayName"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.zone.list",
+  "capability": "time.zone.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-TimeZone -ListAvailable | Select-Object Id, DisplayName"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.zone.set",
+  "capability": "time.zone.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$prev = (Get-TimeZone).Id; Set-TimeZone -Id {{zoneId}}; [pscustomobject]@{ zone = (Get-TimeZone).Id; previous = $prev }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.settings.open",
+  "capability": "time.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:dateandtime"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.sync.now",
+  "capability": "time.sync.now",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "w32tm.exe",
+   "args": [
+    "/resync"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.sync.now#2",
+  "capability": "time.sync.now",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:dateandtime"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.timer.start",
+  "capability": "time.timer.start",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-clock:"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Opens Clock; the duration must be set by the user. A VIVIM-native timer would be exact.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:time.alarm.set",
+  "capability": "time.alarm.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-clock:"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Opens Clock; the alarm must be set by the user.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:language.settings.open",
+  "capability": "language.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:regionlanguage"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:language.region.settings",
+  "capability": "language.region.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:regionformatting"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:language.list.show",
+  "capability": "language.list.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-WinUserLanguageList | Select-Object LanguageTag, Autonym"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:notify.settings.open",
+  "capability": "notify.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:notifications"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:notify.center.open",
+  "capability": "notify.center.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "N"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:notify.center.open#2",
+  "capability": "notify.center.open",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "A"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:notify.do-not-disturb.set",
+  "capability": "notify.do-not-disturb.set",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:notifications"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "note": "No supported command-line toggle; opens the setting.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:notify.do-not-disturb.set#2",
+  "capability": "notify.do-not-disturb.set",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:quiethours"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:notify.quick-settings.open",
+  "capability": "notify.quick-settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "A"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:capture.screenshot.region",
+  "capability": "capture.screenshot.region",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-screenclip:"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:capture.screenshot.full",
+  "capability": "capture.screenshot.full",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "PRINTSCREEN"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Saved to Pictures\\Screenshots.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:capture.screenshot.save",
+  "capability": "capture.screenshot.save",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Add-Type -AssemblyName System.Windows.Forms, System.Drawing; $b = [System.Windows.Forms.SystemInformation]::VirtualScreen; $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height; $g = [System.Drawing.Graphics]::FromImage($bmp); $g.CopyFromScreen($b.Left, $b.Top, 0, 0, $bmp.Size); $bmp.Save({{path}}, [System.Drawing.Imaging.ImageFormat]::Png); $g.Dispose(); $bmp.Dispose(); {{path}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:capture.screenshot.window",
+  "capability": "capture.screenshot.window",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "ALT",
+    "PRINTSCREEN"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:capture.screen.record",
+  "capability": "capture.screen.record",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "ALT",
+    "R"
+   ]
+  },
+  "fidelity": "approximate",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Xbox Game Bar records the focused app/game; Snipping Tool offers full-screen recording on Windows 11.",
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:capture.game-bar.open",
+  "capability": "capture.game-bar.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "G"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:web.url.open",
+  "capability": "web.url.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Start-Process {{url}}; {{url}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Opens in the default browser.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:web.search.query",
+  "capability": "web.search.query",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$base = @{ bing = 'https://www.bing.com/search?q='; google = 'https://www.google.com/search?q='; duckduckgo = 'https://duckduckgo.com/?q=' }[{{engine}}]; $u = $base + [uri]::EscapeDataString({{query}}); Start-Process $u; $u"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:web.maps.search",
+  "capability": "web.maps.search",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "bingmaps:?q={{place}}"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Opens the Maps app.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:search.system.open",
+  "capability": "search.system.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "S"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.run-dialog.open",
+  "capability": "system.run-dialog.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "keys",
+  "spec": {
+   "combo": [
+    "WIN",
+    "R"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "targetsForeground": true,
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:updates.settings.open",
+  "capability": "updates.settings.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:windowsupdate"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:updates.system.check",
+  "capability": "updates.system.check",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:windowsupdate-action"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Opens Windows Update and starts a scan.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:updates.history.open",
+  "capability": "updates.history.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:windowsupdate-history"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:updates.recent.list",
+  "capability": "updates.recent.list",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Get-HotFix | Sort-Object InstalledOn -Descending | Select-Object -First 10 HotFixID, Description, InstalledOn"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:updates.system.pause",
+  "capability": "updates.system.pause",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:windowsupdate"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:updates.restart-options.open",
+  "capability": "updates.restart-options.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:windowsupdate-options"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.about.open",
+  "capability": "system.about.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:about"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.info.summary",
+  "capability": "system.info.summary",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$os = Get-CimInstance Win32_OperatingSystem; $cs = Get-CimInstance Win32_ComputerSystem; [pscustomobject]@{ os = $os.Caption; version = $os.Version; build = $os.BuildNumber; manufacturer = $cs.Manufacturer; model = $cs.Model; memoryGB = [math]::Round($cs.TotalPhysicalMemory/1GB,1); cpu = (Get-CimInstance Win32_Processor | Select-Object -First 1).Name; gpu = (Get-CimInstance Win32_VideoController | Select-Object -ExpandProperty Name) -join '; ' }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.version.show",
+  "capability": "system.version.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$k = Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion'; [pscustomobject]@{ product = (Get-CimInstance Win32_OperatingSystem).Caption; release = $k.DisplayVersion; build = \"$($k.CurrentBuild).$($k.UBR)\" }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.version.show#2",
+  "capability": "system.version.show",
+  "platform": "windows",
+  "preference": 2,
+  "strategy": "launch",
+  "spec": {
+   "file": "winver.exe",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.performance.show",
+  "capability": "system.performance.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$os = Get-CimInstance Win32_OperatingSystem; [pscustomobject]@{ cpuPercent = (Get-CimInstance Win32_Processor | Measure-Object LoadPercentage -Average).Average; memoryUsedPercent = [math]::Round((1 - $os.FreePhysicalMemory/$os.TotalVisibleMemorySize)*100,0); topProcesses = (Get-Process | Sort-Object WorkingSet64 -Descending | Select-Object -First 5 -ExpandProperty Name) -join ', ' }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.uptime.show",
+  "capability": "system.uptime.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$b = (Get-CimInstance Win32_OperatingSystem).LastBootUpTime; $u = (Get-Date) - $b; [pscustomobject]@{ since = $b; days = $u.Days; hours = $u.Hours; minutes = $u.Minutes }"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.name.show",
+  "capability": "system.name.show",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "$env:COMPUTERNAME"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.name.rename",
+  "capability": "system.name.rename",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Rename-Computer -NewName {{name}}; 'restart required'"
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Takes effect after restart.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.activation.settings",
+  "capability": "system.activation.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:activation"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.task-manager.open",
+  "capability": "system.task-manager.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "taskmgr.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.control-panel.open",
+  "capability": "system.control-panel.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.event-viewer.open",
+  "capability": "system.event-viewer.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "eventvwr.msc",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.services.open",
+  "capability": "system.services.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "services.msc",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.resource-monitor.open",
+  "capability": "system.resource-monitor.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "resmon.exe",
+   "args": []
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.reliability.open",
+  "capability": "system.reliability.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "perfmon.exe",
+   "args": [
+    "/rel"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.environment-variables.open",
+  "capability": "system.environment-variables.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "rundll32.exe",
+   "args": [
+    "sysdm.cpl,EditEnvironmentVariables"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.remote-desktop.settings",
+  "capability": "system.remote-desktop.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:remotedesktop"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Hosting requires Pro/Enterprise editions.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.troubleshoot.open",
+  "capability": "system.troubleshoot.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:troubleshoot"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.help.open",
+  "capability": "system.help.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-contact-support:"
+  },
+  "fidelity": "exact",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:system.developer.settings",
+  "capability": "system.developer.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:developers"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.restore-point.create",
+  "capability": "maintenance.restore-point.create",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "powershell",
+  "spec": {
+   "script": "Checkpoint-Computer -Description {{description}} -RestorePointType MODIFY_SETTINGS; 'created'"
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "System Protection must be on; Windows limits restore points to one per 24h by default.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.system-restore.open",
+  "capability": "maintenance.system-restore.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "rstrui.exe",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.recovery.settings",
+  "capability": "maintenance.recovery.settings",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "uri",
+  "spec": {
+   "uri": "ms-settings:recovery"
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.file-history.open",
+  "capability": "maintenance.file-history.open",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "control.exe",
+   "args": [
+    "/name",
+    "Microsoft.FileHistory"
+   ]
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.system-files.repair",
+  "capability": "maintenance.system-files.repair",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "sfc.exe",
+   "args": [
+    "/scannow"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.image.repair",
+  "capability": "maintenance.image.repair",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "dism.exe",
+   "args": [
+    "/Online",
+    "/Cleanup-Image",
+    "/RestoreHealth"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Downloads repair files from Windows Update.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.disk.check",
+  "capability": "maintenance.disk.check",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "run",
+  "spec": {
+   "file": "chkdsk.exe",
+   "args": [
+    "{{drive}}"
+   ]
+  },
+  "fidelity": "exact",
+  "elevation": "admin",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "Read-only scan; repairs (/f) are not issued.",
+  "evidence": "authored"
+ },
+ {
+  "id": "windows:maintenance.memory.test",
+  "capability": "maintenance.memory.test",
+  "platform": "windows",
+  "preference": 1,
+  "strategy": "launch",
+  "spec": {
+   "file": "mdsched.exe",
+   "args": []
+  },
+  "fidelity": "handoff",
+  "elevation": "none",
+  "os": [
+   "10",
+   "11"
+  ],
+  "note": "The user chooses to restart now or at next boot.",
+  "evidence": "authored"
+ }
+]
