@@ -253,3 +253,15 @@ Real user interactions are an additional validation stream, not automatic ground
 Default continuous observation toward structural/semantic metadata rather than indiscriminate capture of prompt text, responses, uploaded documents, credentials, or unrelated personal content.
 
 Nothing important should exist only for the mirror if it is intended to graduate into Ω. Provider-Lab mechanisms earn promotion through proof and generalization pressure.
+
+## Harvest-first engineering mandate
+
+Before substantial new mechanism design or implementation, apply `HARVEST-FIRST-ENGINEERING.md`.
+
+Search for existing working solutions and evidence across the current Ω baseline, historical VIVIM/BCP material, GitHub, relevant package ecosystems, browser-extension ecosystems, research prototypes, reference implementations, tests, and other appropriate sources.
+
+Do not produce link dumps. Assay the strongest candidates and decide explicitly whether to reuse directly, adapt, wrap, port, behaviorally reimplement, use as research evidence only, or reject.
+
+Preserve provenance and licensing/security awareness. Marketplace availability or locally accessible source does not imply permission to copy it into Ω.
+
+Scale harvest effort with expected implementation cost, uncertainty, external coupling, and architectural leverage. The objective is faster validated progress, not research ceremony or originality.
