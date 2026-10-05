@@ -17,3 +17,16 @@ For important claims be able to trace:
 A Minimum Viable Product is the smallest product slice that is genuinely useful and truthfully works for a real user. Minimum reduces surface; it does not lower the evidence standard. If one live seam blocks a promising MVP, the correct next product work may be the smallest unblocker experiment rather than a larger simulated product.
 
 **Promotion is proof, not confidence.**
+
+## Shadow and differential evidence
+
+Normal human interaction observed in Provider Lab Shadow mode is valuable **live reference evidence**, but it is not automatically proof that an automated realization is correct.
+
+Useful distinctions include:
+- **manual-live evidence** — the user successfully performed the provider action;
+- **observational mapping** — the Lab inferred a semantic capability/state transition from that action;
+- **automated-live evidence** — the realization performed the capability against the real provider;
+- **differential evidence** — manual and automated executions reached meaningfully equivalent semantic outcomes;
+- **regression/conformance evidence** — repeated tests continue to satisfy the expected capability contract.
+
+A manual trace can reveal the right behavior and falsify an outdated model. Promotion of an automated realization still requires its own evidence.
