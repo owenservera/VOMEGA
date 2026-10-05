@@ -203,3 +203,20 @@ This does not freeze the long-term Ω surface architecture.
 Read it when worker context reconstruction, review quality, or parallel development memory becomes a material bottleneck.
 
 Do not instantiate the network merely because large-context lanes exist. The hypothesis should earn implementation through measured experiments.
+
+
+## Semantic interaction design program
+
+For the current owner-directed semantic/UI design work, read these together:
+
+- **SEMANTIC-DATA-ENGINE.md** — the shared identity/data substrate from source-native declarations through World, command, VisualSpec and Wiki;
+- **COMMAND-VISUAL-LANGUAGE-DESIGN.md** — the visual language and semantic-feedback principles;
+- **MVP-VISUALIZATION-SANDBOX.md** — the exact development-only first-product simulation to build and inspect visually;
+- **AUTOMATED-SEMANTIC-EXPERIMENTS.md** — the test/experiment program for refining language, grounding, visual projection and Wiki behavior;
+- **SELF-DESCRIBING-RUNTIME-WIKI.md** — the source-native self-knowledge architecture;
+- **SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md** — the migration/conformance utility for bringing current Ω code under that architecture;
+- **SEMANTIC-RUNTIME-LAB.md** — the broader programmable laboratory in which these components can compete and evolve.
+
+These are design/proof inputs for the autonomous project. They do not replace the live `.project/roadmap/` until Coordination deliberately adopts tasks from them.
+
+The external OS-taxonomy candidate and `harvests/old-vivim/symbolic` should be treated as evidence sources: harvest reusable semantics and falsifiers, but do not silently promote historical/candidate mechanisms into Ω law.
