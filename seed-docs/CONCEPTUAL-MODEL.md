@@ -26,6 +26,9 @@ This preserves a vocabulary for reasoning about VIVIM. It is not a database sche
 **Configuration** — user-owned choices about behavior, presentation, routing, attention, retention, automation, or policy.
 **Composition** — combining capabilities, things, surfaces, triggers, data, and policy.
 **Plugin** — explicit replaceable contribution boundary.
+**Self-description** — derived, source-bound description of what Ω and its loaded contributions are, expose, require and currently know; descriptive, never authority.
+**Reflection** — the machine-readable read-only projection by which loaded core/plugin structure, schemas, relationships and source anchors become inspectable.
+**Contextual Wiki** — ephemeral human-facing projection of Reflection plus current registry/evidence/interpretation state; not a separately authored knowledge authority.
 **Forge** — ability to create, modify, compose, repair, replace, and evolve governed capabilities/surfaces.
 
 A useful reasoning chain is:
@@ -33,6 +36,6 @@ A useful reasoning chain is:
 
 This is not an implementation pipeline.
 
-Protect useful distinctions: reality ≠ representation; evidence ≠ authority; intent ≠ execution; capability ≠ realization; provider ≠ account; account ≠ session; discovery ≠ routing; routing ≠ authority; memory ≠ context; Work ≠ worker; World ≠ surface; Space ≠ World; confidence ≠ proof.
+Protect useful distinctions: reality ≠ representation; evidence ≠ authority; intent ≠ execution; capability ≠ realization; provider ≠ account; account ≠ session; discovery ≠ routing; routing ≠ authority; memory ≠ context; Work ≠ worker; World ≠ surface; Space ≠ World; confidence ≠ proof; self-description ≠ authority; source commentary ≠ evidence; Wiki projection ≠ canonical truth.
 
 Candidate human verbs: See · navigate · focus · inspect · address · ask · create · connect · configure · run · delegate · approve · refuse · verify · remember · replay · recover · share · export · forge.
