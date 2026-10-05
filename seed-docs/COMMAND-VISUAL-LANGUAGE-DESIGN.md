@@ -8,6 +8,8 @@ Scope: product interaction blueprint and conceptual protocol; no implementation 
 
 The owner requested a real-time visual feedback system for natural-language commands: a suite of UI and interaction tools that exposes what VOMEGA has interpreted and lets the person guide it. The owner explicitly added icons and other visual elements as tooling, including a computer marker for Windows commands versus an AI identity when interacting with an AI service.
 
+The owner further requires reprogrammability and customization, including simple replacement of one icon library with another (section 13).
+
 Those are owner-directed requirements. The particular marks, colors, layouts, timing, fields and examples below are candidate designs developed in conversation. Recording them does not freeze a schema, select a UI framework, establish new authority, or claim that the owner has approved every proposed treatment.
 
 This document elaborates [First Product Release Design](FIRST-PRODUCT-RELEASE-DESIGN.md), especially sections 3, 6, 12–17 and 22. It follows [Vision](VISION.md) and [Invariants](INVARIANTS.md). The existing [floating shell workstream](../.project/roadmap/workstreams/WS-SHL-floating-shell.md) is an integration point, not evidence that these interactions exist.
@@ -239,6 +241,69 @@ Record prediction accuracy, correction success, disruption and task completion. 
 
 Next: compare a small number of treatments using the same realistic tasks, record what fails, and revise this document. Harvest existing editor/annotation/accessibility mechanisms before building a custom one. No spatial canvas, large dashboard, generalized Windows automation or new mandatory release gate is established here.
 
-## 13. Change record
+## 13. Reprogrammability and customization
+
+**Owner requirement:** this visual system must adhere to Ω's reprogrammability and customization principles. It should be simple to swap one icon library for another. This applies to the interaction language as a whole, not only its colors or decorative assets.
+
+The exact mechanisms below are proposals. The requirement is a replaceable, user-customizable surface whose semantics and governed behavior survive replacement.
+
+### Separate meaning from its visual realization
+
+Semantic identity, command state and available actions must not depend on an icon library, component framework or theme. The shared system describes what an object means and what can be done; a replaceable presentation mapping determines how it appears.
+
+For example, a conceptual role such as `device.computer` can map to one library's monitor symbol, another library's laptop symbol, or a user-supplied asset. That mapping does not change the selected device, command, authority or evidence. These role names illustrate the boundary; they do not establish a new mandatory schema.
+
+The candidate underline, circle and badge treatments in section 4 are defaults to test, not permanent universal glyph assignments. A selected visual profile should remain internally consistent and explainable while being replaceable.
+
+### Customization surfaces
+
+| Surface | What should be replaceable or configurable | What must survive |
+| --- | --- | --- |
+| Icon assets | Library, pack, individual semantic-role overrides, provider artwork | Entity identity, accessible label, action binding |
+| Visual styling | Color, typography, contrast, size, spacing and motion | Legibility and distinguishable states |
+| Annotation grammar | Underline, enclosure, badge or other treatment for each semantic role/state | Meaning and inspectable scope |
+| Layout and disclosure | Compact/expanded arrangement, information density, help placement | Access to consequential targets, assumptions and effects |
+| Interaction bindings | Supported shortcuts, menu placement and gestures mapped to commands | Explicit behavior, command parity and authority checks |
+| Renderers/components | Replaceable visual handles or interaction components | Projection inputs, semantic outputs and continuity |
+
+Interaction reprogramming can intentionally change what a gesture invokes. Such a change must be inspectable and use ordinary semantic command and authorization machinery. Cosmetic replacement must never silently change behavior. A new capability is a governed extension, not permission hidden inside an icon pack.
+
+### Simple icon-library replacement
+
+The intended user journey is: select an installed compatible icon pack, preview representative command states, apply it, and revert if desired. The same change should be expressible through the semantic command system once customization is exposed as a product action.
+
+A successful replacement should not require editing individual components, changing business logic, rebuilding the command model, migrating Accounts, or losing a draft. Adding a previously unsupported library may require one reusable adapter or mapping; choosing between compatible installed packs should be an ordinary preference change.
+
+Keep library-specific asset names/imports at the replaceable presentation boundary. Semantic objects and persisted commands should not contain those imports or rely on a particular pack's naming convention.
+
+Missing icons should degrade to a known generic marker plus a concrete text label. Pack failure or removal must not leave an unlabeled control, corrupt meaning, or require the missing library to understand historical commands. Replacing provider artwork must still preserve explicit Provider and Account labels.
+
+### User ownership and continuity
+
+Customization should be locally owned, inspectable, persistent, exportable/importable and resettable. Preserve preferences across compatible renderer or library upgrades. Surface incompatible mappings and retain recoverability rather than silently discarding user choices.
+
+A candidate precedence model is built-in defaults, selected profile, then explicit user overrides. Its exact scope and storage are open; avoid competing hidden defaults. Keep presentation preferences distinct from canonical commands, identity and execution history.
+
+Preview changes against unresolved, unavailable, unauthorized, running, partial, failed and completed states. Users may change the expression of those states, but the system must retain access to their actual meaning and must not manufacture evidence or authority. Customization may change display density; it must preserve access to material command facts and accessible controls.
+
+### Small replacement proof
+
+During the first visual prototype, exercise two materially different icon packs through the same semantic mappings. Do not build a marketplace or broad theme framework first.
+
+Verify:
+
+- switching packs requires no command/resolver/business-logic edits;
+- the same target, Account, command meaning and action binding survive;
+- a per-role user override works without forking the whole pack;
+- absent assets fall back to an accessible, labeled representation;
+- switching preserves the current draft and never triggers execution;
+- restart retains the preference and reverting restores the previous presentation;
+- keyboard and screen-reader operation remain usable with either pack.
+
+This is a proposed proof of the owner's replacement requirement, not a claim that customization exists today. Apply the same boundary to future annotation, layout and interaction customization as real use cases justify it. Reprogrammability must be considered from the first design; the breadth of the first customization UI remains an MVP decision.
+
+## 14. Change record
 
 - **2026-10-05:** Captured the owner's command-feedback brief and explicit icon/tooling addition. Recorded candidate visual grammar, semantic distinctions, interaction protocol, examples, conceptual projection contract, first experiments and open questions. Documentation only; implementation and usability remain unproven.
+
+- **2026-10-05, customization follow-up:** Added the owner's reprogrammability requirement, replaceable visual/interaction mappings, semantic-role icon indirection, portable preferences, fallback behavior, and a two-pack replacement experiment. Specific mechanisms remain proposals; no implementation claimed.
