@@ -13,3 +13,19 @@ These areas are likely to reward research, competing proposals, experiments, ext
 - **Autonomous development:** multi-agent fan-out/fan-in, context allocation, durable development memory, truth layers, independent review, triggers, workflow economics, congestion, model escalation, telemetry, whether orchestration improves delivery.
 
 Prefer questions with falsifiers. Preserve competing hypotheses. Historical BCP-dev is evidence/search lead, not authority. Refresh time-sensitive external facts.
+
+## Provider Lab research questions
+
+The Provider Lab itself creates a useful research frontier:
+- Which browser observations are sufficient to infer semantic state without over-capturing user content?
+- How should manual interaction traces be clustered into capability candidates?
+- Which differences between manual and automated traces matter semantically?
+- How can drift be detected before a realization fails?
+- What evidence is sufficient to promote a repaired realization?
+- Which provider knowledge belongs in shared substrate versus provider-specific packs?
+- How should usage frequency influence capability prioritization without becoming hidden product policy?
+- How can continuous Shadow mode remain locally private, bounded, and cheap enough to leave enabled?
+- Which extension/browser boundaries are too weak and require external local instrumentation?
+- What second/third provider best falsifies the current abstraction?
+
+Treat these as experiment targets, not requirements for a particular extension architecture.
