@@ -84,6 +84,46 @@ Read in this order:
 6. [MODEL-ROUTING.md](MODEL-ROUTING.md) — current OpenAI/Anthropic model hierarchy, scarcity policy, and workstream routing.
 7. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
 
+## Canonicality and freshness
+
+The launch overlay deliberately separates **policy/topology** from **live runtime state**.
+
+Use these sources for different questions:
+
+- `STATUS.md` — **only mutable launch-state surface**: who has claimed what, current runtime pool observations, blockers, current fan-in readiness.
+- `launch-manifest.json` — machine-readable topology, workstream ownership, interface locks, routing policy defaults and triggers. It is not proof that a model/harness is currently reachable.
+- `MODEL-ROUTING.md` — model/harness selection policy and current external research. It is not the current account quota/availability ledger.
+- `FIRST-WAVE.md` — launch procedure and bounded first tasks. It must consume runtime discoveries from STATUS rather than treating historical provider wiring as fixed capacity.
+- `SITREP.md` — project-level summary and pointers. It should not duplicate detailed per-agent launch state.
+- `COMMONS.md` — durable handoffs/history. Historical entries may describe earlier runtime assumptions and should not be mistaken for current STATUS.
+
+### Fresh-check rule
+
+Before a fresh local agent interprets contradictions among launch documents:
+
+1. record local `HEAD`;
+2. compare it with `origin/main`;
+3. inspect local uncommitted work;
+4. if the checkout is clean and behind, fast-forward before diagnosing documentation inconsistency;
+5. if it is dirty/diverged, preserve the work and report the divergence rather than pulling blindly.
+
+A finding about a missing link, task state, model or harness is valid only against the exact source HEAD it read.
+
+### Runtime-resource rule
+
+The project no longer assumes that a historical provider/account layout equals current execution capacity.
+
+DEV discovers the current effective local pool at launch:
+
+- harness;
+- effective model or router;
+- available concurrency;
+- quota/allowance information when safely observable;
+- permissions/modes;
+- whether the worker can actually complete a bounded probe.
+
+Provider/auth/model configuration remains read-only unless the owner explicitly requests a change.
+
 ## The nine launch workstreams
 
 | ID | Workstream | Core responsibility |
