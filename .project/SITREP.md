@@ -7,9 +7,7 @@ reconnaissance read the complete seed corpus at bootstrap and traced executable 
 The first local continuity/isolation slice is implemented and verified; it is not
 yet a provider-webapp beta.
 
-Current objective: make selected local Vault state persistent, isolated and
-verifiable through the existing governed CLI, then prove one live browser/account
-observation without confusing fixture captures with provider evidence.
+Current objective: advance the smallest evidence-bearing slices of the current release mission while keeping strategy open. The active convergence is the semantic Lab/product-twin path plus the independent live Provider/Account path; select concrete next work from current evidence, META-TRACKER and agentic-launch/STATUS rather than replaying an old launch sequence.
 
 Installation is repaired: the manifest no longer requires omitted workspaces;
 the lockfile prunes only absent workspace records. Global tool/auth settings were
@@ -27,13 +25,9 @@ binding. Durable Work is absent despite stale composition grants. Broad tests
 and old architectural gates depend on omitted tooling/examples/fixtures. The web
 surface is an API backend with unguarded root endpoints, not a productized UI.
 
-Codex, Git, Node, Bun, Chrome, alternate Claude and bundled ZCode are installed.
-Five Space Bunny lanes are configured; no live model execution was established.
-Use explicit executable routes in [ENVIRONMENT.md](ENVIRONMENT.md).
+Codex, Git, Node, Bun, Chrome, Claude and ZCode are present in the recorded environments. The later DEV-L1 launch proved at least six bounded ZCode workers on `openrouter/auto`; the five Space Bunny lanes remain historical/configuration evidence rather than fixed scheduling slots. Use [ENVIRONMENT.md](ENVIRONMENT.md) and current launch status for machine-specific truth.
 
-Next actions: preserve honest broad-suite blockers; probe the available browser
-transport and Account evidence read-only; compare a
-scoped export-import alternative if browser access cannot be proven.
+Next actions are deliberately selected from evidence rather than fixed here: preserve honest blockers, close whichever current semantic/Lab or live Provider/Account dependency yields the highest validated progress, and re-rank when new evidence changes the problem.
 
 Detailed truth: [REALITY.md](REALITY.md), [RELEASE-GYM.md](RELEASE-GYM.md),
 [DECISIONS.md](DECISIONS.md), [COMMONS.md](COMMONS.md), and
@@ -66,23 +60,20 @@ It is placed but not yet adopted: no roadmap task is claimed, and the "Next acti
 
 ## Local agentic team launch update
 
-The owner has asked that the next development phase launch as a coordinated local multi-agent program.
+The first bounded fan-out has already completed. It produced candidate Locks A–D, an EXP baseline, Provider-reality reconnaissance and an independent TRU review. Those artifacts are evidence and interoperability hypotheses, not architecture to freeze.
 
-The execution overlay is now at [agentic-launch/README.md](agentic-launch/README.md).
+Future launches are derived from the current meta-program state and evidence. There is **no permanent executor topology** and no requirement to recreate the original five-lane first wave.
 
-It does not replace the release roadmap. It regroups current and newly designed work into low-handoff ownership boundaries and defines the first parallel fan-out across the local heterogeneous pool.
+Daintree and ZCode are separate habitats:
 
-Immediate launch order:
+- Daintree may manage Git worktrees, Review Hub and supported CLI-agent panels such as Claude Code/Codex/Grok where locally available.
+- Daintree does **not** launch, supervise or manage ZCode.
+- ZCode runs its own worker/session system and may be used as a high-throughput workhorse independently.
+- When both are active, coordination occurs through Git/worktrees, task artifacts, STATUS and durable evidence — not through Daintree controlling ZCode.
 
-1. DEV-L1 verifies ZCode/Codex/Claude execution reality and task isolation without changing provider/auth configuration.
-2. TRU-L1 establishes independent launch falsifiers/proof boundaries.
-3. Dispatch SDW-L1, LNC-L1, VFX-L1, SKW-L1 and EXP-L1 in parallel across healthy ZCode lanes.
-4. Run PRV-L1 read-only transport/Account reconnaissance in parallel when safe.
-5. Start RTE-L1 on the first suitable available executor.
-6. Fan in on Locks A–D to produce one integrated replayable semantic MVP scenario; Provider live proof remains a parallel independent track.
+The SDW/LNC/VFX/SKW/EXP/PRV/RTE/DEV/TRU lanes remain useful temporary ownership vocabulary. They may be merged, split or bypassed when a different decomposition better serves the current evidence-bearing goal. Likewise, Locks are temporary compatibility points: stabilize enough to let teams interact, then keep them falsifiable.
 
-No team is claimed or implied running merely because the launch files exist.
-
+No agent, lane, worktree or habitat is implied active unless current STATUS/evidence says so.
 
 ## Complete meta-program map
 
