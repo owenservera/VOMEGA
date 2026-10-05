@@ -73,6 +73,8 @@ Truth handoff: checked against current first-release scope and repository instru
 
 Coordination request: owner requires the visual system to adhere to reprogrammability and customization principles; swapping icon libraries must be simple.
 
-Owner: ChatGPT design session. Status: claimed; documentation only. Bounded ownership: the command visual language design and this Commons entry.
+Owner: ChatGPT design session. Status: documented and handed off. Bounded ownership: the command visual language design and this Commons entry.
 
-Next action: document replaceable presentation and interaction mappings, semantic invariants, portable preferences, and a concrete icon-library replacement experiment. Implementation mechanism remains open.
+Product / Research handoff: section 13 of the visual language design now records replaceable presentation and interaction mappings, semantic invariants, portable preferences, and a concrete two-library replacement experiment. Commit: `a0dfbd2fb133e362abc98b2f2502acde6935eccc`. Next action: validate the replacement boundary in the first visual prototype; implementation mechanism remains open.
+
+Truth: documentation change only; no icon integration, runtime behavior or customization tests claimed.
