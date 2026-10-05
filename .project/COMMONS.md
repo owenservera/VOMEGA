@@ -79,3 +79,16 @@ Owner: ChatGPT design session. Status: documented and handed off. Bounded owners
 Product / Research handoff: section 13 of the visual language design now records replaceable presentation and interaction mappings, semantic invariants, portable preferences, and a concrete two-library replacement experiment. Commit: `a0dfbd2fb133e362abc98b2f2502acde6935eccc`. Next action: validate the replacement boundary in the first visual prototype; implementation mechanism remains open.
 
 Truth: documentation change only; no icon integration, runtime behavior or customization tests claimed.
+
+
+## Semantic Runtime Laboratory design — 2026-10-05
+
+Coordination request: owner clarified that the command/visual work needs a standalone, expandable laboratory database for taxonomy, language-to-machine interpretation, deterministic executables, virtual Ω runtime tests, UI feedback experiments, and structured landing of harvested knowledge — without requiring VIVIM itself.
+
+Owner: ChatGPT design session. Status: initial architecture document committed; documentation only.
+
+Bounded file ownership: `seed-docs/SEMANTIC-RUNTIME-LAB.md`, seed index cross-link, visual-language cross-link, and this Commons entry.
+
+Research / Product handoff: the design treats nearly all Lab intelligence as versioned/composable artifacts assembled into pinned Lab Profiles: taxonomy, language, interpretation pipeline, grounding/defaulting, command/capability, World fixtures, deterministic executables, visual/interaction packs, corpus/evaluators, harvest records and governance state. A tiny non-reprogrammable kernel is reserved for identity/lineage, append-only evidence, module loading, isolation, deterministic replay, promotion/rollback and constitutional boundary enforcement.
+
+Truth handoff: this is a development-lab hypothesis, not a claim that the architecture exists or that SQLite/pack formats are selected product architecture. The document explicitly separates Lab adoption from VOMEGA product adoption and preserves evidence ≠ authority, intent ≠ execution, capability ≠ realization, confidence ≠ proof. First proof should be a narrow standalone vertical slice using existing NLCL corpus material, simulated Provider/Account Worlds, deterministic virtual executables, and two replaceable visual/icon treatments.
