@@ -14,7 +14,7 @@ Run the semantic MVP twin and live Provider-reality work in parallel.
 
 | Workstream | First task | State | Dependency needed to start | First major handoff |
 | --- | --- | --- | --- | --- |
-| DEV | DEV-L1 preflight/dispatch | ready / unclaimed | none | healthy pool + merge queue |
+| DEV | DEV-L1 preflight/dispatch | claimed 2026-10-05 (ZCode session sess_673eb8fa) | none | healthy pool + merge queue |
 | TRU | TRU-L1 launch falsifiers | ready / unclaimed | none | independent review framework |
 | SDW | SDW-L1 semantic contract + Worlds | ready / unclaimed | none | Lock A |
 | LNC | LNC-L1 compiler/UseCommand nucleus | ready / unclaimed | none; adapter until Lock A | Lock B |
@@ -38,19 +38,23 @@ Current owner-reported routing change:
 
 ### Runtime observations
 
-| Harness / route | Current state | Evidence needed |
+DEV-L1 preflight executed 2026-10-05 from source HEAD `dffbbe9` (read-only infra; no provider/model/auth change). Evidence: `.local/dev-l1-preflight-2026-10-05.json`.
+
+| Harness / route | Current state | Preflight result |
 | --- | --- | --- |
-| ZCode + `openrouter/auto` | owner-reported current route; live task capacity unverified in repo | bounded read-only/task probe, effective routed-model capture where exposed, concurrency observation |
-| Codex | installed previously; current task capacity to re-check | version/mode + bounded probe |
-| Claude Code | installed/authenticated previously; model execution previously untested | current version/model/mode + bounded probe |
-| Grok Build | owner installing / candidate | `grok version`, `grok inspect`, bounded comparison task |
-| deterministic local tools | known substrate; versions may drift | record exact versions with proof |
+| ZCode + `openrouter/auto` | confirmed current route (ListModels `[current]`; cli `model_usage` provider=openrouter, model=openrouter/auto, mode=yolo) | reachable; **>=6 concurrent independent workers measured** on the route; concrete resolved model not exposed -> router-selected/unknown |
+| Codex | installed | `codex-cli 0.160.0`, reachable |
+| Claude Code | installed | `2.1.289 (Claude Code)` at `~/.local/bin/claude.exe`, reachable |
+| Grok Build | installed | `grok 1.0.46` at `~/.grok/bin/grok.exe`, binary reachable; not set up or configured |
+| deterministic local tools | known substrate | Bun 1.4.2, Node v24.11.1 |
+
+Measured concurrency (>=6) already supersedes the historical five-lane assumption. Ceiling not established; no throttle observed at 6 concurrent workers.
 
 ## First fan-out
 
 Preferred initial occupancy is now **capacity-driven**, not account-driven.
 
-If ZCode/OpenRouter Auto safely supports five independent workers, SDW/LNC/VFX/SKW/EXP remain the natural first five tasks. If actual concurrency is lower, DEV dispatches the highest-unlocking tasks first: SDW → LNC → SKW/EXP/VFX as adapters permit.
+DEV-L1 measured >=6 concurrent ZCode workers on `openrouter/auto`, so the full natural first five (SDW/LNC/VFX/SKW/EXP) plus PRV-L1 reconnaissance is supportable in parallel; TRU-L1 independent review takes the first freed slot (or a separate harness) rather than exceeding measured capacity. These are logical task slots on one router, not six provider accounts or six distinct underlying models.
 
 Codex remains a strong DEV/integration + PRV candidate, Claude Code a strong independent TRU candidate, and Grok Build an additional candidate once verified.
 

@@ -195,3 +195,43 @@ Supersedes the earlier launch shorthand `five ZCode lanes → SDW/LNC/VFX/SKW/EX
 Owner reports ZCode now uses OpenRouter Auto (`openrouter/auto`). The five previously configured Space Bunny accounts remain historical/configuration evidence, not guaranteed current worker slots. DEV must discover actual safe concurrency and effective routed models at runtime. Logical task slots A–E remain useful, but they are not provider-account identities.
 
 `STATUS.md` is the only mutable launch-state surface; historical Commons entries are not current runtime inventory.
+## DEV-L1 launch preflight — 2026-10-05
+
+Coordination request: owner directed remote sync + DEV-L1 preflight + capacity-driven first-wave dispatch. Owner is the launch authority; DEV is the temporary executor, not permanent master.
+
+Owner / accountable room: DEV / Coordination (ZCode session `sess_673eb8fa-9703-4e47-9e12-ca871b3dab57`).
+
+Source HEAD: local fast-forwarded `88165de..dffbbe9` (`dffbbe91cc7d3458bcefd8db86de9df5e6bb13fe`); clean tree; single worktree. Note: remote has `refs/heads/main` only — there is no `master` ref.
+
+Preflight result (read-only; no provider/model/auth change):
+
+- ZCode current route confirmed `openrouter/openrouter/auto` (ListModels `[current]`; cli `model_usage` provider=openrouter, model=openrouter/auto, variant=enabled, mode=yolo).
+- Concrete resolved underlying model is **not exposed** by the harness -> recorded as router-selected/unknown, per MODEL-ROUTING policy.
+- **Measured safe concurrency >=6** concurrent independent ZCode workers on the route (probe rounds of 4 then 6; all completed; all recorded on openrouter/auto). Ceiling not established; no throttle at 6. This supersedes the historical five-lane assumption.
+- Reachable harnesses: Codex `0.160.0`; Claude Code `2.1.289`; Grok Build `1.0.46` (binary runs, not configured); Bun 1.4.2; Node v24.11.1.
+- Historical Space Bunny lanes remain selectable configuration, not current scheduling topology.
+
+Evidence: `.local/dev-l1-preflight-2026-10-05.json` (gitignored). Sanitized summary committed with the STATUS.md launch-state update.
+
+Dispatch: capacity-driven first wave on measured >=6 capability. See "DEV-L1 first-wave dispatch" below for roster and per-task routed-model record. TRU-L1 queued for the first freed slot or a separate harness rather than exceeding measured capacity.
+
+Truth: preflight proves reachability and measured concurrency only. It does not claim any dispatched worker succeeded, that the five Space Bunny accounts are live, or that openrouter/auto is a fixed model. Fixture/simulated results must not be reported as live provider evidence.
+
+### DEV-L1 first-wave dispatch — 2026-10-05
+
+Dispatched 6 concurrent ZCode workers on the measured >=6 capacity (route `openrouter/auto`; concrete underlying model not exposed -> router-selected/unknown for every task). Logical task slots, not provider accounts.
+
+| Task | Workstream | Handoff artifact | First deliverable | Routed model (harness-observed) |
+| --- | --- | --- | --- | --- |
+| SDW-L1 | Semantic Data & World | handoffs/SDW-L1.md | Lock A | ZCode / openrouter/auto (unknown resolved) |
+| LNC-L1 | Language & Command Compiler | handoffs/LNC-L1.md | Lock B | ZCode / openrouter/auto (unknown resolved) |
+| VFX-L1 | Visual Feedback & Sandbox | handoffs/VFX-L1.md | Lock C | ZCode / openrouter/auto (unknown resolved) |
+| SKW-L1 | Self-Knowledge & Wiki | handoffs/SKW-L1.md | Lock D (read-only) | ZCode / openrouter/auto (unknown resolved) |
+| EXP-L1 | Semantic Lab & Experiments | handoffs/EXP-L1.md | scenario runner + metrics | ZCode / openrouter/auto (unknown resolved) |
+| PRV-L1 | Provider Reality Lab | handoffs/PRV-L1.md | Lock E (read-only assay) | ZCode / openrouter/auto (unknown resolved) |
+
+Each worker: read-only infra, no provider/auth change, no git writes, disjoint write sets (new `omega-baseline/experimental/<ws>/` dirs + own handoff file; LNC additionally within vivim-nlcl/nlcl-pure source). TRU-L1 independent review is queued for the first freed slot or a separate harness (Codex 0.160.0 / Claude Code 2.1.289 available) rather than exceeding measured capacity.
+
+Merge queue: DEV integrates worker handoffs and new-file artifacts; no worker commits. Integration and independent review follow fan-in on Locks A-D + EXP baseline.
+
+Truth: dispatch proves only that 6 workers started concurrently on the route. It does not claim any worker's output is correct, merged, or live-provider-valid.
