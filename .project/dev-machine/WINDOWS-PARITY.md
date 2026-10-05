@@ -27,9 +27,9 @@ Status legend:
 | Item | How Owen verifies |
 | --- | --- |
 | `bootstrap-vomega-dev.ps1` (winget / npm / install scripts, clone to `C:\0-BlackBoxProject-0\VOMEGA`) | run it, then `verify-vomega-dev.ps1 -Full -ProbeModels` |
-| ZCode 3.14.4 as the primary press-go habitat (`C:\Program Files\ZCode`) | verify `habitat:zcode` PASS; `press-go-vomega.ps1` opens it |
-| ZCode ≥6 concurrent bounded workers on `openrouter/auto` | historical measurement; re-measure after press-go |
-| Daintree 0.41.0 Windows installer (secondary habitat) | verify `habitat:daintree` |
+| ZCode 3.14.4 as an independent worker/session habitat (`C:\Program Files\ZCode`) | verify `habitat:zcode` PASS; `press-go-vomega.ps1` can open it |
+| ZCode ≥6 concurrent bounded workers on `openrouter/auto` | historical measurement; re-measure when useful |
+| Daintree 0.41.0 Windows installer as an independent Git-worktree/supported-CLI habitat | verify `habitat:daintree`; **it does not launch/manage ZCode** |
 | Windows config locations (`%USERPROFILE%\.claude` etc.) | verify `auth:*` presence rows |
 | Worktree roundtrip on NTFS | verify `worktree:roundtrip` |
 
