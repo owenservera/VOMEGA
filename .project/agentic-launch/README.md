@@ -76,11 +76,12 @@ The existing task IDs remain valid references and evidence obligations.
 
 Read in this order:
 
-1. [WORKSTREAMS.md](WORKSTREAMS.md) — team missions, ownership boundaries and existing-roadmap mapping.
-2. [DEPENDENCY-GRAPH.md](DEPENDENCY-GRAPH.md) — critical paths, dependency contracts and parallelism.
-3. [FIRST-WAVE.md](FIRST-WAVE.md) — the first dispatch across the local execution pool.
-4. [TEAM-PROMPTS.md](TEAM-PROMPTS.md) — ready-to-use head-of-workstream bootstrap prompts.
-5. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
+1. [STATUS.md](STATUS.md) — current launch state, claims and first fan-in checkpoint.
+2. [WORKSTREAMS.md](WORKSTREAMS.md) — team missions, ownership boundaries and existing-roadmap mapping.
+3. [DEPENDENCY-GRAPH.md](DEPENDENCY-GRAPH.md) — critical paths, dependency contracts and parallelism.
+4. [FIRST-WAVE.md](FIRST-WAVE.md) — the first dispatch across the local execution pool.
+5. [TEAM-PROMPTS.md](TEAM-PROMPTS.md) — ready-to-use head-of-workstream bootstrap prompts.
+6. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
 
 ## The nine launch workstreams
 
