@@ -30,3 +30,11 @@ Every persistent problem domain should treat ecosystem archaeology and prior-art
 R&D may coordinate difficult searches, but the workstream responsible for a mechanism remains responsible for understanding the strongest existing solutions before expensive reinvention.
 
 Where repeated harvest work becomes high-value, create a temporary or persistent Harvest Bench rather than repeatedly starting from zero.
+
+## Development acceleration coverage
+
+Product Development / DevOps Efficiency should watch for repeated development friction and may trial candidates from `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`.
+
+Truth / Quality / Verification should independently challenge claimed speedups: faster activity is not necessarily faster validated delivery.
+
+The project may assign ownership for a Development Reality Layer, experiment farm, worker-routing system, or development cockpit if those capabilities demonstrate persistent cross-workstream leverage. Do not create permanent ownership merely because an experiment exists.
