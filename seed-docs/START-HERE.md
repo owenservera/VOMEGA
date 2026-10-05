@@ -2,7 +2,7 @@
 
 This folder is deliberately small at the project-intent level and deliberately rich at the implementation level: the Ω baseline is already here, but the old agent-development machinery is not.
 
-The purpose of this seed is to let a new ZCode project start from a known Ω implementation and enough durable product context to autonomously determine what to build next.
+The purpose of this seed is to let a fresh autonomous project start from a known Ω implementation and enough durable product context to determine what to build next from current evidence.
 
 ## Read these first
 
@@ -172,3 +172,16 @@ Read `DEVELOPMENT-ACCELERATION-HYPOTHESES.md` when development friction, reconst
 Do not bootstrap every idea.
 
 The document is an experiment menu. Measure the bottleneck first, harvest existing solutions, test the smallest useful accelerator, and keep it only if validated product throughput improves.
+
+
+## First local bootstrap
+
+The owner's first bootstrap run will be executed by **local Codex from the local VOMEGA repository checkout**.
+
+For that first run, the immediate entry point is:
+
+**`CODEX-BOOTSTRAP-START-HERE.md`**
+
+That file is intentionally operational. It tells Codex to inspect this full seed, the Ω baseline, Git/runtime/browser reality, and the heterogeneous development pool; create only the minimum durable development system needed for continuity; run the product-selection machinery; and then begin real product work.
+
+After bootstrap, this general `START-HERE.md` remains the tool-neutral orientation document for fresh Codex, Claude Code, ZCode, or other sessions.
