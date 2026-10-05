@@ -263,8 +263,16 @@ Read first:
 - `.project/ENVIRONMENT.md`
 - all files in `.project/agentic-launch/`
 
+Before interpreting launch-doc inconsistencies:
+- record local HEAD and `origin/main`;
+- inspect local changes;
+- if clean and behind, fast-forward;
+- if dirty/diverged, preserve work and report instead of pulling blindly.
+
+Current owner-reported ZCode route is `openrouter/auto`. Observe it read-only. Do not assume the historical five Space Bunny accounts equal five current workers. Measure actual safe concurrency and record the concrete routed model per task where exposed.
+
 First responsibilities:
-1. verify executor lanes read-only;
+1. verify current executor/harness capacity read-only;
 2. protect provider/auth configuration;
 3. create short-lived task isolation only where needed;
 4. dispatch FIRST-WAVE;
