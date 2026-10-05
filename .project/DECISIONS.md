@@ -43,3 +43,19 @@ Open questions and evidence that would change the plan:
 
 Historical D-ids in comments remain archaeology references. No constitution or
 durable product invariant was changed by these bootstrap implementation decisions.
+
+## Owner product decision — first public release shape
+
+On 2026-10-05 the owner selected the concrete first-release product design documented in `seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md`.
+
+The target is a small floating Windows command box through which the user can:
+- register Provider Accounts in natural language;
+- see evidence-backed capabilities appear as those relationships are established;
+- use the same deterministic semantic command machinery for setup and capability invocation;
+- receive real-time visual interpretation/disambiguation feedback;
+- access contextual Wiki/help grounded in current system capability/account truth;
+- first, send a prompt through any known supported Provider Account.
+
+This supersedes the bootstrap Release Gym treatment of the floating control center as merely a deferred speculative candidate.
+
+It does **not** supersede the current evidence ordering: real browser transport and Account evidence remain immediate blockers to a truthful `prompt.send` release path.
