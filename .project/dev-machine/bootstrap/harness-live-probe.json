@@ -1,0 +1,40 @@
+{
+  "probed_at": "2026-10-05T23:57:47.524546+02:00",
+  "timezone": "Europe/Paris",
+  "claude": {
+    "ok": true,
+    "model_or_unknown": "unknown",
+    "notes": "claude -p 'Reply with exactly: CLAUDE_OK' --output-format text exited 0 in ~7.6s; credentials present"
+  },
+  "codex": {
+    "ok": false,
+    "model_or_unknown": "gpt-6.1-sol",
+    "provider": "openai",
+    "notes": "Auth present and session started (model gpt-6.1-sol) but usage limit hit until 2026-10-06 00:19 local; treat as temporarily unavailable"
+  },
+  "grok": {
+    "ok": true,
+    "model_or_unknown": "grok-4.7",
+    "notes": "grok -p 'Reply with exactly: GROK_OK' --output-format plain --max-turns 1 exited 0; grok models reports logged in with grok.com"
+  },
+  "daintree": {
+    "package": "0.41.0",
+    "status": "install ok installed (restored 2026-10-05 ~23:57 from local deb + apt-get -f)",
+    "path": "/usr/bin/daintree -> /opt/Daintree/daintree",
+    "notes": "Was iHR/half-configured post-reboot; missing libsecret-1-0; fixed without auth mutation"
+  },
+  "opencode": {
+    "ok": true,
+    "version": "1.18.34",
+    "notes": "binary restored 2026-10-06 00:05 CEST via nvm 0.40.3 + Node 22.23.3; provider routes not re-probed"
+  },
+  "zcode": {
+    "ok": false,
+    "notes": "Windows-only; not on Linux PATH"
+  },
+  "kilo": {
+    "ok": true,
+    "version": "7.8.3",
+    "notes": "binary restored with opencode; auth not probed"
+  }
+}
