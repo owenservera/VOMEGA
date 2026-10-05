@@ -43,3 +43,13 @@ Vault/policy regressions. Browser captures and cross-driver CI wrappers are abse
 their suites remain visible in broad tests and are outside the named quick slice.
 Broad failures remain a separate blocked claim.
 After proof, rerank using actual transport/account constraints, not provider count.
+
+## Owner-selected release target after bootstrap cycle
+
+After the bootstrap Gym cycle, the owner selected the **floating Windows command box** as the concrete first public product release target. See `../seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md`.
+
+Therefore the earlier “floating control center / full Lab mirror — defer” row should be read as historical bootstrap-cycle disposition, not current product direction.
+
+The product target is **not** a full Provider Lab mirror. It is a small command surface backed by deterministic semantic commands, Provider/Account registration, evidence-backed capability projection, contextual help, and initially `prompt.send`.
+
+The current highest-value experiment remains real browser/Account observation because it is a prerequisite for truthful provider registration and live prompt execution.
