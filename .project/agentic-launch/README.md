@@ -81,7 +81,8 @@ Read in this order:
 3. [DEPENDENCY-GRAPH.md](DEPENDENCY-GRAPH.md) — critical paths, dependency contracts and parallelism.
 4. [FIRST-WAVE.md](FIRST-WAVE.md) — the first dispatch across the local execution pool.
 5. [TEAM-PROMPTS.md](TEAM-PROMPTS.md) — ready-to-use head-of-workstream bootstrap prompts.
-6. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
+6. [MODEL-ROUTING.md](MODEL-ROUTING.md) — current OpenAI/Anthropic model hierarchy, scarcity policy, and workstream routing.
+7. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
 
 ## The nine launch workstreams
 
