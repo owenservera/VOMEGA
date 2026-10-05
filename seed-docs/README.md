@@ -182,3 +182,11 @@ The document intentionally preserves rich conceptual detail—resident/wave/tran
 Elephants are never canonical truth. Git, source, tests, runtime evidence, and current project truth remain authoritative.
 
 The seed now contains **24 documents**.
+
+## Semantic runtime laboratory
+
+**SEMANTIC-RUNTIME-LAB.md** records the owner-directed design for a standalone VOMEGA language-to-execution testing laboratory: a modular local knowledge engine for taxonomies, language rules, interpretation pipelines, command/capability definitions, virtual Worlds, deterministic executables, visual/interaction packs, corpora, harvested knowledge, experiments, evidence, and promotion history.
+
+The Lab is designed to run without the VIVIM product runtime. It composes pinned **Lab Profiles** so competing NLP, grounding, executable, and visual designs can be replayed against the same scenarios. Everything outside a deliberately tiny constitutional kernel is intended to remain versioned, replaceable, configurable, and experimentally evolvable.
+
+The seed now contains **25 documents**.
