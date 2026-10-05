@@ -264,3 +264,13 @@ For each product cycle, search for the smallest genuinely useful, installable sl
 Keep the visible product surface minimal when possible while allowing deeper architecture to evolve behind it. A tiny real slice is preferable to a broad simulated product.
 
 Use `PRODUCT-JOURNEYS.md` as the outcome space and `PROOF-AND-MATURITY.md` to prevent “minimum” from becoming a lower proof standard.
+
+## Relationship to Provider Lab
+
+The Provider Lab can accelerate the browser/provider capabilities needed by the product anchor without itself becoming the product anchor.
+
+A provider-specific extension mirror may deliberately expose far more provider-native detail than the eventual VIVIM user surface. That is acceptable in the Lab because its purpose is discovery, control, conformance, and healing.
+
+The product should harvest the semantic capability, account/session, realization, evidence, and recovery knowledge that survives testing—not inherit the Lab UI by default.
+
+Shadow observation of normal real provider use is especially useful because it supplies live reference behavior and helps prioritize the provider capabilities that matter in practice.
