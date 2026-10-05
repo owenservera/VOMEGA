@@ -49,6 +49,12 @@ If a lane fails, mark it unavailable and continue with the healthy pool.
 
 Do not repair provider configuration automatically.
 
+## Frontier model routing
+
+Before dispatch, read [MODEL-ROUTING.md](MODEL-ROUTING.md).
+
+Do not assign Astra or Fable as permanent workers. Use GPT-6.1 Sol / Opus 5.5 for serious premium work, Sonnet 5.5 / GPT-6 Luna / Space Bunny for bounded execution, and reserve Astra/Fable for adjudication, hard debugging, browser/computer-use escalation and independent review.
+
 ## 2. Default initial allocation
 
 This allocation is a launch default, not a permanent hierarchy.
