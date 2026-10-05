@@ -175,3 +175,16 @@ Default first occupancy if healthy: five ZCode lanes → SDW/LNC/VFX/SKW/EXP; Co
 Git policy: no permanent workstream branches. Use short-lived task worktrees only when concurrent writes require isolation; one integration queue; delete task branch/worktree after accepted merge.
 
 Truth: this launch overlay is operational design, not proof that ZCode lanes are reachable or that any team has begun execution. DEV-L1 must verify lane health read-only before dispatch; do not alter provider/auth/model configuration.
+## Grok Build / SuperGrok added to local execution mix — 2026-10-05
+
+Owner is installing Grok Build and requested current SuperGrok research plus integration into the local model/harness routing mix.
+
+Current external research: Grok Build is now a first-class coding harness candidate with headless JSON, ACP, worktrees, subagents, workflows, Agent Dashboard, skills/plugins/hooks/MCP, memory, AGENTS.md support, and Claude Code compatibility. Current xAI flagship is Grok 4.7.
+
+Routing disposition: Grok 4.7 joins GPT-6.1 Sol and Claude Opus 5.5 as a premium/frontier-quality workhorse. Astra/Fable remain scarce adjudicators. Grok Build joins ZCode/Codex/Claude Code as a candidate local harness only after read-only local verification.
+
+Usage caution: paid SuperGrok uses one shared weekly pool across products, including Build. Large Grok workflows can fan out heavily and must start with bounded agent budgets until pool cost is measured.
+
+Updated: `.project/agentic-launch/MODEL-ROUTING.md`, `launch-manifest.json`, and `FIRST-WAVE.md`.
+
+Truth: installation/reachability is not yet claimed by repository evidence. DEV must verify `grok version` and `grok inspect` locally; do not modify Grok auth/global config during preflight.
