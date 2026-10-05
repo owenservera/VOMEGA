@@ -109,3 +109,38 @@ Derived layer: a read-only Reflection Graph is assembled automatically from inst
 Product/DevOps next: Coordination should assign a small cross-boundary task to assay the existing `PluginManifest`, contribution `doc` fields, kernel graph/lens machinery and Forge validators, then design the smallest additive Reflection ABI + completeness gate. Do not build a separate Wiki content service.
 
 Truth: architecture remains a hypothesis. No Reflection ABI, Wiki projection, completeness gate or source-link pipeline is claimed implemented. Reflection must stay descriptive only; self-knowledge ≠ authority, source commentary ≠ evidence, description ≠ availability.
+
+## Semantic interaction consolidation / visualization sandbox roadmap seed — 2026-10-05
+
+Coordination request: owner asked to absorb the best lessons from the new `External-temp` OS-taxonomy candidate and `harvests/old-vivim/symbolic`, deepen the semi-designed UI system, articulate the full data→NCL/NLCL→command→visual→Wiki chain, define automated refinement experiments, and design a utility that migrates existing source into self-knowledge/Reflection compliance.
+
+Owner: ChatGPT design session. Status: design documentation landed; **no runtime/code implementation and no External-temp patch application**.
+
+New seed designs:
+
+- `seed-docs/SEMANTIC-DATA-ENGINE.md`
+- `seed-docs/MVP-VISUALIZATION-SANDBOX.md`
+- `seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md`
+- `seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md`
+
+Core refinements were also applied to Invariants, Conceptual Model, Proof & Maturity, First Product Release, Command Visual Language, Semantic Runtime Lab, Self-Describing Runtime Wiki and the CMD/SHL/HLP workstream notes.
+
+Harvest disposition:
+
+- old `lang.ts`, `types.ts`, `interpret.ts`, `recognize.ts`, `grammar.ts` are byte-identical to current baseline copies — provenance/research value, no re-import needed;
+- old self-knowledge/symbolic notes reinforce Wiki-as-projection, plugin-native self-description and `?` introspection;
+- large SVG chat is research evidence only; historical claims conflicting with current invariants are not adopted;
+- OS taxonomy is a high-value Lab/generalization benchmark: harvest capability/realization separation, typed params, fidelity/evidence maturity, coverage corpus and deterministic planning;
+- do not canonize risk-in-op identity (`os.r/m/x.*`) or treat all 305 authored Windows realizations as verified.
+
+Architecture handoff: the primary design path is now **source-native semantics → Reflection/Semantic Data Engine → World → InterpretationSession/NCL → UseCommand/validation → VisualSpec → contextual Wiki**. Provider ≠ Account ≠ Model ≠ Session. Consequence ≠ authority. Fidelity ≠ evidence maturity. Semantic identity should not encode current policy.
+
+Local-agent roadmap seeds:
+
+- `VSX-01…VSX-12` — three-provider MVP Visualization Sandbox;
+- `EXP-01…EXP-12` plus `EXP-A…EXP-G` — automated semantic/language/visual/Wiki experiments;
+- `REF-01…REF-12` — Reflection Migrator and codebase compliance.
+
+Coordination should reconcile these into the live roadmap rather than treating the seed IDs as automatically adopted.
+
+Truth: documentation/design evidence only. No VisualSpec vNext implementation, sandbox renderer, Reflection extractor, Wiki runtime, Model routing implementation, provider automation, Windows realization verification, or experiment engine is claimed complete.
