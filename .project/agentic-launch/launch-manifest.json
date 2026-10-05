@@ -54,7 +54,23 @@
         "AGENTS.md",
         "Claude Code compatibility"
       ]
-    }
+    },
+    "runtimeDiscoveryRequired": true,
+    "zcode": {
+      "currentOwnerReportedRoute": "openrouter/auto",
+      "state": "owner-reported; verify in DEV-L1",
+      "historicalConfiguredLanes": [
+        "Owen",
+        "OpenCode acct 2",
+        "OpenCode acct 3",
+        "OpenCode acct 4",
+        "OpenCode acct 5"
+      ],
+      "historicalLanesAreCapacityAssumption": false,
+      "concurrency": "measure at runtime",
+      "actualModelAttribution": "capture routed model per run where exposed; otherwise mark router-selected/unknown"
+    },
+    "configured_zcode_lanes_status": "historical configuration evidence; not current scheduling topology"
   },
   "interfaceLocks": [
     {
@@ -704,6 +720,22 @@
       ],
       "usage": "paid SuperGrok uses one shared weekly allowance across products; verify remaining percentage in account UI",
       "workflowPolicy": "start with small agent budgets; measure weekly-pool cost before scaling fan-out"
+    },
+    "openrouterAuto": {
+      "role": "dynamic bulk/bounded routing option in ZCode",
+      "configuredId": "openrouter/auto",
+      "underlyingModel": "dynamic; record per run where exposed",
+      "useFor": [
+        "bulk bounded work",
+        "empirical worker routing",
+        "cost/quality adaptive tasks"
+      ],
+      "avoidFor": [
+        "controlled model A/B",
+        "named frontier adjudication",
+        "exact model attribution"
+      ],
+      "configRule": "do not change cost tier/provider restrictions during preflight without owner request"
     }
   }
 }
