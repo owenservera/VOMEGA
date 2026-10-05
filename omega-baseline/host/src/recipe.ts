@@ -98,6 +98,17 @@ function parseManifest(text: string): PluginManifest {
 
 export interface CompileResult { recipe: Recipe; buildDir: string }
 
+/** Bind an explicitly selected store before signing; portable ${TMP} configs stay verbatim. */
+function compileConfig(config: Record<string, unknown>, vaultDir: string): Record<string, unknown> {
+  const dataDir = config.dataDir;
+  if (typeof dataDir !== "string") return config;
+  if (dataDir === "${VAULT}") return { ...config, dataDir: resolve(vaultDir) };
+  if (dataDir.startsWith("${VAULT}/") || dataDir.startsWith("${VAULT}\\")) {
+    return { ...config, dataDir: resolve(vaultDir, dataDir.slice("${VAULT}".length + 1)) };
+  }
+  return config;
+}
+
 export function compileComposition(
   spec: CompositionSpec, specDir: string, vaultDir: string,
   rootKey: { keyId: string; publicKey: string; privateKeyPem: string },
@@ -130,7 +141,7 @@ export function compileComposition(
       contentHash,
       grant: se.grant,
       bootPhase: se.bootPhase,
-      ...(se.config ? { config: se.config } : {}),
+      ...(se.config ? { config: compileConfig(se.config, vaultDir) } : {}),
     });
   }
   const unsignedRecipeObj = {

@@ -12,47 +12,6 @@
       "name": "@vivim/omega-contracts",
       "version": "0.1.0",
     },
-    "examples/plugin-counter": {
-      "name": "@vivim/plugin-plugin-counter",
-      "version": "0.1.0",
-      "dependencies": {
-        "@vivim/omega-contracts": "workspace:*",
-        "@vivim/omega-shim": "workspace:*",
-      },
-    },
-    "examples/plugin-crashy": {
-      "name": "@vivim/plugin-plugin-crashy",
-      "version": "0.1.0",
-      "dependencies": {
-        "@vivim/omega-contracts": "workspace:*",
-        "@vivim/omega-shim": "workspace:*",
-      },
-    },
-    "examples/plugin-echo": {
-      "name": "@vivim/plugin-plugin-echo",
-      "version": "0.1.0",
-      "dependencies": {
-        "@vivim/omega-contracts": "workspace:*",
-        "@vivim/omega-shim": "workspace:*",
-      },
-    },
-    "examples/plugin-notes": {
-      "name": "@vivim/plugin-plugin-notes",
-      "version": "0.1.0",
-      "dependencies": {
-        "@vivim/omega-contracts": "workspace:*",
-        "@vivim/omega-platform": "workspace:*",
-        "@vivim/omega-shim": "workspace:*",
-      },
-    },
-    "examples/plugin-risky": {
-      "name": "@vivim/plugin-plugin-risky",
-      "version": "0.1.0",
-      "dependencies": {
-        "@vivim/omega-contracts": "workspace:*",
-        "@vivim/omega-shim": "workspace:*",
-      },
-    },
     "host": {
       "name": "@vivim/omega-host",
       "version": "0.1.0",
@@ -437,21 +396,6 @@
         "zod": "^4.6.2",
       },
     },
-    "tooling": {
-      "name": "@vivim/omega-tooling",
-      "version": "0.1.0",
-      "dependencies": {
-        "@vivim/daemon-client": "workspace:*",
-        "@vivim/omega-contracts": "workspace:*",
-        "@vivim/omega-host": "workspace:*",
-        "@vivim/omega-platform": "workspace:*",
-        "@vivim/omega-sdk": "workspace:*",
-        "@vivim/omega-shim": "workspace:*",
-        "@vivim/omega-testkit": "workspace:*",
-        "@vivim/plugin-vivim-law": "workspace:*",
-        "@vivim/surfaces-daemon": "workspace:*",
-      },
-    },
   },
   "packages": {
     "@socket.io/component-emitter": ["@socket.io/component-emitter@3.1.2", "", {}, "sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA=="],
@@ -478,8 +422,6 @@
 
     "@vivim/omega-testkit": ["@vivim/omega-testkit@workspace:testkit"],
 
-    "@vivim/omega-tooling": ["@vivim/omega-tooling@workspace:tooling"],
-
     "@vivim/pack-domain-email": ["@vivim/pack-domain-email@workspace:packs/domain-email"],
 
     "@vivim/pack-domain-import": ["@vivim/pack-domain-import@workspace:packs/domain-import"],
@@ -501,16 +443,6 @@
     "@vivim/plugin-forge-author": ["@vivim/plugin-forge-author@workspace:plugins/forge-author"],
 
     "@vivim/plugin-law-stub": ["@vivim/plugin-law-stub@workspace:plugins/law-stub"],
-
-    "@vivim/plugin-plugin-counter": ["@vivim/plugin-plugin-counter@workspace:examples/plugin-counter"],
-
-    "@vivim/plugin-plugin-crashy": ["@vivim/plugin-plugin-crashy@workspace:examples/plugin-crashy"],
-
-    "@vivim/plugin-plugin-echo": ["@vivim/plugin-plugin-echo@workspace:examples/plugin-echo"],
-
-    "@vivim/plugin-plugin-notes": ["@vivim/plugin-plugin-notes@workspace:examples/plugin-notes"],
-
-    "@vivim/plugin-plugin-risky": ["@vivim/plugin-plugin-risky@workspace:examples/plugin-risky"],
 
     "@vivim/plugin-provider-browser": ["@vivim/plugin-provider-browser@workspace:plugins/provider-browser"],
 

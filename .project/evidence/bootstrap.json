@@ -1,0 +1,106 @@
+{
+  "observedDate": "2026-10-05",
+  "seedCommit": "f03905e82e8a8b73a1beb1641af36867e7b53414",
+  "bootstrapOutcome": "Durable project truth established and first critical local continuity/isolation slice implemented and verified.",
+  "executionRuntime": "Bun 1.4.2 on Windows",
+  "claims": [
+    {
+      "claim": "Present workspaces install from the committed lock without global reconfiguration",
+      "status": "verified locally",
+      "command": "pwsh -NoProfile -File scripts/omega.ps1 setup",
+      "exitCode": 0,
+      "observed": "74 installs checked across 66 packages; no changes on frozen recheck",
+      "scope": "Absent tooling/examples workspace lock records pruned; external dependency versions unchanged; install scripts ignored"
+    },
+    {
+      "claim": "Local records survive full process exit and selected vaults remain isolated",
+      "status": "verified locally",
+      "proofFiles": ["omega-baseline/surfaces/cli/test/local.test.ts", "omega-baseline/host/test/local-config.test.ts"],
+      "assertions": [
+        "Fresh relative-path CLI process appends revision 1; another retrieves identical data and CID",
+        "A verifies one entry; B queries no A objects and verifies zero entries",
+        "Pinned recipe contains absolute selected dataDir and valid signature",
+        "Input composition unchanged; custom and TMP configs preserve semantics; config tamper invalidates signature",
+        "Real law refuses unconsented external roundtrip and no target directory is created",
+        "Unknown operation refuses with exit 1"
+      ],
+      "redEvidence": "Initial new tests: 0 pass/3 fail. Later actual relative-path subprocess regression: 2 pass/1 fail with EEXIST before CLI path normalization.",
+      "targetedFinal": { "passed": 3, "failed": 0, "assertions": 33 },
+      "scope": "Trusted root-principal cold CLI; warm daemon, natural language, providers and durable Work outside this claim"
+    },
+    {
+      "claim": "Named local compiler/Vault/policy/CLI regression slice passes",
+      "status": "verified locally",
+      "command": "pwsh -NoProfile -File scripts/omega.ps1 quick",
+      "exitCode": 0,
+      "passed": 62,
+      "failed": 0,
+      "assertions": 1622,
+      "files": 7,
+      "durationSeconds": 8.77,
+      "localLog": "omega-baseline/.local/evidence/quick-final.log",
+      "localLogSha256": "8DA49D0EB3BAF218971A45A315936BCFC4A9373C5024DDA961B7D58D9F35DDFB",
+      "explicitExclusions": [
+        "provider-browser parser tests require absent fixtures/browser/session-fixture.json",
+        "driver-conformance cross-process and Node parity require absent tooling/ci scripts",
+        "Other broad baseline tests and omitted historical architecture/governance gates",
+        "Full static typecheck/lint, warm daemon and live authenticated provider proof"
+      ]
+    },
+    {
+      "claim": "Documented PowerShell launcher forwards JSON and relative vault arguments correctly",
+      "status": "verified locally",
+      "operations": ["vault.append@1", "vault.get@1", "vault.verify@1", "status"],
+      "exitCodes": [0, 0, 0, 0],
+      "observed": "Separate processes recover the synthetic proof record at rev 1 with the same CID; verification returns ok:true, entries:1; status routes real law and Vault",
+      "store": ".local/bootstrap-proof (ignored, synthetic local proof only)",
+      "contentCid": "eed288a87d6015a7ce87e3d89879d45198a3b7db2aadc55c47dfdc0c156c0708",
+      "chainHead": "fffa1ae50b88b27c9f2b433ec4a57cb10c652f68ffd483a8299aa834a8b051df"
+    },
+    {
+      "claim": "Broad baseline suite and former gates pass",
+      "status": "blocked by omitted historical inputs; not proven",
+      "initialBroadRun": "Interrupted after repeated missing-source and stale PATH child-spawn failures; no completed-suite count",
+      "boundedCommand": "With task-scoped Bun executable PATH: bun test --bail",
+      "exitCode": 1,
+      "firstBlocker": "host/test/adversarial.test.ts imports absent tooling/watchdog/watchdog.ts",
+      "localLog": "omega-baseline/.local/evidence/baseline-bail.log",
+      "localLogSha256": "0F414328504CAF80498C47DD36A26BD7D449E53A7174E591E3B042A3A1BDC4F7",
+      "initialWiderQuick": {
+        "passed": 63,
+        "failed": 3,
+        "importErrors": 1,
+        "files": 8,
+        "reason": "Missing browser capture and driver CI wrappers; retained as explicit outside-slice blockers",
+        "localLogSha256": "D922D8A76F96A183CF459BDE10054A6B24DED8167A3C0ED95A580F1405002ED4"
+      },
+      "scope": "omega:gate is now an alias for broad tests only, not reconstruction of omitted historical gates"
+    },
+    {
+      "claim": "Live authenticated provider/browser action and durable Work",
+      "status": "unproven",
+      "observed": "Browser adapter requires sim:true and replays captures; provider session binding is not durable; run.* implementation does not implement stale work.* grants",
+      "nextFalsifier": "Establish read-only browser transport and Account evidence, then persist a truthful structural receipt; disconnected browser cannot claim fresh live evidence"
+    },
+    {
+      "claim": "Five ZCode Space Bunny lanes and Claude can execute model tasks now",
+      "status": "configuration/status only; live execution unknown",
+      "observed": "Five enabled distinct-credential lanes have Space Bunny Free configured; ZCode help/doctor and alternate Claude version/local-auth status reachable",
+      "scope": "No model request, billing/subscription validation, endpoint change or credential mutation"
+    }
+  ],
+  "independentReview": {
+    "codeReviewer": "review_bootstrap approved final compiler/CLI/tests/launcher/manifests and proof boundaries; no material findings",
+    "typescriptReviewer": "review_typescript began scope review but stopped on absent lint tooling; no full review approval claimed",
+    "reviewCorrections": [
+      "Replace test response any with typed shape",
+      "Kill/reap child and drain output before scratch cleanup on timeout/failure",
+      "Align daemon-start default selection while preserving explicit recipe precedence",
+      "Reproduce relative Windows vault error and normalize selected CLI path before boot"
+    ],
+    "staticChecks": "No seeded tsconfig or typecheck pipeline. Global ESLint launcher missing its module; alternate tsc 7.0.2 exists but full project static validation not performed.",
+    "notCrossSystemModelProof": true
+  },
+  "sensitiveState": "Private signing keys, canonical proof store, generated test compartments and raw logs are ignored; no credentials or private browser state committed.",
+  "reproduction": "README.md and package.json name supported commands and exact quick-slice test files. Start future sessions at .project/SITREP.md."
+}

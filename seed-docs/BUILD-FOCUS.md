@@ -28,6 +28,29 @@ A small complete route is more valuable than a large collection of isolated subs
 
 The product anchor is a proving ground, not a permanent feature boundary.
 
+## 1. Continuous Product Release Gym
+
+This is the canonical operational selection loop, restored at first bootstrap
+because the seed referenced it without including its mechanism. It derives from
+the product anchor, MVP discipline and proof requirements; it is not a fixed
+roadmap or a requirement to ship the floating control-center idea.
+
+1. Observe current code/runtime reality, user value and friction; classify proof.
+2. Generate materially different serious product-outcome candidates.
+3. Compare value, readiness, installability, time to first proof, uncertainty,
+   dependency reach, reusable leverage and expansion potential. Ordinal judgments
+   with explicit uncertainty suffice; avoid invented numerical precision.
+4. Give each candidate a smallest complete journey, critical blocker, claim,
+   evidence requirement and falsifier.
+5. Select the strongest reversible experiment, or its smallest critical unblocker.
+6. Harvest existing mechanisms, implement, independently verify, obtain live proof
+   when the claim crosses external reality, and preserve evidence.
+7. Update maturity and rerank. Release only the journey actually proven; stop or
+   supersede a candidate when evidence contradicts it.
+
+Record each cycle in current durable project truth. The first result is in
+`../.project/RELEASE-GYM.md`. A local unblocker is not proof of the whole beta.
+
 ## 2. Human semantic execution language
 
 Treat the human-readable semantic layer as a primary long-horizon investment.

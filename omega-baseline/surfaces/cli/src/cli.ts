@@ -26,7 +26,7 @@ import {
 } from "@vivim/daemon-client";
 
 const REPO_ROOT = join(import.meta.dir, "..", "..", "..");
-const DEFAULT_COMPOSITION = join(REPO_ROOT, "compositions", "spine.json");
+const DEFAULT_COMPOSITION = join(REPO_ROOT, "compositions", "local.json");
 const DEFAULT_VAULT = "dev-vault";
 
 // ---- the surface owns its stdio -------------------------------------------------
@@ -96,8 +96,8 @@ commands:
   daemon start|stop|status         warm-path daemon for this vault (start reuses a live one)
 
 flags:
-  --vault <dir>            vault directory (default: ${DEFAULT_VAULT})
-  --composition <file>     composition spec to compile + boot (default: compositions/spine.json)
+  --vault <dir>            selected local store (default: ${DEFAULT_VAULT}; data in <dir>/vault-data)
+  --composition <file>     composition spec to compile + boot (default: compositions/local.json)
   --recipe <file>          boot an already-compiled recipe instead of a spec
   --no-daemon              always cold-boot in this process (skip the warm daemon path)
   --deadline <ms>          per-call port deadline (default: ${DEFAULT_DEADLINE_MS})
@@ -109,6 +109,8 @@ exit codes: 0 ok · 1 refused/failed/boot failed · 2 usage error
 
 The CLI is a v1 root-principal surface: it boots a composition, runs ONE command,
 and shuts down (see docs/SURFACES.md).
+The default local composition contains real vivim.law and vivim.vault. Its dataDir
+is bound to --vault before the recipe is signed; custom compositions own their config.
 `);
 }
 
@@ -409,8 +411,8 @@ async function cmdDaemon(cmd: DaemonCmd, ctx: RunCtx, json: boolean): Promise<nu
     return st.live ? 0 : 1;
   }
   // start: ensure (reuses a live daemon when one answers) and report it
-  const specPath = ctx.flags["composition"] ? resolve(ctx.flags["composition"]) : undefined;
   const recipePath = ctx.flags["recipe"] ? resolve(ctx.flags["recipe"]) : undefined;
+  const specPath = recipePath ? undefined : resolve(ctx.flags["composition"] ?? DEFAULT_COMPOSITION);
   const info = await ensureDaemon(vault, { ...(specPath ? { specPath } : {}), ...(recipePath ? { recipePath } : {}) });
   if (!info) {
     if (json) writeOut(JSON.stringify({ command: "daemon", sub: "start", started: false }));
@@ -508,7 +510,7 @@ async function main(): Promise<number> {
 
   // ALL argument validation happens before the composition boots (fail fast).
   const cmd = parseCommand(positionals, flags);
-  const vault = flags["vault"] ?? DEFAULT_VAULT;
+  const vault = resolve(flags["vault"] ?? DEFAULT_VAULT);
   const ctx: RunCtx = { vault, flags };
 
   // `daemon` manages the warm path itself — it never boots a composition.
@@ -566,4 +568,3 @@ main().then((code) => process.exit(code)).catch((e) => {
   process.stderr.write(`fatal: ${String(e)}\n`);
   process.exit(1);
 });
-
