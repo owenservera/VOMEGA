@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Press-go: health → select tasks → prefer Daintree habitat → fallback worktree+CLI.
-# Default: --platform-only (no VOMEGA product implementation). Pass --product to enqueue product lanes.
-# Habitat preference: Daintree (if cli --status reports running) > git-worktree + one-shot CLI fallback.
-# Windows: ZCode is the press-go habitat; see .project/dev-machine/windows-mirror/ (UNVERIFIED_ON_WINDOWS).
+# Press-go Linux helper: health → advisory task selection → optionally open Daintree or use direct CLI worktrees.
+# Default: --platform-only (no VOMEGA product implementation). --product uses the current queue as a suggestion, not scheduling authority.
+# Daintree is a Linux habitat for Git worktrees + supported CLI agents. It does not launch/manage ZCode.
+# Windows has a separate helper; ZCode and Daintree are independent habitats there (UNVERIFIED_ON_WINDOWS).
 # Flags: --dry-run (plan only, no worktrees, no model calls)  --product  --max=N  --no-daintree
 set -euo pipefail
 DM="$(cd "$(dirname "$0")" && pwd)"
