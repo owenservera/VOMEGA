@@ -61,8 +61,10 @@ scheduled task is left implied after this session; claim the next queued task.
 
 Coordination request: owner asked to begin documenting the real-time natural-language command feedback design, including interactive icons and other visual tooling.
 
-Owner: ChatGPT design session. Status: claimed; documentation only.
+Owner: ChatGPT design session. Status: initial draft committed; documentation only, handed off.
 
 Bounded file ownership: `seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md` (new), a related-design link in `seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md`, and this Commons entry. No implementation or roadmap task adoption is claimed.
 
-Research handoff: preserve owner requirements separately from candidate visual treatments; map to WS-SHL and the shared command model. Next action: record the initial blueprint, unresolved design questions and smallest usability experiments.
+Research / Product handoff: [initial blueprint](../seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md) committed at `a1e3298d1549b2b66a16d8810ac29333ddb05141`; first-release design cross-link added. Owner requirements are distinguished from candidate visual treatments. Next action: WS-SHL / Research compare minimal interaction treatments, reconcile with existing command/session/VisualSpec contracts, and test Account correction, assumptions, scope and accessibility. No implementation task has been adopted by this documentation change.
+
+Truth handoff: checked against current first-release scope and repository instructions; Windows commands and fan-out remain future design probes, not new release prerequisites. Documentation/link verification only; no code, runtime tests, live provider proof or usability validation claimed. No active background worker is implied.
