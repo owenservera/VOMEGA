@@ -40,6 +40,7 @@ At minimum, understand the roles of:
 - `START-HERE.md`
 - `VISION.md`
 - `PRODUCT-ANCHOR.md`
+- `FIRST-PRODUCT-RELEASE-DESIGN.md`
 - `INVARIANTS.md`
 - `PROJECT-CONTEXT.md`
 - `CONCEPTUAL-MODEL.md`
