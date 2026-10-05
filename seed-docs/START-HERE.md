@@ -195,3 +195,11 @@ Before designing the first user-facing product surface or interaction system, re
 The owner has selected the floating Windows command box as the concrete first-release target. The current browser/account experiments, Provider Lab work, semantic command work, and continuity work should converge toward that product proof.
 
 This does not freeze the long-term Ω surface architecture.
+
+## Elephant context-memory hypothesis
+
+`ELEPHANT-CONTEXT-NETWORK.md` is an optional DevOps acceleration hypothesis for persistent large-context cognitive domain services.
+
+Read it when worker context reconstruction, review quality, or parallel development memory becomes a material bottleneck.
+
+Do not instantiate the network merely because large-context lanes exist. The hypothesis should earn implementation through measured experiments.
