@@ -392,3 +392,21 @@ The Provider Lab may move quickly and use ugly instrumentation.
 It may not silently redefine Ω's canonical semantics, authority, evidence rules, or product architecture.
 
 The Lab is where mechanisms earn the right to graduate.
+
+## Provider Harvest Bench
+
+Provider Lab should apply the program-wide `HARVEST-FIRST-ENGINEERING.md` doctrine aggressively.
+
+Before inventing a provider-specific capability realization, search for existing browser extensions, open-source integrations, automation tools, wrappers, libraries, historical VIVIM mechanisms, and other working solutions that already exercise or characterize the target behavior.
+
+Where useful, download or inspect marketplace extension source that is legitimately accessible for analysis, identify public upstream repositories, and harvest behavior, interaction techniques, state transitions, protocol clues, tests, failure cases, and recovery knowledge.
+
+Do **not** assume marketplace source is licensed for copying. When reuse rights are unclear, treat it as interoperability/research evidence and independently implement the Ω-compatible mechanism.
+
+The Lab can serve as a **Provider Harvest Bench**: compare several candidate techniques against the same live provider behavior and rapidly determine what actually works.
+
+Preferred loop:
+
+**capability need → harvest search → candidate assay → live Lab comparison → Ω-compatible realization candidate → conformance proof**
+
+This is intended to leapfrog blind selector/protocol experimentation while preserving Ω's semantic and governance boundaries.
