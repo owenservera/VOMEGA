@@ -110,7 +110,7 @@ The seed also contains seven deliberately non-prescriptive context documents:
 - **PROOF-AND-MATURITY.md** — honest evidence ladder and MVP proof discipline.
 - **HISTORICAL-KNOWLEDGE-MAP.md** — how to mine BCP-dev without inheriting its accidental structure.
 
-The 18 seed documents together define the problem space, accumulated knowledge, constraints, aspirations, evidence, and unresolved questions. They do **not** prescribe the solution architecture, organization, implementation sequence, or technical mechanism unless a genuine invariant requires it.
+The seed documents together define the problem space, accumulated knowledge, constraints, aspirations, evidence, and unresolved questions. They do **not** prescribe the solution architecture, organization, implementation sequence, or technical mechanism unless a genuine invariant requires it.
 
 The clean VOMEGA repository intentionally does **not** contain the historical `docs/` corpus. Historical material remains available in BCP-dev through the knowledge map. Likewise, implementation-only folders omitted from `omega-baseline/` should not be assumed present because older seed text names them.
 
@@ -122,7 +122,6 @@ It proposes an instrumented local Chrome-extension Provider Lab that can combine
 
 The Lab is explicitly a development environment, not a new source of Ω authority or a commitment to Chrome-extension product architecture.
 
-The seed now contains **19 documents**.
 
 ## Harvest-first engineering
 
@@ -132,7 +131,6 @@ The doctrine does not mandate reuse. It requires informed invention.
 
 Meaningful candidates should be dispositioned as **reuse directly / adapt / wrap / port / behavioral reimplementation / research-only / reject**, with provenance, licensing, security, and Ω-fit considered at a depth proportional to the risk and expected engineering cost.
 
-The seed now contains **20 documents**.
 
 ## Development acceleration hypotheses
 
