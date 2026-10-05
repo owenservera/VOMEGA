@@ -11,3 +11,11 @@ Historical work repeatedly found disproportionate uncertainty around external ac
 Keep questions open until evidence closes them: sufficient evidence for account identity; safe browser resource granularity; routing precedence/negative constraints; canonical versus referenced content storage; relationship identity/conflict semantics; checkpoint boundaries around external effects; duplicate-effect detection; derived-view persistence; realization promotion criteria; provider-knowledge contradictions; ordinary-user Forge; evolution versus constitutional change; minimum domain-neutral core; Product Instance identity through update/export/restore; Windows integration.
 
 Unknown is a valid state. Close uncertainty with evidence, a falsifier, or explicit product-authority decision—not by silently importing an old answer.
+
+## Provider Lab hypothesis
+
+**STRONG HYPOTHESIS:** an instrumented Provider Lab that combines provider-specific semantic mirrors, Shadow observation of real human use, live automated control, conformance testing, drift detection, and healing experiments can materially accelerate the provider/browser subsystem while producing end-state-relevant knowledge.
+
+What remains open is the best technical form, observation boundary, privacy model, shared/provider-specific split, promotion criteria, and how much of the Lab should survive into the shipped product.
+
+Do not convert the hypothesis into architecture merely because the first provider implementation works.
