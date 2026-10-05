@@ -453,3 +453,19 @@ Avoid wasteful duplication. Redundancy should buy information, verification, spe
 Codex and Claude Code are development resources. Their availability does not make OpenAI or Anthropic a VIVIM product dependency, does not grant their models authority over Ω, and does not alter the sovereignty requirements of the product.
 
 The development system itself should remain replaceable.
+
+## Development acceleration integration opportunities
+
+The heterogeneous development environment may experiment with the optional accelerators in `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`.
+
+In particular, ZCode workflows/background tasks, Codex, Claude Code, Git/worktrees, browser instrumentation, local tests, and local event capture may be combined to create:
+- automatic context bundles;
+- independent review/falsification;
+- isolated experiment universes;
+- failure capsules;
+- worker-performance evidence;
+- session chronicles;
+- friction/queue detection;
+- reusable regression artifacts.
+
+These combinations are development experiments, not assumed ZCode features or Ω product requirements. Inspect each tool's actual runtime capabilities before designing around it.
