@@ -1,5 +1,7 @@
 # Local Agentic Team Launch — VOMEGA
 
+> **Meta grounding:** this directory is an execution overlay, not strategy law. The complete program map is `.project/META-TRACKER.md`. Lanes, Locks, waves, prompts, model allocations and task topology are temporary coordination hypotheses. Preserve explicit invariants and proof/Lab boundaries; change the operating shape when evidence supports it.
+
 Status: **OWNER-DIRECTED TEAM-LAUNCH SEED**  
 Date: 2026-10-05
 
