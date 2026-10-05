@@ -223,3 +223,13 @@ Especially valuable evidence includes:
 - deliberate failure injection followed by diagnosis/repair/verification.
 
 Optimize the Lab for validated learning speed, not UI polish. If it becomes a separate product architecture or stops accelerating real provider progress, change or discard it.
+
+## Harvest-first leverage
+
+Before over-resourcing a hard engineering problem, determine what the ecosystem and VIVIM's own history have already learned.
+
+For expensive or high-risk work, use parallel harvest research to compare existing implementations, behavior, tests, protocols, failure cases, and architectural patterns before committing to new design.
+
+Treat harvested diversity as architectural evidence: multiple independent solutions can expose what is genuinely common, what is provider/domain-specific, and which abstractions are premature.
+
+A strong build focus should reduce both **implementation uncertainty** and **reinvention cost**.
