@@ -1,10 +1,11 @@
 <#
-  press-go-vomega.ps1 — Windows "press go": verify -> select bounded tasks -> create disposable worktrees
-  -> open habitat (ZCode preferred, else Daintree, else print CLI one-shot commands).
+  press-go-vomega.ps1 — Windows helper: verify -> suggest bounded tasks -> optionally create disposable worktrees
+  -> open one selected UI (ZCode or Daintree) or print CLI one-shot commands.
+  ZCode and Daintree are independent; selecting one here does not make it manager of the other.
   Mirrors <repo>\.project\dev-machine\press-go.sh. STATUS: UNVERIFIED_ON_WINDOWS.
 
   Usage: .\press-go-vomega.ps1 [-DryRun] [-Product] [-Max 2] [-Habitat auto|zcode|daintree|cli]
-  Default scope = platform-only DEV smoke (no product code). -Product enqueues lane tasks via select-tasks.py.
+  Default scope = platform-only DEV smoke (no product code). -Product uses select-tasks.py as an advisory queue; current evidence/META-TRACKER may justify different work.
   Never launches model workers unattended; in cli mode it prints the exact commands to run.
 #>
 [CmdletBinding()]
@@ -57,8 +58,8 @@ foreach ($t in $queue.selected) {
 }
 if (-not $DryRun) {
   switch ($Habitat) {
-    'zcode'    { Start-Process $zexe -ArgumentList "`"$RepoRoot`"" ; Write-Host 'ZCode opened: start one bounded worker per worktree (<=6 measured historically).' }
-    'daintree' { Start-Process $dexe -ArgumentList "`"$RepoRoot`"" ; Write-Host 'Daintree opened: attach agent panels to the worktrees above.' }
+    'zcode'    { Start-Process $zexe -ArgumentList "`"$RepoRoot`"" ; Write-Host 'ZCode opened independently. Start bounded ZCode workers as useful; Daintree is not their manager (>=6 measured historically, not a fixed cap).' }
+    'daintree' { Start-Process $dexe -ArgumentList "`"$RepoRoot`"" ; Write-Host 'Daintree opened independently: attach supported CLI-agent panels/worktrees as useful. It does not launch/manage ZCode.' }
     default    { Write-Host 'CLI mode: run the printed commands; reviewer must be a different harness (writes .dev-machine/REVIEW_OK).' }
   }
 }
