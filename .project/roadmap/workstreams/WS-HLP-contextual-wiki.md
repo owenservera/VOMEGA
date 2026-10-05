@@ -1,6 +1,6 @@
 # WS-HLP — Contextual Wiki / Help
 
-**Mission.** Provide live, contextual help that is a projection of real registry, command and evidence state — never an authority and never a source of invented facts (design §13).
+**Mission.** Provide live, contextual help as a source-native projection of the installed Ω Reflection Graph plus real registry, command and evidence state — never an authority, never a second documentation database, and never a source of invented facts (design §13; `seed-docs/SELF-DESCRIBING-RUNTIME-WIKI.md`).
 
 **Milestones touched:** M2 (orientation recognizer), M7, M8  
 **Falsifiers owned / served:** F7  
@@ -10,11 +10,13 @@
 
 In scope:
 
-- Help knowledge model derived from registry/frames/state
+- Self-description / Reflection ABI integration with the plugin contribution system
+- Help knowledge model derived from installed source-native contribution metadata, registry/frames/state and evidence
+- Ephemeral Wiki pages projected from the Reflection Graph rather than authored/stored as documentation
 - Deterministic context selection while typing
 - Grounded 'what can I do?'
-- Help-grounding falsifier
-- Why-unavailable and explain-interpretation
+- Help-grounding and reflection-completeness falsifiers
+- Why-unavailable, explain-interpretation and exact-source links
 
 Out of scope:
 
@@ -28,8 +30,11 @@ Out of scope:
 
 ## Working principles
 
-- Every help statement cites its source record.
+- Every help statement cites its source record, runtime state, evidence or exact source anchor.
+- Public plugin behavior must be reflectable by construction; Wiki files/README files are never required runtime inputs.
+- Structural facts come from executable declarations/schemas/manifests; inline comments may enrich but never override them.
 - A model may phrase help but must pass a claim checker (HLP-04).
+- Reflection metadata is descriptive only and can never grant capability, availability or authority.
 
 ## Task list
 
@@ -106,3 +111,38 @@ Proof: Property tests
 
 ---
 Back to [roadmap index](../README.md) · [TASKS.md](../TASKS.md)
+
+
+## Owner architecture refinement — source-native self-description (2026-10-05)
+
+The Contextual Wiki is now explicitly part of the Ω self-knowledge architecture rather than a separately authored help subsystem.
+
+Canonical design: [Self-Describing Runtime & Source-Native Contextual Wiki](../../../seed-docs/SELF-DESCRIBING-RUNTIME-WIKI.md).
+
+### Core boundary
+
+A minimal **Reflection ABI / completeness obligation** may need to live at the plugin/manifest/core boundary so every installed contribution becomes inspectable automatically. This is narrower than moving the Wiki or `vivim.mind` into the constitutional core.
+
+Candidate core responsibilities:
+
+- bind reflected semantic identity to exact plugin version/content hash;
+- expose a read-only reflection snapshot/query;
+- verify that all routable/configurable/public plugin behavior is represented;
+- preserve source anchors and version lineage;
+- prevent reflection metadata from granting authority.
+
+Wiki page generation, relevance ranking, natural-language explanation and rendering remain replaceable derived lenses.
+
+### No parallel documentation store
+
+A plugin installation should automatically add its Plugin/Capability/Command/Schema/Configuration/Source nodes and relationships to the Reflection Graph. No Wiki page, README, help JSON or separate documentation file is required.
+
+### Roadmap impact
+
+HLP-01 should be implemented as a **Reflection Graph → help projection**, not as a separately curated knowledge model.
+
+HLP-02 should rank graph nodes from the active interpretation/validation/execution context.
+
+HLP-04 should additionally falsify missing reflected public behavior and invented source relationships.
+
+A new implementation task should be carved with the core/plugin-boundary owner for the Reflection ABI and completeness gate before final HLP-01 implementation. Exact task ownership/ID remains for Coordination to assign.
