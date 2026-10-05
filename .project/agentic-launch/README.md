@@ -217,18 +217,18 @@ It may not create a private parallel semantic path.
 
 ## Initial local execution pool
 
-Current documented pool:
+Current candidate pool:
 
-- five configured ZCode / Space Bunny Free lanes;
+- ZCode using the owner's current configured route (currently reported as `openrouter/auto`);
 - local Codex;
 - local Claude Code;
-- deterministic Git/Bun/test/browser tooling.
+- Grok Build once installation/reachability is verified;
+- deterministic Git/Bun/test/browser tooling;
+- historically configured Space Bunny provider accounts, which are evidence of prior configuration rather than assumed current worker slots.
 
-Treat lane configuration as read-only.
+Treat all provider/model configuration as read-only.
 
-Live reachability must be checked before dispatch.
-
-The logical workstream topology is independent of which tool/model performs a task.
+DEV must measure actual reachable concurrency and effective routed model behavior before dispatch. The logical workstream topology is independent of provider-account count or which tool/model performs a task.
 
 ## Launch philosophy
 
