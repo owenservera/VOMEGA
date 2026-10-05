@@ -185,3 +185,13 @@ For that first run, the immediate entry point is:
 That file is intentionally operational. It tells Codex to inspect this full seed, the Ω baseline, Git/runtime/browser reality, and the heterogeneous development pool; create only the minimum durable development system needed for continuity; run the product-selection machinery; and then begin real product work.
 
 After bootstrap, this general `START-HERE.md` remains the tool-neutral orientation document for fresh Codex, Claude Code, ZCode, or other sessions.
+
+## First release design
+
+Before designing the first user-facing product surface or interaction system, read:
+
+**`FIRST-PRODUCT-RELEASE-DESIGN.md`**
+
+The owner has selected the floating Windows command box as the concrete first-release target. The current browser/account experiments, Provider Lab work, semantic command work, and continuity work should converge toward that product proof.
+
+This does not freeze the long-term Ω surface architecture.
