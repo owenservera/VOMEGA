@@ -39,7 +39,7 @@ command -v opencode >/dev/null 2>&1 && opencode --version >/dev/null 2>&1 \
 command -v kilo >/dev/null 2>&1 && kilo --version >/dev/null 2>&1 \
   && ok "kilo" || warn "kilo REPAIR_REQUIRED (nvm)"
 [[ -s "$HOME/.nvm/nvm.sh" ]] && ok "nvm present" || warn "nvm missing (REPAIR_REQUIRED for opencode/kilo)"
-command -v zcode >/dev/null 2>&1 && ok "zcode present" || echo "INFO zcode absent on Linux (Windows-primary habitat; expected)"
+command -v zcode >/dev/null 2>&1 && ok "zcode present" || echo "INFO zcode absent on Linux (independent Windows ZCode habitat; expected)"
 [[ -d omega-baseline/node_modules ]] && ok "omega-baseline/node_modules present" || warn "omega-baseline deps not installed (cd omega-baseline && bun install)"
 git diff --quiet HEAD -- . ':(exclude).project/dev-machine/runs.jsonl' 2>/dev/null && ok "tracked tree clean" || warn "tracked tree has local modifications"
 
