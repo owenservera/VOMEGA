@@ -61,3 +61,24 @@ Potential research questions include:
 - Which accelerator measurably changes validated throughput rather than merely increasing activity?
 
 Use `HARVEST-FIRST-ENGINEERING.md` before implementing any substantial acceleration substrate.
+
+## Elephant context network frontier
+
+`ELEPHANT-CONTEXT-NETWORK.md` preserves a rich hypothesis for distributed large-context cognitive project memory.
+
+Key research questions include:
+- Does persistent domain context outperform fresh workers plus retrieval/context bundles?
+- Should partitioning follow code/product domains, cognitive functions, or a hybrid?
+- How much deliberate overlap is useful at high-risk boundaries?
+- What context occupancy preserves room for large worker submissions and good reasoning?
+- How should resident, wave, and transaction context be separated?
+- What epoch/staleness protocol is sufficient?
+- What refresh strategy minimizes cost without silently serving stale answers?
+- Which services—consult, artifact review, impact analysis, debugging, reconciliation, onboarding, etc.—actually create measurable value?
+- When should an elephant split, merge, rotate, or replicate?
+- How much cross-elephant consultation is useful before congestion dominates?
+- Does literal full-source residency outperform compressed/hierarchical alternatives?
+- Which model/provider characteristics matter most for a resident cognitive node?
+- Can context pollution and abandoned-history salience be bounded reliably?
+
+Treat the answers as empirical. Do not encode a fixed elephant architecture before testing.
