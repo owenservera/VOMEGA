@@ -156,3 +156,11 @@ Read `PROVIDER-LAB-STRATEGY.md` before making major provider/browser architectur
 The Provider Lab is an approved high-leverage development hypothesis: use instrumented local provider pages to make provider discovery, live execution, shadow validation of real human interactions, conformance testing, drift detection, and healing much faster.
 
 Do not mistake approval of the experiment for approval of its eventual architecture. The Lab exists to generate evidence and reusable mechanisms.
+
+## Harvest before invention
+
+Read `HARVEST-FIRST-ENGINEERING.md` before starting a substantial new subsystem or externally coupled mechanism.
+
+The project should not pay full discovery and implementation cost while still ignorant of existing working solutions. Search and assay existing implementations first, then deliberately choose whether to reuse, adapt, wrap, port, behaviorally reimplement, or invent.
+
+Keep the harvest pass proportional: a small reversible change needs little ceremony; a multi-week or load-bearing subsystem deserves deep archaeology and comparison.
