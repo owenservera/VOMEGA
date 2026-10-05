@@ -423,3 +423,300 @@ The scarce model should usually see a mature proposal, conflict, failing patch, 
 ## 12. Change record
 
 - **2026-10-05:** Current OpenAI/Anthropic model research incorporated into local agentic launch routing.
+
+
+# xAI / SuperGrok / Grok Build integration — 2026-10-05
+
+## Current SuperGrok plan reality
+
+Official xAI pricing currently exposes these individual tiers:
+
+- **Free**
+- **SuperGrok Lite**
+- **SuperGrok — $30/month**
+- **SuperGrok Plus — $100/month**
+- **SuperGrok Heavy**
+
+The public pricing page currently publishes the numeric monthly price for SuperGrok and SuperGrok Plus. Lite and Heavy exist in the plan comparison, but their current numeric prices are not exposed in the server-rendered pricing material used for this research; use the signed-in Grok billing page as the account-specific price authority.
+
+SuperGrok currently includes higher limits and frontier-model access. SuperGrok Plus adds materially higher usage across Chat / Imagine / Voice / Build, faster replies, peak-time priority, early features and 1080p video. Heavy is positioned as the highest-usage / fastest individual tier for the hardest work.
+
+Important: xAI's public pricing page still names Grok 4.6 in the plan summary, while current Grok docs and Grok Build identify **Grok 4.7** as the newest/current model. Treat the live signed-in model picker / `grok inspect` as runtime truth.
+
+## Weekly usage economics
+
+Paid SuperGrok now uses a **shared weekly usage allowance** rather than independent daily quotas for Chat, Build, Voice, Imagine, etc.
+
+Implications for development:
+
+- long Grok Build coding sessions consume from the same weekly pool;
+- large workflow fan-outs can consume substantial pool capacity;
+- the current account UI exposes remaining usage as a percentage and breakdown by product;
+- once included weekly usage is exhausted, paid features pause until reset unless Extra Usage Credits are used or the plan is upgraded;
+- Extra Usage Credits are a spillover mechanism, not the default team budget.
+
+Therefore do not treat Grok Build subagent count as free parallelism.
+
+## Grok model/harness distinction
+
+Keep separate:
+
+### Grok 4.7 — model resource
+
+Current xAI flagship for coding and knowledge work.
+
+Best VOMEGA uses:
+
+- premium implementation;
+- long-running difficult coding;
+- repository-scale analysis;
+- independent third-provider architecture review;
+- provider/browser implementation;
+- integrated agentic tasks.
+
+Routing tier:
+
+**Tier P+ — premium/frontier-quality workhorse**
+
+It sits alongside GPT-6.1 Sol and Claude Opus 5.5 for serious work.
+
+Do not assume it has the same scarcity as Astra/Fable until observed SuperGrok usage economics are measured.
+
+### Grok Build — execution harness
+
+Grok Build is now a first-class local development participant alongside:
+
+- ZCode;
+- Codex;
+- Claude Code;
+- deterministic local tools.
+
+Current useful capabilities include:
+
+- interactive TUI;
+- headless `grok -p` with JSON / streaming JSON;
+- ACP via `grok agent stdio`;
+- Plan mode;
+- `/goal` long-running autonomous execution;
+- sessions/resume/fork;
+- Git worktrees;
+- subagents;
+- workflows;
+- Agent Dashboard;
+- skills;
+- plugins;
+- hooks;
+- MCP;
+- AGENTS.md support;
+- Claude Code configuration/ecosystem compatibility;
+- project/global memory;
+- custom model support.
+
+Grok Build is an execution substrate. Its memory, dashboard, workflow state and notes are not repository truth.
+
+## Grok Build workflow caution
+
+Grok Build workflows can fan out large jobs to many clean-context agents.
+
+This is strategically attractive for:
+
+- EXP corpus/mutation work;
+- TRU adversarial review;
+- repo-wide Reflection audit;
+- Harvest-First research;
+- large PR/codebase review;
+- test/falsifier generation.
+
+But workflow fan-out consumes SuperGrok usage.
+
+Initial VOMEGA policy:
+
+1. begin with **small explicit agent budgets**;
+2. measure weekly-pool cost;
+3. compare useful findings / merged work per unit of usage;
+4. expand only when measured leverage justifies it;
+5. never launch a 128/1024-agent workflow merely because the harness supports it.
+
+## Updated model tiers
+
+### Tier F — scarce frontier adjudicators
+
+- GPT-6 Astra
+- Claude Fable 5.1
+
+### Tier P+ — premium/frontier-quality workhorses
+
+- GPT-6.1 Sol
+- Claude Opus 5.5
+- **Grok 4.7**
+
+### Tier W — strong/high-volume workers
+
+- Claude Sonnet 5.5
+- GPT-6 Luna
+- GPT-5.6 Sol
+- GPT-5.6 Terra
+- Space Bunny Free lanes
+- Grok Build's faster coding model/options when selected for throughput rather than frontier reasoning
+
+Grok 4.7 adds valuable **third-provider diversity**.
+
+For load-bearing decisions, a strong pattern is now:
+
+```
+primary implementation:
+  GPT-6.1 Sol / Opus 5.5 / Grok 4.7
+
+independent review:
+  choose a different provider
+
+deterministic evidence:
+  tests / corpus / runtime
+
+scarce frontier adjudication:
+  Astra / Fable only if material uncertainty remains
+```
+
+## Updated workstream routing with Grok
+
+### SDW
+
+Grok 4.7:
+- independent third-provider review of semantic contracts;
+- implementation when Opus/GPT output needs a fresh architecture perspective.
+
+Do not spend a Grok workflow on routine fixture creation.
+
+### LNC
+
+Grok 4.7:
+- alternate compiler implementation/review;
+- difficult multi-file language-system coding;
+- counterexample/root-cause analysis.
+
+Grok workflows:
+- corpus clustering/mutation only with bounded agent budgets.
+
+### VFX
+
+Grok 4.7:
+- full-stack sandbox implementation;
+- interactive/visual coding alternative to Sonnet 5.5;
+- independent implementation comparison.
+
+Grok Build itself is useful for running a long-lived sandbox implementation goal in an isolated worktree.
+
+### SKW
+
+Grok 4.7:
+- AST/reflection extractor implementation;
+- repo-scale cross-check against GPT/Claude proposals.
+
+Grok workflows:
+- particularly promising for parallel plugin-by-plugin Reflection audits.
+
+### EXP
+
+This is the best first test of Grok Build workflows.
+
+Candidate first experiment:
+
+```
+one bounded workflow
+→ fan out semantic corpus review across a small number of agents
+→ independent verify phase
+→ one structured report
+```
+
+Start with a small agent budget, measure usage and compare against the existing five Space Bunny lanes.
+
+### PRV
+
+Grok 4.7:
+- strong candidate for provider/browser coding and long-running implementation;
+- useful third-provider reviewer for Account identity and realization boundaries.
+
+Do not use a large workflow against one shared browser profile.
+
+### RTE
+
+Grok 4.7:
+- complex implementation / packaging / integration;
+- independent review of GPT/Claude runtime patches.
+
+### DEV
+
+Grok Build itself is especially relevant here.
+
+Potential uses:
+
+- `grok dashboard` as a local session visibility surface;
+- headless JSON runs as dispatchable workers;
+- worktree sessions;
+- ACP integration;
+- workflow fan-out/fan-in.
+
+Do not immediately replace ZCode as coordinator. Run a measured **ZCode vs Grok Build orchestration experiment** on real first-wave work.
+
+### TRU
+
+Grok 4.7 provides useful third-provider independence.
+
+Grok workflows are promising for:
+- multi-specialist code review;
+- verify-each-finding patterns;
+- repository-wide architecture falsifier scans.
+
+Again, use bounded budgets.
+
+## Grok Build onboarding experiment
+
+When installation completes, DEV should run read-only preflight:
+
+```
+grok version
+grok inspect
+```
+
+Then determine:
+
+- authenticated plan/tier if safely observable;
+- available models in `/model`;
+- whether Grok 4.7 is selectable;
+- remaining weekly-usage visibility;
+- current Grok Build version;
+- project instructions detected;
+- skills/plugins/hooks/MCPs detected;
+- worktree behavior;
+- headless mode;
+- ACP availability;
+- workflow availability;
+- memory state.
+
+Do not run `grok setup`, alter `~/.grok/config.toml`, or import/change global plugins automatically merely to make VOMEGA work.
+
+The owner's existing configuration remains read-only infrastructure until explicitly changed.
+
+## First comparative benchmark
+
+Use the same bounded task on:
+
+- one Space Bunny ZCode lane;
+- GPT-6.1 Sol/Codex;
+- Claude Opus/Sonnet via Claude Code as appropriate;
+- Grok 4.7 via Grok Build.
+
+Good benchmark task:
+
+> Review Lock B / the candidate UseCommand contract against the current NLCL source and identify semantic defects, missing consumers and the smallest required tests. Do not edit code.
+
+Measure:
+
+- useful defects found;
+- false findings;
+- relevant files found;
+- architectural-context errors;
+- time / usage;
+- amount of correction needed.
+
+This gives DEV evidence for future routing instead of treating Grok 4.7 as automatically superior or inferior.
