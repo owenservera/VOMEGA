@@ -1,0 +1,244 @@
+# Command Visual Language — Real-Time Interpretation and Guidance
+
+Status: **INITIAL DESIGN PROPOSAL / ACTIVE BRAINSTORMING**  
+Started: 2026-10-05  
+Scope: product interaction blueprint and conceptual protocol; no implementation or usability proof claimed.
+
+## 1. Purpose and authority
+
+The owner requested a real-time visual feedback system for natural-language commands: a suite of UI and interaction tools that exposes what VOMEGA has interpreted and lets the person guide it. The owner explicitly added icons and other visual elements as tooling, including a computer marker for Windows commands versus an AI identity when interacting with an AI service.
+
+Those are owner-directed requirements. The particular marks, colors, layouts, timing, fields and examples below are candidate designs developed in conversation. Recording them does not freeze a schema, select a UI framework, establish new authority, or claim that the owner has approved every proposed treatment.
+
+This document elaborates [First Product Release Design](FIRST-PRODUCT-RELEASE-DESIGN.md), especially sections 3, 6, 12–17 and 22. It follows [Vision](VISION.md) and [Invariants](INVARIANTS.md). The existing [floating shell workstream](../.project/roadmap/workstreams/WS-SHL-floating-shell.md) is an integration point, not evidence that these interactions exist.
+
+Core promise:
+
+> You can see what your words will cause, and correct the interpretation before it causes the wrong thing.
+
+## 2. Product shape
+
+The first surface remains a small floating Windows command box. Ordinary language is primary. The visual system is an editable reflection of the shared semantic command representation.
+
+Use three levels of disclosure:
+
+1. **On the expression:** quiet annotations identify interpreted phrases, unresolved choices and scope.
+2. **Below the expression:** a short “I understand…” effect preview exposes targets, material assumptions and missing information.
+3. **On demand:** an expanded view exposes exact Accounts, parameters, inputs, dependencies, authority, realization and evidence.
+
+Keep the original wording recoverable. Do not silently replace the person's prose with machine shorthand. Typing, selecting a menu item and manipulating a visual handle must converge on the same semantic command path. Pure presentation gestures remain presentation.
+
+## 3. Distinctions the visual system must preserve
+
+| Dimension | Question answered | Example |
+| --- | --- | --- |
+| Interpretation | What does Ω think the expression means? | Send this prompt |
+| Grounding | Which real entity does it refer to? | Claude, specific work Account |
+| Availability | Can this capability be used now? | Known Account, session needs login |
+| Authority | Is this operation allowed within this scope? | Covered by standing authorization, or consent needed |
+| Consequence / risk | What changes or leaves the machine? | Prompt content is sent to an external service |
+| Execution | What is happening or has been attempted? | Sending, paused, failed, cancelled |
+| Evidence | What was actually observed, and how recently? | Submission observed; answer not yet observed |
+
+These are independent dimensions, not one green/red readiness score. An understood command can be unavailable. An authorized action can fail. A provider logo proves neither Account identity nor connectivity. Confidence is not proof.
+
+Represent unknown, stale and unsupported explicitly. Do not use a completion animation, elapsed timer or absence of errors as evidence of success.
+
+## 4. Candidate visual vocabulary
+
+Color reinforces meaning; labels and shapes must carry it without color.
+
+| Primitive | Candidate meaning | Interaction |
+| --- | --- | --- |
+| Solid underline | Phrase has an assigned interpretation | Inspect meaning or change it |
+| Dashed enclosure | Materially unresolved choice | Open alternatives relevant to that phrase |
+| Bracket / shaded region | Scope, grouping, quoted payload or exclusion | Inspect exactly what is included |
+| Labeled assumption | Value supplied by inference, default or policy | Inspect origin; change or reject where allowed |
+| Temporary outline / circle | Current focus or correction target | Direct attention without permanent visual clutter |
+| Identity icon + concrete label | Object, service, device or Account involved | Inspect or select the bound entity |
+| Status badge + words | Availability, permission or execution state | Explain state and offer a valid next action |
+| Connector / arrow | Dependency, fan-out or data movement | Expand the relationship and its direction |
+| Preview / thumbnail | Referenced content or object | Inspect the exact input before use |
+
+Use a small vocabulary consistently. Avoid syntax-highlighting every word. A circle should have a stable purpose, not alternately mean ambiguity, execution and success.
+
+Assumptions without a source phrase need their own visible field. Uninterpreted material must not disappear: expose it when it may affect meaning, rather than making partial recognition look complete.
+
+## 5. Icons as interactive tools
+
+Every meaningful command object is a candidate for a visual handle through which the user can inspect and guide it.
+
+| Entity family | Candidate marker | Minimum useful identity |
+| --- | --- | --- |
+| Local computer / OS | Computer icon | This PC / actual selected device; Windows where relevant |
+| Installed application | App icon | Application and relevant document/window |
+| AI provider | Provider logo or labeled service icon | Provider plus selected Account |
+| Website / browser | Site icon or globe | Site and relevant browser/session context |
+| File / folder | Type icon or thumbnail | Concrete item and inspectable location |
+| Person / group | Person or group icon | Resolved recipient or audience |
+
+Exact assets are undecided. Provider logos need a generic fallback. Icons require accessible labels and must not depend on brand recognition.
+
+Selecting a handle may expose identity, alternatives, supported actions, state, permissions or evidence. It must not execute merely because the handle was selected.
+
+Keep three concepts distinct:
+
+- **Target:** what receives the command or changes.
+- **Executor:** what performs the operation.
+- **Location:** where processing and effects occur.
+
+AI and computer are not mutually exclusive categories. AI may interpret a Windows action; a browser may realize an external AI request; a local model may process a local file. Derive markers from known command and realization state, not the presence of AI-sounding words.
+
+For “Ask Claude to explain this file,” show the file and the external recipient, with the proposed content transfer made explicit. A computer icon alone must not imply that all processing stays local.
+
+Identity stays stable while status changes. Add “Needs login” beside an Account rather than replacing its identity with an unexplained warning symbol.
+
+## 6. Interaction protocol
+
+1. **Compose:** preserve caret, selection and ordinary editing. Partial text is not automatically invalid.
+2. **Interpret:** generate candidate meaning tied to the current input revision. Update at useful pauses without disruptive flicker or focus theft.
+3. **Project:** show recognized objects, scope, assumptions and a concise effect preview.
+4. **Clarify:** attach choices to the relevant phrase or missing field. Prefer interaction-triggered menus; interrupt only where needed to resolve a material blocker.
+5. **Refine:** accept either wording changes or visual choices into the same semantic representation. Recompute affected fields and visibly invalidate obsolete bindings.
+6. **Validate:** check capability, targets, Account identity, freshness, parameters and authority through the shared command machinery.
+7. **Commit:** bind execution to the concrete command revision and applicable authorization. Interpretation selection alone is not execution consent.
+8. **Observe:** render host execution and evidence events; distinguish attempted action, observed submission, result arrival and verified outcome.
+9. **Recover:** explain the smallest valid next action. Preserve partial outcomes and uncertainty. A retry must account for possibly completed external effects.
+
+Late results from older text revisions must not overwrite the current interpretation. If a material edit changes targets, payload, scope or side effects, reassess affected validation and authorization. Existing valid standing authorization should not generate redundant confirmation ceremonies.
+
+Editing a new draft while an earlier command runs must not silently retarget the running command. Cancelling work does not undo an already observed external effect.
+
+## 7. Relationships and language boundaries
+
+Recognizing nouns is insufficient. Project relationships such as:
+
+- “and” — multiple targets or grouped inputs;
+- “then” / “after” — ordering and dependencies;
+- “only” / “except” — scope restriction;
+- “don't” — negation and its scope;
+- “until” — a stop condition, where supported;
+- quoted text — content to send rather than instructions to Ω.
+
+Example: “Send Claude this prompt: ‘delete the old draft.’” The quoted instruction is payload for Claude; it is not a local deletion request. Its enclosure must make that boundary inspectable.
+
+For “Ask ChatGPT and Claude to critique this, then compare their answers,” expose two critiques and a dependent comparison. Resolve who performs comparison, what inputs are shared and what happens if one target fails. Do not silently append synthesis or forwarding steps.
+
+These are extensibility tests. Fan-out and generalized workflows are not added first-release prerequisites.
+
+## 8. Walkthroughs
+
+### First-release Account disambiguation
+
+Expression: “Ask Claude to explain this error.”
+
+- Underline the interpreted operation.
+- Show Claude with an unresolved Account handle if more than one valid Account fits.
+- Mark the exact error text as payload; if “this” has no grounded referent, request it.
+- Choosing Work binds that Account and updates the effect preview.
+- Show conversation destination/defaults where relevant, session state and authorization.
+- After execution, distinguish submission observed from answer observed and target verified.
+
+### Local Windows command — future design probe
+
+Expression: “Lower my volume.”
+
+Show a computer handle labeled “This PC · Windows,” a proposed system-volume action and an unresolved amount unless a valid visible default applies. Typing “to 20 percent” and selecting 20% through a control should converge semantically.
+
+Do not advertise Windows volume control as implemented or as a first-release requirement. This example tests whether the language generalizes beyond AI services.
+
+### Fan-out — future design probe
+
+Expression: “Ask ChatGPT and Claude: suggest three names for my project.”
+
+Show the exact Accounts and shared payload. Preserve per-target outcomes: one can complete while another needs login. Do not collapse partial completion into global success. Retrying the blocked target should not resend to the completed target by accident.
+
+### Stale grounding
+
+A familiar Account remains identified, but its session evidence is stale. Show both facts. The menu offers grounded recovery options, and the effect preview must not imply that fresh identity verification has already happened.
+
+## 9. Conceptual projection contract
+
+This is a list of information needs, not a new frozen wire format. Inspect and reuse existing command/session/VisualSpec contracts before implementation.
+
+A visual annotation or handle may require:
+
+- stable semantic field/object identity;
+- optional source span, tied to an input revision;
+- command revision / semantic reference;
+- role and interpreted value;
+- alternatives and unresolved requirements;
+- origin: explicit words, direct selection, configured default, policy or inference;
+- grounding references and freshness;
+- availability and authority state, represented separately;
+- risk/effect and data-movement information;
+- permitted inspection/correction actions;
+- accessible label and explanatory text;
+- execution/evidence references when relevant.
+
+Fields without source spans remain representable. Multiple spans may contribute to one meaning, and one span may affect multiple fields. Character positions alone cannot provide durable semantic identity.
+
+The semantic system supplies interpretation and validation. Registry/evidence sources supply actual capability and entity state. The visual projection renders them. Interaction produces semantic edits or commands; the renderer does not become another interpreter or authority engine.
+
+Equivalent typing and visual selection should produce equivalent canonical meaning under the same context. The existing roadmap names a VisualSpec projector; this proposal should be reconciled with it rather than implemented as a parallel model.
+
+## 10. Accessibility and timing
+
+- Support keyboard-only completion, correction, inspection and dismissal.
+- Keep essential meaning available without hover.
+- Pair icons, colors and animation with readable labels.
+- Preserve focus and caret while feedback arrives; respect text composition and ordinary undo behavior.
+- Announce meaningful interpretation changes without reading every keystroke.
+- Honor reduced motion and accommodate magnification, high contrast and narrow layouts.
+- Keep tentative feedback distinguishable from resolved meaning.
+- Measure typing disruption and comprehension before selecting debounce timing, animation or automatic-menu rules.
+
+The correct latency target is open. A fast misleading preview is not a success.
+
+## 11. Smallest useful first-release experiment
+
+Prototype the supported Account-registration and single-Account prompt.send journeys with:
+
+1. interpreted phrase;
+2. unresolved choice;
+3. payload/scope boundary;
+4. visible assumption;
+5. interactive provider/Account identity;
+6. effect preview;
+7. evidence-based outcome.
+
+Use explicitly labeled mocked state to test interaction only, then connect the same projection to real command and evidence sources. The earlier in-conversation sketch was a local choice demonstration, not a parser, connected provider or Windows proof.
+
+Candidate observations and falsifiers:
+
+| Experiment | What to observe | Failure signal |
+| --- | --- | --- |
+| Deliberately wrong Account | Whether user detects and corrects it before execution | Familiar provider logo hides the wrong identity |
+| Hidden default / assumption | Whether user predicts the actual effect | User cannot see a consequential supplied value |
+| Ambiguous scope or quoted payload | Whether interpreted boundaries are understood | Content is mistaken for an Ω instruction |
+| Keyboard correction | Ability to complete without pointer use | Essential handle or choice cannot be reached |
+| Delayed interpretation | Whether an old result affects a newer draft | Preview or execution reverts to stale meaning |
+| Unavailable Account | Whether understood and available remain distinct | Underline/logo is interpreted as operational readiness |
+| Typed vs selected equivalent | Semantic equivalence in identical context | Different path, scope or authority |
+| Partial result, when fan-out is tested | Accurate target-level outcome and retry choice | Global success or duplicate sends conceal failure |
+
+Record prediction accuracy, correction success, disruption and task completion. Establish thresholds from experiments rather than claiming unmeasured usability. Prototype tests do not replace live execution evidence.
+
+## 12. Open design questions and next work
+
+- Which annotations remain visible during typing versus after a pause?
+- Should resolved objects stay annotated prose or become optional chips?
+- How should direct visual corrections appear in the original wording?
+- Which assumptions deserve compact visibility, and which can remain expanded?
+- How should overlapping scope, negation and nested relationships be shown?
+- Which icon family communicates device, service, Account and locality most clearly?
+- When does a menu help rather than interrupt?
+- How should unsupported phrases be explained without implying hidden capability?
+- Which outcome details fit in the small floating surface?
+- How should contextual Wiki help attach to a handle without crowding the command?
+
+Next: compare a small number of treatments using the same realistic tasks, record what fails, and revise this document. Harvest existing editor/annotation/accessibility mechanisms before building a custom one. No spatial canvas, large dashboard, generalized Windows automation or new mandatory release gate is established here.
+
+## 13. Change record
+
+- **2026-10-05:** Captured the owner's command-feedback brief and explicit icon/tooling addition. Recorded candidate visual grammar, semantic distinctions, interaction protocol, examples, conceptual projection contract, first experiments and open questions. Documentation only; implementation and usability remain unproven.
