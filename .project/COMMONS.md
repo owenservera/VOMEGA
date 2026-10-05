@@ -56,3 +56,13 @@ self-contained tests, while broad failures remain visible. A Windows relative
 path failure discovered by launcher smoke was reproduced in a subprocess test
 and fixed by resolving the selected vault at CLI entry. No active agent or
 scheduled task is left implied after this session; claim the next queued task.
+
+## Visual command feedback design — 2026-10-05
+
+Coordination request: owner asked to begin documenting the real-time natural-language command feedback design, including interactive icons and other visual tooling.
+
+Owner: ChatGPT design session. Status: claimed; documentation only.
+
+Bounded file ownership: `seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md` (new), a related-design link in `seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md`, and this Commons entry. No implementation or roadmap task adoption is claimed.
+
+Research handoff: preserve owner requirements separately from candidate visual treatments; map to WS-SHL and the shared command model. Next action: record the initial blueprint, unresolved design questions and smallest usability experiments.
