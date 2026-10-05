@@ -242,3 +242,13 @@ A program-wide engineering stance is now explicit: **harvest before build; prove
 VIVIM's own historical code, the broader open-source ecosystem, browser-extension implementations, packages, research artifacts, and externally observable working products are all potential sources of prior evidence.
 
 The fresh project is still autonomous over the solution. The doctrine exists so autonomy begins from the strongest available evidence rather than from avoidable ignorance.
+
+## Development acceleration hypothesis layer
+
+The project is allowed to instrument its own development environment aggressively where doing so creates measurable leverage.
+
+A current optional direction is a local **Development Reality Layer / Dev Black Box** that records a manageable structural event stream across relevant development activity and can feed context reconstruction, debugging, regression generation, coordination, and DevOps learning.
+
+This is a hypothesis, not a required subsystem. The full candidate portfolio lives in `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`.
+
+The intent is to make real work produce useful evidence automatically—not to build a surveillance product or make development telemetry part of Ω's constitutional model.
