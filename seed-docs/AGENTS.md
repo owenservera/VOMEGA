@@ -241,3 +241,15 @@ Treat ZCode, its five provider lanes, Codex, Claude Code, and deterministic loca
 Do not impose a permanent master/worker hierarchy a priori. In particular, exploit independent cross-system review where it improves confidence: an implementation produced by one model/tool can be challenged by another, with repository reality and deterministic evidence adjudicating wherever possible.
 
 Do not modify the owner's Codex, ChatGPT, Claude, Claude Code, ZCode, or provider authentication/configuration unless explicitly asked. These tools are development infrastructure, not VIVIM product dependencies or sources of architectural authority.
+
+## Provider Lab mandate
+
+For substantial Provider / Account / Browser / Routing / Healing work, treat `PROVIDER-LAB-STRATEGY.md` as a preferred experimental environment unless current evidence shows a faster or better route.
+
+The Lab should make it cheap to test provider hypotheses against real authenticated browser behavior. In particular, exploit four distinct evidence modes where useful: **Shadow** observation of normal user interactions, **Control** through a provider semantic mirror, deliberate **Conformance** testing, and **Healing Lab** break/repair experiments.
+
+Real user interactions are an additional validation stream, not automatic ground truth. Preserve the distinction between observed browser events, inferred semantic capability, verified realization behavior, and Ω authority.
+
+Default continuous observation toward structural/semantic metadata rather than indiscriminate capture of prompt text, responses, uploaded documents, credentials, or unrelated personal content.
+
+Nothing important should exist only for the mirror if it is intended to graduate into Ω. Provider-Lab mechanisms earn promotion through proof and generalization pressure.
