@@ -113,3 +113,13 @@ The seed also contains seven deliberately non-prescriptive context documents:
 The 18 seed documents together define the problem space, accumulated knowledge, constraints, aspirations, evidence, and unresolved questions. They do **not** prescribe the solution architecture, organization, implementation sequence, or technical mechanism unless a genuine invariant requires it.
 
 The clean VOMEGA repository intentionally does **not** contain the historical `docs/` corpus. Historical material remains available in BCP-dev through the knowledge map. Likewise, implementation-only folders omitted from `omega-baseline/` should not be assumed present because older seed text names them.
+
+## Provider Lab strategy
+
+**PROVIDER-LAB-STRATEGY.md** records a preferred experimental strategy for accelerating the Provider / Account / Browser / Routing / Healing workstream.
+
+It proposes an instrumented local Chrome-extension Provider Lab that can combine provider-specific semantic mirrors, real human-use shadow observation, live control, conformance testing, drift detection, and healing experiments.
+
+The Lab is explicitly a development environment, not a new source of Ω authority or a commitment to Chrome-extension product architecture.
+
+The seed now contains **19 documents**.
