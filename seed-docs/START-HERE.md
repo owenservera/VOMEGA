@@ -134,3 +134,17 @@ The project should make increasingly large parts of this statement true:
 > **I can use my local VIVIM environment to express what I want, operate my digital world through real capabilities, understand what it is doing and why, retain the resulting knowledge and evidence, and return later without losing continuity.**
 
 The implementation behind that statement is allowed to change dramatically over time.
+
+## Expanded knowledge map
+
+Before making a major product or architectural commitment, also read the seven context documents listed in `README.md`. In particular:
+
+- use `CONCEPTUAL-MODEL.md` for vocabulary, not implementation;
+- use `KNOWN-REALITY-AND-OPEN-FRONTIER.md` to prevent assumptions becoming facts;
+- use `PRODUCT-JOURNEYS.md` to connect architecture to human outcomes;
+- use `WORKSTREAM-LANDSCAPE.md` as coverage guidance, not a department mandate;
+- use `RESEARCH-FRONTIER.md` to identify questions deserving fan-out, experiments, or external research;
+- use `PROOF-AND-MATURITY.md` when making readiness or release claims;
+- use `HISTORICAL-KNOWLEDGE-MAP.md` when older BCP-dev knowledge could prevent rediscovery.
+
+The VOMEGA seed has two top-level parts: `omega-baseline/` and `seed-docs/`. The old BCP-dev `docs/` corpus is intentionally external historical evidence, not inherited project truth.
