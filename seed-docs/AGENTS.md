@@ -300,3 +300,11 @@ The floating Windows command box is now the owner-selected first-release design 
 The current implementation sequence remains evidence-driven: solve the smallest blockers needed to make that product truthful, especially deterministic semantic command resolution, real Provider/Account evidence, live `prompt.send`, evidence-backed capability projection, and contextual help grounded in actual system state.
 
 Do not build UI polish ahead of those truths.
+
+## Elephant context acceleration
+
+`ELEPHANT-CONTEXT-NETWORK.md` is approved as an optional development acceleration hypothesis.
+
+If context reconstruction or context-poor review becomes a measured bottleneck, the project may test persistent large-context domain sessions as cognitive services for workers.
+
+Do not treat such sessions as truth or authority, and do not preassign the five Space Bunny lanes into a permanent elephant topology. Begin with the smallest experiment that can compare resident-context value against fresh-worker/context-bundle alternatives.
