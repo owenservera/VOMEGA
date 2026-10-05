@@ -22,8 +22,7 @@ Use `scripts/omega.ps1` on this Windows machine or the documented Bun commands.
 broad suite and currently expose missing historical inputs. Do not silently skip
 those failures or claim the historical architectural gates have been restored.
 
-Auth/provider configuration is read-only. Keep user vaults, signing private keys,
-credentials, browser state and raw personal captures out of Git. Local evidence
-logs belong in ignored `.local/`; commit sanitized claim/evidence summaries.
+Auth/provider configuration is read-only. Local evidence logs belong in ignored
+`.local/`; commit sanitized claim/evidence summaries.
 Update project truth after proof or a material contradiction, and leave a
 reconstructable handoff. No executor is the permanent project authority.
