@@ -153,9 +153,6 @@ It includes candidate mechanisms such as a local Development Reality Layer / Dev
 
 These are **not requirements**. They should be activated only against measured bottlenecks and retained only when evidence shows useful leverage.
 
-The seed now contains **22 documents**.
-
-
 ## First bootstrap executor
 
 The first real bootstrap is expected to be run by **local Codex from the local VOMEGA checkout**.
