@@ -190,3 +190,11 @@ The seed now contains **24 documents**.
 The Lab is designed to run without the VIVIM product runtime. It composes pinned **Lab Profiles** so competing NLP, grounding, executable, and visual designs can be replayed against the same scenarios. Everything outside a deliberately tiny constitutional kernel is intended to remain versioned, replaceable, configurable, and experimentally evolvable.
 
 The seed now contains **25 documents**.
+
+## Self-describing runtime and source-native Wiki
+
+**SELF-DESCRIBING-RUNTIME-WIKI.md** merges the self-knowledge architecture, plugin contribution model, Contextual Wiki and Semantic Runtime Lab around one stronger requirement: loaded Ω capabilities must be self-describing by construction.
+
+The proposed core primitive is a narrow Reflection ABI/completeness obligation. Executable declarations, schemas, manifests, source anchors, registry state and evidence derive a read-only Reflection Graph; Wiki pages and realtime relevant links are ephemeral projections of that graph. Plugins require no separate Wiki/README/help files to become understandable, and reflection metadata never grants authority.
+
+The seed now contains **26 documents**.
