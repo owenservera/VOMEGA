@@ -22,3 +22,11 @@ The Provider / Account / Browser / Routing workstream should treat live human in
 A persistent Provider Lab function may cover provider archaeology, capability mapping, Shadow observation, conformance, drift, recovery/healing, usage-weighted coverage, and promotion of proven provider knowledge into Ω.
 
 This does not require a permanent department or a permanent extension architecture.
+
+## Harvest responsibility
+
+Every persistent problem domain should treat ecosystem archaeology and prior-art harvesting as part of engineering, not as an isolated research department's job.
+
+R&D may coordinate difficult searches, but the workstream responsible for a mechanism remains responsible for understanding the strongest existing solutions before expensive reinvention.
+
+Where repeated harvest work becomes high-value, create a temporary or persistent Harvest Bench rather than repeatedly starting from zero.
