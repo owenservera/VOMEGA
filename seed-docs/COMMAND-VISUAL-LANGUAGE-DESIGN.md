@@ -307,3 +307,12 @@ This is a proposed proof of the owner's replacement requirement, not a claim tha
 - **2026-10-05:** Captured the owner's command-feedback brief and explicit icon/tooling addition. Recorded candidate visual grammar, semantic distinctions, interaction protocol, examples, conceptual projection contract, first experiments and open questions. Documentation only; implementation and usability remain unproven.
 
 - **2026-10-05, customization follow-up:** Added the owner's reprogrammability requirement, replaceable visual/interaction mappings, semantic-role icon indirection, portable preferences, fallback behavior, and a two-pack replacement experiment. Specific mechanisms remain proposals; no implementation claimed.
+
+
+## 15. Semantic Runtime Lab relationship
+
+The owner subsequently defined a standalone modular testing environment for the broader language → interpretation → machine command → execution → feedback problem. See [VOMEGA Semantic Runtime Laboratory](SEMANTIC-RUNTIME-LAB.md).
+
+The Lab is the intended experimental home for comparing the candidate visual grammar in this document. It should be possible to replay the same semantic trace through different annotation, icon, disclosure and interaction packs without changing canonical command meaning. Conversely, language/grounding/executable variants should be testable while holding the visual treatment constant.
+
+This relationship does not make the Lab part of the shipped VIVIM runtime. It creates a deterministic development bench where this visual language can evolve against realistic Worlds, command corpora, execution events and evidence.
