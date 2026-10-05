@@ -941,3 +941,79 @@ No second documentation universe is required.
 ## 28. Change record
 
 - **2026-10-05:** Initial design merging the Semantic Runtime Lab with VOMEGA self-knowledge and Contextual Wiki. Established the core Reflection ABI obligation, source-native semantic declarations, derived Reflection Graph, ephemeral Wiki pages, realtime relevance, plugin self-wiring, completeness gates, source anchors, model-grounding boundaries and a migration path from current manifests.
+
+
+## 29. Historical harvest confirmation
+
+The old VIVIM symbolic/self-knowledge harvest independently reinforces this architecture.
+
+In particular, `harvests/old-vivim/symbolic/PERSONAL-AGENT-SELF-KNOWLEDGE-AND-COMMAND-LANGUAGE.md` already framed the internal Wiki as **UX over canonical objects/relationships/evidence**, not a storage architecture.
+
+That historical idea now becomes more precise:
+
+```
+source-native structure
++ durable product state
++ current evidence
++ Reflection relationships
+= self-knowledge substrate
+
+context + semantic focus
+→ ephemeral Wiki projection
+```
+
+The historical `?` family should be explored as an explicit introspection route into the same self-knowledge query system.
+
+Natural language and symbolic introspection must not create a second Wiki/query authority.
+
+## 30. Reflection Migrator
+
+Existing code needs an incremental bridge into the Reflection ABI.
+
+The design is specified in [Self-Knowledge Reflection Migrator](SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md).
+
+The utility should:
+
+- inspect current manifests/contracts/ops/schemas/config/language/tests;
+- extract structurally proven Reflection facts;
+- bind exact source anchors;
+- detect public behavior that remains opaque;
+- identify duplicate semantic definitions;
+- propose source-native enrichment;
+- generate safe migration patches only when explicitly requested;
+- verify Reflection/Wiki completeness.
+
+It defaults to read-only.
+
+It may never fabricate semantic proof in order to report complete coverage.
+
+## 31. Runtime compilation of Reflection
+
+The product should not AST-scan its repository live whenever the user opens help.
+
+Preferred lifecycle:
+
+```
+source / plugin package
+→ build/install reflection extraction
+→ version/content-hash-bound Reflection descriptor
+→ runtime Reflection Graph
+→ join live World/evidence
+→ Wiki projection
+```
+
+This makes source inspection a development/install concern while keeping runtime queries fast and deterministic.
+
+## 32. Semantic Data Engine relationship
+
+The broader record/identity model is defined in [Semantic Data Engine](SEMANTIC-DATA-ENGINE.md).
+
+Important additions include:
+
+- Model as a routing entity distinct from Provider/Account/Session;
+- stable semantic identity independent from policy classification;
+- multidimensional consequence semantics;
+- realization fidelity distinct from evidence maturity;
+- semantic handles shared by visual projection and Wiki.
+
+These concepts should become Reflection relationships where applicable.
