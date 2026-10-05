@@ -172,3 +172,13 @@ The first external capability is **prompt.send** against a known supported Provi
 This document is more concrete than `PRODUCT-ANCHOR.md` but remains a first-release design, not permanent Ω architecture.
 
 The seed now contains **23 documents**.
+
+## Elephant context network hypothesis
+
+**ELEPHANT-CONTEXT-NETWORK.md** preserves the previously developed “elephant” DevOps acceleration concept: persistent large-context cognitive domain services that workers can query and submit artifacts to for contextual review.
+
+The document intentionally preserves rich conceptual detail—resident/wave/transaction context, epoch validity, Cognitive Work Waves, candidate services, worker submission modes, dynamic topology, congestion, contradictions, context pollution, and experiment ladders—while deferring implementation decisions until measured testing.
+
+Elephants are never canonical truth. Git, source, tests, runtime evidence, and current project truth remain authoritative.
+
+The seed now contains **24 documents**.
