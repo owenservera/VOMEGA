@@ -234,3 +234,11 @@ A current strategic hypothesis is to build a local **Provider Lab** using one or
 The Lab can place an Ω-controlled semantic mirror beside real provider pages while also observing normal human interaction in Shadow mode. This creates an unusually tight development loop around provider capability mapping, account/session behavior, live realization, conformance, drift, and healing.
 
 The Lab is intentionally outside Ω's constitutional authority. It is a proving ground whose successful mechanisms and knowledge may later graduate into Ω through normal evidence and architectural review.
+
+## Harvest-first development stance
+
+A program-wide engineering stance is now explicit: **harvest before build; prove reuse before invention**.
+
+VIVIM's own historical code, the broader open-source ecosystem, browser-extension implementations, packages, research artifacts, and externally observable working products are all potential sources of prior evidence.
+
+The fresh project is still autonomous over the solution. The doctrine exists so autonomy begins from the strongest available evidence rather than from avoidable ignorance.
