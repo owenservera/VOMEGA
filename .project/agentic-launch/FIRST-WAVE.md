@@ -1,5 +1,7 @@
 # First Wave — Local Agentic Team Dispatch
 
+> **Historical launch artifact:** the first wave has already run. Do not recreate its executor allocation as a default topology. Reuse its evidence and handoffs, then derive new work from current STATUS + META-TRACKER. Harness assignments were situational, not organizational law.
+
 Status: **READY FOR LOCAL BOOTSTRAP EXECUTION**  
 Parent: [README.md](README.md)
 
