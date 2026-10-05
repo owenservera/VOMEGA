@@ -46,3 +46,11 @@ the continuity proof and examples use `--no-daemon`.
 Fresh sessions start at [.project/SITREP.md](.project/SITREP.md). Product intent
 lives in [seed-docs/START-HERE.md](seed-docs/START-HERE.md); current decisions,
 evidence, environment and ownership live in `.project/`.
+
+## First product release target
+
+The current first public product design is documented in [seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md](seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md).
+
+The target is a small floating Windows command box that grows its visible capability surface as the user registers real Provider Accounts. Setup and use should both travel through the same deterministic semantic command system; the first external capability is `prompt.send`.
+
+The current browser/account work is the immediate proof seam toward that release.
