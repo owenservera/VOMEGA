@@ -71,24 +71,37 @@ It is not a current performance contract or roadmap.
 
 The new project should re-measure important claims against current reality.
 
-## Current implementation layout
+## Current clean repository layout
 
-The main implementation areas include:
+The repository root intentionally contains two major directories:
 
 ```
-contracts/    boundary vocabulary
-host/         current kernel/host implementation
-platform/     platform seams
-plugins/      current product/plugin implementations
-packs/        composed domain packs
-compositions/ composition specifications
-surfaces/     current interaction surfaces
-examples/     reference examples
-tooling/      tests, gates, diagnostics, build tooling
-docs/         detailed implementation and historical corpus
+omega-baseline/   current Ω implementation baseline/evidence source
+seed-docs/        fresh autonomous-build context and bootstrap guidance
 ```
 
-These are descriptive of the seeded baseline, not a declaration that the fresh project must retain this decomposition.
+The current baseline itself includes source/configuration areas such as:
+
+```
+contracts/
+host/
+platform/
+plugins/
+packs/
+compositions/
+genome/
+sdk/
+shim/
+shims/
+surfaces/
+testkit/
+package.json
+bun.lock
+```
+
+Historical BCP-dev `docs/`, old project-management machinery, and several implementation-only historical folders are intentionally not copied into this clean repository.
+
+Inspect what is actually present rather than reconstructing omitted folders merely because historical material references them.
 
 ## Rule of interpretation
 
