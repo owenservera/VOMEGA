@@ -233,3 +233,18 @@ For expensive or high-risk work, use parallel harvest research to compare existi
 Treat harvested diversity as architectural evidence: multiple independent solutions can expose what is genuinely common, what is provider/domain-specific, and which abstractions are premature.
 
 A strong build focus should reduce both **implementation uncertainty** and **reinvention cost**.
+
+## Development acceleration as a measured workstream
+
+The project may invest in development accelerators described in `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`, especially when a repeated bottleneck is measurable.
+
+High-potential multiplier hypotheses include:
+- a local Development Reality Layer that can feed context bundles, failure capsules, friction detection, regression harvesting, and session chronicles;
+- disposable isolated experiment universes for safe parallel work;
+- trace-to-fixture conversion;
+- empirical worker routing across ZCode, Codex, and Claude Code;
+- automatic harvest triggers after repeated blind failure;
+- hypothesis arenas for high-value uncertain choices;
+- fault injection and live architectural falsifiers.
+
+Do not build the acceleration platform ahead of the bottleneck. Accelerators compete for engineering time like any other feature and must prove leverage.
