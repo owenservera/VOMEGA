@@ -1,13 +1,13 @@
 # Project Commons and workstream rooms
 
 Current objective and proof: SITREP.md and evidence/bootstrap.json. **Canonical program context: `.project/META-TRACKER.md` (67 major programs + 31 accelerator hypotheses).** This file is
-the small coordination register. Heads are accountable for handoffs, not permanent
-authority. A fresh executor claims an open row and updates owner/status/evidence
-before editing. A completed session agent is not an active background worker.
+the small coordination and durable-handoff register. Heads are accountable for handoffs, not permanent authority.
 
-How to read this file: the table is the live register. Every dated section below
-it is an append-only handoff record, true when written. Later sections supersede
-earlier ones; nothing below the table is a current instruction. Current launch
+**Mandatory dev-agent registration:** before substantive development/review work, follow [agentic-launch/DEV-AGENT-REGISTRATION.md](agentic-launch/DEV-AGENT-REGISTRATION.md) and create a lightweight per-agent claim under `agentic-launch/claims/`. The claim records who/what/when/source-HEAD/write-surface. Registration is coordination, not permission, exclusivity, priority or proof. A completed session agent is not an active background worker.
+
+How to read this file: the table is the project-level coordination register. Per-agent/session live detail is in `agentic-launch/claims/`. Every dated section below
+the table is an append-only material handoff record, true when written. Later sections supersede
+earlier ones; nothing below the table is a current instruction. Current aggregate launch
 state is `agentic-launch/STATUS.md`. The four rooms (Coordination, Research,
 Product/DevOps, Truth) are bootstrap-era routing vocabulary, not the program map,
 not departments, and not standing ownership. Current work may route directly by
