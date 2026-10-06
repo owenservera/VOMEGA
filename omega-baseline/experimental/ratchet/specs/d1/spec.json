@@ -1,0 +1,583 @@
+{
+  "schema": "ratchet.spec/0",
+  "id": "d1",
+  "title": "D1 — Executable First-Release Semantic Twin",
+  "evidenceClass": "SIMULATED",
+  "taskSource": ".project/deliverables/D1-ATOMIC-TASKS.md",
+  "graphOut": ".project/deliverables/D1-ATOMIC-TASKS.json",
+  "gateDirs": [
+    "omega-baseline/experimental/d1/test/gates"
+  ],
+  "testCwd": "omega-baseline",
+  "lock": "omega-baseline/experimental/ratchet/specs/d1/ratchet.lock.json",
+  "claims": ".project/ratchet/d1-claims.json",
+  "board": ".project/ratchet/D1-BOARD.md",
+  "evidence": ".project/evidence/d1-ratchet.json",
+  "facts": "omega-baseline/experimental/ratchet/specs/facts.json",
+  "ledgerDir": ".local/ratchet",
+  "completionTasks": [
+    "D1-089"
+  ],
+  "baseline": [
+    {
+      "id": "nlcl",
+      "cwd": "omega-baseline",
+      "argv": [
+        "$BUN",
+        "test",
+        "plugins/vivim-nlcl"
+      ]
+    },
+    {
+      "id": "omega:quick",
+      "cwd": "omega-baseline",
+      "argv": [
+        "$BUN",
+        "run",
+        "omega:quick"
+      ]
+    }
+  ],
+  "packet": {
+    "readFirst": [
+      ".project/deliverables/D1-FIRST-RELEASE-SPEC.md",
+      "omega-baseline/experimental/d1/README.md",
+      "omega-baseline/experimental/d1/src/contract.ts",
+      "seed-docs/INVARIANTS.md",
+      ".project/ratchet/OPERATING.md"
+    ],
+    "stopConditions": [
+      "Stop and record evidence if the task needs live browser/provider access, auth/provider/model configuration, or an owner decision in .project/DECISIONS.md.",
+      "Never weaken, skip or delete a gate to make it pass; change a gate only with a written reason, and expect SPEC_CHANGED re-review.",
+      "Never call fixture or simulated behaviour live.",
+      "No destructive history changes. Edit outside your write surface only with a recorded reason.",
+      "Stop after one bounded red→green cycle; hand off via the ratchet, not by waking other agents."
+    ],
+    "invariants": [
+      "Provider ≠ Account ≠ Model ≠ Session",
+      "Capability ≠ Realization",
+      "Natural language ≠ canonical command ≠ authority",
+      "Consequence ≠ authority; evidence ≠ authority",
+      "World ≠ Surface: the UI dispatches semantic actions only",
+      "Confidence ≠ proof; simulation ≠ live evidence"
+    ]
+  },
+  "tasks": {
+    "D1-001": {
+      "surface": [
+        ".project/evidence/d1-ratchet.json"
+      ],
+      "artifacts": [
+        {
+          "path": ".project/evidence/d1-ratchet.json",
+          "jsonPath": "baseline"
+        }
+      ],
+      "hint": "Run `bun run ratchet baseline`; it records HEAD, Bun, platform and both baseline counts, failures included."
+    },
+    "D1-002": {
+      "surface": [
+        ".project/deliverables/D1-CODE-MAP.md"
+      ],
+      "artifacts": [
+        {
+          "path": ".project/deliverables/D1-CODE-MAP.md",
+          "contains": "interpret("
+        }
+      ],
+      "readFirst": [
+        "omega-baseline/plugins/vivim-nlcl-pure/src/interpret.ts",
+        "omega-baseline/plugins/vivim-nlcl-pure/src/grammar.ts",
+        "omega-baseline/plugins/vivim-nlcl-pure/src/ground.ts"
+      ],
+      "hint": "Name files/functions for scan → ground → resolve/project. No design invention."
+    },
+    "D1-003": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/validate.ts",
+        "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json"
+      ]
+    },
+    "D1-004": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/validate.ts",
+        "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json"
+      ],
+      "hint": "Derive from declarations/prompt.send.capability.json; do not hand-list fields."
+    },
+    "D1-005": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/validate.ts",
+        "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json"
+      ],
+      "hint": "Fix lives in the validator; then flip U1 to baseline pass in the corpus fixture and make the corpus check use the validator (or fix nlcl status). `bun test plugins/vivim-nlcl` must stay green."
+    },
+    "D1-006": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/validate.ts",
+        "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json"
+      ]
+    },
+    "D1-010": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-011": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-012": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-013": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-014": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-015": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-016": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-017": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-018": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/world.ts",
+        "omega-baseline/experimental/d1/worlds/"
+      ]
+    },
+    "D1-020": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-021": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-022": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-023": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-024": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-025": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ],
+      "readFirst": [
+        "omega-baseline/plugins/vivim-nlcl/test/release-use-corpus.test.ts"
+      ],
+      "hint": "Harvest the corpus candidate frame for prompt.send@1; contribute it from the capability declaration rather than injecting into DEFAULT_FRAMES globally."
+    },
+    "D1-026": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-027": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-028": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-029": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/compile.ts"
+      ]
+    },
+    "D1-030": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/session.ts"
+      ]
+    },
+    "D1-031": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/session.ts"
+      ]
+    },
+    "D1-032": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/session.ts"
+      ]
+    },
+    "D1-033": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/session.ts"
+      ]
+    },
+    "D1-034": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/session.ts"
+      ]
+    },
+    "D1-040": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-041": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ],
+      "readFirst": [
+        "omega-baseline/experimental/mvp-sandbox/LOCK-C-CANDIDATE.md",
+        "omega-baseline/plugins/vivim-nlcl-pure/src/project.ts"
+      ]
+    },
+    "D1-042": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-043": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-044": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-045": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-046": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-047": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-048": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/project.ts",
+        "omega-baseline/experimental/d1/src/ui.ts"
+      ]
+    },
+    "D1-050": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-051": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-052": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-053": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-054": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-055": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-056": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-057": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ],
+      "readFirst": [
+        "omega-baseline/experimental/reflection-audit/LOCK-D-CANDIDATE.md",
+        "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md"
+      ]
+    },
+    "D1-058": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-059": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-059A": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-059B": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/reflection.ts",
+        "omega-baseline/experimental/d1/src/help.ts"
+      ]
+    },
+    "D1-060": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-061": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-062": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-063": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-064": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-065": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-066": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-067": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/execute.ts"
+      ]
+    },
+    "D1-070": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-071": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-072": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-073": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-074": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-075": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-076": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-077": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/replay.ts",
+        "omega-baseline/experimental/d1/src/metrics.ts",
+        "omega-baseline/experimental/d1/scenarios/"
+      ]
+    },
+    "D1-080": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/launch.ts"
+      ]
+    },
+    "D1-081": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/launch.ts"
+      ]
+    },
+    "D1-082": {
+      "surface": [
+        "omega-baseline/experimental/d1/src/launch.ts",
+        "omega-baseline/package.json"
+      ]
+    },
+    "D1-083": {
+      "surface": [
+        ".project/evidence/d1-ratchet.json"
+      ],
+      "artifacts": [
+        {
+          "path": ".project/evidence/d1-ratchet.json",
+          "jsonPath": "semanticGate"
+        }
+      ],
+      "hint": "Set by `bun run ratchet evidence` only when every D1 gate passes in the latest probe."
+    },
+    "D1-084": {
+      "surface": [
+        ".project/evidence/d1-ratchet.json"
+      ],
+      "artifacts": [
+        {
+          "path": ".project/evidence/d1-ratchet.json",
+          "jsonPath": "baselineGreen"
+        }
+      ],
+      "hint": "Set by `bun run ratchet baseline` only when both baseline commands exit 0."
+    },
+    "D1-085": {
+      "surface": [
+        ".project/evidence/d1-ratchet.json"
+      ],
+      "artifacts": [
+        {
+          "path": ".project/evidence/d1-ratchet.json",
+          "contains": "SIMULATED"
+        }
+      ]
+    },
+    "D1-086": {
+      "surface": [
+        "omega-baseline/experimental/d1/HARVEST-NOTE.md"
+      ],
+      "artifacts": [
+        {
+          "path": "omega-baseline/experimental/d1/HARVEST-NOTE.md",
+          "contains": "Reused"
+        }
+      ]
+    },
+    "D1-087": {
+      "surface": [
+        ".project/deliverables/D1-REVIEW.md"
+      ],
+      "artifacts": [
+        {
+          "path": ".project/deliverables/D1-REVIEW.md",
+          "contains": "Verdict"
+        }
+      ],
+      "hint": "Reviewer must not have promoted or claimed D1 tasks; verify the evidence supports exactly the D1 claim."
+    },
+    "D1-088": {
+      "surface": [
+        ".project/SITREP.md",
+        ".project/agentic-launch/STATUS.md"
+      ],
+      "artifacts": [
+        {
+          "path": ".project/SITREP.md",
+          "contains": "d1-ratchet.json"
+        }
+      ]
+    },
+    "D1-089": {
+      "surface": [
+        "omega-baseline/experimental/ratchet/specs/d1/ratchet.lock.json"
+      ],
+      "artifacts": [
+        {
+          "path": "omega-baseline/experimental/ratchet/specs/d1/ratchet.lock.json",
+          "jsonPath": "completion.head"
+        }
+      ],
+      "hint": "`bun run ratchet complete --by <label>` once every other task is DONE."
+    }
+  }
+}

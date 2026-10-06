@@ -4,7 +4,9 @@ Launch rows as of 2026-10-05; wording and evidence notes reconciled 2026-10-06.
 
 This file is the compact launch-state surface for fresh local sessions. It is the only place that says what is claimed, running or done.
 
-**Right now: D1 is CLAIMED by Codex / Coordination + Product + Truth.** Source `26ec6dfc6cbe301b6c48ee04c7a0d35a23c52468`; isolated clone `/workspace/scratch/b6f4221be35c/VOMEGA`, branch `work/d1-semantic-twin`. Scope: D1-001..089, synthetic only. Independent bounded implementation and review workers have explicit ownership; no auth/provider/model configuration changes. Next gate: baseline, red-to-green U1 and semantic World contracts.
+**Right now: nothing is claimed and nothing is running.** D1 is selected and incomplete; the earlier Codex claim (`work/d1-semantic-twin` at `26ec6df`) stopped before substantive implementation and was consolidated into `main` (see SITREP and COMMONS). D1 task state is now computed, not written here: `cd omega-baseline && bun run ratchet status` (board: `.project/ratchet/D1-BOARD.md`). Claim D1 tasks with `bun run ratchet claim <TASK> --by <label>`. _Corrected 2026-10-06: the drift fact F-ACTIVE-EXECUTOR-CONSISTENT found this line contradicting SITREP._
+
+Ratchet hardening + independent review completed 2026-10-06 on branch `work/d1-ratchet-integration` (not yet merged to `main`): recommendation **ADOPT WITH REMAINING LIMITATIONS**, findings in `.project/ratchet/REVIEW-2026-10-06.md`. Probe truth is 15/80 D1 gates green; a green `d1:gates` run is not D1 completion.
 
 Detailed topology: [README.md](README.md). Program map and authority ladder: [../META-TRACKER.md](../META-TRACKER.md).
 

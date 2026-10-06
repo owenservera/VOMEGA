@@ -25,7 +25,11 @@
     "omega:containment": "bun run platform/src/containment.ts",
     "omega:status": "bun run surfaces/cli/src/cli.ts status --no-daemon --json",
     "omega:host": "bun run host/src/main.ts",
-    "omega:cli": "bun run surfaces/cli/src/cli.ts"
+    "omega:cli": "bun run surfaces/cli/src/cli.ts",
+    "ratchet": "bun run experimental/ratchet/src/cli.ts",
+    "ratchet:test": "bun test experimental/ratchet/test",
+    "d1": "bun run experimental/d1/src/launch.ts",
+    "d1:gates": "bun test experimental/d1/test/gates"
   },
   "dependencies": {
     "zod": "^4.6.2"

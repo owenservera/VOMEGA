@@ -1,0 +1,55 @@
+{
+  "schema": "d1.world/0",
+  "id": "W1",
+  "title": "Claude Work only",
+  "provenance": {
+    "class": "synthetic-fixture",
+    "label": "SYNTHETIC — authored for D1 gates; not observed provider or account state",
+    "author": "d1-spec"
+  },
+  "providers": [
+    {
+      "id": "provider:claude",
+      "label": "Claude",
+      "names": [
+        "claude",
+        "anthropic claude"
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "id": "account:claude-work",
+      "provider": "provider:claude",
+      "label": "Claude · Work",
+      "names": [
+        "work",
+        "claude work",
+        "work claude"
+      ],
+      "freshness": "fresh",
+      "origin": "fixture"
+    }
+  ],
+  "models": [],
+  "capabilities": [
+    "prompt.send@1",
+    "account.register@1"
+  ],
+  "realizations": [
+    {
+      "id": "d1-virtual.prompt.send@1",
+      "capability": "prompt.send@1",
+      "provider": "provider:claude",
+      "status": "available"
+    }
+  ],
+  "authority": {
+    "prompt.send@1": "consent-required",
+    "account.register@1": "allowed"
+  },
+  "defaults": {},
+  "simulation": {
+    "prompt.send@1": "succeed"
+  }
+}

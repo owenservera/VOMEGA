@@ -1,0 +1,111 @@
+{
+  "schema": "d1.world/0",
+  "id": "W5",
+  "title": "Provider/Account/Model route stress: two Providers, Claude models, overlapping names",
+  "provenance": {
+    "class": "synthetic-fixture",
+    "label": "SYNTHETIC — authored for D1 gates; not observed provider or account state",
+    "author": "d1-spec"
+  },
+  "providers": [
+    {
+      "id": "provider:claude",
+      "label": "Claude",
+      "names": [
+        "claude",
+        "anthropic claude"
+      ]
+    },
+    {
+      "id": "provider:chatgpt",
+      "label": "ChatGPT",
+      "names": [
+        "chatgpt",
+        "openai chatgpt"
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "id": "account:claude-work",
+      "provider": "provider:claude",
+      "label": "Claude · Work",
+      "names": [
+        "work",
+        "claude work",
+        "work claude"
+      ],
+      "freshness": "fresh",
+      "origin": "fixture"
+    },
+    {
+      "id": "account:claude-personal",
+      "provider": "provider:claude",
+      "label": "Claude · Personal",
+      "names": [
+        "personal",
+        "claude personal",
+        "personal claude"
+      ],
+      "freshness": "fresh",
+      "origin": "fixture"
+    },
+    {
+      "id": "account:chatgpt-personal",
+      "provider": "provider:chatgpt",
+      "label": "ChatGPT · Personal",
+      "names": [
+        "chatgpt",
+        "chatgpt personal"
+      ],
+      "freshness": "fresh",
+      "origin": "fixture"
+    }
+  ],
+  "models": [
+    {
+      "id": "model:claude-opus",
+      "provider": "provider:claude",
+      "label": "Claude Opus",
+      "names": [
+        "opus",
+        "claude opus"
+      ]
+    },
+    {
+      "id": "model:claude-sonnet",
+      "provider": "provider:claude",
+      "label": "Claude Sonnet",
+      "names": [
+        "sonnet",
+        "claude sonnet"
+      ]
+    }
+  ],
+  "capabilities": [
+    "prompt.send@1",
+    "account.register@1"
+  ],
+  "realizations": [
+    {
+      "id": "d1-virtual.prompt.send@1",
+      "capability": "prompt.send@1",
+      "provider": "provider:claude",
+      "status": "available"
+    },
+    {
+      "id": "d1-virtual.prompt.send@1.chatgpt",
+      "capability": "prompt.send@1",
+      "provider": "provider:chatgpt",
+      "status": "available"
+    }
+  ],
+  "authority": {
+    "prompt.send@1": "consent-required",
+    "account.register@1": "allowed"
+  },
+  "defaults": {},
+  "simulation": {
+    "prompt.send@1": "succeed"
+  }
+}

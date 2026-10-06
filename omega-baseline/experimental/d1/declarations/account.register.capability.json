@@ -1,0 +1,21 @@
+{
+  "schema": "d1.declaration/0",
+  "kind": "capability",
+  "id": "account.register@1",
+  "title": "Register an Account",
+  "summary": "Add a relationship with a Provider to your World so capabilities can use it.",
+  "params": [
+    { "name": "provider", "type": "provider", "required": true, "semantic": "route.provider", "explain": "The external service the Account belongs to." },
+    { "name": "label", "type": "text", "required": true, "semantic": "params.label", "explain": "Your name for this Account, such as Work or Personal." }
+  ],
+  "consequence": {
+    "class": "local-only",
+    "crossesLocalBoundary": false,
+    "carries": [],
+    "to": "local",
+    "explain": "Only your local World changes. In D1 the Account is synthetic: no login happens and no identity is verified."
+  },
+  "authority": { "requires": "none", "scope": "local" },
+  "evidence": { "classes": ["SIMULATED"], "explain": "A synthetic registration is not an authenticated Account." },
+  "realizations": []
+}

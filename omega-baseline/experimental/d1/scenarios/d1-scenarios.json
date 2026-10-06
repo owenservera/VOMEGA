@@ -1,0 +1,176 @@
+{
+  "schema": "d1.scenarios/0",
+  "status": "SYNTHETIC scenario corpus for D1 metrics. Seed set; grow it by adding a failing case before each fix.",
+  "scenarios": [
+    {
+      "id": "FR1",
+      "category": "false-ready",
+      "world": "W2",
+      "inputs": [
+        "send 'x' to Gemini"
+      ],
+      "expect": {
+        "lifecycleNot": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "id": "FR2",
+      "category": "false-ready",
+      "world": "W2",
+      "inputs": [
+        "send 'x' to claude"
+      ],
+      "expect": {
+        "lifecycleNot": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "id": "FR3",
+      "category": "false-ready",
+      "world": "W3",
+      "inputs": [
+        "send 'x' to work claude"
+      ],
+      "expect": {
+        "lifecycleNot": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "id": "FR4",
+      "category": "false-ready",
+      "world": "W1",
+      "inputs": [
+        "send to work claude"
+      ],
+      "expect": {
+        "lifecycleNot": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "id": "FR5",
+      "category": "unknown-target",
+      "world": "W4",
+      "inputs": [
+        "send 'x' to mailbox home"
+      ],
+      "expect": {
+        "lifecycleNot": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "id": "ET1",
+      "category": "explicit-target",
+      "world": "W2",
+      "inputs": [
+        "send 'review this' to work claude"
+      ],
+      "expect": {
+        "account": "account:claude-work"
+      }
+    },
+    {
+      "id": "ET2",
+      "category": "explicit-target",
+      "world": "W2",
+      "inputs": [
+        "send 'x' to claude personal"
+      ],
+      "expect": {
+        "account": "account:claude-personal"
+      }
+    },
+    {
+      "id": "ET3",
+      "category": "quoted-payload",
+      "world": "W2",
+      "inputs": [
+        "send 'ask claude personal' to work claude"
+      ],
+      "expect": {
+        "account": "account:claude-work"
+      }
+    },
+    {
+      "id": "AM1",
+      "category": "ambiguity",
+      "world": "W2",
+      "inputs": [
+        "Ask Claude to explain this error: build failed"
+      ],
+      "expect": {
+        "lifecycle": "needs-choice",
+        "account": null,
+        "ambiguousAccounts": [
+          "account:claude-personal",
+          "account:claude-work"
+        ]
+      }
+    },
+    {
+      "id": "AM2",
+      "category": "ambiguity",
+      "world": "W2",
+      "inputs": [
+        "send 'review this' to claude"
+      ],
+      "expect": {
+        "lifecycle": "needs-choice",
+        "account": null,
+        "ambiguousAccounts": [
+          "account:claude-personal",
+          "account:claude-work"
+        ]
+      }
+    },
+    {
+      "id": "RV1",
+      "category": "revision",
+      "world": "W2",
+      "inputs": [
+        "send 'a' to work claude",
+        "send 'a' to claude personal"
+      ],
+      "expect": {
+        "account": "account:claude-personal"
+      }
+    },
+    {
+      "id": "RV2",
+      "category": "revision",
+      "world": "W2",
+      "inputs": [
+        "send 'a' to claude",
+        "use Work",
+        "use Personal"
+      ],
+      "expect": {
+        "account": "account:claude-personal"
+      }
+    },
+    {
+      "id": "RG1",
+      "category": "registration",
+      "world": "W0",
+      "inputs": [
+        "add my Claude work account",
+        "Ask Claude to explain this error: build failed"
+      ],
+      "expect": {
+        "lifecycleNot": [
+          "ready",
+          "needs-choice"
+        ]
+      }
+    }
+  ]
+}

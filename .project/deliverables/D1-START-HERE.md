@@ -68,6 +68,10 @@ For each task:
 
 Parallelize only tasks with genuinely disjoint write surfaces or explicit interfaces.
 
+## Executable task control (added 2026-10-06)
+
+The D1 definition of done now exists as code: 80 gates in `omega-baseline/experimental/d1/test/gates/`, tagged by task ID and run by the ratchet (`.project/ratchet/OPERATING.md`). Task state is computed from those gates, the ratchet lock and independent reviews. It is not written by hand here or in STATUS. From `omega-baseline/`: `bun run ratchet next` gives the next task packet, `bun run ratchet fanout --n 4` gives parallel tasks with disjoint write surfaces, and `bun run ratchet status` gives current state. Design and rationale: `.project/ratchet/DESIGN.md`.
+
 ## Definition of done
 
 D1 is done only when all release gates in the specification pass, including:

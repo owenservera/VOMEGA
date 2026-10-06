@@ -1,0 +1,50 @@
+{
+  "schema": "ratchet.facts/0",
+  "facts": [
+    {
+      "id": "F-MANIFEST-COUNT",
+      "claim": "The baseline has 24 plugin manifests under plugins/ (packs/ are counted separately).",
+      "assertedBy": [".project/SITREP.md", ".project/META-REVIEW-2026-10-06.md"],
+      "probe": { "kind": "count-files", "glob": "omega-baseline/plugins/*/plugin.json" },
+      "expect": 24
+    },
+    {
+      "id": "F-CONTENTHASH-EMPTY",
+      "claim": "contentHash is empty in all 24 manifests (Reflection source binding unmet).",
+      "assertedBy": [".project/SITREP.md", ".project/META-TRACKER.md"],
+      "probe": { "kind": "count-files-matching", "glob": "omega-baseline/plugins/*/plugin.json", "pattern": "\"contentHash\":\\s*\"\"" },
+      "expect": 24
+    },
+    {
+      "id": "F-PROMPT-SEND-ABSENT",
+      "claim": "prompt.send occurs in no plugin manifest.",
+      "assertedBy": [".project/SITREP.md", ".project/REALITY.md"],
+      "probe": { "kind": "count-files-matching", "glob": "omega-baseline/plugins/*/plugin.json", "pattern": "prompt\\.send" },
+      "expect": 0
+    },
+    {
+      "id": "F-CORPUS-PINNED-GAPS",
+      "claim": "The release-use corpus has 8 pinned known gaps (baseline fail).",
+      "assertedBy": [".project/SITREP.md"],
+      "probe": { "kind": "json-count", "file": "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json", "path": "cases", "where": { "baseline": "fail" } },
+      "expect": 8
+    },
+    {
+      "id": "F-CORPUS-PASSING",
+      "claim": "The release-use corpus has 9 passing cases.",
+      "assertedBy": [".project/SITREP.md"],
+      "probe": { "kind": "json-count", "file": "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json", "path": "cases", "where": { "baseline": "pass" } },
+      "expect": 9
+    },
+    {
+      "id": "F-ACTIVE-EXECUTOR-CONSISTENT",
+      "claim": "STATUS.md and SITREP.md agree on whether an executor is running D1.",
+      "assertedBy": [".project/agentic-launch/STATUS.md", ".project/SITREP.md"],
+      "probe": {
+        "kind": "mutex",
+        "a": { "file": ".project/agentic-launch/STATUS.md", "pattern": "Right now: D1 is CLAIMED" },
+        "b": { "file": ".project/SITREP.md", "pattern": "No executor is currently running" }
+      }
+    }
+  ]
+}

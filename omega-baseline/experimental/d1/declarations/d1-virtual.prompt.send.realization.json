@@ -1,0 +1,13 @@
+{
+  "schema": "d1.declaration/0",
+  "kind": "realization",
+  "id": "d1-virtual.prompt.send@1",
+  "capability": "prompt.send@1",
+  "virtual": true,
+  "evidenceClass": "SIMULATED",
+  "version": "0.1.0",
+  "requires": ["account", "prompt"],
+  "emits": ["execution.start", "execution.attempt", "execution.result"],
+  "failureModes": ["account-stale", "fixture-failure"],
+  "explain": "A deterministic stand-in for a Provider. It never contacts anything outside this process."
+}

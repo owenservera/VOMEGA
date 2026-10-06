@@ -1,0 +1,8 @@
+{
+  "schema": "d1.declaration/0",
+  "kind": "action",
+  "id": "account.select@1",
+  "edits": "route.account",
+  "via": ["typed", "clicked"],
+  "explain": "Choosing an Account by typing (\"use Work\") or by clicking produces the same semantic edit."
+}

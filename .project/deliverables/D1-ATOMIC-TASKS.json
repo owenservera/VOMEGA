@@ -1,0 +1,961 @@
+{
+  "schema": "ratchet.taskgraph/0",
+  "source": {
+    "path": ".project/deliverables/D1-ATOMIC-TASKS.md",
+    "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
+  },
+  "tasks": [
+    {
+      "id": "D1-001",
+      "phase": "A",
+      "phaseTitle": "establish executable truth",
+      "outcome": "Pin D1 baseline and test commands",
+      "deps": [],
+      "acceptance": "Record HEAD, Windows/Bun facts if available, `bun test plugins/vivim-nlcl`, `omega:quick`; preserve pre-existing failures honestly",
+      "criticality": 20,
+      "unblocks": 76
+    },
+    {
+      "id": "D1-002",
+      "phase": "A",
+      "phaseTitle": "establish executable truth",
+      "outcome": "Map exact reusable interpreter entry points",
+      "deps": [
+        "D1-001"
+      ],
+      "acceptance": "Short code map names source files/functions for scan→ground→resolve/project; no design invention",
+      "criticality": 19,
+      "unblocks": 74
+    },
+    {
+      "id": "D1-003",
+      "phase": "A",
+      "phaseTitle": "establish executable truth",
+      "outcome": "Reproduce corpus U1 false-READY in an isolated test",
+      "deps": [
+        "D1-001"
+      ],
+      "acceptance": "One focused test demonstrates current defect before fix",
+      "criticality": 3,
+      "unblocks": 3
+    },
+    {
+      "id": "D1-004",
+      "phase": "A",
+      "phaseTitle": "establish executable truth",
+      "outcome": "Define required-field metadata for `prompt.send`",
+      "deps": [
+        "D1-002"
+      ],
+      "acceptance": "Machine-readable rule distinguishes required Account/payload from optional route fields",
+      "criticality": 18,
+      "unblocks": 60
+    },
+    {
+      "id": "D1-005",
+      "phase": "A",
+      "phaseTitle": "establish executable truth",
+      "outcome": "Fix required-field/READY validation",
+      "deps": [
+        "D1-003",
+        "D1-004"
+      ],
+      "acceptance": "U1 becomes a normal passing expectation; unresolved required fields cannot be READY",
+      "criticality": 2,
+      "unblocks": 2
+    },
+    {
+      "id": "D1-006",
+      "phase": "A",
+      "phaseTitle": "establish executable truth",
+      "outcome": "Add regression tests for every required-field unresolved case",
+      "deps": [
+        "D1-005"
+      ],
+      "acceptance": "Missing/incompatible Account and missing payload are covered",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-010",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Define D1 semantic IDs/record shapes",
+      "deps": [
+        "D1-002"
+      ],
+      "acceptance": "Provider, Account, Model(optional), Capability, Realization and source class represented without identity collapse",
+      "criticality": 18,
+      "unblocks": 70
+    },
+    {
+      "id": "D1-011",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Implement deterministic World snapshot loader",
+      "deps": [
+        "D1-010"
+      ],
+      "acceptance": "Same fixture bytes produce same World identity/digest",
+      "criticality": 17,
+      "unblocks": 32
+    },
+    {
+      "id": "D1-012",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Enforce fixture provenance",
+      "deps": [
+        "D1-011"
+      ],
+      "acceptance": "Loader rejects D1 World fixture lacking explicit synthetic/fixture source",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-013",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Add World W0: no Accounts",
+      "deps": [
+        "D1-011"
+      ],
+      "acceptance": "Loads/validates deterministically",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-014",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Add World W1: Claude Work only",
+      "deps": [
+        "D1-011"
+      ],
+      "acceptance": "`prompt.send` has exactly one compatible Account",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-015",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Add World W2: Claude Work + Personal",
+      "deps": [
+        "D1-011"
+      ],
+      "acceptance": "target remains ambiguous without explicit/default rule",
+      "criticality": 16,
+      "unblocks": 25
+    },
+    {
+      "id": "D1-016",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Add World W3: stale Claude Work",
+      "deps": [
+        "D1-011"
+      ],
+      "acceptance": "capability availability is not reported fresh/READY",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-017",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Add World W4: unknown/incompatible target",
+      "deps": [
+        "D1-011"
+      ],
+      "acceptance": "cannot compile executable READY command",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-018",
+      "phase": "B",
+      "phaseTitle": "minimal semantic World",
+      "outcome": "Add World W5: optional Provider/Model route stress case",
+      "deps": [
+        "D1-011"
+      ],
+      "acceptance": "Provider/Account/Model remain distinct",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-020",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Add semantic registration operation for synthetic Provider/Account relation",
+      "deps": [
+        "D1-010"
+      ],
+      "acceptance": "operation uses same command path, not special UI mutation",
+      "criticality": 12,
+      "unblocks": 13
+    },
+    {
+      "id": "D1-021",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Interpret “add my Claude work account”",
+      "deps": [
+        "D1-020"
+      ],
+      "acceptance": "resolves to registration candidate with explicit synthetic target metadata",
+      "criticality": 11,
+      "unblocks": 11
+    },
+    {
+      "id": "D1-022",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Interpret “add another Claude account and call it Personal”",
+      "deps": [
+        "D1-020"
+      ],
+      "acceptance": "second distinct Account relation produced",
+      "criticality": 11,
+      "unblocks": 11
+    },
+    {
+      "id": "D1-023",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Persist D1 synthetic registration in session World state",
+      "deps": [
+        "D1-021",
+        "D1-022"
+      ],
+      "acceptance": "subsequent interpretation sees both Accounts",
+      "criticality": 10,
+      "unblocks": 10
+    },
+    {
+      "id": "D1-024",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Define candidate canonical `prompt.send` UseCommand",
+      "deps": [
+        "D1-004",
+        "D1-010"
+      ],
+      "acceptance": "explicit capability/provider/account/params/world/revision/consequence/authority/evidence refs",
+      "criticality": 17,
+      "unblocks": 57
+    },
+    {
+      "id": "D1-025",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Compile direct `prompt.send` utterance",
+      "deps": [
+        "D1-024"
+      ],
+      "acceptance": "canonical journey phrase recognizes capability and payload",
+      "criticality": 16,
+      "unblocks": 41
+    },
+    {
+      "id": "D1-026",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Preserve two-Account ambiguity",
+      "deps": [
+        "D1-015",
+        "D1-025"
+      ],
+      "acceptance": "no silent Account choice; both alternatives inspectable",
+      "criticality": 15,
+      "unblocks": 24
+    },
+    {
+      "id": "D1-027",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Apply explicit text correction “use Work”",
+      "deps": [
+        "D1-026"
+      ],
+      "acceptance": "only required semantic fields/dependencies change",
+      "criticality": 14,
+      "unblocks": 22
+    },
+    {
+      "id": "D1-028",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Protect quoted payload from routing",
+      "deps": [
+        "D1-025"
+      ],
+      "acceptance": "Provider/Account words inside quoted payload do not retarget",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-029",
+      "phase": "C",
+      "phaseTitle": "registration and command nucleus",
+      "outcome": "Implement deterministic command digest",
+      "deps": [
+        "D1-024"
+      ],
+      "acceptance": "semantically equivalent pinned command serializes/digests identically",
+      "criticality": 12,
+      "unblocks": 19
+    },
+    {
+      "id": "D1-030",
+      "phase": "D",
+      "phaseTitle": "realtime session semantics",
+      "outcome": "Add InterpretationSession/revision identity",
+      "deps": [
+        "D1-025"
+      ],
+      "acceptance": "each input edit gets monotonic/stable revision identity",
+      "criticality": 15,
+      "unblocks": 37
+    },
+    {
+      "id": "D1-031",
+      "phase": "D",
+      "phaseTitle": "realtime session semantics",
+      "outcome": "Bind interpretation result to originating revision",
+      "deps": [
+        "D1-030"
+      ],
+      "acceptance": "result carries revision and World basis",
+      "criticality": 3,
+      "unblocks": 2
+    },
+    {
+      "id": "D1-032",
+      "phase": "D",
+      "phaseTitle": "realtime session semantics",
+      "outcome": "Suppress obsolete late results",
+      "deps": [
+        "D1-031"
+      ],
+      "acceptance": "automated test proves N result cannot overwrite active N+1",
+      "criticality": 2,
+      "unblocks": 1
+    },
+    {
+      "id": "D1-033",
+      "phase": "D",
+      "phaseTitle": "realtime session semantics",
+      "outcome": "Represent semantic edits explicitly",
+      "deps": [
+        "D1-027",
+        "D1-030"
+      ],
+      "acceptance": "Account choice is a semantic edit/recompile event",
+      "criticality": 13,
+      "unblocks": 21
+    },
+    {
+      "id": "D1-034",
+      "phase": "D",
+      "phaseTitle": "realtime session semantics",
+      "outcome": "Bind committed command to immutable revision",
+      "deps": [
+        "D1-033"
+      ],
+      "acceptance": "later draft editing cannot retarget committed command",
+      "criticality": 12,
+      "unblocks": 18
+    },
+    {
+      "id": "D1-040",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Define minimal deterministic D1 projection contract",
+      "deps": [
+        "D1-024",
+        "D1-030"
+      ],
+      "acceptance": "exposes interpretation, route, validation, unresolved, consequence, help refs, actions",
+      "criticality": 14,
+      "unblocks": 24
+    },
+    {
+      "id": "D1-041",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Implement pure semantic projector",
+      "deps": [
+        "D1-040"
+      ],
+      "acceptance": "same semantic state → same projection; no raw-language parsing in renderer",
+      "criticality": 13,
+      "unblocks": 23
+    },
+    {
+      "id": "D1-042",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Render text input + interpretation state",
+      "deps": [
+        "D1-041"
+      ],
+      "acceptance": "developer can type canonical journey and see current reading",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-043",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Render Provider/Account/Model route",
+      "deps": [
+        "D1-041"
+      ],
+      "acceptance": "route identities visible and separately labelled",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-044",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Render unresolved Account chooser",
+      "deps": [
+        "D1-026",
+        "D1-041"
+      ],
+      "acceptance": "two Accounts shown without implied selection",
+      "criticality": 12,
+      "unblocks": 12
+    },
+    {
+      "id": "D1-045",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Route chooser click through semantic edit reducer",
+      "deps": [
+        "D1-033",
+        "D1-044"
+      ],
+      "acceptance": "click does not directly mutate private routing state",
+      "criticality": 11,
+      "unblocks": 11
+    },
+    {
+      "id": "D1-046",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Prove typed/clicked parity",
+      "deps": [
+        "D1-027",
+        "D1-029",
+        "D1-045"
+      ],
+      "acceptance": "both paths produce same canonical command digest",
+      "criticality": 10,
+      "unblocks": 10
+    },
+    {
+      "id": "D1-047",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Render consequence/external-transfer preview",
+      "deps": [
+        "D1-041"
+      ],
+      "acceptance": "payload transfer is visible before execution",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-048",
+      "phase": "E",
+      "phaseTitle": "projection and product twin",
+      "outcome": "Render lifecycle states",
+      "deps": [
+        "D1-041"
+      ],
+      "acceptance": "at least needs-choice, READY, needs-consent, executing, completed-simulated, failed-simulated",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-050",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Expose minimal semantic help metadata from same source records",
+      "deps": [
+        "D1-010",
+        "D1-024"
+      ],
+      "acceptance": "no duplicate hand-authored parameter/capability truth",
+      "criticality": 12,
+      "unblocks": 16
+    },
+    {
+      "id": "D1-051",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Map active semantic handles to help topics",
+      "deps": [
+        "D1-041",
+        "D1-050"
+      ],
+      "acceptance": "active Account ambiguity ranks relevant help",
+      "criticality": 11,
+      "unblocks": 15
+    },
+    {
+      "id": "D1-052",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Render help for Provider/Account/capability/consequence",
+      "deps": [
+        "D1-051"
+      ],
+      "acceptance": "canonical journey questions answer from current state",
+      "criticality": 10,
+      "unblocks": 12
+    },
+    {
+      "id": "D1-053",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Add help-grounding removal test",
+      "deps": [
+        "D1-052"
+      ],
+      "acceptance": "remove capability/state → current help stops claiming it",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-054",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Add SIMULATED explanation",
+      "deps": [
+        "D1-052"
+      ],
+      "acceptance": "user can inspect exactly why current execution is not live proof",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-055",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Define minimal D1 Reflection extraction boundary",
+      "deps": [
+        "D1-010",
+        "D1-024"
+      ],
+      "acceptance": "exact D1 structural inputs and allowed claim classes documented/tested",
+      "criticality": 6,
+      "unblocks": 6
+    },
+    {
+      "id": "D1-056",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Add source anchor/content digest mechanism for D1 reflected items",
+      "deps": [
+        "D1-055"
+      ],
+      "acceptance": "same source produces stable binding; changed source invalidates/changes binding",
+      "criticality": 5,
+      "unblocks": 5
+    },
+    {
+      "id": "D1-057",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Implement read-only D1 Reflection extractor/Migrator slice",
+      "deps": [
+        "D1-055",
+        "D1-056"
+      ],
+      "acceptance": "extracts D1 capability/parameter/realization/action facts; no fabricated claims",
+      "criticality": 4,
+      "unblocks": 4
+    },
+    {
+      "id": "D1-058",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Materialize minimal Reflection Graph",
+      "deps": [
+        "D1-057"
+      ],
+      "acceptance": "D1 semantic structures and source anchors queryable/read-only",
+      "criticality": 3,
+      "unblocks": 2
+    },
+    {
+      "id": "D1-059",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Drive contextual Wiki/help from Reflection + World + active semantic handles",
+      "deps": [
+        "D1-051",
+        "D1-058"
+      ],
+      "acceptance": "no parallel authoritative capability/parameter truth",
+      "criticality": 2,
+      "unblocks": 1
+    },
+    {
+      "id": "D1-059A",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Add source-removal/structural-drift grounding test",
+      "deps": [
+        "D1-059"
+      ],
+      "acceptance": "removing/changing reflected structure changes/fails help honestly",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-059B",
+      "phase": "F",
+      "phaseTitle": "grounded contextual help",
+      "outcome": "Record extraction gaps explicitly",
+      "deps": [
+        "D1-057"
+      ],
+      "acceptance": "missing structural facts appear as missing/unknown, not model inference",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-060",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Define D1 consequence record for `prompt.send`",
+      "deps": [
+        "D1-024"
+      ],
+      "acceptance": "externality/data-transfer distinct from authority",
+      "criticality": 16,
+      "unblocks": 25
+    },
+    {
+      "id": "D1-061",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Add deterministic authority fixture",
+      "deps": [
+        "D1-060"
+      ],
+      "acceptance": "state can be allowed/consent-required/denied without changing capability identity",
+      "criticality": 15,
+      "unblocks": 24
+    },
+    {
+      "id": "D1-062",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Prevent interpretation from granting authority",
+      "deps": [
+        "D1-061"
+      ],
+      "acceptance": "choosing target/typing consent-like prose alone cannot bypass authority gate",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-063",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Implement virtual `prompt.send` realization",
+      "deps": [
+        "D1-024",
+        "D1-061"
+      ],
+      "acceptance": "accepts only committed validated authorized command",
+      "criticality": 14,
+      "unblocks": 22
+    },
+    {
+      "id": "D1-064",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Emit execution-start/attempt/result events",
+      "deps": [
+        "D1-063"
+      ],
+      "acceptance": "events bind command/world/revision/realization",
+      "criticality": 13,
+      "unblocks": 20
+    },
+    {
+      "id": "D1-065",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Emit machine-readable SIMULATED receipt",
+      "deps": [
+        "D1-064"
+      ],
+      "acceptance": "receipt carries simulation source/maturity and no live-account claims",
+      "criticality": 12,
+      "unblocks": 19
+    },
+    {
+      "id": "D1-066",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Implement deterministic simulated failure path",
+      "deps": [
+        "D1-063"
+      ],
+      "acceptance": "failure produces explicit failure evidence, not success",
+      "criticality": 9,
+      "unblocks": 8
+    },
+    {
+      "id": "D1-067",
+      "phase": "G",
+      "phaseTitle": "authority and virtual execution",
+      "outcome": "Add “simulated can never satisfy live proof” predicate/test",
+      "deps": [
+        "D1-065"
+      ],
+      "acceptance": "live-evidence check rejects all D1 receipts",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-070",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Define replay bundle",
+      "deps": [
+        "D1-029",
+        "D1-034",
+        "D1-065"
+      ],
+      "acceptance": "captures World, registry/interpreter basis, revisions, edits, authority, realization and events",
+      "criticality": 11,
+      "unblocks": 17
+    },
+    {
+      "id": "D1-071",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Implement replay runner",
+      "deps": [
+        "D1-070"
+      ],
+      "acceptance": "bundle runs without interactive reconstruction",
+      "criticality": 10,
+      "unblocks": 16
+    },
+    {
+      "id": "D1-072",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Prove complete-journey deterministic replay",
+      "deps": [
+        "D1-071"
+      ],
+      "acceptance": "same command/evidence digest on repeated pinned runs",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-073",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Add semantic diff output",
+      "deps": [
+        "D1-071"
+      ],
+      "acceptance": "differences identify semantic IDs/fields before prose/pixels",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-074",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Add falseReadyRate metric",
+      "deps": [
+        "D1-005",
+        "D1-071"
+      ],
+      "acceptance": "canonical D1 suite reports zero false READY",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-075",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Add wrongTargetRate metric",
+      "deps": [
+        "D1-026",
+        "D1-071"
+      ],
+      "acceptance": "explicit-target suite reports zero wrong target",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-076",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Add ambiguity-honesty scenarios",
+      "deps": [
+        "D1-026",
+        "D1-071"
+      ],
+      "acceptance": "ambiguity is scored correct where expected",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-077",
+      "phase": "H",
+      "phaseTitle": "replay and experiments",
+      "outcome": "Add revision-stability scenario",
+      "deps": [
+        "D1-032",
+        "D1-071"
+      ],
+      "acceptance": "stale async overwrite is impossible/tested",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-080",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Wire canonical journey end to end",
+      "deps": [
+        "D1-023",
+        "D1-046",
+        "D1-052",
+        "D1-065",
+        "D1-071"
+      ],
+      "acceptance": "one launchable flow reaches SIMULATED receipt",
+      "criticality": 9,
+      "unblocks": 9
+    },
+    {
+      "id": "D1-081",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Add second end-to-end failure journey",
+      "deps": [
+        "D1-066",
+        "D1-080"
+      ],
+      "acceptance": "unavailable/stale path refuses/fails honestly",
+      "criticality": 8,
+      "unblocks": 7
+    },
+    {
+      "id": "D1-082",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Add one-command developer launcher",
+      "deps": [
+        "D1-080"
+      ],
+      "acceptance": "fresh repo setup has documented single D1 launch command after normal install",
+      "criticality": 1,
+      "unblocks": 0
+    },
+    {
+      "id": "D1-083",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Run D1 semantic gate",
+      "deps": [
+        "D1-080",
+        "D1-081"
+      ],
+      "acceptance": "all D1 tests pass",
+      "criticality": 7,
+      "unblocks": 6
+    },
+    {
+      "id": "D1-084",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Re-run existing baseline gates",
+      "deps": [
+        "D1-083"
+      ],
+      "acceptance": "`bun test plugins/vivim-nlcl` and `omega:quick` remain green",
+      "criticality": 6,
+      "unblocks": 5
+    },
+    {
+      "id": "D1-085",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Produce machine-readable D1 evidence summary",
+      "deps": [
+        "D1-083",
+        "D1-084"
+      ],
+      "acceptance": "claims, commands, environment, test results, digests and limitations recorded; marked SIMULATED",
+      "criticality": 5,
+      "unblocks": 4
+    },
+    {
+      "id": "D1-086",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Write implementation/harvest note",
+      "deps": [
+        "D1-085"
+      ],
+      "acceptance": "states reused/adapted/new pieces, rejected alternatives if material, unresolved architecture",
+      "criticality": 4,
+      "unblocks": 3
+    },
+    {
+      "id": "D1-087",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Independent review of D1 claims",
+      "deps": [
+        "D1-085",
+        "D1-086"
+      ],
+      "acceptance": "reviewer verifies evidence supports exactly the D1 claim and no live/provider overclaim",
+      "criticality": 3,
+      "unblocks": 2
+    },
+    {
+      "id": "D1-088",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Update SITREP/current status",
+      "deps": [
+        "D1-087"
+      ],
+      "acceptance": "current truth points to executable D1 and its evidence",
+      "criticality": 2,
+      "unblocks": 1
+    },
+    {
+      "id": "D1-089",
+      "phase": "I",
+      "phaseTitle": "integrated release",
+      "outcome": "Tag/identify D1 completion commit",
+      "deps": [
+        "D1-088"
+      ],
+      "acceptance": "immutable commit SHA recorded in evidence/status",
+      "criticality": 1,
+      "unblocks": 0
+    }
+  ]
+}

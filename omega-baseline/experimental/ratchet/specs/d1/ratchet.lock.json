@@ -1,0 +1,189 @@
+{
+  "schema": "ratchet.lock/0",
+  "spec": "d1",
+  "anchors": {
+    "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+    "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+    "omega-baseline/experimental/d1/test/gates/c-command.gate.test.ts": "sha256:07d4c02b99c2671c07f7ceada2aff8e392567c39a53843c8e44c2e720ae7a574",
+    "omega-baseline/experimental/d1/test/gates/d-session.gate.test.ts": "sha256:d88330caecbfbc8c87d4db7bc872f3b51570389b4ef764ce468c584faa5728c4",
+    "omega-baseline/experimental/d1/test/gates/e-projection.gate.test.ts": "sha256:e14a1b2c94ab402748c7138ca0f04ce66aa3cb44398c9094a6b9bd5de77c5b61",
+    "omega-baseline/experimental/d1/test/gates/f-help.gate.test.ts": "sha256:4b8f5e2463931516dbebe0a9cac03709c179836620c4ddba9971ec782001ad02",
+    "omega-baseline/experimental/d1/test/gates/g-execution.gate.test.ts": "sha256:55e540cac9fdaa1b5d8f6546b2599adeae66615ac0c166d7aa3aae5aa7cffddd",
+    "omega-baseline/experimental/d1/test/gates/h-replay.gate.test.ts": "sha256:47f7dbcea5a016e06f7c7f2b04e4061d57dff0666da4e1ecd5cabb9e96ab4e04",
+    "omega-baseline/experimental/d1/test/gates/i-release.gate.test.ts": "sha256:42cf9b9e1843ee80b6f1619f1b0d7110a0f714a628430ceb6262c7e7cf43abe1"
+  },
+  "specChanges": [
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/_gate.ts",
+      "by": "ratchet-integration",
+      "reason": "new gate/spec file added",
+      "at": "2026-10-06T02:36:43.430Z",
+      "from": null,
+      "to": "sha256:2974b09d26a9ec9c3fcdc9a10fcf1f25d36761d69a1da13896da533eec628c09"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/_helpers.ts",
+      "by": "ratchet-integration",
+      "reason": "new gate/spec file added",
+      "at": "2026-10-06T02:36:43.430Z",
+      "from": null,
+      "to": "sha256:31d86c61abcd754b46549ff29974650220554599d1731fb1d82d51a88447782a"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/_release.ts",
+      "by": "ratchet-integration",
+      "reason": "new gate/spec file added",
+      "at": "2026-10-06T02:36:43.430Z",
+      "from": null,
+      "to": "sha256:fea3597d0ec2f801a3c69972399e86a4657c13457a606edbb346725a6e9d6cdb"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/f-help.gate.test.ts",
+      "by": "ratchet-integration",
+      "reason": "close D1-057 invented-fact hole: a fact key absent from its anchor was silently skipped, so fabricated facts passed",
+      "at": "2026-10-06T02:37:07.178Z",
+      "from": "sha256:4b8f5e2463931516dbebe0a9cac03709c179836620c4ddba9971ec782001ad02",
+      "to": "sha256:a3f64b6da6d81c6e70084a7d5854deef3f2c84182f4115f2ba6aa2d2f85910ca"
+    }
+  ],
+  "promoted": {
+    "D1-003::U1 false-READY is reproduced in isolation (or the corpus has promoted the fix)": {
+      "task": "D1-003",
+      "name": "U1 false-READY is reproduced in isolation (or the corpus has promoted the fix)",
+      "file": "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts",
+      "specDigest": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-010::Provider, Account, Model, Capability and Realization stay distinct records": {
+      "task": "D1-010",
+      "name": "Provider, Account, Model, Capability and Realization stay distinct records",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-011::same fixture bytes give the same World digest; key order is irrelevant": {
+      "task": "D1-011",
+      "name": "same fixture bytes give the same World digest; key order is irrelevant",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-012::loader rejects a World without explicit synthetic provenance": {
+      "task": "D1-012",
+      "name": "loader rejects a World without explicit synthetic provenance",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-013::W0 loads deterministically with no Accounts": {
+      "task": "D1-013",
+      "name": "W0 loads deterministically with no Accounts",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-014::W1 has exactly one compatible Account for prompt.send": {
+      "task": "D1-014",
+      "name": "W1 has exactly one compatible Account for prompt.send",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-015::W2 has two compatible Claude Accounts and no default rule": {
+      "task": "D1-015",
+      "name": "W2 has two compatible Claude Accounts and no default rule",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-016::W3 stale Account is not reported as available": {
+      "task": "D1-016",
+      "name": "W3 stale Account is not reported as available",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-017::W4 mailbox Account has no prompt.send realization": {
+      "task": "D1-017",
+      "name": "W4 mailbox Account has no prompt.send realization",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-018::W5 keeps Provider, Account and Model as separate route records": {
+      "task": "D1-018",
+      "name": "W5 keeps Provider, Account and Model as separate route records",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-030::every input edit gets a monotonic revision identity": {
+      "task": "D1-030",
+      "name": "every input edit gets a monotonic revision identity",
+      "file": "omega-baseline/experimental/d1/test/gates/d-session.gate.test.ts",
+      "specDigest": "sha256:d88330caecbfbc8c87d4db7bc872f3b51570389b4ef764ce468c584faa5728c4",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-031::results are bound to their revision and World basis": {
+      "task": "D1-031",
+      "name": "results are bound to their revision and World basis",
+      "file": "omega-baseline/experimental/d1/test/gates/d-session.gate.test.ts",
+      "specDigest": "sha256:d88330caecbfbc8c87d4db7bc872f3b51570389b4ef764ce468c584faa5728c4",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-032::a late result for revision N cannot overwrite active N+1": {
+      "task": "D1-032",
+      "name": "a late result for revision N cannot overwrite active N+1",
+      "file": "omega-baseline/experimental/d1/test/gates/d-session.gate.test.ts",
+      "specDigest": "sha256:d88330caecbfbc8c87d4db7bc872f3b51570389b4ef764ce468c584faa5728c4",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-033::an Account choice is an explicit semantic edit bound to a revision": {
+      "task": "D1-033",
+      "name": "an Account choice is an explicit semantic edit bound to a revision",
+      "file": "omega-baseline/experimental/d1/test/gates/d-session.gate.test.ts",
+      "specDigest": "sha256:d88330caecbfbc8c87d4db7bc872f3b51570389b4ef764ce468c584faa5728c4",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-067::live-evidence predicate is not trivially false": {
+      "task": "D1-067",
+      "name": "live-evidence predicate is not trivially false",
+      "file": "omega-baseline/experimental/d1/test/gates/g-execution.gate.test.ts",
+      "specDigest": "sha256:55e540cac9fdaa1b5d8f6546b2599adeae66615ac0c166d7aa3aae5aa7cffddd",
+      "by": "claude-opus-5.5-seed",
+      "head": "bddb8cb856f1",
+      "at": "2026-10-06T01:23:54.632Z"
+    }
+  },
+  "reviews": {},
+  "superseded": {},
+  "completion": null
+}
