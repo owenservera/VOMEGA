@@ -23,15 +23,33 @@ of how it was run, not a current procedure.
 Before interpreting any contradiction between documents, record local `HEAD`,
 compare with `origin/main`, and fast-forward a clean checkout that is behind.
 
-Claim bounded work before editing: update `.project/agentic-launch/STATUS.md`
-and add a row or entry in `.project/COMMONS.md`. Independent research and review
-may run in parallel; give editing workers explicit file ownership and preserve
-other workers' changes. Code changes need a reviewer who did not write them.
+Before substantive repository work, follow
+`.project/agentic-launch/DEV-AGENT-REGISTRATION.md`: self-checkout, then create
+or verify one bounded session claim under `.project/agentic-launch/claims/`.
+If the work is Ratchet-tracked, also use the Ratchet's own task claim/lease.
+These two claims answer different questions and neither is proof.
+
+Do **not** duplicate every short-lived task into STATUS and COMMONS. Update
+`.project/agentic-launch/STATUS.md` when a major execution slice materially
+starts, changes or ends. Append to `.project/COMMONS.md` when there is a
+material result, blocker, request or cross-session handoff. Independent research
+and review may run in parallel; give editing workers explicit write surfaces and
+preserve other workers' changes. Code changes need a reviewer who did not write
+them.
+
+For D1 implementation, read
+`.project/deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md` and
+`.project/ratchet/OPERATING.md`. Default to the Ratchet packet + red gate +
+directly named source rather than rereading the entire project. If an executable
+gate already defines the task, implementation should normally move that
+falsifier rather than create another design document. Genuinely D4/D5 design work
+still gets a real design cycle under the PM design-intensity rules.
 
 Route events as part of normal work: new objectives to Coordination; research
 questions to Research; implementation or setup failures to Product; verification
-gaps or failed checks to Truth plus Product. Record the request, owner, evidence
-and next action in Commons. Never infer that an agent, lane, habitat, background
+gaps or failed checks to Truth plus Product. Record material requests, owners,
+evidence and next actions in the existing claim/Commons surfaces rather than
+creating another tracker. Never infer that an agent, lane, habitat, background
 service or named provider is alive because a document names it.
 
 Use `scripts/omega.ps1` on Windows or the documented Bun commands.
