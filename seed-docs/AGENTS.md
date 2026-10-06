@@ -4,6 +4,12 @@ Read `START-HERE.md`, `VISION.md`, `PRODUCT-ANCHOR.md`, `INVARIANTS.md`, `PROJEC
 
 This is a fresh autonomous build project seeded with the current VIVIM-Ω implementation baseline. The baseline is a starting implementation and evidence source, not a frozen architecture and not a prewritten roadmap.
 
+## Current program-map grounding
+
+Bootstrap has run. The canonical map of important work now lives in `../.project/META-TRACKER.md`: **67 major meta programs plus 31 named development-acceleration hypotheses**. The broad domains in `WORKSTREAM-LANDSCAPE.md`, the bootstrap rooms below, the nine launch lanes, the nine roadmap workstreams, and D1 tasks are narrower execution/coverage views. They may help route work but do not define the whole project.
+
+Current state starts at `../.project/SITREP.md`; current claims/running work are in `../.project/agentic-launch/STATUS.md`; proof comes from code/tests/evidence.
+
 ## Operating mandate
 
 Build the best shippable VIVIM-Ω implementation that expresses the durable product vision and produces a working beta.
