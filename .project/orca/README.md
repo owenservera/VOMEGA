@@ -50,6 +50,10 @@ Before ZCode becomes an Orca worker, provide a TUI-capable standalone ZCode CLI 
 
 Do **not** replace the ZCode desktop app or mutate provider/account settings merely to satisfy Orca.
 
+## Bootstrap entry point
+
+Use [ORCA-BOOTSTRAP-PROMPT.md](ORCA-BOOTSTRAP-PROMPT.md) for autonomous Windows setup. It requires a complete recursive read of this folder before any environment mutation, assumes Orca is already installed, and makes OpenCode the default general harness while preserving provider/auth configuration.
+
 ## Read order
 
 1. [CAPABILITY-MATRIX.md](CAPABILITY-MATRIX.md)
