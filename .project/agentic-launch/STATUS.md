@@ -10,7 +10,11 @@ Detailed topology: [README.md](README.md). Program map and authority ladder: [..
 
 ## Objective
 
-Run the semantic MVP twin and live Provider-reality work in parallel.
+Advance the smallest evidence-bearing slices of the 67-program meta map. The selected D1 convergence builds the semantic MVP twin including minimal Reflection/Wiki/Migrator; the live Provider-reality path remains an independent parallel evidence stream. Neither is the complete program.
+
+## Program-map relationship
+
+The table below is a dated launch-overlay view, not the VOMEGA workstream list. The canonical whole-program map is `../META-TRACKER.md` (67 major programs + 31 accelerator hypotheses). SDW/LNC/VFX/SKW/EXP/PRV/RTE/DEV/TRU are temporary coordination labels that may be ignored, merged, split, or replaced.
 
 ## Launch state
 
