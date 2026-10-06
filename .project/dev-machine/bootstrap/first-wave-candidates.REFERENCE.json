@@ -9,7 +9,10 @@
     "why_unblocked": "Defect pinned in plugins/vivim-nlcl/test/fixtures/release-use-corpus.json U1; nlcl tests run green on box (49/0) so a red->green change is directly measurable; roadmap CMD-06 deps CMD-05/REG-05 can be satisfied by a minimal required-slot spec",
     "suggested_harness": "codex exec (implement) ; claude -p (independent review)",
     "acceptance": "U1 flips from pinned baseline 'fail' to passing expectation; validator never trusts nlcl status alone; new unit tests for every required-slot unresolved case; bun test plugins/vivim-nlcl and omega:quick stay green",
-    "risk": "medium: shared contract (UseCommand validation outcomes) \u2014 single writer; must not rewrite proven interpreter; touches vivim-nlcl/nlcl-pure src"
+    "risk": "medium: shared contract (UseCommand validation outcomes) — single writer; must not rewrite proven interpreter; touches vivim-nlcl/nlcl-pure src",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "SDW-02",
@@ -21,7 +24,10 @@
     "why_unblocked": "Lock A defines the schema and 6 Worlds on paper; work is new files under omega-baseline/experimental/mvp-semantic-world/",
     "suggested_harness": "codex exec or claude -p (implement); other harness reviews",
     "acceptance": "6 JSON Worlds validate against a schema; loader rejects any World lacking source:'fixture'; precedence rule documented + unit tested; deterministic digest per World",
-    "risk": "low-medium: precedence rule is consumed by LNC-02 \u2014 publish rule first, LNC consumes read-only"
+    "risk": "low-medium: precedence rule is consumed by LNC-02 — publish rule first, LNC consumes read-only",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "EXP-02",
@@ -34,7 +40,10 @@
     "why_unblocked": "TRU-L1 flagged metrics as non-computable only for lack of required-field spec and single-input corpus; new fixtures + runner are disjoint files under experimental/lab-scenarios/",
     "suggested_harness": "codex exec or claude -p",
     "acceptance": "executable bun runner replays corpus and emits falseReadyRate/wrongTargetRate; >=3 multi-revision scenarios; one test proves an older async result cannot overwrite a newer revision (or fails honestly)",
-    "risk": "low: additive; must not edit LNC-owned validator"
+    "risk": "low: additive; must not edit LNC-owned validator",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "SKW-02",
@@ -46,7 +55,10 @@
     "why_unblocked": "contentHash empty in all 24 manifests is a known gap; a read-only extractor that computes digests without writing manifests needs nothing else",
     "suggested_harness": "claude -p or codex exec",
     "acceptance": "bun script runs deterministically (same digest twice); graph covers 24 manifests; prompt.send reported absent; every node tagged extracted|inferred; zero writes outside its experimental dir",
-    "risk": "low: read-only default; do not populate contentHash in manifests yet (owner/TRU decision)"
+    "risk": "low: read-only default; do not populate contentHash in manifests yet (owner/TRU decision)",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "TRU-05",
@@ -56,7 +68,10 @@
     "why_unblocked": "roadmap TRU-05 has no deps; it is the gate blocking PRV-03 live observation",
     "suggested_harness": "claude -p (doc + falsifier checklist); codex review",
     "acceptance": "protocol doc with evidence levels, required artifacts per level, explicit 'SIMULATED never = live' rule, falsifier list mapped to PRV-03",
-    "risk": "low: doc only"
+    "risk": "low: doc only",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "RTE-02",
@@ -66,7 +81,10 @@
     "why_unblocked": "FIRST-WAVE RTE queue item 1; read-only assay; RTE is 'ready/queued' in STATUS",
     "suggested_harness": "codex exec (read-only sandbox)",
     "acceptance": "assay doc enumerating every endpoint in surfaces/web/src/{server,api}.ts with auth/origin/consent status and a minimal fix proposal; no code change",
-    "risk": "low"
+    "risk": "low",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "VFX-02",
@@ -79,12 +97,15 @@
     "why_unblocked": "decision memo + types-only projector contract can proceed now; implementation waits on LNC-02",
     "suggested_harness": "claude -p (memo) ; codex review",
     "acceptance": "memo with evidence from current source; projector function signature + 3 golden VisualSpec fixtures; no edits to nlcl-pure",
-    "risk": "medium: wire format coupling with LNC; memo only this wave"
+    "risk": "medium: wire format coupling with LNC; memo only this wave",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "PRV-02",
     "lane": "PRV",
-    "title": "Account-evidence contract (Lock E) draft: Provider/Account/Session identity signals, freshness, consent/evidence boundary \u2014 no live attach",
+    "title": "Account-evidence contract (Lock E) draft: Provider/Account/Session identity signals, freshness, consent/evidence boundary — no live attach",
     "depends_on": [
       "PRV-L1 recon (exists)",
       "TRU-05 for any live step"
@@ -92,7 +113,10 @@
     "why_unblocked": "contract drafting is read-only; live observation explicitly deferred until TRU-05",
     "suggested_harness": "codex exec",
     "acceptance": "contract doc + JSON schema; every field labeled live-required vs fixture-allowed; zero browser/session access",
-    "risk": "low if read-only; HIGH if it touches browser profiles \u2014 forbidden this wave"
+    "risk": "low if read-only; HIGH if it touches browser profiles — forbidden this wave",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "DEV-02",
@@ -102,20 +126,26 @@
     "why_unblocked": "git worktree + codex exec/claude -p one-shot modes exist; Daintree absent so a thin script is needed now",
     "suggested_harness": "codex exec",
     "acceptance": "idempotent script + JSONL ledger; dry-run on a trivial task; no auth/config mutation",
-    "risk": "low-medium: keep thin; replace with Daintree if restored"
+    "risk": "low-medium: keep thin; replace with Daintree if restored",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   },
   {
     "id": "EXP-03",
     "lane": "EXP",
-    "title": "Executable \u03a9 Simulator skeleton: pinned World -> interpretation -> validated UseCommand -> virtual prompt.send -> SIMULATED evidence -> replay digest",
+    "title": "Executable Ω Simulator skeleton: pinned World -> interpretation -> validated UseCommand -> virtual prompt.send -> SIMULATED evidence -> replay digest",
     "depends_on": [
       "SDW-02",
       "LNC-02",
       "EXP-02"
     ],
-    "why_unblocked": "NOT yet \u2014 next wave once fixtures + validator land",
+    "why_unblocked": "NOT yet — next wave once fixtures + validator land",
     "suggested_harness": "codex exec + claude review",
     "acceptance": "two integrated scenarios (Model B explicit; ambiguous Account) replay deterministically ending at SIMULATED prompt.send",
-    "risk": "medium: integration point; wave 2"
+    "risk": "medium: integration point; wave 2",
+    "deprecated_reference_id": true,
+    "id_namespace": "dev-machine/bootstrap/first-wave-candidates.REFERENCE.json",
+    "claim_policy": "Do not claim this ID as a current task. Create/select a non-colliding current task ID and retain this value as historical provenance."
   }
 ]
