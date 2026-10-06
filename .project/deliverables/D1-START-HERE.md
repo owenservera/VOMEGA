@@ -1,0 +1,104 @@
+# D1 — ChatGPT Work Start Here
+
+Status: **OWNER-SELECTED FIRST BUILD DELIVERABLE**  
+Date: 2026-10-06  
+Scope: first executable development release; **not** the public Windows beta.
+
+## Mission
+
+Build **D1 — Executable First-Release Semantic Twin**.
+
+D1 is the smallest executable artifact that turns the current first-release design into running, falsifiable product behavior without pretending that simulated provider behavior is live.
+
+The required journey is:
+
+```
+blank synthetic Ω
+→ register Claude Work through ordinary language
+→ register Claude Personal through ordinary language
+→ ask Claude to explain a payload
+→ preserve Account ambiguity
+→ resolve the Account by typing OR clicking
+→ both paths converge on the same semantic command
+→ command becomes READY only when structurally valid
+→ contextual help explains the active semantic objects
+→ virtual governed prompt.send executes
+→ explicitly SIMULATED evidence is emitted
+→ the complete session replays deterministically
+```
+
+Read these before implementation:
+
+1. [D1 release specification](D1-FIRST-RELEASE-SPEC.md)
+2. [D1 atomic task list](D1-ATOMIC-TASKS.md)
+3. [VOMEGA SITREP](../SITREP.md)
+4. [First Product Release Design](../../seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md)
+5. [Invariants](../../seed-docs/INVARIANTS.md)
+6. [Proof and Maturity](../../seed-docs/PROOF-AND-MATURITY.md)
+7. [Semantic Data Engine](../../seed-docs/SEMANTIC-DATA-ENGINE.md)
+8. [MVP Visualization Sandbox](../../seed-docs/MVP-VISUALIZATION-SANDBOX.md)
+9. [Automated Semantic Experiments](../../seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md)
+
+The seed documents define intent and protected distinctions. This D1 pack defines the **current bounded deliverable and build order**. It does not promote candidate Lab architecture into Ω constitutional law.
+
+## What you are authorized to do
+
+Implement D1 end to end. Refactor the baseline where needed. Add tests, fixtures, experimental runtime code, a developer-facing UI, scripts, evidence, and project-control updates required for D1.
+
+You may change the task decomposition if implementation reality proves a better decomposition, but preserve the D1 acceptance gates and record why.
+
+Do not modify authentication, provider credentials, model/provider configuration, subscriptions, or external accounts. Do not perform live provider submission in D1. Do not call simulated evidence live.
+
+Use existing baseline mechanisms where they are useful. Harvest before inventing. Do not rewrite the working deterministic interpreter merely to fit a preferred architecture.
+
+## Build rule
+
+Work atomically from `D1-ATOMIC-TASKS.md`.
+
+For each task:
+
+- verify dependencies;
+- implement one bounded outcome;
+- add or update the smallest proof;
+- run relevant tests;
+- record material evidence/failure;
+- commit coherently;
+- update task state.
+
+Parallelize only tasks with genuinely disjoint write surfaces or explicit interfaces.
+
+## Definition of done
+
+D1 is done only when all release gates in the specification pass, including:
+
+- corpus U1 no longer produces false READY;
+- two valid Claude Accounts remain visibly ambiguous without an explicit/default rule;
+- typed and clicked correction produce the same canonical command digest;
+- an obsolete interpretation revision cannot overwrite a newer one;
+- `prompt.send` executes only through a virtual realization;
+- every execution receipt is unambiguously marked `SIMULATED`;
+- replay of a pinned complete journey produces the same semantic/evidence identity;
+- contextual help is projected from semantic state, not a hand-authored parallel Wiki truth store;
+- the artifact can be launched by another developer with one documented command;
+- existing named baseline tests remain green or any unrelated pre-existing blocker is explicitly preserved.
+
+## Stop conditions
+
+Stop and surface the evidence instead of guessing if D1 requires:
+
+- live browser/provider access;
+- an owner decision listed in `.project/DECISIONS.md`;
+- auth/provider/model configuration changes;
+- weakening an invariant or proof boundary;
+- calling fixture/simulated behavior live;
+- destructive repository history changes.
+
+Otherwise, continue autonomously until D1 is runnable and evidenced.
+
+## After D1
+
+D1 deliberately leaves the live Provider/Account path outside itself.
+
+The next graduation target is to replace one synthetic Provider/Account/realization boundary with a real read-only authenticated browser relationship under the live-proof protocol, then promote one `prompt.send` from SIMULATED to automated-live evidence.
+
+Do not expand D1 into that work.

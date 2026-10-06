@@ -10,6 +10,8 @@ This top section is current. Everything under "History" is a dated record: accur
 
 **Current first product mission (owner decision, 2026-10-05).** A small floating Windows command box in which registering Provider Accounts, help and the first external capability, `prompt.send`, all travel one deterministic semantic command system. Source: `../seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md`. This is the mission, not constitutional architecture. Owen may change it; how to build it is open.
 
+**Selected first build deliverable (owner decision, 2026-10-06).** The next bounded deliverable is **D1 — Executable First-Release Semantic Twin**. It is a development release, not the public Windows beta: a runnable synthetic product twin proving registration, Account ambiguity, deterministic USE/`prompt.send` compilation, typed/clicked parity, contextual help, authority fixture, virtual execution, explicitly SIMULATED evidence and deterministic replay. Build entry point: [deliverables/D1-START-HERE.md](deliverables/D1-START-HERE.md). Atomic execution list: [deliverables/D1-ATOMIC-TASKS.md](deliverables/D1-ATOMIC-TASKS.md). This selects the first implementation target without promoting Lab internals or roadmap sequencing into architecture law.
+
 **What is protected.** The hard boundaries are the invariants and proof boundaries: the semantic separations in `../seed-docs/INVARIANTS.md` (Provider ≠ Account ≠ Model ≠ Session, Capability ≠ Realization, evidence ≠ authority, consequence ≠ authority, description ≠ authority, natural language ≠ authorization, World ≠ surface, confidence ≠ proof) and the evidence ladder in `../seed-docs/PROOF-AND-MATURITY.md` (fixture ≠ live, simulation ≠ live provider behavior). Beside them sit one standing owner constraint (auth, provider and model configuration is read-only), the current owner-selected first-release mission until Owen explicitly changes it, and the **existence/purpose of the major Labs as proving environments**. Protecting a Lab does not protect any particular architecture inside it.
 
 **What is only hypothesis.** Everything below those protected boundaries, including: the meta-program decomposition, lanes (SDW/LNC/VFX/SKW/EXP/PRV/RTE/DEV/TRU), Locks A–E, roadmap milestones M0–M10 and their 74 task IDs, waves, model routing tiers, Lab-internal designs (Lab kernel, Profiles, Reflection ABI, VisualSpec vNext, Provider Lab extension form), sequencing and every development habitat. The full ladder is in [META-TRACKER.md §0](META-TRACKER.md).
@@ -28,7 +30,7 @@ This top section is current. Everything under "History" is a dated record: accur
 
 **Which programs must stay visible.** All 67 in [META-TRACKER.md](META-TRACKER.md), plus the 31 acceleration hypotheses, whether or not anything is working on them.
 
-**What is active right now.** Nothing is claimed or running. The first bounded fan-out and its independent review are complete. The convergence candidates are in [META-TRACKER.md §5](META-TRACKER.md): the semantic simulator and product-twin path, a minimal Reflection slice, and the independent live Provider/Account path. Pick the next slice from evidence; do not replay the first wave.
+**What is active right now.** Nothing is currently claimed or running. The next selected build target is D1, defined in [deliverables/D1-START-HERE.md](deliverables/D1-START-HERE.md). The independent live Provider/Account path remains important but is outside D1 and must not be conflated with the simulated product twin.
 
 **Where state lives.**
 
