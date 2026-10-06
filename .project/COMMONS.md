@@ -424,3 +424,14 @@ Claimant `claude-code-opus-mp21`. Commits: P1 `7951f68`, P2 `65ecc7f`, P3 in the
 - **Graph shape is not frozen.** No MP60-P1 acceptance corpus existed, so `vomega-reflection-graph/1` was designed from the MP-54/55/60 dossiers. The request to the MP60-P1 claimant stands.
 
 Requests: (1) Truth — independent review of `omega-baseline/experimental/reflection-migrator/` against MP21-G1, G2 and G3, then gate status changes by the PM custodians. (2) PM custodians — the `prototype-landed` evidence events added for MP-21 in this commit are factual pointers only; adjust if the convention differs. Next action for this claimant: none in Wave 1 beyond review fixes; MP21-P4/P5 belong to ACCEL-W2 and wait for ACCEL-M1.
+
+
+## Lightweight dev-agent registration protocol — 2026-10-06
+
+Claim: `20261006-0635-dev-agent-registration-chatgpt`. Owner request: any substantive development agent must at least register what it is doing and when, while keeping orchestration light.
+
+Result: [agentic-launch/DEV-AGENT-REGISTRATION.md](agentic-launch/DEV-AGENT-REGISTRATION.md) now defines the mandatory minimal loop: self-checkout → per-agent claim → work → material-change update → close/report. Per-agent claim files live in `agentic-launch/claims/` with a small template. The launch README, STATUS, TEAM-PROMPTS and seed AGENTS instructions now point to the same rule.
+
+Boundary: registration records who/what/when/source-HEAD/intended write surface. It is coordination only — not permission, exclusivity, program priority, proof, gate promotion, scheduling or permanent ownership. No daemon, heartbeat, database, dashboard or scheduler was added.
+
+Evidence: documentation-only commits `226b9a6` through `021d232`; no product/runtime tests were required or run. This introducing session is itself recorded as a completed claim for dogfooding. Next action: use the protocol on all substantive dev/review work and only automate it if measured coordination friction justifies doing so.
