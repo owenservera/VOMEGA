@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "408bfcfcde52",
+    "head": "5b6c8653b4a6",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -23,15 +23,15 @@
     "silentFiles": []
   },
   "summary": {
-    "OPEN": 11,
+    "OPEN": 10,
     "CLAIMED": 0,
     "BLOCKED": 49,
     "PROVEN": 16,
-    "DONE": 1,
+    "DONE": 2,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
-    "frontier": 11,
+    "frontier": 10,
     "missingProof": 0
   },
   "tasks": [
@@ -353,7 +353,7 @@
     },
     {
       "id": "D1-024",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-024::UseCommand carries every release field explicitly",
@@ -364,7 +364,12 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "gov-trv-r4",
+        "verdict": "accept",
+        "head": "5b6c8653b4a6",
+        "at": "2026-10-06T18:11:07.468Z"
+      }
     },
     {
       "id": "D1-025",
@@ -413,12 +418,12 @@
     },
     {
       "id": "D1-028",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-028::Account words inside a quoted payload never retarget",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -1299,5 +1304,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:40613c0cec73ccc4f8a9297851ad16326af168e5ce2df9d178f802351ead5b98"
+  "digest": "sha256:5a283eefcb48587af0d97dd8737f22857ff707be69428f3902c2ca7312bc3e6c"
 }

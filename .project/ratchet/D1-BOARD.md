@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `408bfcfcde52`, Bun 1.4.2, win32-x64, 20/80 gates green, digest e672c18ce19d · promoted gates: 19
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `5b6c8653b4a6`, Bun 1.4.2, win32-x64, 20/80 gates green, digest e672c18ce19d · promoted gates: 20
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 16 | 11 | 0 | 49 | 0 | 0 | 77 | 11 | 0 |
+| 2 | 16 | 10 | 0 | 49 | 0 | 0 | 77 | 10 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -22,7 +22,6 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 - **D1-005** Fix required-field/READY validation — crit 2, unblocks 2; `bun run ratchet packet D1-005`
 - **D1-016** Add World W3: stale Claude Work — crit 1, unblocks 0; `bun run ratchet packet D1-016`
 - **D1-017** Add World W4: unknown/incompatible target — crit 1, unblocks 0; `bun run ratchet packet D1-017`
-- **D1-028** Protect quoted payload from routing — crit 1, unblocks 0; `bun run ratchet packet D1-028`
 
 ## All tasks
 
@@ -59,11 +58,11 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-021 | BLOCKED | 0/1 | Interpret “add my Claude work account” |  |
 | D1-022 | BLOCKED | 0/1 | Interpret “add another Claude account and call it Personal” |  |
 | D1-023 | BLOCKED | 0/1 | Persist D1 synthetic registration in session World state |  |
-| D1-024 | PROVEN | 1/1 | Define candidate canonical `prompt.send` UseCommand |  · claimed by gov-impl-r2 until 2026-10-06T21:07:18.249Z |
+| D1-024 | DONE | 1/1 | Define candidate canonical `prompt.send` UseCommand |  · claimed by gov-impl-r2 until 2026-10-06T21:07:18.249Z |
 | D1-025 | PROVEN | 1/1 | Compile direct `prompt.send` utterance |  · claimed by gov-impl-r3 until 2026-10-06T21:35:18.359Z |
 | D1-026 | OPEN ★ | 0/1 | Preserve two-Account ambiguity |  |
 | D1-027 | BLOCKED | 0/1 | Apply explicit text correction “use Work” |  |
-| D1-028 | OPEN ★ | 1/1 | Protect quoted payload from routing | PROMOTE_PENDING 1 |
+| D1-028 | PROVEN | 1/1 | Protect quoted payload from routing |  · claimed by gov-impl-r5 until 2026-10-06T22:12:30.281Z |
 | D1-029 | OPEN ★ | 0/1 | Implement deterministic command digest |  |
 
 ### Phase D — realtime session semantics
