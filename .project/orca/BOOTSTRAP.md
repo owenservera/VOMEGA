@@ -1,8 +1,15 @@
 # Orca bootstrap — revised setup
 
 **Target:** Owen's Windows development machine  
-**Pinned baseline:** Orca v1.4.220  
+**Pinned baseline:** Orca v1.4.221 (amended 2026-10-06 from v1.4.220 — owner decision; see [CENSUS-2026-10-06.md](CENSUS-2026-10-06.md) §3)  
 **Goal:** establish a safe heterogeneous execution control plane over ZCode, OpenCode, Codex, Grok Build and Claude Code without disturbing working auth/provider configuration.
+
+> **Amendments.** The v1.4.220 pin was written before Orca's auto-updater moved
+> this machine to 1.4.221. The owner amended the baseline to 1.4.221 rather than
+> downgrade to a build that may no longer be distributed. Gate 1's prohibition
+> still stands against *arbitrary nightly/main* builds: an installed build
+> reached by auto-update is acceptable only because it is now the pinned,
+> recorded baseline.
 
 ## Gate 0 — Preserve machine truth
 
@@ -19,7 +26,7 @@ Output: sanitized pre-Orca census.
 
 ## Gate 1 — Install pinned Orca
 
-Install **v1.4.220 Windows build**, not an arbitrary nightly/main build.
+Install **v1.4.221 Windows build**, not an arbitrary nightly/main build.
 
 Verify:
 - desktop starts;
