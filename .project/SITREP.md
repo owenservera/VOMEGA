@@ -1,6 +1,6 @@
 # VOMEGA SITREP — start here
 
-As of 2026-10-06, source HEAD `35e5e7d` plus the meta-coherence pass recorded in [META-REVIEW-2026-10-06.md](META-REVIEW-2026-10-06.md).
+As of 2026-10-06, current documentation has been reconciled through the D1 consolidation/housekeeping pass. Historical evidence remains tied to the commit at which it was measured; current branch state is read from Git and `agentic-launch/STATUS.md`.
 
 This top section is current. Everything under "History" is a dated record: accurate when written, not a list of instructions.
 
@@ -30,7 +30,9 @@ This top section is current. Everything under "History" is a dated record: accur
 
 **Which programs must stay visible.** All 67 in [META-TRACKER.md](META-TRACKER.md), plus the 31 acceleration hypotheses, whether or not anything is working on them.
 
-**What is active right now.** Nothing is currently claimed or running. The next selected build target is D1, defined in [deliverables/D1-START-HERE.md](deliverables/D1-START-HERE.md). The independent live Provider/Account path remains important but is outside D1 and must not be conflated with the simulated product twin.
+**Whole-program alignment.** The 67-program Meta Tracker is the canonical program map. `WORKSTREAM-LANDSCAPE.md` is broad problem-domain coverage; the nine agentic-launch lanes are temporary execution vocabulary; the nine roadmap workstreams and 74 tasks are only one first-release decomposition; D1 is one bounded integration slice. None should be described as the complete VOMEGA workstream/program list.
+
+**What is active right now.** No executor is currently running. **D1 remains the selected, incomplete first build deliverable**, and its previously claimed work branch has been consolidated into `main`; resume from [deliverables/D1-START-HERE.md](deliverables/D1-START-HERE.md) with the Reflection/Migrator requirements folded into the primary D1 documents. The independent live Provider/Account path remains a parallel evidence stream, not a serial successor deliverable. Current claims/running state is authoritative only in `agentic-launch/STATUS.md`.
 
 **Where state lives.**
 
