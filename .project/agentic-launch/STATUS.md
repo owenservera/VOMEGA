@@ -4,7 +4,7 @@ Date: 2026-10-06. This is an aggregate view only. Per-worker truth lives in `cla
 
 ## Active claims
 
-During the documentation-cleanup branch, claim `20261006-0945-doc-cleanup-archive-chatgpt` owns documentation/PM cleanup only. It claims no product implementation task. On merge/close, no executor should be inferred active unless another live claim says so.
+No active executor is represented by the repository at this consolidation tip. The live `claims/` directory contains only its README/template; closed claims are archived. A future worker must create a new claim before substantive work.
 
 ## Major slices
 

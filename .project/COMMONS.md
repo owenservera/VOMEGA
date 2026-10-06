@@ -8,7 +8,7 @@ Use Commons only for material cross-session results, blockers or handoffs. Per-s
 
 | Date | Result | Next action |
 | --- | --- | --- |
-| 2026-10-06 | Documentation/PM acceleration consolidation: ZIP directives mapped into existing PM/Ratchet/claim surfaces; duplicate orchestration removed/archived. | New workers execute code/tests/gates rather than reopening documentation design. |
+| 2026-10-06 | Documentation/PM consolidation complete: all 7 acceleration-pack docs re-read; remaining doc-only gaps closed; superseded PM/launch/tooling/roadmap/history archived; temporary acceleration wrapper retired. | New workers execute code/tests/gates via AGENTS → SITREP → Ratchet packet rather than reopening documentation design. |
 | 2026-10-06 | MP-21 Reflection Migrator P1–P3 implementation exists and is verified-local, but gates remain under independent review hold. | Independent reviewer + real consumer evidence before MP21-G3 promotion. |
 | 2026-10-06 | D1 interpreter map and Reflection Phase-F harvest map completed. | Implement D1 gates using those maps; do not create parallel interpreter/Reflection systems. |
 | 2026-10-06 | TRU-05 candidate live-proof protocol and Owen decision brief drafted. | Owen resolves/accepts R-2/RD-8/RD-10 boundaries before consequential live work. |
