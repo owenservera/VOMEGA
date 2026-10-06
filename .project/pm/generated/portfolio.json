@@ -1,522 +1,132 @@
 {
-  "schema": "vomega-pm-portfolio/0",
-  "sourceHead": "56fe9c4",
-  "seedDigest": "sha256:427744a6c7fb43f302e20dff0eb0ff23e8e03bf49bc248fbd2162f19042f0644",
-  "note": "Projection only. Program meaning is canonical in .project/meta-tracker.json; plan/evidence are derived; execution/proof state is owned by the ratchet. Do not hand-edit.",
+  "schema": "vomega-pm-portfolio/1",
+  "sourceHead": "ef10ea1",
+  "seedDigest": "sha256:854f282c02c30212ef97c2d659e67d5a0e7bffeb1227ad3e1de174abda113b1e",
+  "managedScope": [
+    "MP-21",
+    "MP-54",
+    "MP-55",
+    "MP-56",
+    "MP-60"
+  ],
+  "note": "Projection of the five owner-selected programs only. Canonical meaning is read from .project/meta-tracker.json; plan/evidence are derived; execution/proof state is owned by the ratchet and referenced live at check time. Do not hand-edit.",
   "counts": {
-    "programs": 67,
-    "seeded": 5,
+    "programs": 5,
     "planResolution": {
-      "REGISTERED": 62,
-      "PHASED": 1,
-      "SEEDED": 4
+      "PHASED": 5
     },
     "evidenceState": {
-      "UNPROVEN": 67
-    }
+      "UNPROVEN": 5
+    },
+    "ungatedPhases": 0,
+    "needsReview": 1
   },
-  "gates": [
+  "crossProgramGates": [
     {
-      "program": "MP-21",
-      "id": "MP21-G1",
-      "statement": "repeated scan yields stable deterministic identities",
-      "status": "TBD",
-      "consumers": [
-        "MP21-P2"
-      ]
-    },
-    {
-      "program": "MP-21",
-      "id": "MP21-G2",
-      "statement": "same HEAD -> same extracted fact set; no invented facts",
-      "status": "TBD",
-      "consumers": [
-        "MP21-P3"
-      ]
-    },
-    {
-      "program": "MP-21",
       "id": "MP21-G3",
-      "statement": "external consumer can resolve stable entity refs and relations",
-      "status": "TBD",
+      "program": "MP-21",
+      "statement": "stable queryable Reflection identities / graph exists",
       "consumers": [
         "MP54-P2",
-        "MP60-P2",
-        "MP55-P3"
+        "MP55-P3",
+        "MP60-P2"
       ]
     },
     {
-      "program": "MP-21",
-      "id": "MP21-G4",
-      "statement": "extracted vs suggested meaning mechanically distinct",
-      "status": "TBD",
+      "id": "MP55-G2",
+      "program": "MP-55",
+      "statement": "fresh worktree reproduces the selected failure under declared prerequisites",
       "consumers": [
-        "MP21-P5"
-      ]
-    },
-    {
-      "program": "MP-21",
-      "id": "MP21-G5",
-      "statement": "compliance catches a seeded structural drift without becoming source authority",
-      "status": "TBD",
-      "consumers": []
-    },
-    {
-      "program": "MP-54",
-      "id": "MP54-G1",
-      "statement": "fresh worker begins bounded task without broad project reread",
-      "status": "TBD",
-      "consumers": [
-        "MP54-P2"
-      ]
-    },
-    {
-      "program": "MP-54",
-      "id": "MP54-G2",
-      "statement": "entity-driven bundle reproducibly selects relevant sources",
-      "status": "TBD",
-      "consumers": [
+        "MP55-P3",
         "MP54-P3"
       ]
     },
     {
-      "program": "MP-54",
-      "id": "MP54-G5",
-      "statement": "measurable improvement in validated work metric",
-      "status": "TBD",
-      "consumers": []
-    },
-    {
-      "program": "MP-55",
-      "id": "MP55-G1",
-      "statement": "another worker can identify the exact failing invocation",
-      "status": "TBD",
-      "consumers": [
-        "MP55-P2"
-      ]
-    },
-    {
-      "program": "MP-55",
-      "id": "MP55-G2",
-      "statement": "fresh worktree reproduces the selected failure under declared prerequisites",
-      "status": "TBD",
-      "consumers": [
-        "MP55-P3",
-        "MP55-P4"
-      ]
-    },
-    {
-      "program": "MP-55",
-      "id": "MP55-G5",
-      "statement": "automatic capsule preserves the seeded failure signature",
-      "status": "TBD",
-      "consumers": []
-    },
-    {
-      "program": "MP-56",
-      "id": "MP56-G1",
-      "statement": "equivalent trace canonicalizes deterministically",
-      "status": "TBD",
-      "consumers": [
-        "MP56-P2"
-      ]
-    },
-    {
-      "program": "MP-56",
-      "id": "MP56-G2",
-      "statement": "sanitized trace retains target behavior and removes forbidden data",
-      "status": "TBD",
-      "consumers": [
-        "MP56-P3"
-      ]
-    },
-    {
-      "program": "MP-56",
       "id": "MP56-G4",
+      "program": "MP-56",
       "statement": "trace -> fixture -> replay reproduces the pinned property",
-      "status": "TBD",
       "consumers": [
         "MP56-P5",
         "MP60-P3"
       ]
-    },
-    {
-      "program": "MP-60",
-      "id": "MP60-G2",
-      "statement": "known source change resolves the expected downstream structural set",
-      "status": "TBD",
-      "consumers": [
-        "MP60-P4"
-      ]
-    },
-    {
-      "program": "MP-60",
-      "id": "MP60-G4",
-      "statement": "shadow/full-suite comparison catches seeded dependency classes",
-      "status": "TBD",
-      "consumers": []
     }
   ],
   "programs": [
-    {
-      "id": "MP-01",
-      "name": "Product Release Gym / product selection",
-      "purpose": "Continuously choose the smallest genuinely useful, provable product slice and re-rank the plan from evidence.",
-      "canonicalState": "ACTIVE operational doctrine; initial Gym run exists.",
-      "priority": "NOW / recurring",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-02",
-      "name": "First Product Release — Floating Command Box",
-      "purpose": "Ship the small Windows box where setup, routing, help and prompt.send all use one semantic command system.",
-      "canonicalState": "DESIGN selected by owner; no product shell yet.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-03",
-      "name": "First-release end-to-end product journey",
-      "purpose": "Install → register Account → see capability → command → consent → real send → evidence → restart/continue.",
-      "canonicalState": "DESIGN / roadmap M0–M10.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-04",
-      "name": "Packaging / Installer / Windows lifecycle",
-      "purpose": "Ordinary user can install, launch, update/recover and run without developer tooling.",
-      "canonicalState": "DESIGN / absent product implementation.",
-      "priority": "NEXT",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-05",
-      "name": "Product Instance / sovereign exit / reconstruction",
-      "purpose": "Preserve user-owned instance identity, export, restore, migration, replacement and recoverability.",
-      "canonicalState": "Partial Vault evidence; whole-instance continuity OPEN.",
-      "priority": "LATER, with release subset",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-06",
-      "name": "Semantic Data Engine / canonical semantic substrate",
-      "purpose": "Provider, Account, Model, Capability, Realization, consequences, evidence maturity and semantic IDs form one coherent substrate.",
-      "canonicalState": "CANDIDATE Lock A; not frozen.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-07",
-      "name": "World / Registry / capability & availability state",
-      "purpose": "A versioned World honestly says what exists, what is available, what is stale/unknown and what can ground commands.",
-      "canonicalState": "Baseline registry verified-local but no real Account; candidate fixture World defined.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-08",
-      "name": "Human Semantic Execution Language — NCL/NLCL",
-      "purpose": "Ordinary expression becomes explicit canonical meaning while preserving ambiguity.",
-      "canonicalState": "Strong verified-local baseline in wrong domain; Lock B candidate for release slice.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-09",
-      "name": "USE command compiler / validator / defaulting",
-      "purpose": "Interpretation becomes a deterministic, replayable command with READY only when structurally valid.",
-      "canonicalState": "CANDIDATE; CMD-06 false-READY is current choke point.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-10",
-      "name": "InterpretationSession / realtime revision semantics",
-      "purpose": "Every keystroke is versioned; corrections are semantic edits; old async results cannot overwrite newer input.",
-      "canonicalState": "DESIGN / candidate; no multi-revision proof.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-11",
-      "name": "Semantic Runtime Laboratory / Ω Simulator",
-      "purpose": "Run a standalone deterministic miniature Ω: World → interpretation → command → virtual execution → evidence, independent of live providers and product runtime.",
-      "canonicalState": "DESIGN ONLY; first-wave pieces exist but executable Lab does not.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-12",
-      "name": "MVP Visualization Sandbox / semantic product twin",
-      "purpose": "Visually replay the complete first-product interaction to SIMULATED prompt.send with truthful ambiguity and Wiki.",
-      "canonicalState": "DESIGN + Lock C candidate; no full executable sandbox.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-13",
-      "name": "Virtual executables / simulated evidence",
-      "purpose": "The simulator can execute commands against synthetic Worlds and emit deterministic fake-but-explicit evidence.",
-      "canonicalState": "DESIGN; not implemented for release slice.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-14",
-      "name": "Command Visual Language / semantic interaction protocol",
-      "purpose": "User can see what Ω interpreted, what is unresolved and what will happen; clicks edit semantics rather than hidden UI state.",
-      "canonicalState": "Rich DESIGN; no product implementation.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-15",
-      "name": "VisualSpec vNext / projector",
-      "purpose": "All UI surfaces receive one deterministic semantic projection and never reparse language.",
-      "canonicalState": "CANDIDATE Lock C; extend-vs-replace unresolved.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-16",
-      "name": "Automated Semantic Experiments",
-      "purpose": "Competing language/grounding/visual/Wiki designs run against pinned scenarios with semantic diffs and falsifiers.",
-      "canonicalState": "EXP baseline candidate; no full experiment engine.",
-      "priority": "NOW / PARALLEL",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-17",
-      "name": "Cross-domain semantic generalization",
-      "purpose": "Prove the semantic system is not secretly AI-specific by exercising unrelated capabilities.",
-      "canonicalState": "DESIGN benchmark path.",
-      "priority": "PARALLEL / later",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-18",
-      "name": "Self-Describing Runtime / Reflection ABI",
-      "purpose": "If Ω can load a public capability, Ω can inspect and explain it from source-bound structural truth.",
-      "canonicalState": "CANDIDATE Lock D; strongest first-wave traceability; not implemented as ABI.",
-      "priority": "NOW / PARALLEL",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-19",
-      "name": "Reflection Graph",
-      "purpose": "Derive a read-only graph of Plugin/Capability/Command/Schema/Source/etc. from actual loaded structure.",
-      "canonicalState": "Candidate node/edge design; 24 manifest paths listed, 3 manifests deep-read (vivim-nlcl, vivim-providers, vivim-mind).",
-      "priority": "NOW / PARALLEL",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-20",
-      "name": "Contextual Wiki / realtime help",
-      "purpose": "Generate Glance/Explain/Inspect help from Reflection + World + interpretation, with no parallel Wiki database.",
-      "canonicalState": "DESIGN; no runtime Wiki.",
-      "priority": "NEXT after minimal Reflection",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
     {
       "id": "MP-21",
       "name": "Self-Knowledge Reflection Migrator / auto-Wiki migration tool",
       "purpose": "Read the existing codebase, extract structurally provable Reflection, identify gaps, propose safe migrations, and verify compliance.",
       "canonicalState": "DESIGN; SKW-L1 performed only the first read-only audit slice. Utility does not exist.",
-      "priority": "PARALLEL / high leverage",
+      "canonicalPriority": "PARALLEL / high leverage",
+      "canonicalNotes": "REF-01…REF-12 program; read-only default; LLM suggestions never masquerade as extracted facts.",
+      "dossier": {
+        "explanation": "MP-21 is a read-first migration and conformance utility (working name: Reflection Migrator) that points at the existing Ω source tree and answers what the code already proves about itself: which plugins, contributions, routed operations, schemas, config keys, language frames and visual roles exist, which source symbols own each fact, which public behaviors have no self-description, and which descriptions are prose-only rather than structurally grounded. Its role in one line: audit → extract → map → propose → verify. Every extracted fact is bound to a SourceAnchor — repository, commit, content hash, path, symbol — so self-knowledge is reproducible at a pinned HEAD.\n\nIt is deliberately not a documentation generator, README scraper, second registry, LLM semantics inventor, source-code authority or silent code rewriter. Facts and meaning stay mechanically separate: directly encoded claims are tagged PROVEN_STRUCTURAL (or DECLARED / INFERRED_SAFE), while titles, capability groupings and relationship ideas stay CANDIDATE_SEMANTIC until a human accepts them. The default is read-only; any proposed source change is explicit, previewable, diffable, test-gated and reversible, and the tool never gains authority to accept its own proposals.\n\nThe problem it exists for: the current baseline is already rich in structure (one manifest format, contribution kinds, risk declarations, source-side operation registration, explicit schemas, provider realization records), but its self-description still lives in prose — manifest descriptions, contract-level doc strings, plugin descriptions — which the design itself forbids treating as stronger than executable declarations. Manifest↔runtime op parity is not mechanically checked, duplicated schema/help definitions drift silently, and config parsing is a likely blind spot. Today a fresh worker or agent must reread the repo or trust a narrative to know what the system can actually do.\n\nWithin the first five, MP-21 is the substrate: its stable queryable Reflection Graph (MP21-G3) is what MP-54 source-aware bundles, MP-55 structural enrichment and MP-60 impact/test-selection all consume, so the five programs do not build competing parsers or identity schemes. Migration proceeds audit-first in waves, with the MVP semantic slice (Provider, Account, Model, prompt.send) as the first compliance target rather than a full-repo rewrite.",
+        "problem": "Without MP-21, VOMEGA keeps paying three costs. Truth: self-description lives in prose — manifest description strings, contract doc strings, plugin descriptions — which the Reflection design explicitly forbids treating as stronger than executable declarations, yet nothing else distinguishes prose-only claims from structurally grounded ones; manifest↔runtime parity (declared-but-unimplemented ops, implemented-but-undeclared ops, invisible dynamic registration) is not mechanically checked, and duplicate definitions of the same parameter across schema, help text and language frames drift silently. Capability: agents and fresh workers cannot deterministically answer which operations, schemas, config keys or visual roles exist without rereading the repo or trusting a narrative — the migrator doc's §3 question list is currently answerable only by manual reading, and config parsing is a likely blind spot. Time: every downstream accelerator that needs structural understanding (MP-54 context bundles, MP-55 failure enrichment, MP-60 impact/test selection) would otherwise rebuild its own parser and identity scheme — the exact duplication the first-five seed forbids — and migration of the codebase to source-native self-description would happen ad hoc, unsafely, or not at all.",
+        "objectives": [
+          "Give every structurally knowable public behavior — plugin, contribution, registered operation, schema, config key, language/visual contribution — a stable source-bound identity (SourceAnchor: commit + contentHash + symbol) that is reproducible: repeated scans at the same HEAD yield identical identities.",
+          "Extract structural facts deterministically from manifests, contracts, op registration, schemas, config parsing, language and visual contributions and tests, tagging each fact with its claim class (PROVEN_STRUCTURAL, DECLARED, INFERRED_SAFE, CANDIDATE_SEMANTIC, COMMENTARY, CONFLICT) and emitting explicit unknowns instead of invented semantics.",
+          "Build a read-only, queryable Reflection Graph — a derived build artifact, not an authored Wiki database — whose stable entity refs and relations external consumers (MP-54 source-aware bundles, MP-55 structural enrichment, MP-60 impact queries) resolve without reparsing source.",
+          "Keep extracted facts and suggested meaning mechanically distinct by construction, so no LLM- or heuristic-proposed title, capability grouping or relationship is ever indistinguishable from an extracted fact.",
+          "Compute manifest↔runtime parity (DECLARED+IMPLEMENTED / DECLARED, IMPLEMENTATION NOT FOUND / IMPLEMENTED, NOT DECLARED / DYNAMIC — NEEDS EXPLICIT REFLECTION PROVIDER) and surface duplicate semantic truth (a schema redefined in help text or language frames) as named drift risks.",
+          "Turn missing self-description into explicit, severity-ranked gaps with source-native migration proposals that are proposal-only, previewable, diffable, test-gated and reversible, with no-write as the default.",
+          "Bring the MVP semantic slice — Provider, Account, Model, prompt.send, registration commands, language frames, command validator, VisualSpec — to source-native Reflection compliance without blocking on full-repo migration, and make incremental completeness checkable without the utility becoming source authority."
+        ],
+        "visionContribution": "Grounds primarily in pillar 1 (human semantic execution language) and pillar 5 (governed self-extension/evolution), with supporting grounding in pillar 3 (governed action), pillar 4 (durable Work/proof/continuity) and pillar 10 (capability multipliers). Pillar 1 requires the bridge 'human expression ↔ canonical meaning ↔ deterministic execution' to be inspectable, addressable and deterministic at the semantic/execution boundary; MP-21 supplies exactly that for the environment's own capabilities — operations, schemas, config and contribution boundaries become source-anchored referents the semantic language can resolve without trusting prose. Pillar 3 separates what was said from what was meant and what was allowed; MP-21 applies the same discipline to self-description, keeping proven structural truth mechanically distinct from AI-suggested meaning so probabilistic interpretation never silently becomes consequential authority. Pillar 4's honest epistemology — 'what does VIVIM actually know happened?' — extends here to 'what does VIVIM actually know it can do?', with source anchors making that evidence reconstructable across worker and model replacement. Pillar 5 requires the environment to change itself while preserving identity, evidence and continuity: the migrator proposes safe source-native migrations but never self-accepts them and never rewrites by default. Pillar 10: one extracted graph serves MP-54, MP-55 and MP-60, making the next use materially cheaper instead of accumulating five separate parsers and identity schemes.",
+        "boundaries": [
+          "Not a documentation generator.",
+          "Not a README scraper presented as truth.",
+          "Not an LLM that invents plugin semantics.",
+          "Not a second registry.",
+          "Not a source-code authority.",
+          "Not a code-rewriting agent with permission to silently alter behavior.",
+          "Not a universal ontology inference engine.",
+          "Extract facts; propose meaning; never fabricate proof — suggested meaning stays candidate until accepted and is never a structural claim without deterministic confirmation or review.",
+          "Read-only by default; it never gains authority to accept its own proposals, and compliance must never become documentation bureaucracy rather than structural transparency."
+        ],
+        "successConditions": [
+          "Against a pinned checkout, two consecutive scans produce an identical SourceAnchor/digest set and an identical extracted fact set (MP21-G1, MP21-G2).",
+          "A hand-checked sample of extracted facts shows zero invented facts, and every fact traces to an exact source symbol/content anchor.",
+          "An external consumer (MP-54 bundle or MP-60 impact query) resolves stable entity refs and relations from the graph alone (MP21-G3).",
+          "Output separates extracted/PROVEN_STRUCTURAL classes from suggested/candidate classes by construction, checked by test (MP21-G4).",
+          "Gap reports identify missing operation declarations, missing source anchors, duplicate schemas, prose-only claims and source conflicts with per-plugin drill-down.",
+          "The MVP semantic slice powers at least one real contextual Wiki projection generated with no separate Wiki files.",
+          "A seeded structural drift is caught by the compliance check, which itself claims no authority over source (MP21-G5).",
+          "Rerunning after changes shows measurable completeness improvement over the previous run."
+        ],
+        "falsifiers": [
+          "README or other prose is treated as stronger than executable declarations.",
+          "Capability semantics are invented to reach 100% coverage.",
+          "The utility rewrites source by default, or generated Reflection cannot be traced back to source.",
+          "Dynamic op registration becomes invisible in extraction or parity output.",
+          "Config/help schemas remain duplicated after a detected migration opportunity.",
+          "LLM suggestions become indistinguishable from extracted facts.",
+          "A successful migration silently changes runtime behavior.",
+          "Runtime Wiki consumption requires reparsing the entire source tree live, or compliance becomes documentation bureaucracy rather than structural transparency.",
+          "Cross-program: if MP54-P2, MP55-P3 and MP60-P2 satisfy their needs without MP21-G3, the accelerator role of MP-21 shrinks to internal tooling and the program should be reduced or refocused.",
+          "Estimate: if P2 extraction cannot reach determinism at one HEAD within or near the 1,800–3,500 LOC band, the extraction surface set should be cut and re-sequenced rather than shipped non-deterministic."
+        ],
+        "sources": [
+          "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md (purpose §1, not-list §2, design objective §3, core rule §4, surfaces §5, SourceAnchor §7, records/claim classes §8–9, migration targets §10–19, compliance definition §20, modes §21, no-write §22, safe transformations §23, waves §25, MVP slice §29, acceptance §35, falsifiers §36)",
+          "seed-docs/VISION.md (pillars 1, 3, 4, 5, 10; capability-multiplier and earned-generalization principles)",
+          ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md (§7 dossier protocol, §8 five-phase protocol, §12 dependency shape, §13 MP-21 phase seed, §17 vision-grounding rule)",
+          ".project/pm/FIRST-FIVE-SEED.md (MP-21 section: objectives, vision mapping, phase table, shared-concepts strategy)",
+          ".project/pm/scope.json (managed-program boundary; Ratchet as external execution/proof owner)",
+          ".project/meta-tracker.json (canonical MP-21 identity; projected, not overridden)"
+        ]
+      },
       "planResolution": "PHASED",
       "evidenceState": "UNPROVEN",
-      "seeded": true,
       "phaseCount": 5,
       "gateCount": 5,
-      "gapCount": 1,
       "ungatedPhases": [],
       "needsReview": [],
+      "externalDependencies": [],
       "phases": [
         {
           "id": "MP21-P1",
           "name": "Source inventory + identity",
-          "outcome": "SourceAnchor, content digest, file/symbol/plugin/schema/test identities, provenance classes",
+          "objective": "Establish deterministic identity over the existing Ω source tree: classify input surfaces (manifests, contracts, op registration, schemas, config, language, visual, tests, structured comments) and mint stable SourceAnchor identities (repository, commit, contentHash, path, symbol, line-range navigation hint, extractionKind) plus content digests, so repeated scans at the same HEAD are stable.",
+          "outcome": "A file/symbol/plugin/schema/op/config/language/visual/test inventory with provenance classes, and a stable SourceAnchor/digest set for every classified surface, with identity determinism proven at one HEAD.",
           "effort": "E2",
           "loc": {
             "band": "M",
@@ -526,16 +136,33 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [],
+          "softDeps": [],
           "exitGates": [
             "MP21-G1"
-          ]
+          ],
+          "risks": [
+            "Text grep alone is explicitly insufficient for the final tool; a text-scan shortcut here would be replaced, not extended, by P2's AST/structured extraction.",
+            "Identity stability: line ranges are only navigation hints; symbol + contentHash must carry identity or common renames/moves will churn identities.",
+            "The parser strategy chosen here (REF-01 assay) must be able to serve P2 extraction; a wrong choice is expensive to reverse."
+          ],
+          "openQuestions": [
+            "Which of the migrator doc's §5 input surfaces P1 must classify up front versus defer to P2 extractors.",
+            "Exact contentHash scheme and symbol-resolution scope needed to keep identities stable across common edits.",
+            "Concrete current-tree baseline counts (plugin manifests, declared vs implemented ops, existing anchor/digest coverage) to size the first audit report — not yet verified this pass, so stated as a question rather than a fact."
+          ],
+          "sources": [
+            "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §5 (input surfaces), §6 (pipeline), §7 (SourceAnchor), §25 Wave 1 (audit only), §34 REF-01/REF-02",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P1 seed: E2, 600–1,100, gate MP21-G1)",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-21 P1 row: SourceAnchor, content digest, provenance classes)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP21-P2",
           "name": "Structural extraction",
-          "outcome": "Deterministic extractors over priority source surfaces; explicit unknown/gap output",
+          "objective": "Build deterministic extractors over the priority source surfaces — PluginManifest, TypeScript contracts, operation registration, schemas, config parsing, language contributions, visual contracts, tests — emitting claim-classed structural facts with explicit unknown/gap output, and computing manifest↔runtime op parity.",
+          "outcome": "Same HEAD produces the same extracted structural fact set with zero invented facts on a hand-checked sample; facts carry claim classes and exact source anchors; parity classes (DECLARED+IMPLEMENTED, DECLARED, IMPLEMENTATION NOT FOUND, IMPLEMENTED, NOT DECLARED, DYNAMIC) are computed.",
           "effort": "E4",
           "loc": {
             "band": "L",
@@ -545,18 +172,35 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
             "MP21-G1"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP21-G2"
-          ]
+          ],
+          "risks": [
+            "Dynamic op registration must remain visible (reported as DYNAMIC — NEEDS EXPLICIT REFLECTION PROVIDER); opacity is not allowed, and this is the hardest extraction case.",
+            "Extraction uncertainty (config readers, dynamically assembled op maps) risks silent guessing; unknown must be an explicit output, with a request for explicit declaration where needed.",
+            "Largest phase of the program (E4, 1,800–3,500 LOC): surface-set sprawl can blow the band, so scope must be cut before determinism is compromised."
+          ],
+          "openQuestions": [
+            "How far config extraction can go mechanically before the tool must mark unknown and request an explicit declaration.",
+            "Whether the Contribution-interface design seam (manifest fields richer than the base TypeScript Contribution interface) is resolved in P2 or deferred to a later enrichment wave.",
+            "Depth of the visual inventory given that VisualSpec types are declared but projection implementation is only partial today."
+          ],
+          "sources": [
+            "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §5 (surfaces), §9 (claim classes), §10 (existing baseline structure), §11 (PluginManifest first target), §12 (manifest↔runtime parity), §13 (schema reuse), §14 (config self-description), §18 (language), §19 (visual), §34 REF-02/REF-03/REF-04/REF-06",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P2 seed: E4, 1,800–3,500, gate MP21-G2)",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-21 P2 row: deterministic extractors, explicit unknown/gap output)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP21-P3",
           "name": "Reflection Graph + query API",
-          "outcome": "Read-only nodes/edges, source anchors, relation/query primitives",
+          "objective": "Assemble extracted facts into a read-only Reflection Graph — nodes, edges, source anchors and relation/query primitives per the ExtractedReflection shape — with stable entity references that external programs can resolve without reparsing source.",
+          "outcome": "A queryable graph API and serialized descriptor that an external consumer (MP-54 bundle or MP-60 impact query) uses to resolve stable entity refs and relations from the graph alone; the graph is a derived build artifact refreshed at build/install, never a live AST scan of the whole tree.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -566,18 +210,34 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
             "MP21-G2"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP21-G3"
-          ]
+          ],
+          "risks": [
+            "This is the program's critical unlock: MP54-P2, MP55-P3 and MP60-P2 all wait on MP21-G3, so a wrong query-API shape propagates widely.",
+            "EntityRef/edge schema must converge on the shared accelerator concepts (SourceAnchor, EntityRef, TestRef, HEAD, provenance class) rather than becoming a second competing identity scheme.",
+            "Temptation to serve runtime queries by reparsing the tree live; the descriptor-plus-live-state model from the Wiki relationship section must hold."
+          ],
+          "openQuestions": [
+            "Exact EntityRef/SourceAnchor schema to be co-designed with MP-54 and MP-60 consumers before the query API freezes.",
+            "Descriptor refresh cadence and staleness policy: what joins to live runtime state versus the build artifact."
+          ],
+          "sources": [
+            "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §8 (ExtractedReflection record), §21 (extract/graph modes), §32 (relationship to the Contextual Wiki), §34 REF-05",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12 (MP21-G3 consumers: MP54-P2, MP55-P3, MP60-P2) and §13 (MP-21 P3 seed: E3, 900–1,800)",
+            ".project/pm/FIRST-FIVE-SEED.md (shared strategy: no five separate databases/parsers/identity schemes; MP21-G3 unlocks MP-54 P2 and MP-60 P2)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP21-P4",
           "name": "Gap + migration proposals",
-          "outcome": "Missing self-description, duplicates/mismatches, safe candidate source-native upgrades",
+          "objective": "Analyze the graph for missing self-description, manifest↔runtime mismatches, duplicate semantic truth, prose-only claims and source conflicts; produce severity-ranked gaps and source-native migration proposals that remain mechanically separate from extracted facts.",
+          "outcome": "A compact top-level gap report with per-plugin drill-down (missing op declarations, missing source anchors, missing parameter descriptions, duplicate schemas, unresolved capability/realization splits, unreflected UI actions, unknown consequences, prose-only claims, source conflicts), plus proposal-only patch artifacts that are previewable, diffable, test-gated and reversible.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -587,18 +247,34 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
             "MP21-G3"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP21-G4"
-          ]
+          ],
+          "risks": [
+            "Gap priority scoring is a migration aid only; it must not become product-priority or scheduling authority.",
+            "Proposal quality: safe versus poor transformation candidates must follow the migrator doc's own lists or the tool drifts into semantic invention.",
+            "CONFLICT is an output, never silently resolved; a high conflict volume could make reports unusable."
+          ],
+          "openQuestions": [
+            "Which of the good-candidate automatic transformations (anchor metadata, schema-referenced help, obvious static IDs, shared declarative helpers, conformance tests) qualify for automatic patch generation first.",
+            "Whether the gap severity taxonomy needs its own conformance test so ranked proposals cannot masquerade as authority."
+          ],
+          "sources": [
+            "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §12 (parity report), §20 (Wiki compliance definition), §23 (safe/poor transformations), §27 (output reports), §28 (priority scoring), §34 REF-06/REF-08/REF-09",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P4 seed: E3, 800–1,700, gate MP21-G4)",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-21 P4 row: missing self-description, duplicates/mismatches, safe candidate upgrades)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP21-P5",
           "name": "Continuous compliance",
-          "outcome": "Incremental scan/check integration, changed-public-behavior gap detection, Ratchet/CI hooks where useful",
+          "objective": "Integrate incremental scan and completeness checks into the normal development loop (build/CI hooks) so new or modified public behavior must remain structurally transparent, while the check itself claims no authority over source and stays read-only by default.",
+          "outcome": "A compliance check that catches seeded structural drift, tracks reflection-status (legacy-derived vs source-native) for incremental migration, and fails when public consequential behavior becomes structurally opaque — never because prose is aesthetically incomplete.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -608,567 +284,84 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [
-            "observed developer workflow"
-          ],
           "blockedBy": [
             "MP21-G4"
           ],
+          "softDeps": [
+            "observed developer workflow"
+          ],
           "exitGates": [
             "MP21-G5"
-          ]
+          ],
+          "risks": [
+            "Compliance becoming documentation bureaucracy rather than structural transparency — the design's own named failure mode.",
+            "Binding the check where it could duplicate or usurp Ratchet's external ownership of atomic execution/proof state.",
+            "Threshold tuning: too strict blocks the MVP slice and normal iteration; too lax lets opacity through."
+          ],
+          "openQuestions": [
+            "Where the compliance hook binds (Ratchet gate versus plain CI) without duplicating Ratchet authority.",
+            "What completeness floor applies to new/modified public behavior, and whether the MVP semantic slice gets a separate floor before full-repo migration."
+          ],
+          "sources": [
+            "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §21 (verify mode), §22 (no-write default), §25 Waves 5–6 (completeness gate, Forge compliance), §26 (legacy compatibility status), §29 (MVP slice), §31 (CI/conformance integration), §34 REF-10",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P5 seed: E3, 700–1,500, gate MP21-G5)",
+            ".project/pm/scope.json (Ratchet as external owner of atomic execution/proof state; PM does not duplicate it)"
+          ],
+          "needsReview": false
         }
       ],
-      "gaps": [
+      "gates": [
         {
-          "id": "MP21-GAP-1",
-          "kind": "diagram-correction",
-          "statement": "The cross-program parallelization diagram omits the hard MP-55 P3 -> MP21-G3 edge; per-program tables are taken as truth."
+          "id": "MP21-G1",
+          "producingPhase": "MP21-P1",
+          "statement": "repeated scan yields stable deterministic identities",
+          "evidence": "two consecutive scans at the same HEAD produce an identical SourceAnchor/digest set",
+          "status": "TBD",
+          "consumers": [
+            "MP21-P2"
+          ]
+        },
+        {
+          "id": "MP21-G2",
+          "producingPhase": "MP21-P2",
+          "statement": "same HEAD produces the same extracted structural fact set",
+          "evidence": "diff of two extractions at one HEAD is empty, and a hand-checked sample shows zero invented facts",
+          "status": "TBD",
+          "consumers": [
+            "MP21-P3"
+          ]
+        },
+        {
+          "id": "MP21-G3",
+          "producingPhase": "MP21-P3",
+          "statement": "stable queryable Reflection identities / graph exists",
+          "evidence": "an external consumer (MP-54 bundle or MP-60 impact query) resolves stable entity refs and relations from the graph alone",
+          "status": "TBD",
+          "consumers": [
+            "MP54-P2",
+            "MP55-P3",
+            "MP60-P2"
+          ]
+        },
+        {
+          "id": "MP21-G4",
+          "producingPhase": "MP21-P4",
+          "statement": "extracted fact and suggested meaning remain mechanically distinct",
+          "evidence": "output separates extracted/PROVEN_STRUCTURAL classes from suggested/candidate classes by construction, checked by test",
+          "status": "TBD",
+          "consumers": [
+            "MP21-P5"
+          ]
+        },
+        {
+          "id": "MP21-G5",
+          "producingPhase": "MP21-P5",
+          "statement": "structural drift/completeness check works without becoming source authority",
+          "evidence": "a seeded structural drift is caught by the compliance check, and the check itself claims no authority over source",
+          "status": "TBD",
+          "consumers": []
         }
-      ]
-    },
-    {
-      "id": "MP-22",
-      "name": "Source-native semantic declarations & completeness gate",
-      "purpose": "New/modified public behavior is self-describing by construction and cannot silently bypass Reflection.",
-      "canonicalState": "DESIGN.",
-      "priority": "NEXT",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-23",
-      "name": "Automatic plugin self-knowledge wiring",
-      "purpose": "Installing a plugin immediately adds capability/config/source knowledge to Reflection/Wiki without authored Wiki files.",
-      "canonicalState": "DESIGN / synthetic proof specified.",
-      "priority": "NEXT / later",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-24",
-      "name": "Provider Lab",
-      "purpose": "Instrument real provider behavior in Shadow / Control / Conformance / Healing modes and turn messy live reality into reusable knowledge.",
-      "canonicalState": "STRONG HYPOTHESIS; PRV-L1 reconnaissance only.",
-      "priority": "PARALLEL",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-25",
-      "name": "Browser transport & Account identity",
-      "purpose": "Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness.",
-      "canonicalState": "RECON Lock E only; no live attach.",
-      "priority": "NOW critical external path",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-26",
-      "name": "Provider/Account/Model routing",
-      "purpose": "Route among valid Providers, Accounts and optional Models without hidden defaults or silent retargeting.",
-      "canonicalState": "Candidate semantics; no live Account binding.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-27",
-      "name": "Provider packs / realization boundary",
-      "purpose": "Isolate provider-specific URLs, identity signals, steps and completion signals behind shared semantic capabilities.",
-      "canonicalState": "DESIGN / baseline evidence.",
-      "priority": "NEXT",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-28",
-      "name": "Live prompt.send realization",
-      "purpose": "One real prompt goes through the selected Account with attempt/result evidence and no false success.",
-      "canonicalState": "UNPROVEN; prompt.send absent from current manifests/src.",
-      "priority": "NEXT after transport + GOV",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-29",
-      "name": "Provider drift detection / conformance / healing",
-      "purpose": "Detect changed external behavior, mark realization drifted, diagnose/repair under governance, and verify repair.",
-      "canonicalState": "Baseline healing lifecycle exists; release provider integration not built.",
-      "priority": "LATER release M7+",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-30",
-      "name": "Second/third-provider falsification",
-      "purpose": "Force shared semantics to survive materially different providers.",
-      "canonicalState": "DESIGN / release roadmap.",
-      "priority": "NEXT after provider 1",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-31",
-      "name": "Authority / consent / refusal",
-      "purpose": "Natural language never grants permission; every consequential operation has explicit scoped authority or refusal.",
-      "canonicalState": "Law verified-local; release consent contract not implemented.",
-      "priority": "NOW / NEXT",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-32",
-      "name": "Execution envelope / evidence / receipts (Work-lite)",
-      "purpose": "Persist attempt before effect and distinguish executing/completed/failed/uncertain with structural evidence.",
-      "canonicalState": "DESIGN; durable Work absent.",
-      "priority": "NEXT before live send",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-33",
-      "name": "Durable Work / Agency / Attention / background continuity",
-      "purpose": "Consequential delegated outcomes survive worker/process replacement and can continue/recover honestly.",
-      "canonicalState": "DEFERRED for first release; destination-critical; durable Work absent.",
-      "priority": "LATER",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-34",
-      "name": "Vault / canonical local data / continuity",
-      "purpose": "User-owned durable state, provenance and history survive restart and isolation.",
-      "canonicalState": "PROVEN-SLICE locally for Vault/CLI continuity.",
-      "priority": "ACTIVE foundation",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-35",
-      "name": "Memory / context / self-knowledge freshness",
-      "purpose": "Durable memory remains distinct from task context; derived context is attributable/fresh/recomputable.",
-      "canonicalState": "Partial concepts/legacy mechanisms; broad destination program.",
-      "priority": "LATER / cross-cutting",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-36",
-      "name": "Plugins / compositions / contribution boundaries",
-      "purpose": "Replaceable capabilities enter through explicit contracts without secret first-party paths.",
-      "canonicalState": "Strong baseline exists; needs new semantic/Reflection integration.",
-      "priority": "ACTIVE foundation",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-37",
-      "name": "Forge / governed self-extension",
-      "purpose": "Ordinary users/Ω can create, modify, compose and repair governed plugins/capabilities through normal admission/proof.",
-      "canonicalState": "DEFERRED long-horizon.",
-      "priority": "LATER",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-38",
-      "name": "Governed evolution / compatibility / rollback",
-      "purpose": "Ω can change itself with lineage, impact awareness, verification and recovery without self-authorizing constitutional change.",
-      "canonicalState": "DESIGN principle / partial baseline mechanisms.",
-      "priority": "LATER",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-39",
-      "name": "Runtime / constitution / resource governance / failure semantics",
-      "purpose": "Minimal trusted substrate enforces non-bypassable boundaries, resource/failure truth and replacement.",
-      "canonicalState": "Baseline host/law verified-local slice; historical gates incomplete.",
-      "priority": "ACTIVE foundation",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-40",
-      "name": "Surfaces / spatial environment / Canvas",
-      "purpose": "Multiple replaceable surfaces project one semantic World; later spatial/canvas experience does not become canonical truth.",
-      "canonicalState": "DEFERRED from first release.",
-      "priority": "LATER",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-41",
-      "name": "Truth / proof ledger / falsifiers / maturity",
-      "purpose": "Every important claim has an evidence level, owner, falsifier and independent review.",
-      "canonicalState": "TRU-L1 active review demonstrated; release ledger/falsifier suite still roadmap work.",
-      "priority": "NOW / continuous",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-42",
-      "name": "Harvest-First Engineering / Harvest Bench",
-      "purpose": "Search baseline/history/ecosystem before expensive invention; assay candidates as reuse/adapt/wrap/port/evidence/reject.",
-      "canonicalState": "ACTIVE doctrine; PRV-L1 used it.",
-      "priority": "continuous",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-43",
-      "name": "Historical VIVIM / BCP knowledge mining",
-      "purpose": "Reuse old proofs, failures, mechanisms and destination reasoning without inheriting old organization or law.",
-      "canonicalState": "Available external knowledge mine.",
-      "priority": "PARALLEL on demand",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-44",
-      "name": "OS taxonomy / non-AI benchmark corpus",
-      "purpose": "Stress semantic/reflection/visual systems against hundreds of non-AI capabilities.",
-      "canonicalState": "HISTORICAL/EXTERNAL benchmark; not adopted product scope.",
-      "priority": "PARALLEL after core Lab",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-45",
-      "name": "Benchmarks / performance / architecture falsifiers",
-      "purpose": "Re-measure runtime/resource/latency claims only when decision-relevant.",
-      "canonicalState": "Historical benchmark corpus exists.",
-      "priority": "on demand",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-46",
-      "name": "Local Agentic Development System",
-      "purpose": "Many local agents can work in parallel, hand off through Git/artifacts, and integrate without owner reconstructing everything manually.",
-      "canonicalState": "PROVEN-SLICE (narrow): six bounded ZCode workers each wrote one design artifact plus handoff concurrently (28–49 s, ≤8 tool calls); one dispatcher integrated them. Parallel code changes, worktree merges and cross-habitat coordination are unproven.",
-      "priority": "NOW / continuous",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-47",
-      "name": "Workstream/dependency/Lock orchestration",
-      "purpose": "Enable temporary low-handoff coordination through explicit, falsifiable interface hypotheses rather than waiting for whole subsystems.",
-      "canonicalState": "ACTIVE; Locks A–E candidate/recon.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-48",
-      "name": "Model routing / heterogeneous intelligence pool",
-      "purpose": "Use abundant models for work and scarce frontier models for mature review/adjudication; record actual routed model when known.",
-      "canonicalState": "ACTIVE policy; ZCode currently openrouter/auto; concrete model hidden.",
-      "priority": "continuous",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-49",
-      "name": "ZCode / OpenRouter Auto execution substrate",
-      "purpose": "Use measured ZCode concurrency/workflows safely without assuming historical provider-account topology.",
-      "canonicalState": "ACTIVE; ≥6 bounded concurrency verified.",
-      "priority": "NOW",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-50",
-      "name": "Codex / Claude Code specialist integration",
-      "purpose": "Use separate harnesses for implementation/integration/review where diversity adds value.",
-      "canonicalState": "Reachable; not yet deeply benchmarked in new launch.",
-      "priority": "PARALLEL",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-51",
-      "name": "Grok Build / Grok model integration",
-      "purpose": "Add Grok as both model resource and execution harness without mistaking harness capability for free capacity.",
-      "canonicalState": "Binary reachable, not configured/benchmarked.",
-      "priority": "PARALLEL experiment",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-52",
-      "name": "Daintree execution habitat evaluation",
-      "purpose": "Test whether Daintree usefully manages Git worktrees, Review Hub and supported CLI-agent panels without creating a new source of project truth.",
-      "canonicalState": "LIVE on the Linux box and available for assay; adoption remains an experiment, not strategy law.",
-      "priority": "PARALLEL high-value experiment",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-53",
-      "name": "Development Reality Layer / Dev Black Box",
-      "purpose": "Capture minimal local structural development events that can power context, debugging, regressions and throughput learning.",
-      "canonicalState": "EXPERIMENT hypothesis only.",
-      "priority": "OPTIONAL when bottleneck measured",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
+      ],
       "gaps": []
     },
     {
@@ -1176,23 +369,73 @@
       "name": "Automatic Context Bundles",
       "purpose": "Give fresh workers compact task-specific context derived from current repo reality.",
       "canonicalState": "EXPERIMENT hypothesis.",
-      "priority": "OPTIONAL / likely before Elephant",
-      "planResolution": "SEEDED",
+      "canonicalPriority": "OPTIONAL / likely before Elephant",
+      "canonicalNotes": "Compare against ordinary repo reading and elephant residency.",
+      "dossier": {
+        "explanation": "MP-54 (Automatic Context Bundles) composes, for a fresh worker starting a bounded task, the smallest useful package of current project context: the current objective, relevant files and diffs, recent attempts, active branch/HEAD, last failures, relevant tests, and unresolved questions. The bundle is generated from durable project state - Ratchet computed task/gate state, Git, later Reflection identities and failure capsules - not from one agent's self-summary of itself (seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md, hypothesis #2).\n\nThe starting point already exists and must be reused: the Ratchet emits worker packets today. `ratchet next` and `ratchet packet <TASK>` already produce the fresh-worker brief - acceptance text, failing gate names and current failure messages, write surface, files to read (paths only), verify/promote commands, stop conditions (.project/ratchet/DESIGN.md §3.4, accelerator DA-02). MP-54 P1 therefore extends or reuses that mechanism rather than building a competing bundle composer; later phases add source-aware selection through MP-21 Reflection identities, evidence/failure enrichment through MP-55 capsules, and adaptive selection informed by MP-60 impact data.\n\nMP-54 composes and points; it does not analyze and does not own. Repository analysis belongs to MP-21 (Reflection Graph and stable structural identities), failure reproduction belongs to MP-55 (Failure Capsules), and impact/test selection belongs to MP-60 (Runtime Dependency/Impact Graph). MP-54 is the task-shaped composer that binds those surfaces into one onboarding brief, and it must stay replaceable rather than become a second analysis system.\n\nIt is a development accelerator, not product architecture. It earns permanence only if it measurably reduces validated delivery time, rediscovery, failure cost, coordination cost, or verification cost (DEVELOPMENT-ACCELERATION-HYPOTHESES.md program-wide principle and hypothesis #30). That is why the roadmap ends in a measurement-driven phase: a bundle mechanism that does not beat ordinary repo reading gets tuned or retired.",
+        "problem": "Every fresh session pays to rediscover reality the project already knows: workers re-derive repository and task context from scratch, spending time and tokens on reconstruction instead of work. The coordination cost is documented, not hypothetical: 49 of the last 51 commits were docs reconciliations, status surfaces disagreed with each other at the same HEAD (STATUS vs SITREP vs COMMONS), and no worker could mechanically find out what the next task is, whether it finished it, or whether it broke other work - every answer was reconstructed by reading prose (.project/ratchet/DESIGN.md §1). Agent self-summaries are untrustworthy as a substitute: \"done\" is self-reported prose, sessions cannot verify themselves, and the Ratchet had to separate four different readings of \"green\" that all look like success (DESIGN.md §3.8). Without MP-54, context hand-off depends on either broad project rereads or narratives that may be wrong, and because worker replacement is the norm in this project, that reconstruction cost is re-paid on every replacement. VIVIM pays this in time (onboarding), truth (stale or self-serving summaries), and capability (concurrency stays low because each new worker needs a human or a long chat history to become useful).",
+        "objectives": [
+          "A fresh worker can begin a bounded task from the bundle plus named files alone, with no broad project reread (gated by MP54-G1, measured against an unaided start).",
+          "Bundles are generated from durable project state - Ratchet computed task/gate state, Git HEAD/diff, later Reflection identities and failure capsules - never from one agent's self-summary alone (hypothesis #2; .project/ratchet/DESIGN.md §3.2, §3.8).",
+          "Exactly one bundle path exists: P1 extends or reuses the existing Ratchet packet mechanism (ratchet next / ratchet packet, .project/ratchet/DESIGN.md §3.4); no competing composer is built.",
+          "Source-aware bundles resolve relevant symbols, contracts, schemas and tests through MP-21 Reflection identities instead of reparsing the repository, and reproduce deterministically: same task + same HEAD yields an identical bundle file set across two runs (MP54-G2).",
+          "Enriched bundles carry only task-relevant failure and evidence references, with bundle size bounded and relevance recall checked against a named relevance list - no indiscriminate context dump (MP54-G3).",
+          "Adaptive context selection demonstrably beats a fixed template on a measured task set by a stated metric (MP54-G4).",
+          "Bundle use shows a recorded before/after improvement on a validated work metric - e.g. fresh-worker onboarding time, context tokens spent rediscovering known reality, or first-pass correctness - with the comparison method named (MP54-G5)."
+        ],
+        "visionContribution": "VISION.md pillar 4 - durable Work, proof, and continuity: \"workers are replaceable; work survives them where the environment can preserve enough state and evidence.\" Building Ω requires many replaceable workers over time, and today the cost of that replacement is paid in context reconstruction every session. MP-54 makes worker replacement cheap: the task-relevant truth is reconstructed from durable project state (computed gate/task state, Git, evidence) rather than from one session's or one model's memory, which is exactly the continuity the vision requires. It also serves the honest-epistemology commitment of pillar 4 (\"what does VIVIM actually know happened?\") because bundle content is anchored to what the project can prove - computed state and evidence - not to self-reported prose. Secondarily it is a capability multiplier in the VISION.md strategic-design-shape sense: one mechanism lowers the startup cost of every other effort that begins with a fresh session, and it supports replaceable intelligence because using a bundle depends on no specific model, tool, or provider.",
+        "boundaries": [
+          "Not a second repository-analysis system: structural truth comes from MP-21 Reflection identities (MP21-G3); MP-54 must not reparse the repository independently or fork the extraction pipeline (FIRST-FIVE-SEED MP-54 objective 3; PM-CORRECTION §12).",
+          "Not an indiscriminate context dump: the bundle is the smallest useful package, size-bounded and relevance-checked (hypothesis #2: \"avoiding giant indiscriminate context dumps\"; MP54-G3).",
+          "Bundles are context, not authority: a bundle is an onboarding brief; it never overrides source code, tests, computed Ratchet state, or evidence, and it is not a replacement for reading the named files or for independent review.",
+          "Not built on agent self-summary: worker narratives are not state; bundle content derives from durable reality (hypothesis #2 and #23; .project/ratchet/DESIGN.md §1: \"Done is self-reported prose\").",
+          "Must not duplicate the Ratchet packet mechanism: the Ratchet already emits worker packets via ratchet next / ratchet packet (.project/ratchet/DESIGN.md §3.4); P1 extends or reuses that path. Building a competing bundle composer is a known duplication risk from recon and is out of bounds.",
+          "Not a scheduler, router, or portfolio tool: no program selection, ranking, prioritization, or model-routing authority (PM-CORRECTION-FIRST-FIVE-ONLY.md §2, §15).",
+          "Development accelerator only, not Ω product architecture: it earns permanence under the acceleration rule and is not imported into product architecture automatically (DEVELOPMENT-ACCELERATION-HYPOTHESES.md, \"Relationship to Ω\")."
+        ],
+        "successConditions": [
+          "A fresh agent completes a bounded task using only the bundle plus named files, with time/token cost recorded versus an unaided start (MP54-G1).",
+          "Same task + same HEAD yields an identical bundle file set across two runs (MP54-G2).",
+          "On a measured task set, bundle size stays bounded and relevance recall checks out against a named relevance list (MP54-G3).",
+          "An A/B comparison on the named task set shows adaptive ranking beating the fixed template on a stated metric (MP54-G4).",
+          "A recorded before/after improvement on a real-task validated work metric, with the comparison method named (MP54-G5).",
+          "Exactly one bundle mechanism exists in the repo - the extended Ratchet packet path - and a fresh worker receives a task brief in one command with no competing composer."
+        ],
+        "falsifiers": [
+          "Fresh workers with bundles do not beat unaided starts on time-to-first-productive-work, token cost, or first-pass correctness on the measured task set: reduce or retire bundle components under the acceleration rule.",
+          "Workers spend more time correcting stale or wrong bundle content than they would spend reading the repo directly (parallel to the Ratchet falsifier in .project/ratchet/DESIGN.md §7): rework or retire.",
+          "Same-HEAD bundles diverge across runs: selection is not deterministic and P3/P4 cannot be built on P2.",
+          "Bundle size or relevance drifts toward an indiscriminate dump and worker performance measurably degrades with bundle use: re-scope P3/P4.",
+          "MP-21 Reflection-based selection yields no measurable benefit over plain path-based selection on real tasks: descope P2 and keep the thin bundle.",
+          "The Ratchet packet alone proves sufficient for real tasks: MP-54 shrinks to P1 plus P5 measurement, and enrichment phases are retired."
+        ],
+        "sources": [
+          "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypothesis #2 Automatic Context Bundles; program-wide principle; #23; #30)",
+          "seed-docs/VISION.md (pillar 4 durable Work/proof/continuity; strategic design shape: capability multipliers; replaceable intelligence)",
+          ".project/pm/FIRST-FIVE-SEED.md (MP-54 section: explanation, objectives, phase table)",
+          ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md (§12 MP-54 dependency shape; §13 MP-54 phase seed)",
+          ".project/ratchet/DESIGN.md (§1 problem; §3.2 computed state; §3.4 packets; §3.8 readings of green; §7 falsifiers)",
+          ".project/pm/scope.json"
+        ]
+      },
+      "planResolution": "PHASED",
       "evidenceState": "UNPROVEN",
-      "seeded": true,
       "phaseCount": 5,
-      "gateCount": 3,
-      "gapCount": 2,
-      "ungatedPhases": [
-        "MP54-P3",
-        "MP54-P4"
-      ],
+      "gateCount": 5,
+      "ungatedPhases": [],
       "needsReview": [],
+      "externalDependencies": [
+        {
+          "ref": "MP-67",
+          "reason": "P5 needs the acceleration-scorecard measurement discipline; MP-67 is outside PM scope and is referenced only."
+        }
+      ],
       "phases": [
         {
           "id": "MP54-P1",
           "name": "Thin task/Git bundle",
-          "outcome": "Ratchet task, acceptance, deps, failing gates, write surface, HEAD/diff, named files",
+          "objective": "Compose a thin per-task bundle for a fresh worker from Ratchet/task state and Git: task acceptance criteria, dependencies, failing gate names and current failure messages, write surface, HEAD/diff, and files to read (paths only) - by extending or reusing the existing Ratchet packet mechanism, not a new composer.",
+          "outcome": "The ratchet next / ratchet packet path (extended where needed) produces a thin bundle that lets a fresh agent start a bounded task without broad project reread; MP54-G1 is measured against an unaided start.",
           "effort": "E1-E2",
           "loc": {
             "band": "M",
@@ -1202,16 +445,35 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [],
+          "softDeps": [
+            "Reuse of the Ratchet packet mechanism (ratchet next / ratchet packet, .project/ratchet/DESIGN.md §3.4)"
+          ],
           "exitGates": [
             "MP54-G1"
-          ]
+          ],
+          "risks": [
+            "Duplication risk (from recon): the Ratchet already emits worker packets via ratchet next / ratchet packet (.project/ratchet/DESIGN.md §3.4). P1 must extend or reuse that mechanism; building a competing bundle composer is the known failure mode.",
+            "Bundle content anchored to prose task state can drift from computed Ratchet state; anchor to computed task/gate state (DESIGN.md §3.2) rather than hand-written status.",
+            "The 'fresh start' baseline is noisy across machines and toolchains; the MP54-G1 comparison method must be fixed before measurement, not after."
+          ],
+          "openQuestions": [
+            "Which packet surface (ratchet next vs ratchet packet <TASK>) is the extension point, and which fields does the thin bundle add beyond acceptance text, failing gates, write surface, and files-to-read (DESIGN.md §3.4)?",
+            "How is 'begins a bounded task without broad project reread' operationalized and measured for MP54-G1 (task set, unaided baseline, recorded time/token cost)?"
+          ],
+          "sources": [
+            ".project/ratchet/DESIGN.md §3.4, §3.2",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-54 P1)",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-54 P1)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypothesis #2)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP54-P2",
           "name": "Source-aware bundle",
-          "outcome": "Resolve relevant symbols/contracts/schemas/tests from Reflection",
+          "objective": "Resolve the task's relevant symbols, contracts, schemas, and tests through MP-21 Reflection identities (stable entity refs, MP21-G3) and turn them into a source-aware bundle with a deterministic file set - no independent repo reparsing.",
+          "outcome": "Same task + same HEAD yields an identical bundle file set across two runs (MP54-G2); selection is driven by structural identity rather than by text search or per-worker judgment.",
           "effort": "E2-E3",
           "loc": {
             "band": "M",
@@ -1221,18 +483,34 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
             "MP21-G3"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP54-G2"
-          ]
+          ],
+          "risks": [
+            "MP21-G3 slip blocks P2; P1's thin bundle must stay independently valuable so P2 delay does not stall P1 users.",
+            "Structural-identity selection may over- or under-select sources; the MP54-G2 reproducibility check verifies determinism, not relevance - relevance proof is deferred to MP54-G3.",
+            "Bundle file-set format churn would break consumers (MP55-P4, fresh workers); the format needs one deliberate definition before enrichment builds on it."
+          ],
+          "openQuestions": [
+            "Which Reflection entity classes (symbols, contracts, schemas, tests) drive selection, and what is the canonical bundle file-set format?",
+            "Should sources be referenced by MP-21 anchor/digest or by path only, and what does the G2 'identical file set' comparison pin (paths, digests, both)?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P2)",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-54 P2; MP21-G3)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypothesis #2)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP54-P3",
           "name": "Evidence/failure enrichment",
-          "outcome": "Relevant capsules, attempts, proof state, traces, unresolved questions",
+          "objective": "Enrich bundles with task-relevant evidence and failure history: MP-55 capsules, recent attempts, proof state, traces, and unresolved questions - filtered to relevance with a hard size bound, never an indiscriminate dump.",
+          "outcome": "The bundle carries only task-relevant evidence/failure references; a measured task set shows bundle size bounded and relevance recall checked against a named relevance list (MP54-G3).",
           "effort": "E2",
           "loc": {
             "band": "M",
@@ -1242,16 +520,37 @@
             ],
             "confidence": "LOW"
           },
+          "blockedBy": [
+            "MP54-G2"
+          ],
           "softDeps": [
             "MP55-G2"
           ],
-          "blockedBy": [],
-          "exitGates": []
+          "exitGates": [
+            "MP54-G3"
+          ],
+          "risks": [
+            "Evidence references bloat the bundle into an indiscriminate dump; MP54-G3's size bound and named relevance list are the countermeasure and must exist before enrichment ships.",
+            "MP55-G2 is a soft dependency: without reproducible capsules there is little to enrich; P3 may need to descope to attempts/proof state until capsules exist.",
+            "Enrichment imports agent narratives (attempts, conclusions) that may be self-serving; narrative content must be marked as claim, not state (DESIGN.md §3.8 distinction discipline)."
+          ],
+          "openQuestions": [
+            "What is the named relevance list against which MP54-G3 relevance recall is checked, and who authors it?",
+            "How are unresolved questions and prior attempts represented without treating agent self-summaries as truth?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P3)",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-54 P3; MP-55 P2)",
+            ".project/ratchet/DESIGN.md §3.8",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypotheses #2, #3, #23)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP54-P4",
           "name": "Adaptive context selection",
-          "outcome": "Rank/trim context using impact/observed relevance rather than fixed templates",
+          "objective": "Rank and trim bundle content using impact and observed relevance (soft: MP60-P3 runtime/test-observed edges) instead of fixed templates, and prove the ranking wins on a stated metric over a measured task set.",
+          "outcome": "Adaptive selection beats the fixed template on a measured task set by a stated metric (MP54-G4); ranking is mechanical, per-task, and evidence-based.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -1261,16 +560,36 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [
-            "MP60 P3"
+          "blockedBy": [
+            "MP54-G3"
           ],
-          "blockedBy": [],
-          "exitGates": []
+          "softDeps": [
+            "MP60-P3"
+          ],
+          "exitGates": [
+            "MP54-G4"
+          ],
+          "risks": [
+            "Ranking is untestable without a pre-declared task set and stated metric; both must be fixed before implementation or MP54-G4 is unfalsifiable.",
+            "Adaptive ranking can quietly grow into a second analysis/ranking system; keep it per-task and mechanical, within the dossier boundaries (no portfolio decisioning).",
+            "Without MP60-P3 observed edges (soft dependency), ranking is static-only and may not beat templates on the current repo size - if so, descope rather than force it."
+          ],
+          "openQuestions": [
+            "What metric and task set make the adaptive-vs-template A/B decision in MP54-G4?",
+            "Can static ranking suffice at current repo size, or is observed relevance from MP60-P3 a practical requirement for winning the A/B?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P4)",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-54 P4; MP-60 P3)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypotheses #2, #12, #30)"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP54-P5",
           "name": "Measured optimization",
-          "outcome": "A/B compare bundle vs ordinary repo reading; tune/retire weak components",
+          "objective": "A/B compare bundle-aided work against ordinary repo reading on real tasks under the acceleration-scorecard measurement discipline (external reference MP-67), then tune, keep, or retire weak bundle components.",
+          "outcome": "A recorded before/after improvement in a validated work metric, with the comparison method named (MP54-G5); components that do not earn their keep are removed.",
           "effort": "E2",
           "loc": {
             "band": "M",
@@ -1280,49 +599,148 @@
             ],
             "confidence": "LOW"
           },
+          "blockedBy": [
+            "MP54-G4"
+          ],
           "softDeps": [
             "MP67 measurement discipline"
           ],
-          "blockedBy": [],
           "exitGates": [
             "MP54-G5"
-          ]
+          ],
+          "risks": [
+            "MP-67's scorecard discipline is an external reference outside PM scope; without a named comparison method the MP54-G5 improvement claim is unfalsifiable.",
+            "Single-metric optimization (e.g. fewer tokens but worse first-pass correctness) contradicts hypothesis #30's 'do not optimize one metric blindly'; use a small metric set and report trade-offs.",
+            "Measurement overhead may exceed the bundle's benefit on small tasks; the acceleration rule (tune or delete) applies to the measurement itself, not just the bundle."
+          ],
+          "openQuestions": [
+            "Which validated work metric is primary: fresh-worker onboarding time, context tokens spent rediscovering known reality, first-pass correctness, or a combination (hypotheses #2, #30)?",
+            "Should weak bundle components be tuned or retired, and who records the retire decision under the acceleration rule?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P5)",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-54 P5; MP67 measurement discipline)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (program-wide principle; hypotheses #2, #30)"
+          ],
+          "needsReview": false
         }
       ],
-      "gaps": [
+      "gates": [
         {
-          "id": "MP54-GAP-1",
-          "kind": "open-question",
-          "statement": "MP-54 P3 and P4 have no exit gate, so their completion cannot be observed."
+          "id": "MP54-G1",
+          "producingPhase": "MP54-P1",
+          "statement": "fresh worker begins a bounded task without broad project reread",
+          "evidence": "a fresh agent completes a bounded task using only the bundle plus named files; time/token cost recorded vs unaided start",
+          "status": "TBD",
+          "consumers": [
+            "MP54-P2"
+          ]
         },
         {
-          "id": "MP54-GAP-2",
-          "kind": "open-question",
-          "statement": "MP-54 P4 soft-depends on MP60 P3; is it a real dependency to promote to a named MP60-Gn?"
+          "id": "MP54-G2",
+          "producingPhase": "MP54-P2",
+          "statement": "entity-driven bundle reproducibly selects relevant sources",
+          "evidence": "same task + same HEAD yields an identical bundle file set across two runs",
+          "status": "TBD",
+          "consumers": [
+            "MP54-P3"
+          ]
+        },
+        {
+          "id": "MP54-G3",
+          "producingPhase": "MP54-P3",
+          "statement": "bundle carries only task-relevant evidence/failure refs (no indiscriminate dump)",
+          "evidence": "a measured task set shows bundle size bounded and relevance recall checked against a named relevance list",
+          "status": "TBD",
+          "consumers": [
+            "MP54-P4"
+          ]
+        },
+        {
+          "id": "MP54-G4",
+          "producingPhase": "MP54-P4",
+          "statement": "adaptive selection beats fixed template on a measured task set",
+          "evidence": "A/B comparison on the named task set shows adaptive ranking wins on a stated metric",
+          "status": "TBD",
+          "consumers": [
+            "MP54-P5"
+          ]
+        },
+        {
+          "id": "MP54-G5",
+          "producingPhase": "MP54-P5",
+          "statement": "measurable improvement in a validated work metric",
+          "evidence": "recorded before/after metric on real tasks, with the comparison method named",
+          "status": "TBD",
+          "consumers": []
         }
-      ]
+      ],
+      "gaps": []
     },
     {
       "id": "MP-55",
       "name": "Failure Capsules / reproducible debugging packets",
       "purpose": "Package failure, environment, changed files and evidence so another worker can reproduce quickly.",
       "canonicalState": "EXPERIMENT hypothesis.",
-      "priority": "OPTIONAL high-value",
-      "planResolution": "SEEDED",
+      "canonicalPriority": "OPTIONAL high-value",
+      "canonicalNotes": "Candidate companion to simulator/EXP.",
+      "dossier": {
+        "explanation": "MP-55 builds Failure Capsules: compact, portable packages that capture a meaningful development failure as evidence rather than a narrative about it. A capsule records the exact invocation, process/environment versions, inputs, observed vs expected result, relevant file/diff state, the observed failure signature and a reproduction recipe. A worker or model that receives a capsule receives \"this exact failure\", not \"something broke\".\n\nA capsule is deliberately not a log store, a screen recording, or a test suite. It is a selective, failure-scoped slice of reality with declared prerequisites and a replay path. The Failure Capsules hypothesis (DEVELOPMENT-ACCELERATION-HYPOTHESES.md #3) lists possible contents — command/tool invocation, stdout/stderr, file/diff hashes, test inputs, browser/provider state where safe, recent actions, failure signature, cleanup/reproduction instructions — and MP-55 turns that menu into a concrete artifact whose quality is measurable: can another worker reproduce and independently diagnose from it?\n\nThe program starts manual and becomes automatic. P1 freezes a failure envelope around a real invocation. P2 makes it replayable in a fresh worktree under declared prerequisites. P3 enriches capsules with MP-21 Reflection entity/test references instead of bare paths and text. P4 shapes a compact cross-agent diagnostic packet that a fresh agent can diagnose without reading the repository. P5 automates capture and minimizes capsules down to the smallest useful reproducer.\n\nMP-55 is one of the five selected development accelerators. It feeds MP-56 (minimized capsules become trace-to-fixture and regression-harvesting material) and enriches MP-54 context bundles (MP54-P3 consumes MP55-G2). Capsules are evidence, not authority: diagnosis belongs to whoever consumes the capsule, and capture stays local and privacy-reduced by default.",
+        "problem": "Without capsules, failures travel as narratives: \"something broke\" passes between workers, and each new worker re-diagnoses from scratch — re-running commands, guessing at environment and inputs, often failing to reproduce the failure at all. This persistently costs VOMEGA time (repeated manual reproduction), truth (diagnoses ungrounded in the actual observed failure), and capability (parallel workers blocked on failures they cannot hand off). Concrete reality: the harness note in .project/agentic-launch/STATUS.md records that unbounded workers stall — diagnosis without reproducible evidence is guesswork. It also throws away information the team later pays to reconstruct manually, exactly the waste the acceleration program-wide principle targets: development should leave useful evidence as a side effect instead of discarding it.",
+        "objectives": [
+          "Capture meaningful failures as structured envelopes (invocation, environment versions, inputs, observed vs expected result, failure signature) without relying on agent memory or self-summary.",
+          "Reproduce a selected failure in a fresh worktree from a capsule under declared prerequisites, with no undeclared setup.",
+          "Bind capsules to task, commit, tests and — after MP21-G3 — dereferenceable Reflection entity/test references, not only paths and text.",
+          "Enable a fresh agent or model to produce a correct diagnosis from the diagnostic packet alone, without reading the repository.",
+          "Minimize capsules to the smallest useful reproducer and hand them to MP-56 so failures become fixture/regression material instead of being discarded.",
+          "Make capture cheap enough that leaving failure evidence is a normal side effect of development, not a discipline workers must remember."
+        ],
+        "visionContribution": "Serves pillar 4 of seed-docs/VISION.md — durable Work/proof/continuity. The vision's honest epistemology of execution (\"what does VIVIM actually know happened?\") applies to the Omega build itself, and capsules make failure knowledge durable and reconstructable across replaceable workers and models: workers are replaceable, but the evidence about what failed survives them. It also serves the vision's capability-multiplier principle: one mechanism (the capsule) feeds independent cross-agent diagnosis (P4), regression harvesting via MP-56, and MP-54 evidence enrichment, making every later failure cheaper to resolve. It is grounded in the DEVELOPMENT-ACCELERATION-HYPOTHESES.md program-wide principle that development should leave useful evidence as a side effect — MP-55 stops throwing away failure information the team later pays to reconstruct. It strengthens governed action as well: diagnostic evidence stays explicit, reviewable and separable from the probabilistic agent that produced it, and the privacy/sovereignty rules in that document (local storage, redaction, bounded retention, no hidden upload) bind capture by default.",
+        "boundaries": [
+          "Not a surveillance layer: no indiscriminate keystroke, screen, message, credential or content capture; any sensitive capture must be scoped, local, purposeful and reviewable (hypotheses privacy default).",
+          "Privacy-reduced by default: credentials and secrets redacted, minimal raw content, local storage, bounded retention; material that cannot be safely reduced is not captured wholesale.",
+          "Not a replacement for tests or Ratchet: capsules are evidence inputs, not proof or authority; a capsule replay is not a merge gate and does not override the Ratchet as execution/proof owner.",
+          "Not a general log archive or a Development Reality Layer substitute: capsules are selective and failure-scoped, and most raw detail should expire rather than accumulate.",
+          "Not a diagnosis engine: the capsule packages evidence; diagnosis belongs to the consuming worker/agent, which remains replaceable.",
+          "Not a new repository-analysis system: after MP21-G3 it references MP-21 structural identities instead of rebuilding parsing or identity schemes."
+        ],
+        "successConditions": [
+          "Given only a P1 envelope, another worker names the exact failing command/input/exit as the original (MP55-G1).",
+          "A capsule replayed in a clean worktree reproduces the failure signature with only declared prerequisites (MP55-G2).",
+          "Capsule fields resolve to dereferenceable Reflection entity/test references (MP55-G3).",
+          "An independent agent given only the diagnostic packet produces a diagnosis consistent with the known cause, without repo access (MP55-G4).",
+          "Automatically captured capsules preserve the seeded failure signature byte-for-byte on the named fields (MP55-G5).",
+          "Meaningful failures stop traveling as narratives in handoffs, and minimized capsules flow into MP-56 fixture/regression harvesting."
+        ],
+        "falsifiers": [
+          "If envelopes fail MP55-G1 (a second worker cannot identify the exact failing invocation), P1's capture shape is wrong and must be narrowed or redesigned.",
+          "If capsules do not replay in fresh worktrees despite declared prerequisites, P2's reproducibility claim fails and work redirects toward environment-manifest mechanics (cf. hypothesis #22) or shrinks to envelope-only.",
+          "If structural enrichment references cannot be dereferenced by consumers, or enrichment adds cost without diagnosis value, P3 is split or reduced.",
+          "If independent agents consistently cannot diagnose from packets alone, P4's repo-free packet concept is falsified and must be redesigned around declared repo slices.",
+          "If automatic capture adds measurable overhead, fires on noise, or minimization drops evidence the failure signature depends on, P5 is reduced or gated behind better triggers and redaction.",
+          "If measured failure-reproduction and diagnosis time do not improve after adoption, MP-55 fails the accelerator earning rule (measurably reduce failure cost) and should be simplified or retired."
+        ],
+        "sources": [
+          ".project/pm/scope.json",
+          ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+          ".project/pm/FIRST-FIVE-SEED.md",
+          "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+          "seed-docs/VISION.md",
+          ".project/agentic-launch/STATUS.md"
+        ]
+      },
+      "planResolution": "PHASED",
       "evidenceState": "UNPROVEN",
-      "seeded": true,
       "phaseCount": 5,
-      "gateCount": 3,
-      "gapCount": 2,
-      "ungatedPhases": [
-        "MP55-P3",
-        "MP55-P4"
-      ],
+      "gateCount": 5,
+      "ungatedPhases": [],
       "needsReview": [],
+      "externalDependencies": [],
       "phases": [
         {
           "id": "MP55-P1",
           "name": "Failure envelope",
+          "objective": "Capture the failure's observable envelope — invocation, environment, input, output and signature — without relying on agent memory.",
           "outcome": "Task/HEAD/command/exit/stdout/stderr/env/diff/input/signature capture",
           "effort": "E1-E2",
           "loc": {
@@ -1333,16 +751,31 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [],
+          "softDeps": [],
           "exitGates": [
             "MP55-G1"
-          ]
+          ],
+          "risks": [
+            "The envelope may miss hidden prerequisites (env vars, cwd, fixture state) so the signature does not identify the real failure.",
+            "The failure-signature definition may be too loose or too brittle to pin \"the exact failing invocation\" for G1."
+          ],
+          "openQuestions": [
+            "Which envelope fields are mandatory versus optional for a valid envelope?",
+            "Do raw envelopes live in ignored .local/ with only sanitized summaries committed, per the workspace evidence rule?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP55-P2",
           "name": "Reproducible capsule",
-          "outcome": "Content refs/snapshot rules plus a one-command or deterministic reproduction recipe",
+          "objective": "Turn an envelope into a capsule another worktree can replay under declared prerequisites.",
+          "outcome": "Content refs/snapshot rules + one-command or deterministic reproduction recipe",
           "effort": "E2",
           "loc": {
             "band": "M",
@@ -1352,17 +785,32 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
             "MP55-G1"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP55-G2"
-          ]
+          ],
+          "risks": [
+            "Declared prerequisites may under-specify environment (runtime versions, local services, provider state) so replay drifts from the original failure.",
+            "Snapshotting file/diff state may conflict with redaction rules and break replay."
+          ],
+          "openQuestions": [
+            "What is the minimal prerequisite manifest sufficient for fresh-worktree replay?",
+            "How are account/session identifiers included \"where safe\" (hypothesis #3 content list) without leaking secrets?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP55-P3",
           "name": "Structural enrichment",
+          "objective": "Bind capsules to Reflection entities and test refs instead of bare paths and prose.",
           "outcome": "Attach Reflection entity/source/test refs instead of only paths/text",
           "effort": "E2",
           "loc": {
@@ -1373,15 +821,30 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
             "MP21-G3"
           ],
-          "exitGates": []
+          "softDeps": [],
+          "exitGates": [
+            "MP55-G3"
+          ],
+          "risks": [
+            "Reflection entity identities may churn under refactors, breaking old capsule references.",
+            "Enrichment may drift toward duplicating MP-54 context-bundle responsibilities."
+          ],
+          "openQuestions": [
+            "Which entity/test reference classes must an enriched capsule carry for G3 dereferenceability?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP55-P4",
           "name": "Cross-agent diagnostic packet",
+          "objective": "Compress a capsule into a diagnostic packet a fresh agent can reason from alone.",
           "outcome": "Compact handoff optimized for independent diagnosis and context composition",
           "effort": "E2",
           "loc": {
@@ -1392,17 +855,33 @@
             ],
             "confidence": "LOW"
           },
+          "blockedBy": [
+            "MP55-G3"
+          ],
           "softDeps": [
             "MP54 source-aware bundle useful but not mandatory"
           ],
-          "blockedBy": [
-            "MP55-G2"
+          "exitGates": [
+            "MP55-G4"
           ],
-          "exitGates": []
+          "risks": [
+            "Packets may exceed the context budgets of common consumer models.",
+            "Some failures are environment-dependent, so strictly repo-free diagnosis may be impossible without declared state."
+          ],
+          "openQuestions": [
+            "What packet size budget fits the common consumer models/tools?",
+            "Is a minimal declared repo slice an acceptable fallback when pure repo-free diagnosis is impossible?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP55-P5",
           "name": "Automatic capture/minimization",
+          "objective": "Capture and minimize capsules automatically while preserving the failure signature.",
           "outcome": "Trigger meaningful capsule creation; minimize irrelevant events/files/input",
           "effort": "E3",
           "loc": {
@@ -1413,50 +892,156 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [
-            "MP56 normalization primitives strongly preferred"
+          "blockedBy": [
+            "MP55-G4"
           ],
-          "blockedBy": [],
+          "softDeps": [
+            "MP56-G3 normalization/fixture primitives strongly preferred"
+          ],
           "exitGates": [
             "MP55-G5"
-          ]
+          ],
+          "risks": [
+            "Automatic triggers may fire on noise, producing capsule spam.",
+            "Minimization may remove evidence the failure signature depends on.",
+            "Automatic capture may violate privacy defaults if redaction lags capture."
+          ],
+          "openQuestions": [
+            "Which signals define a \"meaningful failure\" worth automatic capture?",
+            "What is the fallback if MP56-G3 primitives are late — manual minimization first?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md"
+          ],
+          "needsReview": false
         }
       ],
-      "gaps": [
+      "gates": [
         {
-          "id": "MP55-GAP-1",
-          "kind": "open-question",
-          "statement": "MP-55 P3 and P4 have no exit gate."
+          "id": "MP55-G1",
+          "producingPhase": "MP55-P1",
+          "statement": "another worker can identify the exact failing invocation",
+          "evidence": "a second worker, given only the envelope, names the same command/input/exit as the original",
+          "status": "TBD",
+          "consumers": [
+            "MP55-P2"
+          ]
         },
         {
-          "id": "MP55-GAP-2",
-          "kind": "open-question",
-          "statement": "MP55-G3/G4 numbering gaps: were exit gates planned and dropped for the ungated phases, or intentionally skipped?"
+          "id": "MP55-G2",
+          "producingPhase": "MP55-P2",
+          "statement": "fresh worktree reproduces the selected failure under declared prerequisites",
+          "evidence": "a capsule replayed in a clean worktree reproduces the failure signature without undeclared setup",
+          "status": "TBD",
+          "consumers": [
+            "MP55-P3",
+            "MP54-P3"
+          ]
+        },
+        {
+          "id": "MP55-G3",
+          "producingPhase": "MP55-P3",
+          "statement": "capsule references Reflection entities/tests, not only paths/text",
+          "evidence": "capsule fields resolve to entity/test refs that a consumer can dereference",
+          "status": "TBD",
+          "consumers": [
+            "MP55-P4"
+          ]
+        },
+        {
+          "id": "MP55-G4",
+          "producingPhase": "MP55-P4",
+          "statement": "a fresh agent diagnoses from the packet without reading the repo",
+          "evidence": "an independent agent given only the packet produces a diagnosis consistent with the known cause",
+          "status": "TBD",
+          "consumers": [
+            "MP55-P5"
+          ]
+        },
+        {
+          "id": "MP55-G5",
+          "producingPhase": "MP55-P5",
+          "statement": "automatic capsule preserves the seeded failure signature",
+          "evidence": "an automatically captured capsule matches the seeded signature byte-for-byte on the named fields",
+          "status": "TBD",
+          "consumers": []
         }
-      ]
+      ],
+      "gaps": []
     },
     {
       "id": "MP-56",
       "name": "Trace → Fixture / regression harvesting",
       "purpose": "Turn live/provider/runtime behavior into privacy-reduced deterministic fixtures and tests.",
       "canonicalState": "DESIGN hypothesis, strongly complementary to Provider Lab + Lab.",
-      "priority": "PARALLEL when live traces exist",
-      "planResolution": "SEEDED",
+      "canonicalPriority": "PARALLEL when live traces exist",
+      "canonicalNotes": "One of the strongest bridge mechanisms.",
+      "dossier": {
+        "explanation": "MP-56 turns observed behavior into durable tests. It takes a trace — a recorded sequence of runtime, browser or provider events — and pushes it through a pipeline: a canonical trace/event contract, normalization and privacy reduction, deterministic fixture generation, replay as regression tests, and eventually continuous harvesting so that every meaningful failure leaves a falsifier behind. Synthetic traces come first; live-provider traces are a later, separately gated variant.\n\nIt is deliberately adjacent to, not a copy of, MP-55. A failure capsule freezes one observed failure so another worker can diagnose it. MP-56 converts the behavior that mattered into a byte-stable, replayable fixture that the project's own test runner can execute forever after. Together they stop the same provider or runtime lesson from being relearned by memory and discipline alone.\n\nToday there is no bridge from observed reality to durable tests. Per .project/REALITY.md, browser/provider message behavior in the current seed is fixture/simulated replay with no live control path, and observed behavior is ephemeral: once a debugging episode ends, its evidence walks out with it. MP-56 is that bridge — and it is honest about the seam: a fixture proves that the pinned property replays deterministically; it is never live evidence that the real provider still behaves that way.",
+        "problem": "Without MP-56, every lesson about runtime or provider behavior is relearned by hand. .project/REALITY.md records that browser/provider message behavior in the current seed is fixture/simulated replay with no live control path, and that observed behavior is ephemeral — the same provider/runtime lesson is paid for again each time because nothing converts an observed episode into a durable falsifier. Development acceleration hypothesis #6 (Regression Harvesting) names the cost: the test suite grows from memory and discipline alone instead of from actual pain. The result is recurring failure cost, repeated rediscovery, and regression coverage that lags the reality the project actually observes.",
+        "objectives": [
+          "Define a provider-neutral trace/event envelope with canonical identity, order, source, evidence and privacy fields such that two representations of the same trace canonicalize to identical bytes.",
+          "Redact and minimize traces safely while preserving the behavioral property being pinned, with explicit redaction rules and a loss report per trace.",
+          "Generate deterministic, byte-stable, replayable fixtures from synthetic traces first, excluding generated fixture payload volume from implementation LOC estimates.",
+          "Replay fixtures in the project's own test/conformance suites so that trace -> fixture -> replay reproduces the pinned property.",
+          "Convert repeated discoveries — failures, manual successes, provider observations — into permanent regression assets that promote through the project's own proof engine.",
+          "Keep live trace harvesting explicitly out of scope until an actual live trace source exists together with consent/evidence boundaries."
+        ],
+        "visionContribution": "Serves VISION.md pillar 4 — durable Work, proof and continuity: consequential activity should leave reconstructable evidence, and the environment should hold an honest epistemology of what it actually knows happened. MP-56 is the development-side instance of that pillar: ephemeral observation becomes a durable, replayable proof artifact whose lineage — trace source, redaction loss report, pinned property — remains inspectable rather than opaque, matching VISION's evolution-and-learning requirement that learning improve behavior without silently mutating meaning. It is also a capability multiplier in VISION's strategic-design sense: one harvesting mechanism feeds MP-60's runtime-observed edges (MP60-P3), later MP-55 automation, and regression coverage for the other selected programs. The contribution is bounded by PROOF-AND-MATURITY: fixture proof is not live proof, so MP-56 multiplies deterministic coverage without letting anyone claim a real provider behaves a certain way because a fixture passes.",
+        "boundaries": [
+          "Never report a fixture replay as live provider evidence; per PROOF-AND-MATURITY, fixture proof and live proof are distinct maturity levels and must not be collapsed.",
+          "Never weaken merge or release gates; harvested fixtures add falsifiers, they do not replace broader merge/release test gates (see MP-60 test-selection boundary).",
+          "Redaction must preserve the behavioral meaning of the pinned property; no silent semantic loss — every sanitization produces a loss report.",
+          "The live-provider path requires an actual live trace source with a consent/evidence envelope and is out of scope until both exist; it is referenced only as an external dependency (MP-25 protocol work), never built speculatively.",
+          "MP-56 must not become a second failure-diagnosis system (that is MP-55) or a second repository-analysis/parser system (that is MP-21); it consumes their outputs rather than duplicating them.",
+          "Generated fixture/data volume is never counted as implementation LOC and never grades workers."
+        ],
+        "successConditions": [
+          "Two representations of the same trace canonicalize to identical bytes (MP56-G1 realized).",
+          "A sanitized trace provably retains its pinned target property, contains zero forbidden-data occurrences, and carries a loss report (MP56-G2 realized).",
+          "The same synthetic trace generates a byte-identical fixture twice, and that fixture replays (MP56-G3 realized).",
+          "A replayed fixture reproduces its pinned property in the project's own test runner (MP56-G4 realized), unlocking MP60-P3 runtime/test-observed edges.",
+          "A seeded observed failure flows to a candidate fixture whose regression gate reaches the promoted state in the project's own proof engine (MP56-G5 realized).",
+          "The test suite demonstrably grows from actual observed pain rather than from memory and discipline alone."
+        ],
+        "falsifiers": [
+          "If normalization cannot preserve a meaningful class of target behaviors while removing forbidden data, the redaction approach needs redesign (redirect P2).",
+          "If generated fixtures are too brittle to survive normal host evolution — high maintenance per fixture — fixture-from-trace may reduce to targeted reproducers only (reduce scope).",
+          "If trace -> fixture -> replay does not reproduce pinned properties more cheaply or reliably than hand-written tests, the pipeline may be split so only high-value trace classes are harvested (split).",
+          "If no live trace source ever becomes available under consent/evidence boundaries, the live variant of P3 and live harvesting in P5 retire, leaving a synthetic-only program (retire parts).",
+          "If harvested fixtures rarely catch regressions once the suite accumulates them, continuous harvesting (P5) may be retired under the accelerator evidence rule in PROOF-AND-MATURITY."
+        ],
+        "sources": [
+          ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+          ".project/pm/FIRST-FIVE-SEED.md",
+          ".project/pm/scope.json",
+          "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+          "seed-docs/VISION.md",
+          "seed-docs/PROOF-AND-MATURITY.md",
+          ".project/REALITY.md",
+          ".project/meta-tracker.json"
+        ]
+      },
+      "planResolution": "PHASED",
       "evidenceState": "UNPROVEN",
-      "seeded": true,
       "phaseCount": 5,
-      "gateCount": 3,
-      "gapCount": 3,
-      "ungatedPhases": [
-        "MP56-P3",
-        "MP56-P5"
-      ],
+      "gateCount": 5,
+      "ungatedPhases": [],
       "needsReview": [],
+      "externalDependencies": [
+        {
+          "ref": "MP-25",
+          "reason": "P3/P5 live-trace variants need an actual live provider trace source; blocked until the TRU-05 live-proof protocol and consent/evidence envelope exist. Referenced only, not managed."
+        }
+      ],
       "phases": [
         {
           "id": "MP56-P1",
           "name": "Trace/event contract",
-          "outcome": "Canonical event identity/order/source/evidence/privacy fields",
+          "objective": "Define the canonical trace/event envelope: event identity, order, source, evidence class and privacy fields.",
+          "outcome": "A provider-neutral trace/event contract under which two representations of the same trace canonicalize to identical bytes.",
           "effort": "E1-E2",
           "loc": {
             "band": "S",
@@ -1466,16 +1051,31 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [],
+          "softDeps": [],
           "exitGates": [
             "MP56-G1"
-          ]
+          ],
+          "risks": [
+            "The contract may over-fit to simulator event shapes and need revision once a real trace source appears.",
+            "Canonicalization must handle unordered or duplicate events without inventing an order that the source did not witness."
+          ],
+          "openQuestions": [
+            "Which event sources must the envelope cover first — host runtime, browser fixture replay, or the provider simulator?",
+            "Should the envelope reuse the shared identity concepts named in FIRST-FIVE-SEED (TraceRef, EvidenceRef, ArtifactRef, repository HEAD, provenance class) rather than inventing a parallel scheme?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP56-P2",
           "name": "Normalize + privacy reduce",
-          "outcome": "Remove unstable/sensitive fields; explicit redaction rules and loss report",
+          "objective": "Remove unstable and sensitive fields through explicit redaction rules while preserving the behavioral property being pinned.",
+          "outcome": "A sanitized trace that provably retains its target behavior, contains zero forbidden-data occurrences, and carries an explicit loss report.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -1485,18 +1085,34 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
             "MP56-G1"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP56-G2"
-          ]
+          ],
+          "risks": [
+            "Redaction may silently destroy the behavioral property being pinned; the loss report and redaction test must make such loss visible rather than assumed away.",
+            "Normalization may strip variability the fixture actually needs to reproduce the original failure."
+          ],
+          "openQuestions": [
+            "What forbidden-data classes are in scope for the redaction scan — credentials, tokens, account/session identifiers, user content?",
+            "Who or what pins the 'target behavior' for a given trace, and where is that pin recorded?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+            "seed-docs/PROOF-AND-MATURITY.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP56-P3",
           "name": "Fixture generation",
-          "outcome": "Generate a replayable deterministic fixture; synthetic path first",
+          "objective": "Generate replayable deterministic fixtures from sanitized traces, synthetic path first.",
+          "outcome": "The same synthetic trace generates a byte-identical fixture on repeated runs, and the generated fixture replays.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -1506,18 +1122,35 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [
-            "live-provider variant requires an actual live trace source"
-          ],
           "blockedBy": [
             "MP56-G2"
           ],
-          "exitGates": []
+          "softDeps": [
+            "live-provider variant requires an actual live trace source (external, see externalDependencies)"
+          ],
+          "exitGates": [
+            "MP56-G3"
+          ],
+          "risks": [
+            "Fixture generation validated only against synthetic traces may not generalize to real trace shapes when a live source eventually exists.",
+            "Generated fixture payload volume could mislead effort accounting if not kept separate from implementation LOC, contrary to the LOC protocol."
+          ],
+          "openQuestions": [
+            "Where do generated fixtures live so they count as test evidence but stay excluded from implementation LOC estimates?",
+            "What makes a fixture replayable against the current host — a recorded message replay against the existing fixture/simulated browser path, or a host API contract?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+            ".project/REALITY.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP56-P4",
           "name": "Replay + regression",
-          "outcome": "Fixture executes and reproduces the selected property/failure",
+          "objective": "Execute generated fixtures in the project's own test/conformance suites and pin the property they must reproduce.",
+          "outcome": "Trace -> fixture -> replay reproduces the pinned property in the project's own test runner.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -1527,18 +1160,32 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [
-            "MP56-P3"
+          "blockedBy": [
+            "MP56-G3"
           ],
-          "blockedBy": [],
+          "softDeps": [],
           "exitGates": [
             "MP56-G4"
-          ]
+          ],
+          "risks": [
+            "Replay may depend on host internals that change over time, making harvested fixtures brittle.",
+            "A passing replay must be reported as fixture evidence only; any drift toward treating green replay as live provider behavior would violate the proof boundary."
+          ],
+          "openQuestions": [
+            "Which runner or proof engine owns the replay assertion, and how does it link to Ratchet-gated evidence without duplicating proof state?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+            "seed-docs/PROOF-AND-MATURITY.md"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP56-P5",
           "name": "Continuous harvesting",
-          "outcome": "Failures/manual successes/provider observations become candidate fixtures",
+          "objective": "Make observed failures, manual successes and provider observations flow into candidate fixtures and promoted regression gates automatically.",
+          "outcome": "A seeded observed failure flows to a fixture whose regression gate reaches the promoted state in the project's own proof engine.",
           "effort": "E3-E4",
           "loc": {
             "band": "M",
@@ -1548,83 +1195,83 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [
-            "MP-55",
-            "live trace sources"
-          ],
           "blockedBy": [
             "MP56-G4"
           ],
-          "exitGates": []
+          "softDeps": [
+            "MP-55 capsules as failure inputs"
+          ],
+          "exitGates": [
+            "MP56-G5"
+          ],
+          "risks": [
+            "Automatic harvesting could flood the suite with low-value fixtures, imposing maintenance cost that outruns the regression value (contrary to the regression-harvesting hypothesis).",
+            "The live harvesting path risks being built against a trace source that never exists if consent/evidence boundaries are not resolved first."
+          ],
+          "openQuestions": [
+            "What promotion threshold keeps harvested fixtures valuable rather than noisy?",
+            "What is the minimal consent/evidence envelope a live trace source must satisfy before P5 may touch it, and how does that interact with the MP-55 capsule capture path?"
+          ],
+          "sources": [
+            ".project/pm/FIRST-FIVE-SEED.md",
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+            "seed-docs/PROOF-AND-MATURITY.md"
+          ],
+          "needsReview": false
         }
       ],
-      "gaps": [
+      "gates": [
         {
-          "id": "MP56-GAP-1",
-          "kind": "defect",
-          "statement": "TraceRef <-> EntityRef/SourceAnchor mapping is unowned; MP-60 P3 needs it to join traces to the MP-21 graph."
+          "id": "MP56-G1",
+          "producingPhase": "MP56-P1",
+          "statement": "equivalent trace canonicalizes deterministically",
+          "evidence": "two representations of the same trace canonicalize to identical bytes",
+          "status": "TBD",
+          "consumers": [
+            "MP56-P2"
+          ]
         },
         {
-          "id": "MP56-GAP-2",
-          "kind": "open-question",
-          "statement": "MP56-P1 'canonical event identity' vs MP55-P1 failure 'signature': risk of competing identity schemes (SYSTEM-DESIGN section 12)."
+          "id": "MP56-G2",
+          "producingPhase": "MP56-P2",
+          "statement": "sanitized trace retains target behavior and removes forbidden data",
+          "evidence": "a redaction test proves the target property survives and a forbidden-data scan finds zero occurrences, with a loss report",
+          "status": "TBD",
+          "consumers": [
+            "MP56-P3"
+          ]
         },
         {
-          "id": "MP56-GAP-3",
-          "kind": "open-question",
-          "statement": "MP-56 P3 and P5 have no exit gate; P4's hard dependency on P3 therefore cannot be expressed as a gate ref."
+          "id": "MP56-G3",
+          "producingPhase": "MP56-P3",
+          "statement": "a synthetic trace yields a byte-stable replayable fixture",
+          "evidence": "the same synthetic trace generates a byte-identical fixture twice, and the fixture replays",
+          "status": "TBD",
+          "consumers": [
+            "MP56-P4"
+          ]
+        },
+        {
+          "id": "MP56-G4",
+          "producingPhase": "MP56-P4",
+          "statement": "trace -> fixture -> replay reproduces the pinned property",
+          "evidence": "the replayed fixture reproduces the pinned property in the project's own test runner",
+          "status": "TBD",
+          "consumers": [
+            "MP56-P5",
+            "MP60-P3"
+          ]
+        },
+        {
+          "id": "MP56-G5",
+          "producingPhase": "MP56-P5",
+          "statement": "an observed failure becomes a candidate fixture whose regression gate promotes",
+          "evidence": "a seeded observed failure flows to a fixture and its regression gate reaches the promoted state in the project's own proof engine",
+          "status": "TBD",
+          "consumers": []
         }
-      ]
-    },
-    {
-      "id": "MP-57",
-      "name": "Dynamic worker/model routing",
-      "purpose": "Route tasks to harness/model based on measured task fit, capacity, cost and evidence—not permanent roles.",
-      "canonicalState": "Manual policy exists; automated router absent.",
-      "priority": "OPTIONAL / later",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-58",
-      "name": "Hypothesis arenas / independent shadow validation",
-      "purpose": "Run competing solutions or independent reviews on uncertain load-bearing choices and let evidence decide.",
-      "canonicalState": "Method available manually; no framework needed yet.",
-      "priority": "PARALLEL on high uncertainty",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-59",
-      "name": "Disposable experimental universes",
-      "purpose": "Cheap isolated repos/worktrees/compositions/worlds for agents to try risky alternatives without contaminating main.",
-      "canonicalState": "Concept partly provided by Git worktrees + semantic simulator; no generalized system.",
-      "priority": "PARALLEL / grow from need",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
+      ],
       "gaps": []
     },
     {
@@ -1632,26 +1279,74 @@
       "name": "Runtime dependency / impact graph + test selection",
       "purpose": "Know what a change affects and run the smallest high-confidence evidence loop without weakening merge/release gates.",
       "canonicalState": "EXPERIMENT hypothesis.",
-      "priority": "OPTIONAL",
-      "planResolution": "SEEDED",
+      "canonicalPriority": "OPTIONAL",
+      "canonicalNotes": "Reflection graph may eventually provide product-side structural input.",
+      "dossier": {
+        "explanation": "MP-60 is an impact graph and query layer over the VOMEGA codebase: it answers \"if this change lands, what else is affected?\" It combines structural dependencies (contracts, schemas, registrations, code/test relations) with observed runtime and test participation to name the downstream entities a source change can touch.\n\nIt is deliberately not independent infrastructure. It reuses MP-21's Reflection Graph — stable structural identities, edges and query primitives (unlocked by MP21-G3) — as its structural base, and joins observed evidence from MP-56 outputs (normalized traces, fixtures, replay records) as runtime/test edges. It never parses source itself and never becomes a second identity scheme.\n\nOn top of structure and observation it ranks the smallest high-confidence affected-test set for fast local iteration. The full suite always remains the merge/release gate; selection is proven in shadow mode against a seeded dependency-class list before anyone relies on it for anything beyond the inner loop.\n\nThe final phase is predictive: using accumulated change/test/failure history to estimate blast radius and safe parallelism, validated against named historical changes. Because this phase is graded E4-E5, the PM correction requires a decomposition review before direct execution — that review is recorded as its exit gate.",
+        "problem": "Without an impact graph, every change costs whole-repo reconstruction and full-suite reasoning: an agent touching one contract must re-read enough of the repository to guess at consequences, then run (or fear running) the entire suite to feel safe. Agents cannot see consequences before editing, so parallel workers either over-serialize behind the merge gate or collide because nobody could compute blast radius; the repo's coordination cost is documented in .project/ratchet/DESIGN.md §1. Truth also suffers: \"which tests cover this route?\" is answered by memory and folklore rather than joined evidence, so verification is either wasteful (always full suite) or dishonest (guessed subsets). This cost compounds as VOMEGA grows toward Ω.",
+        "objectives": [
+          "Define the concrete impact questions developers and agents need answered before a change, recorded as a named acceptance corpus that can grade candidate answers.",
+          "Build the static structural impact graph strictly as a projection over MP-21 Reflection identities and edges — a known source change resolves the expected downstream entity set, with no second parser or identity scheme.",
+          "Join observed runtime/test participation (MP-56 traces, fixtures, test-run records) to named structural graph entities so coverage claims come from evidence, not folklore.",
+          "Produce a ranked smallest high-confidence affected-test set for inner-loop changes, proven in shadow comparison to catch every member of a seeded dependency-class list.",
+          "Keep the full suite as the unchanged merge/release gate: selection changes only what runs locally or early, and zero gate definitions change because of MP-60.",
+          "Validate predictive blast-radius estimation against a named set of historical changes and earn continuation under the acceleration scorecard (MP-67 reference).",
+          "Keep every impact answer descriptive and source-attributed: the graph reports consequences and recommendations but never authorizes, blocks, or schedules work."
+        ],
+        "visionContribution": "Grounded in seed-docs/VISION.md pillar 5, governed self-extension/evolution: \"When the environment changes itself, it should retain enough evidence and lineage to explain what changed, why, what was affected, what was verified, and what remains uncertain.\" MP-60 is the mechanism that makes \"what was affected\" computable rather than asserted — a precondition for Ω extending or repairing itself without privileged exceptions. It also serves pillar 4 (durable Work, proof, and continuity): observed runtime/test edges are an honest epistemology of what the environment actually knows exercises a code path, replacing guessed coverage with joined evidence. As a development accelerator it is a capability multiplier per VISION.md's strategic design shape: one impact layer cheapens context bundles (MP-54 P4), regression harvesting (MP-56), failure diagnosis (MP-55), and every future governed self-change, while the graph itself stays descriptive so authority never silently mutates as a side effect of better prediction.",
+        "boundaries": [
+          "Never weakens merge/release gates: selected test sets are for fast local/inner-loop iteration only; the full suite remains the merge and release gate, and selection must be shadow-proven against a seeded dependency-class list before it influences anything beyond the local loop.",
+          "The graph is descriptive, not authority: it reports consequences, coverage and estimates; it never authorizes, blocks, prioritizes, or schedules work, and it grants no PM-style decisioning power.",
+          "No second parser: MP-60 must reuse MP-21's structural identities and edges (MP21-G3) and MP-56's normalized trace/fixture outputs; it must not build its own source parser, entity identity, or competing repository-analysis scheme.",
+          "No speculative framework: the acceleration scorecard governs continuation — P5 predictive impact must measurably earn its place or be reduced/retired rather than persisting as architecture.",
+          "No fabricated observation: runtime edges come from actual traces, fixtures, and test-run records only; fixture-derived edges are never reported as live behavior."
+        ],
+        "successConditions": [
+          "A developer or agent can query, for a named source change, the expected downstream structural entity set and receive it in bounded time without re-reading the repository.",
+          "Observed test execution records join to named graph entities, so \"which tests cover this route?\" returns evidence-backed answers.",
+          "Shadow comparison shows the selected test set catches every member of a seeded dependency-class list while merge/release gate definitions remain byte-for-byte unchanged.",
+          "Real change work consumes impact answers before editing (visible in task/bundle usage), reducing whole-repo reconstruction episodes.",
+          "A blast-radius estimate is validated against a named set of historical changes, with the E5 decomposition review recorded before execution.",
+          "MP-60 survives an acceleration-scorecard check: it measurably reduces validated delivery time, rediscovery, or verification cost compared with the always-full-suite baseline."
+        ],
+        "falsifiers": [
+          "Shadow comparison shows selected test sets missing seeded dependency classes at meaningful rates — reduce scope to descriptive impact only, or tighten the gate before selection is trusted anywhere.",
+          "MP21-G3 slips or the Reflection Graph proves unsuitable as a structural base — redirect the reuse assumption for review with MP-21; do not rescue MP-60 by building a second parser.",
+          "Observed runtime edges prove too noisy or expensive to join reliably (MP56-G4 weak or absent) — restrict MP-60 to static plus test-declared edges and retire the runtime-edge ambition.",
+          "P5 predictive estimates fail the acceleration scorecard (no measurable reduction in validated delivery time or escaped regressions beyond static analysis plus selection) — retire or shrink P5.",
+          "The acceptance corpus shows agents do not actually need impact answers during real change work — split or merge the descriptive layer with MP-54 context bundles and stop standalone investment."
+        ],
+        "sources": [
+          ".project/pm/scope.json",
+          ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+          ".project/pm/FIRST-FIVE-SEED.md",
+          "seed-docs/VISION.md",
+          "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+          ".project/META-TRACKER.md",
+          ".project/meta-tracker.json",
+          ".project/ratchet/DESIGN.md"
+        ]
+      },
+      "planResolution": "PHASED",
       "evidenceState": "UNPROVEN",
-      "seeded": true,
       "phaseCount": 5,
-      "gateCount": 2,
-      "gapCount": 4,
-      "ungatedPhases": [
-        "MP60-P1",
-        "MP60-P3",
-        "MP60-P5"
-      ],
+      "gateCount": 5,
+      "ungatedPhases": [],
       "needsReview": [
         "MP60-P5"
+      ],
+      "externalDependencies": [
+        {
+          "ref": "MP-67",
+          "reason": "P5 predictive impact must earn its continuation under the acceleration scorecard; MP-67 is outside PM scope and is referenced only."
+        }
       ],
       "phases": [
         {
           "id": "MP60-P1",
           "name": "Impact query model",
-          "outcome": "Define questions, graph requirements and acceptance corpus",
+          "objective": "Define the impact questions developers and agents actually need, with an acceptance corpus that can grade answers.",
+          "outcome": "A written impact-question set plus acceptance corpus, reviewed for influence on MP-21's design.",
           "effort": "E1",
           "loc": {
             "band": "S",
@@ -1661,16 +1356,33 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [
-            "should influence MP-21 design"
-          ],
           "blockedBy": [],
-          "exitGates": []
+          "softDeps": [
+            "should influence MP-21 design (informational)"
+          ],
+          "exitGates": [
+            "MP60-G1"
+          ],
+          "risks": [
+            "Query design without running consumers may capture imagined questions rather than what developers/agents actually ask during real change work.",
+            "Early query assumptions could hard-code entity expectations that conflict with MP-21's eventual Reflection model; the informational soft-dependency into MP-21 design mitigates but cannot eliminate this."
+          ],
+          "openQuestions": [
+            "Should the acceptance corpus be seeded from recorded development episodes (e.g. task/Ratchet history) or authored fresh from anticipated questions?",
+            "Which corpus questions are mechanically gradeable (expected entity sets, known coverage answers) versus human-judged?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12/§13",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-60 P1)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md #12, #17"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP60-P2",
           "name": "Static structural impact graph",
-          "outcome": "Build impact projection over Reflection entities plus selected code/test edges",
+          "objective": "Build the static structural impact projection over MP-21 entities and selected code/test edges.",
+          "outcome": "A known source change resolves the expected downstream structural set from the graph.",
           "effort": "E3-E4",
           "loc": {
             "band": "L",
@@ -1680,18 +1392,35 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
+            "MP60-G1",
             "MP21-G3"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP60-G2"
-          ]
+          ],
+          "risks": [
+            "Second-parser drift: when Reflection coverage is incomplete, the temptation is to reparse source inside MP-60 — this violates the reuse boundary; coverage gaps must route back to MP-21 as gaps, not be re-derived here.",
+            "The Reflection Graph may lack edge types the impact questions need (e.g. test-to-source containment, registration wiring); new relation primitives must be negotiated with MP-21 rather than invented locally.",
+            "Graph freshness/rebuild cost on a growing repo could make answers stale relative to HEAD; staleness handling is unresolved."
+          ],
+          "openQuestions": [
+            "Which relation types (imports, contract/schema use, operation registration, config binding, test containment) must the projection cover to satisfy the MP60-G1 corpus?",
+            "How should HEAD-binding and staleness be surfaced in every impact answer so consumers know which revision the graph describes?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12/§13",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-60 P2)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md #12"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP60-P3",
           "name": "Runtime/test-observed edges",
-          "outcome": "Join traces/fixtures/test execution to the structural graph",
+          "objective": "Join observed traces, fixtures and test execution to the structural graph without a second parser.",
+          "outcome": "Observed test execution resolves to structural entities.",
           "effort": "E4",
           "loc": {
             "band": "L",
@@ -1701,16 +1430,36 @@
             ],
             "confidence": "LOW"
           },
+          "blockedBy": [
+            "MP60-G2"
+          ],
           "softDeps": [
             "MP56-G4"
           ],
-          "blockedBy": [],
-          "exitGates": []
+          "exitGates": [
+            "MP60-G3"
+          ],
+          "risks": [
+            "Without MP56-G4 there are no trustworthy live traces; only synthetic/fixture-derived edges are possible, which join cleanly but cover less real behavior.",
+            "Trace-to-entity joins may be ambiguous (one observed event maps to several candidate entities), producing noisy edges that later mislead test selection.",
+            "Edge volume from repeated runs could bloat the graph without improving answer quality; retention/decay rules are undefined."
+          ],
+          "openQuestions": [
+            "What minimum provenance (MP-56 normalized fixture vs raw trace vs bare test-run record) is required before an observed edge is trusted and surfaced in answers?",
+            "How should observed-edge confidence and decay be represented so stale execution records do not overstate current coverage?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12/§13",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-60 P3)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md #12, #16"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP60-P4",
           "name": "Affected-test selection",
-          "outcome": "Rank the smallest high-confidence local test set; preserve full merge/release gates",
+          "objective": "Rank the smallest high-confidence local test set while preserving full merge/release gates.",
+          "outcome": "Shadow selection catches seeded dependency classes with the full suite unchanged as the merge gate.",
           "effort": "E3",
           "loc": {
             "band": "M",
@@ -1720,18 +1469,34 @@
             ],
             "confidence": "LOW"
           },
-          "softDeps": [],
           "blockedBy": [
-            "MP60-G2"
+            "MP60-G3"
           ],
+          "softDeps": [],
           "exitGates": [
             "MP60-G4"
-          ]
+          ],
+          "risks": [
+            "Gate-weakening drift: any mechanism that lets a selected subset silently replace the full suite would weaken merge/release truth; selection must remain shadow-only, compared against the full suite, until MP60-G4 proves it, and even then it must never alter gate definitions.",
+            "Coverage evidence for rarely-run routes may be sparse, so selected-set confidence could be overstated exactly where changes are riskiest.",
+            "Convenient fast selection may train workers to skip broader verification habits — a behavioral risk the shadow comparison does not itself detect."
+          ],
+          "openQuestions": [
+            "What recall threshold against the seeded dependency-class list qualifies a selected set as high-confidence enough to recommend for the inner loop?",
+            "Where does the selected set run (local loop, PR annotation, Ratchet suggestion) such that merge/release gate definitions remain untouched?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-60 P4)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md #17, #29"
+          ],
+          "needsReview": false
         },
         {
           "id": "MP60-P5",
           "name": "Predictive impact/concurrency",
-          "outcome": "Use historical changes/failures/traces to estimate blast radius and parallel-work risk",
+          "objective": "Estimate blast radius and parallel-work risk from accumulated history, after the E5 decomposition review.",
+          "outcome": "A recorded decomposition review plus a history-validated blast-radius estimate.",
           "effort": "E4-E5",
           "loc": {
             "band": "L",
@@ -1741,154 +1506,83 @@
             ],
             "confidence": "LOW"
           },
+          "blockedBy": [
+            "MP60-G4"
+          ],
           "softDeps": [
-            "MP-67",
+            "MP67 scorecard",
             "accumulated history"
           ],
-          "blockedBy": [],
-          "exitGates": []
+          "exitGates": [
+            "MP60-G5"
+          ],
+          "risks": [
+            "E5-grade work executed directly without decomposition would violate the PM correction (§9: an E5 grade requires a decomposition review before direct execution); needsReview and the MP60-G5 exit gate exist precisely to force that review first.",
+            "Predictions learned from limited early history may overfit and express false confidence in blast radius or safe parallelism.",
+            "A predictive layer can drift toward decisioning (auto-scheduling or auto-clearing parallel work); it must remain advisory, with estimates validated against named historical changes before influencing anything."
+          ],
+          "openQuestions": [
+            "How much accumulated change/test/failure history is required before blast-radius estimates are validated rather than anecdotal, and which named historical changes form the validation set?",
+            "What decomposition splits MP60-P5 into reviewable units of E3 or lower, and who performs the required decomposition review?"
+          ],
+          "sources": [
+            ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §9, §13",
+            ".project/pm/FIRST-FIVE-SEED.md (MP-60 P5)",
+            "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md #12, #30"
+          ],
+          "needsReview": true
         }
       ],
-      "gaps": [
+      "gates": [
         {
-          "id": "MP60-GAP-1",
-          "kind": "defect",
-          "statement": "TraceRef <-> EntityRef/SourceAnchor mapping is unowned (shared with MP-56)."
+          "id": "MP60-G1",
+          "producingPhase": "MP60-P1",
+          "statement": "the impact question set has a named acceptance corpus",
+          "evidence": "the questions developers/agents actually need are written down with a corpus that can grade answers",
+          "status": "TBD",
+          "consumers": [
+            "MP60-P2"
+          ]
         },
         {
-          "id": "MP60-GAP-2",
-          "kind": "open-question",
-          "statement": "MP-60 P1 has no observable exit gate."
+          "id": "MP60-G2",
+          "producingPhase": "MP60-P2",
+          "statement": "a known source change resolves the expected downstream structural set",
+          "evidence": "a seeded change resolves exactly the expected entity set from the graph, checked by test",
+          "status": "TBD",
+          "consumers": [
+            "MP60-P4"
+          ]
         },
         {
-          "id": "MP60-GAP-3",
-          "kind": "open-question",
-          "statement": "MP-60 P3 and P5 have no exit gate."
+          "id": "MP60-G3",
+          "producingPhase": "MP60-P3",
+          "statement": "observed test execution joins to structural entities",
+          "evidence": "a trace/fixture/test-run record joins to named graph entities without a second parser",
+          "status": "TBD",
+          "consumers": [
+            "MP60-P4"
+          ]
         },
         {
-          "id": "MP60-GAP-4",
-          "kind": "risk",
-          "statement": "MP-60 P5 is graded E4-E5; EVOLUTION-RULES section 7 requires a decomposition review before direct execution (needsReview=true)."
+          "id": "MP60-G4",
+          "producingPhase": "MP60-P4",
+          "statement": "shadow/full-suite comparison catches seeded dependency classes",
+          "evidence": "the selected test set catches every member of a seeded dependency-class list while the full suite remains the merge gate",
+          "status": "TBD",
+          "consumers": [
+            "MP60-P5"
+          ]
+        },
+        {
+          "id": "MP60-G5",
+          "producingPhase": "MP60-P5",
+          "statement": "decomposition review completed and blast-radius estimate validated against accumulated history",
+          "evidence": "the E5 decomposition review is recorded and the estimate is compared against a named set of historical changes",
+          "status": "TBD",
+          "consumers": []
         }
-      ]
-    },
-    {
-      "id": "MP-61",
-      "name": "Failure minimization / bisect / regression localization",
-      "purpose": "Automatically shrink and locate failing changes/inputs/traces.",
-      "canonicalState": "EXPERIMENT hypothesis.",
-      "priority": "OPTIONAL",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-62",
-      "name": "Continuous fault injection / live architectural falsifiers",
-      "purpose": "Deliberately kill/break sessions, providers, selectors, workers, resources and projections to test truthful recovery.",
-      "canonicalState": "DESIGN hypothesis; some release falsifiers planned.",
-      "priority": "PARALLEL as subsystems appear",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-63",
-      "name": "Provider-pack hot reload / reproducible environments / build-test acceleration",
-      "purpose": "Shrink code→evidence loops without weakening correctness.",
-      "canonicalState": "EXPERIMENT portfolio.",
-      "priority": "OPTIONAL",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-64",
-      "name": "Automatic Session Chronicle / development knowledge promotion",
-      "purpose": "Create evidence-derived durable handoffs and promote only useful development knowledge.",
-      "canonicalState": "Partial manually through Commons/handoffs; automation absent.",
-      "priority": "PARALLEL after need",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-65",
-      "name": "Interactive Development Cockpit / congestion awareness",
-      "purpose": "See and control agents/worktrees/failures/queues when concurrency makes coordination expensive.",
-      "canonicalState": "Custom cockpit DEFERRED; Daintree now candidate solution.",
-      "priority": "OPTIONAL / assay Daintree first",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-66",
-      "name": "Elephant Context Network",
-      "purpose": "Test persistent epoch-aware large-context domain cognition as consult/review/onboarding service.",
-      "canonicalState": "EXPERIMENT plan only; no node launched.",
-      "priority": "OPTIONAL after measured context bottleneck",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
-      "gaps": []
-    },
-    {
-      "id": "MP-67",
-      "name": "Acceleration Scorecard",
-      "purpose": "Measure whether any DevOps accelerator improves validated product progress rather than activity.",
-      "canonicalState": "DESIGN hypothesis.",
-      "priority": "continuous as accelerators activate",
-      "planResolution": "REGISTERED",
-      "evidenceState": "UNPROVEN",
-      "seeded": false,
-      "phaseCount": 0,
-      "gateCount": 0,
-      "gapCount": 0,
-      "ungatedPhases": [],
-      "needsReview": [],
-      "phases": [],
+      ],
       "gaps": []
     }
   ]

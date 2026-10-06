@@ -1,8 +1,15 @@
 # ZCode PM Team — Instance
 
-Status: **ACTIVE (recon wave)** — this is the concrete instantiation of the charter in
+Status: **ACTIVE — custodial mandate under owner correction** — this is the concrete instantiation of the charter in
 [ZCODE-PM-TEAM.md](ZCODE-PM-TEAM.md). The charter owns the *functions*; this file records
 *how those functions are actually staffed, bounded and coordinated right now*.
+
+> **Owner correction (2026-10-06, definitive):** [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md).
+> The team's single mission is now: *implement, maintain and progressively deepen the planning/execution
+> representation for the five selected programs (MP-21/54/55/56/60)*. It is a custodial/planning/implementation
+> team — not strategy, not portfolio governance, not a selector of programs. It may surface facts
+> ("MP54-P2 is blocked by MP21-G3", "MP60-P5 is E4–E5 and must be decomposed") but never turn them into
+> scope, ranking or roadmap decisions. Managed scope lives in [scope.json](scope.json); only Owen changes it.
 
 Claimed: 2026-10-06 · Source HEAD at claim: `93075cf` (local == `origin/main`, tree clean)
 Claim surface: `.project/agentic-launch/STATUS.md` §"PM roadmap-system claim", `.project/COMMONS.md`.

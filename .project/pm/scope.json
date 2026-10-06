@@ -1,0 +1,44 @@
+{
+  "schema": "vomega-pm-scope/0",
+  "status": "OWNER-DIRECTED — DEFINITIVE PM SCOPE",
+  "decided": "2026-10-06",
+  "directive": ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+  "assessedMain": "b4ed79d1c775079cdce4628fe899f61c163fb4ea",
+
+  "managedPrograms": ["MP-21", "MP-54", "MP-55", "MP-56", "MP-60"],
+
+  "authority": {
+    "whoDecides": "Owen (owner) only, by explicit instruction",
+    "programIdentityNote": "The 67 MP IDs are canonical identities from META-TRACKER, not PM-invented numbering. The 67-program map is an evolving top-level assessment across the whole program, not a claim of completeness: PM neither renumbers it, completes it, ranks it, nor treats its sequence as a plan. PM manages the five selected identities below; nothing else.",
+    "whatPMMayDecide": [
+      "implementation mechanics of the PM machinery itself (data format, rendering, validation, linking to the ratchet)",
+      "how deep to decompose a phase inside an already-selected program"
+    ],
+    "whatPMMayNotDecide": [
+      "choosing which meta programs matter",
+      "ranking the 67 programs",
+      "adding or removing a program from PM scope",
+      "setting product, MVP or release priority",
+      "reinterpreting the final vision or canonical program meaning",
+      "autonomous scheduling or activation of programs",
+      "converting a planning observation into project authority"
+    ],
+    "expansionRule": "The managed set changes only by explicit owner instruction recorded in this file. No PM code, ranking, score or suggestion may change it."
+  },
+
+  "outsideScope": {
+    "count": 62,
+    "rule": "The other 62 meta programs stay canonical in META-TRACKER and may appear in PM output ONLY as external references or dependencies. They must never be materialized as PM-managed programs (no dossier, phases, gates, estimates or tasks).",
+    "validation": "pm:check FAILS if the decomposition seed contains a program that is not listed here."
+  },
+
+  "canonicalSources": {
+    "programIdentity": ".project/meta-tracker.json",
+    "programMap": ".project/META-TRACKER.md",
+    "vision": "seed-docs/VISION.md",
+    "productAnchor": "seed-docs/PRODUCT-ANCHOR.md",
+    "accelerationHypotheses": "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+    "autonomy": "seed-docs/AUTONOMY.md",
+    "executionAndProof": "omega-baseline/experimental/ratchet/ (external owner of atomic execution/proof state)"
+  }
+}

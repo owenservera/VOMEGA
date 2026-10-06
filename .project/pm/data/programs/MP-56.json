@@ -1,0 +1,293 @@
+{
+  "schema": "vomega-pm-program/1",
+  "id": "MP-56",
+  "dossier": {
+    "explanation": "MP-56 turns observed behavior into durable tests. It takes a trace — a recorded sequence of runtime, browser or provider events — and pushes it through a pipeline: a canonical trace/event contract, normalization and privacy reduction, deterministic fixture generation, replay as regression tests, and eventually continuous harvesting so that every meaningful failure leaves a falsifier behind. Synthetic traces come first; live-provider traces are a later, separately gated variant.\n\nIt is deliberately adjacent to, not a copy of, MP-55. A failure capsule freezes one observed failure so another worker can diagnose it. MP-56 converts the behavior that mattered into a byte-stable, replayable fixture that the project's own test runner can execute forever after. Together they stop the same provider or runtime lesson from being relearned by memory and discipline alone.\n\nToday there is no bridge from observed reality to durable tests. Per .project/REALITY.md, browser/provider message behavior in the current seed is fixture/simulated replay with no live control path, and observed behavior is ephemeral: once a debugging episode ends, its evidence walks out with it. MP-56 is that bridge — and it is honest about the seam: a fixture proves that the pinned property replays deterministically; it is never live evidence that the real provider still behaves that way.",
+    "problem": "Without MP-56, every lesson about runtime or provider behavior is relearned by hand. .project/REALITY.md records that browser/provider message behavior in the current seed is fixture/simulated replay with no live control path, and that observed behavior is ephemeral — the same provider/runtime lesson is paid for again each time because nothing converts an observed episode into a durable falsifier. Development acceleration hypothesis #6 (Regression Harvesting) names the cost: the test suite grows from memory and discipline alone instead of from actual pain. The result is recurring failure cost, repeated rediscovery, and regression coverage that lags the reality the project actually observes.",
+    "objectives": [
+      "Define a provider-neutral trace/event envelope with canonical identity, order, source, evidence and privacy fields such that two representations of the same trace canonicalize to identical bytes.",
+      "Redact and minimize traces safely while preserving the behavioral property being pinned, with explicit redaction rules and a loss report per trace.",
+      "Generate deterministic, byte-stable, replayable fixtures from synthetic traces first, excluding generated fixture payload volume from implementation LOC estimates.",
+      "Replay fixtures in the project's own test/conformance suites so that trace -> fixture -> replay reproduces the pinned property.",
+      "Convert repeated discoveries — failures, manual successes, provider observations — into permanent regression assets that promote through the project's own proof engine.",
+      "Keep live trace harvesting explicitly out of scope until an actual live trace source exists together with consent/evidence boundaries."
+    ],
+    "visionContribution": "Serves VISION.md pillar 4 — durable Work, proof and continuity: consequential activity should leave reconstructable evidence, and the environment should hold an honest epistemology of what it actually knows happened. MP-56 is the development-side instance of that pillar: ephemeral observation becomes a durable, replayable proof artifact whose lineage — trace source, redaction loss report, pinned property — remains inspectable rather than opaque, matching VISION's evolution-and-learning requirement that learning improve behavior without silently mutating meaning. It is also a capability multiplier in VISION's strategic-design sense: one harvesting mechanism feeds MP-60's runtime-observed edges (MP60-P3), later MP-55 automation, and regression coverage for the other selected programs. The contribution is bounded by PROOF-AND-MATURITY: fixture proof is not live proof, so MP-56 multiplies deterministic coverage without letting anyone claim a real provider behaves a certain way because a fixture passes.",
+    "boundaries": [
+      "Never report a fixture replay as live provider evidence; per PROOF-AND-MATURITY, fixture proof and live proof are distinct maturity levels and must not be collapsed.",
+      "Never weaken merge or release gates; harvested fixtures add falsifiers, they do not replace broader merge/release test gates (see MP-60 test-selection boundary).",
+      "Redaction must preserve the behavioral meaning of the pinned property; no silent semantic loss — every sanitization produces a loss report.",
+      "The live-provider path requires an actual live trace source with a consent/evidence envelope and is out of scope until both exist; it is referenced only as an external dependency (MP-25 protocol work), never built speculatively.",
+      "MP-56 must not become a second failure-diagnosis system (that is MP-55) or a second repository-analysis/parser system (that is MP-21); it consumes their outputs rather than duplicating them.",
+      "Generated fixture/data volume is never counted as implementation LOC and never grades workers."
+    ],
+    "successConditions": [
+      "Two representations of the same trace canonicalize to identical bytes (MP56-G1 realized).",
+      "A sanitized trace provably retains its pinned target property, contains zero forbidden-data occurrences, and carries a loss report (MP56-G2 realized).",
+      "The same synthetic trace generates a byte-identical fixture twice, and that fixture replays (MP56-G3 realized).",
+      "A replayed fixture reproduces its pinned property in the project's own test runner (MP56-G4 realized), unlocking MP60-P3 runtime/test-observed edges.",
+      "A seeded observed failure flows to a candidate fixture whose regression gate reaches the promoted state in the project's own proof engine (MP56-G5 realized).",
+      "The test suite demonstrably grows from actual observed pain rather than from memory and discipline alone."
+    ],
+    "falsifiers": [
+      "If normalization cannot preserve a meaningful class of target behaviors while removing forbidden data, the redaction approach needs redesign (redirect P2).",
+      "If generated fixtures are too brittle to survive normal host evolution — high maintenance per fixture — fixture-from-trace may reduce to targeted reproducers only (reduce scope).",
+      "If trace -> fixture -> replay does not reproduce pinned properties more cheaply or reliably than hand-written tests, the pipeline may be split so only high-value trace classes are harvested (split).",
+      "If no live trace source ever becomes available under consent/evidence boundaries, the live variant of P3 and live harvesting in P5 retire, leaving a synthetic-only program (retire parts).",
+      "If harvested fixtures rarely catch regressions once the suite accumulates them, continuous harvesting (P5) may be retired under the accelerator evidence rule in PROOF-AND-MATURITY."
+    ],
+    "sources": [
+      ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+      ".project/pm/FIRST-FIVE-SEED.md",
+      ".project/pm/scope.json",
+      "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+      "seed-docs/VISION.md",
+      "seed-docs/PROOF-AND-MATURITY.md",
+      ".project/REALITY.md",
+      ".project/meta-tracker.json"
+    ]
+  },
+  "externalDependencies": [
+    {
+      "ref": "MP-25",
+      "reason": "P3/P5 live-trace variants need an actual live provider trace source; blocked until the TRU-05 live-proof protocol and consent/evidence envelope exist. Referenced only, not managed."
+    }
+  ],
+  "phases": [
+    {
+      "id": "MP56-P1",
+      "name": "Trace/event contract",
+      "objective": "Define the canonical trace/event envelope: event identity, order, source, evidence class and privacy fields.",
+      "outcome": "A provider-neutral trace/event contract under which two representations of the same trace canonicalize to identical bytes.",
+      "effort": "E1-E2",
+      "loc": {
+        "band": "S",
+        "range": [
+          250,
+          550
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [],
+      "softDeps": [],
+      "exitGates": [
+        "MP56-G1"
+      ],
+      "needsReview": false,
+      "risks": [
+        "The contract may over-fit to simulator event shapes and need revision once a real trace source appears.",
+        "Canonicalization must handle unordered or duplicate events without inventing an order that the source did not witness."
+      ],
+      "openQuestions": [
+        "Which event sources must the envelope cover first — host runtime, browser fixture replay, or the provider simulator?",
+        "Should the envelope reuse the shared identity concepts named in FIRST-FIVE-SEED (TraceRef, EvidenceRef, ArtifactRef, repository HEAD, provenance class) rather than inventing a parallel scheme?"
+      ],
+      "sources": [
+        ".project/pm/FIRST-FIVE-SEED.md",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md"
+      ]
+    },
+    {
+      "id": "MP56-P2",
+      "name": "Normalize + privacy reduce",
+      "objective": "Remove unstable and sensitive fields through explicit redaction rules while preserving the behavioral property being pinned.",
+      "outcome": "A sanitized trace that provably retains its target behavior, contains zero forbidden-data occurrences, and carries an explicit loss report.",
+      "effort": "E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          700,
+          1500
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP56-G1"
+      ],
+      "softDeps": [],
+      "exitGates": [
+        "MP56-G2"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Redaction may silently destroy the behavioral property being pinned; the loss report and redaction test must make such loss visible rather than assumed away.",
+        "Normalization may strip variability the fixture actually needs to reproduce the original failure."
+      ],
+      "openQuestions": [
+        "What forbidden-data classes are in scope for the redaction scan — credentials, tokens, account/session identifiers, user content?",
+        "Who or what pins the 'target behavior' for a given trace, and where is that pin recorded?"
+      ],
+      "sources": [
+        ".project/pm/FIRST-FIVE-SEED.md",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+        "seed-docs/PROOF-AND-MATURITY.md"
+      ]
+    },
+    {
+      "id": "MP56-P3",
+      "name": "Fixture generation",
+      "objective": "Generate replayable deterministic fixtures from sanitized traces, synthetic path first.",
+      "outcome": "The same synthetic trace generates a byte-identical fixture on repeated runs, and the generated fixture replays.",
+      "effort": "E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          700,
+          1500
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP56-G2"
+      ],
+      "softDeps": [
+        "live-provider variant requires an actual live trace source (external, see externalDependencies)"
+      ],
+      "exitGates": [
+        "MP56-G3"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Fixture generation validated only against synthetic traces may not generalize to real trace shapes when a live source eventually exists.",
+        "Generated fixture payload volume could mislead effort accounting if not kept separate from implementation LOC, contrary to the LOC protocol."
+      ],
+      "openQuestions": [
+        "Where do generated fixtures live so they count as test evidence but stay excluded from implementation LOC estimates?",
+        "What makes a fixture replayable against the current host — a recorded message replay against the existing fixture/simulated browser path, or a host API contract?"
+      ],
+      "sources": [
+        ".project/pm/FIRST-FIVE-SEED.md",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+        ".project/REALITY.md"
+      ]
+    },
+    {
+      "id": "MP56-P4",
+      "name": "Replay + regression",
+      "objective": "Execute generated fixtures in the project's own test/conformance suites and pin the property they must reproduce.",
+      "outcome": "Trace -> fixture -> replay reproduces the pinned property in the project's own test runner.",
+      "effort": "E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          800,
+          1700
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP56-G3"
+      ],
+      "softDeps": [],
+      "exitGates": [
+        "MP56-G4"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Replay may depend on host internals that change over time, making harvested fixtures brittle.",
+        "A passing replay must be reported as fixture evidence only; any drift toward treating green replay as live provider behavior would violate the proof boundary."
+      ],
+      "openQuestions": [
+        "Which runner or proof engine owns the replay assertion, and how does it link to Ratchet-gated evidence without duplicating proof state?"
+      ],
+      "sources": [
+        ".project/pm/FIRST-FIVE-SEED.md",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+        "seed-docs/PROOF-AND-MATURITY.md"
+      ]
+    },
+    {
+      "id": "MP56-P5",
+      "name": "Continuous harvesting",
+      "objective": "Make observed failures, manual successes and provider observations flow into candidate fixtures and promoted regression gates automatically.",
+      "outcome": "A seeded observed failure flows to a fixture whose regression gate reaches the promoted state in the project's own proof engine.",
+      "effort": "E3-E4",
+      "loc": {
+        "band": "M",
+        "range": [
+          900,
+          2000
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP56-G4"
+      ],
+      "softDeps": [
+        "MP-55 capsules as failure inputs"
+      ],
+      "exitGates": [
+        "MP56-G5"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Automatic harvesting could flood the suite with low-value fixtures, imposing maintenance cost that outruns the regression value (contrary to the regression-harvesting hypothesis).",
+        "The live harvesting path risks being built against a trace source that never exists if consent/evidence boundaries are not resolved first."
+      ],
+      "openQuestions": [
+        "What promotion threshold keeps harvested fixtures valuable rather than noisy?",
+        "What is the minimal consent/evidence envelope a live trace source must satisfy before P5 may touch it, and how does that interact with the MP-55 capsule capture path?"
+      ],
+      "sources": [
+        ".project/pm/FIRST-FIVE-SEED.md",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md",
+        "seed-docs/PROOF-AND-MATURITY.md"
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "MP56-G1",
+      "statement": "equivalent trace canonicalizes deterministically",
+      "evidence": "two representations of the same trace canonicalize to identical bytes",
+      "status": "TBD",
+      "consumers": [
+        "MP56-P2"
+      ],
+      "producingPhase": "MP56-P1"
+    },
+    {
+      "id": "MP56-G2",
+      "statement": "sanitized trace retains target behavior and removes forbidden data",
+      "evidence": "a redaction test proves the target property survives and a forbidden-data scan finds zero occurrences, with a loss report",
+      "status": "TBD",
+      "consumers": [
+        "MP56-P3"
+      ],
+      "producingPhase": "MP56-P2"
+    },
+    {
+      "id": "MP56-G3",
+      "statement": "a synthetic trace yields a byte-stable replayable fixture",
+      "evidence": "the same synthetic trace generates a byte-identical fixture twice, and the fixture replays",
+      "status": "TBD",
+      "consumers": [
+        "MP56-P4"
+      ],
+      "producingPhase": "MP56-P3"
+    },
+    {
+      "id": "MP56-G4",
+      "statement": "trace -> fixture -> replay reproduces the pinned property",
+      "evidence": "the replayed fixture reproduces the pinned property in the project's own test runner",
+      "status": "TBD",
+      "consumers": [
+        "MP56-P5",
+        "MP60-P3"
+      ],
+      "producingPhase": "MP56-P4"
+    },
+    {
+      "id": "MP56-G5",
+      "statement": "an observed failure becomes a candidate fixture whose regression gate promotes",
+      "evidence": "a seeded observed failure flows to a fixture and its regression gate reaches the promoted state in the project's own proof engine",
+      "status": "TBD",
+      "consumers": [],
+      "producingPhase": "MP56-P5"
+    }
+  ],
+  "gaps": []
+}

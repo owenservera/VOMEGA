@@ -1,0 +1,298 @@
+{
+  "schema": "vomega-pm-program/1",
+  "id": "MP-54",
+  "dossier": {
+    "explanation": "MP-54 (Automatic Context Bundles) composes, for a fresh worker starting a bounded task, the smallest useful package of current project context: the current objective, relevant files and diffs, recent attempts, active branch/HEAD, last failures, relevant tests, and unresolved questions. The bundle is generated from durable project state - Ratchet computed task/gate state, Git, later Reflection identities and failure capsules - not from one agent's self-summary of itself (seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md, hypothesis #2).\n\nThe starting point already exists and must be reused: the Ratchet emits worker packets today. `ratchet next` and `ratchet packet <TASK>` already produce the fresh-worker brief - acceptance text, failing gate names and current failure messages, write surface, files to read (paths only), verify/promote commands, stop conditions (.project/ratchet/DESIGN.md §3.4, accelerator DA-02). MP-54 P1 therefore extends or reuses that mechanism rather than building a competing bundle composer; later phases add source-aware selection through MP-21 Reflection identities, evidence/failure enrichment through MP-55 capsules, and adaptive selection informed by MP-60 impact data.\n\nMP-54 composes and points; it does not analyze and does not own. Repository analysis belongs to MP-21 (Reflection Graph and stable structural identities), failure reproduction belongs to MP-55 (Failure Capsules), and impact/test selection belongs to MP-60 (Runtime Dependency/Impact Graph). MP-54 is the task-shaped composer that binds those surfaces into one onboarding brief, and it must stay replaceable rather than become a second analysis system.\n\nIt is a development accelerator, not product architecture. It earns permanence only if it measurably reduces validated delivery time, rediscovery, failure cost, coordination cost, or verification cost (DEVELOPMENT-ACCELERATION-HYPOTHESES.md program-wide principle and hypothesis #30). That is why the roadmap ends in a measurement-driven phase: a bundle mechanism that does not beat ordinary repo reading gets tuned or retired.",
+    "problem": "Every fresh session pays to rediscover reality the project already knows: workers re-derive repository and task context from scratch, spending time and tokens on reconstruction instead of work. The coordination cost is documented, not hypothetical: 49 of the last 51 commits were docs reconciliations, status surfaces disagreed with each other at the same HEAD (STATUS vs SITREP vs COMMONS), and no worker could mechanically find out what the next task is, whether it finished it, or whether it broke other work - every answer was reconstructed by reading prose (.project/ratchet/DESIGN.md §1). Agent self-summaries are untrustworthy as a substitute: \"done\" is self-reported prose, sessions cannot verify themselves, and the Ratchet had to separate four different readings of \"green\" that all look like success (DESIGN.md §3.8). Without MP-54, context hand-off depends on either broad project rereads or narratives that may be wrong, and because worker replacement is the norm in this project, that reconstruction cost is re-paid on every replacement. VIVIM pays this in time (onboarding), truth (stale or self-serving summaries), and capability (concurrency stays low because each new worker needs a human or a long chat history to become useful).",
+    "objectives": [
+      "A fresh worker can begin a bounded task from the bundle plus named files alone, with no broad project reread (gated by MP54-G1, measured against an unaided start).",
+      "Bundles are generated from durable project state - Ratchet computed task/gate state, Git HEAD/diff, later Reflection identities and failure capsules - never from one agent's self-summary alone (hypothesis #2; .project/ratchet/DESIGN.md §3.2, §3.8).",
+      "Exactly one bundle path exists: P1 extends or reuses the existing Ratchet packet mechanism (ratchet next / ratchet packet, .project/ratchet/DESIGN.md §3.4); no competing composer is built.",
+      "Source-aware bundles resolve relevant symbols, contracts, schemas and tests through MP-21 Reflection identities instead of reparsing the repository, and reproduce deterministically: same task + same HEAD yields an identical bundle file set across two runs (MP54-G2).",
+      "Enriched bundles carry only task-relevant failure and evidence references, with bundle size bounded and relevance recall checked against a named relevance list - no indiscriminate context dump (MP54-G3).",
+      "Adaptive context selection demonstrably beats a fixed template on a measured task set by a stated metric (MP54-G4).",
+      "Bundle use shows a recorded before/after improvement on a validated work metric - e.g. fresh-worker onboarding time, context tokens spent rediscovering known reality, or first-pass correctness - with the comparison method named (MP54-G5)."
+    ],
+    "visionContribution": "VISION.md pillar 4 - durable Work, proof, and continuity: \"workers are replaceable; work survives them where the environment can preserve enough state and evidence.\" Building Ω requires many replaceable workers over time, and today the cost of that replacement is paid in context reconstruction every session. MP-54 makes worker replacement cheap: the task-relevant truth is reconstructed from durable project state (computed gate/task state, Git, evidence) rather than from one session's or one model's memory, which is exactly the continuity the vision requires. It also serves the honest-epistemology commitment of pillar 4 (\"what does VIVIM actually know happened?\") because bundle content is anchored to what the project can prove - computed state and evidence - not to self-reported prose. Secondarily it is a capability multiplier in the VISION.md strategic-design-shape sense: one mechanism lowers the startup cost of every other effort that begins with a fresh session, and it supports replaceable intelligence because using a bundle depends on no specific model, tool, or provider.",
+    "boundaries": [
+      "Not a second repository-analysis system: structural truth comes from MP-21 Reflection identities (MP21-G3); MP-54 must not reparse the repository independently or fork the extraction pipeline (FIRST-FIVE-SEED MP-54 objective 3; PM-CORRECTION §12).",
+      "Not an indiscriminate context dump: the bundle is the smallest useful package, size-bounded and relevance-checked (hypothesis #2: \"avoiding giant indiscriminate context dumps\"; MP54-G3).",
+      "Bundles are context, not authority: a bundle is an onboarding brief; it never overrides source code, tests, computed Ratchet state, or evidence, and it is not a replacement for reading the named files or for independent review.",
+      "Not built on agent self-summary: worker narratives are not state; bundle content derives from durable reality (hypothesis #2 and #23; .project/ratchet/DESIGN.md §1: \"Done is self-reported prose\").",
+      "Must not duplicate the Ratchet packet mechanism: the Ratchet already emits worker packets via ratchet next / ratchet packet (.project/ratchet/DESIGN.md §3.4); P1 extends or reuses that path. Building a competing bundle composer is a known duplication risk from recon and is out of bounds.",
+      "Not a scheduler, router, or portfolio tool: no program selection, ranking, prioritization, or model-routing authority (PM-CORRECTION-FIRST-FIVE-ONLY.md §2, §15).",
+      "Development accelerator only, not Ω product architecture: it earns permanence under the acceleration rule and is not imported into product architecture automatically (DEVELOPMENT-ACCELERATION-HYPOTHESES.md, \"Relationship to Ω\")."
+    ],
+    "successConditions": [
+      "A fresh agent completes a bounded task using only the bundle plus named files, with time/token cost recorded versus an unaided start (MP54-G1).",
+      "Same task + same HEAD yields an identical bundle file set across two runs (MP54-G2).",
+      "On a measured task set, bundle size stays bounded and relevance recall checks out against a named relevance list (MP54-G3).",
+      "An A/B comparison on the named task set shows adaptive ranking beating the fixed template on a stated metric (MP54-G4).",
+      "A recorded before/after improvement on a real-task validated work metric, with the comparison method named (MP54-G5).",
+      "Exactly one bundle mechanism exists in the repo - the extended Ratchet packet path - and a fresh worker receives a task brief in one command with no competing composer."
+    ],
+    "falsifiers": [
+      "Fresh workers with bundles do not beat unaided starts on time-to-first-productive-work, token cost, or first-pass correctness on the measured task set: reduce or retire bundle components under the acceleration rule.",
+      "Workers spend more time correcting stale or wrong bundle content than they would spend reading the repo directly (parallel to the Ratchet falsifier in .project/ratchet/DESIGN.md §7): rework or retire.",
+      "Same-HEAD bundles diverge across runs: selection is not deterministic and P3/P4 cannot be built on P2.",
+      "Bundle size or relevance drifts toward an indiscriminate dump and worker performance measurably degrades with bundle use: re-scope P3/P4.",
+      "MP-21 Reflection-based selection yields no measurable benefit over plain path-based selection on real tasks: descope P2 and keep the thin bundle.",
+      "The Ratchet packet alone proves sufficient for real tasks: MP-54 shrinks to P1 plus P5 measurement, and enrichment phases are retired."
+    ],
+    "sources": [
+      "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypothesis #2 Automatic Context Bundles; program-wide principle; #23; #30)",
+      "seed-docs/VISION.md (pillar 4 durable Work/proof/continuity; strategic design shape: capability multipliers; replaceable intelligence)",
+      ".project/pm/FIRST-FIVE-SEED.md (MP-54 section: explanation, objectives, phase table)",
+      ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md (§12 MP-54 dependency shape; §13 MP-54 phase seed)",
+      ".project/ratchet/DESIGN.md (§1 problem; §3.2 computed state; §3.4 packets; §3.8 readings of green; §7 falsifiers)",
+      ".project/pm/scope.json"
+    ]
+  },
+  "externalDependencies": [
+    {
+      "ref": "MP-67",
+      "reason": "P5 needs the acceleration-scorecard measurement discipline; MP-67 is outside PM scope and is referenced only."
+    }
+  ],
+  "phases": [
+    {
+      "id": "MP54-P1",
+      "name": "Thin task/Git bundle",
+      "effort": "E1-E2",
+      "loc": {
+        "band": "M",
+        "range": [
+          300,
+          700
+        ],
+        "confidence": "LOW"
+      },
+      "objective": "Compose a thin per-task bundle for a fresh worker from Ratchet/task state and Git: task acceptance criteria, dependencies, failing gate names and current failure messages, write surface, HEAD/diff, and files to read (paths only) - by extending or reusing the existing Ratchet packet mechanism, not a new composer.",
+      "blockedBy": [],
+      "softDeps": [
+        "Reuse of the Ratchet packet mechanism (ratchet next / ratchet packet, .project/ratchet/DESIGN.md §3.4)"
+      ],
+      "exitGates": [
+        "MP54-G1"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Duplication risk (from recon): the Ratchet already emits worker packets via ratchet next / ratchet packet (.project/ratchet/DESIGN.md §3.4). P1 must extend or reuse that mechanism; building a competing bundle composer is the known failure mode.",
+        "Bundle content anchored to prose task state can drift from computed Ratchet state; anchor to computed task/gate state (DESIGN.md §3.2) rather than hand-written status.",
+        "The 'fresh start' baseline is noisy across machines and toolchains; the MP54-G1 comparison method must be fixed before measurement, not after."
+      ],
+      "openQuestions": [
+        "Which packet surface (ratchet next vs ratchet packet <TASK>) is the extension point, and which fields does the thin bundle add beyond acceptance text, failing gates, write surface, and files-to-read (DESIGN.md §3.4)?",
+        "How is 'begins a bounded task without broad project reread' operationalized and measured for MP54-G1 (task set, unaided baseline, recorded time/token cost)?"
+      ],
+      "sources": [
+        ".project/ratchet/DESIGN.md §3.4, §3.2",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-54 P1)",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-54 P1)",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypothesis #2)"
+      ],
+      "outcome": "The ratchet next / ratchet packet path (extended where needed) produces a thin bundle that lets a fresh agent start a bounded task without broad project reread; MP54-G1 is measured against an unaided start."
+    },
+    {
+      "id": "MP54-P2",
+      "name": "Source-aware bundle",
+      "effort": "E2-E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          550,
+          1100
+        ],
+        "confidence": "LOW"
+      },
+      "objective": "Resolve the task's relevant symbols, contracts, schemas, and tests through MP-21 Reflection identities (stable entity refs, MP21-G3) and turn them into a source-aware bundle with a deterministic file set - no independent repo reparsing.",
+      "blockedBy": [
+        "MP21-G3"
+      ],
+      "softDeps": [],
+      "exitGates": [
+        "MP54-G2"
+      ],
+      "needsReview": false,
+      "risks": [
+        "MP21-G3 slip blocks P2; P1's thin bundle must stay independently valuable so P2 delay does not stall P1 users.",
+        "Structural-identity selection may over- or under-select sources; the MP54-G2 reproducibility check verifies determinism, not relevance - relevance proof is deferred to MP54-G3.",
+        "Bundle file-set format churn would break consumers (MP55-P4, fresh workers); the format needs one deliberate definition before enrichment builds on it."
+      ],
+      "openQuestions": [
+        "Which Reflection entity classes (symbols, contracts, schemas, tests) drive selection, and what is the canonical bundle file-set format?",
+        "Should sources be referenced by MP-21 anchor/digest or by path only, and what does the G2 'identical file set' comparison pin (paths, digests, both)?"
+      ],
+      "sources": [
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P2)",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-54 P2; MP21-G3)",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypothesis #2)"
+      ],
+      "outcome": "Same task + same HEAD yields an identical bundle file set across two runs (MP54-G2); selection is driven by structural identity rather than by text search or per-worker judgment."
+    },
+    {
+      "id": "MP54-P3",
+      "name": "Evidence/failure enrichment",
+      "effort": "E2",
+      "loc": {
+        "band": "M",
+        "range": [
+          450,
+          950
+        ],
+        "confidence": "LOW"
+      },
+      "objective": "Enrich bundles with task-relevant evidence and failure history: MP-55 capsules, recent attempts, proof state, traces, and unresolved questions - filtered to relevance with a hard size bound, never an indiscriminate dump.",
+      "blockedBy": [
+        "MP54-G2"
+      ],
+      "softDeps": [
+        "MP55-G2"
+      ],
+      "exitGates": [
+        "MP54-G3"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Evidence references bloat the bundle into an indiscriminate dump; MP54-G3's size bound and named relevance list are the countermeasure and must exist before enrichment ships.",
+        "MP55-G2 is a soft dependency: without reproducible capsules there is little to enrich; P3 may need to descope to attempts/proof state until capsules exist.",
+        "Enrichment imports agent narratives (attempts, conclusions) that may be self-serving; narrative content must be marked as claim, not state (DESIGN.md §3.8 distinction discipline)."
+      ],
+      "openQuestions": [
+        "What is the named relevance list against which MP54-G3 relevance recall is checked, and who authors it?",
+        "How are unresolved questions and prior attempts represented without treating agent self-summaries as truth?"
+      ],
+      "sources": [
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P3)",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-54 P3; MP-55 P2)",
+        ".project/ratchet/DESIGN.md §3.8",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypotheses #2, #3, #23)"
+      ],
+      "outcome": "The bundle carries only task-relevant evidence/failure references; a measured task set shows bundle size bounded and relevance recall checked against a named relevance list (MP54-G3)."
+    },
+    {
+      "id": "MP54-P4",
+      "name": "Adaptive context selection",
+      "effort": "E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          800,
+          1700
+        ],
+        "confidence": "LOW"
+      },
+      "objective": "Rank and trim bundle content using impact and observed relevance (soft: MP60-P3 runtime/test-observed edges) instead of fixed templates, and prove the ranking wins on a stated metric over a measured task set.",
+      "blockedBy": [
+        "MP54-G3"
+      ],
+      "softDeps": [
+        "MP60-P3"
+      ],
+      "exitGates": [
+        "MP54-G4"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Ranking is untestable without a pre-declared task set and stated metric; both must be fixed before implementation or MP54-G4 is unfalsifiable.",
+        "Adaptive ranking can quietly grow into a second analysis/ranking system; keep it per-task and mechanical, within the dossier boundaries (no portfolio decisioning).",
+        "Without MP60-P3 observed edges (soft dependency), ranking is static-only and may not beat templates on the current repo size - if so, descope rather than force it."
+      ],
+      "openQuestions": [
+        "What metric and task set make the adaptive-vs-template A/B decision in MP54-G4?",
+        "Can static ranking suffice at current repo size, or is observed relevance from MP60-P3 a practical requirement for winning the A/B?"
+      ],
+      "sources": [
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P4)",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-54 P4; MP-60 P3)",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (hypotheses #2, #12, #30)"
+      ],
+      "outcome": "Adaptive selection beats the fixed template on a measured task set by a stated metric (MP54-G4); ranking is mechanical, per-task, and evidence-based."
+    },
+    {
+      "id": "MP54-P5",
+      "name": "Measured optimization",
+      "effort": "E2",
+      "loc": {
+        "band": "M",
+        "range": [
+          450,
+          1000
+        ],
+        "confidence": "LOW"
+      },
+      "objective": "A/B compare bundle-aided work against ordinary repo reading on real tasks under the acceleration-scorecard measurement discipline (external reference MP-67), then tune, keep, or retire weak bundle components.",
+      "blockedBy": [
+        "MP54-G4"
+      ],
+      "softDeps": [
+        "MP67 measurement discipline"
+      ],
+      "exitGates": [
+        "MP54-G5"
+      ],
+      "needsReview": false,
+      "risks": [
+        "MP-67's scorecard discipline is an external reference outside PM scope; without a named comparison method the MP54-G5 improvement claim is unfalsifiable.",
+        "Single-metric optimization (e.g. fewer tokens but worse first-pass correctness) contradicts hypothesis #30's 'do not optimize one metric blindly'; use a small metric set and report trade-offs.",
+        "Measurement overhead may exceed the bundle's benefit on small tasks; the acceleration rule (tune or delete) applies to the measurement itself, not just the bundle."
+      ],
+      "openQuestions": [
+        "Which validated work metric is primary: fresh-worker onboarding time, context tokens spent rediscovering known reality, first-pass correctness, or a combination (hypotheses #2, #30)?",
+        "Should weak bundle components be tuned or retired, and who records the retire decision under the acceleration rule?"
+      ],
+      "sources": [
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12, §13 (MP-54 P5)",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-54 P5; MP67 measurement discipline)",
+        "seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md (program-wide principle; hypotheses #2, #30)"
+      ],
+      "outcome": "A recorded before/after improvement in a validated work metric, with the comparison method named (MP54-G5); components that do not earn their keep are removed."
+    }
+  ],
+  "gates": [
+    {
+      "id": "MP54-G1",
+      "statement": "fresh worker begins a bounded task without broad project reread",
+      "evidence": "a fresh agent completes a bounded task using only the bundle plus named files; time/token cost recorded vs unaided start",
+      "consumers": [
+        "MP54-P2"
+      ],
+      "producingPhase": "MP54-P1"
+    },
+    {
+      "id": "MP54-G2",
+      "statement": "entity-driven bundle reproducibly selects relevant sources",
+      "evidence": "same task + same HEAD yields an identical bundle file set across two runs",
+      "consumers": [
+        "MP54-P3"
+      ],
+      "producingPhase": "MP54-P2"
+    },
+    {
+      "id": "MP54-G3",
+      "statement": "bundle carries only task-relevant evidence/failure refs (no indiscriminate dump)",
+      "evidence": "a measured task set shows bundle size bounded and relevance recall checked against a named relevance list",
+      "consumers": [
+        "MP54-P4"
+      ],
+      "producingPhase": "MP54-P3"
+    },
+    {
+      "id": "MP54-G4",
+      "statement": "adaptive selection beats fixed template on a measured task set",
+      "evidence": "A/B comparison on the named task set shows adaptive ranking wins on a stated metric",
+      "consumers": [
+        "MP54-P5"
+      ],
+      "producingPhase": "MP54-P4"
+    },
+    {
+      "id": "MP54-G5",
+      "statement": "measurable improvement in a validated work metric",
+      "evidence": "recorded before/after metric on real tasks, with the comparison method named",
+      "consumers": [],
+      "producingPhase": "MP54-P5"
+    }
+  ],
+  "gaps": []
+}

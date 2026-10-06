@@ -1,0 +1,302 @@
+{
+  "schema": "vomega-pm-program/1",
+  "id": "MP-21",
+  "dossier": {
+    "explanation": "MP-21 is a read-first migration and conformance utility (working name: Reflection Migrator) that points at the existing Ω source tree and answers what the code already proves about itself: which plugins, contributions, routed operations, schemas, config keys, language frames and visual roles exist, which source symbols own each fact, which public behaviors have no self-description, and which descriptions are prose-only rather than structurally grounded. Its role in one line: audit → extract → map → propose → verify. Every extracted fact is bound to a SourceAnchor — repository, commit, content hash, path, symbol — so self-knowledge is reproducible at a pinned HEAD.\n\nIt is deliberately not a documentation generator, README scraper, second registry, LLM semantics inventor, source-code authority or silent code rewriter. Facts and meaning stay mechanically separate: directly encoded claims are tagged PROVEN_STRUCTURAL (or DECLARED / INFERRED_SAFE), while titles, capability groupings and relationship ideas stay CANDIDATE_SEMANTIC until a human accepts them. The default is read-only; any proposed source change is explicit, previewable, diffable, test-gated and reversible, and the tool never gains authority to accept its own proposals.\n\nThe problem it exists for: the current baseline is already rich in structure (one manifest format, contribution kinds, risk declarations, source-side operation registration, explicit schemas, provider realization records), but its self-description still lives in prose — manifest descriptions, contract-level doc strings, plugin descriptions — which the design itself forbids treating as stronger than executable declarations. Manifest↔runtime op parity is not mechanically checked, duplicated schema/help definitions drift silently, and config parsing is a likely blind spot. Today a fresh worker or agent must reread the repo or trust a narrative to know what the system can actually do.\n\nWithin the first five, MP-21 is the substrate: its stable queryable Reflection Graph (MP21-G3) is what MP-54 source-aware bundles, MP-55 structural enrichment and MP-60 impact/test-selection all consume, so the five programs do not build competing parsers or identity schemes. Migration proceeds audit-first in waves, with the MVP semantic slice (Provider, Account, Model, prompt.send) as the first compliance target rather than a full-repo rewrite.",
+    "problem": "Without MP-21, VOMEGA keeps paying three costs. Truth: self-description lives in prose — manifest description strings, contract doc strings, plugin descriptions — which the Reflection design explicitly forbids treating as stronger than executable declarations, yet nothing else distinguishes prose-only claims from structurally grounded ones; manifest↔runtime parity (declared-but-unimplemented ops, implemented-but-undeclared ops, invisible dynamic registration) is not mechanically checked, and duplicate definitions of the same parameter across schema, help text and language frames drift silently. Capability: agents and fresh workers cannot deterministically answer which operations, schemas, config keys or visual roles exist without rereading the repo or trusting a narrative — the migrator doc's §3 question list is currently answerable only by manual reading, and config parsing is a likely blind spot. Time: every downstream accelerator that needs structural understanding (MP-54 context bundles, MP-55 failure enrichment, MP-60 impact/test selection) would otherwise rebuild its own parser and identity scheme — the exact duplication the first-five seed forbids — and migration of the codebase to source-native self-description would happen ad hoc, unsafely, or not at all.",
+    "objectives": [
+      "Give every structurally knowable public behavior — plugin, contribution, registered operation, schema, config key, language/visual contribution — a stable source-bound identity (SourceAnchor: commit + contentHash + symbol) that is reproducible: repeated scans at the same HEAD yield identical identities.",
+      "Extract structural facts deterministically from manifests, contracts, op registration, schemas, config parsing, language and visual contributions and tests, tagging each fact with its claim class (PROVEN_STRUCTURAL, DECLARED, INFERRED_SAFE, CANDIDATE_SEMANTIC, COMMENTARY, CONFLICT) and emitting explicit unknowns instead of invented semantics.",
+      "Build a read-only, queryable Reflection Graph — a derived build artifact, not an authored Wiki database — whose stable entity refs and relations external consumers (MP-54 source-aware bundles, MP-55 structural enrichment, MP-60 impact queries) resolve without reparsing source.",
+      "Keep extracted facts and suggested meaning mechanically distinct by construction, so no LLM- or heuristic-proposed title, capability grouping or relationship is ever indistinguishable from an extracted fact.",
+      "Compute manifest↔runtime parity (DECLARED+IMPLEMENTED / DECLARED, IMPLEMENTATION NOT FOUND / IMPLEMENTED, NOT DECLARED / DYNAMIC — NEEDS EXPLICIT REFLECTION PROVIDER) and surface duplicate semantic truth (a schema redefined in help text or language frames) as named drift risks.",
+      "Turn missing self-description into explicit, severity-ranked gaps with source-native migration proposals that are proposal-only, previewable, diffable, test-gated and reversible, with no-write as the default.",
+      "Bring the MVP semantic slice — Provider, Account, Model, prompt.send, registration commands, language frames, command validator, VisualSpec — to source-native Reflection compliance without blocking on full-repo migration, and make incremental completeness checkable without the utility becoming source authority."
+    ],
+    "visionContribution": "Grounds primarily in pillar 1 (human semantic execution language) and pillar 5 (governed self-extension/evolution), with supporting grounding in pillar 3 (governed action), pillar 4 (durable Work/proof/continuity) and pillar 10 (capability multipliers). Pillar 1 requires the bridge 'human expression ↔ canonical meaning ↔ deterministic execution' to be inspectable, addressable and deterministic at the semantic/execution boundary; MP-21 supplies exactly that for the environment's own capabilities — operations, schemas, config and contribution boundaries become source-anchored referents the semantic language can resolve without trusting prose. Pillar 3 separates what was said from what was meant and what was allowed; MP-21 applies the same discipline to self-description, keeping proven structural truth mechanically distinct from AI-suggested meaning so probabilistic interpretation never silently becomes consequential authority. Pillar 4's honest epistemology — 'what does VIVIM actually know happened?' — extends here to 'what does VIVIM actually know it can do?', with source anchors making that evidence reconstructable across worker and model replacement. Pillar 5 requires the environment to change itself while preserving identity, evidence and continuity: the migrator proposes safe source-native migrations but never self-accepts them and never rewrites by default. Pillar 10: one extracted graph serves MP-54, MP-55 and MP-60, making the next use materially cheaper instead of accumulating five separate parsers and identity schemes.",
+    "boundaries": [
+      "Not a documentation generator.",
+      "Not a README scraper presented as truth.",
+      "Not an LLM that invents plugin semantics.",
+      "Not a second registry.",
+      "Not a source-code authority.",
+      "Not a code-rewriting agent with permission to silently alter behavior.",
+      "Not a universal ontology inference engine.",
+      "Extract facts; propose meaning; never fabricate proof — suggested meaning stays candidate until accepted and is never a structural claim without deterministic confirmation or review.",
+      "Read-only by default; it never gains authority to accept its own proposals, and compliance must never become documentation bureaucracy rather than structural transparency."
+    ],
+    "successConditions": [
+      "Against a pinned checkout, two consecutive scans produce an identical SourceAnchor/digest set and an identical extracted fact set (MP21-G1, MP21-G2).",
+      "A hand-checked sample of extracted facts shows zero invented facts, and every fact traces to an exact source symbol/content anchor.",
+      "An external consumer (MP-54 bundle or MP-60 impact query) resolves stable entity refs and relations from the graph alone (MP21-G3).",
+      "Output separates extracted/PROVEN_STRUCTURAL classes from suggested/candidate classes by construction, checked by test (MP21-G4).",
+      "Gap reports identify missing operation declarations, missing source anchors, duplicate schemas, prose-only claims and source conflicts with per-plugin drill-down.",
+      "The MVP semantic slice powers at least one real contextual Wiki projection generated with no separate Wiki files.",
+      "A seeded structural drift is caught by the compliance check, which itself claims no authority over source (MP21-G5).",
+      "Rerunning after changes shows measurable completeness improvement over the previous run."
+    ],
+    "falsifiers": [
+      "README or other prose is treated as stronger than executable declarations.",
+      "Capability semantics are invented to reach 100% coverage.",
+      "The utility rewrites source by default, or generated Reflection cannot be traced back to source.",
+      "Dynamic op registration becomes invisible in extraction or parity output.",
+      "Config/help schemas remain duplicated after a detected migration opportunity.",
+      "LLM suggestions become indistinguishable from extracted facts.",
+      "A successful migration silently changes runtime behavior.",
+      "Runtime Wiki consumption requires reparsing the entire source tree live, or compliance becomes documentation bureaucracy rather than structural transparency.",
+      "Cross-program: if MP54-P2, MP55-P3 and MP60-P2 satisfy their needs without MP21-G3, the accelerator role of MP-21 shrinks to internal tooling and the program should be reduced or refocused.",
+      "Estimate: if P2 extraction cannot reach determinism at one HEAD within or near the 1,800–3,500 LOC band, the extraction surface set should be cut and re-sequenced rather than shipped non-deterministic."
+    ],
+    "sources": [
+      "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md (purpose §1, not-list §2, design objective §3, core rule §4, surfaces §5, SourceAnchor §7, records/claim classes §8–9, migration targets §10–19, compliance definition §20, modes §21, no-write §22, safe transformations §23, waves §25, MVP slice §29, acceptance §35, falsifiers §36)",
+      "seed-docs/VISION.md (pillars 1, 3, 4, 5, 10; capability-multiplier and earned-generalization principles)",
+      ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md (§7 dossier protocol, §8 five-phase protocol, §12 dependency shape, §13 MP-21 phase seed, §17 vision-grounding rule)",
+      ".project/pm/FIRST-FIVE-SEED.md (MP-21 section: objectives, vision mapping, phase table, shared-concepts strategy)",
+      ".project/pm/scope.json (managed-program boundary; Ratchet as external execution/proof owner)",
+      ".project/meta-tracker.json (canonical MP-21 identity; projected, not overridden)"
+    ]
+  },
+  "externalDependencies": [],
+  "phases": [
+    {
+      "id": "MP21-P1",
+      "name": "Source inventory + identity",
+      "objective": "Establish deterministic identity over the existing Ω source tree: classify input surfaces (manifests, contracts, op registration, schemas, config, language, visual, tests, structured comments) and mint stable SourceAnchor identities (repository, commit, contentHash, path, symbol, line-range navigation hint, extractionKind) plus content digests, so repeated scans at the same HEAD are stable.",
+      "outcome": "A file/symbol/plugin/schema/op/config/language/visual/test inventory with provenance classes, and a stable SourceAnchor/digest set for every classified surface, with identity determinism proven at one HEAD.",
+      "effort": "E2",
+      "loc": {
+        "band": "M",
+        "range": [
+          600,
+          1100
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [],
+      "softDeps": [],
+      "exitGates": [
+        "MP21-G1"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Text grep alone is explicitly insufficient for the final tool; a text-scan shortcut here would be replaced, not extended, by P2's AST/structured extraction.",
+        "Identity stability: line ranges are only navigation hints; symbol + contentHash must carry identity or common renames/moves will churn identities.",
+        "The parser strategy chosen here (REF-01 assay) must be able to serve P2 extraction; a wrong choice is expensive to reverse."
+      ],
+      "openQuestions": [
+        "Which of the migrator doc's §5 input surfaces P1 must classify up front versus defer to P2 extractors.",
+        "Exact contentHash scheme and symbol-resolution scope needed to keep identities stable across common edits.",
+        "Concrete current-tree baseline counts (plugin manifests, declared vs implemented ops, existing anchor/digest coverage) to size the first audit report — not yet verified this pass, so stated as a question rather than a fact."
+      ],
+      "sources": [
+        "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §5 (input surfaces), §6 (pipeline), §7 (SourceAnchor), §25 Wave 1 (audit only), §34 REF-01/REF-02",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P1 seed: E2, 600–1,100, gate MP21-G1)",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-21 P1 row: SourceAnchor, content digest, provenance classes)"
+      ]
+    },
+    {
+      "id": "MP21-P2",
+      "name": "Structural extraction",
+      "objective": "Build deterministic extractors over the priority source surfaces — PluginManifest, TypeScript contracts, operation registration, schemas, config parsing, language contributions, visual contracts, tests — emitting claim-classed structural facts with explicit unknown/gap output, and computing manifest↔runtime op parity.",
+      "outcome": "Same HEAD produces the same extracted structural fact set with zero invented facts on a hand-checked sample; facts carry claim classes and exact source anchors; parity classes (DECLARED+IMPLEMENTED, DECLARED, IMPLEMENTATION NOT FOUND, IMPLEMENTED, NOT DECLARED, DYNAMIC) are computed.",
+      "effort": "E4",
+      "loc": {
+        "band": "L",
+        "range": [
+          1800,
+          3500
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP21-G1"
+      ],
+      "softDeps": [],
+      "exitGates": [
+        "MP21-G2"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Dynamic op registration must remain visible (reported as DYNAMIC — NEEDS EXPLICIT REFLECTION PROVIDER); opacity is not allowed, and this is the hardest extraction case.",
+        "Extraction uncertainty (config readers, dynamically assembled op maps) risks silent guessing; unknown must be an explicit output, with a request for explicit declaration where needed.",
+        "Largest phase of the program (E4, 1,800–3,500 LOC): surface-set sprawl can blow the band, so scope must be cut before determinism is compromised."
+      ],
+      "openQuestions": [
+        "How far config extraction can go mechanically before the tool must mark unknown and request an explicit declaration.",
+        "Whether the Contribution-interface design seam (manifest fields richer than the base TypeScript Contribution interface) is resolved in P2 or deferred to a later enrichment wave.",
+        "Depth of the visual inventory given that VisualSpec types are declared but projection implementation is only partial today."
+      ],
+      "sources": [
+        "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §5 (surfaces), §9 (claim classes), §10 (existing baseline structure), §11 (PluginManifest first target), §12 (manifest↔runtime parity), §13 (schema reuse), §14 (config self-description), §18 (language), §19 (visual), §34 REF-02/REF-03/REF-04/REF-06",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P2 seed: E4, 1,800–3,500, gate MP21-G2)",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-21 P2 row: deterministic extractors, explicit unknown/gap output)"
+      ]
+    },
+    {
+      "id": "MP21-P3",
+      "name": "Reflection Graph + query API",
+      "objective": "Assemble extracted facts into a read-only Reflection Graph — nodes, edges, source anchors and relation/query primitives per the ExtractedReflection shape — with stable entity references that external programs can resolve without reparsing source.",
+      "outcome": "A queryable graph API and serialized descriptor that an external consumer (MP-54 bundle or MP-60 impact query) uses to resolve stable entity refs and relations from the graph alone; the graph is a derived build artifact refreshed at build/install, never a live AST scan of the whole tree.",
+      "effort": "E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          900,
+          1800
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP21-G2"
+      ],
+      "softDeps": [],
+      "exitGates": [
+        "MP21-G3"
+      ],
+      "needsReview": false,
+      "risks": [
+        "This is the program's critical unlock: MP54-P2, MP55-P3 and MP60-P2 all wait on MP21-G3, so a wrong query-API shape propagates widely.",
+        "EntityRef/edge schema must converge on the shared accelerator concepts (SourceAnchor, EntityRef, TestRef, HEAD, provenance class) rather than becoming a second competing identity scheme.",
+        "Temptation to serve runtime queries by reparsing the tree live; the descriptor-plus-live-state model from the Wiki relationship section must hold."
+      ],
+      "openQuestions": [
+        "Exact EntityRef/SourceAnchor schema to be co-designed with MP-54 and MP-60 consumers before the query API freezes.",
+        "Descriptor refresh cadence and staleness policy: what joins to live runtime state versus the build artifact."
+      ],
+      "sources": [
+        "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §8 (ExtractedReflection record), §21 (extract/graph modes), §32 (relationship to the Contextual Wiki), §34 REF-05",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §12 (MP21-G3 consumers: MP54-P2, MP55-P3, MP60-P2) and §13 (MP-21 P3 seed: E3, 900–1,800)",
+        ".project/pm/FIRST-FIVE-SEED.md (shared strategy: no five separate databases/parsers/identity schemes; MP21-G3 unlocks MP-54 P2 and MP-60 P2)"
+      ]
+    },
+    {
+      "id": "MP21-P4",
+      "name": "Gap + migration proposals",
+      "objective": "Analyze the graph for missing self-description, manifest↔runtime mismatches, duplicate semantic truth, prose-only claims and source conflicts; produce severity-ranked gaps and source-native migration proposals that remain mechanically separate from extracted facts.",
+      "outcome": "A compact top-level gap report with per-plugin drill-down (missing op declarations, missing source anchors, missing parameter descriptions, duplicate schemas, unresolved capability/realization splits, unreflected UI actions, unknown consequences, prose-only claims, source conflicts), plus proposal-only patch artifacts that are previewable, diffable, test-gated and reversible.",
+      "effort": "E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          800,
+          1700
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP21-G3"
+      ],
+      "softDeps": [],
+      "exitGates": [
+        "MP21-G4"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Gap priority scoring is a migration aid only; it must not become product-priority or scheduling authority.",
+        "Proposal quality: safe versus poor transformation candidates must follow the migrator doc's own lists or the tool drifts into semantic invention.",
+        "CONFLICT is an output, never silently resolved; a high conflict volume could make reports unusable."
+      ],
+      "openQuestions": [
+        "Which of the good-candidate automatic transformations (anchor metadata, schema-referenced help, obvious static IDs, shared declarative helpers, conformance tests) qualify for automatic patch generation first.",
+        "Whether the gap severity taxonomy needs its own conformance test so ranked proposals cannot masquerade as authority."
+      ],
+      "sources": [
+        "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §12 (parity report), §20 (Wiki compliance definition), §23 (safe/poor transformations), §27 (output reports), §28 (priority scoring), §34 REF-06/REF-08/REF-09",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P4 seed: E3, 800–1,700, gate MP21-G4)",
+        ".project/pm/FIRST-FIVE-SEED.md (MP-21 P4 row: missing self-description, duplicates/mismatches, safe candidate upgrades)"
+      ]
+    },
+    {
+      "id": "MP21-P5",
+      "name": "Continuous compliance",
+      "objective": "Integrate incremental scan and completeness checks into the normal development loop (build/CI hooks) so new or modified public behavior must remain structurally transparent, while the check itself claims no authority over source and stays read-only by default.",
+      "outcome": "A compliance check that catches seeded structural drift, tracks reflection-status (legacy-derived vs source-native) for incremental migration, and fails when public consequential behavior becomes structurally opaque — never because prose is aesthetically incomplete.",
+      "effort": "E3",
+      "loc": {
+        "band": "M",
+        "range": [
+          700,
+          1500
+        ],
+        "confidence": "LOW"
+      },
+      "blockedBy": [
+        "MP21-G4"
+      ],
+      "softDeps": [
+        "observed developer workflow"
+      ],
+      "exitGates": [
+        "MP21-G5"
+      ],
+      "needsReview": false,
+      "risks": [
+        "Compliance becoming documentation bureaucracy rather than structural transparency — the design's own named failure mode.",
+        "Binding the check where it could duplicate or usurp Ratchet's external ownership of atomic execution/proof state.",
+        "Threshold tuning: too strict blocks the MVP slice and normal iteration; too lax lets opacity through."
+      ],
+      "openQuestions": [
+        "Where the compliance hook binds (Ratchet gate versus plain CI) without duplicating Ratchet authority.",
+        "What completeness floor applies to new/modified public behavior, and whether the MVP semantic slice gets a separate floor before full-repo migration."
+      ],
+      "sources": [
+        "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md §21 (verify mode), §22 (no-write default), §25 Waves 5–6 (completeness gate, Forge compliance), §26 (legacy compatibility status), §29 (MVP slice), §31 (CI/conformance integration), §34 REF-10",
+        ".project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md §13 (MP-21 P5 seed: E3, 700–1,500, gate MP21-G5)",
+        ".project/pm/scope.json (Ratchet as external owner of atomic execution/proof state; PM does not duplicate it)"
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "MP21-G1",
+      "producingPhase": "MP21-P1",
+      "statement": "repeated scan yields stable deterministic identities",
+      "evidence": "two consecutive scans at the same HEAD produce an identical SourceAnchor/digest set",
+      "consumers": [
+        "MP21-P2"
+      ],
+      "status": "TBD"
+    },
+    {
+      "id": "MP21-G2",
+      "producingPhase": "MP21-P2",
+      "statement": "same HEAD produces the same extracted structural fact set",
+      "evidence": "diff of two extractions at one HEAD is empty, and a hand-checked sample shows zero invented facts",
+      "consumers": [
+        "MP21-P3"
+      ],
+      "status": "TBD"
+    },
+    {
+      "id": "MP21-G3",
+      "producingPhase": "MP21-P3",
+      "statement": "stable queryable Reflection identities / graph exists",
+      "evidence": "an external consumer (MP-54 bundle or MP-60 impact query) resolves stable entity refs and relations from the graph alone",
+      "consumers": [
+        "MP54-P2",
+        "MP55-P3",
+        "MP60-P2"
+      ],
+      "status": "TBD"
+    },
+    {
+      "id": "MP21-G4",
+      "producingPhase": "MP21-P4",
+      "statement": "extracted fact and suggested meaning remain mechanically distinct",
+      "evidence": "output separates extracted/PROVEN_STRUCTURAL classes from suggested/candidate classes by construction, checked by test",
+      "consumers": [
+        "MP21-P5"
+      ],
+      "status": "TBD"
+    },
+    {
+      "id": "MP21-G5",
+      "producingPhase": "MP21-P5",
+      "statement": "structural drift/completeness check works without becoming source authority",
+      "evidence": "a seeded structural drift is caught by the compliance check, and the check itself claims no authority over source",
+      "consumers": [],
+      "status": "TBD"
+    }
+  ],
+  "gaps": []
+}

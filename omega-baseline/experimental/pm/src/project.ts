@@ -1,12 +1,13 @@
-// PM projector — read-only. Reads the decomposition seed, the canonical program map and
-// the evidence events, and emits a portfolio projection. It owns no state: program meaning
-// is read from .project/meta-tracker.json, plan/evidence are derived, and execution/proof
-// state stays with the ratchet. Hand-editing generated output is a detected error.
+// PM projector — read-only. Assembles the managed five from .project/pm/data/programs/,
+// projects canonical meaning from .project/meta-tracker.json, derives plan/evidence state,
+// and renders the owner-directed views (SELECTED-PROGRAMS, five dossiers, ROADMAP,
+// DEPENDENCIES, ESTIMATES, machine portfolio). It owns no execution/proof state: that
+// stays with the ratchet, referenced live at check time and never stored here.
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { canonicalize, digest, short } from "../../ratchet/src/canonical.ts";
 import { evidenceState, planResolution } from "./derive.ts";
-import type { Events, Seed } from "./schema.ts";
+import type { Dossier, Events, Gate, Gap, ManagedSet, Phase, ProgramFile } from "./schema.ts";
 
 export interface TrackerProgram {
   id: string;
@@ -18,7 +19,6 @@ export interface TrackerProgram {
   notes?: string;
 }
 export interface Tracker {
-  counts?: { metaPrograms?: number };
   programs: TrackerProgram[];
 }
 
@@ -26,111 +26,248 @@ const ROOT = join(import.meta.dir, "../../../.."); // repo root
 
 export const paths = {
   root: ROOT,
-  seed: join(ROOT, ".project/pm/data/programs.json"),
+  scope: join(ROOT, ".project/pm/scope.json"),
+  programsDir: join(ROOT, ".project/pm/data/programs"),
   events: join(ROOT, ".project/pm/data/evidence-events.json"),
   tracker: join(ROOT, ".project/meta-tracker.json"),
-  outJson: join(ROOT, ".project/pm/generated/portfolio.json"),
-  outMd: join(ROOT, ".project/pm/generated/PORTFOLIO.md"),
+  outDir: join(ROOT, ".project/pm/generated"),
 };
+
+export const VIEW_FILES = [
+  "SELECTED-PROGRAMS.md",
+  "ROADMAP.md",
+  "DEPENDENCIES.md",
+  "ESTIMATES.md",
+  "portfolio.json",
+] as const;
 
 export function gitHead(cwd = ROOT): string {
   const r = Bun.spawnSync(["git", "rev-parse", "--short", "HEAD"], { cwd, stdout: "pipe", stderr: "pipe" });
   return r.exitCode === 0 ? r.stdout.toString().trim() : "unknown";
 }
 
-export interface Portfolio {
-  schema: "vomega-pm-portfolio/0";
-  sourceHead: string;
-  seedDigest: string;
-  note: string;
-  counts: {
-    programs: number;
-    seeded: number;
-    planResolution: Record<string, number>;
-    evidenceState: Record<string, number>;
-  };
-  gates: { program: string; id: string; statement: string; status: string; consumers: string[] }[];
-  programs: {
-    id: string;
-    name: string;
-    purpose: string;
-    canonicalState: string | null;
-    priority: string | null;
-    planResolution: string;
-    evidenceState: string;
-    seeded: boolean;
-    phaseCount: number;
-    gateCount: number;
-    gapCount: number;
-    ungatedPhases: string[];
-    needsReview: string[];
-    phases: { id: string; name: string; outcome: string; effort: string; loc: unknown; softDeps: string[]; blockedBy: string[]; exitGates: string[] }[];
-    gaps: { id: string; kind: string; statement: string }[];
-  }[];
+export interface PortfolioProgram {
+  id: string;
+  name: string;
+  purpose: string;
+  canonicalState: string | null;
+  canonicalPriority: string | null;
+  canonicalNotes: string | null;
+  dossier: Dossier;
+  planResolution: string;
+  evidenceState: string;
+  phaseCount: number;
+  gateCount: number;
+  ungatedPhases: string[];
+  needsReview: string[];
+  externalDependencies: { ref: string; reason: string }[];
+  phases: Phase[];
+  gates: Gate[];
+  gaps: Gap[];
 }
 
-export function buildPortfolio(seed: Seed, tracker: Tracker, events: Events, sourceHead: string): Portfolio {
-  const counts = { programs: tracker.programs.length, seeded: 0, planResolution: {} as Record<string, number>, evidenceState: {} as Record<string, number> };
+export interface Portfolio {
+  schema: "vomega-pm-portfolio/1";
+  sourceHead: string;
+  seedDigest: string;
+  managedScope: string[];
+  note: string;
+  counts: { programs: number; planResolution: Record<string, number>; evidenceState: Record<string, number>; ungatedPhases: number; needsReview: number };
+  crossProgramGates: { id: string; program: string; statement: string; consumers: string[]; external: boolean }[];
+  programs: PortfolioProgram[];
+}
 
-  const programs = tracker.programs.map((p) => {
-    const s = seed.programs[p.id];
-    const phases = s?.phases ?? [];
-    const plan = planResolution({ phases });
-    const ev = evidenceState(events.events, p.id);
-    if (s) counts.seeded++;
+export function buildPortfolio(set: ManagedSet, scope: string[], tracker: Tracker, events: Events, sourceHead: string): Portfolio {
+  const managed = new Set(scope);
+  const counts = { programs: scope.length, planResolution: {} as Record<string, number>, evidenceState: {} as Record<string, number>, ungatedPhases: 0, needsReview: 0 };
+  const byId = new Map(tracker.programs.map((p) => [p.id, p]));
+
+  const programs: PortfolioProgram[] = scope.map((id) => {
+    const file = set.programs[id]!;
+    const canonical = byId.get(id);
+    const plan = planResolution({ phases: file.phases });
+    const ev = evidenceState(events.events, id);
     counts.planResolution[plan] = (counts.planResolution[plan] ?? 0) + 1;
     counts.evidenceState[ev] = (counts.evidenceState[ev] ?? 0) + 1;
+    const ungated = file.phases.filter((ph) => ph.exitGates.length === 0).map((ph) => ph.id);
+    const review = file.phases.filter((ph) => ph.needsReview).map((ph) => ph.id);
+    counts.ungatedPhases += ungated.length;
+    counts.needsReview += review.length;
     return {
-      id: p.id,
-      name: p.name,
-      purpose: p.purpose,
-      canonicalState: p.state ?? null,
-      priority: p.priority ?? null,
+      id,
+      name: canonical?.name ?? `UNRESOLVED ${id}`,
+      purpose: canonical?.purpose ?? "UNRESOLVED — id not found in meta-tracker.json",
+      canonicalState: canonical?.state ?? null,
+      canonicalPriority: canonical?.priority ?? null,
+      canonicalNotes: canonical?.notes ?? null,
+      dossier: file.dossier,
       planResolution: plan,
       evidenceState: ev,
-      seeded: Boolean(s),
-      phaseCount: phases.length,
-      gateCount: (s?.gates ?? []).length,
-      gapCount: (s?.gaps ?? []).length,
-      ungatedPhases: phases.filter((ph) => ph.exitGates.length === 0).map((ph) => ph.id),
-      needsReview: phases.filter((ph) => ph.needsReview).map((ph) => ph.id),
-      phases: phases.map((ph) => ({
-        id: ph.id,
-        name: ph.name,
-        outcome: ph.outcome,
-        effort: ph.effort,
-        loc: ph.loc,
-        softDeps: ph.softDeps,
-        blockedBy: ph.blockedBy,
-        exitGates: ph.exitGates,
-      })),
-      gaps: (s?.gaps ?? []).map((g) => ({ id: g.id, kind: g.kind, statement: g.statement })),
+      phaseCount: file.phases.length,
+      gateCount: file.gates.length,
+      ungatedPhases: ungated,
+      needsReview: review,
+      externalDependencies: file.externalDependencies,
+      phases: file.phases,
+      gates: file.gates,
+      gaps: file.gaps,
     };
   });
 
-  const gates = Object.entries(seed.programs).flatMap(([pid, s]) =>
-    (s.gates ?? []).map((g) => ({ program: pid, id: g.id, statement: g.statement, status: g.status, consumers: g.consumers ?? [] })),
-  );
+  const prefixOf = (id: string): string => id.replace("-", "") + "-"; // "MP-21" -> "MP21-"
+  const crossProgramGates = programs.flatMap((p) => {
+    const own = prefixOf(p.id);
+    return p.gates
+      .filter((g) => g.consumers.some((c) => !c.startsWith(own)))
+      .map((g) => ({ id: g.id, program: p.id, statement: g.statement, consumers: g.consumers }));
+  });
 
   return {
-    schema: "vomega-pm-portfolio/0",
+    schema: "vomega-pm-portfolio/1",
     sourceHead,
-    seedDigest: digest(seed),
-    note: "Projection only. Program meaning is canonical in .project/meta-tracker.json; plan/evidence are derived; execution/proof state is owned by the ratchet. Do not hand-edit.",
+    seedDigest: digest({ scope, programs: [...scope].sort().map((id) => set.programs[id]) }),
+    managedScope: scope,
+    note: "Projection of the five owner-selected programs only. Canonical meaning is read from .project/meta-tracker.json; plan/evidence are derived; execution/proof state is owned by the ratchet and referenced live at check time. Do not hand-edit.",
     counts,
-    gates,
+    crossProgramGates,
     programs,
   };
 }
 
-function locText(loc: unknown): string {
-  const l = loc as { band?: string; range?: number[] } | undefined;
-  if (!l || !l.range) return "?";
-  return `${l.range[0]}-${l.range[1]} (${l.band})`;
-}
-
-/** Escape a value for a Markdown table cell so "|" or a newline inside text cannot break the table. */
 const cell = (s: string): string => s.replace(/\r?\n/g, " ").replace(/\|/g, "\\|");
+const locText = (loc: Phase["loc"]): string => `${loc.range[0]}-${loc.range[1]} (${loc.band}, ${loc.confidence})`;
+const dashes = (a: string[]): string => (a.length ? a.join(", ") : "—");
+
+const PROVENANCE = (pf: Portfolio): string =>
+  [
+    "> **Generated — do not hand-edit.** PM manages exactly the five owner-selected programs; the other 62 meta programs stay canonical in `.project/meta-tracker.json` and appear here only as external references.",
+    ">",
+    `> Source HEAD \`${pf.sourceHead}\` · seed digest \`${short(pf.seedDigest)}\` · regenerate: \`bun run pm\` · validate: \`bun run pm:check\` · scope: \`.project/pm/scope.json\` (owner-directed; see \`.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md\`).`,
+  ].join("\n");
+
+export function renderViews(pf: Portfolio): Record<string, string> {
+  const out: Record<string, string> = {};
+
+  // 1. SELECTED-PROGRAMS.md
+  const s: string[] = ["# PM — Selected Programs", "", PROVENANCE(pf), ""];
+  s.push(`Managed set: **${pf.managedScope.join(", ")}** — ${pf.counts.programs} programs. Plan resolution: ${Object.entries(pf.counts.planResolution).map(([k, v]) => `${k} ${v}`).join(" · ")}. Evidence: ${Object.entries(pf.counts.evidenceState).map(([k, v]) => `${k} ${v}`).join(" · ")}.`);
+  s.push("");
+  s.push("PM has no decisioning authority: it does not choose, rank, add, drop, activate or redesign programs. Scope changes only by explicit owner instruction recorded in `.project/pm/scope.json`.");
+  s.push("");
+  s.push("| ID | Program | Why it exists (canonical) | Canonical state | Plan | Evidence | Phases | Gates |");
+  s.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
+  for (const p of pf.programs) {
+    s.push(`| ${p.id} | ${cell(p.name)} | ${cell(p.purpose)} | ${cell(p.canonicalState ?? "—")} | ${p.planResolution} | ${p.evidenceState} | ${p.phaseCount} | ${p.gateCount} |`);
+  }
+  s.push("");
+  out["SELECTED-PROGRAMS.md"] = s.join("\n") + "\n";
+
+  // 2. ROADMAP.md — all 25 phases
+  const r: string[] = ["# PM — Roadmap (managed five)", "", `All ${pf.programs.reduce((n, p) => n + p.phaseCount, 0)} phases across the managed five. Effort is engineering complexity, not calendar time; LOC is a planning prior, never a productivity target.`, ""];
+  for (const p of pf.programs) {
+    r.push(`## ${p.id} — ${p.name}`, "");
+    r.push("| Phase | Name | Objective | Effort | LOC | Blocked by | Exit gates | Soft deps | Review |");
+    r.push("| --- | --- | --- | --- | --- | --- | --- | --- | --- |");
+    for (const ph of p.phases) {
+      r.push(`| ${ph.id} | ${cell(ph.name)} | ${cell(ph.objective)} | ${ph.effort} | ${locText(ph.loc)} | ${dashes(ph.blockedBy)} | ${ph.exitGates.length ? ph.exitGates.join(", ") : "**none**"} | ${cell(dashes(ph.softDeps))} | ${ph.needsReview ? "**decomposition review**" : ""} |`);
+    }
+    r.push("");
+  }
+  out["ROADMAP.md"] = r.join("\n") + "\n";
+
+  // 3. DEPENDENCIES.md — gate graph
+  const d: string[] = ["# PM — Dependency gates (managed five)", "", "Narrow gates, not whole-program serialization. A consumer is unlocked when its named gate is satisfied — the producing program does not have to be complete.", ""];
+  d.push("| Gate | Program | Producing phase | Status | Statement | Consumers |");
+  d.push("| --- | --- | --- | --- | --- | --- |");
+  for (const p of pf.programs) for (const g of p.gates) {
+    d.push(`| ${g.id} | ${p.id} | ${g.producingPhase} | ${g.status} | ${cell(g.statement)} | ${g.consumers.join(", ")} |`);
+  }
+  d.push("");
+  d.push("## Cross-program unlocks", "");
+  for (const g of pf.crossProgramGates) d.push(`- **${g.id}** (${g.program}) → ${g.consumers.join(", ")} — ${g.statement}`);
+  d.push("");
+  d.push("## External references (outside PM scope — never managed here)", "");
+  const ext = pf.programs.flatMap((p) => p.externalDependencies.map((e) => ({ ...e, program: p.id })));
+  for (const e of ext) d.push(`- ${e.program} → \`${e.ref}\`: ${e.reason}`);
+  if (!ext.length) d.push("- none");
+  d.push("");
+  out["DEPENDENCIES.md"] = d.join("\n") + "\n";
+
+  // 4. ESTIMATES.md
+  const e: string[] = ["# PM — Estimates (managed five)", "", "Ranges with confidence. Estimates are hypotheses refined by evidence (source inspection, prototypes); they are never targets and never grade a worker. E5 phases require a decomposition review before direct execution.", ""];
+  for (const p of pf.programs) {
+    e.push(`## ${p.id} — ${p.name}`, "");
+    e.push("| Phase | Effort | Implementation LOC | Confidence | Review |");
+    e.push("| --- | --- | --- | --- | --- |");
+    let lo = 0, hi = 0;
+    for (const ph of p.phases) {
+      e.push(`| ${ph.id} ${cell(ph.name)} | ${ph.effort} | ${ph.loc.range[0]}–${ph.loc.range[1]} (${ph.loc.band}) | ${ph.loc.confidence} | ${ph.needsReview ? "required (E5)" : ""} |`);
+      lo += ph.loc.range[0];
+      hi += ph.loc.range[1];
+    }
+    e.push(`| **total** | — | **${lo}–${hi}** | LOW | ${p.needsReview.length ? "P5 decomposition review outstanding" : ""} |`);
+    e.push("");
+  }
+  out["ESTIMATES.md"] = e.join("\n") + "\n";
+
+  // 5. Program dossiers
+  for (const p of pf.programs) {
+    const o: string[] = [`# ${p.id} — ${p.name}`, "", PROVENANCE(pf), ""];
+    o.push(`**Canonical (META-TRACKER):** purpose — ${p.purpose}`, `**Canonical state:** ${p.canonicalState ?? "—"}`, `**Canonical priority:** ${p.canonicalPriority ?? "—"}`, "");
+    o.push("## Explanation", "", p.dossier.explanation, "");
+    o.push("## Problem — why this program exists", "", p.dossier.problem, "");
+    o.push("## Objectives", "");
+    p.dossier.objectives.forEach((x, i) => o.push(`${i + 1}. ${x}`));
+    o.push("");
+    o.push("## Final Ω vision contribution", "", p.dossier.visionContribution, "");
+    o.push("## Boundaries / anti-goals", "");
+    for (const b of p.dossier.boundaries) o.push(`- ${b}`);
+    o.push("");
+    o.push("## Success conditions", "");
+    for (const x of p.dossier.successConditions) o.push(`- ${x}`);
+    o.push("");
+    o.push("## Falsifiers / open questions", "");
+    for (const x of p.dossier.falsifiers) o.push(`- ${x}`);
+    o.push("");
+    o.push("## Phases", "");
+    o.push("| Phase | Objective | Effort | LOC | Blocked by | Exit gates |");
+    o.push("| --- | --- | --- | --- | --- | --- |");
+    for (const ph of p.phases) {
+      o.push(`| ${ph.id} ${cell(ph.name)} | ${cell(ph.objective)} | ${ph.effort} | ${locText(ph.loc)} | ${dashes(ph.blockedBy)} | ${ph.exitGates.join(", ")} |`);
+    }
+    o.push("");
+    for (const ph of p.phases) {
+      if (!ph.risks.length && !ph.openQuestions.length) continue;
+      o.push(`**${ph.id} — ${ph.name}**`, "");
+      for (const x of ph.risks) o.push(`- risk: ${x}`);
+      for (const x of ph.openQuestions) o.push(`- open question: ${x}`);
+      o.push("");
+    }
+    o.push("## Exit gates", "");
+    o.push("| Gate | Producing phase | Status | Statement | Evidence expected | Consumers |");
+    o.push("| --- | --- | --- | --- | --- | --- |");
+    for (const g of p.gates) o.push(`| ${g.id} | ${g.producingPhase} | ${g.status} | ${cell(g.statement)} | ${cell(g.evidence)} | ${g.consumers.join(", ")} |`);
+    o.push("");
+    if (p.externalDependencies.length) {
+      o.push("## External dependencies (outside PM scope — referenced only)", "");
+      for (const x of p.externalDependencies) o.push(`- \`${x.ref}\` — ${x.reason}`);
+      o.push("");
+    }
+    if (p.gaps.length) {
+      o.push("## Carried gaps", "");
+      for (const g of p.gaps) o.push(`- \`${g.id}\` (${g.kind}) — ${g.statement}`);
+      o.push("");
+    }
+    o.push("## Sources", "");
+    for (const src of p.dossier.sources) o.push(`- ${src}`);
+    o.push("");
+    out[`PROGRAMS/${p.id}.md`] = o.join("\n") + "\n";
+  }
+
+  // 6. machine-readable projection
+  out["portfolio.json"] = JSON.stringify(pf, null, 2) + "\n";
+  return out;
+}
 
 const HEAD_LINE_PREFIX = "> Source HEAD `";
 
@@ -145,75 +282,15 @@ export function stripVolatileHead(jsonText: string): string {
   }
 }
 
-/** Neutralize the volatile HEAD line in generated Markdown. The seed digest line stays, so seed drift is still caught. */
+/** Neutralize the volatile HEAD line in generated Markdown. Seed digest and every other line still compare. */
 export function stripVolatileHeadMd(md: string): string {
   return md.split("\n").filter((l) => !l.startsWith(HEAD_LINE_PREFIX)).join("\n");
 }
 
-export function renderPortfolioMd(pf: Portfolio): string {
-  const lines: string[] = [];
-  lines.push("# PM Portfolio (generated)");
-  lines.push("");
-  lines.push("> **Projection only.** Do not edit by hand. Program meaning is canonical in `.project/meta-tracker.json`; plan resolution and evidence state are derived; execution/proof state belongs to the ratchet.");
-  lines.push(">");
-  lines.push(`> Source HEAD \`${pf.sourceHead}\``);
-  lines.push(`> seed digest \`${short(pf.seedDigest)}\` · regenerate: \`bun run pm\` · validate: \`bun run pm:check\``);
-  lines.push("");
-  lines.push("## Counts");
-  lines.push("");
-  lines.push(`- programs: **${pf.counts.programs}** · seeded: **${pf.counts.seeded}** · registered-only: **${pf.counts.programs - pf.counts.seeded}**`);
-  lines.push(`- plan resolution: ${Object.entries(pf.counts.planResolution).map(([k, v]) => `${k} ${v}`).join(" · ")}`);
-  lines.push(`- evidence state: ${Object.entries(pf.counts.evidenceState).map(([k, v]) => `${k} ${v}`).join(" · ")}`);
-  lines.push("");
-  lines.push("## Portfolio");
-  lines.push("");
-  lines.push("| ID | Program | Purpose (why it exists) | Plan | Evidence | Phases | Gates | Gaps | Ungated |");
-  lines.push("| --- | --- | --- | --- | --- | --- | --- | --- | --- |");
-  for (const p of pf.programs) {
-    lines.push(`| ${p.id} | ${cell(p.name)} | ${cell(p.purpose)} | ${p.planResolution} | ${p.evidenceState} | ${p.phaseCount} | ${p.gateCount} | ${p.gapCount} | ${p.ungatedPhases.length || ""} |`);
+export function writeViews(contents: Record<string, string>): void {
+  for (const [rel, text] of Object.entries(contents)) {
+    const target = join(paths.outDir, rel);
+    mkdirSync(dirname(target), { recursive: true });
+    writeFileSync(target, text);
   }
-  lines.push("");
-  lines.push("## Cross-program gates");
-  lines.push("");
-  lines.push("| Gate | Program | Status | Statement | Consumers |");
-  lines.push("| --- | --- | --- | --- | --- |");
-  for (const g of pf.gates) {
-    lines.push(`| ${g.id} | ${g.program} | ${g.status} | ${cell(g.statement)} | ${g.consumers.join(", ")} |`);
-  }
-  lines.push("");
-  lines.push("## Seeded program detail");
-  lines.push("");
-  for (const p of pf.programs.filter((x) => x.seeded)) {
-    lines.push(`### ${p.id} — ${p.name}`);
-    lines.push("");
-    lines.push(`Plan **${p.planResolution}** · evidence **${p.evidenceState}** · canonical state (tracker): \`${p.canonicalState ?? "n/a"}\``);
-    lines.push("");
-    lines.push("| Phase | Name | Outcome | Effort | LOC | Blocked by | Exit gates | Soft deps |");
-    lines.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
-    for (const ph of p.phases) {
-      const blocked = ph.blockedBy.length ? ph.blockedBy.join(", ") : "—";
-      const gatesText = ph.exitGates.length ? ph.exitGates.join(", ") : "**none**";
-      const soft = ph.softDeps.length ? ph.softDeps.join(", ") : "—";
-      lines.push(`| ${ph.id} | ${cell(ph.name)} | ${cell(ph.outcome)} | ${ph.effort} | ${locText(ph.loc)} | ${blocked} | ${gatesText} | ${cell(soft)} |`);
-    }
-    lines.push("");
-    if (p.gaps.length) {
-      lines.push("**Carried gaps:**");
-      lines.push("");
-      for (const g of p.gaps) lines.push(`- \`${g.id}\` (${g.kind}) — ${g.statement}`);
-      lines.push("");
-    }
-  }
-  return lines.join("\n") + "\n";
-}
-
-export function projectSource(seed: Seed, tracker: Tracker, events: Events, sourceHead: string): { json: string; md: string; canonical: string } {
-  const pf = buildPortfolio(seed, tracker, events, sourceHead);
-  return { json: JSON.stringify(pf, null, 2) + "\n", md: renderPortfolioMd(pf), canonical: canonicalize(pf) };
-}
-
-export function writeProjection(text: { json: string; md: string }): void {
-  mkdirSync(dirname(paths.outJson), { recursive: true });
-  writeFileSync(paths.outJson, text.json);
-  writeFileSync(paths.outMd, text.md);
 }

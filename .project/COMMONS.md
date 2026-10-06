@@ -353,3 +353,15 @@ Gate 4 re-scoped: the blocker is smaller than recorded. Bundled ZCode CLI 0.16.9
 Evidence discipline: presence/version/hash only. No credential, token or endpoint value was written to any artifact. Noted that `orca-runtime.json` holds a live runtime `authToken` and `orca-e2ee-keypair.json` exists — both sensitive, never to be committed.
 
 Next action: owner decides D1 and D2. No executor running; Gates 1–10 not started.
+
+## PM owner-correction executed — 2026-10-06
+
+Owner directive [PM-CORRECTION-FIRST-FIVE-ONLY.md](pm/PM-CORRECTION-FIRST-FIVE-ONLY.md) (assessed `b4ed79d`) is definitive: PM manages **exactly five** programs (MP-21/54/55/56/60), holds **no decisioning authority**, and v0.1 feature expansion is frozen. Applied at HEAD `3ccaf2c`:
+
+- **Scope correction (C1):** managed set declared in `.project/pm/scope.json` (owner-owned; expansion only by explicit owner instruction) and enforced by `pm:check` — a program file outside scope, or a scope program with no file, FAILS. The 67-program portfolio view is gone; the other 62 appear only as external references (`EXTERNAL_REF_IS_MANAGED` guard: managed programs connect by gate, not by reference).
+- **Dossiers + phases (C2/C3):** five program files authored in parallel by five bounded workers (disjoint write surfaces, ≤10 tool calls each), normalized to schema `vomega-pm-program/1` (dossier: explanation / problem / 4–8 objectives / vision contribution grounded in VISION pillars / boundaries / success conditions / falsifiers / sources; 25 phases, every phase exit-gated — the 9 formerly ungated phases got deliberate gates MP54-G3/G4, MP55-G3/G4, MP56-G3/G5, MP60-G1/G3/G5; MP60-P5 carries the E5 decomposition-review flag).
+- **Evidence correction (C5):** no blanket "UNPROVEN 67" — evidence state is derived for the five only; execution/proof state stays with the Ratchet, referenced live at check time and never stored.
+- **Views (C6):** `generated/SELECTED-PROGRAMS.md`, `ROADMAP.md` (25 phases), `DEPENDENCIES.md` (gate graph + external references), `ESTIMATES.md`, five `PROGRAMS/MP-XX.md` dossiers, and `portfolio.json` (machine projection), all freshness-checked.
+- **Feature freeze (C0):** the v0.1 backlog is parked; no frontier/ranking/task-generation work.
+
+Verification: `pm:test` 20 pass / 0 fail (incl. scope-violation and managed-set tests); `pm:check` ok (1 warning = the legitimate MP60-P5 E5 flag); `omega:quick` 62/0/1622; `ratchet drift` 6/6. Remaining: C7 fresh-worker dogfood (target ≥14/15) and C8 independent review before PM evolution resumes. Note: another session's Orca-research entry follows above; no conflict — PM touched only `.project/pm/**`, `.project/agentic-launch/STATUS.md` and this entry.
