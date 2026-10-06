@@ -149,7 +149,7 @@ Priority:
 | ID | Meta program | What it exists to make true | Current state | Priority | Execution owner(s) | Main dependencies / notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | MP-24 | **Provider Lab** | Instrument real provider behavior in Shadow / Control / Conformance / Healing modes and turn messy live reality into reusable knowledge. | STRONG HYPOTHESIS; PRV-L1 reconnaissance only. | PARALLEL | PRV + TRU | Development Lab, not product authority. |
-| MP-25 | **Browser transport & Account identity** | Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness. | **RECON Lock E** only; no live attach. | **NOW critical external path** | PRV + TRU | TRU-05 live-proof protocol + consent/evidence boundary before live observation. |
+| MP-25 | **Browser transport & Account identity** | Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness. | **RECON only; no live attach. TRU-05 candidate protocol drafted.** | **NOW critical external path** | PRV + TRU | Live observation remains blocked by owner/TOS/consent boundaries; start with read-only Account/session falsifier only after those boundaries permit it. |
 | MP-26 | **Provider/Account/Model routing** | Route among valid Providers, Accounts and optional Models without hidden defaults or silent retargeting. | Candidate semantics; no live Account binding. | NOW | SDW + LNC + PRV | Model ≠ Provider ≠ Account ≠ Session. |
 | MP-27 | **Provider packs / realization boundary** | Isolate provider-specific URLs, identity signals, steps and completion signals behind shared semantic capabilities. | DESIGN / baseline evidence. | NEXT | PRV | First provider is proving realization; provider 2 must falsify abstractions. |
 | MP-28 | **Live `prompt.send` realization** | One real prompt goes through the selected Account with attempt/result evidence and no false success. | UNPROVEN; `prompt.send` absent from current manifests/src. | NEXT after transport + GOV | PRV + RTE + TRU | Must first become a real source-native capability and governed realization. |
@@ -175,7 +175,7 @@ Priority:
 
 | ID | Meta program | What it exists to make true | Current state | Priority | Execution owner(s) | Main dependencies / notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| MP-41 | **Truth / proof ledger / falsifiers / maturity** | Every important claim has an evidence level, owner, falsifier and independent review. | TRU-L1 active review demonstrated; release ledger/falsifier suite still roadmap work. | NOW / continuous | TRU | Fixture ≠ live; promotion is proof, not confidence. |
+| MP-41 | **Truth / proof ledger / falsifiers / maturity** | Every important claim has an evidence level, owner, falsifier and independent review. | Independent review demonstrated; D1 Ratchet proof machinery exists; TRU-05 live-proof protocol is a candidate, not live evidence. | NOW / continuous | TRU | Fixture ≠ live; promotion is proof, not confidence. |
 | MP-42 | **Harvest-First Engineering / Harvest Bench** | Search baseline/history/ecosystem before expensive invention; assay candidates as reuse/adapt/wrap/port/evidence/reject. | ACTIVE doctrine; PRV-L1 used it. | continuous | every owner; DEV/R&D coordinate | Not a link-dump research department. |
 | MP-43 | **Historical VIVIM / BCP knowledge mining** | Reuse old proofs, failures, mechanisms and destination reasoning without inheriting old organization or law. | Available external knowledge mine. | PARALLEL on demand | owning lane + TRU | Time-sensitive facts must be refreshed. |
 | MP-44 | **OS taxonomy / non-AI benchmark corpus** | Stress semantic/reflection/visual systems against hundreds of non-AI capabilities. | HISTORICAL/EXTERNAL benchmark; not adopted product scope. | PARALLEL after core Lab | EXP + SDW + SKW | 291 capabilities / 305 Windows realizations are authored evidence, not live proof. |
@@ -319,7 +319,7 @@ These seven threads can proceed largely in parallel once interface contracts are
 
 ## NOW — independent live-reality path
 
-8. **MP-41 — TRU-05 live-proof protocol**
+8. **MP-41 — validate/adopt the drafted TRU-05 live-proof protocol after owner boundaries**
 9. **MP-25 — read-only browser transport + Account identity**
 10. **MP-31/32 — consent + attempt/evidence envelope**
 11. **MP-28 — real prompt.send only after the above**
