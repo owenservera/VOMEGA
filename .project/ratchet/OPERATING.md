@@ -15,9 +15,7 @@ git add -A && git commit -m "D1-004: required fields derived from declaration"
 bun run ratchet release D1-004 --by codex-1
 ```
 
-For D1 execution policy beyond the CLI mechanics, also read
-`../deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md`. That directive is
-coordination only; this Ratchet remains the task/proof authority.
+The durable acceleration rules have been folded directly into this operating guide, root `AGENTS.md` and D1 Start Here. No separate acceleration layer is required.
 
 ### Execution discipline
 
