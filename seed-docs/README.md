@@ -19,7 +19,7 @@ Bootstrap has run. The seed still carries product intent, but its documents do n
 
 Bootstrap-era facts that later evidence superseded. They are left in place as written, and should be read as history:
 
-- **"Five Space Bunny lanes" as the execution pool** (`AGENTS.md`, `AUTONOMY.md`, `PROJECT-CONTEXT.md`, `CODEX-BOOTSTRAP-START-HERE.md`, `ZCODE-CAPABILITY-SPACE.md`, `ELEPHANT-CONTEXT-NETWORK.md`, `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`). ZCode now routes through `openrouter/auto`; the five accounts were never individually probed. Capacity is measured at each launch.
+- **Five configured Space Bunny accounts/lanes are a dated local-machine environment fact, not a discarded fact.** The bootstrap census found Owen + OpenCode accts 2–5 configured with Space Bunny Free. Preserve that as machine configuration context unless a later machine census proves it changed. What later evidence superseded is only the inference that those five configured accounts define five live worker slots or the current routing topology: ZCode was later observed using `openrouter/auto`, and safe concurrency must be measured at execution time.
 - **Codex as the bootstrap executor.** Done. No executor holds a standing role.
 - **"Required development organization at bootstrap"** (`AGENTS.md`): four coverage areas with heads and a Commons. The bootstrap created that minimal coverage. It is coverage guidance, not a permanent department structure; the same document says the project may split, merge, replace or retire workstreams.
 - **The floating command box as "one candidate"** (`BUILD-FOCUS.md` §1, `CODEX-BOOTSTRAP-START-HERE.md`). Owen has since selected it as the first-release mission.
@@ -178,7 +178,7 @@ These are **not requirements**. They should be activated only against measured b
 
 ## First bootstrap executor — historical
 
-The initial bootstrap was run on 2026-10-05. **CODEX-BOOTSTRAP-START-HERE.md** is retained as a historical execution record, not a current entry point. Codex does not hold a standing role, and the historical five-Space-Bunny topology is superseded as runtime guidance.
+The initial bootstrap was run on 2026-10-05. **CODEX-BOOTSTRAP-START-HERE.md** is retained as a historical execution record, not a current entry point. Codex does not hold a standing role. The five configured Space Bunny accounts remain local-machine environment context; only treating them as a fixed execution topology is superseded.
 
 For current execution, start from `../.project/SITREP.md`, `../.project/META-TRACKER.md`, and `../.project/agentic-launch/STATUS.md`. The Meta Tracker preserves the complete 67-program map plus 31 accelerator hypotheses; current executors are selected by task/evidence/capacity rather than inherited bootstrap topology.
 
