@@ -115,7 +115,7 @@
       "state": "DESIGN / candidate; no multi-revision proof.",
       "priority": "NOW",
       "owners": "LNC + EXP",
-      "notes": "Needs explicit revision corpus and late-result suppression test."
+      "notes": "Needs explicit revision corpus, late-result suppression, and revision-bound negative-intent frontier signals derived from the same candidate manifold."
     },
     {
       "id": "MP-11",
@@ -147,29 +147,29 @@
     {
       "id": "MP-14",
       "name": "Command Visual Language / semantic interaction protocol",
-      "purpose": "User can see what Ω interpreted, what is unresolved and what will happen; clicks edit semantics rather than hidden UI state.",
+      "purpose": "User can see what Ω interpreted, what is unresolved, the highest-value plausible counterfactual when useful, and what will happen; clicks edit semantics rather than hidden UI state.",
       "state": "Rich DESIGN; no product implementation.",
       "priority": "NOW",
       "owners": "VFX",
-      "notes": "Uses semantic handles; presentation/icon library remains replaceable."
+      "notes": "Uses semantic handles; negative-intent signals are projected, not reparsed; presentation/icon library remains replaceable."
     },
     {
       "id": "MP-15",
       "name": "VisualSpec vNext / projector",
-      "purpose": "All UI surfaces receive one deterministic semantic projection and never reparse language.",
+      "purpose": "All UI surfaces receive one deterministic semantic projection, including revision-bound counterfactual/negative-frontier state where present, and never reparse language.",
       "state": "CANDIDATE Lock C; extend-vs-replace unresolved.",
       "priority": "NOW",
       "owners": "VFX + LNC",
-      "notes": "Must reconcile current VisualSpec/project.ts before freezing wire format."
+      "notes": "Must reconcile current VisualSpec/project.ts before freezing wire format; negative frontier is derived semantic projection, not UI-owned intent."
     },
     {
       "id": "MP-16",
       "name": "Automated Semantic Experiments",
-      "purpose": "Competing language/grounding/visual/Wiki designs run against pinned scenarios with semantic diffs and falsifiers.",
+      "purpose": "Competing language/grounding/visual/Wiki and negative-intent frontier policies run against pinned scenarios with semantic diffs, falsifiers and correction-cost metrics.",
       "state": "EXP baseline candidate; no full experiment engine.",
       "priority": "NOW / PARALLEL",
       "owners": "EXP + TRU",
-      "notes": "Build scenario, diff and metric engines; required-field metadata currently missing for some metrics."
+      "notes": "Evolve counterfactual ranking by evidence: minimize late semantic correction burden without maximizing interruption; required-field metadata remains missing for some existing metrics."
     },
     {
       "id": "MP-17",
