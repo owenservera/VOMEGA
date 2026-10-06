@@ -37,7 +37,7 @@ The Ratchet packet already supplies the core invariants and task-specific files.
 
 - D1-002 / interpreter work: [D1-CODE-MAP.md](D1-CODE-MAP.md).
 - D1-055…059B / Reflection-help work: [D1-REFLECTION-HARVEST-MAP.md](D1-REFLECTION-HARVEST-MAP.md).
-- execution/throughput/gate-hardening rules: [D1-EXECUTION-ACCELERATION-DIRECTIVE.md](D1-EXECUTION-ACCELERATION-DIRECTIVE.md).
+- execution/throughput/gate-hardening rules are embedded in `../ratchet/OPERATING.md` and the executable Ratchet gates/spec; no separate acceleration layer is required.
 - live Provider work is **outside D1** and uses `../live-proof/`.
 
 No additional design/PM pass is required for ordinary D1 tasks. If implementation uncovers a genuine D4/D5 semantic choice, use the existing design-intensity rule and produce an executable discriminator/prototype rather than another general roadmap.
