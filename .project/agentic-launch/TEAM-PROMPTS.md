@@ -57,6 +57,7 @@ Read first:
 - `seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md`
 - `seed-docs/SEMANTIC-DATA-ENGINE.md`
 - `seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md`
+- `seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md`
 - `.project/roadmap/workstreams/WS-CMD-command-nucleus.md`
 - `.project/roadmap/BASELINE-HARVEST-ASSAY.md`
 - current `vivim-nlcl-pure`, `vivim-nlcl`, and release-use corpus
@@ -78,6 +79,8 @@ Natural-language/model output is never authority.
 
 Priors rank; they do not silently resolve materially valid ambiguity.
 
+Preserve the revision-bound candidate manifold far enough that the negative-intent evaluator can challenge the leading interpretation without reparsing text. The compiler remains canonical; the negative frontier is derived counterfactual state, not a second intent engine.
+
 Begin with SITREP/TODO/BLOCKERS/PROOF. Produce exact corpus changes and a clear consumer handoff to VFX/EXP/RTE.
 
 ---
@@ -92,6 +95,7 @@ Read first:
 - `seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md`
 - `seed-docs/MVP-VISUALIZATION-SANDBOX.md`
 - `seed-docs/SEMANTIC-DATA-ENGINE.md`
+- `seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md`
 - current VisualSpec types and `project.ts`
 - SHL workstream
 - symbolic/SVG harvest as research evidence only
@@ -112,6 +116,8 @@ Build three presentation variants over the same semantic fixture:
 3. hybrid.
 
 Visual clicks that change meaning must emit explicit semantic edits and trigger recompilation.
+
+When a negative-intent frontier is present, project the smallest useful counterfactual rather than an N-best dump. The UI may expose the signal; it may not invent, rerank or silently select intent.
 
 Begin with SITREP/TODO/BLOCKERS/PROOF. Keep the sandbox development-only and stop at SIMULATED prompt.send.
 
@@ -164,6 +170,7 @@ Read first:
 - `seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md`
 - `seed-docs/SEMANTIC-RUNTIME-LAB.md`
 - `seed-docs/MVP-VISUALIZATION-SANDBOX.md`
+- `seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md`
 - current release-use corpus/tests
 - proof/maturity rules
 - launch dependency docs
@@ -178,7 +185,12 @@ Track at minimum:
 - false-ready;
 - ambiguity honesty;
 - deterministic replay;
-- semantic churn when revision sequences become available.
+- semantic churn when revision sequences become available;
+- time-to-useful-negative-signal;
+- early-correction capture;
+- correction-step reduction / avoided invalidation cost;
+- unnecessary negative-signal rate;
+- frontier stability and stale-signal safety.
 
 Use metamorphic tests.
 
@@ -281,15 +293,16 @@ First responsibilities:
 1. verify current executor/harness capacity read-only;
 2. protect provider/auth configuration;
 3. create short-lived task isolation only where needed;
-4. dispatch bounded work derived from current STATUS and META-TRACKER (the first wave has already run);
-5. maintain one merge queue;
-6. ensure handoffs are durable;
-7. trigger independent review;
-8. retire task branches/worktrees after integration.
+4. dispatch bounded work from the existing owner/PM/Ratchet execution surfaces;
+5. keep one worker on the active critical-spine task and use extra capacity only on genuinely disjoint work;
+6. maintain one merge queue and re-check after integration;
+7. ensure handoffs are durable but do not duplicate every short-lived task across STATUS/Commons/claims;
+8. trigger independent review and gate hardening;
+9. retire task branches/worktrees after integration.
 
 Do not become permanent master.
 
-Do not build a dashboard/elephant/network unless measured friction justifies an experiment.
+Do not build a dashboard/elephant/network, new scheduler, scorecard bureaucracy or parallel acceleration hierarchy unless measured friction justifies the smallest reversible experiment. If the disjoint execution frontier is narrower than available model capacity, spend excess capacity on independent review, gate hardening, harvest assays or failure reproduction—not speculative PM.
 
 Use ZCode dynamic workflow capability if it is actually available and it reduces manual dispatch overhead.
 
@@ -319,14 +332,16 @@ First target:
 - independent review of first-wave outputs.
 
 Pay special attention to:
-- Provider/Account/Model identity collapse;
+- Provider/Account/Model/Session identity collapse;
 - hidden defaults;
 - false READY;
 - source/Wiki claims without basis;
 - VisualSpec semantics hidden in UI;
 - fixture presented as live;
 - risk/policy embedded in identity;
-- late revision overwrite.
+- late revision overwrite;
+- weak gates that can pass on placeholders/constants/substrings;
+- negative-intent policies that become a second parser, hidden target selector or ambiguity suppressor.
 
 A finding should state:
 - claim challenged;
@@ -336,5 +351,7 @@ A finding should state:
 - disposition needed.
 
 Do not block work by vague concern.
+
+For load-bearing contract/gate changes, read the gate source and changed implementation, run the verification independently, and when cheap try one plausible sabotage/mutation in a disposable worktree. A mutation that survives is evidence the gate is weaker than the claim.
 
 Begin with SITREP/TODO/BLOCKERS/PROOF.
