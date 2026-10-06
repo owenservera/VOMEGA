@@ -58,6 +58,18 @@ to proceed yet) is reported distinctly from **BLOCKED** (a required technical ga
 
 The dependency graph stays factual: it says what *can* happen; the build plan says what was *chosen*.
 
+## Execution acceleration boundary
+
+PM may expose dependencies, design intensity, owner-selected waves and evidence-linked phase state. It does **not** become the runtime manager for individual D1 tasks.
+
+The 2026-10-06 acceleration review is integrated through the existing execution layers rather than installed as a new PM subsystem:
+
+- D1 execution rules live in [../deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md](../deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md).
+- Ratchet task/proof mechanics remain in [../ratchet/OPERATING.md](../ratchet/OPERATING.md).
+- current-agent visibility remains in [../agentic-launch/DEV-AGENT-REGISTRATION.md](../agentic-launch/DEV-AGENT-REGISTRATION.md).
+
+PM should improve a selected phase's decomposition when that creates execution leverage, then hand atomic work to the Ratchet. It should not answer an execution bottleneck by creating another portfolio, scorecard, scheduler, role hierarchy or status database.
+
 ## Documents
 
 - [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md) — **the definitive scope correction**: five programs only, no decisioning authority.
@@ -67,7 +79,7 @@ The dependency graph stays factual: it says what *can* happen; the build plan sa
 - [ZCODE-BOOTSTRAP-PROMPT.md](ZCODE-BOOTSTRAP-PROMPT.md) — the entry prompt for a fresh ZCode session on PM work.
 - [ZCODE-PM-TEAM.md](ZCODE-PM-TEAM.md) — the custodial team charter and success criterion.
 - [SYSTEM-DESIGN.md](SYSTEM-DESIGN.md) — the operating design of the implemented system.
-- [EVOLUTION-RULES.md](EVOLUTION-RULES.md) — rules for deepening phases without ceremony.
+- [EVOLUTION-RULES.md](EVOLUTION-RULES.md) — rules for deepening phases without ceremony, including execution handoff, design-intensity discipline, and measured-bottleneck requirements for new development machinery.
 - [FIRST-FIVE-SEED.md](FIRST-FIVE-SEED.md) — the original five-phase seed the current roadmaps derive from.
 - [PROGRAM-REGISTER.md](PROGRAM-REGISTER.md) — **superseded as a PM artifact (2026-10-06 owner correction)**: kept as reference-only context. Canonical 67-program meaning lives in `../META-TRACKER.md`; PM manages only the five programs in [scope.json](scope.json).
 
