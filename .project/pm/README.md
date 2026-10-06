@@ -18,6 +18,6 @@ From `omega-baseline/`: `bun run pm`, `bun run pm:check`, `bun run pm:test`.
 
 ## Boundary to execution
 
-PM stops above atomic work. Once acceptance is stateable, implementation/proof belongs to Ratchet/tasks. The acceleration-pack findings are already integrated into `../deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md` and `../ratchet/OPERATING.md`; PM does not need another acceleration subsystem.
+PM stops above atomic work. Once acceptance is stateable, implementation/proof belongs to Ratchet/tasks. The acceleration-pack findings are already folded into root `AGENTS.md`, D1 Start Here, `../ratchet/OPERATING.md` and PM evolution rules; the temporary integration directive is archived. PM does not need another acceleration subsystem.
 
 The historical first-five seed, correction/setup directives, ZCode PM team/bootstrap docs, reconnaissance and dated reviews are preserved under `../archive/2026-10-06/pm-bootstrap/`. A few machine-referenced original paths remain as archival tombstones.

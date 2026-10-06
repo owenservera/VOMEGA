@@ -40,7 +40,7 @@ Completed doc-only inputs include:
 - `deliverables/D1-REFLECTION-HARVEST-MAP.md` — Phase-F reuse mapping;
 - `live-proof/LIVE-PROOF-PROTOCOL.md` — candidate TRU-05 evidence contract;
 - `live-proof/OWEN-DECISION-BRIEF.md` — R-2/RD-8/RD-10 owner boundary brief;
-- `deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md` — execution discipline integrated into Ratchet/claims rather than a second PM layer.
+- acceleration execution discipline is folded directly into root `AGENTS.md`, `ratchet/OPERATING.md`, PM evolution rules and D1 Start Here; the temporary integration directive is archived.
 
 Historical/bootstrap/tool/harness material is under `.project/archive/` and is not default reading.
 
