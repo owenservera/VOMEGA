@@ -2,11 +2,21 @@
 
 > **Generated — do not hand-edit.** PM manages exactly the five owner-selected programs; the other 62 meta programs stay canonical in `.project/meta-tracker.json` and appear here only as external references.
 >
-> Source HEAD `5a1df80` · seed digest `854f282c02c3` · regenerate: `bun run pm` · validate: `bun run pm:check` · scope: `.project/pm/scope.json` (owner-directed; see `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md`).
+> Source HEAD `5244cce` · seed digest `854f282c02c3` · regenerate: `bun run pm` · validate: `bun run pm:check` · scope: `.project/pm/scope.json` (owner-directed; see `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md`).
 
-Managed set: **MP-21, MP-54, MP-55, MP-56, MP-60** — 5 programs. Plan resolution: PHASED 5. Evidence: UNPROVEN 5.
+Managed set: **MP-21, MP-54, MP-55, MP-56, MP-60** — 5 programs.
 
-PM has no decisioning authority: it does not choose, rank, add, drop, activate or redesign programs. Scope changes only by explicit owner instruction recorded in `.project/pm/scope.json`.
+| Dimension | Reading |
+| --- | --- |
+| PM plan resolution | PHASED 5 — how deep PM plans each program |
+| PM evidence coverage | NO_LINKED_PROOF 5 — whether PM holds a **linked proof record**; *not* a claim about the project's evidence state |
+| Execution | not linked — no managed phase is scheduled into the Ratchet |
+
+Canonical state and real evidence live outside PM: current program state is read from `.project/meta-tracker.json`; execution and proof are owned by the Ω Proof Ratchet.
+
+## How PM scope expands
+
+**Only the owner (Owen) changes the managed set**, by editing `.project/pm/scope.json` and recording the instruction (see [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md) §19). PM cannot add, remove, rank or propose a program: `pm:check` fails if scope and program files disagree (`OUT_OF_SCOPE_PROGRAM`, `MISSING_PROGRAM`, `UNKNOWN_MANAGED_PROGRAM`), and no view, score or suggestion changes scope. A newly added program earns a full dossier before it receives phases or gates.
 
 ## Why these five (owner decision, not PM's)
 
@@ -16,11 +26,11 @@ The owner selected these five as **development multipliers**: they accelerate wo
 
 Phases are planning units. When a phase is selected for execution it descends: phase → work package → task → atomic task → proof. The executable layer in this repository is the **Ω Proof Ratchet** (`omega-baseline/experimental/ratchet/`), which computes task/gate/proof state from a spec and is the atomic execution/proof owner; `pm:check` references its state live and PM never stores a copy. No managed phase is currently scheduled into Ratchet tasks, so no phase below is claimed as running — a green plan is not execution.
 
-| ID | Program | Why it exists (canonical) | Canonical state | Plan | Evidence | Phases | Gates |
+| ID | Program | Canonical state (META-TRACKER) | PM plan | Execution | PM evidence coverage | Phases | Gates |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| MP-21 | Self-Knowledge Reflection Migrator / auto-Wiki migration tool | Read the existing codebase, extract structurally provable Reflection, identify gaps, propose safe migrations, and verify compliance. | DESIGN; SKW-L1 performed only the first read-only audit slice. Utility does not exist. | PHASED | UNPROVEN | 5 | 5 |
-| MP-54 | Automatic Context Bundles | Give fresh workers compact task-specific context derived from current repo reality. | EXPERIMENT hypothesis. | PHASED | UNPROVEN | 5 | 5 |
-| MP-55 | Failure Capsules / reproducible debugging packets | Package failure, environment, changed files and evidence so another worker can reproduce quickly. | EXPERIMENT hypothesis. | PHASED | UNPROVEN | 5 | 5 |
-| MP-56 | Trace → Fixture / regression harvesting | Turn live/provider/runtime behavior into privacy-reduced deterministic fixtures and tests. | DESIGN hypothesis, strongly complementary to Provider Lab + Lab. | PHASED | UNPROVEN | 5 | 5 |
-| MP-60 | Runtime dependency / impact graph + test selection | Know what a change affects and run the smallest high-confidence evidence loop without weakening merge/release gates. | EXPERIMENT hypothesis. | PHASED | UNPROVEN | 5 | 5 |
+| MP-21 | Self-Knowledge Reflection Migrator / auto-Wiki migration tool | DESIGN; SKW-L1 performed only the first read-only audit slice. Utility does not exist. | PHASED | not linked | NO_LINKED_PROOF | 5 | 5 |
+| MP-54 | Automatic Context Bundles | EXPERIMENT hypothesis. | PHASED | not linked | NO_LINKED_PROOF | 5 | 5 |
+| MP-55 | Failure Capsules / reproducible debugging packets | EXPERIMENT hypothesis. | PHASED | not linked | NO_LINKED_PROOF | 5 | 5 |
+| MP-56 | Trace → Fixture / regression harvesting | DESIGN hypothesis, strongly complementary to Provider Lab + Lab. | PHASED | not linked | NO_LINKED_PROOF | 5 | 5 |
+| MP-60 | Runtime dependency / impact graph + test selection | EXPERIMENT hypothesis. | PHASED | not linked | NO_LINKED_PROOF | 5 | 5 |
 

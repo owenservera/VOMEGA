@@ -6,7 +6,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { canonicalize, digest, short } from "../../ratchet/src/canonical.ts";
-import { evidenceState, planResolution } from "./derive.ts";
+import { pmEvidenceCoverage, planResolution } from "./derive.ts";
 import type { Dossier, Events, Gate, Gap, ManagedSet, Phase, ProgramFile } from "./schema.ts";
 
 export interface TrackerProgram {
@@ -55,7 +55,10 @@ export interface PortfolioProgram {
   canonicalNotes: string | null;
   dossier: Dossier;
   planResolution: string;
-  evidenceState: string;
+  /** Whether PM holds a linked proof record for this program — NOT the project's evidence state. */
+  pmEvidenceCoverage: string;
+  /** Whether this program is linked to an execution/proof system (Ratchet). "not linked" until a phase is scheduled. */
+  executionLink: string;
   phaseCount: number;
   gateCount: number;
   ungatedPhases: string[];
@@ -73,23 +76,23 @@ export interface Portfolio {
   seedDigest: string;
   managedScope: string[];
   note: string;
-  counts: { programs: number; planResolution: Record<string, number>; evidenceState: Record<string, number>; ungatedPhases: number; needsReview: number };
+  counts: { programs: number; planResolution: Record<string, number>; pmEvidenceCoverage: Record<string, number>; ungatedPhases: number; needsReview: number };
   crossProgramGates: { id: string; program: string; statement: string; consumers: string[]; external: boolean }[];
   programs: PortfolioProgram[];
 }
 
 export function buildPortfolio(set: ManagedSet, scope: string[], tracker: Tracker, events: Events, sourceHead: string): Portfolio {
   const managed = new Set(scope);
-  const counts = { programs: scope.length, planResolution: {} as Record<string, number>, evidenceState: {} as Record<string, number>, ungatedPhases: 0, needsReview: 0 };
+  const counts = { programs: scope.length, planResolution: {} as Record<string, number>, pmEvidenceCoverage: {} as Record<string, number>, ungatedPhases: 0, needsReview: 0 };
   const byId = new Map(tracker.programs.map((p) => [p.id, p]));
 
   const programs: PortfolioProgram[] = scope.map((id) => {
     const file = set.programs[id]!;
     const canonical = byId.get(id);
     const plan = planResolution({ phases: file.phases });
-    const ev = evidenceState(events.events, id);
+    const ev = pmEvidenceCoverage(events.events, id);
     counts.planResolution[plan] = (counts.planResolution[plan] ?? 0) + 1;
-    counts.evidenceState[ev] = (counts.evidenceState[ev] ?? 0) + 1;
+    counts.pmEvidenceCoverage[ev] = (counts.pmEvidenceCoverage[ev] ?? 0) + 1;
     const ungated = file.phases.filter((ph) => ph.exitGates.length === 0).map((ph) => ph.id);
     const review = file.phases.filter((ph) => ph.needsReview).map((ph) => ph.id);
     counts.ungatedPhases += ungated.length;
@@ -103,7 +106,8 @@ export function buildPortfolio(set: ManagedSet, scope: string[], tracker: Tracke
       canonicalNotes: canonical?.notes ?? null,
       dossier: file.dossier,
       planResolution: plan,
-      evidenceState: ev,
+      pmEvidenceCoverage: ev,
+      executionLink: "not linked (no phase scheduled into the Ratchet)",
       phaseCount: file.phases.length,
       gateCount: file.gates.length,
       ungatedPhases: ungated,
@@ -152,9 +156,19 @@ export function renderViews(pf: Portfolio): Record<string, string> {
 
   // 1. SELECTED-PROGRAMS.md
   const s: string[] = ["# PM — Selected Programs", "", PROVENANCE(pf), ""];
-  s.push(`Managed set: **${pf.managedScope.join(", ")}** — ${pf.counts.programs} programs. Plan resolution: ${Object.entries(pf.counts.planResolution).map(([k, v]) => `${k} ${v}`).join(" · ")}. Evidence: ${Object.entries(pf.counts.evidenceState).map(([k, v]) => `${k} ${v}`).join(" · ")}.`);
+  s.push(`Managed set: **${pf.managedScope.join(", ")}** — ${pf.counts.programs} programs.`);
   s.push("");
-  s.push("PM has no decisioning authority: it does not choose, rank, add, drop, activate or redesign programs. Scope changes only by explicit owner instruction recorded in `.project/pm/scope.json`.");
+  s.push("| Dimension | Reading |");
+  s.push("| --- | --- |");
+  s.push(`| PM plan resolution | ${Object.entries(pf.counts.planResolution).map(([k, v]) => `${k} ${v}`).join(" · ")} — how deep PM plans each program |`);
+  s.push(`| PM evidence coverage | ${Object.entries(pf.counts.pmEvidenceCoverage).map(([k, v]) => `${k} ${v}`).join(" · ")} — whether PM holds a **linked proof record**; *not* a claim about the project's evidence state |`);
+  s.push("| Execution | not linked — no managed phase is scheduled into the Ratchet |");
+  s.push("");
+  s.push("Canonical state and real evidence live outside PM: current program state is read from `.project/meta-tracker.json`; execution and proof are owned by the Ω Proof Ratchet.");
+  s.push("");
+  s.push("## How PM scope expands");
+  s.push("");
+  s.push("**Only the owner (Owen) changes the managed set**, by editing `.project/pm/scope.json` and recording the instruction (see [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md) §19). PM cannot add, remove, rank or propose a program: `pm:check` fails if scope and program files disagree (`OUT_OF_SCOPE_PROGRAM`, `MISSING_PROGRAM`, `UNKNOWN_MANAGED_PROGRAM`), and no view, score or suggestion changes scope. A newly added program earns a full dossier before it receives phases or gates.");
   s.push("");
   s.push("## Why these five (owner decision, not PM's)");
   s.push("");
@@ -164,10 +178,10 @@ export function renderViews(pf: Portfolio): Record<string, string> {
   s.push("");
   s.push("Phases are planning units. When a phase is selected for execution it descends: phase → work package → task → atomic task → proof. The executable layer in this repository is the **Ω Proof Ratchet** (`omega-baseline/experimental/ratchet/`), which computes task/gate/proof state from a spec and is the atomic execution/proof owner; `pm:check` references its state live and PM never stores a copy. No managed phase is currently scheduled into Ratchet tasks, so no phase below is claimed as running — a green plan is not execution.");
   s.push("");
-  s.push("| ID | Program | Why it exists (canonical) | Canonical state | Plan | Evidence | Phases | Gates |");
+  s.push("| ID | Program | Canonical state (META-TRACKER) | PM plan | Execution | PM evidence coverage | Phases | Gates |");
   s.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
   for (const p of pf.programs) {
-    s.push(`| ${p.id} | ${cell(p.name)} | ${cell(p.purpose)} | ${cell(p.canonicalState ?? "—")} | ${p.planResolution} | ${p.evidenceState} | ${p.phaseCount} | ${p.gateCount} |`);
+    s.push(`| ${p.id} | ${cell(p.name)} | ${cell(p.canonicalState ?? "—")} | ${p.planResolution} | not linked | ${p.pmEvidenceCoverage} | ${p.phaseCount} | ${p.gateCount} |`);
   }
   s.push("");
   out["SELECTED-PROGRAMS.md"] = s.join("\n") + "\n";
@@ -223,7 +237,7 @@ export function renderViews(pf: Portfolio): Record<string, string> {
   // 5. Program dossiers
   for (const p of pf.programs) {
     const o: string[] = [`# ${p.id} — ${p.name}`, "", PROVENANCE(pf), ""];
-    o.push(`**Canonical (META-TRACKER):** purpose — ${p.purpose}`, `**Canonical state:** ${p.canonicalState ?? "—"}`, `**Canonical priority:** ${p.canonicalPriority ?? "—"}`, "");
+    o.push(`**Canonical state (META-TRACKER):** ${p.canonicalState ?? "—"}`, `**PM plan resolution:** ${p.planResolution} (how deep PM plans this program)`, `**Execution link:** ${p.executionLink}`, `**PM evidence coverage:** ${p.pmEvidenceCoverage} (whether PM holds a linked proof record — not the project's evidence state)`, `**Why it exists (canonical):** ${p.purpose}`, "");
     o.push("## Explanation", "", p.dossier.explanation, "");
     o.push("## Problem — why this program exists", "", p.dossier.problem, "");
     o.push("## Objectives", "");
@@ -242,7 +256,7 @@ export function renderViews(pf: Portfolio): Record<string, string> {
     o.push("## Evidence pointers", "");
     o.push(`- canonical identity/state/priority: \`.project/meta-tracker.json\` (program row, read live at generation time)`);
     for (const ev of p.evidencePointers) o.push(`- ${ev.date} ${ev.kind} — \`${ev.ref}\``);
-    o.push(`- current evidence state: **${p.evidenceState}** — recorded events live in \`.project/pm/data/evidence-events.json\`; only a \`proof\` event promotes this. Execution/proof state is owned by the Ω Proof Ratchet (\`omega-baseline/experimental/ratchet/\`) and referenced live by \`pm:check\`; PM never stores a copy.`);
+    o.push(`- **PM evidence coverage:** ${p.pmEvidenceCoverage} — evidence events live in \`.project/pm/data/evidence-events.json\`; only a \`proof\` event links one. This says nothing about whether the program is proven: canonical state is in \`.project/meta-tracker.json\`, and execution/proof state is owned by the Ω Proof Ratchet (\`omega-baseline/experimental/ratchet/\`), referenced live by \`pm:check\` and never stored here.`);
     o.push("");
     o.push("## Phases", "");
     o.push("| Phase | Objective | Effort | LOC | Blocked by | Exit gates |");

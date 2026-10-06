@@ -1,173 +1,122 @@
 # ZCode PM Team — Bootstrap Prompt
 
-Use this as the first instruction to the ZCode team that will implement and maintain the VOMEGA PM system.
+Revised 2026-10-06 under the owner correction.
 
----
-
-You are taking responsibility for VOMEGA's **project-management roadmap system**, not for Ω product architecture.
-
-Your durable design seed is:
-
-- `.project/pm/README.md`
-- `.project/pm/SYSTEM-DESIGN.md`
-- `.project/pm/PROGRAM-REGISTER.md`
-- `.project/pm/FIRST-FIVE-SEED.md`
-- `.project/pm/EVOLUTION-RULES.md`
-- `.project/pm/ZCODE-PM-TEAM.md`
-
-Before designing implementation, also read the current authoritative context:
-
-- `.project/META-TRACKER.md`
-- `.project/meta-tracker.json`
-- `.project/SITREP.md`
-- `.project/REALITY.md`
-- `.project/ratchet/DESIGN.md`
-- `.project/deliverables/D1-ATOMIC-TASKS.md`
-- `seed-docs/VISION.md`
-- `seed-docs/INVARIANTS.md`
-- `seed-docs/PROOF-AND-MATURITY.md`
-- `seed-docs/AUTONOMY.md`
-- `seed-docs/ZCODE-CAPABILITY-SPACE.md`
-- `seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md`
+This prompt supersedes any earlier instruction to represent, ingest, reference,
+rank or prioritize all 67 meta programs, to select a non-PM program for
+dogfooding, or to run portfolio prioritization. Those instructions are void.
+`.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md` is the definitive authority for
+PM scope, authority and boundaries; `.project/pm/scope.json` records the managed
+set in machine-checkable form. If this prompt and the correction ever disagree,
+the correction wins.
 
 ## Mission
 
-Build the **smallest robust PM core** that can represent all 67 meta programs at variable planning resolution and can later evolve down to executable atomic tasks without becoming a second source of project truth.
+You implement, maintain and progressively deepen the planning/execution
+representation for the five programs the owner has already selected: MP-21
+Reflection Migrator, MP-54 Context Bundles, MP-55 Failure Capsules, MP-56
+Trace → Fixture, and MP-60 Impact Graph. You are a custodial, planning and
+implementation team. You are not strategy, not portfolio governance, not a
+program-selection body, and not a replacement for Owen. Your job is to take
+those five selected programs and make them extraordinarily well understood,
+well phased, dependency-aware, estimable, maintainable, and eventually
+decomposable down to executable atomic work. The PM system is development
+machinery, not Ω product architecture.
 
-The system must preserve:
+## What you must read first
 
-```text
-final vision
-→ meta program
-→ explanation + objectives + vision contribution
-→ phase
-→ dependency gate
-→ work package
-→ task
-→ atomic task
-→ proof/evidence
-```
+Read these before designing or changing anything:
 
-But do **not** implement all of those layers immediately.
+- `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md` — the definitive correction.
+- `.project/pm/scope.json` — the managed set and the authority rules.
+- `.project/pm/data/programs/MP-21.json`, `MP-54.json`, `MP-55.json`,
+  `MP-56.json`, `MP-60.json` — the five hand-authored sources of record.
+- `.project/pm/generated/SELECTED-PROGRAMS.md`, `ROADMAP.md`,
+  `DEPENDENCIES.md`, `ESTIMATES.md`, `PROGRAMS/*.md`, `portfolio.json` — the
+  generated views. Read them; never hand-edit them.
+- `.project/META-TRACKER.md` and `.project/meta-tracker.json` — canonical
+  program identity, meaning, state and priority.
+- root `AGENTS.md` — the authority ladder and project boundaries.
+- `seed-docs/VISION.md`, `seed-docs/PRODUCT-ANCHOR.md`,
+  `seed-docs/DEVELOPMENT-ACCELERATION-HYPOTHESES.md`, `seed-docs/AUTONOMY.md`
+  — grounding for the final-Ω vision mappings.
 
-The current seed intentionally contains detailed five-phase roadmaps only for:
+## Non-negotiable boundaries
 
-- MP-21 Reflection Migrator;
-- MP-54 Automatic Context Bundles;
-- MP-55 Failure Capsules;
-- MP-56 Trace → Fixture;
-- MP-60 Impact Graph / test selection.
+From correction §2. The PM team is never a decisioning team.
 
-All other programs are registered and deliberately remain phase-level TBD until deeper decomposition earns its keep.
+- Never choose, rank, add, drop, activate, deactivate or prioritize programs.
+- Never make scope, roadmap, MVP, release or product-priority decisions.
+- Never reinterpret the final VOMEGA vision or canonical program meaning.
+- Never convert a planning observation into project authority.
+- The other 62 programs are reference-only: they may appear as external
+  dependencies or context, never as PM-managed records with dossiers, phases,
+  gates, estimates or tasks.
+- No percent-complete. Planning, execution, proof and evidence stay
+  separate classes; never collapse them into one number.
+- LOC is a planning prior, never a productivity measure or a worker grade.
+- Never hand-edit anything under `.project/pm/generated/` — regenerate.
+- No auth, provider or model configuration changes.
+- Scope changes only by explicit owner instruction recorded in
+  `.project/pm/scope.json`.
 
-## First action: inspect reality
+Implementation mechanics of the PM machinery itself — data format, rendering,
+validation, linking to the Ratchet, and how deep to decompose a phase inside an
+already-selected program — are yours to decide.
 
-Do not assume this prompt knows your ZCode installation or the repository's latest state.
+## What already works
 
-1. inspect actual ZCode version/capabilities;
-2. inspect Git HEAD and working state;
-3. read the documents above;
-4. inspect current task/Ratchet mechanisms;
-5. identify duplication risks;
-6. design your own minimal implementation strategy.
+Treat this as the working system, not a greenfield proposal.
 
-You may reorganize the team/functions described in `ZCODE-PM-TEAM.md`.
+- A per-program JSON schema under `.project/pm/data/programs/` for the five
+  selected programs only.
+- A strict validator that enforces scope. It fails with
+  `OUT_OF_SCOPE_PROGRAM`, `MISSING_PROGRAM`, `UNKNOWN_MANAGED_PROGRAM`,
+  `EXTERNAL_REF_IS_MANAGED`, `PROJECTION_STALE` and `PROJECTION_ORPHAN`.
+- Derived plan resolution that separates canonical state from PM-owned roadmap
+  depth.
+- PM evidence coverage, kept distinct from canonical state and from execution.
+- Six generated views: the selected-five overview, five Program Dossiers, the
+  25-phase roadmap, the dependency-gate graph, the effort/LOC view, and the
+  machine-readable `portfolio.json`.
 
-## Non-negotiable PM boundaries
+Commands, run from `omega-baseline/`:
 
-- META-TRACKER remains canonical for which programs exist and their current meaning.
-- Source/tests/evidence outrank PM status.
-- Ratchet or equivalent executable systems should own atomic execution/proof where they already can compute it.
-- Never generate thousands of speculative atomic tasks for the 67 programs.
-- Never use LOC as productivity or completion.
-- Never reduce planning/execution/proof/evidence class into one percentage.
-- Prefer narrow dependency gates over whole-program serialization.
-- Preserve lineage when plans change.
-- The PM system is development machinery, not Ω product architecture.
-- No auth/provider/model configuration changes without Owen.
+- `bun run pm` — regenerate the PM projections.
+- `bun run pm:check` — validate. This must exit 0.
+- `bun run pm:test` — run the PM test suite.
 
-## Required v0 capability
+## The current next work
 
-Your first implementation should prove only that the system can:
+In this order, and do not add PM features while doing it:
 
-1. ingest or reference all 67 canonical programs;
-2. expose explanation, objectives and final-vision contribution for each;
-3. distinguish intentionally TBD programs from phased programs;
-4. represent the first five seeded roadmaps with:
-   - phases;
-   - outcomes;
-   - effort grades;
-   - LOC estimate bands + confidence;
-   - cross-program dependency gates;
-5. validate broken/unknown program and gate references;
-6. generate a useful human-readable portfolio/program/dependency view;
-7. generate or expose a machine-readable representation;
-8. reference current Ratchet/task proof state without duplicating editable state;
-9. preserve source HEAD / provenance;
-10. pass independent review.
+1. Re-run the 15-question fresh-worker dogfood (correction §20 C7) against the
+   current generated outputs and record the real score. Target is at least 14
+   of 15 fully answerable. Report the actual number, not the target.
+2. Freeze the PM system design once dogfood passes and independent review
+   (§20 C8) is clean.
+3. Then move into deep MP-21 design work, descending within the selected scope.
 
-Avoid a GUI unless the team can demonstrate it materially improves the v0 proof.
+Do not build dashboards, frontier scheduling, task generation, portfolio
+ranking or any other feature. Those are explicitly frozen.
 
-## Implementation freedom
+## Bounded-worker discipline
 
-Choose the technical implementation after inspecting the repo.
+When you fan out, give every worker an explicit write surface and a bounded
+tool-call budget before it starts. Recon and research may run in parallel
+because they write nothing. Editing workers get non-overlapping file ownership,
+and you must preserve other workers' changes. Any code change needs an
+independent reviewer who did not write it; a reviewer who merely restates the
+design has not reviewed it.
 
-You may use:
-- Markdown + generated JSON;
-- TypeScript;
-- SQLite;
-- local service;
-- ZCode workflow;
-- a combination;
-- another approach justified by evidence.
+## Truth boundaries
 
-Prefer the smallest representation that can evolve safely.
-
-## Team behavior
-
-Use parallel subagents where work is genuinely separable.
-
-At minimum obtain independent perspectives on:
-- schema/data model;
-- source-of-truth boundaries;
-- dependency/gate semantics;
-- first-five seed fidelity;
-- Ratchet integration;
-- validation/testing.
-
-A reviewer must challenge rather than merely restate the design.
-
-## Dogfood requirement
-
-Once v0 works, use the PM system to plan and track its **own next phase**.
-
-Then select one non-PM VOMEGA program and test whether the system helps a fresh worker understand:
-- why it exists;
-- current planning maturity;
-- next meaningful phase;
-- dependencies/gates;
-- evidence;
-- how to descend into execution.
-
-If it adds more reconstruction/maintenance cost than it removes, simplify it.
-
-## Evolution target
-
-The team owns continued evolution from portfolio map toward a proper local project-management tracker.
-
-Only add deeper capabilities when justified, including:
-- phase decomposition;
-- work-package/task generation;
-- Ratchet handoff;
-- dependency visualization;
-- estimation updates from observed work;
-- context-bundle integration;
-- failure/trace/impact integration;
-- local PM UI;
-- automated drift detection;
-- planning history;
-- portfolio prioritization.
-
-Do not treat this initial design as permanent. Preserve the problem, boundaries and lineage; improve the mechanism as evidence accumulates.
-
-Your first durable output should be a short implementation proposal grounded in the current repo/runtime, followed by the smallest reviewed v0 implementation—not a large speculative framework.
+- PM state is a projection. It is not project truth.
+- META-TRACKER is canonical for program identity and meaning; PM projects it
+  and never overwrites it.
+- The Ω Proof Ratchet owns atomic execution and proof state. Reference it
+  live; never copy or fork it.
+- Evidence coverage in PM output is a claim about PM's own linking, not a claim
+  about the project's evidence state. Absence of PM-local events is not absence
+  of truth.
+- Fixture and simulated results are never reported as live.

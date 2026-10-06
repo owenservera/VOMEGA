@@ -17,7 +17,7 @@ export const EFFORT_PATTERN = /^E[0-5]([–-]E[0-5])?$/;
 export const PLAN_LEVELS = ["REGISTERED", "SEEDED", "PHASED", "DECOMPOSED", "EXECUTABLE"] as const;
 export type PlanLevel = (typeof PLAN_LEVELS)[number];
 
-export const EVIDENCE_STATES = ["UNPROVEN", "EVIDENCED", "REGRESSED"] as const;
+export const EVIDENCE_STATES = ["NO_LINKED_PROOF", "PROOF_LINKED", "REGRESSION_REPORTED"] as const;
 export type EvidenceState = (typeof EVIDENCE_STATES)[number];
 
 export const EVIDENCE_KINDS = ["source-inspected", "prototype-landed", "dependency-changed", "proof", "regressed"] as const;

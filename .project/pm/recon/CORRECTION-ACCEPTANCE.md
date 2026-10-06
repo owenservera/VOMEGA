@@ -1,59 +1,74 @@
-# PM owner correction — acceptance record (C7 + C8)
+# PM owner correction — acceptance record
 
-Status: **ACCEPTANCE EVIDENCE** for `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md`.
-Date: 2026-10-06 · Reviewed at merge `3f3b3df` · Both checks ran as bounded, read-only subagents.
-This file is the durable record; the fix commits follow it.
+Status: **ACCEPTED (owner disposition 2026-10-06: accept with a small final correction pass — pass applied)**.
+Authority: [PM-CORRECTION-FIRST-FIVE-ONLY.md](../PM-CORRECTION-FIRST-FIVE-ONLY.md) is definitive.
 
-## C7 — fresh-worker dogfood
+## Timeline of checks
 
-A fresh worker (no project context) was given **only** the generated views
-(SELECTED-PROGRAMS, ROADMAP, DEPENDENCIES, ESTIMATES, five PROGRAMS dossiers) and asked the
-correction's 15 orientation questions. It opened no other project file.
-
-**First-pass score: 12/15** (target ≥14). Zero NOT-ANSWERABLE; three PARTIAL:
-
-| # | Gap | Fix applied |
+| Check | Who | Outcome |
 | --- | --- | --- |
-| Q1 | Why *these* five (views said only "owner-directed") | `SELECTED-PROGRAMS.md` now carries "Why these five (owner decision, not PM's)" — the development-multiplier rationale with its recording directive cited |
-| Q12 | Where evidence for current state lives | every dossier now has an **Evidence pointers** section: canonical row source, dated evidence events, current derived state, and the named Ratchet as execution/proof owner |
-| Q13 | How work descends into tasks/proof | `SELECTED-PROGRAMS.md` now carries "How work descends into execution and proof" — names the Ω Proof Ratchet as the executable layer and states honestly that no managed phase is scheduled into Ratchet tasks |
+| C7 dogfood, first run | fresh worker, views only | 12/15 — selection rationale, evidence pointers and task/proof descent missing |
+| C7 gap fixes | integrator | all three rendered |
+| C8 independent review | reviewer who wrote nothing | accept-with-changes — 4 required changes (orphan view, orphan check, register supersession, unknown-id guard) |
+| C8 fixes | integrator | all applied |
+| **C7 dogfood, rerun (fresh worker)** | fresh worker, views only | **14/15, zero fallbacks — criterion ≥14 MET** |
+| Owner review | Owen | accept with a four-item final correction pass |
+| Final pass | integrator + two doc writers | all four items applied (below) |
 
-The worker's two remaining suggestions (prerequisite availability; sequencing guidance across the
-five) are **recorded, not built** — PM has no authority to sequence, and the owner correction froze
-feature expansion. They belong to a future owner decision.
+## C7 — final fresh-worker result (measured)
 
-**Re-scored expectation: 15/15** with the fixes above (Q1/Q12/Q13 move to ANSWERED).
+A worker with no prior context, given only the nine generated views, answered **14 of 15** questions
+fully, opening **no file outside the permitted set**. Criterion ≥14: **met**.
 
-## C8 — independent review
+The single PARTIAL was Q15 (how PM scope can expand): the views labelled scope as owner-directed and
+pointed at `scope.json`, but never stated the expansion mechanism inline. A one-sentence
+"How PM scope expands" section was added to `SELECTED-PROGRAMS.md` **after** this run (owner-only
+edit of `scope.json`; PM cannot add or propose; `pm:check` enforces agreement). That addition is not
+re-verified by a third run — the measured score stands at 14/15.
 
-An independent reviewer (wrote nothing) verified the correction's §22 acceptance criteria by
-reading code/data and running `pm:test` + `pm:check`, plus live attacks.
+## C8 — independent review result
 
-**Verdict: accept-with-changes.** PASS: no decisioning logic anywhere (grep-verified); scope derived
-only from `scope.json` (never from META-TRACKER); five complete dossiers; 25 gated phases; MP21-G3 /
-MP56-G4 relationships explicit; all five P1 starts visible as unblocked; estimates match §13 exactly
-(all 25 verified); machine projection freshness enforced (hand-edit demonstrated caught, exit 1).
-Attacks: adding MP-61 → `OUT_OF_SCOPE_PROGRAM`; a `priorityScore` field → strict-schema rejection.
+PASS: no decisioning logic in PM code (grep-verified); managed set derived only from `scope.json`;
+five complete dossiers; 25 phases all gated; MP21-G3 / MP56-G4 cross-program unlocks explicit;
+estimates match the directive §13 across all 25 phases; machine projection freshness enforced
+(hand-edit demonstrated caught, exit 1). Attacks held: adding MP-61 → `OUT_OF_SCOPE_PROGRAM`;
+a `priorityScore` field → strict-schema rejection.
 
-**Required changes (all applied):**
+Required changes, all applied: delete the stale pre-correction 67-program `generated/PORTFOLIO.md`;
+add `PROJECTION_ORPHAN` so a stale view can never persist; supersede `PROGRAM-REGISTER.md` to
+reference-only (README pointer corrected); fail `UNKNOWN_MANAGED_PROGRAM` for a fabricated scope id.
 
-| # | Finding | Fix |
-| --- | --- | --- |
-| 1 | Stale pre-correction `generated/PORTFOLIO.md` still shipped ("programs: 67", "UNPROVEN 67") and no check could see it | deleted; and `pm:check` now **fails on orphan files** under `generated/` not produced by the current projector (`PROJECTION_ORPHAN`) |
-| 2 | `.project/pm/PROGRAM-REGISTER.md` still materialized all 67 as an active register | superseded with a lineage-preserving banner (reference-only context; canonical meaning stays in META-TRACKER); `README.md` pointer corrected |
-| 3 | Orphan views could silently persist | orphan scan added to `pm:check` (see #1) |
-| 4 | A fabricated managed id (e.g. MP-99) in scope.json would render "UNRESOLVED" instead of failing | `validate()` now fails with `UNKNOWN_MANAGED_PROGRAM` when a managed id is not in `meta-tracker.json` (tested) |
+Accepted limitation: widening `scope.json` with a matching, well-formed file cannot be distinguished
+from an owner edit by any machine — the boundary is procedural (git history + `scope.json`), which is
+deliberate for an owner-decided scope.
 
-**Accepted limitation (documented, not fixable by code):** widening `scope.json` *with* a matching
-well-formed file cannot be distinguished from an owner edit by any machine — the expansion rule is
-procedural (scope.json expansionRule, directive §19, git history). This is inherent to owner-decided
-scope and is recorded in scope.json.
+## Owner review disposition — four final changes
 
-## Truth / limits
+1. **Stale PM instructions** → `ZCODE-BOOTSTRAP-PROMPT.md` and `ZCODE-PM-TEAM.md` rewritten
+   (five-only custodial mission, non-authority list, current system, next work, falsifier);
+   `SYSTEM-DESIGN.md` rewritten to the implemented system (67-portfolio, frontier and ranking views
+   removed); `EVOLUTION-RULES.md` rewritten with the "Portfolio ranking" section removed; `README.md`
+   rewritten to the five-only model with the 67-hierarchy diagram, scope statement and document index
+   corrected. Every rewritten doc carries a lineage banner naming the correction as superseding.
+2. **Misleading evidence state** → `UNPROVEN 5` is gone. The views now separate the four dimensions:
+   **Canonical state** (META-TRACKER) · **PM plan resolution** (PHASED etc.) · **Execution** (not
+   linked — no phase scheduled into the Ratchet) · **PM evidence coverage** (`NO_LINKED_PROOF`,
+   explicitly "whether PM holds a linked proof record — not a claim about the project's evidence
+   state"). `evidenceState` was renamed `pmEvidenceCoverage` in the code and its tests.
+3. **Dogfood gate** → rerun by a genuinely fresh worker: 14/15, zero fallbacks (above).
+4. **This record** → updated after the rerun, as required.
 
-- Both checks are single-sample, bounded, read-only passes at merge `3f3b3df`; the dogfood re-score
-  after the fixes is an expectation, not a re-run.
-- No PM decisioning authority was exercised: the fixes above render facts the correction already
-  states; none of them selects, ranks or prioritizes anything.
-- After the fixes: `pm:test` 21/0, `pm:check` ok (1 warning = MP60-P5 E5 decomposition-review flag),
-  10 generated views, stale orphan gone.
+## Verification at close
+
+- `bun run pm:test` — 21 pass / 0 fail
+- `bun run pm:check` — ok, exit 0 (1 warning: MP-60 P5 E5 decomposition-review flag)
+- `bun run omega:quick` — 62 pass / 0 fail / 1,622 assertions (baseline unchanged)
+- `bun run ratchet drift` — 6/6 facts green
+- Generated views: SELECTED-PROGRAMS, ROADMAP (25 phases), DEPENDENCIES (25 gates),
+  ESTIMATES, five PROGRAMS dossiers, portfolio.json — all freshness- and orphan-checked.
+
+## Next work (per owner disposition)
+
+PM-system design is **frozen**. The next engagement is **deep MP-21 design** — building on the MP-21
+dossier, which now defines deterministic SourceAnchors, claim classes, manifest/runtime parity,
+extracted-vs-suggested separation and migration safety. No further PM infrastructure.

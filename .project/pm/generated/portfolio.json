@@ -1,6 +1,6 @@
 {
   "schema": "vomega-pm-portfolio/1",
-  "sourceHead": "5a1df80",
+  "sourceHead": "5244cce",
   "seedDigest": "sha256:854f282c02c30212ef97c2d659e67d5a0e7bffeb1227ad3e1de174abda113b1e",
   "managedScope": [
     "MP-21",
@@ -15,8 +15,8 @@
     "planResolution": {
       "PHASED": 5
     },
-    "evidenceState": {
-      "UNPROVEN": 5
+    "pmEvidenceCoverage": {
+      "NO_LINKED_PROOF": 5
     },
     "ungatedPhases": 0,
     "needsReview": 1
@@ -115,7 +115,8 @@
         ]
       },
       "planResolution": "PHASED",
-      "evidenceState": "UNPROVEN",
+      "pmEvidenceCoverage": "NO_LINKED_PROOF",
+      "executionLink": "not linked (no phase scheduled into the Ratchet)",
       "phaseCount": 5,
       "gateCount": 5,
       "ungatedPhases": [],
@@ -426,7 +427,8 @@
         ]
       },
       "planResolution": "PHASED",
-      "evidenceState": "UNPROVEN",
+      "pmEvidenceCoverage": "NO_LINKED_PROOF",
+      "executionLink": "not linked (no phase scheduled into the Ratchet)",
       "phaseCount": 5,
       "gateCount": 5,
       "ungatedPhases": [],
@@ -744,7 +746,8 @@
         ]
       },
       "planResolution": "PHASED",
-      "evidenceState": "UNPROVEN",
+      "pmEvidenceCoverage": "NO_LINKED_PROOF",
+      "executionLink": "not linked (no phase scheduled into the Ratchet)",
       "phaseCount": 5,
       "gateCount": 5,
       "ungatedPhases": [],
@@ -1046,7 +1049,8 @@
         ]
       },
       "planResolution": "PHASED",
-      "evidenceState": "UNPROVEN",
+      "pmEvidenceCoverage": "NO_LINKED_PROOF",
+      "executionLink": "not linked (no phase scheduled into the Ratchet)",
       "phaseCount": 5,
       "gateCount": 5,
       "ungatedPhases": [],
@@ -1356,7 +1360,8 @@
         ]
       },
       "planResolution": "PHASED",
-      "evidenceState": "UNPROVEN",
+      "pmEvidenceCoverage": "NO_LINKED_PROOF",
+      "executionLink": "not linked (no phase scheduled into the Ratchet)",
       "phaseCount": 5,
       "gateCount": 5,
       "ungatedPhases": [],

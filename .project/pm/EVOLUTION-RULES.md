@@ -1,137 +1,82 @@
-# PM Roadmap Evolution Rules
+# PM Evolution Rules
 
-Status: **OPERATING DESIGN**
+Status: **OPERATING DESIGN (revised 2026-10-06 under the owner correction)**.
+Authority: [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md) is definitive.
 
-## 1. Expand on demand
+Superseded: the earlier version of this document governed a 67-program map and included a
+"Portfolio ranking" section. That section is removed. Ranking programs, scoring them, choosing the
+next set, or prioritizing across the 67 is **forbidden**; it is not this system's job.
 
-Every MP is registered. Only deepen a program when planning resolution creates leverage.
+## 1. Deepen on demand, within the five
 
-Allowed progression:
+Only MP-21, MP-54, MP-55, MP-56 and MP-60 are in scope. Deepen a phase when planning resolution
+creates leverage — more evidence, a decision pending, a consumer waiting. Otherwise leave it.
 
-```text
-REGISTERED
-→ SEEDED
-→ PHASED
-→ DECOMPOSED
-→ EXECUTABLE
-→ PROVEN-SLICE
-```
+## 2. Uneven depth is intentional
 
-Skipping levels is allowed when evidence already exists.
+The five need not be equally deep. A phase that is ready to execute gets tasks and proof; a phase
+that is a hypothesis stays a hypothesis. Do not equalize depth for symmetry.
 
-## 2. Never plan all 67 to atomic depth
+## 3. Meaning comes from canonical sources
 
-The program map is a possibility map, not a backlog.
+Program identity, name, purpose, state and priority are read from `.project/meta-tracker.json`. PM
+summarizes in its dossiers but never forks meaning. If meaning changes, the canonical source changes
+first, with rationale and lineage; PM is refreshed after.
 
-Atomic decomposition across all 67 would create:
-- stale tasks;
-- fake dependencies;
-- coordination overhead;
-- false precision;
-- pressure to execute a plan after reality changes.
+## 4. Dossier before phases
 
-The PM team should maintain **uneven resolution intentionally**.
+No phase design until the program has an explanation, a problem statement, 4–8 objectives, a vision
+contribution, boundaries, success conditions and falsifiers. The dossier is the reason the roadmap
+is trustworthy.
 
-## 3. Program meaning comes from canonical sources
+## 5. Gates before serialization
 
-The PM tracker may summarize or project META-TRACKER meaning, but may not silently fork it.
-
-If program meaning changes:
-1. update the canonical source with rationale/evidence;
-2. preserve lineage;
-3. refresh the PM projection.
-
-## 4. Objectives before phases
-
-No phase design until the program has:
-- clear explanation;
-- concrete objectives;
-- final-vision contribution;
-- current evidence/state;
-- known major boundaries/falsifiers.
-
-## 5. Gates before serial dependency
-
-Prefer a narrow gate dependency to “wait until program X is done.”
-
-Example:
-
-`MP54-P2 ← MP21-G3`
-
-not:
-
-`MP54 ← MP21`.
-
-This preserves parallelism.
+Prefer `MP54-P2 ← MP21-G3` to "wait for MP-21". A consumer starts when its named gate is satisfied.
+External programs are referenced, never gated on as if managed.
 
 ## 6. Estimate uncertainty explicitly
 
-Effort and LOC must carry confidence.
+Every LOC band carries LOW/MEDIUM/HIGH confidence. Revise estimates when source is inspected, a
+prototype lands, or a dependency changes. Never grade a worker by LOC delivered versus estimate.
+Never grade the PM system by estimate accuracy alone.
 
-Estimates should be revised when:
-- relevant source is inspected;
-- a prototype lands;
-- dependency scope changes;
-- another program provides reusable primitives.
+## 7. Decompose E5 and XXL work
 
-Never grade an agent by LOC delivered versus estimate.
+An E5 phase (or >10k LOC) requires a decomposition review before execution: narrower outcomes,
+explicit gates, or an experiment instead of premature implementation. MP-60 P5 currently carries
+this flag.
 
-## 7. Decompose E5/XXL work
+## 8. Descend to tasks only when execution is selected
 
-If a phase is E5 or >10k estimated implementation LOC, require a decomposition review before direct execution.
-
-The likely result is:
-- narrower phase outcomes;
-- multiple work packages;
-- explicit gates;
-- experiments replacing premature implementation.
-
-## 8. Atomic task promotion
-
-A phase should only descend to atomic tasks when:
-- the outcome is selected for execution;
-- acceptance can be stated;
-- dependencies/gates are sufficiently known;
-- write surfaces can be bounded enough to reduce collisions;
-- proof can be observed.
-
-Prefer handing this layer to Ratchet or an equivalent executable task/proof engine.
+A phase becomes work packages and tasks only when it is selected for execution, acceptance is
+stateable, and proof is observable. That layer belongs to the Ratchet. PM stores a foreign key
+only; it never mints task IDs or holds editable task status.
 
 ## 9. Computed state over duplicated prose
 
-Where a lower-level system can compute state, the PM tracker should reference/project it rather than maintain a second editable status.
+Execution and proof are computed by the Ratchet and referenced live at check time. PM derives its
+plan resolution and evidence coverage; it never stores a copy.
 
-Examples:
-- Ratchet gate state;
-- Git HEAD;
-- test results;
-- evidence manifests.
+## 10. Re-plan from evidence, with lineage
 
-## 10. Re-plan from evidence
+A phase may split, merge, reorder or be superseded. Record the prior plan, the reason, the evidence
+that triggered it, and the downstream dependencies affected. Never rewrite history silently.
 
-A program/phase may be split, merged, reordered, superseded or retired.
+## 11. Scope expansion is owner-only
 
-The system should preserve:
-- prior plan;
-- reason for change;
-- evidence that triggered it;
-- downstream dependencies affected.
+PM scope changes only when Owen edits `scope.json` to add a program, and only then may that program
+get a dossier, phases, gates and estimates. No PM code, view, score or suggestion may change scope;
+`pm:check` fails if scope and files disagree. Widening scope is procedural (scope.json + git
+history), not machine-decidable — that limitation is deliberate.
 
-## 11. Portfolio ranking
+## 12. The four dimensions stay separate
 
-Future ranking should distinguish:
-- product criticality;
-- acceleration leverage;
-- uncertainty reduction;
-- dependency-unlock value;
-- proof maturity;
-- effort;
-- owner priority.
+Canonical state · PM plan resolution · execution state · PM evidence coverage. Never collapse them
+into one percentage, and never let a PM cell outrank source, tests or evidence.
 
-Do not collapse these into one opaque score.
+## 13. PM-system falsifier (MP-67)
 
-## 12. PM-system falsifier
-
-If maintaining the tracker requires more human/agent effort than the coordination/reconstruction it removes, simplify or retire machinery.
-
-The PM system must earn its keep under MP-67.
+If maintaining the tracker costs more effort than the coordination and reconstruction it removes,
+simplify or retire it. Concretely: if a fresh worker cannot answer the fifteen orientation questions
+from the generated views alone, or if the validator and views stop paying for themselves, the system
+fails regardless of how complete the dossiers look.

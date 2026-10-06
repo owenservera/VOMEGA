@@ -3,7 +3,7 @@
 import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { evidenceState, planResolution } from "../src/derive.ts";
+import { pmEvidenceCoverage, planResolution } from "../src/derive.ts";
 import type { EvidenceEvent, Phase, ProgramFile } from "../src/schema.ts";
 import { buildPortfolio, paths, renderViews, stripVolatileHead, stripVolatileHeadMd } from "../src/project.ts";
 import type { Tracker } from "../src/project.ts";
@@ -81,14 +81,14 @@ describe("planResolution", () => {
   });
 });
 
-describe("evidenceState", () => {
+describe("pmEvidenceCoverage", () => {
   const ev = (kind: EvidenceEvent["kind"]): EvidenceEvent => ({ program: "MP-21", date: "2026-10-06", kind, ref: "x" });
-  test("recon does NOT promote; proof does; regression wins", () => {
-    expect(evidenceState([], "MP-21")).toBe("UNPROVEN");
-    expect(evidenceState([ev("source-inspected")], "MP-21")).toBe("UNPROVEN");
-    expect(evidenceState([ev("proof")], "MP-21")).toBe("EVIDENCED");
-    expect(evidenceState([ev("proof"), ev("regressed")], "MP-21")).toBe("REGRESSED");
-    expect(evidenceState([{ ...ev("proof"), program: "MP-54" }], "MP-21")).toBe("UNPROVEN");
+  test("recon does NOT link proof; proof does; regression wins; never reads as a project claim", () => {
+    expect(pmEvidenceCoverage([], "MP-21")).toBe("NO_LINKED_PROOF");
+    expect(pmEvidenceCoverage([ev("source-inspected")], "MP-21")).toBe("NO_LINKED_PROOF");
+    expect(pmEvidenceCoverage([ev("proof")], "MP-21")).toBe("PROOF_LINKED");
+    expect(pmEvidenceCoverage([ev("proof"), ev("regressed")], "MP-21")).toBe("REGRESSION_REPORTED");
+    expect(pmEvidenceCoverage([{ ...ev("proof"), program: "MP-54" }], "MP-21")).toBe("NO_LINKED_PROOF");
   });
 });
 

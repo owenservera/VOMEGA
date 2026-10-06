@@ -30,12 +30,14 @@ export function planResolution(p: PlanInput): PlanLevel {
 }
 
 /**
- * Evidence state, independent of plan resolution. Only a `proof` event promotes to
- * EVIDENCED; reconnaissance (`source-inspected`) never does.
+ * PM evidence COVERAGE — not the project's evidence state. It answers one narrow question:
+ * "does PM hold a linked proof record for this program?" and is deliberately incapable of
+ * reading as "this program is unproven". The project's actual state lives in the canonical
+ * tracker; execution/proof state lives in the ratchet. Neither is derived here.
  */
-export function evidenceState(events: EvidenceEvent[], programId: string): EvidenceState {
+export function pmEvidenceCoverage(events: EvidenceEvent[], programId: string): EvidenceState {
   const mine = events.filter((e) => e.program === programId);
-  if (mine.some((e) => e.kind === "regressed")) return "REGRESSED";
-  if (mine.some((e) => e.kind === "proof")) return "EVIDENCED";
-  return "UNPROVEN";
+  if (mine.some((e) => e.kind === "regressed")) return "REGRESSION_REPORTED";
+  if (mine.some((e) => e.kind === "proof")) return "PROOF_LINKED";
+  return "NO_LINKED_PROOF";
 }
