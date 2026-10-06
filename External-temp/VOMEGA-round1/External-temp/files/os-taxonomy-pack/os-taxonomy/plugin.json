@@ -1,0 +1,2102 @@
+{
+  "manifestVersion": "1",
+  "id": "pack.os-taxonomy",
+  "version": "0.1.0",
+  "description": "VIVIM OS capability taxonomy 0.1.0 — a platform-neutral, human-friendly library of 291 everyday operating-system capabilities (power, display, sound, network, devices, files, apps, windows, input, personalization, accessibility, privacy, security, accounts, time, notifications, capture, web, updates, system, maintenance) with per-platform realizations (Windows first). Every capability is its own routed contract so the law gates and consents per capability. Plans are pure and inspectable; execution only when the composition config sets execute:true; non-READ attempts are ledgered in vault ns 'os' before the effect.",
+  "entry": "src/index.ts",
+  "publisher": {
+    "keyId": "",
+    "signature": ""
+  },
+  "contributions": {
+    "contract": [
+      {
+        "kind": "contract",
+        "id": "os.catalog.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "list {domain?, tier?, query?} → {count, domains, capabilities[]} — browse the taxonomy."
+      },
+      {
+        "kind": "contract",
+        "id": "os.catalog.describe",
+        "version": "1",
+        "risk": "READ",
+        "doc": "describe {capability} → {capability, realizations[]} for the configured platform; unknown → outcome unknown."
+      },
+      {
+        "kind": "contract",
+        "id": "os.catalog.plan",
+        "version": "1",
+        "risk": "READ",
+        "doc": "plan {capability, params?} → {plan} — validated parameters, chosen realization, exact script and argv. Never executes."
+      },
+      {
+        "kind": "contract",
+        "id": "os.catalog.frames",
+        "version": "1",
+        "risk": "READ",
+        "doc": "frames {} → {frames[]} — nlcl-compatible language frames for every capability (command-box grounding data)."
+      },
+      {
+        "kind": "contract",
+        "id": "os.catalog.coverage",
+        "version": "1",
+        "risk": "READ",
+        "doc": "coverage {} → realization fidelity, inventory coverage and evidence counts for the configured platform."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.power.device.shutdown",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Shut down the computer — capability power.device.shutdown (session-end, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.power.device.restart",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Restart the computer — capability power.device.restart (session-end, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.session.lock",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Lock the screen — capability power.session.lock (session-pause). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.power.session.sign-out",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Sign out — capability power.session.sign-out (session-end, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.device.sleep",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Put the computer to sleep — capability power.device.sleep (session-pause). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.device.hibernate",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Hibernate the computer — capability power.device.hibernate (session-pause). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.power.shutdown.schedule",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Schedule a shutdown — capability power.shutdown.schedule (session-end, consent). Payload {params?, dryRun?}; params: minutes:integer."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.shutdown.cancel",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Cancel a scheduled shutdown — capability power.shutdown.cancel (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.power.restart.advanced-startup",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Restart into advanced startup options — capability power.restart.advanced-startup (session-end, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.power.restart.firmware",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Restart into BIOS / UEFI setup — capability power.restart.firmware (session-end, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.power.plan.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show the active power plan — capability power.plan.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.power.plan.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List power plans — capability power.plan.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.plan.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Change the power plan — capability power.plan.set (adjust). Payload {params?, dryRun?}; params: plan:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open power & sleep settings — capability power.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.power.battery.status",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show battery level — capability power.battery.status (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.battery.report",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Create a battery health report — capability power.battery.report (create). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.battery-saver.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open battery saver settings — capability power.battery-saver.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.screen-timeout.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set when the screen turns off — capability power.screen-timeout.set (adjust). Payload {params?, dryRun?}; params: minutes:integer."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.sleep-timeout.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set when the computer sleeps — capability power.sleep-timeout.set (adjust). Payload {params?, dryRun?}; params: minutes:integer."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.power.lid-action.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Choose what closing the lid does — capability power.lid-action.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open display settings — capability display.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.brightness.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set screen brightness — capability display.brightness.set (adjust). Payload {params?, dryRun?}; params: level:percent."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.brightness.increase",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Make the screen brighter — capability display.brightness.increase (adjust). Payload {params?, dryRun?}; params: step?:percent."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.brightness.decrease",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Make the screen dimmer — capability display.brightness.decrease (adjust). Payload {params?, dryRun?}; params: step?:percent."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.display.brightness.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show screen brightness — capability display.brightness.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.night-light.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Night light / blue-light filter — capability display.night-light.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.resolution.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Change screen resolution — capability display.resolution.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.scale.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Change text and app size (display scaling) — capability display.scale.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.orientation.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Rotate the screen — capability display.orientation.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.refresh-rate.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Change refresh rate / advanced display — capability display.refresh-rate.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.graphics.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Graphics preferences per app — capability display.graphics.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.projection.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Choose how multiple displays are used — capability display.projection.set (adjust). Payload {params?, dryRun?}; params: mode:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.projection.menu",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open the project / display mode menu — capability display.projection.menu (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.wireless.connect",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Cast to a wireless display — capability display.wireless.connect (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.display.adapters.info",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show display adapter and resolution info — capability display.adapters.info (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.display.screen.turn-off",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn off the screen now — capability display.screen.turn-off (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open sound settings — capability sound.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.volume.up",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn the volume up — capability sound.volume.up (adjust). Payload {params?, dryRun?}; params: steps?:integer."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.volume.down",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn the volume down — capability sound.volume.down (adjust). Payload {params?, dryRun?}; params: steps?:integer."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.volume.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set the volume — capability sound.volume.set (adjust). Payload {params?, dryRun?}; params: level:percent."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.volume.mute",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Mute or unmute — capability sound.volume.mute (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.output.choose",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Choose the audio output device — capability sound.output.choose (present). Payload {params?, dryRun?}; params: device?:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.sound.devices.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List audio devices — capability sound.devices.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.app-volume.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set volume per app — capability sound.app-volume.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.classic-panel.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open the classic Sound control panel — capability sound.classic-panel.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.sound.microphone.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Microphone / input settings — capability sound.microphone.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.media.playback.toggle",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Play or pause media — capability media.playback.toggle (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.media.track.next",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Next track — capability media.track.next (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.media.track.previous",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Previous track — capability media.track.previous (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.media.playback.stop",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Stop media playback — capability media.playback.stop (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open network & internet settings — capability network.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.wifi.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open Wi-Fi settings — capability network.wifi.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.network.wifi.status",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show Wi-Fi connection status — capability network.wifi.status (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.network.wifi.available",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List available Wi-Fi networks — capability network.wifi.available (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.wifi.connect",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Connect to a Wi-Fi network — capability network.wifi.connect (adjust). Payload {params?, dryRun?}; params: ssid:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.wifi.disconnect",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Disconnect from Wi-Fi — capability network.wifi.disconnect (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.network.wifi.saved",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List saved Wi-Fi networks — capability network.wifi.saved (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.network.wifi.forget",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Forget a saved Wi-Fi network — capability network.wifi.forget (destroy, consent). Payload {params?, dryRun?}; params: ssid:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.network.wifi.password",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Show a saved Wi-Fi password — capability network.wifi.password (reveal, consent). Payload {params?, dryRun?}; params: ssid:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.wifi.toggle",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn Wi-Fi on or off — capability network.wifi.toggle (adjust). Payload {params?, dryRun?}; params: state:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.airplane-mode.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Airplane mode — capability network.airplane-mode.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.network.adapters.status",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show network adapters — capability network.adapters.status (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.network.ip.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show my local IP address — capability network.ip.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.network.ip.public",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Show my public IP address — capability network.ip.public (network, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.network.connectivity.test",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Test the internet connection — capability network.connectivity.test (network, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.network.host.ping",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Ping a host — capability network.host.ping (network, consent). Payload {params?, dryRun?}; params: host:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.dns.flush",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Flush the DNS cache — capability network.dns.flush (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.reset.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Network reset — capability network.reset.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.vpn.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "VPN settings — capability network.vpn.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.network.vpn.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List VPN connections — capability network.vpn.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.vpn.connect",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Connect to a VPN — capability network.vpn.connect (adjust). Payload {params?, dryRun?}; params: name:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.vpn.disconnect",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Disconnect the VPN — capability network.vpn.disconnect (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.hotspot.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Mobile hotspot — capability network.hotspot.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.proxy.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Proxy settings — capability network.proxy.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.data-usage.show",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show data usage — capability network.data-usage.show (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.network.connections.panel",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open network connections (adapters) — capability network.connections.panel (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.bluetooth.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Bluetooth settings — capability devices.bluetooth.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.bluetooth.pair",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Pair a new device — capability devices.bluetooth.pair (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.bluetooth.toggle",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn Bluetooth on or off — capability devices.bluetooth.toggle (present). Payload {params?, dryRun?}; params: state?:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.devices.bluetooth.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List Bluetooth devices — capability devices.bluetooth.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.devices.printers.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List printers — capability devices.printers.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.printer.default",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set the default printer — capability devices.printer.default (adjust). Payload {params?, dryRun?}; params: printer:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.printers.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Printers & scanners settings — capability devices.printers.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.print-queue.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open a printer's queue — capability devices.print-queue.open (present). Payload {params?, dryRun?}; params: printer:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.devices.print.file",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Print a file — capability devices.print.file (physical, consent). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.devices.print.test-page",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Print a test page — capability devices.print.test-page (physical, consent). Payload {params?, dryRun?}; params: printer:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.manager.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open Device Manager — capability devices.manager.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.devices.drives.removable",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List USB / removable drives — capability devices.drives.removable (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.drive.eject",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Safely eject a drive — capability devices.drive.eject (adjust). Payload {params?, dryRun?}; params: drive:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.mouse.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Mouse settings — capability devices.mouse.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.touchpad.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Touchpad settings — capability devices.touchpad.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.pen.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Pen & Windows Ink settings — capability devices.pen.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.autoplay.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "AutoPlay settings — capability devices.autoplay.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.camera.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Camera settings — capability devices.camera.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.phone.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Phone link settings — capability devices.phone.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.devices.game-controllers.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Game controllers — capability devices.game-controllers.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.known-folder.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open a common folder — capability files.known-folder.open (present). Payload {params?, dryRun?}; params: folder:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.explorer.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open the file manager — capability files.explorer.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.folder.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open a folder — capability files.folder.open (present). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.item.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open a file — capability files.item.open (present). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.item.reveal",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show a file in its folder — capability files.item.reveal (present). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.item.open-with",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open a file with a chosen app — capability files.item.open-with (present). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.files.item.info",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show file details — capability files.item.info (observe). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.files.folder.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List a folder's contents — capability files.folder.list (observe). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.folder.create",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Create a folder — capability files.folder.create (create). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.file.create",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Create a text file — capability files.file.create (create). Payload {params?, dryRun?}; params: path:path, text?:text."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.item.rename",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Rename a file or folder — capability files.item.rename (modify). Payload {params?, dryRun?}; params: path:path, newName:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.item.move",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Move a file or folder — capability files.item.move (modify). Payload {params?, dryRun?}; params: path:path, destination:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.item.copy",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Copy a file or folder — capability files.item.copy (create). Payload {params?, dryRun?}; params: path:path, destination:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.files.item.delete",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Move a file or folder to the Recycle Bin — capability files.item.delete (destroy, consent). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.files.item.delete-permanently",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Permanently delete a file or folder — capability files.item.delete-permanently (destroy, consent). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.recycle-bin.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open the Recycle Bin — capability files.recycle-bin.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.files.recycle-bin.empty",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Empty the Recycle Bin — capability files.recycle-bin.empty (destroy, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.files.recycle-bin.count",
+        "version": "1",
+        "risk": "READ",
+        "doc": "How many items are in the Recycle Bin — capability files.recycle-bin.count (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.archive.create",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Compress into a zip file — capability files.archive.create (create). Payload {params?, dryRun?}; params: path:path, destination:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.archive.extract",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Extract a zip file — capability files.archive.extract (create). Payload {params?, dryRun?}; params: path:path, destination:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.files.items.search",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Find files by name — capability files.items.search (observe). Payload {params?, dryRun?}; params: query:string, location?:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.search.ui",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Search in the file manager — capability files.search.ui (present). Payload {params?, dryRun?}; params: query:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.files.recent.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Recently used files — capability files.recent.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.files.folder.size",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show a folder's size — capability files.folder.size (observe). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.path.copy",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Copy a file's path — capability files.path.copy (adjust). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.shortcut.create",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Create a desktop shortcut — capability files.shortcut.create (create). Payload {params?, dryRun?}; params: target:path, name:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.hidden-items.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show or hide hidden files — capability files.hidden-items.set (adjust). Payload {params?, dryRun?}; params: visible:boolean."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.extensions.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show or hide file extensions — capability files.extensions.set (adjust). Payload {params?, dryRun?}; params: visible:boolean."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.files.terminal.here",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open a terminal in a folder — capability files.terminal.here (present). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.storage.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Storage settings — capability storage.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.storage.drives.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show drives and free space — capability storage.drives.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.storage.cleanup.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Disk Cleanup — capability storage.cleanup.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.storage.optimize.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Optimize / defragment drives — capability storage.optimize.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.storage.disk-management.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Disk Management — capability storage.disk-management.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.storage.large-files.find",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Find the largest files — capability storage.large-files.find (observe). Payload {params?, dryRun?}; params: location?:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.storage.temp.clear",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Delete temporary files — capability storage.temp.clear (destroy, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.builtin.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open a built-in app — capability apps.builtin.open (present). Payload {params?, dryRun?}; params: app:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.app.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open an installed app by name — capability apps.app.open (present). Payload {params?, dryRun?}; params: app:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.app.close",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Close an app — capability apps.app.close (adjust). Payload {params?, dryRun?}; params: process:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.apps.app.force-quit",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Force-quit an app — capability apps.app.force-quit (destroy, consent). Payload {params?, dryRun?}; params: process:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.apps.installed.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List installed apps — capability apps.installed.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.apps.running.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List open apps — capability apps.running.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.apps.catalog.search",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Search for apps to install — capability apps.catalog.search (network, consent). Payload {params?, dryRun?}; params: query:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.apps.app.install",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Install an app — capability apps.app.install (system, consent). Payload {params?, dryRun?}; params: packageId:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.apps.app.uninstall",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Uninstall an app — capability apps.app.uninstall (destroy, consent). Payload {params?, dryRun?}; params: packageId:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.apps.app.update",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Update an app — capability apps.app.update (system, consent). Payload {params?, dryRun?}; params: packageId:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.apps.updates.list",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "List app updates available — capability apps.updates.list (network, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.apps.updates.install-all",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Update all apps — capability apps.updates.install-all (system, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.store.search",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Search the app store — capability apps.store.search (present). Payload {params?, dryRun?}; params: query:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Installed apps settings — capability apps.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.defaults.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Default apps — capability apps.defaults.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.startup.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Startup apps — capability apps.startup.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.apps.startup.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List startup apps — capability apps.startup.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.apps.optional-features.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Optional features — capability apps.optional-features.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.desktop.show",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show the desktop — capability windows.desktop.show (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.all.minimize",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Minimize all windows — capability windows.all.minimize (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.all.restore",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Restore minimized windows — capability windows.all.restore (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.active.close",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Close the current window — capability windows.active.close (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.active.minimize",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Minimize the current window — capability windows.active.minimize (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.active.maximize",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Maximize the current window — capability windows.active.maximize (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.active.snap",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Snap the current window to a side — capability windows.active.snap (adjust). Payload {params?, dryRun?}; params: side:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.active.move-monitor",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Move the current window to another monitor — capability windows.active.move-monitor (adjust). Payload {params?, dryRun?}; params: direction?:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.snap-layouts.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Snap layouts — capability windows.snap-layouts.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.overview.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show all open windows — capability windows.overview.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.virtual-desktop.new",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Create a new virtual desktop — capability windows.virtual-desktop.new (create). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.virtual-desktop.close",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Close the current virtual desktop — capability windows.virtual-desktop.close (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.virtual-desktop.switch",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Switch virtual desktop — capability windows.virtual-desktop.switch (adjust). Payload {params?, dryRun?}; params: direction:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.windows.multitasking.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Multitasking settings — capability windows.multitasking.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.input.clipboard.get",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Read the clipboard — capability input.clipboard.get (reveal, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.clipboard.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Copy text to the clipboard — capability input.clipboard.set (adjust). Payload {params?, dryRun?}; params: text:text."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.clipboard.clear",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Clear the clipboard — capability input.clipboard.clear (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.clipboard.history",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show clipboard history — capability input.clipboard.history (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.clipboard.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Clipboard settings — capability input.clipboard.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.emoji.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Emoji picker — capability input.emoji.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.dictation.start",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Start voice typing — capability input.dictation.start (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.text.type",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Type text into the current app — capability input.text.type (adjust). Payload {params?, dryRun?}; params: text:text."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.keyboard-layout.switch",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Switch keyboard language / layout — capability input.keyboard-layout.switch (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.typing.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Typing settings (autocorrect, suggestions) — capability input.typing.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.input.speech.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Speech settings — capability input.speech.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.color-mode.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Switch dark / light mode — capability personalize.color-mode.set (adjust). Payload {params?, dryRun?}; params: mode:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.personalize.color-mode.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Am I in dark or light mode — capability personalize.color-mode.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.wallpaper.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set the desktop wallpaper — capability personalize.wallpaper.set (adjust). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.personalize.wallpaper.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Which wallpaper is set — capability personalize.wallpaper.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.background.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Background settings — capability personalize.background.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.accent.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Accent color — capability personalize.accent.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.themes.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Themes — capability personalize.themes.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.lock-screen.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Lock screen settings — capability personalize.lock-screen.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.taskbar.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Taskbar settings — capability personalize.taskbar.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.taskbar.alignment",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Align taskbar icons left or center — capability personalize.taskbar.alignment (adjust). Payload {params?, dryRun?}; params: alignment:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.start.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Start menu settings — capability personalize.start.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.fonts.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Fonts — capability personalize.fonts.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.transparency.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn transparency effects on or off — capability personalize.transparency.set (adjust). Payload {params?, dryRun?}; params: enabled:boolean."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.screensaver.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Screen saver — capability personalize.screensaver.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.personalize.sounds.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "System sounds — capability personalize.sounds.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Accessibility settings — capability a11y.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.text-size.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Make text bigger — capability a11y.text-size.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.magnifier.start",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn on Magnifier — capability a11y.magnifier.start (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.magnifier.stop",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn off Magnifier — capability a11y.magnifier.stop (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.magnifier.zoom",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Zoom Magnifier in or out — capability a11y.magnifier.zoom (adjust). Payload {params?, dryRun?}; params: direction:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.narrator.start",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn on the screen reader — capability a11y.narrator.start (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.narrator.stop",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn off the screen reader — capability a11y.narrator.stop (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.narrator.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Screen reader settings — capability a11y.narrator.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.contrast.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "High contrast / contrast themes — capability a11y.contrast.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.color-filters.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Color filters (color blindness) — capability a11y.color-filters.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.captions.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Caption style settings — capability a11y.captions.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.live-captions.start",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Turn on live captions — capability a11y.live-captions.start (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.mouse-pointer.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Mouse pointer size and color — capability a11y.mouse-pointer.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.text-cursor.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Text cursor thickness — capability a11y.text-cursor.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.keyboard.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Accessibility keyboard (sticky keys, filter keys) — capability a11y.keyboard.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.on-screen-keyboard.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "On-screen keyboard — capability a11y.on-screen-keyboard.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.audio.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Mono audio and audio accessibility — capability a11y.audio.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.a11y.voice-access.start",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Voice access (control by voice) — capability a11y.voice-access.start (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.privacy.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Privacy settings — capability privacy.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.privacy.camera.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Camera permissions — capability privacy.camera.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.privacy.microphone.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Microphone permissions — capability privacy.microphone.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.privacy.location.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Location permissions — capability privacy.location.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.privacy.activity-history.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Activity history — capability privacy.activity-history.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.privacy.diagnostics.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Diagnostics & feedback data — capability privacy.diagnostics.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.security.center.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open the security app — capability security.center.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.security.virus.quick-scan",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Run a quick virus scan — capability security.virus.quick-scan (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.security.virus.full-scan",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Run a full virus scan — capability security.virus.full-scan (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.security.virus.update",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Update virus definitions — capability security.virus.update (network, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.security.virus.status",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Antivirus status — capability security.virus.status (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.security.virus.threats",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Recently detected threats — capability security.virus.threats (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.security.firewall.status",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Firewall status — capability security.firewall.status (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.security.firewall.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Firewall settings — capability security.firewall.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.security.find-device.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Find my device — capability security.find-device.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.security.encryption.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Device encryption / BitLocker — capability security.encryption.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.accounts.user.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Who am I signed in as — capability accounts.user.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.accounts.info.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Your account info — capability accounts.info.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.accounts.sign-in.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Sign-in options (PIN, password, face, fingerprint) — capability accounts.sign-in.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.accounts.email.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Email & accounts — capability accounts.email.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.accounts.other-users.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Family & other users — capability accounts.other-users.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.accounts.local.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List user accounts on this device — capability accounts.local.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.accounts.user.switch",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Switch user — capability accounts.user.switch (session-pause). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.accounts.backup.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Account backup & sync — capability accounts.backup.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.time.now.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "What time / date is it — capability time.now.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.time.zone.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Show the time zone — capability time.zone.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.time.zone.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "List time zones — capability time.zone.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.time.zone.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Change the time zone — capability time.zone.set (adjust). Payload {params?, dryRun?}; params: zoneId:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.time.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Date & time settings — capability time.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.time.sync.now",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Sync the clock now — capability time.sync.now (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.time.timer.start",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Start a timer — capability time.timer.start (present). Payload {params?, dryRun?}; params: minutes?:integer."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.time.alarm.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Set an alarm — capability time.alarm.set (present). Payload {params?, dryRun?}; params: time?:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.language.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Language settings — capability language.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.language.region.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Region & formats — capability language.region.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.language.list.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Installed languages — capability language.list.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.notify.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Notification settings — capability notify.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.notify.center.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Show notifications — capability notify.center.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.notify.do-not-disturb.set",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Do not disturb / focus — capability notify.do-not-disturb.set (present). Payload {params?, dryRun?}; params: state?:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.notify.quick-settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Quick settings panel — capability notify.quick-settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.capture.screenshot.region",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Screenshot part of the screen — capability capture.screenshot.region (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.capture.screenshot.full",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Screenshot the whole screen to a file — capability capture.screenshot.full (create). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.capture.screenshot.save",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Save a screenshot to a specific file — capability capture.screenshot.save (create). Payload {params?, dryRun?}; params: path:path."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.capture.screenshot.window",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Screenshot the current window to the clipboard — capability capture.screenshot.window (adjust). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.capture.screen.record",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Record the screen — capability capture.screen.record (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.capture.game-bar.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Game bar — capability capture.game-bar.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.web.url.open",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Open a website — capability web.url.open (network, consent). Payload {params?, dryRun?}; params: url:url."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.web.search.query",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Search the web — capability web.search.query (network, consent). Payload {params?, dryRun?}; params: query:string, engine?:enum."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.web.maps.search",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Find a place on the map — capability web.maps.search (network, consent). Payload {params?, dryRun?}; params: place:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.search.system.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open system search — capability search.system.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.run-dialog.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open the Run dialog — capability system.run-dialog.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.updates.settings.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "System updates — capability updates.settings.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.updates.system.check",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Check for system updates — capability updates.system.check (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.updates.history.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Update history — capability updates.history.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.updates.recent.list",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Recently installed updates — capability updates.recent.list (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.updates.system.pause",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Pause updates — capability updates.system.pause (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.updates.restart-options.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Schedule the update restart — capability updates.restart-options.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.about.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "About this device — capability system.about.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.system.info.summary",
+        "version": "1",
+        "risk": "READ",
+        "doc": "System summary (model, OS, CPU, memory) — capability system.info.summary (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.system.version.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Which OS version — capability system.version.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.system.performance.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "CPU and memory usage — capability system.performance.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.system.uptime.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "How long since restart — capability system.uptime.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.system.name.show",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Computer name — capability system.name.show (observe). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.system.name.rename",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Rename this computer — capability system.name.rename (system, consent). Payload {params?, dryRun?}; params: name:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.activation.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Activation / license — capability system.activation.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.task-manager.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Open the task manager — capability system.task-manager.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.control-panel.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Control Panel — capability system.control-panel.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.event-viewer.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Event Viewer (system logs) — capability system.event-viewer.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.services.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Services — capability system.services.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.resource-monitor.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Resource Monitor — capability system.resource-monitor.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.reliability.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Reliability history — capability system.reliability.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.environment-variables.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Environment variables — capability system.environment-variables.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.remote-desktop.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Remote desktop settings — capability system.remote-desktop.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.troubleshoot.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Troubleshooters — capability system.troubleshoot.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.help.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Get help / contact support — capability system.help.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.system.developer.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Developer settings — capability system.developer.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.maintenance.restore-point.create",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Create a restore point — capability maintenance.restore-point.create (create). Payload {params?, dryRun?}; params: description?:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.maintenance.system-restore.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "System Restore — capability maintenance.system-restore.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.maintenance.recovery.settings",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "Recovery / reset this PC — capability maintenance.recovery.settings (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.m.maintenance.file-history.open",
+        "version": "1",
+        "risk": "MUTATION",
+        "doc": "File History backup — capability maintenance.file-history.open (present). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.maintenance.system-files.repair",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Repair system files — capability maintenance.system-files.repair (system, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.maintenance.image.repair",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Repair the system image (DISM) — capability maintenance.image.repair (system, consent). Payload {params?, dryRun?}; params: none."
+      },
+      {
+        "kind": "contract",
+        "id": "os.r.maintenance.disk.check",
+        "version": "1",
+        "risk": "READ",
+        "doc": "Check a drive for errors (read-only) — capability maintenance.disk.check (observe). Payload {params?, dryRun?}; params: drive?:string."
+      },
+      {
+        "kind": "contract",
+        "id": "os.x.maintenance.memory.test",
+        "version": "1",
+        "risk": "EXTERNAL_MUTATION",
+        "doc": "Test memory (RAM) — capability maintenance.memory.test (session-end, consent). Payload {params?, dryRun?}; params: none."
+      }
+    ]
+  },
+  "dependencies": [],
+  "capabilities": {
+    "requested": [
+      "port:vault.append@1"
+    ],
+    "justification": "Attempt/outcome ledger rows for non-READ capability executions persist in the USER'S VAULT (ns 'os') via port:vault.append@1 — written before any OS effect so an interrupted action is reconstructable. Rows carry parameter names and digests, not raw values. Process creation rides @vivim/omega-platform's platformSpawn (the sole OS seam)."
+  },
+  "runtime": {
+    "tier": "worker-thread",
+    "budget": {
+      "cpuMs": 2000,
+      "memMB": 128
+    }
+  },
+  "contentHash": ""
+}

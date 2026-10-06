@@ -1,0 +1,882 @@
+{
+  "schemaVersion": "vomega-meta-tracker/1",
+  "updated": "2026-10-06",
+  "authority": {
+    "programMap": ".project/META-TRACKER.md",
+    "launchRuntimeState": ".project/agentic-launch/STATUS.md",
+    "firstReleaseTasks": ".project/roadmap/",
+    "productIntent": "seed-docs/",
+    "operatingPrinciple": "The map preserves possibilities; it does not prescribe the path.",
+    "hardConstraints": "Explicit product/constitutional invariants and protected Lab/proof boundaries.",
+    "revisableMechanisms": "Programs, lanes, Locks, milestones, tasks, sequencing, harness/model allocation, worktrees, orchestration and habitats are hypotheses/coordination aids.",
+    "habitatBoundary": "Daintree and ZCode are separate habitats. Daintree does not launch, supervise or manage ZCode; coordinate through Git/task/evidence surfaces.",
+    "evidence": ".project/evidence/, .project/REALITY.md, source and tests; outranks summary cells in this file",
+    "ladder": [
+      "invariants and proof boundaries",
+      "observed reality and evidence",
+      "owner-selected product mission",
+      "candidate architectures, programs, interfaces",
+      "roadmaps, lanes, Locks, tasks",
+      "agents, models, tools, worktrees, habitats"
+    ],
+    "ownersFieldMeaning": "Lane vocabulary current on 2026-10-05; a routing hint, not an assignment. No lane, harness or model owns a program.",
+    "priorityNowMeaning": "Justified by current evidence; not claimed or running unless STATUS says so."
+  },
+  "counts": {
+    "metaPrograms": 67,
+    "developmentAccelerationHypotheses": 31
+  },
+  "programs": [
+    {
+      "id": "MP-01",
+      "name": "Product Release Gym / product selection",
+      "purpose": "Continuously choose the smallest genuinely useful, provable product slice and re-rank the plan from evidence.",
+      "state": "ACTIVE operational doctrine; initial Gym run exists.",
+      "priority": "NOW / recurring",
+      "owners": "DEV + TRU + owner",
+      "notes": "Run at milestone exits or major falsifiers; does not reopen owner-selected product shape casually."
+    },
+    {
+      "id": "MP-02",
+      "name": "First Product Release — Floating Command Box",
+      "purpose": "Ship the small Windows box where setup, routing, help and prompt.send all use one semantic command system.",
+      "state": "DESIGN selected by owner; no product shell yet.",
+      "priority": "NOW",
+      "owners": "VFX + LNC + SDW + RTE + PRV",
+      "notes": "Depends on semantic twin plus real provider/account proof."
+    },
+    {
+      "id": "MP-03",
+      "name": "First-release end-to-end product journey",
+      "purpose": "Install → register Account → see capability → command → consent → real send → evidence → restart/continue.",
+      "state": "DESIGN / roadmap M0–M10.",
+      "priority": "NOW",
+      "owners": "all lanes, TRU gates",
+      "notes": "The public release claim is only as mature as the weakest live seam."
+    },
+    {
+      "id": "MP-04",
+      "name": "Packaging / Installer / Windows lifecycle",
+      "purpose": "Ordinary user can install, launch, update/recover and run without developer tooling.",
+      "state": "DESIGN / absent product implementation.",
+      "priority": "NEXT",
+      "owners": "RTE",
+      "notes": "Packaging spike should happen before late polish."
+    },
+    {
+      "id": "MP-05",
+      "name": "Product Instance / sovereign exit / reconstruction",
+      "purpose": "Preserve user-owned instance identity, export, restore, migration, replacement and recoverability.",
+      "state": "Partial Vault evidence; whole-instance continuity OPEN.",
+      "priority": "LATER, with release subset",
+      "owners": "SDW + RTE + TRU",
+      "notes": "First release needs sane local product location/restart; full sovereign exit is broader."
+    },
+    {
+      "id": "MP-06",
+      "name": "Semantic Data Engine / canonical semantic substrate",
+      "purpose": "Provider, Account, Model, Capability, Realization, consequences, evidence maturity and semantic IDs form one coherent substrate.",
+      "state": "CANDIDATE Lock A; not frozen.",
+      "priority": "NOW",
+      "owners": "SDW",
+      "notes": "False-READY defect and default/source rules block freeze."
+    },
+    {
+      "id": "MP-07",
+      "name": "World / Registry / capability & availability state",
+      "purpose": "A versioned World honestly says what exists, what is available, what is stale/unknown and what can ground commands.",
+      "state": "Baseline registry verified-local but no real Account; candidate fixture World defined.",
+      "priority": "NOW",
+      "owners": "SDW",
+      "notes": "Materialize W1–W6, required-field metadata, fixture/live source enforcement."
+    },
+    {
+      "id": "MP-08",
+      "name": "Human Semantic Execution Language — NCL/NLCL",
+      "purpose": "Ordinary expression becomes explicit canonical meaning while preserving ambiguity.",
+      "state": "Strong verified-local baseline in wrong domain; Lock B candidate for release slice.",
+      "priority": "NOW",
+      "owners": "LNC",
+      "notes": "Adapt frames/grounding; do not replace proven interpreter without evidence."
+    },
+    {
+      "id": "MP-09",
+      "name": "USE command compiler / validator / defaulting",
+      "purpose": "Interpretation becomes a deterministic, replayable command with READY only when structurally valid.",
+      "state": "CANDIDATE; CMD-06 false-READY is current choke point.",
+      "priority": "NOW",
+      "owners": "LNC + SDW",
+      "notes": "Fix U1; explicit > standing default > single valid > ask."
+    },
+    {
+      "id": "MP-10",
+      "name": "InterpretationSession / realtime revision semantics",
+      "purpose": "Every keystroke is versioned; corrections are semantic edits; old async results cannot overwrite newer input.",
+      "state": "DESIGN / candidate; no multi-revision proof.",
+      "priority": "NOW",
+      "owners": "LNC + EXP",
+      "notes": "Needs explicit revision corpus and late-result suppression test."
+    },
+    {
+      "id": "MP-11",
+      "name": "Semantic Runtime Laboratory / Ω Simulator",
+      "purpose": "Run a standalone deterministic miniature Ω: World → interpretation → command → virtual execution → evidence, independent of live providers and product runtime.",
+      "state": "DESIGN ONLY; first-wave pieces exist but executable Lab does not.",
+      "priority": "NOW",
+      "owners": "EXP + SDW + LNC + VFX + SKW + RTE",
+      "notes": "This is the common simulated universe that enables broad parallel work."
+    },
+    {
+      "id": "MP-12",
+      "name": "MVP Visualization Sandbox / semantic product twin",
+      "purpose": "Visually replay the complete first-product interaction to SIMULATED prompt.send with truthful ambiguity and Wiki.",
+      "state": "DESIGN + Lock C candidate; no full executable sandbox.",
+      "priority": "NOW",
+      "owners": "VFX + EXP + SDW + LNC + SKW",
+      "notes": "Built on MP-11, not a UI-only mock."
+    },
+    {
+      "id": "MP-13",
+      "name": "Virtual executables / simulated evidence",
+      "purpose": "The simulator can execute commands against synthetic Worlds and emit deterministic fake-but-explicit evidence.",
+      "state": "DESIGN; not implemented for release slice.",
+      "priority": "NOW",
+      "owners": "EXP + RTE",
+      "notes": "prompt.send virtual realization must be clearly simulated; add second unrelated command later as generalization test."
+    },
+    {
+      "id": "MP-14",
+      "name": "Command Visual Language / semantic interaction protocol",
+      "purpose": "User can see what Ω interpreted, what is unresolved and what will happen; clicks edit semantics rather than hidden UI state.",
+      "state": "Rich DESIGN; no product implementation.",
+      "priority": "NOW",
+      "owners": "VFX",
+      "notes": "Uses semantic handles; presentation/icon library remains replaceable."
+    },
+    {
+      "id": "MP-15",
+      "name": "VisualSpec vNext / projector",
+      "purpose": "All UI surfaces receive one deterministic semantic projection and never reparse language.",
+      "state": "CANDIDATE Lock C; extend-vs-replace unresolved.",
+      "priority": "NOW",
+      "owners": "VFX + LNC",
+      "notes": "Must reconcile current VisualSpec/project.ts before freezing wire format."
+    },
+    {
+      "id": "MP-16",
+      "name": "Automated Semantic Experiments",
+      "purpose": "Competing language/grounding/visual/Wiki designs run against pinned scenarios with semantic diffs and falsifiers.",
+      "state": "EXP baseline candidate; no full experiment engine.",
+      "priority": "NOW / PARALLEL",
+      "owners": "EXP + TRU",
+      "notes": "Build scenario, diff and metric engines; required-field metadata currently missing for some metrics."
+    },
+    {
+      "id": "MP-17",
+      "name": "Cross-domain semantic generalization",
+      "purpose": "Prove the semantic system is not secretly AI-specific by exercising unrelated capabilities.",
+      "state": "DESIGN benchmark path.",
+      "priority": "PARALLEL / later",
+      "owners": "EXP + SDW + TRU",
+      "notes": "OS taxonomy is benchmark evidence, not MVP scope."
+    },
+    {
+      "id": "MP-18",
+      "name": "Self-Describing Runtime / Reflection ABI",
+      "purpose": "If Ω can load a public capability, Ω can inspect and explain it from source-bound structural truth.",
+      "state": "CANDIDATE Lock D; strongest first-wave traceability; not implemented as ABI.",
+      "priority": "NOW / PARALLEL",
+      "owners": "SKW + SDW + RTE",
+      "notes": "All 24 current manifests have empty contentHash; source binding unmet."
+    },
+    {
+      "id": "MP-19",
+      "name": "Reflection Graph",
+      "purpose": "Derive a read-only graph of Plugin/Capability/Command/Schema/Source/etc. from actual loaded structure.",
+      "state": "Candidate node/edge design; 24 manifest paths listed, 3 manifests deep-read (vivim-nlcl, vivim-providers, vivim-mind).",
+      "priority": "NOW / PARALLEL",
+      "owners": "SKW",
+      "notes": "Must stay descriptive; live state joins later."
+    },
+    {
+      "id": "MP-20",
+      "name": "Contextual Wiki / realtime help",
+      "purpose": "Generate Glance/Explain/Inspect help from Reflection + World + interpretation, with no parallel Wiki database.",
+      "state": "DESIGN; no runtime Wiki.",
+      "priority": "NEXT after minimal Reflection",
+      "owners": "SKW + VFX",
+      "notes": "Same semantic handles as UI; grounded claim provenance required."
+    },
+    {
+      "id": "MP-21",
+      "name": "Self-Knowledge Reflection Migrator / auto-Wiki migration tool",
+      "purpose": "Read the existing codebase, extract structurally provable Reflection, identify gaps, propose safe migrations, and verify compliance.",
+      "state": "DESIGN; SKW-L1 performed only the first read-only audit slice. Utility does not exist.",
+      "priority": "PARALLEL / high leverage",
+      "owners": "SKW + DEV + TRU",
+      "notes": "REF-01…REF-12 program; read-only default; LLM suggestions never masquerade as extracted facts."
+    },
+    {
+      "id": "MP-22",
+      "name": "Source-native semantic declarations & completeness gate",
+      "purpose": "New/modified public behavior is self-describing by construction and cannot silently bypass Reflection.",
+      "state": "DESIGN.",
+      "priority": "NEXT",
+      "owners": "SKW + RTE + future Forge",
+      "notes": "Requires SourceAnchor/content digest and contribution helpers."
+    },
+    {
+      "id": "MP-23",
+      "name": "Automatic plugin self-knowledge wiring",
+      "purpose": "Installing a plugin immediately adds capability/config/source knowledge to Reflection/Wiki without authored Wiki files.",
+      "state": "DESIGN / synthetic proof specified.",
+      "priority": "NEXT / later",
+      "owners": "SKW + future Forge",
+      "notes": "EXP-12 synthetic zero-doc plugin is key falsifier."
+    },
+    {
+      "id": "MP-24",
+      "name": "Provider Lab",
+      "purpose": "Instrument real provider behavior in Shadow / Control / Conformance / Healing modes and turn messy live reality into reusable knowledge.",
+      "state": "STRONG HYPOTHESIS; PRV-L1 reconnaissance only.",
+      "priority": "PARALLEL",
+      "owners": "PRV + TRU",
+      "notes": "Development Lab, not product authority."
+    },
+    {
+      "id": "MP-25",
+      "name": "Browser transport & Account identity",
+      "purpose": "Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness.",
+      "state": "RECON Lock E only; no live attach.",
+      "priority": "NOW critical external path",
+      "owners": "PRV + TRU",
+      "notes": "TRU-05 live-proof protocol + consent/evidence boundary before live observation."
+    },
+    {
+      "id": "MP-26",
+      "name": "Provider/Account/Model routing",
+      "purpose": "Route among valid Providers, Accounts and optional Models without hidden defaults or silent retargeting.",
+      "state": "Candidate semantics; no live Account binding.",
+      "priority": "NOW",
+      "owners": "SDW + LNC + PRV",
+      "notes": "Model ≠ Provider ≠ Account ≠ Session."
+    },
+    {
+      "id": "MP-27",
+      "name": "Provider packs / realization boundary",
+      "purpose": "Isolate provider-specific URLs, identity signals, steps and completion signals behind shared semantic capabilities.",
+      "state": "DESIGN / baseline evidence.",
+      "priority": "NEXT",
+      "owners": "PRV",
+      "notes": "First provider is proving realization; provider 2 must falsify abstractions."
+    },
+    {
+      "id": "MP-28",
+      "name": "Live prompt.send realization",
+      "purpose": "One real prompt goes through the selected Account with attempt/result evidence and no false success.",
+      "state": "UNPROVEN; prompt.send absent from current manifests/src.",
+      "priority": "NEXT after transport + GOV",
+      "owners": "PRV + RTE + TRU",
+      "notes": "Must first become a real source-native capability and governed realization."
+    },
+    {
+      "id": "MP-29",
+      "name": "Provider drift detection / conformance / healing",
+      "purpose": "Detect changed external behavior, mark realization drifted, diagnose/repair under governance, and verify repair.",
+      "state": "Baseline healing lifecycle exists; release provider integration not built.",
+      "priority": "LATER release M7+",
+      "owners": "PRV + TRU",
+      "notes": "Healing is general capability hypothesis, not selector hacks as architecture."
+    },
+    {
+      "id": "MP-30",
+      "name": "Second/third-provider falsification",
+      "purpose": "Force shared semantics to survive materially different providers.",
+      "state": "DESIGN / release roadmap.",
+      "priority": "NEXT after provider 1",
+      "owners": "PRV + TRU",
+      "notes": "The roadmap currently proposes ChatGPT first, Claude second, Gemini conditional. That order is a roadmap hypothesis, not an owner decision."
+    },
+    {
+      "id": "MP-31",
+      "name": "Authority / consent / refusal",
+      "purpose": "Natural language never grants permission; every consequential operation has explicit scoped authority or refusal.",
+      "state": "Law verified-local; release consent contract not implemented.",
+      "priority": "NOW / NEXT",
+      "owners": "RTE + TRU",
+      "notes": "Consequence ≠ authority."
+    },
+    {
+      "id": "MP-32",
+      "name": "Execution envelope / evidence / receipts (Work-lite)",
+      "purpose": "Persist attempt before effect and distinguish executing/completed/failed/uncertain with structural evidence.",
+      "state": "DESIGN; durable Work absent.",
+      "priority": "NEXT before live send",
+      "owners": "RTE + TRU",
+      "notes": "No blind retry after uncertain external effect."
+    },
+    {
+      "id": "MP-33",
+      "name": "Durable Work / Agency / Attention / background continuity",
+      "purpose": "Consequential delegated outcomes survive worker/process replacement and can continue/recover honestly.",
+      "state": "DEFERRED for first release; destination-critical; durable Work absent.",
+      "priority": "LATER",
+      "owners": "RTE + SDW + TRU",
+      "notes": "Work ≠ worker; scheduler/pools are not durable Work."
+    },
+    {
+      "id": "MP-34",
+      "name": "Vault / canonical local data / continuity",
+      "purpose": "User-owned durable state, provenance and history survive restart and isolation.",
+      "state": "PROVEN-SLICE locally for Vault/CLI continuity.",
+      "priority": "ACTIVE foundation",
+      "owners": "SDW + RTE + TRU",
+      "notes": "Expand only as new release records require it."
+    },
+    {
+      "id": "MP-35",
+      "name": "Memory / context / self-knowledge freshness",
+      "purpose": "Durable memory remains distinct from task context; derived context is attributable/fresh/recomputable.",
+      "state": "Partial concepts/legacy mechanisms; broad destination program.",
+      "priority": "LATER / cross-cutting",
+      "owners": "SDW + SKW",
+      "notes": "Do not create a second source of truth."
+    },
+    {
+      "id": "MP-36",
+      "name": "Plugins / compositions / contribution boundaries",
+      "purpose": "Replaceable capabilities enter through explicit contracts without secret first-party paths.",
+      "state": "Strong baseline exists; needs new semantic/Reflection integration.",
+      "priority": "ACTIVE foundation",
+      "owners": "SDW + RTE + SKW",
+      "notes": "Everything replaceable except minimal constitutional obligations."
+    },
+    {
+      "id": "MP-37",
+      "name": "Forge / governed self-extension",
+      "purpose": "Ordinary users/Ω can create, modify, compose and repair governed plugins/capabilities through normal admission/proof.",
+      "state": "DEFERRED long-horizon.",
+      "priority": "LATER",
+      "owners": "RTE + SKW + DEV + TRU",
+      "notes": "Reflection completeness should eventually be generated/enforced by Forge."
+    },
+    {
+      "id": "MP-38",
+      "name": "Governed evolution / compatibility / rollback",
+      "purpose": "Ω can change itself with lineage, impact awareness, verification and recovery without self-authorizing constitutional change.",
+      "state": "DESIGN principle / partial baseline mechanisms.",
+      "priority": "LATER",
+      "owners": "RTE + TRU + SDW",
+      "notes": "Ordinary evolution ≠ constitutional change."
+    },
+    {
+      "id": "MP-39",
+      "name": "Runtime / constitution / resource governance / failure semantics",
+      "purpose": "Minimal trusted substrate enforces non-bypassable boundaries, resource/failure truth and replacement.",
+      "state": "Baseline host/law verified-local slice; historical gates incomplete.",
+      "priority": "ACTIVE foundation",
+      "owners": "RTE + TRU",
+      "notes": "Revalidate K0/K1; do not move product semantics into core casually."
+    },
+    {
+      "id": "MP-40",
+      "name": "Surfaces / spatial environment / Canvas",
+      "purpose": "Multiple replaceable surfaces project one semantic World; later spatial/canvas experience does not become canonical truth.",
+      "state": "DEFERRED from first release.",
+      "priority": "LATER",
+      "owners": "VFX + SDW",
+      "notes": "Floating shell is first surface, not final environment."
+    },
+    {
+      "id": "MP-41",
+      "name": "Truth / proof ledger / falsifiers / maturity",
+      "purpose": "Every important claim has an evidence level, owner, falsifier and independent review.",
+      "state": "TRU-L1 active review demonstrated; release ledger/falsifier suite still roadmap work.",
+      "priority": "NOW / continuous",
+      "owners": "TRU",
+      "notes": "Fixture ≠ live; promotion is proof, not confidence."
+    },
+    {
+      "id": "MP-42",
+      "name": "Harvest-First Engineering / Harvest Bench",
+      "purpose": "Search baseline/history/ecosystem before expensive invention; assay candidates as reuse/adapt/wrap/port/evidence/reject.",
+      "state": "ACTIVE doctrine; PRV-L1 used it.",
+      "priority": "continuous",
+      "owners": "every owner; DEV/R&D coordinate",
+      "notes": "Not a link-dump research department."
+    },
+    {
+      "id": "MP-43",
+      "name": "Historical VIVIM / BCP knowledge mining",
+      "purpose": "Reuse old proofs, failures, mechanisms and destination reasoning without inheriting old organization or law.",
+      "state": "Available external knowledge mine.",
+      "priority": "PARALLEL on demand",
+      "owners": "owning lane + TRU",
+      "notes": "Time-sensitive facts must be refreshed."
+    },
+    {
+      "id": "MP-44",
+      "name": "OS taxonomy / non-AI benchmark corpus",
+      "purpose": "Stress semantic/reflection/visual systems against hundreds of non-AI capabilities.",
+      "state": "HISTORICAL/EXTERNAL benchmark; not adopted product scope.",
+      "priority": "PARALLEL after core Lab",
+      "owners": "EXP + SDW + SKW",
+      "notes": "291 capabilities / 305 Windows realizations are authored evidence, not live proof."
+    },
+    {
+      "id": "MP-45",
+      "name": "Benchmarks / performance / architecture falsifiers",
+      "purpose": "Re-measure runtime/resource/latency claims only when decision-relevant.",
+      "state": "Historical benchmark corpus exists.",
+      "priority": "on demand",
+      "owners": "TRU + RTE + DEV",
+      "notes": "Old numbers are evidence, not guarantees."
+    },
+    {
+      "id": "MP-46",
+      "name": "Local Agentic Development System",
+      "purpose": "Many local agents can work in parallel, hand off through Git/artifacts, and integrate without owner reconstructing everything manually.",
+      "state": "PROVEN-SLICE (narrow): six bounded ZCode workers each wrote one design artifact plus handoff concurrently (28–49 s, ≤8 tool calls); one dispatcher integrated them. Parallel code changes, worktree merges and cross-habitat coordination are unproven.",
+      "priority": "NOW / continuous",
+      "owners": "DEV + TRU",
+      "notes": "Workers changed no code and made no commits. Bounded workers succeeded; unbounded heavy background agents stalled."
+    },
+    {
+      "id": "MP-47",
+      "name": "Workstream/dependency/Lock orchestration",
+      "purpose": "Enable temporary low-handoff coordination through explicit, falsifiable interface hypotheses rather than waiting for whole subsystems.",
+      "state": "ACTIVE; Locks A–E candidate/recon.",
+      "priority": "NOW",
+      "owners": "DEV",
+      "notes": "Lanes and Locks are coordination devices, not permanent architecture; a Lock stabilizes interoperability long enough to work and remains replaceable by evidence."
+    },
+    {
+      "id": "MP-48",
+      "name": "Model routing / heterogeneous intelligence pool",
+      "purpose": "Use abundant models for work and scarce frontier models for mature review/adjudication; record actual routed model when known.",
+      "state": "ACTIVE policy; ZCode currently openrouter/auto; concrete model hidden.",
+      "priority": "continuous",
+      "owners": "DEV + TRU",
+      "notes": "Harness ≠ router ≠ model."
+    },
+    {
+      "id": "MP-49",
+      "name": "ZCode / OpenRouter Auto execution substrate",
+      "purpose": "Use measured ZCode concurrency/workflows safely without assuming historical provider-account topology.",
+      "state": "ACTIVE; ≥6 bounded concurrency verified.",
+      "priority": "NOW",
+      "owners": "DEV",
+      "notes": "Keep config read-only; bounded tasks currently outperform unbounded background workers."
+    },
+    {
+      "id": "MP-50",
+      "name": "Codex / Claude Code specialist integration",
+      "purpose": "Use separate harnesses for implementation/integration/review where diversity adds value.",
+      "state": "Reachable; not yet deeply benchmarked in new launch.",
+      "priority": "PARALLEL",
+      "owners": "DEV + TRU",
+      "notes": "Cross-provider review preferred for load-bearing contracts."
+    },
+    {
+      "id": "MP-51",
+      "name": "Grok Build / Grok model integration",
+      "purpose": "Add Grok as both model resource and execution harness without mistaking harness capability for free capacity.",
+      "state": "Binary reachable, not configured/benchmarked.",
+      "priority": "PARALLEL experiment",
+      "owners": "DEV + TRU",
+      "notes": "Shared SuperGrok usage pool; measure output per allowance."
+    },
+    {
+      "id": "MP-52",
+      "name": "Daintree execution habitat evaluation",
+      "purpose": "Test whether Daintree usefully manages Git worktrees, Review Hub and supported CLI-agent panels without creating a new source of project truth.",
+      "state": "LIVE on the Linux box and available for assay; adoption remains an experiment, not strategy law.",
+      "priority": "PARALLEL high-value experiment",
+      "owners": "DEV + TRU",
+      "notes": "Daintree does not launch/manage ZCode. Evaluate Daintree and ZCode as separate habitats that may coexist through shared Git/task/evidence surfaces. Retain either only while it improves validated progress."
+    },
+    {
+      "id": "MP-53",
+      "name": "Development Reality Layer / Dev Black Box",
+      "purpose": "Capture minimal local structural development events that can power context, debugging, regressions and throughput learning.",
+      "state": "EXPERIMENT hypothesis only.",
+      "priority": "OPTIONAL when bottleneck measured",
+      "owners": "DEV + TRU",
+      "notes": "Privacy/local retention first; potential multiplier."
+    },
+    {
+      "id": "MP-54",
+      "name": "Automatic Context Bundles",
+      "purpose": "Give fresh workers compact task-specific context derived from current repo reality.",
+      "state": "EXPERIMENT hypothesis.",
+      "priority": "OPTIONAL / likely before Elephant",
+      "owners": "DEV",
+      "notes": "Compare against ordinary repo reading and elephant residency."
+    },
+    {
+      "id": "MP-55",
+      "name": "Failure Capsules / reproducible debugging packets",
+      "purpose": "Package failure, environment, changed files and evidence so another worker can reproduce quickly.",
+      "state": "EXPERIMENT hypothesis.",
+      "priority": "OPTIONAL high-value",
+      "owners": "DEV + TRU",
+      "notes": "Candidate companion to simulator/EXP."
+    },
+    {
+      "id": "MP-56",
+      "name": "Trace → Fixture / regression harvesting",
+      "purpose": "Turn live/provider/runtime behavior into privacy-reduced deterministic fixtures and tests.",
+      "state": "DESIGN hypothesis, strongly complementary to Provider Lab + Lab.",
+      "priority": "PARALLEL when live traces exist",
+      "owners": "DEV + EXP + PRV + TRU",
+      "notes": "One of the strongest bridge mechanisms."
+    },
+    {
+      "id": "MP-57",
+      "name": "Dynamic worker/model routing",
+      "purpose": "Route tasks to harness/model based on measured task fit, capacity, cost and evidence—not permanent roles.",
+      "state": "Manual policy exists; automated router absent.",
+      "priority": "OPTIONAL / later",
+      "owners": "DEV + TRU",
+      "notes": "Need task/result attribution data first."
+    },
+    {
+      "id": "MP-58",
+      "name": "Hypothesis arenas / independent shadow validation",
+      "purpose": "Run competing solutions or independent reviews on uncertain load-bearing choices and let evidence decide.",
+      "state": "Method available manually; no framework needed yet.",
+      "priority": "PARALLEL on high uncertainty",
+      "owners": "DEV + TRU",
+      "notes": "Do not duplicate routine work."
+    },
+    {
+      "id": "MP-59",
+      "name": "Disposable experimental universes",
+      "purpose": "Cheap isolated repos/worktrees/compositions/worlds for agents to try risky alternatives without contaminating main.",
+      "state": "Concept partly provided by Git worktrees + semantic simulator; no generalized system.",
+      "priority": "PARALLEL / grow from need",
+      "owners": "DEV + EXP",
+      "notes": "Daintree may supply much of physical isolation."
+    },
+    {
+      "id": "MP-60",
+      "name": "Runtime dependency / impact graph + test selection",
+      "purpose": "Know what a change affects and run the smallest high-confidence evidence loop without weakening merge/release gates.",
+      "state": "EXPERIMENT hypothesis.",
+      "priority": "OPTIONAL",
+      "owners": "DEV + TRU",
+      "notes": "Reflection graph may eventually provide product-side structural input."
+    },
+    {
+      "id": "MP-61",
+      "name": "Failure minimization / bisect / regression localization",
+      "purpose": "Automatically shrink and locate failing changes/inputs/traces.",
+      "state": "EXPERIMENT hypothesis.",
+      "priority": "OPTIONAL",
+      "owners": "DEV + TRU",
+      "notes": "Valuable once failure volume increases."
+    },
+    {
+      "id": "MP-62",
+      "name": "Continuous fault injection / live architectural falsifiers",
+      "purpose": "Deliberately kill/break sessions, providers, selectors, workers, resources and projections to test truthful recovery.",
+      "state": "DESIGN hypothesis; some release falsifiers planned.",
+      "priority": "PARALLEL as subsystems appear",
+      "owners": "TRU + EXP + PRV + RTE",
+      "notes": "Must be bounded and disposable."
+    },
+    {
+      "id": "MP-63",
+      "name": "Provider-pack hot reload / reproducible environments / build-test acceleration",
+      "purpose": "Shrink code→evidence loops without weakening correctness.",
+      "state": "EXPERIMENT portfolio.",
+      "priority": "OPTIONAL",
+      "owners": "DEV + PRV + TRU",
+      "notes": "Includes hot reload, one-command envs, cache/sharding, affected-test selection."
+    },
+    {
+      "id": "MP-64",
+      "name": "Automatic Session Chronicle / development knowledge promotion",
+      "purpose": "Create evidence-derived durable handoffs and promote only useful development knowledge.",
+      "state": "Partial manually through Commons/handoffs; automation absent.",
+      "priority": "PARALLEL after need",
+      "owners": "DEV + TRU",
+      "notes": "Do not trust self-summary alone."
+    },
+    {
+      "id": "MP-65",
+      "name": "Interactive Development Cockpit / congestion awareness",
+      "purpose": "See and control agents/worktrees/failures/queues when concurrency makes coordination expensive.",
+      "state": "Custom cockpit DEFERRED; Daintree now candidate solution.",
+      "priority": "OPTIONAL / assay Daintree first",
+      "owners": "DEV",
+      "notes": "Avoid building a dashboard if Daintree solves it."
+    },
+    {
+      "id": "MP-66",
+      "name": "Elephant Context Network",
+      "purpose": "Test persistent epoch-aware large-context domain cognition as consult/review/onboarding service.",
+      "state": "EXPERIMENT plan only; no node launched.",
+      "priority": "OPTIONAL after measured context bottleneck",
+      "owners": "DEV + TRU",
+      "notes": "Fresh worker + context bundle + one-shot pack are mandatory comparison arms."
+    },
+    {
+      "id": "MP-67",
+      "name": "Acceleration Scorecard",
+      "purpose": "Measure whether any DevOps accelerator improves validated product progress rather than activity.",
+      "state": "DESIGN hypothesis.",
+      "priority": "continuous as accelerators activate",
+      "owners": "DEV + TRU",
+      "notes": "Retire machinery that does not earn its cost."
+    }
+  ],
+  "developmentAccelerationHypotheses": [
+    {
+      "id": "DA-01",
+      "name": "Development Reality Layer / Dev Black Box",
+      "parent": "MP-53",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-02",
+      "name": "Automatic Context Bundles",
+      "parent": "MP-54",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-03",
+      "name": "Failure Capsules",
+      "parent": "MP-55",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-04",
+      "name": "Human Demonstration → Candidate Test / Workflow",
+      "parent": "MP-56 / MP-62",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-05",
+      "name": "Golden-Path Miner",
+      "parent": "MP-56 / MP-64",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-06",
+      "name": "Regression Harvesting",
+      "parent": "MP-56",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-07",
+      "name": "Development Friction Detector",
+      "parent": "MP-67",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-08",
+      "name": "Dynamic Worker Routing",
+      "parent": "MP-57",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-09",
+      "name": "Independent Agent Shadow Validation",
+      "parent": "MP-58",
+      "disposition": "method available manually"
+    },
+    {
+      "id": "DA-10",
+      "name": "Hypothesis Arena",
+      "parent": "MP-58",
+      "disposition": "method available manually"
+    },
+    {
+      "id": "DA-11",
+      "name": "Disposable Experimental Universes",
+      "parent": "MP-59",
+      "disposition": "partial via worktrees; general system absent"
+    },
+    {
+      "id": "DA-12",
+      "name": "Runtime Dependency / Impact Graph",
+      "parent": "MP-60",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-13",
+      "name": "Live Architectural Falsifiers",
+      "parent": "MP-62",
+      "disposition": "partial release falsifiers planned"
+    },
+    {
+      "id": "DA-14",
+      "name": "Automatic Harvest Trigger",
+      "parent": "MP-42 / MP-67",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-15",
+      "name": "Contract / Falsifier Scaffold Generator",
+      "parent": "MP-41 / MP-62",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-16",
+      "name": "Trace → Fixture / Synthetic Replay",
+      "parent": "MP-56",
+      "disposition": "high-value bridge; not implemented"
+    },
+    {
+      "id": "DA-17",
+      "name": "Automated Test Selection / Change Impact",
+      "parent": "MP-60 / MP-63",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-18",
+      "name": "Failure Minimization",
+      "parent": "MP-61",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-19",
+      "name": "Automated Bisect / Regression Localization",
+      "parent": "MP-61",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-20",
+      "name": "Continuous Fault Injection",
+      "parent": "MP-62",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-21",
+      "name": "Hot-Reload Provider Packs / Extensions",
+      "parent": "MP-63",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-22",
+      "name": "One-Command Reproducible Environments",
+      "parent": "MP-63",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-23",
+      "name": "Automatic Session Chronicle",
+      "parent": "MP-64",
+      "disposition": "partial manual equivalent exists"
+    },
+    {
+      "id": "DA-24",
+      "name": "Tiny Human Intent Annotation",
+      "parent": "MP-53 / MP-64",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-25",
+      "name": "Development Knowledge Promotion",
+      "parent": "MP-64",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-26",
+      "name": "Usage-Derived Product Opportunity Mining",
+      "parent": "MP-01 / MP-53",
+      "disposition": "experiment only"
+    },
+    {
+      "id": "DA-27",
+      "name": "Interactive Development Cockpit",
+      "parent": "MP-65",
+      "disposition": "assay Daintree before building"
+    },
+    {
+      "id": "DA-28",
+      "name": "Queue / Congestion Awareness",
+      "parent": "MP-65 / MP-67",
+      "disposition": "measure first"
+    },
+    {
+      "id": "DA-29",
+      "name": "Build / Test Cache and Sharding",
+      "parent": "MP-63",
+      "disposition": "measure first"
+    },
+    {
+      "id": "DA-30",
+      "name": "Acceleration Scorecard",
+      "parent": "MP-67",
+      "disposition": "should gate all accelerator adoption"
+    },
+    {
+      "id": "DA-31",
+      "name": "Elephant Context Network",
+      "parent": "MP-66",
+      "disposition": "explicit experiment ladder exists"
+    }
+  ],
+  "labs": [
+    {
+      "id": "semantic-runtime-lab",
+      "name": "Semantic Runtime Lab / Omega Simulator",
+      "programs": [
+        "MP-11",
+        "MP-13",
+        "MP-16",
+        "MP-17"
+      ],
+      "boundary": "Simulated evidence is labelled simulated; pinned experiments replay; Lab adoption is not product adoption.",
+      "notProductLaw": "Lab kernel, Profiles, packs and storage are Lab design candidates."
+    },
+    {
+      "id": "mvp-visualization-sandbox",
+      "name": "MVP Visualization Sandbox",
+      "programs": [
+        "MP-12",
+        "MP-14",
+        "MP-15"
+      ],
+      "boundary": "Stops at SIMULATED prompt.send; fixture Models/Accounts are never provider truth; the UI does not own meaning.",
+      "notProductLaw": "Not a frozen VisualSpec wire format."
+    },
+    {
+      "id": "provider-lab",
+      "name": "Provider Reality / Provider Lab",
+      "programs": [
+        "MP-24",
+        "MP-25",
+        "MP-27",
+        "MP-29"
+      ],
+      "boundary": "No live observation before a live-proof protocol and consent boundary exist; structural evidence by default; auth/provider config untouched.",
+      "notProductLaw": "Not product authority and not a commitment to a Chrome-extension architecture."
+    },
+    {
+      "id": "reflection",
+      "name": "Reflection / self-knowledge",
+      "programs": [
+        "MP-18",
+        "MP-19",
+        "MP-20",
+        "MP-21",
+        "MP-22",
+        "MP-23"
+      ],
+      "boundary": "Extracted fact != suggested meaning; description != authority, availability or proof; read-only by default.",
+      "notProductLaw": "The Reflection ABI obligation is a candidate constitutional property, not adopted law."
+    },
+    {
+      "id": "dev-system",
+      "name": "Development-system acceleration",
+      "programs": [
+        "MP-46..MP-67"
+      ],
+      "boundary": "Repository, tests and evidence outrank agent self-report; no auth, spend or config mutation.",
+      "notProductLaw": "Not a permanent organization, scheduler or source of project truth."
+    }
+  ]
+}

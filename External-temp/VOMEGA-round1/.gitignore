@@ -1,0 +1,8 @@
+.local/
+# Test-generated compartments and user-owned runtime state.
+omega-baseline/testkit/test/fixtures/ghosts/.gen-*/
+node_modules/
+dev-vault/
+
+# Local attach unpack + agent panel prompts (optional)
+.incoming/

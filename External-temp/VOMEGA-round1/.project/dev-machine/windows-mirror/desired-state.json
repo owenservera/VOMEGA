@@ -1,0 +1,496 @@
+{
+  "schema": "vomega-dev-machine-desired-state/v1",
+  "generated_at": "2026-10-06T00:10+02:00",
+  "timezone": "Europe/Paris",
+  "source_of_truth": {
+    "meta_governance": ".project/META-TRACKER.md (program map + openness rule)",
+    "launch_runtime_state": ".project/agentic-launch/STATUS.md",
+    "dev_machine_snapshot": ".project/dev-machine/ (reproducible operating experiment, not strategy authority)",
+    "windows_pack": ".project/dev-machine/windows-mirror/ (reconstruction snapshot)"
+  },
+  "status_vocabulary": {
+    "LIVE_ON_LINUX": "executed and passed on shared Linux box this session",
+    "UNVERIFIED_ON_WINDOWS": "generated/statically checked only; Owen must run verify-vomega-dev.ps1",
+    "REPAIR_REQUIRED": "known broken or limited; see repair field",
+    "MANUAL_AUTH": "human sign-in required; never automated, never exported"
+  },
+  "secrets_policy": "No passwords, API keys, OAuth tokens, cookies, credential file contents or browser session state. Env vars recorded by NAME only. Auth is symbolic.",
+  "hosts": {
+    "linux": {
+      "role": "shared bootstrap box (one observed machine; not a control plane for other habitats)",
+      "os": "Debian-like Linux x64 (kernel 6.12)",
+      "repo_root": "/workspace/VOMEGA",
+      "worktree_root": "/workspace/vomega-worktrees",
+      "habitat": "Daintree available for Git worktrees + supported CLI-agent panels; independent of ZCode",
+      "display": ":16"
+    },
+    "windows": {
+      "role": "owner workstation (plug-and-play target)",
+      "os": "Windows 10/11 x64",
+      "repo_root_default": "C:\\0-BlackBoxProject-0\\VOMEGA",
+      "worktree_root_default": "C:\\0-BlackBoxProject-0\\vomega-worktrees",
+      "habitat": "ZCode and Daintree are independent optional habitats; no parent/child relationship",
+      "status": "UNVERIFIED_ON_WINDOWS"
+    }
+  },
+  "repository": {
+    "url": "https://github.com/owenservera/VOMEGA.git",
+    "integration_branch": "main",
+    "bootstrap": [
+      "git clone (if absent) else git fetch + git pull --ff-only on main; never reset/force",
+      "cd omega-baseline && bun install"
+    ],
+    "never_commit": [
+      ".daintree-prompts/",
+      ".env",
+      "**/auth.json",
+      "**/.credentials.json"
+    ],
+    "test_entrypoints": {
+      "quick": "cd omega-baseline && bun run omega:quick",
+      "nlcl": "cd omega-baseline && bun test plugins/vivim-nlcl"
+    }
+  },
+  "dependency_order": [
+    "git",
+    "gh",
+    "node",
+    "bun",
+    "python",
+    "repo-clone",
+    "bun-install",
+    "claude",
+    "grok",
+    "codex",
+    "opencode",
+    "kilo",
+    "daintree",
+    "zcode",
+    "manual-auth",
+    "verify",
+    "press-go"
+  ],
+  "tools": [
+    {
+      "name": "git",
+      "command": "git",
+      "role": "vcs + worktrees",
+      "required": true,
+      "desired": {
+        "version": ">=2.47.3"
+      },
+      "linux": {
+        "observed_version": "2.47.3",
+        "install": "apt (system)",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "winget Git.Git",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "none"
+      },
+      "repair_required": false,
+      "notes": ""
+    },
+    {
+      "name": "gh",
+      "command": "gh",
+      "role": "PR/integration",
+      "required": true,
+      "desired": {
+        "version": ">=2.46.0"
+      },
+      "linux": {
+        "observed_version": "2.46.0",
+        "install": "apt gh",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "winget GitHub.cli",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "existing-login",
+        "credential_location_linux": "~/.config/gh/hosts.yml",
+        "acquisition": "gh auth login (MANUAL_AUTH, account owenservera)",
+        "secret_material": "NEVER_EXPORT"
+      },
+      "repair_required": false,
+      "notes": ""
+    },
+    {
+      "name": "node",
+      "command": "node",
+      "role": "runtime for npm CLIs",
+      "required": true,
+      "desired": {
+        "version": ">=20"
+      },
+      "linux": {
+        "observed_version": "20.19.2 (system) + 22.23.3 (nvm)",
+        "install": "apt nodejs; nvm v0.40.3 -> nvm install 22.23.3",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "winget OpenJS.NodeJS.LTS",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "none"
+      },
+      "repair_required": false,
+      "notes": "Linux: opencode/kilo live under ~/.nvm/versions/node/v22.23.3 symlinked into ~/.local/bin; restored 2026-10-06 00:05. Windows: plain Node LTS is fine."
+    },
+    {
+      "name": "bun",
+      "command": "bun",
+      "role": "tests (omega:quick)",
+      "required": true,
+      "desired": {
+        "version": ">=1.4.2"
+      },
+      "linux": {
+        "observed_version": "1.4.2",
+        "install": "official installer",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "winget Oven-sh.Bun",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "none"
+      },
+      "repair_required": false,
+      "notes": ""
+    },
+    {
+      "name": "python",
+      "command": "python3",
+      "role": "select-tasks.py, ledger",
+      "required": true,
+      "desired": {
+        "version": ">=3.10"
+      },
+      "linux": {
+        "observed_version": "3.13.5",
+        "install": "apt",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "winget Python.Python.3.13",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "none"
+      },
+      "repair_required": false,
+      "notes": ""
+    },
+    {
+      "name": "claude",
+      "command": "claude",
+      "role": "implementer/reviewer (abundant/premium per model)",
+      "required": true,
+      "desired": {
+        "version": ">=2.1.289"
+      },
+      "linux": {
+        "observed_version": "2.1.289",
+        "install": "official installer (claude.ai/install.sh)",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "irm https://claude.ai/install.ps1 | iex  (alt: npm i -g @anthropic-ai/claude-code)",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "existing-login",
+        "credential_location_linux": "~/.claude/.credentials.json",
+        "acquisition": "claude then /login (MANUAL_AUTH)",
+        "secret_material": "NEVER_EXPORT"
+      },
+      "repair_required": false,
+      "notes": "live probe CLAUDE_OK; model_or_unknown=unknown"
+    },
+    {
+      "name": "grok",
+      "command": "grok",
+      "role": "implementer/reviewer (cross-provider)",
+      "required": true,
+      "desired": {
+        "version": ">=1.0.46"
+      },
+      "linux": {
+        "observed_version": "1.0.46",
+        "install": "official installer (x.ai/cli)",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "irm https://x.ai/cli/install.ps1 | iex  (alt: npm i -g @xai-official/grok)",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "existing-login",
+        "credential_location_linux": "~/.grok/auth.json",
+        "acquisition": "grok login with grok.com (MANUAL_AUTH)",
+        "secret_material": "NEVER_EXPORT"
+      },
+      "repair_required": false,
+      "notes": "live probe GROK_OK; model grok-4.7"
+    },
+    {
+      "name": "codex",
+      "command": "codex",
+      "role": "implementer/reviewer (OpenAI family)",
+      "required": true,
+      "desired": {
+        "version": ">=0.160.0"
+      },
+      "linux": {
+        "observed_version": "0.160.0",
+        "install": "npm -g @openai/codex (prefix ~/.local)",
+        "status": "REPAIR_REQUIRED",
+        "verified": false,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "npm i -g @openai/codex  (alt: winget OpenAI.Codex)",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "existing-login",
+        "credential_location_linux": "~/.codex/auth.json",
+        "acquisition": "codex login (MANUAL_AUTH)",
+        "secret_material": "NEVER_EXPORT"
+      },
+      "repair_required": true,
+      "notes": "auth OK but usage limit hit until ~2026-10-06 00:19 CEST; model seen gpt-6.1-sol. Not an install fault; wait or owner spend decision."
+    },
+    {
+      "name": "opencode",
+      "command": "opencode",
+      "role": "multi-provider harness incl. OpenRouter",
+      "required": false,
+      "desired": {
+        "version": ">=1.18.34"
+      },
+      "linux": {
+        "observed_version": "1.18.34",
+        "install": "nvm node 22.23.3: npm i -g opencode-ai (symlink ~/.local/bin/opencode)",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "npm i -g opencode-ai  (alt: winget SST.opencode)",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "existing-login",
+        "credential_location_linux": "~/.local/share/opencode/auth.json",
+        "acquisition": "opencode auth login (MANUAL_AUTH)",
+        "secret_material": "NEVER_EXPORT"
+      },
+      "repair_required": false,
+      "notes": "binary restored 2026-10-06 00:05 without touching config/auth; provider routes not re-probed"
+    },
+    {
+      "name": "kilo",
+      "command": "kilo",
+      "role": "optional harness",
+      "required": false,
+      "desired": {
+        "version": ">=7.8.3"
+      },
+      "linux": {
+        "observed_version": "7.8.3",
+        "install": "nvm node 22.23.3: npm i -g @kilocode/cli",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "npm i -g @kilocode/cli",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "none"
+      },
+      "repair_required": false,
+      "notes": "binary restored; auth not probed"
+    },
+    {
+      "name": "daintree",
+      "command": "daintree",
+      "role": "Git worktree / Review Hub / supported CLI-agent habitat; not a ZCode manager",
+      "required": false,
+      "desired": {
+        "version": ">=0.41.0"
+      },
+      "linux": {
+        "observed_version": "0.41.0",
+        "install": "dpkg -i daintree_0.41.0_amd64.deb (+ libsecret-1-0); see bootstrap/DAINTREE-RESTORE.md",
+        "status": "LIVE_ON_LINUX",
+        "verified": true,
+        "verified_at": "2026-10-06T00:06+02:00"
+      },
+      "windows": {
+        "install": "https://updates.daintree.org/releases/Daintree-0.41.0-x64-setup.exe (per-user; SmartScreen: More info -> Run anyway)",
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "none"
+      },
+      "repair_required": false,
+      "notes": "Linux: running on DISPLAY=:16, open via .project/dev-machine/bootstrap/open-in-daintree.sh. Windows: optional independent habitat. Daintree does not launch, supervise or manage ZCode."
+    },
+    {
+      "name": "zcode",
+      "command": "zcode",
+      "role": "Independent Windows ZCode session/worker habitat",
+      "required": false,
+      "desired": {
+        "version": ">=3.14.4"
+      },
+      "linux": {
+        "status": "NOT_APPLICABLE",
+        "notes": "Windows-only; not installed on Linux by design"
+      },
+      "windows": {
+        "install": "existing install C:\\Program Files\\ZCode (3.14.4 observed in SYNC_LOG 2026-10-05) or vendor installer",
+        "executable_candidates": [
+          "C:\\Program Files\\ZCode\\ZCode.exe",
+          "%LOCALAPPDATA%\\Programs\\ZCode\\ZCode.exe"
+        ],
+        "status": "UNVERIFIED_ON_WINDOWS",
+        "verified": false
+      },
+      "auth": {
+        "type": "existing-login",
+        "acquisition": "ZCode app sign-in + OpenRouter key entered in ZCode UI (MANUAL_AUTH)",
+        "secret_material": "NEVER_EXPORT"
+      },
+      "repair_required": false,
+      "notes": "router openrouter/auto hides underlying model: record router-selected/unknown. Managed by ZCode itself; Daintree is not its control plane."
+    }
+  ],
+  "routers": [
+    {
+      "name": "openrouter",
+      "mode": "openrouter/auto",
+      "used_by": [
+        "zcode",
+        "opencode"
+      ],
+      "env_var_names": [
+        "OPENROUTER_API_KEY"
+      ],
+      "secret_material": "NEVER_EXPORT",
+      "model_observability": "router-selected/unknown",
+      "linux_status": "not re-probed (no local proxy :6446)",
+      "windows_status": "UNVERIFIED_ON_WINDOWS"
+    }
+  ],
+  "env_var_names": {
+    "VOMEGA_MAX_PARALLEL": "press-go implementer cap (default 2)",
+    "VOMEGA_WORKTREE_ROOT": "disposable worktree root",
+    "VOMEGA_HEALTH_FULL": "1 = health-check runs omega:quick",
+    "VOMEGA_ALLOW_UNREVIEWED": "1 = integrate without REVIEW_OK (discouraged)",
+    "VOMEGA_INTEGRATE_QUICK": "1 = integrate also runs omega:quick",
+    "DAINTREE_DISPLAY": "Linux X display for Daintree (default :16)",
+    "OPENROUTER_API_KEY": "NAME ONLY - secret, never exported",
+    "ANTHROPIC_API_KEY": "NAME ONLY - optional alt to OAuth, never exported",
+    "OPENAI_API_KEY": "NAME ONLY - optional alt to OAuth, never exported",
+    "XAI_API_KEY": "NAME ONLY - optional alt to OAuth, never exported"
+  },
+  "config_locations": {
+    "linux": {
+      "claude": "~/.claude/",
+      "grok": "~/.grok/",
+      "codex": "~/.codex/",
+      "opencode": "~/.config/opencode/ + ~/.local/share/opencode/",
+      "gh": "~/.config/gh/",
+      "daintree": "~/.config/Daintree/"
+    },
+    "windows": {
+      "claude": "%USERPROFILE%\\.claude\\",
+      "grok": "%USERPROFILE%\\.grok\\",
+      "codex": "%USERPROFILE%\\.codex\\",
+      "opencode": "%USERPROFILE%\\.config\\opencode\\ (verify)",
+      "gh": "%APPDATA%\\GitHub CLI\\",
+      "daintree": "%APPDATA%\\Daintree\\ (verify)",
+      "zcode": "%USERPROFILE%\\.zcode\\"
+    },
+    "export_policy": "locations only; contents NEVER_EXPORT"
+  },
+  "worktree_policy": {
+    "pattern": "Current safe default when isolation is useful: bounded task -> disposable worktree -> implement -> proof/review proportional to consequence -> integrate -> remove. Not every task requires a worktree.",
+    "branch": "task/<task-id>",
+    "root_linux": "/workspace/vomega-worktrees/<task-id>",
+    "root_windows": "C:\\0-BlackBoxProject-0\\vomega-worktrees\\<task-id>",
+    "no_permanent_lane_branches": true,
+    "default_parallel_implementers": 2,
+    "measured_capacity": {
+      "windows_zcode": ">=6 bounded (historical)",
+      "linux_daintree": "2-3 worktrees (historical playground)",
+      "linux_cli_fallback": "2 default"
+    },
+    "review_rule": "Independent challenge is preferred for consequential work; cross-provider review is a useful option, not ceremony.",
+    "default_parallel_implementers_note": "Conservative helper-script default only, not project policy; tune or bypass from measured capacity."
+  },
+  "health_checks": {
+    "linux": ".project/dev-machine/health-check.sh (VOMEGA_HEALTH_FULL=1 for omega:quick)",
+    "windows": "verify-vomega-dev.ps1 (-Full for omega:quick) -> writes verify-report.json",
+    "linux_last_result": "pass=16 warn=0 fail=0, omega:quick passed (2026-10-06 00:06 CEST)"
+  },
+  "press_go": {
+    "linux": ".project/dev-machine/press-go.sh [--dry-run] [--product] [--max=N] [--no-daintree]; prefers Daintree when cli --status reports running",
+    "windows": "press-go-vomega.ps1 may open one selected UI (zcode|daintree|cli) as a convenience. It does not make one habitat the manager of another.",
+    "default_scope": "platform-only smoke by default; product task selection is advisory and may be overridden by current evidence/META-TRACKER."
+  },
+  "manual_steps": [
+    "Sign in: gh auth login; claude /login; grok login; codex login; opencode auth login (optional); ZCode app sign-in + OpenRouter key in ZCode UI",
+    "Daintree Windows installer SmartScreen confirmation",
+    "Owner decision on Codex usage limit / spend"
+  ],
+  "linux_specific": [
+    "Daintree runs under X DISPLAY=:16 on the box",
+    "nvm-managed Node 22 for opencode/kilo with NPM_CONFIG_PREFIX=~/.local (unset it when using nvm)",
+    "/workspace paths"
+  ],
+  "validation": {
+    "linux": "LIVE_ON_LINUX: health-check pass, press-go --dry-run exit 0, fallback worktree smoke create/remove OK (2026-10-06 00:05 CEST)",
+    "windows": "UNVERIFIED_ON_WINDOWS: run bootstrap-vomega-dev.ps1 then verify-vomega-dev.ps1 and return verify-report.json"
+  },
+  "operating_principle": "The map preserves possibilities; it does not prescribe the path. Only explicit invariants and Lab/proof boundaries are hard constraints.",
+  "habitat_boundary": "ZCode and Daintree are independent habitats. Daintree does not launch, supervise or manage ZCode. Coordinate through Git/task/evidence surfaces when both are used.",
+  "habitats_optional": "ZCode and Daintree are optional, independent habitats. Neither is required and neither manages the other; verify reports their presence as PASS/WARN/INFO only."
+}

@@ -1,0 +1,764 @@
+{
+  "schemaVersion": "1",
+  "status": "first-wave-executed; revisable execution overlay, not a plan to replay",
+  "date": "2026-10-05",
+  "objective": "Launch local VOMEGA agentic development teams to build the semantic MVP twin and close the live provider seam in parallel.",
+  "invariants": [
+    "provider != account",
+    "provider != model",
+    "account != model",
+    "account != session",
+    "capability != realization",
+    "consequence != authority",
+    "fidelity != evidence maturity",
+    "semantic identity != current policy classification",
+    "surface != canonical truth",
+    "fixture != live evidence"
+  ],
+  "resources": {
+    "additional_local_participants": [
+      "Codex",
+      "Claude Code",
+      "Grok Build",
+      "OpenCode",
+      "Kilo",
+      "Daintree (separate habitat; does not manage ZCode)"
+    ],
+    "rule": "resources, not an organization; measure reachability and capacity read-only at each launch; do not modify provider/auth/model configuration",
+    "grok_build": {
+      "status": "binary reachable (1.0.46 observed 2026-10-05); not configured or benchmarked on the Windows machine; live one-shot probe passed on the Linux box",
+      "verification": [
+        "grok version",
+        "grok inspect"
+      ],
+      "configRule": "read-only; do not change ~/.grok/config.toml, auth, plugins, or provider wiring without owner request",
+      "notableCapabilities": [
+        "headless JSON",
+        "ACP",
+        "worktrees",
+        "subagents",
+        "workflows",
+        "Agent Dashboard",
+        "skills",
+        "plugins",
+        "hooks",
+        "MCP",
+        "memory",
+        "AGENTS.md",
+        "Claude Code compatibility"
+      ]
+    },
+    "runtimeDiscoveryRequired": true,
+    "zcode": {
+      "state": "measured by DEV-L1 on 2026-10-05: >=6 concurrent bounded workers, ceiling not established; re-measure per launch",
+      "historicalLanesAreCapacityAssumption": false,
+      "concurrency": "point-in-time measurement, not a constant",
+      "actualModelAttribution": "capture routed model per run where exposed; otherwise mark router-selected/unknown",
+      "observedRoute": "openrouter/auto"
+    },
+    "historical": {
+      "configuredZcodeLanes": [
+        "Owen",
+        "OpenCode acct 2",
+        "OpenCode acct 3",
+        "OpenCode acct 4",
+        "OpenCode acct 5"
+      ],
+      "configuredModel": "space bunny free",
+      "status": "historical configuration evidence; never individually probed; not a scheduling topology"
+    }
+  },
+  "interfaceLocks": [
+    {
+      "id": "A",
+      "name": "MVP semantic IDs and entity relations",
+      "unlocks": [
+        "LNC",
+        "VFX",
+        "SKW",
+        "EXP"
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "SDW"
+    },
+    {
+      "id": "B",
+      "name": "UseCommand and validation outcomes",
+      "dependsOn": [
+        "A"
+      ],
+      "unlocks": [
+        "VFX",
+        "EXP",
+        "RTE"
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "LNC"
+    },
+    {
+      "id": "C",
+      "name": "VisualSpec vNext",
+      "dependsOn": [
+        "A",
+        "B"
+      ],
+      "unlocks": [
+        "EXP",
+        "SKW",
+        "RTE"
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "VFX"
+    },
+    {
+      "id": "D",
+      "name": "Minimal Reflection Graph",
+      "unlocks": [
+        "VFX",
+        "EXP",
+        "RTE"
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "SKW"
+    },
+    {
+      "id": "E",
+      "name": "Live Provider/Account evidence contract",
+      "unlocks": [
+        "SDW",
+        "RTE",
+        "TRU"
+      ],
+      "status": "reconnaissance only",
+      "proposedBy": "PRV"
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "SDW",
+      "name": "Semantic Data & World",
+      "mission": "Own semantic identities, MVP Worlds, registry/state semantics and consequence/fidelity/evidence dimensions.",
+      "existingRoadmap": [
+        "REG-01",
+        "REG-03",
+        "REG-05",
+        "REG-02",
+        "REG-06",
+        "REG-07",
+        "REG-08"
+      ],
+      "seedTasks": [
+        "VSX-02"
+      ],
+      "firstTask": "SDW-L1",
+      "firstDeliverable": "Lock A",
+      "hardDependencies": [],
+      "consumers": [
+        "LNC",
+        "VFX",
+        "SKW",
+        "EXP",
+        "RTE"
+      ],
+      "initialWriteIntent": [
+        "REG-focused code/tests",
+        "new semantic fixture/world module"
+      ],
+      "mustNotOwn": [
+        "NLP grammar",
+        "visual styling",
+        "provider browser implementation",
+        "authority decisions"
+      ]
+    },
+    {
+      "id": "LNC",
+      "name": "Language & Command Compiler",
+      "mission": "Compile human expression into explicit replayable validated semantic commands.",
+      "existingRoadmap": [
+        "CMD-01",
+        "CMD-02",
+        "CMD-03",
+        "CMD-04",
+        "CMD-05",
+        "CMD-06",
+        "CMD-07",
+        "CMD-08",
+        "CMD-09",
+        "CMD-10",
+        "CMD-11",
+        "CMD-12",
+        "CMD-13"
+      ],
+      "seedTasks": [
+        "VSX-03"
+      ],
+      "firstTask": "LNC-L1",
+      "firstDeliverable": "Lock B",
+      "hardDependencies": [
+        "A for final route identity; may start with adapter"
+      ],
+      "consumers": [
+        "VFX",
+        "EXP",
+        "RTE",
+        "SKW"
+      ],
+      "initialWriteIntent": [
+        "omega-baseline/plugins/vivim-nlcl-pure",
+        "omega-baseline/plugins/vivim-nlcl",
+        "command-focused tests/modules"
+      ],
+      "mustNotOwn": [
+        "entity persistence",
+        "provider execution",
+        "visual styling",
+        "authority grants"
+      ]
+    },
+    {
+      "id": "VFX",
+      "name": "Visual Feedback & MVP Sandbox",
+      "mission": "Project semantic interpretation into a correctable floating-box experience without owning semantic truth.",
+      "existingRoadmap": [
+        "SHL-02",
+        "SHL-03",
+        "SHL-04",
+        "SHL-06",
+        "SHL-07"
+      ],
+      "seedTasks": [
+        "VSX-01",
+        "VSX-04",
+        "VSX-05",
+        "VSX-06",
+        "VSX-07",
+        "VSX-08",
+        "VSX-09",
+        "VSX-10",
+        "VSX-11",
+        "VSX-12"
+      ],
+      "firstTask": "VFX-L1",
+      "firstDeliverable": "Lock C",
+      "hardDependencies": [
+        "A/B for adopted contract; renderer scaffold can start from fixture"
+      ],
+      "consumers": [
+        "EXP",
+        "RTE"
+      ],
+      "initialWriteIntent": [
+        "new visualization sandbox package/surface",
+        "VisualSpec projector/tests"
+      ],
+      "mustNotOwn": [
+        "raw NLP parsing",
+        "Provider/Account truth",
+        "real provider model inventory",
+        "execution authority"
+      ]
+    },
+    {
+      "id": "SKW",
+      "name": "Self-Knowledge, Reflection & Wiki",
+      "mission": "Extract source-native self-description, build Reflection Graph and generate contextual Wiki projections.",
+      "existingRoadmap": [
+        "HLP-01",
+        "HLP-02",
+        "HLP-03",
+        "HLP-04",
+        "HLP-05"
+      ],
+      "seedTasks": [
+        "REF-01",
+        "REF-02",
+        "REF-03",
+        "REF-04",
+        "REF-05",
+        "REF-06",
+        "REF-07",
+        "REF-08",
+        "REF-09",
+        "REF-10",
+        "REF-11",
+        "REF-12"
+      ],
+      "firstTask": "SKW-L1",
+      "firstDeliverable": "Lock D",
+      "hardDependencies": [],
+      "consumers": [
+        "VFX",
+        "EXP",
+        "RTE"
+      ],
+      "initialWriteIntent": [
+        "read-only first task",
+        "dedicated tooling/experimental reflection artifacts later"
+      ],
+      "mustNotOwn": [
+        "runtime authority",
+        "hand-authored wiki truth",
+        "product state independent of source/runtime"
+      ]
+    },
+    {
+      "id": "EXP",
+      "name": "Semantic Lab & Experiments",
+      "mission": "Provide replayable experiments, mutation, semantic diff and metrics for NLP/visual/wiki refinement.",
+      "existingRoadmap": [
+        "TRU-02 input",
+        "TRU-04 input",
+        "CMD-13 input"
+      ],
+      "seedTasks": [
+        "EXP-01",
+        "EXP-02",
+        "EXP-03",
+        "EXP-04",
+        "EXP-05",
+        "EXP-06",
+        "EXP-07",
+        "EXP-08",
+        "EXP-09",
+        "EXP-10",
+        "EXP-11",
+        "EXP-12",
+        "EXP-A",
+        "EXP-B",
+        "EXP-C",
+        "EXP-D",
+        "EXP-E",
+        "EXP-F",
+        "EXP-G"
+      ],
+      "firstTask": "EXP-L1",
+      "firstDeliverable": "Scenario runner + semantic diff baseline",
+      "hardDependencies": [],
+      "consumers": [
+        "SDW",
+        "LNC",
+        "VFX",
+        "SKW",
+        "TRU"
+      ],
+      "initialWriteIntent": [
+        "dedicated lab/scenario/test tooling"
+      ],
+      "mustNotOwn": [
+        "promotion by score alone",
+        "live provider proof",
+        "product authority"
+      ]
+    },
+    {
+      "id": "PRV",
+      "name": "Provider Reality Lab",
+      "mission": "Prove browser transport, Account identity and provider realizations against real external behavior.",
+      "existingRoadmap": [
+        "PRV-01",
+        "PRV-02",
+        "PRV-03",
+        "PRV-04",
+        "PRV-05",
+        "PRV-06",
+        "PRV-07",
+        "PRV-08",
+        "PRV-09",
+        "PRV-10",
+        "PRV-11",
+        "PRV-12"
+      ],
+      "seedTasks": [],
+      "firstTask": "PRV-L1",
+      "firstDeliverable": "Lock E",
+      "hardDependencies": [],
+      "consumers": [
+        "SDW",
+        "RTE",
+        "TRU"
+      ],
+      "initialWriteIntent": [
+        "Provider Lab/research artifacts until transport decision"
+      ],
+      "mustNotOwn": [
+        "canonical capability semantics",
+        "generic grammar",
+        "visual UI",
+        "authority policy"
+      ]
+    },
+    {
+      "id": "RTE",
+      "name": "Runtime, Authority, Native Shell & Release",
+      "mission": "Carry validated commands through trusted execution/evidence boundaries and package the Windows product.",
+      "existingRoadmap": [
+        "GOV-01",
+        "GOV-02",
+        "GOV-03",
+        "GOV-04",
+        "GOV-05",
+        "GOV-06",
+        "GOV-07",
+        "GOV-08",
+        "SHL-01",
+        "SHL-05",
+        "SHL-06",
+        "SHL-08",
+        "REL-01",
+        "REL-02",
+        "REL-03",
+        "REL-04",
+        "REL-05",
+        "REL-06",
+        "REL-07"
+      ],
+      "seedTasks": [],
+      "firstTask": "RTE-L1",
+      "firstDeliverable": "Trust/shell/packaging assays + consequence-law mapping",
+      "hardDependencies": [
+        "A/B/C/E for integrated product execution; independent assays can start now"
+      ],
+      "consumers": [
+        "release"
+      ],
+      "initialWriteIntent": [
+        "GOV/REL/native shell-focused files after contract handoff"
+      ],
+      "mustNotOwn": [
+        "NLP interpretation",
+        "semantic identity",
+        "provider-specific knowledge",
+        "Wiki facts"
+      ]
+    },
+    {
+      "id": "DEV",
+      "name": "Development System & Integration",
+      "mission": "Maximize validated parallel throughput with minimal disposable coordination machinery.",
+      "existingRoadmap": [
+        "OPS-01",
+        "OPS-02",
+        "OPS-03",
+        "OPS-04"
+      ],
+      "seedTasks": [],
+      "firstTask": "DEV-L1",
+      "firstDeliverable": "Preflight + dispatch + merge/review queue",
+      "hardDependencies": [],
+      "consumers": [
+        "all"
+      ],
+      "initialWriteIntent": [
+        ".project coordination/orchestration files only unless separately assigned"
+      ],
+      "mustNotOwn": [
+        "product architecture by virtue of coordination",
+        "permanent master role"
+      ]
+    },
+    {
+      "id": "TRU",
+      "name": "Truth & Independent Verification",
+      "mission": "Independently challenge claims, maintain falsifiers/evidence maturity and review promotions.",
+      "existingRoadmap": [
+        "TRU-01",
+        "TRU-02",
+        "TRU-03",
+        "TRU-04",
+        "TRU-05",
+        "TRU-06",
+        "TRU-07",
+        "TRU-08",
+        "TRU-09"
+      ],
+      "seedTasks": [],
+      "firstTask": "TRU-L1",
+      "firstDeliverable": "Launch falsifier set + independent first-wave review",
+      "hardDependencies": [],
+      "consumers": [
+        "all"
+      ],
+      "initialWriteIntent": [
+        "tests/evidence/review files"
+      ],
+      "mustNotOwn": [
+        "implementation under review",
+        "owner product preference"
+      ]
+    }
+  ],
+  "waves": [
+    {
+      "id": "0",
+      "name": "preflight",
+      "concurrent": [
+        "DEV preflight",
+        "TRU proof/falsifier setup"
+      ],
+      "exit": "healthy executor inventory, isolation/merge policy, no config mutation"
+    },
+    {
+      "id": "1",
+      "name": "independent fanout",
+      "concurrent": [
+        "SDW-L1",
+        "LNC-L1",
+        "VFX-L1",
+        "SKW-L1",
+        "EXP-L1",
+        "PRV-L1",
+        "RTE-L1"
+      ],
+      "exit": "first Lock A-D candidates, EXP baseline, PRV/RTE assays"
+    },
+    {
+      "id": "2",
+      "name": "contract convergence",
+      "concurrent": [
+        "A/B semantic cluster",
+        "C/D experience cluster",
+        "E/live cluster"
+      ],
+      "exit": "locks align and integrated MVP fixture compiles"
+    },
+    {
+      "id": "3",
+      "name": "full sandbox",
+      "concurrent": [
+        "sandbox UI",
+        "InterpretationSession",
+        "contextual Wiki",
+        "visual/language experiments",
+        "independent falsifiers"
+      ],
+      "exit": "replayable blank-to-simulated-prompt.send journey"
+    },
+    {
+      "id": "4",
+      "name": "product bridge",
+      "concurrent": [
+        "durable account relationships",
+        "native shell channel",
+        "authority/evidence envelope",
+        "Provider-1 realization",
+        "Reflection runtime compilation"
+      ],
+      "exit": "first real provider prompt.send path ready for automated-live proof"
+    },
+    {
+      "id": "5",
+      "name": "falsification and release",
+      "concurrent": [
+        "Provider-2 falsification",
+        "drift/stale state",
+        "packaging",
+        "ordinary-user tests",
+        "release audit"
+      ],
+      "exit": "release proof matrix satisfied at required levels"
+    }
+  ],
+  "triggers": [
+    {
+      "event": "semantic entity changes",
+      "involve": [
+        "SDW",
+        "LNC",
+        "SKW",
+        "EXP",
+        "TRU"
+      ]
+    },
+    {
+      "event": "language/frame behavior changes",
+      "involve": [
+        "LNC",
+        "EXP",
+        "TRU",
+        "VFX if visible"
+      ]
+    },
+    {
+      "event": "visible semantic interaction changes",
+      "involve": [
+        "VFX",
+        "LNC",
+        "EXP",
+        "TRU"
+      ]
+    },
+    {
+      "event": "new public plugin capability",
+      "involve": [
+        "SKW",
+        "SDW",
+        "TRU"
+      ]
+    },
+    {
+      "event": "provider/browser observation promoted",
+      "involve": [
+        "PRV",
+        "SDW",
+        "TRU"
+      ]
+    },
+    {
+      "event": "consequential execution behavior changes",
+      "involve": [
+        "RTE",
+        "SDW",
+        "TRU"
+      ]
+    },
+    {
+      "event": "repeated coordination/context friction",
+      "involve": [
+        "DEV"
+      ]
+    },
+    {
+      "event": "material architectural disagreement",
+      "involve": [
+        "DEV",
+        "EXP",
+        "TRU"
+      ]
+    }
+  ],
+  "gitPolicy": {
+    "permanentWorkstreamBranches": false,
+    "taskWorktrees": "short-lived only when concurrent writes require isolation",
+    "integration": "single merge queue; no force pushes; post-merge targeted proof",
+    "teamIdentityLivesIn": ".project/agentic-launch + Commons, not branch topology"
+  },
+  "promotionRule": "implementation owner makes mechanism work; TRU owns evidence-level challenge; owner retains product-authority decisions",
+  "modelRouting": {
+    "researched": "2026-10-05",
+    "policyDoc": ".project/agentic-launch/MODEL-ROUTING.md",
+    "tiers": {
+      "frontierScarce": [
+        "GPT-6 Astra",
+        "Claude Fable 5.1"
+      ],
+      "premiumWorkhorse": [
+        "GPT-6.1 Sol",
+        "Claude Opus 5.5",
+        "Grok 4.7"
+      ],
+      "strongWorker": [
+        "Claude Sonnet 5.5",
+        "GPT-6 Luna",
+        "GPT-5.6 Sol",
+        "GPT-5.6 Terra",
+        "Space Bunny Free lanes"
+      ]
+    },
+    "rule": "Use Astra/Fable as scarce adjudicators; use GPT-6.1 Sol, Claude Opus 5.5, and Grok 4.7 as premium workhorses; use abundant models and the currently measured bulk route for bulk execution.",
+    "crossProviderReview": "For load-bearing contracts, prefer primary proposal from one provider and independent premium review by the other; use frontier adjudication only if disagreement remains.",
+    "workstreamDefaults": {
+      "SDW": [
+        "Claude Opus 5.5",
+        "GPT-6.1 Sol",
+        "Grok 4.7 review"
+      ],
+      "LNC": [
+        "GPT-6.1 Sol",
+        "Claude Opus 5.5",
+        "Grok 4.7"
+      ],
+      "VFX": [
+        "Claude Sonnet 5.5",
+        "GPT-6.1 Sol",
+        "Grok 4.7"
+      ],
+      "SKW": [
+        "Claude Opus 5.5",
+        "GPT-6.1 Sol",
+        "Grok 4.7"
+      ],
+      "EXP": [
+        "GPT-6 Luna",
+        "Claude Sonnet 5.5",
+        "Space Bunny Free",
+        "Grok Build bounded workflows"
+      ],
+      "PRV": [
+        "GPT-6.1 Sol",
+        "Grok 4.7",
+        "Claude Sonnet 5.5",
+        "GPT-6 Astra on hard browser escalation"
+      ],
+      "RTE": [
+        "GPT-6.1 Sol",
+        "Claude Opus 5.5",
+        "Grok 4.7"
+      ],
+      "DEV": [
+        "Space Bunny Free",
+        "Grok Build",
+        "GPT-6 Luna",
+        "Claude Sonnet 5.5"
+      ],
+      "TRU": [
+        "Claude Opus 5.5",
+        "GPT-6.1 Sol",
+        "Grok 4.7",
+        "Astra/Fable selectively"
+      ]
+    },
+    "xai": {
+      "researched": "2026-10-05",
+      "currentFlagship": "Grok 4.7",
+      "harness": "Grok Build",
+      "superGrokPlans": [
+        "Free",
+        "SuperGrok Lite",
+        "SuperGrok ($30/mo official public price)",
+        "SuperGrok Plus ($100/mo official public price)",
+        "SuperGrok Heavy"
+      ],
+      "usage": "paid SuperGrok uses one shared weekly allowance across products; verify remaining percentage in account UI",
+      "workflowPolicy": "start with small agent budgets; measure weekly-pool cost before scaling fan-out"
+    },
+    "openrouterAuto": {
+      "role": "dynamic bulk/bounded routing option in ZCode",
+      "configuredId": "openrouter/auto",
+      "underlyingModel": "dynamic; record per run where exposed",
+      "useFor": [
+        "bulk bounded work",
+        "empirical worker routing",
+        "cost/quality adaptive tasks"
+      ],
+      "avoidFor": [
+        "controlled model A/B",
+        "named frontier adjudication",
+        "exact model attribution"
+      ],
+      "configRule": "do not change cost tier/provider restrictions during preflight without owner request"
+    },
+    "workstreamDefaultsAreHeuristics": true,
+    "evidence": "desk research only; no measured per-task model performance exists yet"
+  },
+  "metaGrounding": {
+    "authority": ".project/META-TRACKER.md",
+    "status": "revisable execution overlay; not strategy law",
+    "principle": "The map preserves possibilities; it does not prescribe the path.",
+    "hardConstraints": "explicit invariants and Lab/proof boundaries",
+    "revisable": "workstreams, Locks, waves, task decomposition, sequencing, harness/model routing and concurrency",
+    "habitatBoundary": "Daintree and ZCode are separate habitats; Daintree does not launch, supervise or manage ZCode."
+  },
+  "wavesArePlanningHypotheses": true,
+  "workstreamTopologyIsTemporary": true,
+  "reconciled": "2026-10-06",
+  "lockMeaning": "A Lock is a temporary interoperability agreement: stable enough for parallel work, explicitly falsifiable, replaceable when better evidence appears. It is not an architectural freeze.",
+  "waveStatus": {
+    "0": "executed 2026-10-05",
+    "1": "executed 2026-10-05 as design artifacts only; RTE-L1 not dispatched",
+    "2": "not started",
+    "3": "not started",
+    "4": "not started",
+    "5": "not started"
+  }
+}

@@ -1,0 +1,1116 @@
+{
+ "inventoryVersion": "0.1.0",
+ "description": "Average-user Windows task inventory used as the coverage yardstick for the taxonomy. Coverage = tasks whose capability has a realization; exactness = realization fidelity.",
+ "tasks": [
+  {
+   "task": "Shut down",
+   "phrasing": "shut down my computer",
+   "capability": "power.device.shutdown",
+   "params": {}
+  },
+  {
+   "task": "Restart",
+   "phrasing": "restart the PC",
+   "capability": "power.device.restart",
+   "params": {}
+  },
+  {
+   "task": "Lock",
+   "phrasing": "lock my screen",
+   "capability": "power.session.lock",
+   "params": {}
+  },
+  {
+   "task": "Sleep",
+   "phrasing": "put the computer to sleep",
+   "capability": "power.device.sleep",
+   "params": {}
+  },
+  {
+   "task": "Sign out",
+   "phrasing": "log out",
+   "capability": "power.session.sign-out",
+   "params": {}
+  },
+  {
+   "task": "Battery level",
+   "phrasing": "how much battery is left?",
+   "capability": "power.battery.status",
+   "params": {}
+  },
+  {
+   "task": "Battery saver",
+   "phrasing": "turn on battery saver",
+   "capability": "power.battery-saver.settings",
+   "params": {}
+  },
+  {
+   "task": "Power plan",
+   "phrasing": "switch to high performance",
+   "capability": "power.plan.set",
+   "params": {
+    "plan": "high-performance"
+   }
+  },
+  {
+   "task": "Screen timeout",
+   "phrasing": "keep the screen on for 15 minutes",
+   "capability": "power.screen-timeout.set",
+   "params": {
+    "minutes": 15
+   }
+  },
+  {
+   "task": "Sleep timeout",
+   "phrasing": "never sleep when plugged in",
+   "capability": "power.sleep-timeout.set",
+   "params": {
+    "minutes": 0
+   }
+  },
+  {
+   "task": "Schedule shutdown",
+   "phrasing": "shut down in an hour",
+   "capability": "power.shutdown.schedule",
+   "params": {
+    "minutes": 60
+   }
+  },
+  {
+   "task": "Brightness set",
+   "phrasing": "set brightness to 40%",
+   "capability": "display.brightness.set",
+   "params": {
+    "level": 40
+   }
+  },
+  {
+   "task": "Brightness up",
+   "phrasing": "brighter",
+   "capability": "display.brightness.increase",
+   "params": {}
+  },
+  {
+   "task": "Brightness down",
+   "phrasing": "dim the screen",
+   "capability": "display.brightness.decrease",
+   "params": {}
+  },
+  {
+   "task": "Night light",
+   "phrasing": "turn on night light",
+   "capability": "display.night-light.settings",
+   "params": {}
+  },
+  {
+   "task": "Resolution",
+   "phrasing": "change my resolution",
+   "capability": "display.resolution.settings",
+   "params": {}
+  },
+  {
+   "task": "Scaling",
+   "phrasing": "make everything bigger",
+   "capability": "display.scale.settings",
+   "params": {}
+  },
+  {
+   "task": "Second monitor",
+   "phrasing": "extend to my second monitor",
+   "capability": "display.projection.set",
+   "params": {
+    "mode": "extend"
+   }
+  },
+  {
+   "task": "Duplicate",
+   "phrasing": "mirror my screen to the projector",
+   "capability": "display.projection.set",
+   "params": {
+    "mode": "duplicate"
+   }
+  },
+  {
+   "task": "Cast",
+   "phrasing": "cast my screen to the TV",
+   "capability": "display.wireless.connect",
+   "params": {}
+  },
+  {
+   "task": "Rotate",
+   "phrasing": "rotate my screen",
+   "capability": "display.orientation.settings",
+   "params": {}
+  },
+  {
+   "task": "Volume up",
+   "phrasing": "turn the volume up",
+   "capability": "sound.volume.up",
+   "params": {}
+  },
+  {
+   "task": "Volume down",
+   "phrasing": "quieter",
+   "capability": "sound.volume.down",
+   "params": {}
+  },
+  {
+   "task": "Volume set",
+   "phrasing": "volume to 30",
+   "capability": "sound.volume.set",
+   "params": {
+    "level": 30
+   }
+  },
+  {
+   "task": "Mute",
+   "phrasing": "mute",
+   "capability": "sound.volume.mute",
+   "params": {}
+  },
+  {
+   "task": "Output device",
+   "phrasing": "play sound through my headphones",
+   "capability": "sound.output.choose",
+   "params": {}
+  },
+  {
+   "task": "Mic problem",
+   "phrasing": "my microphone isn't working",
+   "capability": "sound.microphone.settings",
+   "params": {}
+  },
+  {
+   "task": "App volume",
+   "phrasing": "lower the volume of just Spotify",
+   "capability": "sound.app-volume.settings",
+   "params": {}
+  },
+  {
+   "task": "Play/pause",
+   "phrasing": "pause the music",
+   "capability": "media.playback.toggle",
+   "params": {}
+  },
+  {
+   "task": "Next song",
+   "phrasing": "skip this song",
+   "capability": "media.track.next",
+   "params": {}
+  },
+  {
+   "task": "Previous song",
+   "phrasing": "previous track",
+   "capability": "media.track.previous",
+   "params": {}
+  },
+  {
+   "task": "Wi-Fi status",
+   "phrasing": "am I connected to wifi?",
+   "capability": "network.wifi.status",
+   "params": {}
+  },
+  {
+   "task": "Wi-Fi list",
+   "phrasing": "what networks are nearby?",
+   "capability": "network.wifi.available",
+   "params": {}
+  },
+  {
+   "task": "Wi-Fi connect",
+   "phrasing": "connect to HomeNet",
+   "capability": "network.wifi.connect",
+   "params": {
+    "ssid": "HomeNet"
+   }
+  },
+  {
+   "task": "Wi-Fi off",
+   "phrasing": "turn off wifi",
+   "capability": "network.wifi.toggle",
+   "params": {
+    "state": "off"
+   }
+  },
+  {
+   "task": "Wi-Fi password",
+   "phrasing": "what's the wifi password?",
+   "capability": "network.wifi.password",
+   "params": {
+    "ssid": "HomeNet"
+   }
+  },
+  {
+   "task": "Forget network",
+   "phrasing": "forget the airport wifi",
+   "capability": "network.wifi.forget",
+   "params": {
+    "ssid": "Airport"
+   }
+  },
+  {
+   "task": "Airplane mode",
+   "phrasing": "turn on airplane mode",
+   "capability": "network.airplane-mode.settings",
+   "params": {}
+  },
+  {
+   "task": "Internet test",
+   "phrasing": "is my internet working?",
+   "capability": "network.connectivity.test",
+   "params": {}
+  },
+  {
+   "task": "IP address",
+   "phrasing": "what's my IP?",
+   "capability": "network.ip.show",
+   "params": {}
+  },
+  {
+   "task": "VPN connect",
+   "phrasing": "connect to my work VPN",
+   "capability": "network.vpn.connect",
+   "params": {
+    "name": "Work"
+   }
+  },
+  {
+   "task": "VPN disconnect",
+   "phrasing": "disconnect the VPN",
+   "capability": "network.vpn.disconnect",
+   "params": {}
+  },
+  {
+   "task": "Hotspot",
+   "phrasing": "share my internet",
+   "capability": "network.hotspot.settings",
+   "params": {}
+  },
+  {
+   "task": "Flush DNS",
+   "phrasing": "flush dns",
+   "capability": "network.dns.flush",
+   "params": {}
+  },
+  {
+   "task": "Network reset",
+   "phrasing": "reset my network",
+   "capability": "network.reset.settings",
+   "params": {}
+  },
+  {
+   "task": "Bluetooth on/off",
+   "phrasing": "turn bluetooth off",
+   "capability": "devices.bluetooth.toggle",
+   "params": {
+    "state": "off"
+   }
+  },
+  {
+   "task": "Pair device",
+   "phrasing": "pair my headphones",
+   "capability": "devices.bluetooth.pair",
+   "params": {}
+  },
+  {
+   "task": "Bluetooth list",
+   "phrasing": "what's paired?",
+   "capability": "devices.bluetooth.list",
+   "params": {}
+  },
+  {
+   "task": "Printers",
+   "phrasing": "what printers do I have?",
+   "capability": "devices.printers.list",
+   "params": {}
+  },
+  {
+   "task": "Default printer",
+   "phrasing": "make HP my default printer",
+   "capability": "devices.printer.default",
+   "params": {
+    "printer": "HP LaserJet"
+   }
+  },
+  {
+   "task": "Add printer",
+   "phrasing": "add a printer",
+   "capability": "devices.printers.settings",
+   "params": {}
+  },
+  {
+   "task": "Print file",
+   "phrasing": "print this PDF",
+   "capability": "devices.print.file",
+   "params": {
+    "path": "C:\\Users\\me\\Documents\\a.pdf"
+   }
+  },
+  {
+   "task": "Eject USB",
+   "phrasing": "eject my USB drive",
+   "capability": "devices.drive.eject",
+   "params": {
+    "drive": "E:"
+   }
+  },
+  {
+   "task": "Mouse speed",
+   "phrasing": "make my mouse faster",
+   "capability": "devices.mouse.settings",
+   "params": {}
+  },
+  {
+   "task": "Touchpad",
+   "phrasing": "change touchpad scrolling",
+   "capability": "devices.touchpad.settings",
+   "params": {}
+  },
+  {
+   "task": "Open Downloads",
+   "phrasing": "open my downloads",
+   "capability": "files.known-folder.open",
+   "params": {
+    "folder": "downloads"
+   }
+  },
+  {
+   "task": "Open Documents",
+   "phrasing": "open documents",
+   "capability": "files.known-folder.open",
+   "params": {
+    "folder": "documents"
+   }
+  },
+  {
+   "task": "Open Desktop folder",
+   "phrasing": "open my desktop folder",
+   "capability": "files.known-folder.open",
+   "params": {
+    "folder": "desktop"
+   }
+  },
+  {
+   "task": "Open Pictures",
+   "phrasing": "show my pictures",
+   "capability": "files.known-folder.open",
+   "params": {
+    "folder": "pictures"
+   }
+  },
+  {
+   "task": "Screenshots folder",
+   "phrasing": "where are my screenshots?",
+   "capability": "files.known-folder.open",
+   "params": {
+    "folder": "screenshots"
+   }
+  },
+  {
+   "task": "File explorer",
+   "phrasing": "open file explorer",
+   "capability": "files.explorer.open",
+   "params": {}
+  },
+  {
+   "task": "Open file",
+   "phrasing": "open report.pdf",
+   "capability": "files.item.open",
+   "params": {
+    "path": "~\\Documents\\report.pdf"
+   }
+  },
+  {
+   "task": "Find file",
+   "phrasing": "find my resume",
+   "capability": "files.items.search",
+   "params": {
+    "query": "resume"
+   }
+  },
+  {
+   "task": "Recent files",
+   "phrasing": "what was I working on?",
+   "capability": "files.recent.list",
+   "params": {}
+  },
+  {
+   "task": "New folder",
+   "phrasing": "make a folder called Taxes",
+   "capability": "files.folder.create",
+   "params": {
+    "path": "~\\Desktop\\Taxes"
+   }
+  },
+  {
+   "task": "Rename",
+   "phrasing": "rename draft to final",
+   "capability": "files.item.rename",
+   "params": {
+    "path": "~\\Desktop\\draft.docx",
+    "newName": "final.docx"
+   }
+  },
+  {
+   "task": "Move",
+   "phrasing": "move it to documents",
+   "capability": "files.item.move",
+   "params": {
+    "path": "~\\Desktop\\a.txt",
+    "destination": "~\\Documents"
+   }
+  },
+  {
+   "task": "Copy",
+   "phrasing": "copy photos to my USB",
+   "capability": "files.item.copy",
+   "params": {
+    "path": "~\\Pictures\\Trip",
+    "destination": "E:\\"
+   }
+  },
+  {
+   "task": "Delete",
+   "phrasing": "delete old.pdf",
+   "capability": "files.item.delete",
+   "params": {
+    "path": "~\\Desktop\\old.pdf"
+   }
+  },
+  {
+   "task": "Restore deleted",
+   "phrasing": "get back a file I deleted",
+   "capability": "files.recycle-bin.open",
+   "params": {}
+  },
+  {
+   "task": "Empty bin",
+   "phrasing": "empty the recycle bin",
+   "capability": "files.recycle-bin.empty",
+   "params": {}
+  },
+  {
+   "task": "Zip",
+   "phrasing": "zip this folder",
+   "capability": "files.archive.create",
+   "params": {
+    "path": "~\\Desktop\\Trip",
+    "destination": "~\\Desktop\\Trip.zip"
+   }
+  },
+  {
+   "task": "Unzip",
+   "phrasing": "extract this zip",
+   "capability": "files.archive.extract",
+   "params": {
+    "path": "~\\Downloads\\a.zip",
+    "destination": "~\\Downloads\\a"
+   }
+  },
+  {
+   "task": "Show in folder",
+   "phrasing": "where is this file?",
+   "capability": "files.item.reveal",
+   "params": {
+    "path": "~\\Downloads\\a.zip"
+   }
+  },
+  {
+   "task": "Hidden files",
+   "phrasing": "show hidden files",
+   "capability": "files.hidden-items.set",
+   "params": {
+    "visible": true
+   }
+  },
+  {
+   "task": "File extensions",
+   "phrasing": "show file extensions",
+   "capability": "files.extensions.set",
+   "params": {
+    "visible": true
+   }
+  },
+  {
+   "task": "Desktop shortcut",
+   "phrasing": "make a desktop shortcut to Projects",
+   "capability": "files.shortcut.create",
+   "params": {
+    "target": "C:\\Projects",
+    "name": "Projects"
+   }
+  },
+  {
+   "task": "Free space",
+   "phrasing": "how much disk space is left?",
+   "capability": "storage.drives.list",
+   "params": {}
+  },
+  {
+   "task": "Free up space",
+   "phrasing": "free up space",
+   "capability": "storage.settings.open",
+   "params": {}
+  },
+  {
+   "task": "Large files",
+   "phrasing": "what's using my space?",
+   "capability": "storage.large-files.find",
+   "params": {}
+  },
+  {
+   "task": "Temp files",
+   "phrasing": "delete temp files",
+   "capability": "storage.temp.clear",
+   "params": {}
+  },
+  {
+   "task": "Disk cleanup",
+   "phrasing": "run disk cleanup",
+   "capability": "storage.cleanup.open",
+   "params": {}
+  },
+  {
+   "task": "Open calculator",
+   "phrasing": "open the calculator",
+   "capability": "apps.builtin.open",
+   "params": {
+    "app": "calculator"
+   }
+  },
+  {
+   "task": "Open notepad",
+   "phrasing": "open notepad",
+   "capability": "apps.builtin.open",
+   "params": {
+    "app": "notepad"
+   }
+  },
+  {
+   "task": "Open camera",
+   "phrasing": "open the camera",
+   "capability": "apps.builtin.open",
+   "params": {
+    "app": "camera"
+   }
+  },
+  {
+   "task": "Open settings",
+   "phrasing": "open settings",
+   "capability": "apps.builtin.open",
+   "params": {
+    "app": "settings"
+   }
+  },
+  {
+   "task": "Open store",
+   "phrasing": "open the store",
+   "capability": "apps.builtin.open",
+   "params": {
+    "app": "store"
+   }
+  },
+  {
+   "task": "Open browser",
+   "phrasing": "open the browser",
+   "capability": "apps.builtin.open",
+   "params": {
+    "app": "browser"
+   }
+  },
+  {
+   "task": "Open terminal",
+   "phrasing": "open a terminal",
+   "capability": "apps.builtin.open",
+   "params": {
+    "app": "terminal"
+   }
+  },
+  {
+   "task": "Open app",
+   "phrasing": "open Spotify",
+   "capability": "apps.app.open",
+   "params": {
+    "app": "Spotify"
+   }
+  },
+  {
+   "task": "Close app",
+   "phrasing": "close Spotify",
+   "capability": "apps.app.close",
+   "params": {
+    "process": "spotify"
+   }
+  },
+  {
+   "task": "Force quit",
+   "phrasing": "Chrome is frozen, kill it",
+   "capability": "apps.app.force-quit",
+   "params": {
+    "process": "chrome"
+   }
+  },
+  {
+   "task": "Installed apps",
+   "phrasing": "what apps do I have?",
+   "capability": "apps.installed.list",
+   "params": {}
+  },
+  {
+   "task": "Open apps",
+   "phrasing": "what's running?",
+   "capability": "apps.running.list",
+   "params": {}
+  },
+  {
+   "task": "Install app",
+   "phrasing": "install VLC",
+   "capability": "apps.app.install",
+   "params": {
+    "packageId": "VideoLAN.VLC"
+   }
+  },
+  {
+   "task": "Uninstall app",
+   "phrasing": "uninstall this game",
+   "capability": "apps.app.uninstall",
+   "params": {
+    "packageId": "Example.Game"
+   }
+  },
+  {
+   "task": "Update apps",
+   "phrasing": "update all my apps",
+   "capability": "apps.updates.install-all",
+   "params": {}
+  },
+  {
+   "task": "Default browser",
+   "phrasing": "change my default browser",
+   "capability": "apps.defaults.settings",
+   "params": {}
+  },
+  {
+   "task": "Startup apps",
+   "phrasing": "stop apps starting at boot",
+   "capability": "apps.startup.settings",
+   "params": {}
+  },
+  {
+   "task": "Task manager",
+   "phrasing": "open task manager",
+   "capability": "system.task-manager.open",
+   "params": {}
+  },
+  {
+   "task": "Show desktop",
+   "phrasing": "show the desktop",
+   "capability": "windows.desktop.show",
+   "params": {}
+  },
+  {
+   "task": "Minimize all",
+   "phrasing": "minimize everything",
+   "capability": "windows.all.minimize",
+   "params": {}
+  },
+  {
+   "task": "Close window",
+   "phrasing": "close this window",
+   "capability": "windows.active.close",
+   "params": {}
+  },
+  {
+   "task": "Maximize",
+   "phrasing": "maximize this",
+   "capability": "windows.active.maximize",
+   "params": {}
+  },
+  {
+   "task": "Snap left",
+   "phrasing": "put this window on the left",
+   "capability": "windows.active.snap",
+   "params": {
+    "side": "left"
+   }
+  },
+  {
+   "task": "All windows",
+   "phrasing": "show all my windows",
+   "capability": "windows.overview.open",
+   "params": {}
+  },
+  {
+   "task": "New desktop",
+   "phrasing": "new desktop",
+   "capability": "windows.virtual-desktop.new",
+   "params": {}
+  },
+  {
+   "task": "Switch desktop",
+   "phrasing": "next desktop",
+   "capability": "windows.virtual-desktop.switch",
+   "params": {
+    "direction": "next"
+   }
+  },
+  {
+   "task": "Clipboard history",
+   "phrasing": "show clipboard history",
+   "capability": "input.clipboard.history",
+   "params": {}
+  },
+  {
+   "task": "Copy text",
+   "phrasing": "copy my email address",
+   "capability": "input.clipboard.set",
+   "params": {
+    "text": "me@example.com"
+   }
+  },
+  {
+   "task": "Emoji",
+   "phrasing": "insert an emoji",
+   "capability": "input.emoji.open",
+   "params": {}
+  },
+  {
+   "task": "Voice typing",
+   "phrasing": "start dictation",
+   "capability": "input.dictation.start",
+   "params": {}
+  },
+  {
+   "task": "Keyboard language",
+   "phrasing": "switch keyboard language",
+   "capability": "input.keyboard-layout.switch",
+   "params": {}
+  },
+  {
+   "task": "Autocorrect",
+   "phrasing": "turn off autocorrect",
+   "capability": "input.typing.settings",
+   "params": {}
+  },
+  {
+   "task": "Dark mode",
+   "phrasing": "turn on dark mode",
+   "capability": "personalize.color-mode.set",
+   "params": {
+    "mode": "dark"
+   }
+  },
+  {
+   "task": "Light mode",
+   "phrasing": "light mode please",
+   "capability": "personalize.color-mode.set",
+   "params": {
+    "mode": "light"
+   }
+  },
+  {
+   "task": "Wallpaper",
+   "phrasing": "set this as wallpaper",
+   "capability": "personalize.wallpaper.set",
+   "params": {
+    "path": "~\\Pictures\\beach.jpg"
+   }
+  },
+  {
+   "task": "Lock screen picture",
+   "phrasing": "change lock screen picture",
+   "capability": "personalize.lock-screen.settings",
+   "params": {}
+  },
+  {
+   "task": "Taskbar",
+   "phrasing": "auto-hide the taskbar",
+   "capability": "personalize.taskbar.settings",
+   "params": {}
+  },
+  {
+   "task": "Taskbar left",
+   "phrasing": "move start to the left",
+   "capability": "personalize.taskbar.alignment",
+   "params": {
+    "alignment": "left"
+   }
+  },
+  {
+   "task": "Bigger text",
+   "phrasing": "make the text bigger",
+   "capability": "a11y.text-size.settings",
+   "params": {}
+  },
+  {
+   "task": "Magnifier",
+   "phrasing": "turn on magnifier",
+   "capability": "a11y.magnifier.start",
+   "params": {}
+  },
+  {
+   "task": "Narrator",
+   "phrasing": "read the screen to me",
+   "capability": "a11y.narrator.start",
+   "params": {}
+  },
+  {
+   "task": "High contrast",
+   "phrasing": "high contrast mode",
+   "capability": "a11y.contrast.settings",
+   "params": {}
+  },
+  {
+   "task": "Bigger cursor",
+   "phrasing": "make the mouse pointer bigger",
+   "capability": "a11y.mouse-pointer.settings",
+   "params": {}
+  },
+  {
+   "task": "On-screen keyboard",
+   "phrasing": "show the on-screen keyboard",
+   "capability": "a11y.on-screen-keyboard.open",
+   "params": {}
+  },
+  {
+   "task": "Live captions",
+   "phrasing": "turn on live captions",
+   "capability": "a11y.live-captions.start",
+   "params": {}
+  },
+  {
+   "task": "Camera privacy",
+   "phrasing": "which apps use my camera?",
+   "capability": "privacy.camera.settings",
+   "params": {}
+  },
+  {
+   "task": "Mic privacy",
+   "phrasing": "which apps use my microphone?",
+   "capability": "privacy.microphone.settings",
+   "params": {}
+  },
+  {
+   "task": "Location",
+   "phrasing": "turn off location",
+   "capability": "privacy.location.settings",
+   "params": {}
+  },
+  {
+   "task": "Virus scan",
+   "phrasing": "scan for viruses",
+   "capability": "security.virus.quick-scan",
+   "params": {}
+  },
+  {
+   "task": "Antivirus status",
+   "phrasing": "am I protected?",
+   "capability": "security.virus.status",
+   "params": {}
+  },
+  {
+   "task": "Firewall",
+   "phrasing": "is the firewall on?",
+   "capability": "security.firewall.status",
+   "params": {}
+  },
+  {
+   "task": "Find my device",
+   "phrasing": "find my device",
+   "capability": "security.find-device.settings",
+   "params": {}
+  },
+  {
+   "task": "Change password",
+   "phrasing": "change my password",
+   "capability": "accounts.sign-in.settings",
+   "params": {}
+  },
+  {
+   "task": "Who am I",
+   "phrasing": "which account am I using?",
+   "capability": "accounts.user.show",
+   "params": {}
+  },
+  {
+   "task": "Add user",
+   "phrasing": "add a user",
+   "capability": "accounts.other-users.settings",
+   "params": {}
+  },
+  {
+   "task": "Time",
+   "phrasing": "what time is it?",
+   "capability": "time.now.show",
+   "params": {}
+  },
+  {
+   "task": "Time zone",
+   "phrasing": "change my time zone",
+   "capability": "time.zone.set",
+   "params": {
+    "zoneId": "Romance Standard Time"
+   }
+  },
+  {
+   "task": "Clock wrong",
+   "phrasing": "my clock is wrong",
+   "capability": "time.settings.open",
+   "params": {}
+  },
+  {
+   "task": "Timer",
+   "phrasing": "set a timer for 5 minutes",
+   "capability": "time.timer.start",
+   "params": {
+    "minutes": 5
+   }
+  },
+  {
+   "task": "Alarm",
+   "phrasing": "set an alarm",
+   "capability": "time.alarm.set",
+   "params": {}
+  },
+  {
+   "task": "Language",
+   "phrasing": "change display language",
+   "capability": "language.settings.open",
+   "params": {}
+  },
+  {
+   "task": "Notifications",
+   "phrasing": "show notifications",
+   "capability": "notify.center.open",
+   "params": {}
+  },
+  {
+   "task": "Do not disturb",
+   "phrasing": "turn on do not disturb",
+   "capability": "notify.do-not-disturb.set",
+   "params": {
+    "state": "on"
+   }
+  },
+  {
+   "task": "Stop notifications",
+   "phrasing": "stop notifications from an app",
+   "capability": "notify.settings.open",
+   "params": {}
+  },
+  {
+   "task": "Screenshot",
+   "phrasing": "take a screenshot",
+   "capability": "capture.screenshot.region",
+   "params": {}
+  },
+  {
+   "task": "Full screenshot",
+   "phrasing": "screenshot the whole screen",
+   "capability": "capture.screenshot.full",
+   "params": {}
+  },
+  {
+   "task": "Record screen",
+   "phrasing": "record my screen",
+   "capability": "capture.screen.record",
+   "params": {}
+  },
+  {
+   "task": "Open website",
+   "phrasing": "open youtube",
+   "capability": "web.url.open",
+   "params": {
+    "url": "https://www.youtube.com"
+   }
+  },
+  {
+   "task": "Web search",
+   "phrasing": "search for pasta recipes",
+   "capability": "web.search.query",
+   "params": {
+    "query": "pasta recipes"
+   }
+  },
+  {
+   "task": "Map",
+   "phrasing": "show me Palma on a map",
+   "capability": "web.maps.search",
+   "params": {
+    "place": "Palma"
+   }
+  },
+  {
+   "task": "Windows Update",
+   "phrasing": "check for updates",
+   "capability": "updates.system.check",
+   "params": {}
+  },
+  {
+   "task": "Pause updates",
+   "phrasing": "pause updates",
+   "capability": "updates.system.pause",
+   "params": {}
+  },
+  {
+   "task": "Specs",
+   "phrasing": "what are my specs?",
+   "capability": "system.info.summary",
+   "params": {}
+  },
+  {
+   "task": "Windows version",
+   "phrasing": "which Windows do I have?",
+   "capability": "system.version.show",
+   "params": {}
+  },
+  {
+   "task": "Slow PC",
+   "phrasing": "why is my computer slow?",
+   "capability": "system.performance.show",
+   "params": {}
+  },
+  {
+   "task": "Computer name",
+   "phrasing": "what's my PC called?",
+   "capability": "system.name.show",
+   "params": {}
+  },
+  {
+   "task": "Troubleshoot",
+   "phrasing": "fix my sound",
+   "capability": "system.troubleshoot.open",
+   "params": {}
+  },
+  {
+   "task": "Get help",
+   "phrasing": "I need help",
+   "capability": "system.help.open",
+   "params": {}
+  },
+  {
+   "task": "Restore point",
+   "phrasing": "make a restore point",
+   "capability": "maintenance.restore-point.create",
+   "params": {}
+  },
+  {
+   "task": "System restore",
+   "phrasing": "undo yesterday's changes",
+   "capability": "maintenance.system-restore.open",
+   "params": {}
+  },
+  {
+   "task": "Reset PC",
+   "phrasing": "reset this PC",
+   "capability": "maintenance.recovery.settings",
+   "params": {}
+  },
+  {
+   "task": "Backup",
+   "phrasing": "back up my files",
+   "capability": "maintenance.file-history.open",
+   "params": {}
+  }
+ ]
+}

@@ -1,0 +1,238 @@
+{
+ "taxonomyVersion": "0.1.0",
+ "name": "VIVIM OS Capability Taxonomy",
+ "status": "CANDIDATE — first pass, owner-directed 2026-10-05. Capability ids are platform-neutral and human-friendly; realizations are per-platform implementations. Not frozen.",
+ "idGrammar": "<domain>.<object>.<action> — lowercase, '.'-separated, hyphenated words; the op routed by Ω is os.<r|m|x>.<capability-id>@1 where the letter is the risk class (r=READ, m=MUTATION, x=EXTERNAL_MUTATION).",
+ "domains": [
+  {
+   "id": "power",
+   "title": "Power & Session",
+   "summary": "Turn the device off, restart, sleep, lock, sign out, battery and power plans."
+  },
+  {
+   "id": "display",
+   "title": "Display",
+   "summary": "Brightness, night light, resolution, scaling and multiple monitors."
+  },
+  {
+   "id": "sound",
+   "title": "Sound",
+   "summary": "Volume, mute, audio devices and microphone."
+  },
+  {
+   "id": "media",
+   "title": "Media Playback",
+   "summary": "Play, pause and skip whatever media is playing."
+  },
+  {
+   "id": "network",
+   "title": "Network & Internet",
+   "summary": "Wi-Fi, connectivity, IP addresses, VPN, hotspot and proxy."
+  },
+  {
+   "id": "devices",
+   "title": "Bluetooth & Devices",
+   "summary": "Bluetooth, printers, drives, mouse, touchpad and other peripherals."
+  },
+  {
+   "id": "files",
+   "title": "Files & Folders",
+   "summary": "Open, find, create, rename, move, copy, delete and compress files."
+  },
+  {
+   "id": "storage",
+   "title": "Storage",
+   "summary": "Disk space, cleanup and drive tools."
+  },
+  {
+   "id": "apps",
+   "title": "Apps",
+   "summary": "Open, close, install, update, uninstall and default apps."
+  },
+  {
+   "id": "windows",
+   "title": "Window Management",
+   "summary": "Show desktop, minimize, snap, task overview and virtual desktops."
+  },
+  {
+   "id": "input",
+   "title": "Input & Text",
+   "summary": "Clipboard, emoji, dictation, typing and keyboard layouts."
+  },
+  {
+   "id": "personalize",
+   "title": "Personalization",
+   "summary": "Dark/light mode, wallpaper, colors, taskbar and start menu."
+  },
+  {
+   "id": "a11y",
+   "title": "Accessibility",
+   "summary": "Text size, magnifier, screen reader, contrast, captions and assistive input."
+  },
+  {
+   "id": "privacy",
+   "title": "Privacy",
+   "summary": "Camera, microphone, location and data permissions."
+  },
+  {
+   "id": "security",
+   "title": "Security",
+   "summary": "Antivirus, firewall, encryption and device-finding."
+  },
+  {
+   "id": "accounts",
+   "title": "Accounts & Sign-in",
+   "summary": "Current user, sign-in methods and other users."
+  },
+  {
+   "id": "time",
+   "title": "Time & Clock",
+   "summary": "Time, date, time zone, timers and alarms."
+  },
+  {
+   "id": "language",
+   "title": "Language & Region",
+   "summary": "Display language, input languages and regional formats."
+  },
+  {
+   "id": "notify",
+   "title": "Notifications & Focus",
+   "summary": "Notification center, do-not-disturb and notification settings."
+  },
+  {
+   "id": "capture",
+   "title": "Screen Capture",
+   "summary": "Screenshots and screen recording."
+  },
+  {
+   "id": "web",
+   "title": "Web",
+   "summary": "Open websites, search the web and maps."
+  },
+  {
+   "id": "search",
+   "title": "System Search",
+   "summary": "The operating system's own search surface."
+  },
+  {
+   "id": "updates",
+   "title": "System Updates",
+   "summary": "Check, pause and review operating-system updates."
+  },
+  {
+   "id": "system",
+   "title": "System Info & Tools",
+   "summary": "Specs, version, performance, task manager and admin tools."
+  },
+  {
+   "id": "maintenance",
+   "title": "Maintenance & Recovery",
+   "summary": "Restore points, repair, reset and backup."
+  }
+ ],
+ "effects": {
+  "observe": {
+   "risk": "READ",
+   "consent": "none",
+   "meaning": "Reads state; changes nothing."
+  },
+  "present": {
+   "risk": "MUTATION",
+   "consent": "none",
+   "meaning": "Opens a window, app, panel or setting page for the user; no setting changes by itself."
+  },
+  "adjust": {
+   "risk": "MUTATION",
+   "consent": "none",
+   "meaning": "Changes a reversible setting or UI state (volume, brightness, window layout)."
+  },
+  "create": {
+   "risk": "MUTATION",
+   "consent": "none",
+   "meaning": "Creates new user content (folder, file, screenshot, shortcut)."
+  },
+  "modify": {
+   "risk": "MUTATION",
+   "consent": "none",
+   "meaning": "Renames or relocates existing content; reversible by the inverse capability."
+  },
+  "session-pause": {
+   "risk": "MUTATION",
+   "consent": "none",
+   "meaning": "Pauses the session without closing apps (lock, sleep, hibernate)."
+  },
+  "destroy": {
+   "risk": "EXTERNAL_MUTATION",
+   "consent": "confirm",
+   "meaning": "Removes content, data or a configuration; may be unrecoverable or lose unsaved work."
+  },
+  "session-end": {
+   "risk": "EXTERNAL_MUTATION",
+   "consent": "confirm",
+   "meaning": "Ends the session or powers the device down; open apps close."
+  },
+  "system": {
+   "risk": "EXTERNAL_MUTATION",
+   "consent": "confirm",
+   "meaning": "Installs/updates software or changes machine-wide configuration."
+  },
+  "network": {
+   "risk": "EXTERNAL_MUTATION",
+   "consent": "confirm",
+   "meaning": "Sends a request or data off the machine (web, catalogs, IP lookup)."
+  },
+  "reveal": {
+   "risk": "EXTERNAL_MUTATION",
+   "consent": "confirm",
+   "meaning": "Surfaces sensitive information (passwords, clipboard) into VIVIM; consent-gated though nothing is changed."
+  },
+  "physical": {
+   "risk": "EXTERNAL_MUTATION",
+   "consent": "confirm",
+   "meaning": "Produces a physical effect (printing)."
+  }
+ },
+ "tiers": {
+  "core": "Daily for a typical user",
+  "common": "Weekly or monthly",
+  "occasional": "Rare but expected to work"
+ },
+ "portability": {
+  "universal": "Every mainstream desktop OS has an equivalent",
+  "desktop": "Desktop/laptop OSes (Windows, macOS, Linux desktops)",
+  "platform-specific": "Meaningful mainly on one OS family"
+ },
+ "privacy": {
+  "none": "No personal data surfaced",
+  "personal": "Surfaces personal but non-secret data",
+  "sensitive": "Surfaces secrets or potentially secret data"
+ },
+ "paramTypes": {
+  "string": "Short single-line text",
+  "text": "Free text, may be multi-line",
+  "integer": "Whole number within min/max",
+  "percent": "Integer 0–100",
+  "boolean": "true/false",
+  "enum": "One of the listed values (platform values via realization paramMap)",
+  "path": "File/folder path; absolute, or '~\\\\…' relative to the user's home",
+  "url": "http(s) URL"
+ },
+ "strategies": {
+  "uri": "Launch a protocol/deep-link URI (e.g. ms-settings:display)",
+  "launch": "Start a program detached (GUI)",
+  "run": "Run a console program and capture its output and exit code",
+  "powershell": "Run a PowerShell body; its output is the result",
+  "keys": "Synthesize a keyboard shortcut (targets the foreground window unless noted)",
+  "builtin-map": "Dispatch to a nested realization chosen by an enum parameter"
+ },
+ "fidelity": {
+  "exact": "Performs the capability as stated",
+  "approximate": "Performs a close equivalent (e.g. a toggle where 'set' was asked); result must be checked",
+  "handoff": "Opens the right place for the user to finish; VIVIM does not claim the change happened"
+ },
+ "evidence": {
+  "authored": "Written from platform documentation/knowledge; not yet executed by VIVIM",
+  "verified-local": "Executed by VIVIM on a real machine with recorded result",
+  "regressed": "Previously verified, now failing"
+ }
+}

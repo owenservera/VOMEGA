@@ -1,0 +1,33 @@
+{
+  "name": "vivim-omega",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "contracts",
+    "host",
+    "shim",
+    "platform",
+    "plugins/*",
+    "packs/*",
+    "surfaces/*",
+    "sdk",
+    "testkit"
+  ],
+  "scripts": {
+    "omega:setup": "bun install --frozen-lockfile --ignore-scripts",
+    "omega:test": "bun test",
+    "omega:test:host": "bun test host",
+    "omega:test:plugins": "bun test plugins packs",
+    "omega:test:surfaces": "bun test surfaces sdk testkit",
+    "omega:quick": "bun test host/test/local-config.test.ts plugins/vivim-vault/test/vault.test.ts plugins/vivim-vault/test/integration.test.ts plugins/vivim-vault/test/d387-perf.test.ts plugins/vivim-law/test/law.test.ts plugins/vivim-law/test/d387-policy.test.ts surfaces/cli/test/local.test.ts",
+    "omega:gate": "bun run omega:test",
+    "omega:containment": "bun run platform/src/containment.ts",
+    "omega:status": "bun run surfaces/cli/src/cli.ts status --no-daemon --json",
+    "omega:host": "bun run host/src/main.ts",
+    "omega:cli": "bun run surfaces/cli/src/cli.ts"
+  },
+  "dependencies": {
+    "zod": "^4.6.2"
+  }
+}
