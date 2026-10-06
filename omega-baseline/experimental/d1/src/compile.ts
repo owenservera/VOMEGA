@@ -17,9 +17,12 @@
 // outside its own default set — against a D1-projected WorldModel it returns
 // `surface.assist` for the canonical journey phrase and `unknown` for "add my
 // Claude work account", so it cannot carry D1's phrase surface. The frame layer
-// below is therefore D1's own, and it never invents structure: required
-// fields, consequence, authority and evidence class are read from
-// declarations/*.capability.json, and identity/route records from the World.
+// below is therefore D1's own, and it never invents structure: required fields,
+// consequence class and evidence class are read from declarations/*.capability.json;
+// authority is NOT — it is read from the World (`world.authority[capability]`), as are
+// the identity/route records. `consequence.to` is likewise not the declared
+// `decl.consequence.to` (which names a semantic route and is never read): it is the
+// chosen provider, resolved here.
 // Nothing in this file is authority.
 import { NCLL_VERSION, ground, lex } from "../../../plugins/vivim-nlcl-pure/src/index.ts";
 import type { Interpretation, RiskClass, Token, WorldModel } from "../../../plugins/vivim-nlcl-pure/src/index.ts";

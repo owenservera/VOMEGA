@@ -65,6 +65,24 @@
       "head": "412c5057a479",
       "at": "2026-10-06T16:26:27.689Z"
     },
+    "D1-005::corpus U1 is promoted to baseline pass (red-to-green, not hidden)": {
+      "task": "D1-005",
+      "name": "corpus U1 is promoted to baseline pass (red-to-green, not hidden)",
+      "file": "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts",
+      "specDigest": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+      "by": "gov-impl-r6",
+      "head": "8cd2cf23bd15",
+      "at": "2026-10-06T18:34:15.098Z"
+    },
+    "D1-005::validator never reports READY for corpus U1 (unresolved required account)": {
+      "task": "D1-005",
+      "name": "validator never reports READY for corpus U1 (unresolved required account)",
+      "file": "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts",
+      "specDigest": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+      "by": "gov-impl-r6",
+      "head": "8cd2cf23bd15",
+      "at": "2026-10-06T18:34:15.098Z"
+    },
     "D1-010::Provider, Account, Model, Capability and Realization stay distinct records": {
       "task": "D1-010",
       "name": "Provider, Account, Model, Capability and Realization stay distinct records",
@@ -243,6 +261,22 @@
         "verdict": "accept",
         "head": "5b6c8653b4a6",
         "at": "2026-10-06T18:11:07.468Z"
+      }
+    ],
+    "D1-025": [
+      {
+        "by": "gov-trv-r5",
+        "verdict": "accept",
+        "head": "8cd2cf23bd15",
+        "at": "2026-10-06T18:18:52.826Z"
+      }
+    ],
+    "D1-060": [
+      {
+        "by": "gov-trv-r5",
+        "verdict": "accept",
+        "head": "8cd2cf23bd15",
+        "at": "2026-10-06T18:18:54.766Z"
       }
     ]
   },

@@ -9,25 +9,25 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "5b6c8653b4a6",
+    "head": "8cd2cf23bd15",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 80,
       "gates": 80,
-      "pass": 20,
-      "fail": 60,
+      "pass": 24,
+      "fail": 56,
       "skip": 0
     },
-    "digest": "sha256:e672c18ce19d76cb52e3e8b1e03eaf412d86aec2b5b18cc3d1153f74fdfba327",
+    "digest": "sha256:ce4f4ab6e2b35fb2cbd24ca76b70cfdf82f154047e85b669c8a1dc49055e7d03",
     "silentFiles": []
   },
   "summary": {
     "OPEN": 10,
     "CLAIMED": 0,
-    "BLOCKED": 49,
-    "PROVEN": 16,
-    "DONE": 2,
+    "BLOCKED": 48,
+    "PROVEN": 15,
+    "DONE": 4,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -98,18 +98,18 @@
     },
     {
       "id": "D1-005",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-005::corpus U1 is promoted to baseline pass (red-to-green, not hidden)",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         },
         {
           "key": "D1-005::validator never reports READY for corpus U1 (unresolved required account)",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -119,7 +119,7 @@
     },
     {
       "id": "D1-006",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-006::incompatible account (no realization) is never READY",
@@ -129,13 +129,13 @@
         },
         {
           "key": "D1-006::missing account target is never READY",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         },
         {
           "key": "D1-006::missing payload is never READY and names prompt",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -373,7 +373,7 @@
     },
     {
       "id": "D1-025",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-025::canonical journey phrase compiles to prompt.send with its payload",
@@ -384,7 +384,12 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "gov-trv-r5",
+        "verdict": "accept",
+        "head": "8cd2cf23bd15",
+        "at": "2026-10-06T18:18:52.826Z"
+      }
     },
     {
       "id": "D1-026",
@@ -868,7 +873,7 @@
     },
     {
       "id": "D1-060",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-060::prompt.send consequence is an external transfer, separate from authority",
@@ -879,7 +884,12 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "gov-trv-r5",
+        "verdict": "accept",
+        "head": "8cd2cf23bd15",
+        "at": "2026-10-06T18:18:54.766Z"
+      }
     },
     {
       "id": "D1-061",
@@ -1289,8 +1299,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 20,
-      "red": 60,
+      "green": 24,
+      "red": 56,
       "skipped": 0,
       "total": 80
     },
@@ -1304,5 +1314,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:5a283eefcb48587af0d97dd8737f22857ff707be69428f3902c2ca7312bc3e6c"
+  "digest": "sha256:743e0c251c04db028cf44cdf2b756ce2dab60a90d2836c3f1498a86d9fa3f5d9"
 }

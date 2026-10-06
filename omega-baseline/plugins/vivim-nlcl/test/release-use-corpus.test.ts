@@ -5,16 +5,23 @@
 // Cases with baseline "fail" run as test.failing: the suite stays green while a
 // known gap exists and turns red the moment an adaptation fixes it, forcing the
 // case to be promoted to baseline "pass" in the fixture (no silent drift).
+//
+// `status`/`statusNot` assert what nlcl itself reported. `d1StateNot` asserts the
+// D1 READY law instead (D1-005): a case may pass while nlcl's own status is
+// wrong, because READY is recomputed from the capability declaration rather than
+// trusted from the interpreter. Those are different claims and the fixture names
+// which one it is making.
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { DEFAULT_FRAMES, emptyWorld, interpret } from "@vivim/omega-nlcl-pure";
 import type { Interpretation, OpFrame, WorldModel } from "@vivim/omega-nlcl-pure";
+import { validateInterpretation } from "../../../experimental/d1/src/index.ts";
 
 interface Expect {
   op?: string | null; opNot?: string; account?: string | null; prompt?: string;
   status?: string; statusNot?: string[]; alternativesInclude?: string[];
-  effectGate?: string; deterministic?: boolean;
+  effectGate?: string; deterministic?: boolean; d1StateNot?: string[];
 }
 interface Case { id: string; category: string; world: string; input: string; expect: Expect; baseline: "pass" | "fail"; task?: string }
 interface Corpus {
@@ -48,6 +55,7 @@ function check(c: Case, r: Interpretation, again: Interpretation): void {
     for (const id of e.alternativesInclude) expect(ids).toContain(id);
   }
   if (e.effectGate !== undefined) expect(r.effects.map((x) => x.gate)).toContain(e.effectGate);
+  if (e.d1StateNot !== undefined) expect(e.d1StateNot).not.toContain(validateInterpretation(r).state);
   if (e.deterministic) expect(JSON.stringify(again)).toBe(JSON.stringify(r));
 }
 
