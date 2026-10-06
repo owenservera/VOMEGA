@@ -50,6 +50,7 @@ The PM layer must never redefine a program silently, make an unproven claim true
 ## Documents
 
 - [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md) — **the definitive scope correction**: five programs only, no decisioning authority.
+- [PM-BUILD-PLAN-WAVES-SETUP.md](PM-BUILD-PLAN-WAVES-SETUP.md) — **owner-selected Wave 1 → ACCEL-M1 → Wave 2 build-plan setup directive**; records execution shape without giving PM decisioning authority.
 - [scope.json](scope.json) — the managed set of record; owner-owned, enforced by `pm:check`.
 - [ZCODE-BOOTSTRAP-PROMPT.md](ZCODE-BOOTSTRAP-PROMPT.md) — the entry prompt for a fresh ZCode session on PM work.
 - [ZCODE-PM-TEAM.md](ZCODE-PM-TEAM.md) — the custodial team charter and success criterion.
