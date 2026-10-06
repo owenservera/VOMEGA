@@ -14,7 +14,7 @@ It does **not** replace:
 - Git/source/tests/runtime evidence;
 - the owner-selected first-release product shape.
 
-It reorganizes the current work into team ownership boundaries that reduce handoffs and maximize safe parallel development.
+It records one historical/currently reusable execution decomposition intended to reduce handoffs. It does not organize the whole VOMEGA program and should not be replayed by default.
 
 ## Launch objective
 
@@ -76,9 +76,9 @@ The existing task IDs remain valid references and evidence obligations.
 
 ## Program map versus launch lanes
 
-The complete VOMEGA program is tracked in [../META-TRACKER.md](../META-TRACKER.md). It currently enumerates the major product, architecture, laboratory, provider, runtime, research and development-system programs, including programs intentionally deferred from the first release.
+The complete VOMEGA program is tracked in [../META-TRACKER.md](../META-TRACKER.md): **67 major meta programs plus 31 named development-acceleration hypotheses**. It includes product, architecture, Labs, provider reality, authority/Work/runtime/extensibility, truth/research, release and development-system programs, including intentionally deferred work.
 
-The nine workstreams in this directory are **execution ownership lanes only**. They are deliberately fewer and broader than the meta-program map.
+The nine workstreams in this directory are **historical/reusable execution lanes only**. They are deliberately fewer and broader than the meta-program map; they are not current standing owners.
 
 ## Launch documents
 
