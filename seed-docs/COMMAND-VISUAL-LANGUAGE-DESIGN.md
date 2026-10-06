@@ -18,6 +18,8 @@ Core promise:
 
 > You can see what your words will cause, and correct the interpretation before it causes the wrong thing.
 
+A companion design principle is the [Negative Intent Signal Engine](NEGATIVE-INTENT-SIGNAL-ENGINE.md): the visual system should be able to expose the **highest-value plausible counterfactual** before the leading interpretation becomes expensive to unwind. The renderer does not generate alternatives; it projects revision-bound negative-frontier data produced from the same semantic candidate space as the runtime compiler.
+
 ## 2. Product shape
 
 The first surface remains a small floating Windows command box. Ordinary language is primary. The visual system is an editable reflection of the shared semantic command representation.
@@ -100,12 +102,13 @@ Identity stays stable while status changes. Add “Needs login” beside an Acco
 1. **Compose:** preserve caret, selection and ordinary editing. Partial text is not automatically invalid.
 2. **Interpret:** generate candidate meaning tied to the current input revision. Update at useful pauses without disruptive flicker or focus theft.
 3. **Project:** show recognized objects, scope, assumptions and a concise effect preview.
-4. **Clarify:** attach choices to the relevant phrase or missing field. Prefer interaction-triggered menus; interrupt only where needed to resolve a material blocker.
-5. **Refine:** accept either wording changes or visual choices into the same semantic representation. Recompute affected fields and visibly invalidate obsolete bindings.
-6. **Validate:** check capability, targets, Account identity, freshness, parameters and authority through the shared command machinery.
-7. **Commit:** bind execution to the concrete command revision and applicable authorization. Interpretation selection alone is not execution consent.
-8. **Observe:** render host execution and evidence events; distinguish attempted action, observed submission, result arrival and verified outcome.
-9. **Recover:** explain the smallest valid next action. Preserve partial outcomes and uncertainty. A retry must account for possibly completed external effects.
+4. **Challenge early:** when the semantic layer supplies a high-value negative-frontier signal, attach the smallest useful counterfactual to the relevant phrase/field. Prefer one discriminating alternative over an N-best dump. Do not interrupt merely because another candidate exists.
+5. **Clarify:** attach required choices to the relevant phrase or missing field. Prefer interaction-triggered menus; interrupt only where needed to resolve a material blocker.
+6. **Refine:** accept either wording changes or visual/counterfactual choices into the same semantic representation. Recompute affected fields and visibly invalidate obsolete bindings.
+7. **Validate:** check capability, targets, Account identity, freshness, parameters and authority through the shared command machinery.
+8. **Commit:** bind execution to the concrete command revision and applicable authorization. Interpretation selection alone is not execution consent.
+9. **Observe:** render host execution and evidence events; distinguish attempted action, observed submission, result arrival and verified outcome.
+10. **Recover:** explain the smallest valid next action. Preserve partial outcomes and uncertainty. A retry must account for possibly completed external effects.
 
 Late results from older text revisions must not overwrite the current interpretation. If a material edit changes targets, payload, scope or side effects, reassess affected validation and authorization. Existing valid standing authorization should not generate redundant confirmation ceremonies.
 
