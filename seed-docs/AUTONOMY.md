@@ -4,7 +4,7 @@ This document exists so the autonomous build does not confuse "baseline" with "b
 
 ## Development capability-space mandate
 
-At any execution restart, inspect the actual local development environment rather than assuming a single harness or inherited topology. The initial Codex bootstrap and historical Space Bunny account layout are past evidence, not current scheduling law. Codex, Claude Code, ZCode, Grok Build, OpenCode, Daintree, Git/worktrees and deterministic local tools are replaceable resources whose current capabilities/capacity must be discovered.
+At any execution restart, inspect the actual local development environment rather than assuming a single harness or inherited topology. The owner's five configured Space Bunny accounts are legitimate local-machine environment context from the census and should remain recorded unless a later census proves they changed; they do not by themselves prove five live worker slots or the current ZCode route. Codex, Claude Code, ZCode, Grok Build, OpenCode, Daintree, Git/worktrees and deterministic local tools are replaceable resources whose current capabilities/capacity must be discovered.
 
 The project may design its own agents, workflows, skills, plugins, MCP servers, hooks, background jobs, schedules, remote workspaces, testing infrastructure, observability, memory conventions, and other DevOps machinery. Discover what is available before deciding what to build.
 
@@ -135,7 +135,7 @@ The autonomous team's job is to choose the how. The seed's job is to make sure t
 
 ## Autonomy across development systems
 
-The autonomous build may use the currently available development systems—such as ZCode, Codex, Claude Code, Grok Build, OpenCode, Daintree, Git/worktrees and deterministic tooling—as complementary resources. Historical provider-account layouts are not worker topology.
+The autonomous build may use the currently available development systems—such as ZCode, the configured local provider accounts, Codex, Claude Code, Grok Build, OpenCode, Daintree, Git/worktrees and deterministic tooling—as complementary resources. A configured provider-account layout is machine environment state; worker topology and safe concurrency are separate runtime facts.
 
 It has authority to design coordination, delegation, review, handoff, worktree, and evidence practices across those systems, but it does not have blanket authority to reconfigure their accounts, credentials, subscriptions, provider definitions, or authentication.
 
