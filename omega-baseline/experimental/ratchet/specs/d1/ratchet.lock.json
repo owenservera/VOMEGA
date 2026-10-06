@@ -200,6 +200,15 @@
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
     },
+    "D1-060::prompt.send consequence is an external transfer, separate from authority": {
+      "task": "D1-060",
+      "name": "prompt.send consequence is an external transfer, separate from authority",
+      "file": "omega-baseline/experimental/d1/test/gates/g-execution.gate.test.ts",
+      "specDigest": "sha256:55e540cac9fdaa1b5d8f6546b2599adeae66615ac0c166d7aa3aae5aa7cffddd",
+      "by": "gov-impl-r4",
+      "head": "408bfcfcde52",
+      "at": "2026-10-06T18:06:20.232Z"
+    },
     "D1-067::live-evidence predicate is not trivially false": {
       "task": "D1-067",
       "name": "live-evidence predicate is not trivially false",

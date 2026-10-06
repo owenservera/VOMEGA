@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "51c023b6acb4",
+    "head": "408bfcfcde52",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -25,8 +25,8 @@
   "summary": {
     "OPEN": 11,
     "CLAIMED": 0,
-    "BLOCKED": 50,
-    "PROVEN": 15,
+    "BLOCKED": 49,
+    "PROVEN": 16,
     "DONE": 1,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
@@ -863,12 +863,12 @@
     },
     {
       "id": "D1-060",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-060::prompt.send consequence is an external transfer, separate from authority",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -878,7 +878,7 @@
     },
     {
       "id": "D1-061",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-061::authority fixture changes validation without changing capability identity",
@@ -1299,5 +1299,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:0b9bc74bbba3af599adc17a86b61c5fd8bd766cfdc6b5805d08693917f5d9329"
+  "digest": "sha256:40613c0cec73ccc4f8a9297851ad16326af168e5ce2df9d178f802351ead5b98"
 }
