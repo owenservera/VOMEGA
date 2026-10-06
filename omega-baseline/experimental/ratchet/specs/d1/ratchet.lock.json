@@ -56,6 +56,15 @@
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
     },
+    "D1-004::prompt.send declares account and prompt required, model optional": {
+      "task": "D1-004",
+      "name": "prompt.send declares account and prompt required, model optional",
+      "file": "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts",
+      "specDigest": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+      "by": "gov-impl-c1",
+      "head": "412c5057a479",
+      "at": "2026-10-06T16:26:27.689Z"
+    },
     "D1-010::Provider, Account, Model, Capability and Realization stay distinct records": {
       "task": "D1-010",
       "name": "Provider, Account, Model, Capability and Realization stay distinct records",

@@ -13,5 +13,6 @@ Use Commons only for material cross-session results, blockers or handoffs. Per-s
 | 2026-10-06 | D1 interpreter map and Reflection Phase-F harvest map completed. | Implement D1 gates using those maps; do not create parallel interpreter/Reflection systems. |
 | 2026-10-06 | TRU-05 candidate live-proof protocol and Owen decision brief drafted. | Owen resolves/accepts R-2/RD-8/RD-10 boundaries before consequential live work. |
 | 2026-10-06 | Negative Intent Signal Engine documented as D5 cross-program design seed, not a second parser or D1 blocker. | Later run baseline vs top-N vs early-correction-frontier experiment. |
+| 2026-10-06 | 24/7 dev loop stood up by ZCode governor session: recurring automation governs + always launches the dev team (implementer + separate reviewer) for one bounded Ratchet red→green cycle per run. Runbook: `.project/dev-loop/24X7-DEV-LOOP.md`. Subagent review is a separate automated context, **not** independent human review — claims must say so. | Governor session verifies loop runs, keeps team launched, routes events per AGENTS.md; owner may change cadence or stop it at any time. |
 
 Archive index: `.project/archive/README.md`.

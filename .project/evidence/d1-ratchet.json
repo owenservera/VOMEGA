@@ -9,29 +9,29 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "01bb19e962f6",
+    "head": "412c5057a479",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 80,
       "gates": 80,
-      "pass": 15,
-      "fail": 65,
+      "pass": 16,
+      "fail": 64,
       "skip": 0
     },
-    "digest": "sha256:5f620eb57cc14dee211db45e18aa4a64ac18643dbe8611439afebe10095b7ab5",
+    "digest": "sha256:f7838fcaef8c482590e2cb4541e98409e81415902f8f56ab4f808c232a9ba90f",
     "silentFiles": []
   },
   "summary": {
-    "OPEN": 4,
+    "OPEN": 5,
     "CLAIMED": 0,
-    "BLOCKED": 61,
-    "PROVEN": 12,
+    "BLOCKED": 58,
+    "PROVEN": 14,
     "DONE": 0,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
-    "frontier": 4,
+    "frontier": 5,
     "missingProof": 0
   },
   "tasks": [
@@ -50,12 +50,12 @@
     },
     {
       "id": "D1-002",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [],
       "artifacts": [
         {
           "path": ".project/deliverables/D1-CODE-MAP.md",
-          "ok": false
+          "ok": true
         }
       ],
       "missingProof": false,
@@ -78,12 +78,12 @@
     },
     {
       "id": "D1-004",
-      "state": "BLOCKED",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-004::prompt.send declares account and prompt required, model optional",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -93,7 +93,7 @@
     },
     {
       "id": "D1-005",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-005::corpus U1 is promoted to baseline pass (red-to-green, not hidden)",
@@ -348,7 +348,7 @@
     },
     {
       "id": "D1-024",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-024::UseCommand carries every release field explicitly",
@@ -1279,8 +1279,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 15,
-      "red": 65,
+      "green": 16,
+      "red": 64,
       "skipped": 0,
       "total": 80
     },
@@ -1294,5 +1294,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:04b3c159b943465f12e49ffc0842fbf04db47a48cdc1d578af6e1b4d0bbc4687"
+  "digest": "sha256:6a3c0d46407adc1455f523a491dfc0e9dad697de8d76ae13b78fddaa58a7e719"
 }

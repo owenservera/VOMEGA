@@ -4,16 +4,17 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `01bb19e962f6`, Bun 1.4.2, win32-x64, 15/80 gates green, digest 5f620eb57cc1 · promoted gates: 15
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `412c5057a479`, Bun 1.4.2, win32-x64, 16/80 gates green, digest f7838fcaef8c · promoted gates: 16
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 0 | 12 | 4 | 0 | 61 | 0 | 0 | 77 | 4 | 0 |
+| 0 | 14 | 5 | 0 | 58 | 0 | 0 | 77 | 5 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
-- **D1-002** Map exact reusable interpreter entry points — crit 19, unblocks 74; `bun run ratchet packet D1-002`
+- **D1-024** Define candidate canonical `prompt.send` UseCommand — crit 17, unblocks 57; `bun run ratchet packet D1-024`
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
+- **D1-005** Fix required-field/READY validation — crit 2, unblocks 2; `bun run ratchet packet D1-005`
 - **D1-016** Add World W3: stale Claude Work — crit 1, unblocks 0; `bun run ratchet packet D1-016`
 - **D1-017** Add World W4: unknown/incompatible target — crit 1, unblocks 0; `bun run ratchet packet D1-017`
 
@@ -24,17 +25,17 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
 | D1-001 | PROVEN | 0/0 + 1/1 art. | Pin D1 baseline and test commands |  |
-| D1-002 | OPEN ★ | 0/0 + 0/1 art. | Map exact reusable interpreter entry points |  |
+| D1-002 | PROVEN | 0/0 + 1/1 art. | Map exact reusable interpreter entry points |  |
 | D1-003 | PROVEN | 1/1 | Reproduce corpus U1 false-READY in an isolated test |  |
-| D1-004 | BLOCKED | 0/1 | Define required-field metadata for `prompt.send` |  |
-| D1-005 | BLOCKED | 0/2 | Fix required-field/READY validation |  |
+| D1-004 | PROVEN | 1/1 | Define required-field metadata for `prompt.send` |  · claimed by gov-impl-c1 until 2026-10-06T20:24:41.339Z |
+| D1-005 | OPEN ★ | 0/2 | Fix required-field/READY validation |  |
 | D1-006 | BLOCKED | 0/3 | Add regression tests for every required-field unresolved case |  |
 
 ### Phase B — minimal semantic World
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-010 | PROVEN | 1/1 | Define D1 semantic IDs/record shapes | proven ahead of its dependencies |
+| D1-010 | PROVEN | 1/1 | Define D1 semantic IDs/record shapes |  |
 | D1-011 | PROVEN | 1/1 | Implement deterministic World snapshot loader |  |
 | D1-012 | PROVEN | 1/1 | Enforce fixture provenance |  |
 | D1-013 | PROVEN | 1/1 | Add World W0: no Accounts |  |
@@ -52,7 +53,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-021 | BLOCKED | 0/1 | Interpret “add my Claude work account” |  |
 | D1-022 | BLOCKED | 0/1 | Interpret “add another Claude account and call it Personal” |  |
 | D1-023 | BLOCKED | 0/1 | Persist D1 synthetic registration in session World state |  |
-| D1-024 | BLOCKED | 0/1 | Define candidate canonical `prompt.send` UseCommand |  |
+| D1-024 | OPEN ★ | 0/1 | Define candidate canonical `prompt.send` UseCommand |  |
 | D1-025 | BLOCKED | 0/1 | Compile direct `prompt.send` utterance |  |
 | D1-026 | BLOCKED | 0/1 | Preserve two-Account ambiguity |  |
 | D1-027 | BLOCKED | 0/1 | Apply explicit text correction “use Work” |  |

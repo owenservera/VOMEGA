@@ -4,7 +4,9 @@ Date: 2026-10-06. This is an aggregate view only. Per-worker truth lives in `cla
 
 ## Active claims
 
-No active executor is represented by the repository at this consolidation tip. The live `claims/` directory contains only its README/template; closed claims are archived. A future worker must create a new claim before substantive work.
+| Claim | Worker | Work |
+| --- | --- | --- |
+| [20261006-1617-devloop-24x7-zcode.md](claims/20261006-1617-devloop-24x7-zcode.md) | ZCode main session (governor) + bounded subagents | 24/7 dev loop setup: recurring governor automation + runbook, then first governed cycle |
 
 ## Major slices
 
