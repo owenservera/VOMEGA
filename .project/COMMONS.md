@@ -435,3 +435,16 @@ Result: [agentic-launch/DEV-AGENT-REGISTRATION.md](agentic-launch/DEV-AGENT-REGI
 Boundary: registration records who/what/when/source-HEAD/intended write surface. It is coordination only — not permission, exclusivity, program priority, proof, gate promotion, scheduling or permanent ownership. No daemon, heartbeat, database, dashboard or scheduler was added.
 
 Evidence: documentation-only commits `226b9a6` through `021d232`; no product/runtime tests were required or run. This introducing session is itself recorded as a completed claim for dogfooding. Next action: use the protocol on all substantive dev/review work and only automate it if measured coordination friction justifies doing so.
+
+## Acceleration-pack adherence + negative-intent design integration — 2026-10-06
+
+Claim: `20261006-0915-acceleration-adherence-chatgpt`. Source main: `c0dd6c0`. Branch: `work/pm/acceleration-adherence-20261006`.
+
+Result: the uploaded acceleration pack was **absorbed into existing authority surfaces rather than installed as a parallel PM system**. Active D1 execution guidance now lives in [deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md](deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md); Ratchet, PM evolution rules, agent registration, root AGENTS and team prompts were aligned to proof-first execution, packet-first context, single-owner critical-spine work, measured-bottleneck machinery, harvest-before-invent, independent gate review and cheap adversarial mutation. The disposition/audit record is [pm/reviews/ACCELERATION-PACK-ADOPTION-2026-10-06.md](pm/reviews/ACCELERATION-PACK-ADOPTION-2026-10-06.md). No `.project/acceleration/`, scheduler, extra task registry, permanent eight-role structure or PM decisioning was added.
+
+Owner-added product concept: [../seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md](../seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md) defines a D5 counterfactual-intent frontier: preserve the compiler's plausible candidate manifold, rank the plausible wrong branch whose **early** exposure most reduces downstream semantic correction burden, and evolve that ranking through pinned experiments. It is explicitly not a second parser/authority system. The concept is mapped across MP-10/14/15/16 and corresponding semantic/runtime/visual/experiment docs. D1 preserves useful revision/candidate/correction evidence but the generalized engine is not a D1 blocker.
+
+Structural verification through the GitHub connector: `.project/meta-tracker.json` parses; canonical program count remains 67; no MP-68 exists; PM scope remains exactly MP-21/54/55/56/60; changed MP-10/14/15/16 Markdown and JSON entries agree; no generated PM/Ratchet projection was hand-edited. A local checkout/runtime test could not be performed from the ChatGPT container because its network resolver could not reach GitHub, so `pm:check` / repository test execution remains a merge-time verification step. No product code, auth/provider/model config or generated state was changed.
+
+Next action: independent documentation/architecture review, then merge if accepted. After merge, the first engineering experiments for negative intent should compare baseline vs ordinary top-N vs early-correction-leverage frontier on the same revisioned corpus rather than building the generalized optimizer immediately.
+
