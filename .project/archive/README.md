@@ -23,3 +23,5 @@ Historical content is retained here to preserve evidence, rationale and reconstr
 Archive records are evidence and may contain instructions that were valid when written. They do **not** override current source/tests/evidence, owner decisions, seed invariants or current operating docs.
 
 Some original paths remain as short tombstones because machine-readable provenance or historical links name them directly.
+
+- `roadmap-reference/` — the 2026-10-05 74-task first-release roadmap, workstream cards and proof traceability retained as reusable historical decomposition.

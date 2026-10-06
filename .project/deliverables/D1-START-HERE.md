@@ -1,113 +1,71 @@
-# D1 — ChatGPT Work Start Here
+# D1 — executable first-release semantic twin
 
-Status: **OWNER-SELECTED FIRST BUILD DELIVERABLE**  
+Status: **OWNER-SELECTED FIRST BUILD DELIVERABLE — INCOMPLETE**  
 Date: 2026-10-06  
-Scope: first executable development release; **not** the public Windows beta.
+Scope: development release / simulated semantic twin; **not** the public Windows beta.
 
 ## Mission
 
-Build **D1 — Executable First-Release Semantic Twin**.
+Build one runnable synthetic journey:
 
-D1 is the smallest executable artifact that turns the current first-release design into running, falsifiable product behavior without pretending that simulated provider behavior is live.
-
-The required journey is:
-
-```
+```text
 blank synthetic Ω
-→ register Claude Work through ordinary language
-→ register Claude Personal through ordinary language
-→ ask Claude to explain a payload
+→ register Claude Work + Personal through ordinary language
+→ issue prompt.send intent
 → preserve Account ambiguity
-→ resolve the Account by typing OR clicking
-→ both paths converge on the same semantic command
-→ command becomes READY only when structurally valid
-→ contextual help explains the active semantic objects
-→ virtual governed prompt.send executes
-→ explicitly SIMULATED evidence is emitted
-→ the complete session replays deterministically
+→ resolve by text OR click through the same semantic edit path
+→ READY only when structurally valid
+→ grounded contextual help
+→ governed virtual execution
+→ explicitly SIMULATED receipt
+→ deterministic replay
 ```
 
-Read these before implementation:
+## Fresh implementation session
 
-1. [D1 release specification](D1-FIRST-RELEASE-SPEC.md)
-2. [D1 atomic task list](D1-ATOMIC-TASKS.md)
-3. [D1 execution acceleration directive](D1-EXECUTION-ACCELERATION-DIRECTIVE.md) — bounded operating rules that fold the acceleration review into the existing Ratchet/claim/proof system; not a second PM layer.
-4. [VOMEGA SITREP](../SITREP.md)
-5. [First Product Release Design](../../seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md)
-6. [Invariants](../../seed-docs/INVARIANTS.md)
-7. [Proof and Maturity](../../seed-docs/PROOF-AND-MATURITY.md)
-8. [Semantic Data Engine](../../seed-docs/SEMANTIC-DATA-ENGINE.md)
-9. [MVP Visualization Sandbox](../../seed-docs/MVP-VISUALIZATION-SANDBOX.md)
-10. [Automated Semantic Experiments](../../seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md)
-11. [D1 midstream correction / provenance](D1-MIDSTREAM-CORRECTION-ADDENDUM.md) — retained as the record of why Reflection/Migrator was added; its requirements are now folded into the primary D1 spec/tasks.
+Do not read the full documentation corpus.
 
-The seed documents define intent and protected distinctions. This D1 pack defines the **current bounded deliverable and build order**. It does not promote candidate Lab architecture into Ω constitutional law.
+1. Read `../SITREP.md`.
+2. Read `../ratchet/OPERATING.md`.
+3. From `omega-baseline/`, run `bun run ratchet status` / `bun run ratchet next`.
+4. Claim the task and use its generated packet + red gate as the default context.
+5. Read `D1-FIRST-RELEASE-SPEC.md` only when the task needs whole-deliverable acceptance context.
 
-## What you are authorized to do
+The Ratchet packet already supplies the core invariants and task-specific files.
 
-Implement D1 end to end. Refactor the baseline where needed. Add tests, fixtures, experimental runtime code, a developer-facing UI, scripts, evidence, and project-control updates required for D1.
+## Task-specific documentation already complete
 
-You may change the task decomposition if implementation reality proves a better decomposition, but preserve the D1 acceptance gates and record why.
+- D1-002 / interpreter work: [D1-CODE-MAP.md](D1-CODE-MAP.md).
+- D1-055…059B / Reflection-help work: [D1-REFLECTION-HARVEST-MAP.md](D1-REFLECTION-HARVEST-MAP.md).
+- execution/throughput/gate-hardening rules: [D1-EXECUTION-ACCELERATION-DIRECTIVE.md](D1-EXECUTION-ACCELERATION-DIRECTIVE.md).
+- live Provider work is **outside D1** and uses `../live-proof/`.
 
-Do not modify authentication, provider credentials, model/provider configuration, subscriptions, or external accounts. Do not perform live provider submission in D1. Do not call simulated evidence live.
-
-Use existing baseline mechanisms where they are useful. Harvest before inventing. Do not rewrite the working deterministic interpreter merely to fit a preferred architecture.
+No additional design/PM pass is required for ordinary D1 tasks. If implementation uncovers a genuine D4/D5 semantic choice, use the existing design-intensity rule and produce an executable discriminator/prototype rather than another general roadmap.
 
 ## Build rule
 
-Work atomically from `D1-ATOMIC-TASKS.md`.
+One bounded claim → one red gate/falsifier → implementation → verify/probe → promotion → independent review → coherent commit/release.
 
-For each task:
-
-- self-checkout and register the session;
-- start from the Ratchet packet and named red gate;
-- verify dependencies;
-- implement one bounded outcome;
-- add or update the smallest proof;
-- run relevant tests;
-- record material evidence/failure;
-- promote only from current probe truth;
-- obtain independent review;
-- commit coherently and release the task claim.
-
-Parallelize only tasks with genuinely disjoint write surfaces or explicit interfaces. If a gate already expresses the behavior, do not create another prose design pass unless the design-intensity system says the work genuinely needs one.
-
-## Executable task control (added 2026-10-06)
-
-The D1 definition of done now exists as code: 80 gates in `omega-baseline/experimental/d1/test/gates/`, tagged by task ID and run by the ratchet (`.project/ratchet/OPERATING.md`). Task state is computed from those gates, the ratchet lock and independent reviews. It is not written by hand here or in STATUS. From `omega-baseline/`: `bun run ratchet next` gives the next task packet, `bun run ratchet fanout --n 4` gives parallel tasks with disjoint write surfaces, and `bun run ratchet status` gives current state. Design and rationale: `.project/ratchet/DESIGN.md`.
+Parallelize only disjoint write surfaces. Regressions outrank new work. Never weaken a gate to create progress.
 
 ## Definition of done
 
-D1 is done only when all release gates in the specification pass, including:
+D1 is done only when Ratchet completion proves all D1 tasks/gates and independent review supports exactly the D1 claim, including:
 
-- corpus U1 no longer produces false READY;
-- two valid Claude Accounts remain visibly ambiguous without an explicit/default rule;
-- typed and clicked correction produce the same canonical command digest;
-- an obsolete interpretation revision cannot overwrite a newer one;
-- `prompt.send` executes only through a virtual realization;
-- every execution receipt is unambiguously marked `SIMULATED`;
-- replay of a pinned complete journey produces the same semantic/evidence identity;
-- the D1 capability slice is minimally self-describing: source-bound structural facts are extracted into a read-only Reflection representation, joined with active World/interpretation state, and projected into contextual Wiki/help without a parallel authoritative help database;
-- the artifact can be launched by another developer with one documented command;
-- existing named baseline tests remain green or any unrelated pre-existing blocker is explicitly preserved.
+- no false READY for unresolved required fields;
+- truthful two-Account ambiguity;
+- typed/clicked correction convergence;
+- obsolete revisions cannot overwrite current state;
+- contextual help grounded in source-bound Reflection + current semantic state;
+- interpretation cannot grant authority;
+- virtual `prompt.send` only;
+- SIMULATED receipts cannot satisfy live proof;
+- deterministic replay + scenario-derived metrics;
+- one-command developer launch;
+- baseline regression checks remain honest.
 
 ## Stop conditions
 
-Stop and surface the evidence instead of guessing if D1 requires:
+Stop and surface evidence if the task requires live Provider/browser action, auth/provider/model configuration, an unresolved owner decision, destructive history, weakening an invariant/proof boundary, or representing simulated behavior as live.
 
-- live browser/provider access;
-- an owner decision listed in `.project/DECISIONS.md`;
-- auth/provider/model configuration changes;
-- weakening an invariant or proof boundary;
-- calling fixture/simulated behavior live;
-- destructive repository history changes.
-
-Otherwise, continue autonomously until D1 is runnable and evidenced.
-
-## Relationship to parallel work and the next product convergence
-
-D1 deliberately leaves live Provider/Account execution outside its own completion claim, but that live-reality path may advance **in parallel** under the Meta Tracker; it is not a mandated serial “D2”.
-
-After D1, the next core **product convergence** is MP-02 + MP-03: the actual Floating Command Box first product release/end-to-end journey. That convergence draws from D1, minimal Reflection/Wiki, independent live Provider/Account proof, authority/evidence semantics, product surface, local continuity, packaging, and Truth. Do not serialize those workstreams unless evidence demands it.
-
-The 67-program Meta Tracker remains the whole-program context; D1 is only one evidence-bearing integration slice.
+Otherwise continue autonomously through the executable task system.
