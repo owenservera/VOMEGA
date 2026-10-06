@@ -8,8 +8,8 @@
 //     was observed. `range` is a navigation hint and never part of identity.
 import { digestText } from "../../ratchet/src/canonical.ts";
 
-/** Kinds P1 mints. P2 extractors add schema / op-registration / config / language / comment. */
-export const ANCHOR_KINDS = ["file", "manifest", "declaration"] as const;
+/** file, manifest and declaration are minted by the P1 inventory; the rest by P2 extractors. */
+export const ANCHOR_KINDS = ["file", "manifest", "declaration", "op-registration", "port-call", "language"] as const;
 export type AnchorKind = (typeof ANCHOR_KINDS)[number];
 
 export interface SourceAnchor {
