@@ -1007,3 +1007,21 @@ Particularly important MVP metrics include:
 [Semantic Data Engine](SEMANTIC-DATA-ENGINE.md) describes the data/identity relationships behind the release interaction.
 
 It incorporates recent harvest lessons without expanding MVP scope.
+
+
+## Negative intent / early-correction compatibility
+
+The first product should preserve compatibility with the [Negative Intent Signal Engine](NEGATIVE-INTENT-SIGNAL-ENGINE.md): Ω should eventually challenge its own leading interpretation with the highest-value plausible counterfactual at the earliest useful revision.
+
+This is **not** a requirement to build the generalized evolutionary engine before the first release. It is a requirement not to design the first release around irreversible top-1 intent collapse.
+
+The release path should preserve, where practical:
+
+- revision-bound candidate alternatives;
+- explicit unresolved state;
+- semantic edit provenance;
+- typed/clicked correction convergence;
+- semantic diff/replay;
+- enough dependency information to measure how expensive a late correction would have been.
+
+The runtime compiler remains canonical. A negative-intent signal may rank and expose a counterfactual; it may not silently retarget, grant authority, or execute.
