@@ -28,6 +28,8 @@ Core aspiration:
 
 > **words → candidate meaning → grounded command → deterministic executable plan → virtual/real bounded execution → observed evidence → real-time human feedback**
 
+The Lab must also support the companion counterfactual loop defined in [Negative Intent Signal Engine](NEGATIVE-INTENT-SIGNAL-ENGINE.md): preserve the candidate intent manifold, compare the leading interpretation with plausible divergent branches, and test whether the highest-value early negative signal reduces later semantic correction burden. This is an evaluator over the same candidate semantics, not a second interpreter.
+
 Every arrow should be replaceable and experimentally comparable except the smallest Lab kernel needed to preserve identity, evidence, isolation, replay and governance.
 
 ## 2. Relationship to existing VOMEGA work
@@ -652,8 +654,10 @@ For every text revision:
 6. build/validate a candidate command;
 7. project semantic feedback;
 8. render one or more visual profiles;
-9. suppress late results from obsolete revisions;
-10. never execute merely because an interpretation exists.
+9. derive the negative intent frontier from the same revision-bound candidate semantics;
+10. project the highest-value counterfactual only when its expected early-correction value exceeds its interruption cost;
+11. suppress late interpretation **and negative-frontier** results from obsolete revisions;
+12. never execute merely because an interpretation or negative signal exists.
 
 This allows tests such as:
 
