@@ -1,6 +1,6 @@
 {
   "schema": "vomega-pm-portfolio/1",
-  "sourceHead": "a428897",
+  "sourceHead": "65ecc7f",
   "seedDigest": "sha256:854f282c02c30212ef97c2d659e67d5a0e7bffeb1227ad3e1de174abda113b1e",
   "managedScope": [
     "MP-21",
@@ -406,6 +406,21 @@
           "date": "2026-10-06",
           "kind": "source-inspected",
           "ref": ".project/pm/recon/WAVE-A.md"
+        },
+        {
+          "date": "2026-10-06",
+          "kind": "prototype-landed",
+          "ref": "omega-baseline/experimental/reflection-migrator/test/inventory.test.ts"
+        },
+        {
+          "date": "2026-10-06",
+          "kind": "prototype-landed",
+          "ref": "omega-baseline/experimental/reflection-migrator/test/extract.test.ts"
+        },
+        {
+          "date": "2026-10-06",
+          "kind": "prototype-landed",
+          "ref": "omega-baseline/experimental/reflection-migrator/test/consumer.test.ts"
         }
       ],
       "externalDependencies": [],

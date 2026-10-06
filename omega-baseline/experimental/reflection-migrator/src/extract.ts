@@ -213,6 +213,8 @@ export function buildExtraction(entries: TreeEntry[], inventory: Inventory): Ext
     facts.add({ claimClass: "DECLARED", subject: ref.pkg(name), predicate: "declared-in", object: ref.file(file.path), anchors: [anchorId("file", file.path)] });
   }
   packages.sort((a, b) => b.name.length - a.name.length || byString(a.name, b.name));
+  const byPackageDepth = [...packages].sort((a, b) => b.path.length - a.path.length || byString(a.path, b.path));
+  const packageOf = (path: string) => byPackageDepth.find((p) => path !== p.path && path.startsWith(`${posix.dirname(p.path)}/`));
 
   // ---------------------------------------------------------------- source files
   const registered = new Map<string, Map<string, string[]>>(); // manifest path → op → anchors
@@ -251,7 +253,13 @@ export function buildExtraction(entries: TreeEntry[], inventory: Inventory): Ext
     const fileAnchor = anchorId("file", file.path);
     const owner = pluginOf(file.path);
     if (owner) {
-      facts.add({ claimClass: "INFERRED_SAFE", rule: "file-under-manifest-directory", subject: ref.file(file.path), predicate: "part-of", object: ref.plugin(owner.id), anchors: [fileAnchor, owner.anchor] });
+      // A plugin is made of its source files; its tests and fixtures sit beside it without being part of it.
+      facts.add({ claimClass: "INFERRED_SAFE", rule: "file-under-manifest-directory", subject: ref.file(file.path), predicate: file.role === "source" ? "part-of" : "located-in", object: ref.plugin(owner.id), anchors: [fileAnchor, owner.anchor] });
+    }
+
+    const pkgOwner = packageOf(file.path);
+    if (pkgOwner) {
+      facts.add({ claimClass: "INFERRED_SAFE", rule: "file-under-package-directory", subject: ref.file(file.path), predicate: file.role === "source" ? "part-of" : "located-in", object: ref.pkg(pkgOwner.name), anchors: [fileAnchor, anchorId("file", pkgOwner.path)] });
     }
 
     // imports — one fact per (file, target); type-only only if every statement is.
