@@ -1,0 +1,68 @@
+id	d1	d1_design	d1_maturity	d2	d2_design	d2_maturity	d3	d3_design	d3_maturity
+MP-01	Release-slice decision protocol	D3	M2	Milestone re-evaluation packet	D2	M3	Historical decision calibration	D4	M4
+MP-02	Functional floating command box	D3	M2	Real-account product loop	D4	M3	State-of-art semantic command surface	D5	M5
+MP-03	Executable end-to-end release journey	D3	M2	Cross-seam failure/recovery journey	D4	M3	Ordinary-user validated release loop	D4	M4
+MP-04	Packaging feasibility proof	D2	M2	Lifecycle contract	D3	M3	Production distribution channel	D3	M4
+MP-05	Product Instance identity contract	D5	M2	Export/restore continuity proof	D4	M3	Sovereign replacement/reconstruction	D5	M5
+MP-06	Canonical semantic object model	D5	M2	Cross-layer semantic contract	D5	M3	Evolvable semantic substrate	D5	M5
+MP-07	Durable registry records	D4	M2	World + availability derivation	D5	M3	Multi-source temporal World	D5	M5
+MP-08	Release language slice	D4	M2	Composable language contribution model	D5	M3	Cross-domain human semantic language	D5	M5
+MP-09	Correct command validator	D4	M2	Replayable canonical UseCommand	D5	M3	General command policy engine	D5	M5
+MP-10	Revision-safe interpretation session	D4	M2	Semantic edit convergence	D4	M3	Continuous multimodal intent session	D5	M5
+MP-11	Deterministic Lab kernel	D5	M2	Composable experimental runtime	D5	M3	State-of-art semantic systems laboratory	D5	M5
+MP-12	Executable semantic product twin	D4	M2	Interaction equivalence proof	D4	M3	High-fidelity behavioral twin	D5	M5
+MP-13	Virtual prompt.send	D3	M2	Reusable virtual execution contract	D4	M3	High-fidelity simulation framework	D5	M5
+MP-14	Semantic visual vocabulary	D5	M2	Semantic edit interaction grammar	D5	M3	State-of-art legible command language	D5	M5
+MP-15	Deterministic projector	D4	M2	Surface-neutral projection contract	D5	M3	Adaptive projection protocol	D5	M5
+MP-16	Pinned scenario runner	D4	M2	Semantic diff + falsifier engine	D5	M3	Automated experimental optimization	D5	M5
+MP-17	Non-AI benchmark slice	D4	M2	Cross-domain falsification suite	D5	M3	Domain-general semantic proof	D5	M5
+MP-18	Reflection ABI minimum	D5	M2	Runtime/source traceability	D5	M3	Self-describing runtime contract	D5	M5
+MP-19	Core Reflection Graph	D4	M2	Queryable cross-layer graph	D5	M3	Living multi-evidence knowledge graph	D5	M5
+MP-20	Grounded contextual help	D4	M2	Semantic-handle navigation	D4	M3	Adaptive self-explanation	D5	M5
+MP-21	Source-bound extraction	D4	M2	Reflection graph + migration proposals	D5	M3	Continuous self-description compliance	D5	M5
+MP-22	Contribution declaration helpers	D4	M2	Completeness gate	D5	M3	Self-maintaining semantic completeness	D5	M5
+MP-23	Zero-doc plugin proof	D4	M2	Install-time self-knowledge wiring	D4	M3	Universal self-knowledge admission	D5	M5
+MP-24	Provider observation bench	D4	M2	Conformance knowledge pipeline	D5	M3	Self-healing provider laboratory	D5	M5
+MP-25	Read-only live transport	D3	M2	Account identity/binding evidence	D5	M3	Robust session substrate	D5	M5
+MP-26	Explicit route resolution	D5	M2	Availability-aware routing contract	D5	M3	Policy-rich multi-provider routing	D5	M5
+MP-27	Provider-pack contract	D4	M2	Second-provider abstraction proof	D5	M3	Hot-swappable provider ecosystem	D5	M5
+MP-28	One live prompt.send	D4	M2	Cross-provider prompt.send contract	D5	M3	Resilient live realization	D5	M5
+MP-29	Drift fingerprint	D4	M2	Governed conformance/repair loop	D5	M3	Autonomous-but-governed healing	D5	M5
+MP-30	Second-provider falsification	D4	M2	Third-provider conditional proof	D3	M3	Provider-independent realization model	D5	M5
+MP-31	Release authority matrix	D5	M2	Consent lifecycle	D5	M3	Composable authority model	D5	M5
+MP-32	Pre-effect attempt envelope	D4	M2	Truthful lifecycle + receipts	D5	M3	General effect ledger	D5	M5
+MP-33	Durable Work identity	D5	M2	Crash-safe continuation	D5	M3	State-of-art sovereign agency runtime	D5	M5
+MP-34	Release namespaces in Vault	D3	M2	Continuity + isolation proof	D3	M3	Scalable canonical local store	D5	M5
+MP-35	Memory/context separation	D5	M2	Invalidation/recomputation model	D5	M3	Personal semantic memory system	D5	M5
+MP-36	Explicit contribution contracts	D5	M2	First-party parity proof	D5	M3	Highly composable plugin ecosystem	D5	M5
+MP-37	Governed plugin creation path	D5	M2	Composable repair/evolution workflow	D5	M3	Ordinary-user programmable Forge	D5	M5
+MP-38	Change lineage + compatibility contract	D5	M2	Safe migration/rollback	D5	M3	Self-evolving constitutional system	D5	M5
+MP-39	Trusted runtime boundary	D5	M2	Resource/failure governance	D5	M3	Minimal evolvable constitution	D5	M5
+MP-40	Second surface proof	D4	M2	Cross-surface continuity	D5	M3	Spatial semantic environment	D5	M5
+MP-41	Machine-readable proof ledger	D4	M2	Independent promotion protocol	D5	M3	Continuous epistemic governance	D5	M5
+MP-42	Harvest assay protocol	D3	M2	Integrated harvest bench	D4	M3	Continuous evidence-driven reuse system	D5	M5
+MP-43	Historical proof index	D3	M2	Targeted resurrection assays	D4	M3	Living legacy knowledge mine	D5	M5
+MP-44	Curated OS benchmark corpus	D3	M2	Cross-system benchmark harness	D4	M3	Broad domain generalization benchmark	D5	M5
+MP-45	Decision-linked benchmark suite	D3	M2	Reproducible architecture benchmarks	D4	M3	Adaptive falsifier benchmark system	D5	M5
+MP-46	Parallel code-work proof	D4	M2	Cross-harness handoff/integration	D5	M3	High-throughput self-development factory	D5	M5
+MP-47	Interface-lock protocol	D4	M2	Dependency-aware orchestration	D4	M3	Adaptive coordination fabric	D5	M5
+MP-48	Task/model attribution	D3	M2	Measured specialist routing	D4	M3	Adaptive heterogeneous intelligence pool	D5	M5
+MP-49	Reliable bounded ZCode fan-out	D3	M2	Persistent workflow substrate	D4	M3	Autonomous execution habitat	D5	M5
+MP-50	Specialist harness benchmark	D3	M2	Cross-provider review protocol	D4	M3	Fungible specialist execution pool	D5	M5
+MP-51	Grok reachability/config assay	D2	M2	Measured Grok task fit	D3	M3	Integrated Grok execution lane	D4	M4
+MP-52	Habitat capability assay	D2	M2	Cross-habitat coexistence proof	D3	M3	Retain-or-retire decision evidence	D2	M4
+MP-53	Minimal development event schema	D4	M2	Useful event-derived products	D4	M3	Local development observability fabric	D5	M5
+MP-54	Thin task context bundle	D3	M2	Source/evidence-aware bundle	D4	M3	Adaptive context optimizer	D5	M5
+MP-55	Reproducible failure capsule	D3	M2	Structurally enriched diagnostic packet	D4	M3	Automatic failure intelligence	D5	M5
+MP-56	Canonical trace contract + reduction	D4	M2	Trace→fixture→replay proof	D4	M3	Continuous behavioral knowledge harvesting	D5	M5
+MP-57	Task/result telemetry	D3	M2	Bounded dynamic router	D5	M3	Self-optimizing execution router	D5	M5
+MP-58	Manual hypothesis arena protocol	D3	M2	Reusable adjudication harness	D4	M3	Scalable plural-design system	D5	M5
+MP-59	Disposable worktree/repo pattern	D2	M2	Composable experimental environments	D4	M3	Ephemeral architecture laboratory	D5	M5
+MP-60	Impact question corpus + static graph	D4	M2	Runtime/test-observed impact	D5	M3	Predictive blast-radius/concurrency	D5	M5
+MP-61	Automated failure localization	D3	M2	Cross-layer minimization	D4	M3	General regression localization engine	D5	M5
+MP-62	Bounded fault corpus	D4	M2	Continuous fault-injection harness	D5	M3	Adaptive architectural chaos system	D5	M5
+MP-63	One-command provider dev environment	D3	M2	Fast evidence loop	D4	M3	Near-instant conformance development	D5	M5
+MP-64	Evidence-derived session handoff	D4	M2	Knowledge promotion rules	D5	M3	Continuous organizational memory	D5	M5
+MP-65	Current-state cockpit assay	D2	M2	Interactive control surface	D4	M3	Congestion-aware development control plane	D5	M5
+MP-66	Elephant comparison experiment	D4	M2	Epoch-aware consult service	D5	M3	Distributed cognitive memory network	D5	M5
+MP-67	Acceleration scorecard baseline	D5	M2	Measured accelerator experiments	D5	M3	Adaptive development economics system	D5	M5
