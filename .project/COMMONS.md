@@ -333,3 +333,23 @@ Independent bounded `PMC-TRU` implementation review of commit `56fe9c4`: **accep
 Dogfood: a separate fresh worker given only `generated/PORTFOLIO.md` answered just 1 of 9 success-criterion questions fully. Adopted the highest-value fix — a **Purpose (why it exists)** column projected from the canonical tracker. The remaining orientation gaps (a "now/active" view, evidence pointers, plan delta, gate metadata, `taskRef` linkage) are recorded as the v0.1 backlog in `.project/pm/recon/REVIEW-V0.md`.
 
 Verified: `pm:test` 29 pass / 0 fail; `pm:check` green post-commit (5 warnings = carried gaps); `omega:quick` 62/0/1622; `ratchet drift` 6/6. Truth: v0 proves reference integrity, strict-schema rejection and a stable projection — it does not prove the ratchet `taskRef` linkage (deferred to v0.1) and does not make any PM state authoritative.
+
+### Orca bootstrap Gate 0 census — 2026-10-06
+
+Claim: ORCA (execution substrate). Ran `.project/orca/BOOTSTRAP.md` Gate 0 only, read-only. Output: `.project/orca/CENSUS-2026-10-06.md`.
+
+**Starting assumption falsified.** Orca was already installed and already executed on this machine today at 05:41–05:53, before the bootstrap began, so no true "pre-Orca" baseline was capturable. Census is a pre-bootstrap-session census with Orca's prior side effects recorded explicitly.
+
+Two blockers for Gate 1, both owner-reserved:
+
+**D1 — version pin.** Bootstrap pins Orca v1.4.220; installed build is **1.4.221** (`FileVersion 1.4.221`), staged by `orca-updater\installer.exe` at 05:18 — an auto-update, not a pinned install. Gate 1's prohibition is explicit, so this needs a decision, not a silent proceed.
+
+**D2 — duplicated Codex credential.** The 05:41 session copied `~/.codex/auth.json` into Orca's appdata **byte-identically** (matching SHA-256), and the credential is additionally embedded as an `authJson` string in `system-default-auth.json` and `shared-runtime-auth-provenance.json` — ≥4 on-disk copies total. This happened as Orca's default onboarding, i.e. *before* Gate 2's Manual posture could exist. SITREP reserves credential changes to Owen.
+
+Checked and found clean: the owner's `~/.codex/config.toml` was **not** substantively rewritten — Orca's copy differs only by rewriting `[hooks.state.'…']` paths to its own home; key/section sets otherwise identical. `HEAD` == `origin/main` (`3ccaf2c`), 0/0, one worktree, no stashes.
+
+Gate 4 re-scoped: the blocker is smaller than recorded. Bundled ZCode CLI 0.16.9 *has* a TUI (`zcode tui`; "with no command opens the full-screen TUI") — only the PATH command is missing, so a controlled `zcode.cmd` shim may suffice with no standalone download and no desktop replacement. Hypothesis, unproved.
+
+Evidence discipline: presence/version/hash only. No credential, token or endpoint value was written to any artifact. Noted that `orca-runtime.json` holds a live runtime `authToken` and `orca-e2ee-keypair.json` exists — both sensitive, never to be committed.
+
+Next action: owner decides D1 and D2. No executor running; Gates 1–10 not started.

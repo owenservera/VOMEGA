@@ -8,6 +8,8 @@ This file is the compact launch-state surface for fresh local sessions. It is th
 
 Ratchet hardening + independent review completed 2026-10-06 on branch `work/d1-ratchet-integration` (not yet merged to `main`): recommendation **ADOPT WITH REMAINING LIMITATIONS**, findings in `.project/ratchet/REVIEW-2026-10-06.md`. Probe truth is 15/80 D1 gates green; a green `d1:gates` run is not D1 completion.
 
+**Orca execution-substrate bootstrap: Gate 0 complete 2026-10-06; Gate 1 blocked on two owner decisions.** Census: [../orca/CENSUS-2026-10-06.md](../orca/CENSUS-2026-10-06.md). Two findings invalidate the assumed starting state: (1) Orca **1.4.221** is already installed and already ran today 05:41–05:53, so this is not a pre-Orca machine and the pinned v1.4.220 baseline was never captured; (2) that earlier session **already copied `~/.codex/auth.json` byte-identically into Orca's appdata** (≥4 on-disk copies) before Gate 2's Manual posture existed. Gates 1–10 not started; no harness launched through Orca; nothing repaired, upgraded or installed.
+
 Detailed topology: [README.md](README.md). Program map and authority ladder: [../META-TRACKER.md](../META-TRACKER.md).
 
 ## Objective
@@ -151,10 +153,10 @@ Artifacts: `.project/agentic-launch/handoffs/*.md`, `omega-baseline/experimental
 
 Claimant: **ZCode PM team** (ZCode session, main worktree, route `openrouter/auto`). Source HEAD at claim: `93075cf` (local == `origin/main`).
 
-Scope: implement and maintain the expandable PM roadmap system designed in `.project/pm/` — the coordination layer over the canonical 67-program map. This is development machinery, not Ω product architecture. It does **not** claim any D1 task, roadmap task or provider/auth/model configuration.
+Scope: implement and maintain the PM planning layer for the **five owner-selected programs only** (MP-21, MP-54, MP-55, MP-56, MP-60), per the owner-directed correction [PM-CORRECTION-FIRST-FIVE-ONLY.md](../pm/PM-CORRECTION-FIRST-FIVE-ONLY.md). This is development machinery, not Ω product architecture. It does **not** claim any D1 task, roadmap task or provider/auth/model configuration, and it holds **no decisioning authority** over program selection, ranking or scope.
 
-State at claim: recon wave (charter Wave A). Read-only; no product code, config or git history touched. Durable artifacts land in `.project/pm/`.
+State: v0 shipped (`56fe9c4`, review fixes `b4ed79d`); **owner correction being applied 2026-10-06** — managed scope is declared in `.project/pm/scope.json` and enforced by `pm:check`; v0.1 feature expansion is frozen.
 
-Handoff: team instantiation in `.project/pm/TEAM-INSTANCE.md`; recon findings collide into `.project/pm/recon/WAVE-A.md`; v0 proposal in `.project/pm/recon/V0-PROPOSAL.md` (rev 2, reviewed). **v0 implementation claimed 2026-10-06**: decomposition seed + strict reference validator + generated portfolio under `omega-baseline/experimental/pm/`, writing `.project/pm/data/` and `.project/pm/generated/`. Truth boundary: META-TRACKER remains canonical; every PM state cell is a projection, and no PM document outranks source/tests/evidence.
+Handoff: team instance in `.project/pm/TEAM-INSTANCE.md`; recon findings in `.project/pm/recon/WAVE-A.md`; proposal + review in `.project/pm/recon/V0-PROPOSAL.md` and `recon/REVIEW-V0.md`. Truth boundary: META-TRACKER remains canonical; every PM state cell is a projection, and no PM document outranks source/tests/evidence.
 
 **Nothing else is claimed; no other executor is running.**
