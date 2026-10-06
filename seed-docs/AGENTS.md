@@ -8,7 +8,7 @@ This is a fresh autonomous build project seeded with the current VIVIM-Ω implem
 
 Bootstrap has run. The canonical map of important work now lives in `../.project/META-TRACKER.md`: **67 major meta programs plus 31 named development-acceleration hypotheses**. The broad domains in `WORKSTREAM-LANDSCAPE.md`, the bootstrap rooms below, the nine launch lanes, the nine roadmap workstreams, and D1 tasks are narrower execution/coverage views. They may help route work but do not define the whole project.
 
-Current state starts at `../.project/SITREP.md`; current claims/running work are in `../.project/agentic-launch/STATUS.md`; proof comes from code/tests/evidence.
+Current state starts at `../.project/SITREP.md`; aggregate execution state is in `../.project/agentic-launch/STATUS.md`; granular dev-agent/session registrations are in `../.project/agentic-launch/claims/` under the mandatory lightweight protocol in `../.project/agentic-launch/DEV-AGENT-REGISTRATION.md`; proof comes from code/tests/evidence.
 
 ## Operating mandate
 
@@ -209,6 +209,15 @@ For consequential change, maintain enough lineage to answer what changed, why, w
 Replacement should preserve user-owned canonical state and history where compatibility permits.
 
 Unresolved impact or compatibility is not the same as zero impact or compatibility.
+
+
+## Mandatory development-agent registration
+
+Any agent performing substantive implementation, test creation, integration, build/release work, or independent repository review must follow `../.project/agentic-launch/DEV-AGENT-REGISTRATION.md`.
+
+Before substantive work: self-check HEAD/remote/worktree state, read relevant active claims, and create or verify a lightweight per-agent claim recording who/what/when/source-HEAD/intended write surface. Before stopping: make the claim non-ACTIVE, record actual commit/artifact/tests/gaps, and add a concise Commons handoff when the work produced a material result or blocker.
+
+This registration is coordination only. It does not grant authority, reserve a program, replace Ratchet/PM claims, or prove completion.
 
 ## Development discipline
 
