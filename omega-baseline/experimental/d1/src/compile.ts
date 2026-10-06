@@ -1,29 +1,212 @@
 // Interpretation → registration / draft / edit, and draft → canonical
-// UseCommand (Phases C and D semantics). STUB.
+// UseCommand (Phases C and D semantics).
 //
-// Expected approach (harvest first): adapt plugins/vivim-nlcl-pure — map the
-// D1 World to an nlcl WorldModel (accounts as entities, prompt.send@1 as an op
-// with a capability-contributed frame), call interpret(), then lift the
-// Interpretation into an InterpretationResult. Do not rewrite the interpreter
-// to fit a preferred architecture; the corpus already proves explicit-target
-// precedence, ambiguity preservation and replay on it.
-import type { Interpretation, WorldModel } from "../../../plugins/vivim-nlcl-pure/src/index.ts";
-import type { D1State, InterpretationResult, UseCommand, Validation, World } from "./contract.ts";
+// IMPLEMENTED here: D1-024 — the declared-capability command path (utterance →
+// DraftCommand) and the fold of a draft plus its semantic edits into the
+// candidate canonical UseCommand. Still stubs, each still naming its owning
+// task so a red gate says who owns it: registration (D1-021), typed correction
+// (D1-027), READY law (D1-005), command identity (D1-029), interpreter trace
+// (D1-025).
+//
+// Harvest disposition (OPERATING.md, "Harvest before inventing"): ADAPT, not
+// reimplement. plugins/vivim-nlcl-pure supplies the lexer (so words inside a
+// quoted payload can never retarget) and `ground` (explicit-target ranking,
+// thresholds and ambiguity preservation, unchanged). `interpret()` itself was
+// assayed and REJECTED at this level: it takes its frames from
+// `framesForWorld(world)`, which mints a one-slot generic frame for any op
+// outside its own default set — against a D1-projected WorldModel it returns
+// `surface.assist` for the canonical journey phrase and `unknown` for "add my
+// Claude work account", so it cannot carry D1's phrase surface. The frame layer
+// below is therefore D1's own, and it never invents structure: required
+// fields, consequence, authority and evidence class are read from
+// declarations/*.capability.json, and identity/route records from the World.
+// Nothing in this file is authority.
+import { NCLL_VERSION, ground, lex } from "../../../plugins/vivim-nlcl-pure/src/index.ts";
+import type { Interpretation, RiskClass, Token, WorldModel } from "../../../plugins/vivim-nlcl-pure/src/index.ts";
+import type { CapabilityDecl, RealizationDecl } from "./declarations.ts";
+import { capabilityDecl, loadDeclarations } from "./declarations.ts";
+import type { D1State, DraftCommand, InterpretationResult, SemanticEdit, Unresolved, UseCommand, Validation, World } from "./contract.ts";
 import { notImplemented } from "./not-implemented.ts";
+import { compatibleAccounts } from "./world.ts";
 
-/** D1-021/025: project a D1 World into the interpreter's grounding target. */
+/** The engine behind a D1 trace: nlcl's lexer/grounder plus D1's frame layer. */
+const INTERPRETER_VERSION = `d1-frame/${NCLL_VERSION}`;
+
+/** Candidate version of the D1 record set (World fixture + declarations) a command is computed from. */
+const REGISTRY_VERSION = "d1-records/0.1";
+
+/**
+ * The candidate phrase surface: the verb that opens a command, per DECLARED
+ * capability. This is the only hand-authored lexicon in D1 and it carries no
+ * structural truth — a capability absent from the World cannot be spoken here,
+ * and every field rule is read from declarations/ below.
+ */
+const COMMAND_VERBS: Record<string, readonly string[]> = {
+  "prompt.send@1": ["ask", "send", "tell", "prompt", "put", "write"],
+};
+
+/** Verbs that open a registration — recognized only to hand the task to its owner (D1-021). */
+const REGISTER_VERBS = new Set(["add", "register"]);
+
+/** Verbs that open a typed correction — recognized only to hand the task to its owner (D1-027). */
+const CHOOSE_VERBS = new Set(["use", "switch", "choose", "select"]);
+
+/** Words that separate a routed target from the payload. They only split mentions and open a payload. */
+const ROUTE_PREPS = new Set(["to", "on", "at", "with", "via", "through", "using", "from", "about", "for", "into"]);
+
+/** Declaration `semantic` tag → the UseCommand field it fills. Wiring, not a second field list. */
+const ROUTE_FIELD = {
+  "route.provider": "provider",
+  "route.account": "account",
+  "route.model": "model",
+} as const satisfies Record<string, keyof UseCommand>;
+
+/** Grounding observation kept for inspection and replay. Read only to LABEL a reason, never to resolve one. */
+interface D1Trace {
+  engine: string;
+  /** The explicit target mention, when the utterance named one. */
+  mention: string | null;
+  /** Per-field candidate ids at the top grounding score (the tie set). */
+  candidates: Record<string, string[]>;
+  tokens: number;
+}
+
+interface Grounding {
+  mention: string | null;
+  /** Tokens the mention consumed, so the payload is what is left. */
+  mentionTokens: Set<number>;
+  provider: string | null;
+  account: string | null;
+  model: string | null;
+  candidates: Record<string, string[]>;
+}
+
+/** D1-025: project a D1 World into the interpreter's grounding target. */
 export function toInterpreterWorld(world: World): WorldModel {
-  return notImplemented("D1-025", `toInterpreterWorld(${world.id})`);
+  const decls = loadDeclarations();
+  const ops = world.capabilities.map((cap) => {
+    const decl = capabilityDecl(cap, decls);
+    const provider = world.realizations
+      .filter((r) => r.capability === cap && r.status === "available")
+      .map((r) => r.provider)
+      .sort()[0] ?? "";
+    const risk: RiskClass = decl?.consequence.crossesLocalBoundary === true ? "EXTERNAL_MUTATION" : "MUTATION";
+    return { op: cap, provider, title: decl?.title ?? cap, risk };
+  });
+  return {
+    v: world.revision,
+    t: 0, // N1: the clock is supplied by the producer. D1 is a fixture World and has none.
+    kernel: { composition: "d1.world/0", nlclVersion: NCLL_VERSION, plugins: [] },
+    ops,
+    entities: [
+      ...world.providers.map((p) => ({ id: p.id, type: "provider", label: p.label, names: p.names })),
+      ...world.accounts.map((a) => ({ id: a.id, type: "account", label: a.label, names: a.names })),
+      ...world.models.map((m) => ({ id: m.id, type: "model", label: m.label, names: m.names })),
+    ],
+    lexicon: [],
+    rules: [],
+    context: { latestMessageId: null, latestEntityId: null },
+  };
 }
 
 /** D1-020..028: interpret revision `n` of the session against the current World. Pure. */
 export function interpretRevision(state: D1State, n: number): InterpretationResult {
-  return notImplemented("D1-021", `interpretRevision(revision ${n}: ${JSON.stringify(state.revisions[n - 1]?.text ?? "")})`);
+  const text = state.revisions[n - 1]?.text ?? "";
+  const world = state.world;
+  const { tokens, syntaxNotes } = lex(text);
+  const head = tokens[0];
+  const verb = head?.kind === "cmd" || head?.kind === "word" ? head.norm : null;
+  const base = { revision: n, worldDigest: world.digest, interpreterVersion: INTERPRETER_VERSION };
+
+  // Recognized-but-unimplemented surfaces keep naming their owning task.
+  if (verb && REGISTER_VERBS.has(verb)) return notImplemented("D1-021", `interpretRevision(revision ${n}: registration "${text}")`);
+  if (verb && CHOOSE_VERBS.has(verb)) return notImplemented("D1-027", `interpretRevision(revision ${n}: correction "${text}")`);
+
+  // A capability the World does not offer is not a command, however well it reads.
+  const capability = verb
+    ? Object.keys(COMMAND_VERBS).find((c) => world.capabilities.includes(c) && COMMAND_VERBS[c]!.includes(verb))
+    : undefined;
+  if (!capability) {
+    return {
+      ...base,
+      kind: "unknown",
+      detail: { engine: INTERPRETER_VERSION, mention: null, candidates: {}, tokens: tokens.length, syntaxNotes, reason: verb ? `no declared capability opens on "${verb}"` : "no command verb" },
+    };
+  }
+
+  // capabilityDecl throws for an undeclared capability rather than inventing field rules.
+  const decl = capabilityDecl(capability)!;
+  const wm = toInterpreterWorld(world);
+  const body = tokens.slice(1);
+  const grounding = groundTarget(text, body, wm);
+  const payload = payloadOf(text, body, grounding.mentionTokens);
+  const draft = draftFor(capability, decl, world, grounding, payload);
+  return {
+    ...base,
+    kind: "command",
+    draft,
+    detail: { engine: INTERPRETER_VERSION, mention: grounding.mention, candidates: grounding.candidates, tokens: tokens.length, syntaxNotes } satisfies D1Trace,
+  };
 }
 
 /** D1-024/027: fold draft + semantic edits into the candidate canonical command (null if no draft). */
 export function currentCommand(state: D1State): UseCommand | null {
-  return notImplemented("D1-024", `currentCommand(active revision ${state.active})`);
+  const held = state.draft;
+  if (!held || held.result.kind !== "command" || !held.result.draft) return null;
+  const world = state.world;
+  const draft = held.result.draft;
+  // An undeclared capability has no knowable field rules (same law as requiredFields()).
+  const decl = capabilityDecl(draft.capability)!;
+  const trace = held.result.detail as D1Trace | undefined;
+
+  let { provider, account, model } = draft;
+  const params = structuredClone(draft.params);
+  const contextRefs = [...draft.contextRefs];
+  // Edits are presentation-agnostic: `via` never reaches the command (D1-029 excludes it too).
+  for (const { edit } of state.edits) {
+    if (edit.kind !== "select") continue;
+    switch (edit.field) {
+      case "provider":
+        provider = edit.value;
+        break;
+      case "account": {
+        account = edit.value;
+        // prompt.send declares provider as derivedFrom account: the pair may never disagree.
+        const rec = world.accounts.find((a) => a.id === edit.value);
+        if (rec) provider = rec.provider;
+        break;
+      }
+      case "model":
+        model = edit.value;
+        break;
+    }
+  }
+
+  const realization = pickRealization(world, draft.capability, provider);
+  const cmd: UseCommand = {
+    capability: draft.capability,
+    provider,
+    account,
+    model,
+    params,
+    contextRefs,
+    basis: {
+      // The World this command was COMPUTED against — a later World delta makes it stale,
+      // and staleness is what the READY law (D1-005) has to notice, not something to hide here.
+      worldDigest: held.worldDigest,
+      sourceRevision: held.revision,
+      registryVersion: REGISTRY_VERSION,
+      interpreterVersion: held.result.interpreterVersion,
+    },
+    unresolved: [],
+    consequence: consequenceOf(decl, provider),
+    // Consent is its own action. Prose never sets it, and it is not part of command identity.
+    authority: { requirement: world.authority[draft.capability] ?? "denied", decision: consentDecision(state) },
+    realization,
+    expectedEvidence: expectedEvidenceOf(draft.capability, realization),
+  };
+  cmd.unresolved = unresolvedFor(decl, cmd, world, trace);
+  return cmd;
 }
 
 /**
@@ -46,4 +229,180 @@ export function validation(state: D1State): Validation {
 /** Optional helper for tests and tools: the raw interpreter output for one revision. */
 export function rawInterpretation(state: D1State, n: number): Interpretation {
   return notImplemented("D1-025", `rawInterpretation(${n})`);
+}
+
+// ------------------------------------------------------------------ interpretation internals
+
+/** Maximal word runs between hard boundaries (punctuation, a quote, a route preposition). */
+function splitRuns(body: Token[]): { text: string; tokens: Token[] }[] {
+  const runs: { text: string; tokens: Token[] }[] = [];
+  let current: Token[] = [];
+  const flush = (): void => {
+    if (current.length > 0) runs.push({ text: current.map((t) => t.norm).join(" "), tokens: current });
+    current = [];
+  };
+  for (const t of body) {
+    if (t.kind === "word" && !ROUTE_PREPS.has(t.norm)) current.push(t);
+    else flush();
+  }
+  flush();
+  return runs;
+}
+
+/**
+ * Ground an explicit target against the World. The best-scoring run wins; inside it
+ * each kind resolves independently, and a tie is PRESERVED as alternatives rather
+ * than collapsed — "Claude" names one Provider and both of its Accounts.
+ */
+function groundTarget(text: string, body: Token[], wm: WorldModel): Grounding {
+  const none: Grounding = { mention: null, mentionTokens: new Set(), provider: null, account: null, model: null, candidates: {} };
+  let best: { run: { text: string; tokens: Token[] }; score: number } | null = null;
+  for (const run of splitRuns(body)) {
+    const score = Math.max(
+      ground(run.text, wm.entities, ["provider"]).primary?.score ?? 0,
+      ground(run.text, wm.entities, ["account"]).primary?.score ?? 0,
+      ground(run.text, wm.entities, ["model"]).primary?.score ?? 0,
+    );
+    if (score > 0 && (!best || score > best.score)) best = { run, score };
+  }
+  if (!best) return none;
+
+  const mention = text.slice(best.run.tokens[0]!.start, best.run.tokens[best.run.tokens.length - 1]!.end);
+  const candidates: Record<string, string[]> = {};
+  const resolve = (kind: string): string | null => {
+    const g = ground(best!.run.text, wm.entities, [kind]);
+    if (!g.primary) return null;
+    const tied = g.matches.filter((m) => Math.abs(m.score - g.primary!.score) < 0.01).map((m) => m.entity.id).sort();
+    if (tied.length > 0) candidates[kind] = tied;
+    return g.ambiguous ? null : g.primary.entity.id; // ambiguous stays null: D1 never picks for you
+  };
+  return {
+    mention,
+    mentionTokens: new Set(best.run.tokens.map((t) => t.i)),
+    provider: resolve("provider"),
+    account: resolve("account"),
+    model: resolve("model"),
+    candidates,
+  };
+}
+
+/** The payload: a quoted span verbatim (its words can never retarget), else the unconsumed text. */
+function payloadOf(text: string, body: Token[], consumed: Set<number>): string {
+  const quoted = body.find((t) => t.kind === "quote");
+  if (quoted) return quoted.quote ?? "";
+  // A preposition that introduces the route belongs to the route, not to the payload.
+  for (const t of body) {
+    if (!consumed.has(t.i)) continue;
+    const prev = body[body.indexOf(t) - 1];
+    if (prev?.kind === "word" && ROUTE_PREPS.has(prev.norm)) consumed.add(prev.i);
+  }
+  const rest = body.filter((t) => !consumed.has(t.i));
+  let first = 0;
+  while (first < rest.length && (rest[first]!.kind === "punct" || (rest[first]!.kind === "word" && ROUTE_PREPS.has(rest[first]!.norm)))) first++;
+  if (first >= rest.length) return "";
+  return text.slice(rest[first]!.start, rest[rest.length - 1]!.end);
+}
+
+/** Assemble the draft: explicit target first, then the World's visible default, then compatibility. */
+function draftFor(capability: string, decl: CapabilityDecl, world: World, g: Grounding, payload: string): DraftCommand {
+  const compatible = compatibleAccounts(world, capability).map((a) => a.id).sort();
+  const alternatives: Record<string, string[]> = { ...g.candidates };
+
+  let account = g.account;
+  if (account === null && g.mention === null) {
+    const standing = world.defaults[capability];
+    const fromDefault = standing && world.accounts.some((a) => a.id === standing) ? standing : null;
+    account = fromDefault ?? (compatible.length === 1 ? compatible[0]! : null);
+    if (account === null && compatible.length > 1) alternatives.account = compatible;
+  }
+  // Provider is a separate record: named explicitly, else derived from the Account, else absent.
+  const provider = g.provider ?? (account ? world.accounts.find((a) => a.id === account)?.provider ?? null : null);
+
+  const params: Record<string, unknown> = {};
+  for (const p of decl.params) if (p.semantic.startsWith("params.") && payload.length > 0) params[p.name] = payload;
+
+  const kept: Record<string, string[]> = {};
+  for (const [field, ids] of Object.entries(alternatives)) if (ids.length > 0) kept[field] = [...ids].sort();
+  return { capability, provider, account, model: g.model, params, alternatives: kept, contextRefs: [] };
+}
+
+// ------------------------------------------------------------------ command internals
+
+/** The realization this capability+provider can actually be executed by, or null. Capability ≠ Realization. */
+function pickRealization(world: World, capability: string, provider: string | null): string | null {
+  const usable = world.realizations
+    .filter((r) => r.capability === capability && r.status === "available" && (provider === null || r.provider === provider))
+    .map((r) => r.id)
+    .sort();
+  return usable[0] ?? null;
+}
+
+/** Consequence, not authority: what would leave, and to whom. It grants nothing. */
+function consequenceOf(decl: CapabilityDecl, provider: string | null): UseCommand["consequence"] {
+  if (!decl.consequence) return null;
+  return {
+    class: decl.consequence.class,
+    crossesLocalBoundary: decl.consequence.crossesLocalBoundary,
+    carries: [...decl.consequence.carries],
+    to: provider, // the declared "route.provider", resolved; null while the route is unresolved
+  };
+}
+
+function consentDecision(state: D1State): UseCommand["authority"]["decision"] {
+  if (!state.consent) return "none";
+  return state.consent.decision === "grant" ? "granted" : "denied";
+}
+
+/** D1 can only ever expect SIMULATED evidence; a declaration promising otherwise fails loudly. */
+function expectedEvidenceOf(capability: string, realization: string | null): "SIMULATED" {
+  const decls = loadDeclarations();
+  const rz = realization
+    ? decls.find((d): d is RealizationDecl => d.kind === "realization" && d.id === realization)
+    : undefined;
+  const classes = rz ? [rz.evidenceClass] : capabilityDecl(capability, decls)?.evidence.classes ?? [];
+  if (classes.length === 0 || classes.some((c) => c !== "SIMULATED")) {
+    throw new Error(`EVIDENCE_NOT_SIMULATED ${capability}: this port can only expect SIMULATED, declaration says [${classes.join(", ")}]`);
+  }
+  return "SIMULATED";
+}
+
+/** Unresolved requirements, one per declared-required field that is not resolved. Never silently collapsed. */
+function unresolvedFor(decl: CapabilityDecl, cmd: UseCommand, world: World, trace: D1Trace | undefined): Unresolved[] {
+  const out: Unresolved[] = [];
+  for (const p of decl.params) {
+    if (!p.required) continue;
+    if (p.semantic in ROUTE_FIELD) {
+      const field = ROUTE_FIELD[p.semantic as keyof typeof ROUTE_FIELD];
+      const value = cmd[field];
+      if (typeof value === "string" && value.length > 0) {
+        if (field === "account" && !world.accounts.some((a) => a.id === value)) {
+          out.push({ field, reason: "unknown", options: [] }); // named an Account the World does not hold
+        } else if (field === "provider" && !world.providers.some((pr) => pr.id === value)) {
+          out.push({ field, reason: "unknown", options: [] });
+        }
+        continue;
+      }
+      const tied = trace?.candidates[field] ?? [];
+      // The only declared-required route field is `account`, so the compatible set is the choice on offer.
+      const compatible = compatibleAccounts(world, cmd.capability).map((a) => a.id).sort();
+      const stale = world.accounts.filter((a) => a.freshness === "stale").map((a) => a.id).sort();
+      if (tied.length > 1) out.push({ field, reason: "ambiguous", options: [...tied].sort() });
+      else if (compatible.length > 0) out.push({ field, reason: "missing", options: compatible });
+      else if (stale.length > 0) out.push({ field, reason: "stale", options: stale });
+      else if (world.accounts.length > 0) out.push({ field, reason: "incompatible", options: [] });
+      else out.push({ field, reason: "missing", options: [] });
+      continue;
+    }
+    if (p.semantic.startsWith("params.") && !String(cmd.params[p.name] ?? "").trim()) {
+      out.push({ field: p.name, reason: "missing", options: [] });
+    }
+  }
+  // A chosen route may never disagree with itself.
+  if (cmd.account && cmd.provider) {
+    const rec = world.accounts.find((a) => a.id === cmd.account);
+    if (rec && rec.provider !== cmd.provider) {
+      out.push({ field: "account", reason: "incompatible", options: world.accounts.filter((a) => a.provider === cmd.provider).map((a) => a.id).sort() });
+    }
+  }
+  return out;
 }

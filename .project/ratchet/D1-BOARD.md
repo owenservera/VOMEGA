@@ -4,16 +4,21 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `fc1ef8917e2a`, Bun 1.4.2, win32-x64, 16/80 gates green, digest f7838fcaef8c · promoted gates: 16
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `82ebbe6f4422`, Bun 1.4.2, win32-x64, 20/80 gates green, digest e672c18ce19d · promoted gates: 17
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 13 | 5 | 0 | 58 | 0 | 0 | 77 | 5 | 0 |
+| 1 | 14 | 10 | 0 | 52 | 0 | 0 | 77 | 10 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
-- **D1-024** Define candidate canonical `prompt.send` UseCommand — crit 17, unblocks 57; `bun run ratchet packet D1-024`
+- **D1-025** Compile direct `prompt.send` utterance — crit 16, unblocks 41; `bun run ratchet packet D1-025`
+- **D1-060** Define D1 consequence record for `prompt.send` — crit 16, unblocks 25; `bun run ratchet packet D1-060`
+- **D1-040** Define minimal deterministic D1 projection contract — crit 14, unblocks 24; `bun run ratchet packet D1-040`
+- **D1-029** Implement deterministic command digest — crit 12, unblocks 19; `bun run ratchet packet D1-029`
+- **D1-050** Expose minimal semantic help metadata from same source records — crit 12, unblocks 16; `bun run ratchet packet D1-050`
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
+- **D1-055** Define minimal D1 Reflection extraction boundary — crit 6, unblocks 6; `bun run ratchet packet D1-055`
 - **D1-005** Fix required-field/READY validation — crit 2, unblocks 2; `bun run ratchet packet D1-005`
 - **D1-016** Add World W3: stale Claude Work — crit 1, unblocks 0; `bun run ratchet packet D1-016`
 - **D1-017** Add World W4: unknown/incompatible target — crit 1, unblocks 0; `bun run ratchet packet D1-017`
@@ -53,12 +58,12 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-021 | BLOCKED | 0/1 | Interpret “add my Claude work account” |  |
 | D1-022 | BLOCKED | 0/1 | Interpret “add another Claude account and call it Personal” |  |
 | D1-023 | BLOCKED | 0/1 | Persist D1 synthetic registration in session World state |  |
-| D1-024 | OPEN ★ | 0/1 | Define candidate canonical `prompt.send` UseCommand |  |
-| D1-025 | BLOCKED | 0/1 | Compile direct `prompt.send` utterance |  |
+| D1-024 | PROVEN | 1/1 | Define candidate canonical `prompt.send` UseCommand |  · claimed by gov-impl-r2 until 2026-10-06T21:07:18.249Z |
+| D1-025 | OPEN ★ | 1/1 | Compile direct `prompt.send` utterance | PROMOTE_PENDING 1 |
 | D1-026 | BLOCKED | 0/1 | Preserve two-Account ambiguity |  |
 | D1-027 | BLOCKED | 0/1 | Apply explicit text correction “use Work” |  |
-| D1-028 | BLOCKED | 0/1 | Protect quoted payload from routing |  |
-| D1-029 | BLOCKED | 0/1 | Implement deterministic command digest |  |
+| D1-028 | BLOCKED | 1/1 | Protect quoted payload from routing | PROMOTE_PENDING 1 |
+| D1-029 | OPEN ★ | 0/1 | Implement deterministic command digest |  |
 
 ### Phase D — realtime session semantics
 
@@ -74,7 +79,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-040 | BLOCKED | 0/1 | Define minimal deterministic D1 projection contract |  |
+| D1-040 | OPEN ★ | 0/1 | Define minimal deterministic D1 projection contract |  |
 | D1-041 | BLOCKED | 0/2 | Implement pure semantic projector |  |
 | D1-042 | BLOCKED | 0/1 | Render text input + interpretation state |  |
 | D1-043 | BLOCKED | 0/1 | Render Provider/Account/Model route |  |
@@ -88,12 +93,12 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-050 | BLOCKED | 0/1 | Expose minimal semantic help metadata from same source records |  |
+| D1-050 | OPEN ★ | 0/1 | Expose minimal semantic help metadata from same source records |  |
 | D1-051 | BLOCKED | 0/1 | Map active semantic handles to help topics |  |
 | D1-052 | BLOCKED | 0/2 | Render help for Provider/Account/capability/consequence |  |
 | D1-053 | BLOCKED | 0/1 | Add help-grounding removal test |  |
 | D1-054 | BLOCKED | 0/1 | Add SIMULATED explanation |  |
-| D1-055 | BLOCKED | 0/1 | Define minimal D1 Reflection extraction boundary |  |
+| D1-055 | OPEN ★ | 0/1 | Define minimal D1 Reflection extraction boundary |  |
 | D1-056 | BLOCKED | 0/1 | Add source anchor/content digest mechanism for D1 reflected items |  |
 | D1-057 | BLOCKED | 0/2 | Implement read-only D1 Reflection extractor/Migrator slice |  |
 | D1-058 | BLOCKED | 0/1 | Materialize minimal Reflection Graph |  |
@@ -105,7 +110,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-060 | BLOCKED | 0/1 | Define D1 consequence record for `prompt.send` |  |
+| D1-060 | OPEN ★ | 1/1 | Define D1 consequence record for `prompt.send` | PROMOTE_PENDING 1 |
 | D1-061 | BLOCKED | 0/1 | Add deterministic authority fixture |  |
 | D1-062 | BLOCKED | 0/2 | Prevent interpretation from granting authority |  |
 | D1-063 | BLOCKED | 0/1 | Implement virtual `prompt.send` realization |  |

@@ -146,6 +146,15 @@
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
     },
+    "D1-024::UseCommand carries every release field explicitly": {
+      "task": "D1-024",
+      "name": "UseCommand carries every release field explicitly",
+      "file": "omega-baseline/experimental/d1/test/gates/c-command.gate.test.ts",
+      "specDigest": "sha256:07d4c02b99c2671c07f7ceada2aff8e392567c39a53843c8e44c2e720ae7a574",
+      "by": "gov-impl-r2",
+      "head": "82ebbe6f4422",
+      "at": "2026-10-06T17:17:23.332Z"
+    },
     "D1-030::every input edit gets a monotonic revision identity": {
       "task": "D1-030",
       "name": "every input edit gets a monotonic revision identity",

@@ -9,29 +9,29 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "fc1ef8917e2a",
+    "head": "82ebbe6f4422",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 80,
       "gates": 80,
-      "pass": 16,
-      "fail": 64,
+      "pass": 20,
+      "fail": 60,
       "skip": 0
     },
-    "digest": "sha256:f7838fcaef8c482590e2cb4541e98409e81415902f8f56ab4f808c232a9ba90f",
+    "digest": "sha256:e672c18ce19d76cb52e3e8b1e03eaf412d86aec2b5b18cc3d1153f74fdfba327",
     "silentFiles": []
   },
   "summary": {
-    "OPEN": 5,
+    "OPEN": 10,
     "CLAIMED": 0,
-    "BLOCKED": 58,
-    "PROVEN": 13,
+    "BLOCKED": 52,
+    "PROVEN": 14,
     "DONE": 1,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
-    "frontier": 5,
+    "frontier": 10,
     "missingProof": 0
   },
   "tasks": [
@@ -353,12 +353,12 @@
     },
     {
       "id": "D1-024",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-024::UseCommand carries every release field explicitly",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -368,11 +368,11 @@
     },
     {
       "id": "D1-025",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-025::canonical journey phrase compiles to prompt.send with its payload",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -417,7 +417,7 @@
       "gates": [
         {
           "key": "D1-028::Account words inside a quoted payload never retarget",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -428,7 +428,7 @@
     },
     {
       "id": "D1-029",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-029::command digest is deterministic and semantic",
@@ -524,7 +524,7 @@
     },
     {
       "id": "D1-040",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-040::projection exposes interpretation, route, validation, unresolved, consequence, help and actions",
@@ -671,7 +671,7 @@
     },
     {
       "id": "D1-050",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-050::capability help is grounded on the declaration source, not authored text",
@@ -752,7 +752,7 @@
     },
     {
       "id": "D1-055",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-055::extraction boundary is declared and enforced",
@@ -863,11 +863,11 @@
     },
     {
       "id": "D1-060",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-060::prompt.send consequence is an external transfer, separate from authority",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -1284,8 +1284,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 16,
-      "red": 64,
+      "green": 20,
+      "red": 60,
       "skipped": 0,
       "total": 80
     },
@@ -1299,5 +1299,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:f5bc2de8923ab5e7531f6a497abda70af9df3fb352388e233f30d427e8ff3e9c"
+  "digest": "sha256:7ab0b5c525cbe62fb2a742e9a0c36452bea86d56ede9d499f94d89ba740a28d0"
 }
