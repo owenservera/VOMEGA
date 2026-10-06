@@ -62,7 +62,7 @@ The PM layer must never redefine a program silently, make an unproven claim true
 ## Documents
 
 - [SYSTEM-DESIGN.md](SYSTEM-DESIGN.md) — full design for the expandable PM/roadmap system.
-- [PROGRAM-REGISTER.md](PROGRAM-REGISTER.md) — all 67 meta programs registered with explanation, objectives and final-vision mapping; only the first five accelerator programs have detailed roadmap design.
+- [PROGRAM-REGISTER.md](PROGRAM-REGISTER.md) — **superseded as a PM artifact (2026-10-06 owner correction)**: kept as reference-only context. Canonical 67-program meaning lives in `../META-TRACKER.md`; PM manages only the five programs in [scope.json](scope.json).
 - [FIRST-FIVE-SEED.md](FIRST-FIVE-SEED.md) — five-phase roadmap, effort grades, LOC bands and dependency gates for MP-21, MP-54, MP-55, MP-56 and MP-60.
 - [ZCODE-PM-TEAM.md](ZCODE-PM-TEAM.md) — the agent team/functions that should implement, maintain and evolve the future tracker.
 - [ZCODE-BOOTSTRAP-PROMPT.md](ZCODE-BOOTSTRAP-PROMPT.md) — a complete first prompt for the ZCode team.

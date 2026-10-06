@@ -1,5 +1,12 @@
 # VOMEGA Meta Program Register — PM Projection
 
+> **SUPERSEDED as a PM artifact — 2026-10-06 owner correction** ([PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md)).
+> PM manages **exactly five** programs (MP-21, MP-54, MP-55, MP-56, MP-60 — see [scope.json](scope.json)) and holds no
+> authority over the other 62. This file's 67-program table is kept as **reference-only context**: canonical program
+> meaning lives in `../META-TRACKER.md` and `../meta-tracker.json`, and this table must not be treated as PM-managed
+> state, a ranking, or a roadmap. The live PM representation of the five is `.project/pm/data/programs/` plus the
+> generated views in `generated/`.
+
 Status: **67 PROGRAMS REGISTERED; PHASE DESIGN SEEDED ONLY FOR MP-21/54/55/56/60**  
 Source of canonical program identity/meaning: `../META-TRACKER.md` and `../meta-tracker.json`  
 Source HEAD when generated: `e843241436f9983b1a385d48449878ce58e8c2a4`

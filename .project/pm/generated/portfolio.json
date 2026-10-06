@@ -1,6 +1,6 @@
 {
   "schema": "vomega-pm-portfolio/1",
-  "sourceHead": "ef10ea1",
+  "sourceHead": "5a1df80",
   "seedDigest": "sha256:854f282c02c30212ef97c2d659e67d5a0e7bffeb1227ad3e1de174abda113b1e",
   "managedScope": [
     "MP-21",
@@ -120,6 +120,13 @@
       "gateCount": 5,
       "ungatedPhases": [],
       "needsReview": [],
+      "evidencePointers": [
+        {
+          "date": "2026-10-06",
+          "kind": "source-inspected",
+          "ref": ".project/pm/recon/WAVE-A.md"
+        }
+      ],
       "externalDependencies": [],
       "phases": [
         {
@@ -424,6 +431,13 @@
       "gateCount": 5,
       "ungatedPhases": [],
       "needsReview": [],
+      "evidencePointers": [
+        {
+          "date": "2026-10-06",
+          "kind": "source-inspected",
+          "ref": ".project/pm/recon/WAVE-A.md"
+        }
+      ],
       "externalDependencies": [
         {
           "ref": "MP-67",
@@ -735,6 +749,13 @@
       "gateCount": 5,
       "ungatedPhases": [],
       "needsReview": [],
+      "evidencePointers": [
+        {
+          "date": "2026-10-06",
+          "kind": "source-inspected",
+          "ref": ".project/pm/recon/WAVE-A.md"
+        }
+      ],
       "externalDependencies": [],
       "phases": [
         {
@@ -1030,6 +1051,13 @@
       "gateCount": 5,
       "ungatedPhases": [],
       "needsReview": [],
+      "evidencePointers": [
+        {
+          "date": "2026-10-06",
+          "kind": "source-inspected",
+          "ref": ".project/pm/recon/WAVE-A.md"
+        }
+      ],
       "externalDependencies": [
         {
           "ref": "MP-25",
@@ -1334,6 +1362,13 @@
       "ungatedPhases": [],
       "needsReview": [
         "MP60-P5"
+      ],
+      "evidencePointers": [
+        {
+          "date": "2026-10-06",
+          "kind": "source-inspected",
+          "ref": ".project/pm/recon/WAVE-A.md"
+        }
       ],
       "externalDependencies": [
         {
