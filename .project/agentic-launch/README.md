@@ -84,13 +84,15 @@ The nine workstreams in this directory are **historical/reusable execution lanes
 
 Read in this order:
 
-1. [STATUS.md](STATUS.md) — current launch state, claims and first fan-in checkpoint.
-2. [WORKSTREAMS.md](WORKSTREAMS.md) — team missions, ownership boundaries and existing-roadmap mapping.
-3. [DEPENDENCY-GRAPH.md](DEPENDENCY-GRAPH.md) — critical paths, dependency contracts and parallelism.
-4. [FIRST-WAVE.md](FIRST-WAVE.md) — the first dispatch across the local execution pool (executed; historical).
-5. [TEAM-PROMPTS.md](TEAM-PROMPTS.md) — ready-to-use head-of-workstream bootstrap prompts.
-6. [MODEL-ROUTING.md](MODEL-ROUTING.md) — current OpenAI/Anthropic model hierarchy, scarcity policy, and workstream routing.
-7. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
+1. [STATUS.md](STATUS.md) — current aggregate launch state and major claimed/open slices.
+2. [DEV-AGENT-REGISTRATION.md](DEV-AGENT-REGISTRATION.md) — mandatory lightweight self-checkout, registration and closeout protocol for every substantive dev/review agent.
+3. [claims/](claims/) — per-agent/session operational registrations; use the claim template.
+4. [WORKSTREAMS.md](WORKSTREAMS.md) — team missions, ownership boundaries and existing-roadmap mapping.
+5. [DEPENDENCY-GRAPH.md](DEPENDENCY-GRAPH.md) — critical paths, dependency contracts and parallelism.
+6. [FIRST-WAVE.md](FIRST-WAVE.md) — the first dispatch across the local execution pool (executed; historical).
+7. [TEAM-PROMPTS.md](TEAM-PROMPTS.md) — ready-to-use head-of-workstream bootstrap prompts.
+8. [MODEL-ROUTING.md](MODEL-ROUTING.md) — current model/harness hierarchy, scarcity policy, and workstream routing.
+9. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
 
 ## Canonicality and freshness
 
@@ -99,7 +101,8 @@ The launch overlay deliberately separates **policy/topology** from **live runtim
 Use these sources for different questions:
 
 - `../META-TRACKER.md` — canonical map of **what programs exist** across VOMEGA; not a runtime claim surface.
-- `STATUS.md` — **only mutable launch-state surface**: who has claimed what, current runtime pool observations, blockers, current fan-in readiness.
+- `STATUS.md` — **aggregate mutable launch-state surface**: major claimed/open slices, runtime-pool observations, blockers and fan-in readiness.
+- `claims/` — **granular dev-agent/session register**: who is doing what, since when, from which HEAD and intended write surface. Claims are coordination records, not authority/proof.
 - `launch-manifest.json` — machine-readable topology, workstream ownership, interface locks, routing policy defaults and triggers. It is not proof that a model/harness is currently reachable.
 - `MODEL-ROUTING.md` — model/harness selection policy and current external research. It is not the current account quota/availability ledger.
 - `FIRST-WAVE.md` — the record of the first dispatch. It has run; do not treat it as a procedure to repeat.
@@ -240,6 +243,15 @@ These are resources, not an organization. Route work by task difficulty, current
 Treat all provider/model configuration as read-only.
 
 Whoever coordinates a launch measures reachable concurrency and effective routed model behavior at that time. The work decomposition is independent of provider-account count and of which tool or model performs a task.
+
+
+## Mandatory dev-agent registration
+
+Before substantive repository work, every development or independent-review agent must self-check repository state and create/verify a lightweight claim under [claims/](claims/). Read [DEV-AGENT-REGISTRATION.md](DEV-AGENT-REGISTRATION.md).
+
+Minimum information: agent/harness, timestamp, source HEAD, work description, task/program refs when known, intended write surface, expected handoff/proof, and current status. Update only on material scope/status changes. Before stopping, close/pause/hand off the claim and add a concise Commons handoff for material results or blockers.
+
+This is intentionally not a scheduler, lease manager, approval mechanism or proof system.
 
 ## Launch philosophy
 
