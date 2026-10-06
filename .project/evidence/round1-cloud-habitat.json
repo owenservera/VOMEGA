@@ -1,0 +1,61 @@
+{
+  "observedDate": "2026-10-06",
+  "assay": "round1-cloud-habitat",
+  "assayedBy": "local integration team (harvest of externally supplied Round1 artifact)",
+  "sourceBranch": "meta-coherence-pass-2026-10-06",
+  "sourceCommit": "1da0d61e879475fb2a18fd95c3b9b36629c28f05",
+  "sourceArchive": "External-temp/VOMEGA-round1/ (not merged; nested snapshot from an earlier state)",
+  "observedEnvironment": {
+    "os": "Linux / Debian family (single externally visible web port behind a gateway)",
+    "bun": "1.3.14",
+    "node": "24.21.0",
+    "git": "2.47.3",
+    "localAgentHarnesses": "none of ZCode / Codex / Claude Code / Daintree; work ran in-session with bounded subagents",
+    "authProviderModelConfig": "none present and none added (standing read-only constraint trivially honored)"
+  },
+  "identityCheck": {
+    "claim": "Round1's executable tree carries no product-code delta relative to current main",
+    "method": "Independent blob-hash multiset comparison: git ls-tree -r origin/meta-coherence-pass-2026-10-06:External-temp/VOMEGA-round1/omega-baseline  vs  HEAD:omega-baseline",
+    "result": "431 executable/source files on each side; identical blob-hash multisets; 0 added / 0 changed / 0 removed",
+    "status": "verified locally by this team",
+    "consequence": "Round1 is evidence/assay input, not a code merge candidate. Do not copy or merge the nested repository."
+  },
+  "claims": [
+    {
+      "claim": "omega:quick reproduced in an independent cloud habitat",
+      "status": "externally reported observation; not reproduced by this integration team",
+      "result": "62 pass / 0 fail / 1622 assertions — reported identical to the recorded Windows Bun 1.4.2 run",
+      "scope": "7-file quick slice"
+    },
+    {
+      "claim": "release USE corpus (plugins/vivim-nlcl) reproduced in that habitat",
+      "status": "externally reported observation; not reproduced by this integration team",
+      "result": "49 pass / 0 fail"
+    },
+    {
+      "claim": "existing Omega13 console service booted and interpret/execute endpoints responded",
+      "status": "externally reported observation; not reproduced by this integration team",
+      "result": "health OK; world seeded; /api/interpret returned full deterministic IR (slots, confidence, alternatives, suggestions); /api/execute returned governed outcome with consent gates",
+      "scope": "surfaces/web/src/server.ts; no product source modified to achieve it"
+    },
+    {
+      "claim": "an ENOENT against sdk/node_modules/zod on a partially completed install",
+      "status": "externally reported environment symptom, not a product defect",
+      "result": "resolves after a clean bun install --frozen-lockfile (isolated-linker layout)"
+    }
+  ],
+  "notClaimed": [
+    "No new Round1 product implementation relative to current main (tree is content-identical)",
+    "No live provider evidence",
+    "No Account binding proof",
+    "No prompt.send live realization",
+    "No auth/provider/model configuration was introduced",
+    "No restoration of the historical broad suite (omega:test blockers remain visible)"
+  ],
+  "developerSurfaceHypothesis": {
+    "status": "hypothesis; explicitly a developer-surface candidate, not D1 architecture and not the first-product surface",
+    "idea": "a two-section cloud web surface — Mission Control (project state read from .project/ and Git at request time) plus Live Console (semantic command box served by the real console service). Truth labeling on every surface: what is proven (verified-local, simulated provider transport) vs what does not exist (live provider, Account binding, prompt.send).",
+    "note": "Recorded for the accelerator/hypothesis space only; must not displace the current D1 first-release mission."
+  },
+  "reproduction": "Recorded per the integration directive .project/RATCHET-ROUND1-INTEGRATION-DIRECTIVE.md. Raw source artifacts live uncommitted under .local/external-assay/. This record replaces any nested-snapshot import of .project/*, seed-docs/*, README or roadmap files."
+}
