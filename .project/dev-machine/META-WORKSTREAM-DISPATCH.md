@@ -28,7 +28,7 @@ Merge, split or bypass these labels when another decomposition reduces handoffs 
 
 `select-tasks.py` currently fills `harness_prefer: claude` and `reviewer_prefer: grok` for every product task. Those are placeholders that happened to be reachable on the Linux box, not a routing decision.
 
-The task IDs in the reference queue (`LNC-02`, `SDW-02`, `EXP-02`, `EXP-03`, `PRV-02`, `RTE-02`, `VFX-02`, `SKW-02`, `DEV-02`) were invented for that queue. `PRV-02`, `EXP-02` and `EXP-03` collide with different items in `.project/roadmap/` and `seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md`. Cite them with this file's name, or rename them when claiming.
+The task IDs in the reference queue (`LNC-02`, `SDW-02`, `EXP-02`, `EXP-03`, `PRV-02`, `RTE-02`, `VFX-02`, `SKW-02`, `DEV-02`) are **deprecated reference IDs** invented for that historical queue. They must not be claimed as current task identities. `PRV-02`, `EXP-02` and `EXP-03` collide with different items in `.project/roadmap/` and `seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md`. If one of these candidate ideas is revived, create or select a non-colliding current task identity and retain the old ID only as provenance.
 
 ## Boundedness rules
 
