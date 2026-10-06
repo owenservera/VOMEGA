@@ -1,8 +1,12 @@
 # D1 Midstream Correction Addendum — Reflection/Wiki Scope and Parallel Workstreams
 
-Status: **OWNER CORRECTION TO D1 EXECUTION**  
+Status: **HISTORICAL MIDSTREAM CORRECTION — REQUIREMENTS FOLDED INTO PRIMARY D1 DOCS**  
 Date: 2026-10-06  
 Applies to: `.project/deliverables/D1-START-HERE.md`, `D1-FIRST-RELEASE-SPEC.md`, and `D1-ATOMIC-TASKS.md`
+
+## Current standing
+
+This document is retained as provenance for the correction. The Reflection/Migrator requirements and parallel-workstream sequencing correction have now been folded into `D1-START-HERE.md`, `D1-FIRST-RELEASE-SPEC.md`, and `D1-ATOMIC-TASKS.md`. A resumed executor should read the primary D1 documents; this addendum explains why those requirements exist.
 
 ## Purpose
 
