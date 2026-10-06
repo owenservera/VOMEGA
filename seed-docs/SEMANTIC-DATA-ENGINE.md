@@ -139,7 +139,11 @@ Per-input-revision deterministic artifacts:
 - unresolved choices;
 - candidate command;
 - validation result;
-- stage trace.
+- stage trace;
+- candidate-manifold / alternative references sufficient for counterfactual evaluation;
+- optional revision-bound negative-intent frontier derived from those same candidates.
+
+The [Negative Intent Signal Engine](NEGATIVE-INTENT-SIGNAL-ENGINE.md) depends on this layer **not collapsing irreversibly to top-1 too early**. It evaluates the compiler's existing candidate semantics; it is not a second parser or authority source.
 
 ### 3.5 Projections
 
@@ -507,6 +511,9 @@ type InterpretationSession = {
   selectedAlternatives: SemanticEdit[]
   worldVersion: string
   lastStableCommand?: CommandDigest
+  // Derived, revision-bound counterfactual state may reference candidates from
+  // this same interpretation session; it must never become hidden UI truth.
+  negativeIntentFrontier?: NegativeIntentSignalRef[]
 }
 ```
 
@@ -553,6 +560,10 @@ type VisualSpecVNext = {
            "ready" | "unavailable" | "refused"
     unresolved: UnresolvedHandle[]
   }
+
+  // Derived from the same revision-bound candidate manifold. Usually the
+  // compact surface exposes at most one highest-value counterfactual.
+  negativeIntentFrontier?: NegativeIntentProjection[]
 
   consequences: VisualConsequence[]
   expectedEvidence: VisualEvidenceExpectation[]

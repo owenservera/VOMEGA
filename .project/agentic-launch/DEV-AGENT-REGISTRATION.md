@@ -150,6 +150,10 @@ Think of the layers as:
 
 Do not infer one layer from another.
 
+For Ratchet-tracked D1 work, the **session claim + Ratchet task claim are sufficient at start**. Do not also create duplicate STATUS and Commons registrations for the same short-lived task. STATUS changes only when a major slice materially changes; Commons records the material result/blocker/handoff.
+
+A session may name a short sequential run of intended Ratchet tasks, but an implementation worker should normally hold **one active Ratchet task claim at a time**. This keeps write-surface ownership and review lineage legible without creating extra files.
+
 ## 7. Material-change update
 
 Update the claim when any of these changes materially:
@@ -175,6 +179,8 @@ Before a development agent stops, it must:
 4. record known failures/blockers;
 5. record the next concrete handoff;
 6. append a concise handoff to `.project/COMMONS.md` when the work produced a material result or blocker.
+
+For Ratchet/D1 work, build the closing chronicle from observed facts where practical: commit(s), files changed, probe/task state before and after, gates promoted/reviewed, failures preserved, and next action. Keep interpretation short; the claim is not a retrospective essay.
 
 Minimum Commons handoff:
 
@@ -258,6 +264,8 @@ For now, do **not** add:
 - a database;
 - agent leasing services;
 - dashboards;
+- a parallel acceleration organization or permanent role hierarchy;
+- a second task/status registry;
 - mandatory minute-by-minute updates;
 - automatic PM decisions;
 - automatic merge authority.
@@ -269,6 +277,7 @@ If this file-based protocol becomes a bottleneck, measure the friction first. Th
 Before substantive work:
 
 - [ ] Self-check repository/remote/worktree state.
+- [ ] For D1, read the bounded execution directive and use the Ratchet packet as the default context bundle.
 - [ ] Read current STATUS and relevant active claims.
 - [ ] Read the assigned PM/Ratchet/task source if applicable.
 - [ ] Create or verify my claim file.

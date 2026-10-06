@@ -124,13 +124,13 @@ Priority:
 | MP-07 | **World / Registry / capability & availability state** | A versioned World honestly says what exists, what is available, what is stale/unknown and what can ground commands. | Baseline registry verified-local but no real Account; candidate fixture World defined. | NOW | SDW | Materialize W1–W6, required-field metadata, fixture/live source enforcement. |
 | MP-08 | **Human Semantic Execution Language — NCL/NLCL** | Ordinary expression becomes explicit canonical meaning while preserving ambiguity. | Strong verified-local baseline in wrong domain; **Lock B candidate** for release slice. | NOW | LNC | Adapt frames/grounding; do not replace proven interpreter without evidence. |
 | MP-09 | **USE command compiler / validator / defaulting** | Interpretation becomes a deterministic, replayable command with READY only when structurally valid. | CANDIDATE; **CMD-06 false-READY is current choke point**. | NOW | LNC + SDW | Fix U1; explicit > standing default > single valid > ask. |
-| MP-10 | **InterpretationSession / realtime revision semantics** | Every keystroke is versioned; corrections are semantic edits; old async results cannot overwrite newer input. | DESIGN / candidate; no multi-revision proof. | NOW | LNC + EXP | Needs explicit revision corpus and late-result suppression test. |
+| MP-10 | **InterpretationSession / realtime revision semantics** | Every keystroke is versioned; corrections are semantic edits; old async results cannot overwrite newer input. | DESIGN / candidate; no multi-revision proof. | NOW | LNC + EXP | Needs explicit revision corpus, late-result suppression, and revision-bound negative-intent frontier signals derived from the same candidate manifold. |
 | MP-11 | **Semantic Runtime Laboratory / Ω Simulator** | Run a standalone deterministic miniature Ω: World → interpretation → command → virtual execution → evidence, independent of live providers and product runtime. | **DESIGN ONLY; first-wave pieces exist but executable Lab does not.** | **NOW** | EXP + SDW + LNC + VFX + SKW + RTE | This is the common simulated universe that enables broad parallel work. |
 | MP-12 | **MVP Visualization Sandbox / semantic product twin** | Visually replay the complete first-product interaction to **SIMULATED prompt.send** with truthful ambiguity and Wiki. | DESIGN + Lock C candidate; no full executable sandbox. | **NOW** | VFX + EXP + SDW + LNC + SKW | Built on MP-11, not a UI-only mock. |
 | MP-13 | **Virtual executables / simulated evidence** | The simulator can execute commands against synthetic Worlds and emit deterministic fake-but-explicit evidence. | DESIGN; not implemented for release slice. | NOW | EXP + RTE | `prompt.send` virtual realization must be clearly simulated; add second unrelated command later as generalization test. |
-| MP-14 | **Command Visual Language / semantic interaction protocol** | User can see what Ω interpreted, what is unresolved and what will happen; clicks edit semantics rather than hidden UI state. | Rich DESIGN; no product implementation. | NOW | VFX | Uses semantic handles; presentation/icon library remains replaceable. |
-| MP-15 | **VisualSpec vNext / projector** | All UI surfaces receive one deterministic semantic projection and never reparse language. | **CANDIDATE Lock C; extend-vs-replace unresolved.** | NOW | VFX + LNC | Must reconcile current VisualSpec/project.ts before freezing wire format. |
-| MP-16 | **Automated Semantic Experiments** | Competing language/grounding/visual/Wiki designs run against pinned scenarios with semantic diffs and falsifiers. | EXP baseline candidate; no full experiment engine. | NOW / PARALLEL | EXP + TRU | Build scenario, diff and metric engines; required-field metadata currently missing for some metrics. |
+| MP-14 | **Command Visual Language / semantic interaction protocol** | User can see what Ω interpreted, what is unresolved, the highest-value plausible counterfactual when useful, and what will happen; clicks edit semantics rather than hidden UI state. | Rich DESIGN; no product implementation. | NOW | VFX | Uses semantic handles; negative-intent signals are projected, not reparsed; presentation/icon library remains replaceable. |
+| MP-15 | **VisualSpec vNext / projector** | All UI surfaces receive one deterministic semantic projection, including revision-bound counterfactual/negative-frontier state where present, and never reparse language. | **CANDIDATE Lock C; extend-vs-replace unresolved.** | NOW | VFX + LNC | Must reconcile current VisualSpec/project.ts before freezing wire format; negative frontier is derived semantic projection, not UI-owned intent. |
+| MP-16 | **Automated Semantic Experiments** | Competing language/grounding/visual/Wiki and negative-intent frontier policies run against pinned scenarios with semantic diffs, falsifiers and correction-cost metrics. | EXP baseline candidate; no full experiment engine. | NOW / PARALLEL | EXP + TRU | Evolve counterfactual ranking by evidence: minimize late semantic correction burden without maximizing interruption; required-field metadata remains missing for some existing metrics. |
 | MP-17 | **Cross-domain semantic generalization** | Prove the semantic system is not secretly AI-specific by exercising unrelated capabilities. | DESIGN benchmark path. | PARALLEL / later | EXP + SDW + TRU | OS taxonomy is benchmark evidence, not MVP scope. |
 
 ## C. Self-description, Wiki and migration
@@ -149,7 +149,7 @@ Priority:
 | ID | Meta program | What it exists to make true | Current state | Priority | Execution owner(s) | Main dependencies / notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | MP-24 | **Provider Lab** | Instrument real provider behavior in Shadow / Control / Conformance / Healing modes and turn messy live reality into reusable knowledge. | STRONG HYPOTHESIS; PRV-L1 reconnaissance only. | PARALLEL | PRV + TRU | Development Lab, not product authority. |
-| MP-25 | **Browser transport & Account identity** | Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness. | **RECON Lock E** only; no live attach. | **NOW critical external path** | PRV + TRU | TRU-05 live-proof protocol + consent/evidence boundary before live observation. |
+| MP-25 | **Browser transport & Account identity** | Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness. | **RECON only; no live attach. TRU-05 candidate protocol drafted.** | **NOW critical external path** | PRV + TRU | Live observation remains blocked by owner/TOS/consent boundaries; start with read-only Account/session falsifier only after those boundaries permit it. |
 | MP-26 | **Provider/Account/Model routing** | Route among valid Providers, Accounts and optional Models without hidden defaults or silent retargeting. | Candidate semantics; no live Account binding. | NOW | SDW + LNC + PRV | Model ≠ Provider ≠ Account ≠ Session. |
 | MP-27 | **Provider packs / realization boundary** | Isolate provider-specific URLs, identity signals, steps and completion signals behind shared semantic capabilities. | DESIGN / baseline evidence. | NEXT | PRV | First provider is proving realization; provider 2 must falsify abstractions. |
 | MP-28 | **Live `prompt.send` realization** | One real prompt goes through the selected Account with attempt/result evidence and no false success. | UNPROVEN; `prompt.send` absent from current manifests/src. | NEXT after transport + GOV | PRV + RTE + TRU | Must first become a real source-native capability and governed realization. |
@@ -175,7 +175,7 @@ Priority:
 
 | ID | Meta program | What it exists to make true | Current state | Priority | Execution owner(s) | Main dependencies / notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| MP-41 | **Truth / proof ledger / falsifiers / maturity** | Every important claim has an evidence level, owner, falsifier and independent review. | TRU-L1 active review demonstrated; release ledger/falsifier suite still roadmap work. | NOW / continuous | TRU | Fixture ≠ live; promotion is proof, not confidence. |
+| MP-41 | **Truth / proof ledger / falsifiers / maturity** | Every important claim has an evidence level, owner, falsifier and independent review. | Independent review demonstrated; D1 Ratchet proof machinery exists; TRU-05 live-proof protocol is a candidate, not live evidence. | NOW / continuous | TRU | Fixture ≠ live; promotion is proof, not confidence. |
 | MP-42 | **Harvest-First Engineering / Harvest Bench** | Search baseline/history/ecosystem before expensive invention; assay candidates as reuse/adapt/wrap/port/evidence/reject. | ACTIVE doctrine; PRV-L1 used it. | continuous | every owner; DEV/R&D coordinate | Not a link-dump research department. |
 | MP-43 | **Historical VIVIM / BCP knowledge mining** | Reuse old proofs, failures, mechanisms and destination reasoning without inheriting old organization or law. | Available external knowledge mine. | PARALLEL on demand | owning lane + TRU | Time-sensitive facts must be refreshed. |
 | MP-44 | **OS taxonomy / non-AI benchmark corpus** | Stress semantic/reflection/visual systems against hundreds of non-AI capabilities. | HISTORICAL/EXTERNAL benchmark; not adopted product scope. | PARALLEL after core Lab | EXP + SDW + SKW | 291 capabilities / 305 Windows realizations are authored evidence, not live proof. |
@@ -319,7 +319,7 @@ These seven threads can proceed largely in parallel once interface contracts are
 
 ## NOW — independent live-reality path
 
-8. **MP-41 — TRU-05 live-proof protocol**
+8. **MP-41 — validate/adopt the drafted TRU-05 live-proof protocol after owner boundaries**
 9. **MP-25 — read-only browser transport + Account identity**
 10. **MP-31/32 — consent + attempt/evidence envelope**
 11. **MP-28 — real prompt.send only after the above**
@@ -431,6 +431,7 @@ Key specialized source programs include:
 - `SEMANTIC-RUNTIME-LAB.md`;
 - `MVP-VISUALIZATION-SANDBOX.md`;
 - `AUTOMATED-SEMANTIC-EXPERIMENTS.md`;
+- `NEGATIVE-INTENT-SIGNAL-ENGINE.md`;
 - `COMMAND-VISUAL-LANGUAGE-DESIGN.md`;
 - `SELF-DESCRIBING-RUNTIME-WIKI.md`;
 - `SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md`;

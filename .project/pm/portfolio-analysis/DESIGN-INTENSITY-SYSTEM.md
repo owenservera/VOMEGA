@@ -155,6 +155,30 @@ D1–D2 work normally does not require this ceremony.
 D3 uses a bounded version.
 D4–D5 should default to it unless there is already strong prior evidence.
 
+### Design-cycle output discipline
+
+A D4/D5 label is not permission to produce unlimited prose. The useful output is reduced uncertainty plus an executable discriminator that implementation can consume.
+
+Prefer durable outputs such as:
+
+- competing minimal prototypes;
+- a typed/interface contract with explicit alternatives still open;
+- a pinned acceptance corpus;
+- an executable falsifier or mutation;
+- a short decision record tied to experimental evidence.
+
+For D1–D2 work, if the desired behavior and acceptance gate already exist, implementation/test work is normally the next action.
+
+For D4–D5 work, the cycle is complete only when evidence has narrowed the choice enough to execute or has falsified the proposed direction.
+
+### Negative-intent frontier as a D5 reference case
+
+The [Negative Intent Signal Engine](../../../seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md) is a current D5 semantic-design case spanning MP-08/09/10/14/15/16.
+
+The difficult question is not whether Ω can show a second interpretation. It is how to preserve the full plausible semantic manifold, identify the counterfactual whose **early** correction avoids the greatest downstream semantic cost, expose it without excessive interruption, and evolve that ranking from evidence without creating a second interpreter or silent authority.
+
+Before freezing this design, require competing ranking approaches, correction-distance metrics, a revisioned A/B/C experiment (baseline vs top-N vs negative frontier), at least one non-AI case and independent review.
+
 ## 6. Tests this analysis layer must pass
 
 The machine-readable 67-program analysis is valid only if:

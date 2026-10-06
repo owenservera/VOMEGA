@@ -1,66 +1,40 @@
 # Repository reality and proof boundaries
 
-Audited 2026-10-05 against seed f03905e and current local changes. A present source
-or passing fixture is not a live external capability.
+Date: 2026-10-06. This is current proof state, not a roadmap. Historical audit detail is archived.
 
-| Capability | Classification | Evidence / remaining gap |
+## Verified / observed slices
+
+| Claim | Current classification | Evidence / boundary |
 | --- | --- | --- |
-| Host verification, routing, policy | verified local slice | host/src/{recipe,boot,ports}.ts and real vivim-law; full historical gate inputs absent |
-| Canonical local Vault | verified local integration | SQLite/CAS/changelog/search/verify; fresh-process restart and two-vault isolation pass |
-| CLI | verified cold local slice; broader surface partial | real host public API, root principal; new local default and relative Windows path proof pass; warm path unverified |
-| Browser/provider messages | fixture/simulated | provider-browser requires sim:true, parses supplied captures and appends local records; no live CDP/control path |
-| LLM response | simulated by default | provider-llm simulator; optional HTTP leg not browser V1 and not proven with real credentials |
-| Provider Account / Session | partial | providers.session.start returns INITIALIZED id without persisted binding; login/account identity not proven |
-| Durable Work / return | aspirational in this seed | spine grants work.* but vivim-run implements run.* only; transient pools and intent/agent ledgers are narrower claims |
-| Web environment | partial | HTTP/socket API, seeded fictional messages, no HTML app; root calls/consent without auth/origin restriction, listen host unspecified |
-| Import owner conversation history | partial | three pure export parsers exist; no routable import writer with identity/idempotency/provenance |
-| Sovereign exit | partial | Vault data roundtrip copies/verifies storage; signing root, product identity and provider relationships not fully reconstructed |
-| Dev gates / benchmarks | historical only or broken here | scripts pointed at wholly absent tooling; old decision ids/benchmarks unratified |
+| Local Vault continuity + isolation + real local law | verified-local | existing bootstrap evidence; named `omega:quick` slice previously observed 62 pass / 0 fail / 1,622 assertions |
+| Deterministic NLCL interpreter/corpus | verified-local slice | `vivim-nlcl-pure` + release-use corpus; useful behaviors pass, known gaps/false-READY remain explicitly pinned |
+| D1 task/proof machinery | implemented | Ratchet task graph, executable gates, claims/promotions/review/evidence surfaces exist; D1 itself remains incomplete |
+| Reflection Migrator P1/P2/P3 | verified-local implementation, review hold | source inventory/extraction/graph/query implementation exists; PM gates require independent review/consumer evidence |
+| Bounded multi-agent concurrency | observed once | historical development evidence only; not a current capacity guarantee |
 
-Present entry points: host/src/main.ts, surfaces/{cli,mcp,web}/src entry scripts,
-surfaces/daemon/src/daemon.ts, platform/src/containment.ts. Bun is the execution
-runtime; the Vault imports its Bun SQLite driver. A Node driver exists without a
-complete seeded Node distribution build.
+## Not proven
 
-The clean seed omits tooling/, examples/, root fixtures/ and baseline docs/.
-Only five baseline Markdown files exist. Of 21 named compositions, nine reference
-missing plugins: demo, kernel, law, notes, run, spine, forge-mine-capture,
-forge-mine and forge-survey. Present sources in another composition do not prove
-that it boots or is live.
+- no promoted live Provider/Account/Session evidence;
+- no live `prompt.send` proof;
+- no source-native product `prompt.send` capability in current product manifests/runtime;
+- no truthful public floating-box beta;
+- no installer/public release proof;
+- no durable Work/agency proof;
+- no claim that the broad historical test/gate suite is restored;
+- no claim that candidate Locks/Lab architectures are product law.
 
-Install originally failed on the required tooling workspace. The manifest and
-lock now enumerate present workspaces, preserve external dependency versions,
-and use existing scripts. Missing historical tooling commands were retired.
-`omega:gate` now means broad tests only; it does not recreate former architecture,
-OS-boundary, documentation or governance gates.
+Browser/provider behavior in the baseline remains fixture/simulated unless separately evidenced. A browser process, selector match, logo, cookie or model assertion is not Account proof.
 
-The broad baseline attempt exposed missing inputs and child-spawn PATH problems
-and was interrupted; it has no valid completed-suite count. A second bounded
-attempt with the executable on scoped PATH (`bun test --bail`) stopped at the
-missing tooling/watchdog/watchdog.ts import in host/test/adversarial.test.ts.
-These blockers remain visible through `omega:test`, not silently excluded.
+## Current important defects / implementation gaps
 
-The initial default storage flaw: --vault selected root keys/recipes while the
-composition could choose shared ${TMP} or CWD storage. Existing integration
-tests overrode dataDir, so they did not prove default CLI isolation. The new
-local slice binds explicit ${VAULT} configuration before recipe signing and
-uses real law + Vault. Existing fixture/custom configurations are unchanged;
-do not use legacy shared-temp specs as isolated product instances.
+- D1 declaration-derived required-field validation / false-READY correction remains a near-term semantic spine.
+- D1 downstream World/command/session/projection/help/execution/replay gates remain implementation work according to Ratchet.
+- Reflection/Wiki D1 work must adapt/wrap the shared Reflection Migrator rather than create a second parser/identity universe.
+- live Account/session work is blocked from consequential action by the owner boundaries in `live-proof/OWEN-DECISION-BRIEF.md`.
+- source/realization drift, explicit-target precedence, Session identity separation and Reflection non-authority require executable coverage as specified by the D1 acceleration directive.
 
-Final named quick proof: 62 passed, zero failures, 1,622 assertions across seven
-files. It covers compiler binding, Vault regression/integration and policy plus
-new CLI process tests. Browser parser tests need omitted session captures; driver
-cross-process/Node parity tests need omitted CI scripts. An initial wider quick
-attempt recorded 63 passes, three failures including an import error; those
-input-dependent claims were explicitly excluded from the final named local slice,
-not declared passing. Full broad/static/live/warm proof remains unestablished.
+## Evidence interpretation
 
-Actual documented launcher append/read/verify/status commands now pass. They
-initially exposed Windows Bun relative mkdir EEXIST; resolving --vault at CLI
-entry fixed it, and the subprocess regression exercises relative paths with spaces.
+Passing fixture tests prove the fixture behavior named by the test. Simulated receipts remain SIMULATED. Confidence, documentation and architectural coherence never substitute for observed evidence.
 
-Critical next falsifiers: independent vault roots cannot share records; unknown
-ops and unconsented external copies refuse; missing blobs fail verification;
-browser disconnection cannot produce fresh live evidence; selected provider
-Account cannot silently change. Evidence is recorded per claim in
-evidence/bootstrap.json. No beta/provider readiness claim is made.
+For D1 raw task truth use Ratchet probe/status/evidence. For whole-project current orientation use `SITREP.md`.

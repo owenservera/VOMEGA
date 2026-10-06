@@ -80,3 +80,38 @@ If maintaining the tracker costs more effort than the coordination and reconstru
 simplify or retire it. Concretely: if a fresh worker cannot answer the fifteen orientation questions
 from the generated views alone, or if the validator and views stop paying for themselves, the system
 fails regardless of how complete the dossiers look.
+
+## 14. Planning must terminate in executable evidence
+
+PM depth is justified only when it makes selected work easier to execute, falsify or hand off.
+
+Once a selected phase has a stateable acceptance condition and the Ratchet/task layer can represent it, prefer executable tasks, gates, prototypes and evidence over another planning pass. PM must not create a new prose layer merely because implementation is difficult.
+
+This does not weaken the dossier requirement or the design-intensity system. It prevents straightforward execution work from recursively becoming PM work.
+
+## 15. Design intensity controls ceremony, not engineering size
+
+Use [portfolio-analysis/DESIGN-INTENSITY-SYSTEM.md](portfolio-analysis/DESIGN-INTENSITY-SYSTEM.md) to decide whether a real design cycle is required.
+
+- D1–D2: default to implementation/test work once acceptance is clear.
+- D3: use a bounded alternatives/falsifier pass.
+- D4–D5: use a deliberate design cycle with competing shapes, discriminating experiments/prototypes and independent review.
+
+A design cycle is complete when uncertainty is reduced enough to execute or when evidence says the approach should stop. It is not complete merely because another document exists.
+
+## 16. Development machinery needs a measured bottleneck
+
+Do not add PM automation, dashboards, schedulers, scoreboards, context networks, worker daemons or new coordination layers because they sound useful.
+
+First name the measured bottleneck and the existing surface that fails to handle it. Run the smallest reversible experiment. Keep the machinery only if it materially improves the named bottleneck.
+
+This applies to acceleration ideas as strongly as to product ideas. If the existing Ratchet packets, session claims, generated PM views and Commons handoffs already answer the question, improve them instead of creating another system.
+
+## 17. Context economy is not PM scope expansion
+
+A worker should receive the smallest context that lets it perform the selected work safely. PM may improve links and task context, but it must not respond to orientation cost by widening managed program scope or producing a second comprehensive project narrative.
+
+For D1, the Ratchet packet is the default bounded execution context. Broader context is pulled only when the task demonstrates it is needed.
+
+The large-context/Elephant hypothesis remains an experiment candidate, not a prerequisite. Test it only when reconstruction/review cost becomes a measured bottleneck.
+

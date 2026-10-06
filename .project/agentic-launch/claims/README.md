@@ -17,4 +17,6 @@ Rules:
 
 Do not create a central active-claims table here. Separate files reduce write collisions during parallel work.
 
+Closed claims are moved into the dated `.project/archive/.../agentic-launch/claims/` history during cleanup passes; Git history preserves their lineage. The live claims directory should stay small.
+
 Use [CLAIM-TEMPLATE.md](CLAIM-TEMPLATE.md) as the minimum shape.

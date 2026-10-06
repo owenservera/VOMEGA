@@ -18,7 +18,8 @@ This program defines an automated experimental loop for:
 - VisualSpec projection;
 - contextual Wiki relevance;
 - icon/annotation/layout treatments;
-- correction interactions.
+- correction interactions;
+- negative-intent frontier ranking: which plausible counterfactual should be exposed earliest to minimize later semantic correction burden.
 
 The experiment engine should run primarily in the [Semantic Runtime Laboratory](SEMANTIC-RUNTIME-LAB.md) and the [MVP Visualization Sandbox](MVP-VISUALIZATION-SANDBOX.md).
 
@@ -679,3 +680,32 @@ The experiment system is failing if:
 ## 28. Change record
 
 - **2026-10-05:** Initial design. Defines automated experiments for NLP/NCL, grounding, Model/Account routing, visual feedback and self-generated Wiki using the MVP Visualization Sandbox and Semantic Runtime Lab.
+
+
+## Negative intent frontier experiments
+
+The experiment engine is the evidence home for the [Negative Intent Signal Engine](NEGATIVE-INTENT-SIGNAL-ENGINE.md).
+
+Do not evaluate it as ordinary top-N accuracy. The key comparison is whether a counterfactual surfaced **now** prevents more expensive semantic correction **later**.
+
+At minimum compare three arms over identical revisioned scenarios:
+
+1. baseline compiler/projection behavior;
+2. ordinary top-N / second-ranked candidate exposure;
+3. a negative-frontier policy that ranks alternatives by early-correction leverage.
+
+Capture, per revision:
+
+- full candidate-manifold digest or stable candidate refs;
+- selected/leading interpretation;
+- negative frontier emitted;
+- first revision at which the eventually-corrected branch was available;
+- user semantic correction and its revision;
+- semantic fields invalidated/recomputed;
+- correction steps now versus counterfactual later;
+- unnecessary signals and dismissals;
+- final canonical command/evidence outcome.
+
+Primary metrics should include time-to-useful-negative-signal, early-correction capture, correction-step reduction, avoided invalidation cost, unnecessary-signal rate, frontier stability and stale-signal safety.
+
+A policy does not earn promotion because it finds more alternatives. It earns promotion only when it reduces late correction cost without creating unacceptable interruption, instability or hidden ambiguity collapse.

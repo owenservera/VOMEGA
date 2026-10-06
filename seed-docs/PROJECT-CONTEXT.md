@@ -2,260 +2,171 @@
 
 ## The product
 
-VIVIM is intended to be the place where a person's digital world lives: a local environment that can hold and operate their information, accounts, conversations, tools, agents, automations, and other digital objects as governed, composable things.
+VIVIM is intended to be the place where a person's digital world lives: a local environment that can hold and operate information, accounts, conversations, tools, agents, automations and other digital objects as governed, composable things.
 
 The important word is **environment**.
 
-This is not primarily another application with a chat interface, another agent manager, or another browser shell. The product ambition is a personal operating environment in which meaning, capability, authority, work, evidence, memory, continuity, and interaction form one coherent system.
+It is not primarily another chat application, agent manager or browser shell. The ambition is a personal operating environment in which meaning, capability, authority, work, evidence, memory, continuity and interaction form one coherent system.
 
-## The long-horizon proposition
+## Long-horizon proposition
 
-Over a five-to-ten-year horizon, assume that models, agent frameworks, protocols, providers, browsers, execution substrates, and interfaces will all change.
+Models, providers, browsers, agent frameworks, protocols, execution substrates and interfaces will change.
 
-The durable proposition should therefore be:
+The durable proposition is:
 
-> A person can express what they want in human terms, have that meaning resolved into explicit and governed operations, act across their digital world, retain what happened and what was learned, and allow the environment to evolve without surrendering ownership or continuity.
+> A person can express what they want in human terms, have that meaning resolved into explicit governed operations, act across their digital world, retain what happened and what was learned, and allow the environment to evolve without surrendering ownership or continuity.
 
-The strongest candidate durable capabilities are:
+Durable candidate capabilities include a human-readable semantic execution language, a persistent personal semantic World, governed action between intent and effect, durable Work/evidence/continuity, and governed self-extension.
 
-- a human-readable semantic execution language;
-- a persistent personal semantic world;
-- governed action between intent and effect;
-- durable Work, evidence, and continuity;
-- governed self-extension and evolution.
+These are conceptual assets, not claims that today's implementation is complete.
 
-These are conceptual assets, not declarations that today's implementations are already complete.
+## Product anchor
 
-## The product anchor
+The first concrete wedge is a persistent local VIVIM environment in which real provider webapps can become first-class external capabilities.
 
-The first tangible beta should be a persistent local VIVIM environment in which real provider webapps are usable as first-class external capabilities.
+The complete falsifiable path is:
 
-A simple visible realization may be a single-pane environment where one or more provider webapps occupy the working surface.
+```text
+person
+→ expression
+→ explicit semantic meaning
+→ capability
+→ Provider / Account / Session / realization
+→ authority
+→ Work / attempt
+→ external effect
+→ observation
+→ evidence
+→ local continuity
+```
 
-That is a **functional wedge**, not the destination.
+The provider remains external. VIVIM owns the local semantic relationship, authorized interaction, configuration, Work, evidence and continuity around it.
 
-The value of the wedge is that it creates a complete, falsifiable product path:
-
-**person → address/expression → intent → context → capability → provider/account/realization → authority → work → browser/webapp → observed result → evidence → local continuity**
-
-The provider remains external.
-
-VIVIM owns the local semantic relationship, authorized interaction, configuration, Work, evidence, and continuity around that external system.
-
-The browser is a realization mechanism, not constitutional authority.
+A browser is a realization mechanism, not constitutional authority.
 
 ## Sovereignty
 
-The core product stance remains:
+Core stance:
 
-**my machine, my internet, my accounts, my data, my apps, my intelligence, my rules, my interaction.**
+> **my machine, my internet, my accounts, my data, my apps, my intelligence, my rules, my interaction**
 
-This is not merely a deployment preference.
+This is not merely deployment preference. The system should minimize unnecessary dependence on centralized application backends or proprietary APIs when a real user-controlled interface can safely provide the capability.
 
-It means the local environment should minimize unnecessary dependence on proprietary APIs and centralized application backends when a real user-controlled interface can provide the needed capability.
-
-For the first shippable provider path, this means Chrome master/slave and browser-mediated realization.
+Sovereignty also means local evidence, exportability, reconstructability and the ability to change models/providers/surfaces without losing identity or continuity.
 
 ## From VIVIM to Ω
 
-The older VIVIM implementations are the mine.
+Older VIVIM/BCP implementations are the mine: useful algorithms, domain knowledge, fixtures, provider experiments, interaction patterns, failures and constraints mixed with architectural debt and accidental structure.
 
-They contain useful algorithms, domain knowledge, fixtures, parser evidence, provider experiments, interaction patterns, failures, and hard-earned constraints. They also contain architectural debt, duplication, assumptions that should not survive, and structures that were never designed as one composable system.
+The intended relationship is:
 
-Ω is the destination and the seeded baseline is its current implementation substrate.
+```text
+old VIVIM/BCP → evidence / ore / fixtures / proven mechanisms
+Ω baseline     → current implementation substrate to inspect and challenge
+current build  → architecture earned from present evidence
+```
 
-The intended relationship is therefore:
+Do not port old organization or architecture by default. Harvest mechanisms when they genuinely outperform reinvention.
 
-**old VIVIM → evidence / ore / fixtures / proven mechanisms**
+## Canonical conceptual path
 
-**Ω baseline → current implementation to inspect and challenge**
+The durable semantic coordinates are:
 
-**fresh build → new architecture and roadmap derived from current reality**
+> **World → Context → Intent → Capability → Authority → Work → Execution → Evidence → World/Memory update**
 
-Do not default to porting old code.
+For an external interaction:
 
-Reuse an old implementation when it is genuinely the best proven realization of a requirement, and treat that reuse as an explicit engineering choice.
-
-## Canonical conceptual stack
-
-The repository uses many implementation-specific structures, but the durable conceptual path is:
-
-**World → Context → Intent → Capability → Authority → Work → Execution → Evidence → World/Memory update**
-
-For a concrete external interaction:
-
-**human expression → semantic meaning → governed action → external realization → observed result → durable local evidence**
+> **human expression → semantic meaning → governed action → external realization → observed result → durable local evidence**
 
 These are semantic coordinates, not a required class hierarchy.
 
-## Important distinctions
+## Distinctions more durable than components
 
-The system should retain the separations captured in `INVARIANTS.md`.
+Preserve the separations in `INVARIANTS.md`, especially:
 
-In particular:
+- reality ≠ representation;
+- evidence ≠ authority;
+- intent ≠ execution;
+- capability ≠ realization;
+- Provider ≠ Account ≠ Model ≠ Session;
+- discovery ≠ routing;
+- routing ≠ authority;
+- memory ≠ context;
+- Work ≠ worker;
+- World ≠ surface;
+- confidence ≠ proof.
 
-- reality is not representation;
-- evidence is not authority;
-- intent is not execution;
-- capability is not realization;
-- provider is not account;
-- account is not session;
-- discovery is not routing;
-- routing is not authority;
-- memory is not context;
-- Work is not the worker;
-- World is not the surface.
+## Canonicality, memory and surfaces
 
-These distinctions are more durable than today's component boundaries.
+The intended conceptual model is:
 
-## Canonicality, memory, and surfaces
+- **Vault** — durable local source of truth;
+- **World** — product-level semantic reality derived from durable truth, relationships and current evidence;
+- **Work** — durable process reality;
+- **Evidence** — support for claims about what happened;
+- **Context** — task-scoped derived assembly;
+- **Surface** — replaceable representation/interaction boundary;
+- **Process/Session** — transient execution state.
 
-The intended model is:
-
-- the **Vault** is the durable local source of truth;
-- the **World** is canonical product-level reality/semantic organization derived from durable truth and relationships;
-- **Work** is durable process reality;
-- **Evidence** supports claims about what happened;
-- **Context** is a task-scoped derived assembly;
-- a **Surface** is a representation and interaction boundary;
-- a **Process/Session** is transient execution state.
-
-A canvas, chat surface, provider webapp, CLI, or future interface may represent the same underlying world.
-
-A surface can be replaced without changing canonical identity.
-
-Current context can change without changing the world's canonical meaning.
+A chat, command box, browser page, CLI or future spatial surface may represent the same underlying World without becoming canonical truth.
 
 ## Human semantic control
 
 The central control inversion is:
 
-**probabilistic perception → deterministic meaning → governed/deterministic execution**
+> **probabilistic perception → explicit deterministic meaning where possible → governed execution**
 
 Natural language is an interface, not authority.
 
-AI can be used for ambiguity resolution, inference, synthesis, discovery, planning, adaptation, and other tasks where intelligence adds value.
+Models can propose ambiguity resolutions, synthesis, discovery, planning and adaptation. Raw model output never becomes constitutional authority merely because it is confident.
 
-But raw model output never becomes constitutional authority.
+The objective is not "more AI everywhere"; it is to make powerful intelligence usable through human language while moving stable semantics, validation, authority and proof into explicit machinery.
 
-The strategic objective is not more AI everywhere.
+The Negative Intent Signal Engine is one D5 hypothesis for this control loop: challenge the leading interpretation with the most useful plausible counterfactual early enough to avoid expensive semantic correction, without creating a second parser or authority path.
 
-It is to flatten the boundary between what needs probabilistic intelligence and what can now be deterministic while still remaining usable by a normal person through human language.
+## Work, observation and proof
 
-## Work, observation, and proof
+Consequential work should be observable and reconstructable rather than inferred from process behavior.
 
-Consequential work should be something the environment can observe, reconstruct, and prove rather than infer from process behavior.
+Where knowable, distinguish completed, active, interrupted, stopped, never-started and genuinely uncertain external effects.
 
-Where knowable, distinguish:
+Completion should be positively evidenced where practical. A disappeared process, elapsed timer or absence of error is not completion proof.
 
-- completed work;
-- active work;
-- interrupted work;
-- deliberately stopped work;
-- work that never actually started;
-- genuinely uncertain external effects.
+Evidence must outlive transient workers/sessions long enough for consequential claims to remain reconstructable.
 
-Completion should be positively evidenced where practical.
+## Forge and evolution
 
-A disappeared process is not proof of completion.
+Ω is intended to make extension a first-class governed capability.
 
-Evidence should survive long enough that consequential claims remain reconstructable after the worker, process, browser session, or other transient mechanism disappears.
+Forge is not a privileged second authority system. New plugins/compositions/mechanisms should enter through the same inspectable evidence/authority/compatibility boundaries as the rest of the system.
 
-Observations, hypotheses, caveats, rules, and proofs are distinct.
+Self-evolution is trustworthy only when the system can explain what changed, why, what was affected, what was authorized, and what evidence supports the result.
 
-## The Forge
+## Beta discipline
 
-Ω is intended to make extension a first-class capability.
+The practical objective is a coherent beta that real people can use.
 
-Forge is not a privileged SDK or second authority system.
+Prefer a small complete vertical slice over a large inventory of partial subsystems.
 
-It is part of the same governed extensibility model as other plugins and compositions.
+Do not optimize for documentation volume, architecture ceremony, agent count, provider count, rule count or feature count.
 
-The long-term test is whether the environment can describe, create, prove, and incorporate new pieces of itself without giving those pieces a secret authority path.
+Optimize for demonstrated user value plus a trustworthy system underneath it.
 
-## Evolution
+## How to interpret the repository
 
-VIVIM should be able to change without losing identity, evidence, sovereignty, or continuity.
+The repository contains current implementation, tests, fixtures, evidence, current product/design documents and a dated archive of historical planning/tooling material.
 
-The project should distinguish ordinary maintenance, governed evolution, and constitutional change conceptually even if the implementation expresses those categories differently.
+Classify material before trusting it:
 
-A system that can change itself but cannot explain what changed, why, what was affected, what was authorized, and what evidence supports the result is not trustworthy self-evolution.
+```text
+invariant / owner intent
+≠ evidence
+≠ design hypothesis
+≠ implementation
+≠ plan
+≠ historical archaeology
+```
 
-## Beta objective
+The archive exists to reduce rediscovery, not to control current work.
 
-The practical objective remains a functioning, coherent beta that real people can use.
-
-The product should demonstrate a real end-to-end environment rather than an impressive inventory of disconnected subsystems.
-
-The project should prefer a small complete vertical slice over many partial features.
-
-Do not optimize for documentation volume, architecture ceremony, agent count, provider count, rule count, or feature count.
-
-Optimize for demonstrated user value plus a trustworthy underlying system.
-
-## How to interpret the seeded corpus
-
-The seeded repository contains current implementation, tests, fixtures, gates, detailed Ω documentation, and historical material.
-
-Some records are law, some are evidence, some are design candidates, some are plans, and some are archaeology.
-
-The new project should classify those distinctions from the repository itself.
-
-Never let a stale roadmap become the reason something gets built.
-
-The detailed destination corpus is there to accelerate understanding, not to become an inherited project-management system.
-
-## Development environment
-
-The project can be developed on Windows and should preserve genuine runtime-neutrality where it matters.
-
-Codex, Claude Code, ZCode, and other development harnesses are intentionally outside the product architecture described here.
-
-Build whatever development machinery the work proves necessary.
-
-## Historical knowledge without historical control
-
-The clean VOMEGA repository intentionally does not carry the hundreds of BCP-dev historical documents. They remain available as an external knowledge mine described by `HISTORICAL-KNOWLEDGE-MAP.md`.
-
-The strongest historical clusters cover destination/system intelligence, provider/browser migration forensics, autonomous agent-system experiments, Reality Engine work, legacy behavior harvest, world/object/surface research, core-vs-plugin boundaries, Product Instance, self-knowledge, agency, Forge, and evolution.
-
-This material should reduce rediscovery cost. It should not dictate VOMEGA's file tree, agent organization, roadmap, architecture, or sequencing.
-
-## Local development substrate
-
-The owner's current development environment is intentionally richer than a single agent harness. In addition to ZCode and its five configured 1M-context Space Bunny Free lanes, **OpenAI Codex is installed locally with ChatGPT Plus access** and **Claude Code is installed locally with Claude Pro access**; both are expected to participate actively in repository work.
-
-These facts are development-environment context, not Ω architecture. The autonomous build should inspect the actual installed clients and decide how best to use the heterogeneous pool. It should not turn the presence of OpenAI, Anthropic, ZCode, or any current model into a product dependency or constitutional assumption.
-
-## Provider Lab development strategy
-
-A current strategic hypothesis is to build a local **Provider Lab** using one or more developer-mode Chrome extensions and supporting local instrumentation.
-
-The Lab can place an Ω-controlled semantic mirror beside real provider pages while also observing normal human interaction in Shadow mode. This creates an unusually tight development loop around provider capability mapping, account/session behavior, live realization, conformance, drift, and healing.
-
-The Lab is intentionally outside Ω's constitutional authority. It is a proving ground whose successful mechanisms and knowledge may later graduate into Ω through normal evidence and architectural review.
-
-## Harvest-first development stance
-
-A program-wide engineering stance is now explicit: **harvest before build; prove reuse before invention**.
-
-VIVIM's own historical code, the broader open-source ecosystem, browser-extension implementations, packages, research artifacts, and externally observable working products are all potential sources of prior evidence.
-
-The fresh project is still autonomous over the solution. The doctrine exists so autonomy begins from the strongest available evidence rather than from avoidable ignorance.
-
-## Development acceleration hypothesis layer
-
-The project is allowed to instrument its own development environment aggressively where doing so creates measurable leverage.
-
-A current optional direction is a local **Development Reality Layer / Dev Black Box** that records a manageable structural event stream across relevant development activity and can feed context reconstruction, debugging, regression generation, coordination, and DevOps learning.
-
-This is a hypothesis, not a required subsystem. The full candidate portfolio lives in `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`.
-
-The intent is to make real work produce useful evidence automatically—not to build a surveillance product or make development telemetry part of Ω's constitutional model.
-
-
-## First bootstrap execution fact
-
-The first autonomous bootstrap will be run by **local Codex from the local VOMEGA checkout**.
-
-Codex should use the dedicated `CODEX-BOOTSTRAP-START-HERE.md` execution guide, establish reality and durable project continuity, and then move into real product work. This is a pragmatic bootstrap choice, not a statement that Codex is the long-term coordinator or that OpenAI becomes part of Ω's product architecture.
+Fresh workers should start from root `AGENTS.md` and `.project/SITREP.md`, then read only the product/design context their task actually needs.

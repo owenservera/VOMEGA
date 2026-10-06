@@ -79,6 +79,12 @@ M5 means **state-of-the-art/frontier maturity**, not "phase five because every p
 | MP-66 — Elephant Context Network | **Elephant comparison experiment** · D4/M2 | **Epoch-aware consult service** · D5/M3 | **Distributed cognitive memory network** · D5/M5 |
 | MP-67 — Acceleration Scorecard | **Acceleration scorecard baseline** · D5/M2 | **Measured accelerator experiments** · D5/M3 | **Adaptive development economics system** · D5/M5 |
 
+### Current frontier seed inside MP-16
+
+The owner-directed [Negative Intent Signal Engine](../../../seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md) is currently treated as a **D5 design seed inside the existing MP-16 #2/#3 deliverable space**, with cross-program dependencies on MP-08/09/10/14/15. It does not create a 68th program or enter the five-program managed PM scope.
+
+Its experimental obligation is stronger than ordinary top-N candidate display: preserve the full plausible intent manifold, rank the counterfactual whose early exposure most reduces downstream semantic correction burden, and prove the ranking beats both baseline and ordinary second-candidate exposure without unacceptable interruption.
+
 ## Reading the labels
 
 - **D1–D2:** concept largely known; implementation/proof dominates.
