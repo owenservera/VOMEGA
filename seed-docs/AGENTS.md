@@ -32,9 +32,9 @@ Before major product work, establish repository reality and seed hygiene: confir
 
 ## Multi-provider execution pool
 
-> **Superseded as an environment fact (2026-10-05):** ZCode now routes through `openrouter/auto`, and the five accounts below were never individually probed. The durable parts of this section still hold: provider configuration is read-only, capacity is measured rather than assumed, and no lane becomes a coordinator by default. Current resources are in `../.project/agentic-launch/STATUS.md`.
+> **Local-machine environment fact, with a narrower operational correction (2026-10-05):** the five configured accounts below remain valid census information unless a later machine census proves otherwise. What is superseded is the assumption that five configured accounts equal five currently live worker slots or define the current ZCode route. ZCode was later observed routing through `openrouter/auto`; provider configuration remains read-only and safe concurrency is measured rather than assumed. Current runtime state is in `../.project/agentic-launch/STATUS.md`.
 
-The development environment has five independently configured ZCode model-provider lanes available for parallel work. Treat them as a shared execution pool:
+The owner's Windows environment was observed with five independently configured ZCode model-provider accounts/lanes. Preserve them as local environment configuration; use them for parallel work only when current reachability/routing confirms that they are actually available:
 
 - **Owen** — 1M-context **Space Bunny Free**
 - **OpenCode acct 2** — 1M-context **Space Bunny Free**
@@ -42,7 +42,7 @@ The development environment has five independently configured ZCode model-provid
 - **OpenCode acct 4** — 1M-context **Space Bunny Free**
 - **OpenCode acct 5** — 1M-context **Space Bunny Free**
 
-These are five separate provider/API call lanes, not five configuration profiles to redesign. **Do not modify, rotate, replace, merge, reset, or “optimize” the provider configurations, credentials, endpoints, model mappings, or account wiring unless the owner explicitly requests configuration work.** The project's job is to schedule work across the already-wired pool.
+These are five separate configured provider/account entries, not five configuration profiles to redesign and not automatically five proven concurrent API-call lanes. **Do not modify, rotate, replace, merge, reset, or “optimize” the provider configurations, credentials, endpoints, model mappings, or account wiring unless the owner explicitly requests configuration work.** The project's job is to schedule work across the already-wired pool.
 
 Default to high fan-out when the work is genuinely independent. Split large objectives into independent research, implementation, test, review, exploration, and verification units and distribute those units across the five lanes. Keep dependent work ordered, avoid duplicate work unless duplication is deliberately used for independent verification, and prefer isolated branches/worktrees or other safe change boundaries when multiple lanes may edit concurrently.
 
