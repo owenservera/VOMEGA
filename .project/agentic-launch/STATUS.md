@@ -4,7 +4,11 @@ Date: 2026-10-06. This is an aggregate view only. Per-worker truth lives in `cla
 
 ## Active claims
 
-No active claim at this closeout. The recurring 24/7 loop (`automation-2c7bbcf3`, hourly) opens and closes its own cycle claims per run. Closed this date: [20261006-1617-devloop-24x7-zcode.md](claims/20261006-1617-devloop-24x7-zcode.md) — loop setup + first governed cycle (D1-004 DONE at `fc1ef89`; review by separate automated subagent context, not independent human review).
+| Claim | Worker | Work |
+| --- | --- | --- |
+| [20261006-1641-design-council-zcode.md](claims/20261006-1641-design-council-zcode.md) | ZCode governor + external harness CLI voices | Multi-model planning/design council setup; loop upgraded to continuous drain (10-min cadence, pipelined review, never idle) |
+
+Closed 2026-10-06: [20261006-1617-devloop-24x7-zcode.md](claims/20261006-1617-devloop-24x7-zcode.md) — loop setup + first governed cycle (D1-004 DONE at `fc1ef89`; review by separate automated subagent context, not independent human review).
 
 ## Major slices
 

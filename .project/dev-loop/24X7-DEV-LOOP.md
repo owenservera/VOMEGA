@@ -1,8 +1,9 @@
 # 24/7 development loop — governor + dev team
 
-Status: **ACTIVE** (owner-directed, 2026-10-06)
+Status: **ACTIVE** (owner-directed, 2026-10-06; re-cadenced same day from hourly to a continuous drain)
 Governor: the ZCode main session ("governor") that runs this loop.
-Claim: [`../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md`](../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md)
+Cadence: **every 10 minutes**; each run drains up to **8 governed cycles back-to-back**, pipelines the reviewer, and ends early only when no real bounded work remains. Owner direction: the team is never left idle while claimable work exists.
+Claim: [`../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md`](../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md) (setup) · council: [`../agentic-launch/claims/20261006-1641-design-council-zcode.md`](../agentic-launch/claims/20261006-1641-design-council-zcode.md)
 
 This file is the reconstructable record of the loop: what it is, who is on the team,
 what each cycle must do, and the boundaries it must not cross. If the automation is
@@ -50,22 +51,30 @@ Rules:
 
 ## 3. Governor duties (every cycle, in order)
 
+0. **Stampede guard.** If `.local/dev-loop/governor.lock` exists and was modified in
+   the last 20 minutes, another governor run is likely active — exit immediately
+   with a one-line report. Otherwise take the lock (run id + UTC timestamp) and
+   remove it in the final step, even on failure.
 1. **Checkout truth.** Record local `HEAD`; `git fetch origin`; fast-forward a clean
    checkout that is behind; if dirty or diverged, preserve work and surface it —
    never reset/pull over someone else's changes.
 2. **Read real state.** `bun run ratchet status` (probe if stale), `ratchet next`,
    active claims in `.project/agentic-launch/claims/`, last cycle's closeout. Do not
    trust any agent's claimed aliveness; read evidence and timestamps.
-3. **Verify the team is launched and running.** Each run must actually dispatch IMPL
-   and TRV. A run that governs without launching the team is a failed run: record it
-   as such and fix the cause (missing bun, dirty tree, no claimable task are the
-   legitimate exceptions — record which).
+3. **Verify the team is launched and running — the never-idle rule.** Each run
+   drains up to 8 governed cycles back-to-back; while IMPL of cycle N+1 starts, TRV
+   reviews cycle N's committed diff (pipeline — no agent sits idle waiting). A run
+   that governs without launching the team is a failed run. The only legitimate
+   idle: no claimable task AND no real review/hardening/harvest/failure-reproduction
+   work remains — recorded factually, never padded with manufactured planning work.
 4. **Route events** per AGENTS.md: new objectives → Coordination (Commons); research
    questions → Research; implementation/setup failures → Product; verification gaps
    or failed checks → Truth **and** Product. Record request, owner, evidence, next
    action in Commons.
-5. **Drive one bounded cycle** (§4).
-6. **Close out**: truthful closeout in the cycle record; update STATUS/Commons on
+5. **Drive one bounded cycle** (§4), then immediately the next.
+6. **Convene the council** ([DESIGN-COUNCIL.md](DESIGN-COUNCIL.md)) when a cycle
+   uncovers a genuine contested design question — not on every task.
+7. **Close out**: truthful closeout in the cycle record; update STATUS/Commons on
    material outcomes; leave a reconstructable handoff.
 
 ## 4. One bounded cycle
@@ -109,10 +118,22 @@ bun run ratchet review <TASK> --by gov-trv-<n>   # TRV, never IMPL's label
 
 ## 6. Automation registration (recreate from here)
 
-Tool: ZCode workspace automation (CronCreate), recurring, interval 60 minutes,
-prompt = the governed cycle in §3–§4, self-contained (no conversation context),
-must never create/schedule/configure another automation. Verify with CronList.
+Tool: ZCode workspace automation (CronCreate/CronUpdate), recurring, **every 10
+minutes** (`*/10 * * * *`), prompt = the continuous drain in §3–§4, self-contained
+(no conversation context), must never create/schedule/configure another automation.
+Verify with CronList. Unattended runs must never block on an interactive
+confirmation — that is why the council has a direct (no-dialog) convening path.
 
 Owner controls: change cadence or delete the automation at any time; the loop is
 subordinate to Owen's decisions. If the owner says stop, stop and leave the
 reconstructable handoff.
+
+## 7. Companion mechanism — design council
+
+Contested planning/design questions are not decided by a single worker or a single
+model: the governor convenes the multi-model design council per
+[DESIGN-COUNCIL.md](DESIGN-COUNCIL.md) — independent voices across model families
+(in-session voice + external harness CLI one-shots), a chair that records
+contradictions verbatim, and rulings that are recommendations, never authority.
+Surfaces: saved workflow `design-council`, `/council` command, and the §4 direct
+procedure for unattended cycles.
