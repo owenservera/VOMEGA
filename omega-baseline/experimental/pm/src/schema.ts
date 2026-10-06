@@ -1,9 +1,15 @@
 // PM v0 seed schema.
 //
-// Strict by construction: unknown keys are rejected, so a program *meaning* field
-// (name/explanation/objectives/purpose/state/priority/notes) cannot be stored here —
-// those belong to .project/meta-tracker.json, which stays canonical. This module owns
-// no program truth; it only describes decomposition.
+// Strict by construction: unknown keys are rejected and the named program-meaning keys
+// (name/explanation/objectives/purpose/state/priority/notes/owners) are refused at program
+// level, so a *named* meaning field cannot be stored here — those belong to
+// .project/meta-tracker.json, which stays canonical.
+//
+// LIMITATION (honest): the guard is a NAME blacklist, not a semantic one. Meaning can still be
+// written into free-text decomposition fields — phases[].outcome, gates[].statement,
+// gaps[].statement and softDeps[] — none of which is checked. Those fields describe decomposition,
+// and the independent review accepts them as prose, but this is not proof that no meaning is
+// duplicated. Do not read it as such.
 import { z } from "zod";
 
 /** Effort grade, optionally a range: "E2", "E1-E2", "E4–E5". */

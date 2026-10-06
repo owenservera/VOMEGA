@@ -1,6 +1,6 @@
 {
   "schema": "vomega-pm-portfolio/0",
-  "sourceHead": "93075cf",
+  "sourceHead": "56fe9c4",
   "seedDigest": "sha256:427744a6c7fb43f302e20dff0eb0ff23e8e03bf49bc248fbd2162f19042f0644",
   "note": "Projection only. Program meaning is canonical in .project/meta-tracker.json; plan/evidence are derived; execution/proof state is owned by the ratchet. Do not hand-edit.",
   "counts": {

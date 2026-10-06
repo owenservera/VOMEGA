@@ -129,8 +129,26 @@ function locText(loc: unknown): string {
   return `${l.range[0]}-${l.range[1]} (${l.band})`;
 }
 
-/** Escape a value for a Markdown table cell so "|" inside text does not break the table. */
-const cell = (s: string): string => s.replace(/\|/g, "\\|");
+/** Escape a value for a Markdown table cell so "|" or a newline inside text cannot break the table. */
+const cell = (s: string): string => s.replace(/\r?\n/g, " ").replace(/\|/g, "\\|");
+
+const HEAD_LINE_PREFIX = "> Source HEAD `";
+
+/** Neutralize the volatile HEAD in generated JSON, so a committed projection is not "stale" merely because HEAD advanced. */
+export function stripVolatileHead(jsonText: string): string {
+  try {
+    const o = JSON.parse(jsonText) as { sourceHead?: string };
+    o.sourceHead = "";
+    return JSON.stringify(o, null, 2) + "\n";
+  } catch {
+    return jsonText;
+  }
+}
+
+/** Neutralize the volatile HEAD line in generated Markdown. The seed digest line stays, so seed drift is still caught. */
+export function stripVolatileHeadMd(md: string): string {
+  return md.split("\n").filter((l) => !l.startsWith(HEAD_LINE_PREFIX)).join("\n");
+}
 
 export function renderPortfolioMd(pf: Portfolio): string {
   const lines: string[] = [];
@@ -138,7 +156,8 @@ export function renderPortfolioMd(pf: Portfolio): string {
   lines.push("");
   lines.push("> **Projection only.** Do not edit by hand. Program meaning is canonical in `.project/meta-tracker.json`; plan resolution and evidence state are derived; execution/proof state belongs to the ratchet.");
   lines.push(">");
-  lines.push(`> Source HEAD \`${pf.sourceHead}\` · seed digest \`${short(pf.seedDigest)}\` · regenerate: \`bun run pm\` · validate: \`bun run pm:check\``);
+  lines.push(`> Source HEAD \`${pf.sourceHead}\``);
+  lines.push(`> seed digest \`${short(pf.seedDigest)}\` · regenerate: \`bun run pm\` · validate: \`bun run pm:check\``);
   lines.push("");
   lines.push("## Counts");
   lines.push("");
@@ -148,10 +167,10 @@ export function renderPortfolioMd(pf: Portfolio): string {
   lines.push("");
   lines.push("## Portfolio");
   lines.push("");
-  lines.push("| ID | Program | Plan | Evidence | Phases | Gates | Gaps | Ungated |");
-  lines.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
+  lines.push("| ID | Program | Purpose (why it exists) | Plan | Evidence | Phases | Gates | Gaps | Ungated |");
+  lines.push("| --- | --- | --- | --- | --- | --- | --- | --- | --- |");
   for (const p of pf.programs) {
-    lines.push(`| ${p.id} | ${cell(p.name)} | ${p.planResolution} | ${p.evidenceState} | ${p.phaseCount} | ${p.gateCount} | ${p.gapCount} | ${p.ungatedPhases.length || ""} |`);
+    lines.push(`| ${p.id} | ${cell(p.name)} | ${cell(p.purpose)} | ${p.planResolution} | ${p.evidenceState} | ${p.phaseCount} | ${p.gateCount} | ${p.gapCount} | ${p.ungatedPhases.length || ""} |`);
   }
   lines.push("");
   lines.push("## Cross-program gates");

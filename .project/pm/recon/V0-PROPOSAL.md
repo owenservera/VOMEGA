@@ -26,6 +26,20 @@ non-duplication mechanical rather than declarative.
 Also adopted (optional): the derived level `PROVEN-SLICE` is renamed **`EVIDENCED`** to end the
 vocabulary collision with META-TRACKER's `PROVEN-SLICE` state.
 
+### rev 2 → rev 3 (implementation review + dogfood)
+
+After v0 was implemented, a fresh independent `PMC-TRU` pass reviewed the code and a separate fresh
+"worker" pass tested the generated portfolio for orientation value. Changes:
+
+| Finding | Change |
+| --- | --- |
+| **`pm:check` was RED on the shipped commit** — the committed projection embeds `sourceHead`, and committing advances HEAD, so it was permanently "stale" | the volatile HEAD is now neutralized before the freshness comparison (`stripVolatileHead*`); a test asserts HEAD-independence while seed drift is still caught |
+| `pm:test` could pass while `pm:check` was red | added freshness/HEAD tests; `workPackages` rejection test added |
+| `schema.ts` comment overclaimed non-duplication as absolute | corrected: the guard is a **name** blacklist; free-text fields (`outcome`, `statement`, `softDeps`) are unguarded prose |
+| §5 item 8 disagreed with §2 (no ratchet read) | resolved by a **live, non-stored** reference: `pm:check` prints the ratchet's computed counts/head from `.project/evidence/d1-ratchet.json`; nothing is stored. Linkage (`taskRef`) stays deferred to v0.1 |
+| `validate` claimed "never throws" but dereferenced `tracker.programs` | made defensive |
+| Dogfood: a fresh worker could not answer "why does each program exist" | the portfolio table now renders a **Purpose (why it exists)** column, projected from the canonical tracker (not the seed) |
+
 ## 1. What v0 is, in one sentence
 
 A **decomposition seed** keyed by existing `MP-xx` program IDs, plus a **reference-integrity
@@ -172,8 +186,10 @@ Six new files + one generated pair. `sourceHead` and `seedDigest` exist **only**
 5. validate broken/unknown references — `pm:check` non-zero on a dangling gate ref or unknown key
 6. human-readable portfolio/program/dependency view — `generated/PORTFOLIO.md`
 7. machine-readable representation — `generated/portfolio.json`
-8. reference Ratchet/task proof state without duplicating — projection reads
-   `.project/evidence/d1-ratchet.json` when present; **foreign-key linkage deferred to v0.1** (§2)
+8. reference Ratchet/task proof state without duplicating — `pm:check` reads
+   `.project/evidence/d1-ratchet.json` **live** and prints a one-line reference (gate counts + head);
+   nothing is stored in the projection, so it cannot fork ratchet state. Foreign-key **linkage**
+   (`taskRef`) remains deferred to v0.1 (§2) — reference works, linkage does not yet
 9. preserve source HEAD/provenance — generated `sourceHead` + `seedDigest`
 10. pass independent review — `PMC-TRU` reviews the implementation, not just the proposal
 

@@ -2,7 +2,8 @@
 
 > **Projection only.** Do not edit by hand. Program meaning is canonical in `.project/meta-tracker.json`; plan resolution and evidence state are derived; execution/proof state belongs to the ratchet.
 >
-> Source HEAD `93075cf` · seed digest `427744a6c7fb` · regenerate: `bun run pm` · validate: `bun run pm:check`
+> Source HEAD `56fe9c4`
+> seed digest `427744a6c7fb` · regenerate: `bun run pm` · validate: `bun run pm:check`
 
 ## Counts
 
@@ -12,75 +13,75 @@
 
 ## Portfolio
 
-| ID | Program | Plan | Evidence | Phases | Gates | Gaps | Ungated |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| MP-01 | Product Release Gym / product selection | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-02 | First Product Release — Floating Command Box | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-03 | First-release end-to-end product journey | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-04 | Packaging / Installer / Windows lifecycle | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-05 | Product Instance / sovereign exit / reconstruction | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-06 | Semantic Data Engine / canonical semantic substrate | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-07 | World / Registry / capability & availability state | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-08 | Human Semantic Execution Language — NCL/NLCL | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-09 | USE command compiler / validator / defaulting | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-10 | InterpretationSession / realtime revision semantics | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-11 | Semantic Runtime Laboratory / Ω Simulator | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-12 | MVP Visualization Sandbox / semantic product twin | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-13 | Virtual executables / simulated evidence | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-14 | Command Visual Language / semantic interaction protocol | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-15 | VisualSpec vNext / projector | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-16 | Automated Semantic Experiments | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-17 | Cross-domain semantic generalization | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-18 | Self-Describing Runtime / Reflection ABI | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-19 | Reflection Graph | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-20 | Contextual Wiki / realtime help | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-21 | Self-Knowledge Reflection Migrator / auto-Wiki migration tool | PHASED | UNPROVEN | 5 | 5 | 1 |  |
-| MP-22 | Source-native semantic declarations & completeness gate | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-23 | Automatic plugin self-knowledge wiring | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-24 | Provider Lab | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-25 | Browser transport & Account identity | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-26 | Provider/Account/Model routing | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-27 | Provider packs / realization boundary | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-28 | Live prompt.send realization | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-29 | Provider drift detection / conformance / healing | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-30 | Second/third-provider falsification | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-31 | Authority / consent / refusal | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-32 | Execution envelope / evidence / receipts (Work-lite) | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-33 | Durable Work / Agency / Attention / background continuity | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-34 | Vault / canonical local data / continuity | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-35 | Memory / context / self-knowledge freshness | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-36 | Plugins / compositions / contribution boundaries | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-37 | Forge / governed self-extension | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-38 | Governed evolution / compatibility / rollback | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-39 | Runtime / constitution / resource governance / failure semantics | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-40 | Surfaces / spatial environment / Canvas | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-41 | Truth / proof ledger / falsifiers / maturity | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-42 | Harvest-First Engineering / Harvest Bench | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-43 | Historical VIVIM / BCP knowledge mining | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-44 | OS taxonomy / non-AI benchmark corpus | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-45 | Benchmarks / performance / architecture falsifiers | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-46 | Local Agentic Development System | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-47 | Workstream/dependency/Lock orchestration | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-48 | Model routing / heterogeneous intelligence pool | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-49 | ZCode / OpenRouter Auto execution substrate | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-50 | Codex / Claude Code specialist integration | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-51 | Grok Build / Grok model integration | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-52 | Daintree execution habitat evaluation | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-53 | Development Reality Layer / Dev Black Box | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-54 | Automatic Context Bundles | SEEDED | UNPROVEN | 5 | 3 | 2 | 2 |
-| MP-55 | Failure Capsules / reproducible debugging packets | SEEDED | UNPROVEN | 5 | 3 | 2 | 2 |
-| MP-56 | Trace → Fixture / regression harvesting | SEEDED | UNPROVEN | 5 | 3 | 3 | 2 |
-| MP-57 | Dynamic worker/model routing | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-58 | Hypothesis arenas / independent shadow validation | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-59 | Disposable experimental universes | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-60 | Runtime dependency / impact graph + test selection | SEEDED | UNPROVEN | 5 | 2 | 4 | 3 |
-| MP-61 | Failure minimization / bisect / regression localization | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-62 | Continuous fault injection / live architectural falsifiers | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-63 | Provider-pack hot reload / reproducible environments / build-test acceleration | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-64 | Automatic Session Chronicle / development knowledge promotion | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-65 | Interactive Development Cockpit / congestion awareness | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-66 | Elephant Context Network | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
-| MP-67 | Acceleration Scorecard | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| ID | Program | Purpose (why it exists) | Plan | Evidence | Phases | Gates | Gaps | Ungated |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| MP-01 | Product Release Gym / product selection | Continuously choose the smallest genuinely useful, provable product slice and re-rank the plan from evidence. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-02 | First Product Release — Floating Command Box | Ship the small Windows box where setup, routing, help and prompt.send all use one semantic command system. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-03 | First-release end-to-end product journey | Install → register Account → see capability → command → consent → real send → evidence → restart/continue. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-04 | Packaging / Installer / Windows lifecycle | Ordinary user can install, launch, update/recover and run without developer tooling. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-05 | Product Instance / sovereign exit / reconstruction | Preserve user-owned instance identity, export, restore, migration, replacement and recoverability. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-06 | Semantic Data Engine / canonical semantic substrate | Provider, Account, Model, Capability, Realization, consequences, evidence maturity and semantic IDs form one coherent substrate. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-07 | World / Registry / capability & availability state | A versioned World honestly says what exists, what is available, what is stale/unknown and what can ground commands. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-08 | Human Semantic Execution Language — NCL/NLCL | Ordinary expression becomes explicit canonical meaning while preserving ambiguity. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-09 | USE command compiler / validator / defaulting | Interpretation becomes a deterministic, replayable command with READY only when structurally valid. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-10 | InterpretationSession / realtime revision semantics | Every keystroke is versioned; corrections are semantic edits; old async results cannot overwrite newer input. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-11 | Semantic Runtime Laboratory / Ω Simulator | Run a standalone deterministic miniature Ω: World → interpretation → command → virtual execution → evidence, independent of live providers and product runtime. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-12 | MVP Visualization Sandbox / semantic product twin | Visually replay the complete first-product interaction to SIMULATED prompt.send with truthful ambiguity and Wiki. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-13 | Virtual executables / simulated evidence | The simulator can execute commands against synthetic Worlds and emit deterministic fake-but-explicit evidence. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-14 | Command Visual Language / semantic interaction protocol | User can see what Ω interpreted, what is unresolved and what will happen; clicks edit semantics rather than hidden UI state. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-15 | VisualSpec vNext / projector | All UI surfaces receive one deterministic semantic projection and never reparse language. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-16 | Automated Semantic Experiments | Competing language/grounding/visual/Wiki designs run against pinned scenarios with semantic diffs and falsifiers. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-17 | Cross-domain semantic generalization | Prove the semantic system is not secretly AI-specific by exercising unrelated capabilities. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-18 | Self-Describing Runtime / Reflection ABI | If Ω can load a public capability, Ω can inspect and explain it from source-bound structural truth. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-19 | Reflection Graph | Derive a read-only graph of Plugin/Capability/Command/Schema/Source/etc. from actual loaded structure. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-20 | Contextual Wiki / realtime help | Generate Glance/Explain/Inspect help from Reflection + World + interpretation, with no parallel Wiki database. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-21 | Self-Knowledge Reflection Migrator / auto-Wiki migration tool | Read the existing codebase, extract structurally provable Reflection, identify gaps, propose safe migrations, and verify compliance. | PHASED | UNPROVEN | 5 | 5 | 1 |  |
+| MP-22 | Source-native semantic declarations & completeness gate | New/modified public behavior is self-describing by construction and cannot silently bypass Reflection. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-23 | Automatic plugin self-knowledge wiring | Installing a plugin immediately adds capability/config/source knowledge to Reflection/Wiki without authored Wiki files. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-24 | Provider Lab | Instrument real provider behavior in Shadow / Control / Conformance / Healing modes and turn messy live reality into reusable knowledge. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-25 | Browser transport & Account identity | Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-26 | Provider/Account/Model routing | Route among valid Providers, Accounts and optional Models without hidden defaults or silent retargeting. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-27 | Provider packs / realization boundary | Isolate provider-specific URLs, identity signals, steps and completion signals behind shared semantic capabilities. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-28 | Live prompt.send realization | One real prompt goes through the selected Account with attempt/result evidence and no false success. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-29 | Provider drift detection / conformance / healing | Detect changed external behavior, mark realization drifted, diagnose/repair under governance, and verify repair. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-30 | Second/third-provider falsification | Force shared semantics to survive materially different providers. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-31 | Authority / consent / refusal | Natural language never grants permission; every consequential operation has explicit scoped authority or refusal. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-32 | Execution envelope / evidence / receipts (Work-lite) | Persist attempt before effect and distinguish executing/completed/failed/uncertain with structural evidence. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-33 | Durable Work / Agency / Attention / background continuity | Consequential delegated outcomes survive worker/process replacement and can continue/recover honestly. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-34 | Vault / canonical local data / continuity | User-owned durable state, provenance and history survive restart and isolation. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-35 | Memory / context / self-knowledge freshness | Durable memory remains distinct from task context; derived context is attributable/fresh/recomputable. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-36 | Plugins / compositions / contribution boundaries | Replaceable capabilities enter through explicit contracts without secret first-party paths. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-37 | Forge / governed self-extension | Ordinary users/Ω can create, modify, compose and repair governed plugins/capabilities through normal admission/proof. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-38 | Governed evolution / compatibility / rollback | Ω can change itself with lineage, impact awareness, verification and recovery without self-authorizing constitutional change. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-39 | Runtime / constitution / resource governance / failure semantics | Minimal trusted substrate enforces non-bypassable boundaries, resource/failure truth and replacement. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-40 | Surfaces / spatial environment / Canvas | Multiple replaceable surfaces project one semantic World; later spatial/canvas experience does not become canonical truth. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-41 | Truth / proof ledger / falsifiers / maturity | Every important claim has an evidence level, owner, falsifier and independent review. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-42 | Harvest-First Engineering / Harvest Bench | Search baseline/history/ecosystem before expensive invention; assay candidates as reuse/adapt/wrap/port/evidence/reject. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-43 | Historical VIVIM / BCP knowledge mining | Reuse old proofs, failures, mechanisms and destination reasoning without inheriting old organization or law. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-44 | OS taxonomy / non-AI benchmark corpus | Stress semantic/reflection/visual systems against hundreds of non-AI capabilities. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-45 | Benchmarks / performance / architecture falsifiers | Re-measure runtime/resource/latency claims only when decision-relevant. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-46 | Local Agentic Development System | Many local agents can work in parallel, hand off through Git/artifacts, and integrate without owner reconstructing everything manually. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-47 | Workstream/dependency/Lock orchestration | Enable temporary low-handoff coordination through explicit, falsifiable interface hypotheses rather than waiting for whole subsystems. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-48 | Model routing / heterogeneous intelligence pool | Use abundant models for work and scarce frontier models for mature review/adjudication; record actual routed model when known. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-49 | ZCode / OpenRouter Auto execution substrate | Use measured ZCode concurrency/workflows safely without assuming historical provider-account topology. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-50 | Codex / Claude Code specialist integration | Use separate harnesses for implementation/integration/review where diversity adds value. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-51 | Grok Build / Grok model integration | Add Grok as both model resource and execution harness without mistaking harness capability for free capacity. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-52 | Daintree execution habitat evaluation | Test whether Daintree usefully manages Git worktrees, Review Hub and supported CLI-agent panels without creating a new source of project truth. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-53 | Development Reality Layer / Dev Black Box | Capture minimal local structural development events that can power context, debugging, regressions and throughput learning. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-54 | Automatic Context Bundles | Give fresh workers compact task-specific context derived from current repo reality. | SEEDED | UNPROVEN | 5 | 3 | 2 | 2 |
+| MP-55 | Failure Capsules / reproducible debugging packets | Package failure, environment, changed files and evidence so another worker can reproduce quickly. | SEEDED | UNPROVEN | 5 | 3 | 2 | 2 |
+| MP-56 | Trace → Fixture / regression harvesting | Turn live/provider/runtime behavior into privacy-reduced deterministic fixtures and tests. | SEEDED | UNPROVEN | 5 | 3 | 3 | 2 |
+| MP-57 | Dynamic worker/model routing | Route tasks to harness/model based on measured task fit, capacity, cost and evidence—not permanent roles. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-58 | Hypothesis arenas / independent shadow validation | Run competing solutions or independent reviews on uncertain load-bearing choices and let evidence decide. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-59 | Disposable experimental universes | Cheap isolated repos/worktrees/compositions/worlds for agents to try risky alternatives without contaminating main. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-60 | Runtime dependency / impact graph + test selection | Know what a change affects and run the smallest high-confidence evidence loop without weakening merge/release gates. | SEEDED | UNPROVEN | 5 | 2 | 4 | 3 |
+| MP-61 | Failure minimization / bisect / regression localization | Automatically shrink and locate failing changes/inputs/traces. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-62 | Continuous fault injection / live architectural falsifiers | Deliberately kill/break sessions, providers, selectors, workers, resources and projections to test truthful recovery. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-63 | Provider-pack hot reload / reproducible environments / build-test acceleration | Shrink code→evidence loops without weakening correctness. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-64 | Automatic Session Chronicle / development knowledge promotion | Create evidence-derived durable handoffs and promote only useful development knowledge. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-65 | Interactive Development Cockpit / congestion awareness | See and control agents/worktrees/failures/queues when concurrency makes coordination expensive. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-66 | Elephant Context Network | Test persistent epoch-aware large-context domain cognition as consult/review/onboarding service. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
+| MP-67 | Acceleration Scorecard | Measure whether any DevOps accelerator improves validated product progress rather than activity. | REGISTERED | UNPROVEN | 0 | 0 | 0 |  |
 
 ## Cross-program gates
 

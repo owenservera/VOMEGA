@@ -8,10 +8,11 @@
 // non-duplication boundary mechanical: a banned meaning key, a dangling program/gate ref
 // or a stale hand-edited projection is a failure, not a warning.
 import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { Events, Seed, bannedProgramKeys } from "./schema.ts";
 import type { Seed as SeedT, Events as EventsT } from "./schema.ts";
 import { planResolution } from "./derive.ts";
-import { gitHead, paths, projectSource, writeProjection } from "./project.ts";
+import { gitHead, paths, projectSource, stripVolatileHead, stripVolatileHeadMd, writeProjection } from "./project.ts";
 import type { Tracker } from "./project.ts";
 
 interface Report {
@@ -48,7 +49,7 @@ export function validate(rawSeed: unknown, rawEvents: unknown, tracker: Tracker)
 
   const seed = parsedSeed.data;
   const events = parsedEvents.data;
-  const trackerIds = new Set(tracker.programs.map((p) => p.id));
+  const trackerIds = new Set((tracker.programs ?? []).map((p) => p.id));
 
   // 3. program keys, and per-program id shapes.
   const gateIds = new Set<string>();
@@ -111,6 +112,31 @@ function readJson(path: string, label: string): unknown {
 
 const sameText = (a: string, b: string): boolean => a.replace(/\r\n/g, "\n") === b.replace(/\r\n/g, "\n");
 
+/**
+ * Print a live reference to the ratchet's computed execution/proof state. Referenced, never
+ * stored: the PM projection holds no ratchet state, so it cannot drift from or fork it.
+ */
+function printRatchetReference(): void {
+  const p = join(paths.root, ".project/evidence/d1-ratchet.json");
+  if (!existsSync(p)) return;
+  try {
+    const r = JSON.parse(readFileSync(p, "utf8")) as {
+      spec?: string;
+      probe?: { head?: string; totals?: { pass?: number; gates?: number } };
+      summary?: Record<string, number>;
+    };
+    const t = r.probe?.totals ?? {};
+    const s = r.summary ?? {};
+    process.stdout.write(
+      `ref ratchet:${r.spec ?? "?"} @ ${r.probe?.head ?? "?"} — ${t.pass ?? "?"}/${t.gates ?? "?"} gates green; ` +
+        `DONE ${s.DONE ?? 0} · PROVEN ${s.PROVEN ?? 0} · OPEN ${s.OPEN ?? 0} · BLOCKED ${s.BLOCKED ?? 0} ` +
+        `(referenced live, not stored)\n`,
+    );
+  } catch {
+    /* a malformed evidence file is not the PM layer's failure to raise */
+  }
+}
+
 export function main(argv: string[]): number {
   const cmd = argv[0] ?? "project";
   const check = cmd === "check" || argv.includes("--check");
@@ -130,10 +156,19 @@ export function main(argv: string[]): number {
       process.stdout.write(`wrote ${paths.outMd.replace(paths.root, ".")} and ${paths.outJson.replace(paths.root, ".")}\n`);
     } else {
       // A hand-edited projection is a failure: generated output is not a source.
-      if (!existsSync(paths.outMd) || !sameText(readFileSync(paths.outMd, "utf8"), fresh.md)) problems.push(`PROJECTION_STALE ${paths.outMd.replace(paths.root, ".")} — run: bun run pm`);
-      if (!existsSync(paths.outJson) || !sameText(readFileSync(paths.outJson, "utf8"), fresh.json)) problems.push(`PROJECTION_STALE ${paths.outJson.replace(paths.root, ".")} — run: bun run pm`);
+      // The volatile HEAD is neutralized before comparison, because committing the projection
+      // advances HEAD — that alone must never make a committed artifact "stale".
+      const rel = (p: string): string => p.replace(paths.root, ".");
+      const freshJson = stripVolatileHead(fresh.json);
+      const freshMd = stripVolatileHeadMd(fresh.md);
+      if (!existsSync(paths.outJson)) problems.push(`PROJECTION_MISSING ${rel(paths.outJson)} — run: bun run pm`);
+      else if (!sameText(stripVolatileHead(readFileSync(paths.outJson, "utf8")), freshJson)) problems.push(`PROJECTION_STALE ${rel(paths.outJson)} — run: bun run pm`);
+      if (!existsSync(paths.outMd)) problems.push(`PROJECTION_MISSING ${rel(paths.outMd)} — run: bun run pm`);
+      else if (!sameText(stripVolatileHeadMd(readFileSync(paths.outMd, "utf8")), freshMd)) problems.push(`PROJECTION_STALE ${rel(paths.outMd)} — run: bun run pm`);
     }
   }
+
+  if (check) printRatchetReference();
 
   if (problems.length) {
     for (const p of problems) process.stdout.write(`FAIL ${p}\n`);

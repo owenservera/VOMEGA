@@ -325,3 +325,11 @@ Implemented the reviewed v0 proposal (rev 2). New code under `omega-baseline/exp
 Verification: `bun run pm:test` 25 pass / 0 fail; `bun run pm` regenerates; `bun run pm:check` ok with 5 warnings (the carried audit gaps: 9 ungated phases across MP-54/55/56/60, and MP-60 P5 needsReview). `bun run ratchet drift` all 6 facts green (STATUS/SITREP mutex preserved). Projection: 67 programs, 5 seeded, 62 REGISTERED, MP-21 PHASED (all five phases gated), 4 SEEDED, 16 gates, all evidence UNPROVEN.
 
 Note: PM owns no program meaning and no execution/proof state; the seed carries the audit's defects as explicit gaps rather than fixing them silently. Independent `PMC-TRU` implementation review still outstanding.
+
+### PM v0 review + dogfood — 2026-10-06
+
+Independent bounded `PMC-TRU` implementation review of commit `56fe9c4`: **accept-with-changes**. It found a real bug — `pm:check` was red on the shipped commit because the committed projection embedded `sourceHead` and committing advances HEAD — plus an overclaiming schema comment, a §5/§2 disagreement, and minor robustness defects. All required changes applied: volatile HEAD neutralized in the freshness comparison (with a test), `pm:check` now prints a live non-stored ratchet reference, schema comment corrected, `validate` made defensive, newline escaping added. Suite now 29 tests.
+
+Dogfood: a separate fresh worker given only `generated/PORTFOLIO.md` answered just 1 of 9 success-criterion questions fully. Adopted the highest-value fix — a **Purpose (why it exists)** column projected from the canonical tracker. The remaining orientation gaps (a "now/active" view, evidence pointers, plan delta, gate metadata, `taskRef` linkage) are recorded as the v0.1 backlog in `.project/pm/recon/REVIEW-V0.md`.
+
+Verified: `pm:test` 29 pass / 0 fail; `pm:check` green post-commit (5 warnings = carried gaps); `omega:quick` 62/0/1622; `ratchet drift` 6/6. Truth: v0 proves reference integrity, strict-schema rejection and a stable projection — it does not prove the ratchet `taskRef` linkage (deferred to v0.1) and does not make any PM state authoritative.

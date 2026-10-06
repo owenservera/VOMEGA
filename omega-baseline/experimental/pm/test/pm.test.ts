@@ -3,7 +3,7 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { evidenceState, planResolution } from "../src/derive.ts";
 import type { EvidenceEvent, Phase } from "../src/schema.ts";
-import { buildPortfolio, paths, renderPortfolioMd } from "../src/project.ts";
+import { buildPortfolio, paths, projectSource, renderPortfolioMd, stripVolatileHead, stripVolatileHeadMd } from "../src/project.ts";
 import type { Tracker } from "../src/project.ts";
 import { validate } from "../src/check.ts";
 
@@ -123,6 +123,11 @@ describe("validate", () => {
     const r = validate(seedWith({ "MP-21": { phases: [phase()] } }), events, tracker);
     expect(r.problems.some((p) => p.includes("DANGLING_GATE_REF evidence"))).toBe(true);
   });
+
+  test("a workPackages key is rejected in v0 (strict schema)", () => {
+    const r = validate(seedWith({ "MP-21": { phases: [phase()], workPackages: [{ taskRef: "D1-001" }] } }), noEvents, tracker);
+    expect(r.problems.some((p) => p.startsWith("SEED_INVALID"))).toBe(true);
+  });
 });
 
 // ---------------------------------------------------------------- projection
@@ -146,6 +151,31 @@ describe("projection", () => {
     const seed = { schema: "vomega-pm/0", programs: { "MP-21": { phases: [phase({ name: "a | b" })] } } };
     const md = renderPortfolioMd(buildPortfolio(seed as never, tracker, noEvents as never, "head"));
     expect(md).toContain("a \\| b");
+  });
+
+  test("escapes newlines so a multi-line value cannot break the table", () => {
+    const seed = { schema: "vomega-pm/0", programs: { "MP-21": { phases: [phase({ name: "a\nb" })] } } };
+    const md = renderPortfolioMd(buildPortfolio(seed as never, tracker, noEvents as never, "head"));
+    expect(md).toContain("a b");
+    expect(md).not.toContain("a\nb");
+  });
+
+  test("renders a purpose column read from the canonical tracker", () => {
+    const seed = { schema: "vomega-pm/0", programs: { "MP-21": { phases: [phase()] } } };
+    const md = renderPortfolioMd(buildPortfolio(seed as never, tracker, noEvents as never, "head"));
+    expect(md).toContain("Purpose (why it exists)");
+    expect(md).toContain("purpose text");
+  });
+
+  test("a committed projection is not stale merely because HEAD advanced", () => {
+    const seed = { schema: "vomega-pm/0", programs: { "MP-21": { phases: [phase()] } } };
+    const a = projectSource(seed as never, tracker, noEvents as never, "aaaaaaa");
+    const b = projectSource(seed as never, tracker, noEvents as never, "bbbbbbb");
+    expect(stripVolatileHead(a.json)).toBe(stripVolatileHead(b.json));
+    expect(stripVolatileHeadMd(a.md)).toBe(stripVolatileHeadMd(b.md));
+    // A seed change still shows through the surviving digest line.
+    const c = projectSource({ schema: "vomega-pm/0", programs: {} } as never, tracker, noEvents as never, "aaaaaaa");
+    expect(stripVolatileHeadMd(a.md)).not.toBe(stripVolatileHeadMd(c.md));
   });
 });
 
