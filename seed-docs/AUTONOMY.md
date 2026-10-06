@@ -4,7 +4,7 @@ This document exists so the autonomous build does not confuse "baseline" with "b
 
 ## Development capability-space mandate
 
-At project start, inspect the actual local development environment rather than assuming a single harness. The first bootstrap executor is local Codex; Claude Code, ZCode, the five configured Space Bunny lanes, and deterministic local tools are additional available resources whose actual capabilities must be discovered.
+At any execution restart, inspect the actual local development environment rather than assuming a single harness or inherited topology. The initial Codex bootstrap and historical Space Bunny account layout are past evidence, not current scheduling law. Codex, Claude Code, ZCode, Grok Build, OpenCode, Daintree, Git/worktrees and deterministic local tools are replaceable resources whose current capabilities/capacity must be discovered.
 
 The project may design its own agents, workflows, skills, plugins, MCP servers, hooks, background jobs, schedules, remote workspaces, testing infrastructure, observability, memory conventions, and other DevOps machinery. Discover what is available before deciding what to build.
 
@@ -135,7 +135,7 @@ The autonomous team's job is to choose the how. The seed's job is to make sure t
 
 ## Autonomy across development systems
 
-The autonomous build may use ZCode, the configured Space Bunny lanes, local Codex, local Claude Code, and ordinary deterministic development tools as complementary resources.
+The autonomous build may use the currently available development systems—such as ZCode, Codex, Claude Code, Grok Build, OpenCode, Daintree, Git/worktrees and deterministic tooling—as complementary resources. Historical provider-account layouts are not worker topology.
 
 It has authority to design coordination, delegation, review, handoff, worktree, and evidence practices across those systems, but it does not have blanket authority to reconfigure their accounts, credentials, subscriptions, provider definitions, or authentication.
 
@@ -144,8 +144,6 @@ No development system receives permanent architectural authority merely because 
 Where consequential decisions are difficult to verify deterministically, independent reasoning from materially different model/tool systems is an available verification strategy—not a substitute for evidence, but a way to expose blind spots before promotion.
 
 
-## First-executor boundary
+## First-executor boundary — historical outcome
 
-Codex is authorized to perform the first bootstrap and to create the minimum durable project/development structure required for continuity and real product execution.
-
-That bootstrap role does not grant Codex permanent coordination authority. The project may later use Codex, Claude Code, ZCode, deterministic tooling, or combinations of them for planning, implementation, review, research, and verification according to evidence and task fit.
+The initial Codex bootstrap is complete. It created durable project truth but did not establish permanent coordination authority. Current execution may use any suitable harness/model/tool combination according to evidence, task fit, current capacity and independent-verification value. The 67-program Meta Tracker is the program map; execution tools and temporary lanes remain below it.
