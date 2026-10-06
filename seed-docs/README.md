@@ -176,13 +176,11 @@ It includes candidate mechanisms such as a local Development Reality Layer / Dev
 
 These are **not requirements**. They should be activated only against measured bottlenecks and retained only when evidence shows useful leverage.
 
-## First bootstrap executor
+## First bootstrap executor — historical
 
-The first real bootstrap is expected to be run by **local Codex from the local VOMEGA checkout**.
+The initial bootstrap was run on 2026-10-05. **CODEX-BOOTSTRAP-START-HERE.md** is retained as a historical execution record, not a current entry point. Codex does not hold a standing role, and the historical five-Space-Bunny topology is superseded as runtime guidance.
 
-Point Codex first to **CODEX-BOOTSTRAP-START-HERE.md**. That document is the execution entry point for the initial bootstrap and tells Codex how to read the broader seed, establish machine/repository reality, discover Claude Code/ZCode/the five Space Bunny lanes, create minimal durable project truth, run the first Product Release Gym, and transition into real implementation.
-
-Codex is the first executor, not a permanent master or constitutional authority.
+For current execution, start from `../.project/SITREP.md`, `../.project/META-TRACKER.md`, and `../.project/agentic-launch/STATUS.md`. The Meta Tracker preserves the complete 67-program map plus 31 accelerator hypotheses; current executors are selected by task/evidence/capacity rather than inherited bootstrap topology.
 
 ## First product release design
 
