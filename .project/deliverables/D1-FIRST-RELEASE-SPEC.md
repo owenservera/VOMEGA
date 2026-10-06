@@ -202,9 +202,21 @@ The UI is not allowed a privileged action callback that bypasses the command mac
 
 ## 10. Contextual help / Wiki slice
 
-D1 needs a **minimal** contextual help projection, not the complete Reflection program.
+D1 needs a **minimal source-bound Reflection → Reflection Graph → contextual Wiki/help slice**, not the complete Reflection program.
 
-The help system must derive claims from the active semantic registry/World/interpretation metadata.
+The help system must derive structural claims from actual D1 source/declarations through a deterministic read-only extractor/Reflection representation, then join those facts with active World/interpretation state. A separately authored Wiki/help database is not authoritative.
+
+Minimum D1 Reflection scope:
+
+- `prompt.send` capability and required parameters/slots;
+- D1 virtual realization;
+- relevant Provider/Account semantic types;
+- relevant consequence/evidence semantics;
+- semantic Account-selection action(s);
+- stable source anchors/content digests binding reflected facts to implementation artifacts;
+- explicit missing/unknown output where extraction cannot prove a fact.
+
+The Reflection representation is descriptive only: it cannot grant authority, availability, authenticated Account truth, or evidence maturity.
 
 For the canonical journey it must answer:
 
@@ -264,7 +276,7 @@ D1 cannot be declared complete until these are automated:
 6. **Revision safety:** late result for revision N cannot replace N+1.
 7. **Typed/clicked parity:** equivalent correction gives equivalent command digest.
 8. **Projection purity:** changing visual treatment cannot change command digest.
-9. **Help grounding:** removing a semantic capability/state removes its current help claim.
+9. **Reflection/Wiki grounding:** removing or structurally changing a reflected capability/parameter/realization changes or invalidates the corresponding current help claim; reflected facts remain source-bound and read-only.
 10. **Authority separation:** interpretation/selection alone cannot grant consent.
 11. **Simulation boundary:** virtual receipt cannot satisfy a live-evidence predicate.
 12. **Replay determinism:** pinned complete journey replays identically.
@@ -280,7 +292,7 @@ D1 should leave:
 - semantic/command schema or code contracts;
 - scenario corpus;
 - UI/product twin;
-- contextual help slice;
+- minimal source-bound Reflection extractor/graph + contextual Wiki/help slice;
 - virtual executor;
 - replay runner;
 - tests;
