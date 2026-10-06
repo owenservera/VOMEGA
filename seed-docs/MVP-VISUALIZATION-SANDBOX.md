@@ -22,6 +22,7 @@ The sandbox should answer questions such as:
 - What should the user see while typing?
 - When should Provider, Account, Model and capability become visible?
 - How should ambiguity be represented?
+- What is the highest-value plausible **wrong** interpretation at this revision, and is it worth exposing now?
 - How does the user correct a wrong target?
 - What happens visually when a Provider has two Accounts?
 - How do defaults appear without becoming invisible magic?
@@ -103,9 +104,11 @@ InterpretationSession
           ↓
 deterministic NCL/NLCL pipeline
           ↓
-candidate UseCommand
+candidate UseCommand + candidate intent manifold
           ↓
 validator / defaulting policy
+          ↓
+negative-intent frontier evaluator
           ↓
 VisualSpec vNext
         ↙       ↘
@@ -1063,3 +1066,17 @@ The sandbox architecture is wrong if:
 ## 36. Change record
 
 - **2026-10-05:** Initial design. Consolidates the first-release floating box, current NLCL/VisualSpec substrate, visual-language design, old symbolic harvest, Reflection/Wiki architecture and the owner request for a realistic three-provider semantic visualization sandbox.
+
+
+## Negative-intent projection experiment
+
+The sandbox should support a bounded implementation of the [Negative Intent Signal Engine](NEGATIVE-INTENT-SIGNAL-ENGINE.md) without turning it into a release blocker.
+
+Internally, preserve the full candidate manifold for inspection/replay. In the compact product surface, normally project only the single counterfactual with the highest early-correction value.
+
+The sandbox must be able to demonstrate both of these cases:
+
+- the compiler's second-ranked candidate is **not** shown because it is cheap to correct later and would only create noise;
+- a lower-ranked candidate **is** shown because allowing it to remain implicit would create a large downstream target/scope/consequence correction.
+
+Selecting the counterfactual must emit the same semantic edit as an equivalent typed correction. Dismissing it must not silently authorize the leading interpretation or erase material ambiguity.
