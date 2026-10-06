@@ -31,14 +31,15 @@ Read these before implementation:
 
 1. [D1 release specification](D1-FIRST-RELEASE-SPEC.md)
 2. [D1 atomic task list](D1-ATOMIC-TASKS.md)
-3. [VOMEGA SITREP](../SITREP.md)
-4. [First Product Release Design](../../seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md)
-5. [Invariants](../../seed-docs/INVARIANTS.md)
-6. [Proof and Maturity](../../seed-docs/PROOF-AND-MATURITY.md)
-7. [Semantic Data Engine](../../seed-docs/SEMANTIC-DATA-ENGINE.md)
-8. [MVP Visualization Sandbox](../../seed-docs/MVP-VISUALIZATION-SANDBOX.md)
-9. [Automated Semantic Experiments](../../seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md)
-10. [D1 midstream correction / provenance](D1-MIDSTREAM-CORRECTION-ADDENDUM.md) — retained as the record of why Reflection/Migrator was added; its requirements are now folded into the primary D1 spec/tasks.
+3. [D1 execution acceleration directive](D1-EXECUTION-ACCELERATION-DIRECTIVE.md) — bounded operating rules that fold the acceleration review into the existing Ratchet/claim/proof system; not a second PM layer.
+4. [VOMEGA SITREP](../SITREP.md)
+5. [First Product Release Design](../../seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md)
+6. [Invariants](../../seed-docs/INVARIANTS.md)
+7. [Proof and Maturity](../../seed-docs/PROOF-AND-MATURITY.md)
+8. [Semantic Data Engine](../../seed-docs/SEMANTIC-DATA-ENGINE.md)
+9. [MVP Visualization Sandbox](../../seed-docs/MVP-VISUALIZATION-SANDBOX.md)
+10. [Automated Semantic Experiments](../../seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md)
+11. [D1 midstream correction / provenance](D1-MIDSTREAM-CORRECTION-ADDENDUM.md) — retained as the record of why Reflection/Migrator was added; its requirements are now folded into the primary D1 spec/tasks.
 
 The seed documents define intent and protected distinctions. This D1 pack defines the **current bounded deliverable and build order**. It does not promote candidate Lab architecture into Ω constitutional law.
 
@@ -58,15 +59,18 @@ Work atomically from `D1-ATOMIC-TASKS.md`.
 
 For each task:
 
+- self-checkout and register the session;
+- start from the Ratchet packet and named red gate;
 - verify dependencies;
 - implement one bounded outcome;
 - add or update the smallest proof;
 - run relevant tests;
 - record material evidence/failure;
-- commit coherently;
-- update task state.
+- promote only from current probe truth;
+- obtain independent review;
+- commit coherently and release the task claim.
 
-Parallelize only tasks with genuinely disjoint write surfaces or explicit interfaces.
+Parallelize only tasks with genuinely disjoint write surfaces or explicit interfaces. If a gate already expresses the behavior, do not create another prose design pass unless the design-intensity system says the work genuinely needs one.
 
 ## Executable task control (added 2026-10-06)
 
