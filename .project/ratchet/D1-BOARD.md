@@ -4,16 +4,16 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `82ebbe6f4422`, Bun 1.4.2, win32-x64, 20/80 gates green, digest e672c18ce19d · promoted gates: 17
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `51c023b6acb4`, Bun 1.4.2, win32-x64, 20/80 gates green, digest e672c18ce19d · promoted gates: 18
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 14 | 10 | 0 | 52 | 0 | 0 | 77 | 10 | 0 |
+| 1 | 15 | 11 | 0 | 50 | 0 | 0 | 77 | 11 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
-- **D1-025** Compile direct `prompt.send` utterance — crit 16, unblocks 41; `bun run ratchet packet D1-025`
 - **D1-060** Define D1 consequence record for `prompt.send` — crit 16, unblocks 25; `bun run ratchet packet D1-060`
+- **D1-026** Preserve two-Account ambiguity — crit 15, unblocks 24; `bun run ratchet packet D1-026`
 - **D1-040** Define minimal deterministic D1 projection contract — crit 14, unblocks 24; `bun run ratchet packet D1-040`
 - **D1-029** Implement deterministic command digest — crit 12, unblocks 19; `bun run ratchet packet D1-029`
 - **D1-050** Expose minimal semantic help metadata from same source records — crit 12, unblocks 16; `bun run ratchet packet D1-050`
@@ -22,6 +22,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 - **D1-005** Fix required-field/READY validation — crit 2, unblocks 2; `bun run ratchet packet D1-005`
 - **D1-016** Add World W3: stale Claude Work — crit 1, unblocks 0; `bun run ratchet packet D1-016`
 - **D1-017** Add World W4: unknown/incompatible target — crit 1, unblocks 0; `bun run ratchet packet D1-017`
+- **D1-028** Protect quoted payload from routing — crit 1, unblocks 0; `bun run ratchet packet D1-028`
 
 ## All tasks
 
@@ -59,17 +60,17 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-022 | BLOCKED | 0/1 | Interpret “add another Claude account and call it Personal” |  |
 | D1-023 | BLOCKED | 0/1 | Persist D1 synthetic registration in session World state |  |
 | D1-024 | PROVEN | 1/1 | Define candidate canonical `prompt.send` UseCommand |  · claimed by gov-impl-r2 until 2026-10-06T21:07:18.249Z |
-| D1-025 | OPEN ★ | 1/1 | Compile direct `prompt.send` utterance | PROMOTE_PENDING 1 |
-| D1-026 | BLOCKED | 0/1 | Preserve two-Account ambiguity |  |
+| D1-025 | PROVEN | 1/1 | Compile direct `prompt.send` utterance |  · claimed by gov-impl-r3 until 2026-10-06T21:35:18.359Z |
+| D1-026 | OPEN ★ | 0/1 | Preserve two-Account ambiguity |  |
 | D1-027 | BLOCKED | 0/1 | Apply explicit text correction “use Work” |  |
-| D1-028 | BLOCKED | 1/1 | Protect quoted payload from routing | PROMOTE_PENDING 1 |
+| D1-028 | OPEN ★ | 1/1 | Protect quoted payload from routing | PROMOTE_PENDING 1 |
 | D1-029 | OPEN ★ | 0/1 | Implement deterministic command digest |  |
 
 ### Phase D — realtime session semantics
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-030 | PROVEN | 1/1 | Add InterpretationSession/revision identity | proven ahead of its dependencies |
+| D1-030 | PROVEN | 1/1 | Add InterpretationSession/revision identity |  |
 | D1-031 | PROVEN | 1/1 | Bind interpretation result to originating revision |  |
 | D1-032 | PROVEN | 1/1 | Suppress obsolete late results |  |
 | D1-033 | BLOCKED | 1/2 | Represent semantic edits explicitly |  |

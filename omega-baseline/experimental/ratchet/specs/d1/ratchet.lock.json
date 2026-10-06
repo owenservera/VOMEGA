@@ -155,6 +155,15 @@
       "head": "82ebbe6f4422",
       "at": "2026-10-06T17:17:23.332Z"
     },
+    "D1-025::canonical journey phrase compiles to prompt.send with its payload": {
+      "task": "D1-025",
+      "name": "canonical journey phrase compiles to prompt.send with its payload",
+      "file": "omega-baseline/experimental/d1/test/gates/c-command.gate.test.ts",
+      "specDigest": "sha256:07d4c02b99c2671c07f7ceada2aff8e392567c39a53843c8e44c2e720ae7a574",
+      "by": "gov-impl-r3",
+      "head": "51c023b6acb4",
+      "at": "2026-10-06T17:35:58.827Z"
+    },
     "D1-030::every input edit gets a monotonic revision identity": {
       "task": "D1-030",
       "name": "every input edit gets a monotonic revision identity",
