@@ -12,6 +12,8 @@ Each head should read the full current seed before making load-bearing architect
 
 Every head must preserve repository truth, claim evidence honestly, and avoid modifying local provider/auth configuration unless explicitly authorized.
 
+Before substantive implementation/review work, every head and substantive subworker must follow [DEV-AGENT-REGISTRATION.md](DEV-AGENT-REGISTRATION.md): self-check repository state, create or verify a per-agent claim under `claims/`, record source HEAD + high-level write surface, and close/report the claim before the session ends. A coordinator may register a dispatched worker on its behalf; tiny read-only helpers that produce no independent repository result do not need separate claims.
+
 ---
 
 ## SDW — Semantic Data & World
