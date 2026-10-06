@@ -28,7 +28,7 @@ Core aspiration:
 
 > **words → candidate meaning → grounded command → deterministic executable plan → virtual/real bounded execution → observed evidence → real-time human feedback**
 
-Every arrow should be replaceable and experimentally comparable except the smallest constitutional kernel needed to preserve identity, evidence, isolation, replay and governance.
+Every arrow should be replaceable and experimentally comparable except the smallest Lab kernel needed to preserve identity, evidence, isolation, replay and governance.
 
 ## 2. Relationship to existing VOMEGA work
 
@@ -82,9 +82,9 @@ Taxonomy Pack
 
 The same prompt corpus can then run against Profile A, B, C, ... and the Lab can show exactly where their outputs diverge.
 
-## 4. The constitutional kernel
+## 4. Lab kernel constraints — candidate
 
-> **Authority note (2026-10-06).** "Constitutional" here is scoped to the Lab: it names the small part of the *Lab* that experiments may not rewrite. The eight responsibilities below are a candidate list. This section does not define Ω's product kernel and does not amend `INVARIANTS.md`; what the product core must contain is still open ("the exact current K0/K1 boundary must be re-validated against the live system"). A team may build the first Lab with a smaller or different kernel if the Lab's truth boundaries (identity, append-only evidence, isolation, replay) are still met.
+> **Authority note (2026-10-06).** This is a **Lab-internal candidate constraint set**, not Ω constitutional law. The eight responsibilities below are a candidate list. This section does not define Ω's product kernel and does not amend `INVARIANTS.md`; what the product core must contain is still open ("the exact current K0/K1 boundary must be re-validated against the live system"). A team may build the first Lab with a smaller or different kernel if the Lab's truth boundaries (identity, append-only evidence, isolation, replay) are still met.
 
 The owner explicitly wants the system reprogrammable **except the core**.
 
@@ -129,7 +129,7 @@ Candidate non-reprogrammable responsibilities:
    - promotions create attributable state transitions;
    - previous profiles remain replayable.
 
-8. **Constitutional boundary**
+8. **Lab kernel boundary**
    - ordinary modules cannot rewrite the kernel or grant themselves new kernel powers;
    - kernel change is an external product-development event with explicit migration and review.
 
@@ -821,7 +821,7 @@ A Profile should not win by being more decisive if it achieves that by hiding un
 
 ## 14. Self-governance and self-evolution
 
-The Lab should be able to improve itself, but only outside the constitutional kernel.
+The Lab should be able to improve itself, but only outside the Lab kernel.
 
 ### Sources of proposed evolution
 
@@ -1335,7 +1335,7 @@ The value is the ability to **change one part of Ω, replay the consequences acr
 
 ## 31. Change record
 
-- **2026-10-05:** Initial owner-directed design. Reframed the requested modular database as a standalone semantic runtime laboratory: versioned taxonomy/language/command/executable/World/visual/interaction/test/harvest/governance libraries; composable Profiles; virtual Ω runtime; deterministic replay; realtime interpretation traces; structured knowledge harvesting; bounded self-evolution; tiny non-reprogrammable constitutional kernel.
+- **2026-10-05:** Initial owner-directed design. Reframed the requested modular database as a standalone semantic runtime laboratory: versioned taxonomy/language/command/executable/World/visual/interaction/test/harvest/governance libraries; composable Profiles; virtual Ω runtime; deterministic replay; realtime interpretation traces; structured knowledge harvesting; bounded self-evolution; tiny non-reprogrammable Lab kernel.
 
 
 ## 32. Self-description / Reflection integration
