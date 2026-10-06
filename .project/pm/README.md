@@ -1,5 +1,7 @@
 # VOMEGA Project Management Design
 
+> **ACTIVE OWNER CORRECTION — READ FIRST:** [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md). The PM system currently manages **only MP-21, MP-54, MP-55, MP-56 and MP-60**. It is not a 67-program portfolio decisioning system and has no authority to choose, rank, add, remove or prioritize meta programs.
+
 Status: **DESIGN SEED — NOT YET A PM APPLICATION OR EXECUTION AUTHORITY**  
 Created: 2026-10-06  
 Source program map: `../META-TRACKER.md` / `../meta-tracker.json`  
