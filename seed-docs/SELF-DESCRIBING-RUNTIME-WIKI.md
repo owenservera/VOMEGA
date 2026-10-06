@@ -795,7 +795,7 @@ A plugin may contribute:
 
 But it should not be able to make itself invisible to reflection.
 
-The reflective obligation is constitutional.
+The reflective obligation is a **proposed product invariant**, not current constitutional law. The Reflection Lab may enforce it internally as a falsifiable constraint while gathering evidence; product adoption requires explicit promotion.
 
 How reflection is rendered is not.
 
