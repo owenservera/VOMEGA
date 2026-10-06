@@ -247,10 +247,10 @@
       "id": "MP-25",
       "name": "Browser transport & Account identity",
       "purpose": "Attach to a real user-controlled provider session and truthfully identify Provider + Account + freshness.",
-      "state": "RECON Lock E only; no live attach.",
+      "state": "RECON only; no live attach. TRU-05 candidate protocol drafted.",
       "priority": "NOW critical external path",
       "owners": "PRV + TRU",
-      "notes": "TRU-05 live-proof protocol + consent/evidence boundary before live observation."
+      "notes": "Live observation remains blocked by owner/TOS/consent boundaries; start with the read-only Account/session falsifier only after those boundaries permit it."
     },
     {
       "id": "MP-26",
@@ -391,7 +391,7 @@
       "id": "MP-41",
       "name": "Truth / proof ledger / falsifiers / maturity",
       "purpose": "Every important claim has an evidence level, owner, falsifier and independent review.",
-      "state": "TRU-L1 active review demonstrated; release ledger/falsifier suite still roadmap work.",
+      "state": "Independent review demonstrated; D1 Ratchet proof machinery exists; TRU-05 live-proof protocol is a candidate, not live evidence.",
       "priority": "NOW / continuous",
       "owners": "TRU",
       "notes": "Fixture ≠ live; promotion is proof, not confidence."
