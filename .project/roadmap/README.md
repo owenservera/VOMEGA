@@ -11,6 +11,12 @@ Per `BUILD-FOCUS.md` the Release Gym re-ranks it at every milestone exit
 
 Task IDs and milestones are a useful current decomposition, not a mandatory path. Agents may propose merges, splits, replacement tasks or reordered milestones when they preserve proof obligations and record the evidence for the change.
 
+## Relationship to the whole program
+
+This roadmap is a **first-public-release decomposition only**. The canonical whole-program map is `../META-TRACKER.md`, which preserves 67 major programs plus 31 development-acceleration hypotheses. The nine roadmap workstreams below are not the VOMEGA workstream list, and their task/milestone order is not a serial architecture roadmap.
+
+D1 uses its own bounded `D1-xxx` task namespace and may cut across several roadmap workstreams and meta programs. The independent live Provider path may also advance in parallel. Preserve release proof obligations even when execution is reorganized.
+
 ## Read in this order
 
 | File | Job |
@@ -35,8 +41,7 @@ Task IDs and milestones are a useful current decomposition, not a mandatory path
 | [TRU](workstreams/WS-TRU-truth-verification.md) | Truth & verification | Verification / Reality | Truth |
 | [OPS](workstreams/WS-OPS-coordination-devops.md) | Coordination & DevOps throughput | Development-system effectiveness | Coordination |
 
-Workstreams are coverage areas, not departments (`WORKSTREAM-LANDSCAPE.md`).
-Merge or split them when evidence warrants.
+These nine roadmap workstreams are **release-slice coverage areas**, not departments and not the whole program (`WORKSTREAM-LANDSCAPE.md`, `../META-TRACKER.md`). Merge, split, bypass, or replace them when evidence warrants while preserving proof obligations.
 
 ## Using the task system
 
