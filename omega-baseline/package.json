@@ -29,7 +29,10 @@
     "ratchet": "bun run experimental/ratchet/src/cli.ts",
     "ratchet:test": "bun test experimental/ratchet/test",
     "d1": "bun run experimental/d1/src/launch.ts",
-    "d1:gates": "bun test experimental/d1/test/gates"
+    "d1:gates": "bun test experimental/d1/test/gates",
+    "pm": "bun run experimental/pm/src/check.ts project",
+    "pm:check": "bun run experimental/pm/src/check.ts check",
+    "pm:test": "bun test experimental/pm/test"
   },
   "dependencies": {
     "zod": "^4.6.2"

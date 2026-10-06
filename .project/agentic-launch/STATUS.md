@@ -4,7 +4,7 @@ Launch rows as of 2026-10-05; wording and evidence notes reconciled 2026-10-06.
 
 This file is the compact launch-state surface for fresh local sessions. It is the only place that says what is claimed, running or done.
 
-**Right now: nothing is claimed and nothing is running.** D1 is selected and incomplete; the earlier Codex claim (`work/d1-semantic-twin` at `26ec6df`) stopped before substantive implementation and was consolidated into `main` (see SITREP and COMMONS). D1 task state is now computed, not written here: `cd omega-baseline && bun run ratchet status` (board: `.project/ratchet/D1-BOARD.md`). Claim D1 tasks with `bun run ratchet claim <TASK> --by <label>`. _Corrected 2026-10-06: the drift fact F-ACTIVE-EXECUTOR-CONSISTENT found this line contradicting SITREP._
+**Right now: no D1 executor is running. The PM roadmap-system workstream is claimed by the ZCode PM team (recon wave).** D1 is selected and incomplete; the earlier Codex claim (`work/d1-semantic-twin` at `26ec6df`) stopped before substantive implementation and was consolidated into `main` (see SITREP and COMMONS). D1 task state is now computed, not written here: `cd omega-baseline && bun run ratchet status` (board: `.project/ratchet/D1-BOARD.md`). Claim D1 tasks with `bun run ratchet claim <TASK> --by <label>`. _Corrected 2026-10-06: the drift fact F-ACTIVE-EXECUTOR-CONSISTENT found this line contradicting SITREP._
 
 Ratchet hardening + independent review completed 2026-10-06 on branch `work/d1-ratchet-integration` (not yet merged to `main`): recommendation **ADOPT WITH REMAINING LIMITATIONS**, findings in `.project/ratchet/REVIEW-2026-10-06.md`. Probe truth is 15/80 D1 gates green; a green `d1:gates` run is not D1 completion.
 
@@ -146,3 +146,15 @@ DEV-L1 claimed and executed 2026-10-05 (ZCode `sess_673eb8fa`, source HEAD `dffb
 - Harness note: unbounded heavy background subagents stalled; bounded (<=8 tool-call) workers all completed on the same route.
 
 Artifacts: `.project/agentic-launch/handoffs/*.md`, `omega-baseline/experimental/*/`. Next: fix/pin CMD-06 validator, materialize world fixtures, resolve default precedence, add multi-revision corpus; PRV stays recon-only until TRU-05.
+
+## PM roadmap-system claim — 2026-10-06
+
+Claimant: **ZCode PM team** (ZCode session, main worktree, route `openrouter/auto`). Source HEAD at claim: `93075cf` (local == `origin/main`).
+
+Scope: implement and maintain the expandable PM roadmap system designed in `.project/pm/` — the coordination layer over the canonical 67-program map. This is development machinery, not Ω product architecture. It does **not** claim any D1 task, roadmap task or provider/auth/model configuration.
+
+State at claim: recon wave (charter Wave A). Read-only; no product code, config or git history touched. Durable artifacts land in `.project/pm/`.
+
+Handoff: team instantiation in `.project/pm/TEAM-INSTANCE.md`; recon findings collide into `.project/pm/recon/WAVE-A.md`; v0 proposal in `.project/pm/recon/V0-PROPOSAL.md` (rev 2, reviewed). **v0 implementation claimed 2026-10-06**: decomposition seed + strict reference validator + generated portfolio under `omega-baseline/experimental/pm/`, writing `.project/pm/data/` and `.project/pm/generated/`. Truth boundary: META-TRACKER remains canonical; every PM state cell is a projection, and no PM document outranks source/tests/evidence.
+
+**Nothing else is claimed; no other executor is running.**

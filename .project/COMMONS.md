@@ -289,3 +289,39 @@ No new permanent departments are created by the meta tracker.
 ## D1 execution claim — 2026-10-06
 
 Owner request: execute D1 autonomously through completion. Coordination: Codex integrates; Product: bounded validator and World workers, integration owner owns session/UI/replay; Truth: independent final review. Source HEAD and origin/main both `26ec6dfc6cbe301b6c48ee04c7a0d35a23c52468`. Existing `/workspace/VOMEGA` has uncommitted work and is left untouched. Auth/provider/model configuration stays read-only. Verification failures route here to Truth + Product with concrete evidence.
+
+## PM roadmap-system claim — 2026-10-06
+
+Owner request: "Setup your team first so you go faster." The ZCode PM team is claimed against `.project/pm/` to implement and maintain the expandable PM roadmap system over the canonical 67-program map (charter: `.project/pm/ZCODE-PM-TEAM.md`; mission: `.project/pm/ZCODE-BOOTSTRAP-PROMPT.md`).
+
+- Owner: ZCode PM team (ZCode session, main worktree, route `openrouter/auto`). Source HEAD `93075cf`; local == `origin/main`; tree clean.
+- Scope: PM development machinery only. No D1 task, roadmap task, product code, auth/provider/model config or git history touched. Recon wave is read-only.
+- Round: recon (charter Wave A) — instantiate the team, measure current runtime/repo reality, map duplication risks against META-TRACKER / `meta-tracker.json`, roadmap `TASKS.md`, Ratchet `specs/`, and `D1-ATOMIC-TASKS.json`, and have Truth challenge the design before any implementation is frozen.
+- Expected handoff: `.project/pm/TEAM-INSTANCE.md` (team instantiation), `.project/pm/recon/WAVE-A.md` (integrated findings + independent challenge), then a short v0 implementation proposal in `.project/pm/recon/V0-PROPOSAL.md`.
+- Truth: PM state is a projection; META-TRACKER, source, tests and evidence outrank it. Recon claims are findings, not frozen design.
+
+Route event: new objective → Coordination (this entry); verification gaps → Truth + Product, recorded as they arise. No agent is alive merely because a document names it.
+
+### PM Wave A complete — 2026-10-06
+
+Charter Wave A (understand) ran as four bounded read-only subagents (`PMC-CUR`, `PMC-AUT`, `PMC-DEP`, `PMC-TRU`), all completed 20–33 s, no repo writes except the consolidation. Findings integrated in `.project/pm/recon/WAVE-A.md`; team instance in `.project/pm/TEAM-INSTANCE.md`.
+
+Headline: the register is faithful to canonical (no material drift, 4 minor gaps); first-five gate refs are all defined and arithmetic exact, with 4 real defects (unowned TraceRef↔EntityRef identity mapping; MP-60 P5 E4–E5 without the §7 decomposition review; 9 of 25 phases ungated; diagram omits MP-55 P3→MP21-G3); five MATERIAL duplication risks against existing owners; substrate recommendation is a small TS validator/projector over existing JSON in `omega-baseline/`. Independent Truth challenge: the PM layer is justified **only as a thin generated projection**; risk is a new prose authority with a third status vocabulary.
+
+Disposition: staffing reduced to `PMC-LEAD` + `PMC-TRU` with curator/automation/dependency as on-demand bounded mandates. Wave B direction (not frozen): PM owns no program meaning or execution/proof state; maturity derived; the reference/drift validator is the load-bearing artifact; estimates published only where a decision is pending.
+
+Truth: recon findings, not frozen design. `meta-tracker.json` generation status and the register's claimed seed HEAD `e843241` remain unverified.
+
+### PM Wave B proposal + independent review — 2026-10-06
+
+`PMC-LEAD` wrote the v0 implementation proposal (`.project/pm/recon/V0-PROPOSAL.md`, rev 1). Independent bounded `PMC-TRU` review returned **accept-with-changes** with 10 required changes; rev 2 applies all of them. Material corrections: the seed's stored `sourceHead` was removed (it was the rot instrument the design had proposed to drop); `effort` now preserves grade ranges (`E4–E5`); maturity was split into two derived dimensions (`planResolution` + `evidenceState`) instead of one collapsible enum; `workPackages`/`taskRef` linkage was cut from v0 and the "proves the Ratchet boundary" claim narrowed accordingly; soft/program-level deps were added as `softDeps[]` and carried as a fifth defect.
+
+Next action: claim and implement v0 (`pm:check` + `bun test`), then obtain the `PMC-TRU` implementation review. Nothing is frozen until that review lands. Proposal is evidence, not architecture.
+
+### PM v0 implemented — 2026-10-06
+
+Implemented the reviewed v0 proposal (rev 2). New code under `omega-baseline/experimental/pm/`: `src/schema.ts` (strict zod seed/events schema; program-meaning keys rejected), `src/derive.ts` (derived `planResolution` + `evidenceState`), `src/project.ts` (read-only projector + Markdown/JSON rendering), `src/check.ts` (validator CLI + freshness check), `test/pm.test.ts` (25 tests). Seed at `.project/pm/data/programs.json` for the first five (MP-21/54/55/56/60); events at `.project/pm/data/evidence-events.json`. Generated projection at `.project/pm/generated/PORTFOLIO.md` + `portfolio.json`. Scripts added: `pm`, `pm:check`, `pm:test`.
+
+Verification: `bun run pm:test` 25 pass / 0 fail; `bun run pm` regenerates; `bun run pm:check` ok with 5 warnings (the carried audit gaps: 9 ungated phases across MP-54/55/56/60, and MP-60 P5 needsReview). `bun run ratchet drift` all 6 facts green (STATUS/SITREP mutex preserved). Projection: 67 programs, 5 seeded, 62 REGISTERED, MP-21 PHASED (all five phases gated), 4 SEEDED, 16 gates, all evidence UNPROVEN.
+
+Note: PM owns no program meaning and no execution/proof state; the seed carries the audit's defects as explicit gaps rather than fixing them silently. Independent `PMC-TRU` implementation review still outstanding.

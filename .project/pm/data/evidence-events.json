@@ -1,0 +1,10 @@
+{
+  "schema": "vomega-pm-events/0",
+  "events": [
+    { "program": "MP-21", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
+    { "program": "MP-54", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
+    { "program": "MP-55", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
+    { "program": "MP-56", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
+    { "program": "MP-60", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" }
+  ]
+}

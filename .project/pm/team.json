@@ -1,0 +1,50 @@
+{
+  "schema": "vomega-pm-team/0",
+  "updated": "2026-10-06",
+  "status": "ACTIVE_WAVE_B_PENDING",
+  "banding": {
+    "standing": ["PMC-LEAD", "PMC-TRU"],
+    "onDemand": ["PMC-CUR", "PMC-AUT", "PMC-DEP"],
+    "note": "PMC-TRU challenged the six-function standing team as ceremony at this scale; challenge adopted after Wave A. See .project/pm/recon/WAVE-A.md"
+  },
+  "waveA": {
+    "artifact": ".project/pm/recon/WAVE-A.md",
+    "verdict": "PM justified only as a thin generated projection; dominant risk is a new prose authority with a third status vocabulary",
+    "next": "Wave B v0 design freeze: decomposition seed keyed to MP-xx + drift/reference validator + generated views; maturity derived; estimates only where a decision is pending"
+  },
+  "claim": {
+    "surface": [".project/agentic-launch/STATUS.md", ".project/COMMONS.md"],
+    "sourceHead": "93075cf500c10d078d2ef9e48e7737a2b15f221b",
+    "localMatchesOriginMain": true,
+    "route": "openrouter/openrouter/auto"
+  },
+  "notClaimed": ["D1 tasks", "roadmap tasks", "product code", "auth/provider/model config"],
+  "measured": {
+    "head": "93075cf",
+    "bunVersion": "1.4.2",
+    "nodeVersion": "v24.11.1",
+    "canonicalProgramCount": 67,
+    "roadmapTaskCount": 74,
+    "ratchetGateCounts": { "total": 80, "greenAtLastProbe": 15 },
+    "zcodeCliOnBashPath": false,
+    "harnessNote": "unbounded heavy background subagents stalled; bounded (<=8 tool-call) workers completed"
+  },
+  "roster": [
+    { "slot": "PMC-LEAD", "function": "PM Systems Lead / Integrator", "runtime": "main-session", "waveA": "integrate; arbitrate duplication", "writeSurface": ".project/pm/**" },
+    { "slot": "PMC-CUR", "function": "Program Curator / Vision Mapper", "runtime": "bounded-subagent", "waveA": "validate 67-program register vs canonical", "writeSurface": "read-only" },
+    { "slot": "PMC-AUT", "function": "PM Automation Engineer + Execution Decomposer", "runtime": "bounded-subagent", "waveA": "duplication risk + minimal substrate", "writeSurface": "read-only" },
+    { "slot": "PMC-DEP", "function": "Dependency & Estimation Analyst", "runtime": "bounded-subagent", "waveA": "audit first-five gates/estimates", "writeSurface": "read-only" },
+    { "slot": "PMC-TRU", "function": "Truth / Independent Reviewer", "runtime": "bounded-subagent", "waveA": "adversarial challenge + falsifiers", "writeSurface": "read-only" }
+  ],
+  "waves": ["A-understand", "B-v0-design-freeze", "C-pm-core", "D-dogfood", "E-evolve"],
+  "rules": {
+    "boundedDispatch": 8,
+    "claimBeforeEdit": true,
+    "disjointWriteSurfaces": true,
+    "independentReviewForLoadBearingChange": true,
+    "pmIsProjectionNotTruth": true,
+    "stateDimensions": ["plan", "execution", "proof", "evidenceClass"],
+    "locIsSizePriorNotProgress": true
+  },
+  "truthBoundary": "META-TRACKER canonical; source/tests/evidence outrank PM; Ratchet owns computed execution/proof."
+}
