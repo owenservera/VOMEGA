@@ -93,6 +93,18 @@ The dependency conclusion was equally important: these five should not become fi
 
 PM manages exactly the five programs in [scope.json](scope.json). The other 62 meta programs remain canonical in META-TRACKER and may appear here only as **external references or dependencies** — never as managed PM records. Adding a program requires an explicit owner instruction; `pm:check` fails if scope and files disagree.
 
+
+## Portfolio analysis across all 67 (non-managed)
+
+PM now also contains a **read-only analytical layer** over the canonical 67-program map. This does not change [scope.json](scope.json), does not create managed records for the other 62 programs, and has no selection/activation authority.
+
+- [portfolio-analysis/DESIGN-INTENSITY-SYSTEM.md](portfolio-analysis/DESIGN-INTENSITY-SYSTEM.md) — separates engineering complexity from genuine design uncertainty; defines D1–D5 and the M1–M5 maturity taxonomy, with M5 = state of the art.
+- [portfolio-analysis/PROGRAM-DELIVERABLES.md](portfolio-analysis/PROGRAM-DELIVERABLES.md) — three critical deliverables for every one of the 67 canonical programs, ordered within each program.
+- [portfolio-analysis/PROGRAM-DELIVERABLES.tsv](portfolio-analysis/PROGRAM-DELIVERABLES.tsv) — machine-readable source for the 67 × 3 map.
+- [portfolio-analysis/DESIGN-CYCLE-MAP.md](portfolio-analysis/DESIGN-CYCLE-MAP.md) — second-pass classification of each deliverable as implementation-led, bounded design, full design cycle, or frontier design cycle.
+
+The PM test suite validates 67/67 coverage, exactly three deliverables per program, legal D/M vocabularies, non-decisioning boundaries, and seven golden load-bearing design cases. Criticality rank in this layer is **inside a program only**; it is never a ranking among programs.
+
 ## What remains TBD
 
 The five programs' planning is a **first pass**. Phase objectives, gates, risks and open questions are hypotheses to be refined by source inspection and prototypes; estimates are LOW-confidence priors. Nothing here is authority over product direction, program selection, or the canonical meaning of a program.
