@@ -1,7 +1,20 @@
 # Development environment census
 
-Observed 2026-10-05; authentication/configuration inspected read-only. Version
-and configuration presence do not prove subscription, model, or provider health.
+Observed 2026-10-05 on the owner's Windows machine during bootstrap;
+authentication/configuration inspected read-only. Version and configuration
+presence do not prove subscription, model, or provider health.
+
+This is a dated census of one machine, not project architecture. Later
+observations supersede individual rows without rewriting them:
+
+- ZCode route and measured concurrency (2026-10-05, after this census):
+  `agentic-launch/STATUS.md`. The route is `openrouter/auto`; the five lanes
+  described below were never individually probed.
+- Claude Code was later observed at 2.1.289 and Grok Build at 1.0.46.
+- A separate shared Linux box (Daintree 0.41.0, Claude Code, Grok Build, Codex,
+  OpenCode, Kilo) is described in `dev-machine/HARNESS-MATRIX.md`.
+- Daintree and ZCode are separate habitats. Daintree does not launch, supervise
+  or manage ZCode.
 
 | Capability | Observed status | Safe route / limits |
 | --- | --- | --- |

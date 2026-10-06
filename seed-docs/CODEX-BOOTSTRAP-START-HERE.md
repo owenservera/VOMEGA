@@ -1,5 +1,7 @@
 # Codex Bootstrap — Start Here
 
+> **Historical record.** This bootstrap ran on 2026-10-05 and produced `../.project/`. A fresh session starts at `../.project/SITREP.md`, not here. The discipline in this file (establish reality first, harvest before inventing, do not overbuild DevOps, escalate only what needs Owen) is still sound. Its environment facts (five Space Bunny lanes, Codex as executor) and its treatment of the floating command box as optional are superseded.
+
 ## Role
 
 You are the **first bootstrap executor** for this fresh local VIVIM-Ω project.

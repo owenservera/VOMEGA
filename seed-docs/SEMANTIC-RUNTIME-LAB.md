@@ -84,6 +84,8 @@ The same prompt corpus can then run against Profile A, B, C, ... and the Lab can
 
 ## 4. The constitutional kernel
 
+> **Authority note (2026-10-06).** "Constitutional" here is scoped to the Lab: it names the small part of the *Lab* that experiments may not rewrite. The eight responsibilities below are a candidate list. This section does not define Ω's product kernel and does not amend `INVARIANTS.md`; what the product core must contain is still open ("the exact current K0/K1 boundary must be re-validated against the live system"). A team may build the first Lab with a smaller or different kernel if the Lab's truth boundaries (identity, append-only evidence, isolation, replay) are still met.
+
 The owner explicitly wants the system reprogrammable **except the core**.
 
 The core should therefore be extremely small and domain-neutral. It should know how to preserve the laboratory's integrity, not what English, Claude, Windows, prompt.send, circles, icons or Accounts mean.

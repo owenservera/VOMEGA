@@ -117,7 +117,7 @@ SKW Reflection extraction can start before SDW but joins SDW IDs before product 
 
 ## 3. Work that can start with zero product dependencies
 
-These should be dispatched immediately after repository/lane preflight.
+This list was the input to the first wave (executed 2026-10-05, design artifacts only; see `STATUS.md`). It remains a fair description of which work has no product dependency.
 
 ### SDW
 
@@ -181,7 +181,7 @@ Only the independent pieces:
 
 The project should avoid waiting for “complete” subsystems.
 
-Instead, agree on small interface locks.
+Instead, agree on small interface locks. A Lock is a temporary interoperability agreement: stable enough for parallel work, explicitly falsifiable, and replaced when better evidence appears. The letters A–E and their producers are the current proposal; a team may redraw the boundaries. As of 2026-10-06, A–D are unfrozen design candidates and E is reconnaissance.
 
 ### Lock A — semantic IDs + MVP entity relations
 

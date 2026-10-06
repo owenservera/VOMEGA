@@ -2,8 +2,14 @@
 
 Every claim the first release makes must trace
 **desired outcome → owning task → test/observation → evidence level → falsifier**
-(`PROOF-AND-MATURITY.md`). The machine-readable ledger is
-`.project/evidence/release.json` (TRU-01); this file is its map.
+(`PROOF-AND-MATURITY.md`). The machine-readable ledger is intended to be
+`.project/evidence/release.json` (TRU-01); this file is its map. That ledger does
+not exist yet, so every claim below is currently `unproven` at its required
+level, and the only committed evidence ledger is `.project/evidence/bootstrap.json`.
+
+The claims (§1) and falsifiers (§2) are the release's proof obligations and
+should survive replanning. The "Owning tasks" and "Turns green at" columns are
+one decomposition of how to meet them and may change with the roadmap.
 
 Evidence levels: **F** fixture · **VL** verified-local · **ML** manual-live ·
 **AL** automated-live · **D** differential · **U** ordinary-user session.

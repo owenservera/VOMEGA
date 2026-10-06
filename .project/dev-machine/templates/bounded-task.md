@@ -24,7 +24,7 @@ You are the **IMPLEMENTER** unless the prompt file says ROLE=REVIEWER.
 - Do not mutate auth, credentials, provider accounts, or browser profiles.
 - Do not claim simulated evidence as live.
 - Do not edit unrelated lanes' contracts.
-- Do not wake Grok Bots.
+- Do not wake other agents or bots; record a handoff instead.
 
 ## Reviewer
-Consequential changes require a different harness/provider reviewer to write `.dev-machine/REVIEW_OK` after inspection.
+Consequential changes need a reviewer who did not write them. A different harness or provider is one good way to get independence, not a requirement. The reviewer writes `.dev-machine/REVIEW_OK` after inspection.

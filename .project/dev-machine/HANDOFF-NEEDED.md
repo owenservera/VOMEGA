@@ -1,6 +1,6 @@
-# HANDOFF-NEEDED (for Chief Of Staff)
+# HANDOFF-NEEDED
 
-Do **not** wake specialists from workers. CoS decides.
+Open asks for whoever is coordinating the shared Linux box. These were written for a Grok Bot "Chief of Staff" (CoS) role and its named specialists ("Runtime Master", "AUTH-MASTER", "Daintree Master"). That role is one optional arrangement on one machine; the project does not depend on it (`PROCESS.md`). A worker should record an ask here and not wake other agents on its own.
 
 ## Open asks
 

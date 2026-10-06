@@ -2,8 +2,8 @@
 
 > **Meta grounding:** this directory is an execution overlay, not strategy law. The complete program map is `.project/META-TRACKER.md`. Lanes, Locks, waves, prompts, model allocations and task topology are temporary coordination hypotheses. Preserve explicit invariants and proof/Lab boundaries; change the operating shape when evidence supports it.
 
-Status: **OWNER-DIRECTED TEAM-LAUNCH SEED**  
-Date: 2026-10-05
+Status: **TEAM-LAUNCH OVERLAY — first wave executed 2026-10-05; reusable as vocabulary, not as a plan to replay**  
+Date: 2026-10-05; reconciled 2026-10-06
 
 This directory is the execution overlay for launching the local VOMEGA development teams.
 
@@ -87,7 +87,7 @@ Read in this order:
 1. [STATUS.md](STATUS.md) — current launch state, claims and first fan-in checkpoint.
 2. [WORKSTREAMS.md](WORKSTREAMS.md) — team missions, ownership boundaries and existing-roadmap mapping.
 3. [DEPENDENCY-GRAPH.md](DEPENDENCY-GRAPH.md) — critical paths, dependency contracts and parallelism.
-4. [FIRST-WAVE.md](FIRST-WAVE.md) — the first dispatch across the local execution pool.
+4. [FIRST-WAVE.md](FIRST-WAVE.md) — the first dispatch across the local execution pool (executed; historical).
 5. [TEAM-PROMPTS.md](TEAM-PROMPTS.md) — ready-to-use head-of-workstream bootstrap prompts.
 6. [MODEL-ROUTING.md](MODEL-ROUTING.md) — current OpenAI/Anthropic model hierarchy, scarcity policy, and workstream routing.
 7. [launch-manifest.json](launch-manifest.json) — machine-readable launch topology.
@@ -102,7 +102,7 @@ Use these sources for different questions:
 - `STATUS.md` — **only mutable launch-state surface**: who has claimed what, current runtime pool observations, blockers, current fan-in readiness.
 - `launch-manifest.json` — machine-readable topology, workstream ownership, interface locks, routing policy defaults and triggers. It is not proof that a model/harness is currently reachable.
 - `MODEL-ROUTING.md` — model/harness selection policy and current external research. It is not the current account quota/availability ledger.
-- `FIRST-WAVE.md` — launch procedure and bounded first tasks. It must consume runtime discoveries from STATUS rather than treating historical provider wiring as fixed capacity.
+- `FIRST-WAVE.md` — the record of the first dispatch. It has run; do not treat it as a procedure to repeat.
 - `SITREP.md` — project-level summary and pointers. It should not duplicate detailed per-agent launch state.
 - `COMMONS.md` — durable handoffs/history. Historical entries may describe earlier runtime assumptions and should not be mistaken for current STATUS.
 
@@ -224,20 +224,22 @@ A team may implement a piece of this spine.
 
 It may not create a private parallel semantic path.
 
-## Initial local execution pool
+## Execution resources
 
-Current candidate pool:
+Resources that have been observed at least once (see [STATUS.md](STATUS.md) and `../dev-machine/HARNESS-MATRIX.md` for dates and limits):
 
-- ZCode using the owner's current configured route (currently reported as `openrouter/auto`);
-- local Codex;
-- local Claude Code;
-- Grok Build once installation/reachability is verified;
-- deterministic Git/Bun/test/browser tooling;
-- historically configured Space Bunny provider accounts, which are evidence of prior configuration rather than assumed current worker slots.
+- ZCode on the route `openrouter/auto` (Windows; ≥6 bounded workers measured once);
+- Codex, Claude Code and Grok Build CLIs;
+- OpenCode and Kilo binaries (Linux box; provider routes not probed);
+- Daintree as a Git-worktree, Review Hub and CLI-panel habitat (Linux box);
+- Git worktrees, subagents, and deterministic Git/Bun/test tooling;
+- historically configured Space Bunny provider accounts, which are evidence of prior configuration, not worker slots.
+
+These are resources, not an organization. Route work by task difficulty, current capacity, evidence, independence value, context needs, cost and observed performance. Daintree and ZCode are separate habitats; Daintree does not launch, supervise or manage ZCode.
 
 Treat all provider/model configuration as read-only.
 
-DEV must measure actual reachable concurrency and effective routed model behavior before dispatch. The logical workstream topology is independent of provider-account count or which tool/model performs a task.
+Whoever coordinates a launch measures reachable concurrency and effective routed model behavior at that time. The work decomposition is independent of provider-account count and of which tool or model performs a task.
 
 ## Launch philosophy
 
@@ -268,6 +270,6 @@ The parallel external checkpoint is:
 
 ## Start
 
-A coordinator/bootstrap executor should now read [FIRST-WAVE.md](FIRST-WAVE.md), run the preflight, and dispatch the independent tasks.
+The first wave has run. A fresh team starts from [STATUS.md](STATUS.md) and [../META-TRACKER.md](../META-TRACKER.md) §5, chooses the next evidence-bearing slice, and organizes itself however that slice requires. It may reuse these lanes and Locks, change them, or ignore them.
 
 No owner clarification is required for ordinary reversible implementation choices covered by the seed.

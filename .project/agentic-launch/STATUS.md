@@ -1,16 +1,20 @@
 # Agentic Team Launch Status
 
-As of 2026-10-05.
+Launch rows as of 2026-10-05; wording and evidence notes reconciled 2026-10-06.
 
-This file is the compact launch-state surface for fresh local sessions.
+This file is the compact launch-state surface for fresh local sessions. It is the only place that says what is claimed, running or done.
 
-Detailed topology: [README.md](README.md)
+**Right now: nothing is claimed and nothing is running.** The first fan-out and its independent review are complete.
+
+Detailed topology: [README.md](README.md). Program map and authority ladder: [../META-TRACKER.md](../META-TRACKER.md).
 
 ## Objective
 
 Run the semantic MVP twin and live Provider-reality work in parallel.
 
 ## Launch state
+
+Lane names are temporary coordination vocabulary. A claimant may use a different decomposition; if so, add rows rather than forcing the work into these.
 
 | Workstream | First task | State | Current handoff / next gate |
 | --- | --- | --- | --- |
@@ -26,17 +30,29 @@ Run the semantic MVP twin and live Provider-reality work in parallel.
 
 The first fan-out is therefore **complete**. These rows describe the current state; historical claim/dispatch details remain below and in the handoff files.
 
+### Evidence precision
+
+"Complete" above means a bounded worker wrote a design artifact. Read the rows with these limits:
+
+- Every first-wave artifact is a design document. No worker wrote executable code, changed product code or committed.
+- Lock D lists 24 manifest paths but deep-read only three manifests (`vivim-nlcl`, `vivim-providers`, `vivim-mind`); the other 21 rows are marked "not read". The two load-bearing facts (empty `contentHash` in all 24, `prompt.send` absent) were checked independently by TRU-L1 and re-checked on 2026-10-06.
+- EXP-L1 defined a scenario-runner shape. No runner exists, so nothing can yet replay or diff the corpus beyond the existing `bun test plugins/vivim-nlcl`.
+- LNC-L1 reported that it could not find the release corpus. It exists at `omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json`.
+- Two handoffs expand lane abbreviations differently from this overlay (for example "SDW (Shadow Observation)", "SKW (skill/wiki)"). Follow the artifact content, not the abbreviation.
+- Locks A–D are candidates and Lock E is reconnaissance. None is frozen, and a Lock is a temporary interoperability agreement, not architecture.
+
 ## Runtime pool status
 
 Runtime capacity is discovered, not assumed.
 
-Current owner-reported routing change:
+Routing facts, as measured by DEV-L1 (table below):
 
-- ZCode is now using **OpenRouter Auto** (`openrouter/auto`) rather than treating the previously configured five Space Bunny provider accounts as the fixed scheduling topology.
-- This is a routing/input fact, not yet a verified local capability measurement.
-- DEV-L1 must record the effective routed model where the harness exposes it and the actual safe concurrency before dispatch.
-- Previously documented Space Bunny accounts remain historical/configuration evidence only until live preflight shows they are relevant to the current route.
-- Grok Build remains candidate capacity until local preflight succeeds.
+- ZCode routes through **OpenRouter Auto** (`openrouter/auto`). The concrete underlying model is not exposed, so every first-wave result is attributed to "router-selected / unknown".
+- The five previously configured Space Bunny provider accounts are historical configuration evidence. They were never individually probed and are not a scheduling topology.
+- Grok Build's binary runs; it was not configured or benchmarked on the Windows machine.
+- These are point-in-time observations. Re-measure before a new launch instead of reusing the number 6.
+
+Habitats: Daintree and ZCode are separate. Daintree does not launch, supervise or manage ZCode. Linux-box observations of Daintree and the direct CLIs are in `../dev-machine/HARNESS-MATRIX.md`; they are not launch state.
 
 ### Runtime observations
 
@@ -52,9 +68,9 @@ DEV-L1 preflight executed 2026-10-05 from source HEAD `dffbbe9` (read-only infra
 
 Measured concurrency (>=6) already supersedes the historical five-lane assumption. Ceiling not established; no throttle observed at 6 concurrent workers.
 
-## First fan-out
+## First fan-out (historical, 2026-10-05)
 
-Preferred initial occupancy is now **capacity-driven**, not account-driven.
+Initial occupancy was **capacity-driven**, not account-driven.
 
 DEV-L1 measured >=6 concurrent ZCode workers on `openrouter/auto`, so the full natural first five (SDW/LNC/VFX/SKW/EXP) plus PRV-L1 reconnaissance is supportable in parallel; TRU-L1 independent review takes the first freed slot (or a separate harness) rather than exceeding measured capacity. These are logical task slots on one router, not six provider accounts or six distinct underlying models.
 
@@ -64,13 +80,15 @@ This is not permanent assignment, and no provider-account count is itself proof 
 
 ## Fan-in condition
 
-Begin first integration review when:
+The first integration review was to begin when:
 
-- Lock A candidate exists;
-- Lock B candidate exists;
-- Lock C candidate exists;
-- Lock D candidate exists;
-- EXP can replay/diff the current corpus.
+- Lock A candidate exists — met;
+- Lock B candidate exists — met;
+- Lock C candidate exists — met;
+- Lock D candidate exists — met;
+- EXP can replay/diff the current corpus — **not met**: only the runner shape is defined.
+
+TRU-L1 reviewed the candidates individually. The integrated review (do the IDs line up across A–D, can one fixture flow compile end to end) has not happened and cannot until something executable exists.
 
 Do not wait for live Provider proof to run this fan-in.
 

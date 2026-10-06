@@ -9,6 +9,10 @@ Purpose: allocate scarce ChatGPT Plus / Claude Pro frontier-model usage to the l
 
 This document is development routing policy, not Ω product architecture.
 
+### What here is researched, and what is measured
+
+Everything in this document is desk research about model positioning and subscription limits as of 2026-10-05, plus heuristics derived from it. The project has **no measured evidence** yet that any model or harness is better at any VOMEGA task class: the only routed work so far ran through ZCode on `openrouter/auto`, where the underlying model is hidden. The per-workstream and per-Lock tables in §5 and §6 are therefore starting suggestions for a first comparison. They assign nothing. Replace them with measured results as soon as section 9 has data.
+
 ## 1. Current model reality
 
 The lineup below was checked against current official OpenAI and Anthropic material on 2026-10-05.
@@ -156,7 +160,7 @@ Use for:
 - scenario generation;
 - first-pass review.
 
-The five ZCode / Space Bunny lanes remain the project's **bulk parallel pool** where they perform adequately.
+The measured bulk parallel pool is ZCode on `openrouter/auto` (≥6 bounded workers on 2026-10-05). Earlier text named "the five ZCode / Space Bunny lanes" here; those accounts are historical configuration that was never individually probed. Where "Space Bunny" appears below as a routing option, read it as "whatever abundant bulk route is currently measured".
 
 ## 4. Cross-provider diversity rule
 
@@ -178,7 +182,7 @@ Use both only for:
 - very high-cost irreversible architecture choices;
 - final release-critical adversarial review.
 
-## 5. Workstream routing
+## 5. Workstream routing — starting heuristics, not assignments
 
 ### SDW — Semantic Data & World
 
@@ -309,7 +313,7 @@ Frontier:
 
 The project should get more value from one frontier review of a mature artifact than five frontier attempts to create it.
 
-## 6. Interface-lock model allocation
+## 6. Interface-lock model allocation — suggestions for a first review pairing
 
 | Lock | Builder | Independent premium reviewer | Frontier escalation |
 | --- | --- | --- | --- |
@@ -385,7 +389,9 @@ Record, for meaningful routed tasks:
 
 After enough episodes, DEV should replace this hand-designed router with measured routing recommendations.
 
-## 10. Initial launch revision
+## 10. Initial launch revision (historical reasoning, 2026-10-05)
+
+The topology below was written before the first wave. The wave actually ran as six bounded ZCode workers on `openrouter/auto` plus one independent review. Neither sketch is a standing organization.
 
 The first-wave launch should therefore evolve from:
 
@@ -630,7 +636,7 @@ one bounded workflow
 → one structured report
 ```
 
-Start with a small agent budget, measure usage and compare against the existing five Space Bunny lanes.
+Start with a small agent budget, measure usage and compare against the currently measured bulk ZCode route.
 
 ### PRV
 
@@ -703,7 +709,7 @@ The owner's existing configuration remains read-only infrastructure until explic
 
 Use the same bounded task on:
 
-- one Space Bunny ZCode lane;
+- one bulk ZCode worker on the currently measured route;
 - GPT-6.1 Sol/Codex;
 - Claude Opus/Sonnet via Claude Code as appropriate;
 - Grok 4.7 via Grok Build.

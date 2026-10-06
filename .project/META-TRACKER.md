@@ -1,8 +1,10 @@
 # VOMEGA Meta Program Tracker
 
-Status: **CANONICAL PROGRAM MAP / CURRENT STATE INDEX**  
-Date: 2026-10-05  
+Status: **PROGRAM COVERAGE MAP** — canonical for *which programs exist*; not a backlog, not a plan, not runtime state  
+Created 2026-10-05; authority, Lab and evidence wording reconciled 2026-10-06 (see [META-REVIEW-2026-10-06.md](META-REVIEW-2026-10-06.md))  
 Purpose: one place to see the **complete VOMEGA program**, not just the current release roadmap or the nine local-agent ownership lanes.
+
+The per-program "current state" cells are a dated summary. Where they disagree with code, tests or a newer evidence record, the evidence wins and this file gets corrected.
 
 ---
 
@@ -15,6 +17,23 @@ VOMEGA currently has three different planning layers that must not be confused:
 3. **Release tasks** — CMD/PRV/REG/GOV/SHL/HLP/REL/TRU/OPS task IDs in `.project/roadmap/`, scoped to the first public release.
 
 This file is layer **1**.
+
+### Authority ladder
+
+Higher rows constrain lower rows. A lower row never becomes law by being detailed, repeated, machine-readable or recently edited.
+
+| Layer | What it is | Where it lives | Who may change it |
+| --- | --- | --- | --- |
+| 1. Invariants and proof boundaries | The semantic separations, sovereignty/authority/evidence rules, and the fixture ≠ live discipline | `seed-docs/INVARIANTS.md`, `seed-docs/PROOF-AND-MATURITY.md` | Owen, or explicit reasoning with preserved lineage (`seed-docs/AUTONOMY.md`); never silently |
+| 2. Observed reality and evidence | What code, tests and recorded observations actually show | source, tests, `evidence/`, `REALITY.md`, review handoffs | Changes only when reality or evidence changes |
+| 3. Owner-selected product mission | The current first-release shape | `DECISIONS.md` (owner section), `seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md` | Owen |
+| 4. Candidate architectures, programs, interfaces | Design docs, Lab designs, Lock candidates, this map | `seed-docs/*` designs, `omega-baseline/experimental/`, this file | Anyone, with evidence and a recorded reason |
+| 5. Roadmaps, lanes, Locks, tasks | Coordination aids for the current slice | `roadmap/`, `agentic-launch/` | The team doing the work |
+| 6. Agents, models, tools, worktrees, habitats | Execution resources | `dev-machine/`, `ENVIRONMENT.md`, `agentic-launch/MODEL-ROUTING.md` | The team doing the work; auth/spend/config stays with Owen |
+
+Layer 2 is deliberately above layer 3: the mission is Owen's to choose, but no mission statement can make an unproven thing proven.
+
+When a statement's class matters, name it: **invariant · owner decision · current mission · observed fact · proven slice · evidence · candidate · hypothesis · experiment · coordination mechanism · historical record · superseded**.
 
 ### Authority and openness rule
 
@@ -34,6 +53,22 @@ A meta program may:
 - disappear, merge or split as evidence changes.
 
 The nine launch workstreams are therefore **not** the complete VOMEGA workstream list.
+
+In the tables below, the **Execution owner(s)** column records the lane vocabulary that was current on 2026-10-05. It is a routing hint, not an assignment: no lane, harness or model owns a program.
+
+### Labs — protected discovery spaces
+
+A Lab has strict truth boundaries and free internals. Competing architectures and techniques are welcome inside it. What leaves a Lab is evidence and candidates, never authority.
+
+| Lab | Programs | Questions it may explore | Boundary that is not negotiable | What it must not become |
+| --- | --- | --- | --- | --- |
+| Semantic Runtime Lab / Ω Simulator | MP-11, MP-13, MP-16, MP-17 | What language can mean in a World, which rule produced an interpretation, what a command does in a virtual runtime, which competing pipeline or taxonomy performs better | Simulated evidence is labelled simulated; pinned experiments replay; Lab adoption is not product adoption | Product architecture by default. Its "kernel", Profiles, packs and SQLite store are Lab design candidates |
+| MVP Visualization Sandbox | MP-12, MP-14, MP-15 | What the person should see, how ambiguity and correction work, which visual treatment communicates the same semantic state best | Stops at SIMULATED `prompt.send`; fixture Models and Accounts are never presented as provider truth; the UI does not own meaning | A UI-only mock, or a frozen VisualSpec wire format |
+| Provider Reality / Provider Lab | MP-24, MP-25, MP-27, MP-29 | How real providers behave, what identifies an Account, which transport family works, how drift and healing behave | No live observation before a live-proof protocol and consent boundary exist; structural evidence by default; auth and provider config untouched | Product authority, a commitment to a Chrome-extension architecture, or a source of canonical semantics |
+| Reflection / self-knowledge | MP-18 … MP-23 | What existing code already proves about itself, what a Reflection ABI must contain, whether Wiki can be a pure projection | Extracted fact ≠ suggested meaning; description ≠ authority, availability or proof; read-only by default | A second documentation database, or a constitutional core change adopted without an explicit decision |
+| Development-system acceleration | MP-46 … MP-67 | Whether any orchestration, habitat, routing or context mechanism improves validated product progress | Repository, tests and evidence outrank agent self-report; no auth, spend or config mutation | A permanent organization, scheduler or source of project truth |
+
+The Lab designs in `seed-docs/` use confident language ("the kernel", "the Reflection obligation is constitutional", "scope lock", "revision law"). Read those as the Lab's proposed internal discipline. Only `seed-docs/INVARIANTS.md` states product invariants, and it currently records self-description as a direction ("should move toward"), not as adopted law.
 
 ---
 
@@ -95,7 +130,7 @@ Priority:
 | ID | Meta program | What it exists to make true | Current state | Priority | Execution owner(s) | Main dependencies / notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | MP-18 | **Self-Describing Runtime / Reflection ABI** | If Ω can load a public capability, Ω can inspect and explain it from source-bound structural truth. | **CANDIDATE Lock D**; strongest first-wave traceability; not implemented as ABI. | NOW / PARALLEL | SKW + SDW + RTE | All 24 current manifests have empty `contentHash`; source binding unmet. |
-| MP-19 | **Reflection Graph** | Derive a read-only graph of Plugin/Capability/Command/Schema/Source/etc. from actual loaded structure. | Candidate node/edge design + manifest inventory only. | NOW / PARALLEL | SKW | Must stay descriptive; live state joins later. |
+| MP-19 | **Reflection Graph** | Derive a read-only graph of Plugin/Capability/Command/Schema/Source/etc. from actual loaded structure. | Candidate node/edge design; 24 manifest paths listed, 3 manifests deep-read (`vivim-nlcl`, `vivim-providers`, `vivim-mind`). | NOW / PARALLEL | SKW | Must stay descriptive; live state joins later. |
 | MP-20 | **Contextual Wiki / realtime help** | Generate Glance/Explain/Inspect help from Reflection + World + interpretation, with no parallel Wiki database. | DESIGN; no runtime Wiki. | NEXT after minimal Reflection | SKW + VFX | Same semantic handles as UI; grounded claim provenance required. |
 | MP-21 | **Self-Knowledge Reflection Migrator / auto-Wiki migration tool** | Read the existing codebase, extract structurally provable Reflection, identify gaps, propose safe migrations, and verify compliance. | **DESIGN; SKW-L1 performed only the first read-only audit slice. Utility does not exist.** | **PARALLEL / high leverage** | SKW + DEV + TRU | REF-01…REF-12 program; read-only default; LLM suggestions never masquerade as extracted facts. |
 | MP-22 | **Source-native semantic declarations & completeness gate** | New/modified public behavior is self-describing by construction and cannot silently bypass Reflection. | DESIGN. | NEXT | SKW + RTE + future Forge | Requires SourceAnchor/content digest and contribution helpers. |
@@ -111,7 +146,7 @@ Priority:
 | MP-27 | **Provider packs / realization boundary** | Isolate provider-specific URLs, identity signals, steps and completion signals behind shared semantic capabilities. | DESIGN / baseline evidence. | NEXT | PRV | First provider is proving realization; provider 2 must falsify abstractions. |
 | MP-28 | **Live `prompt.send` realization** | One real prompt goes through the selected Account with attempt/result evidence and no false success. | UNPROVEN; `prompt.send` absent from current manifests/src. | NEXT after transport + GOV | PRV + RTE + TRU | Must first become a real source-native capability and governed realization. |
 | MP-29 | **Provider drift detection / conformance / healing** | Detect changed external behavior, mark realization drifted, diagnose/repair under governance, and verify repair. | Baseline healing lifecycle exists; release provider integration not built. | LATER release M7+ | PRV + TRU | Healing is general capability hypothesis, not selector hacks as architecture. |
-| MP-30 | **Second/third-provider falsification** | Force shared semantics to survive materially different providers. | DESIGN / release roadmap. | NEXT after provider 1 | PRV + TRU | Claude second; Gemini conditional. |
+| MP-30 | **Second/third-provider falsification** | Force shared semantics to survive materially different providers. | DESIGN / release roadmap. | NEXT after provider 1 | PRV + TRU | The roadmap currently proposes ChatGPT first, Claude second, Gemini conditional. That order is a roadmap hypothesis, not an owner decision. |
 
 ## E. Authority, Work, data, runtime and extensibility
 
@@ -142,7 +177,7 @@ Priority:
 
 | ID | Meta program | What it exists to make true | Current state | Priority | Execution owner(s) | Main dependencies / notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| MP-46 | **Local Agentic Development System** | Many local agents can work in parallel, hand off through Git/artifacts, and integrate without owner reconstructing everything manually. | **PROVEN first launch slice:** ≥6 bounded ZCode workers completed first wave. | NOW / continuous | DEV + TRU | Bounded workers succeeded; unbounded heavy background agents stalled. |
+| MP-46 | **Local Agentic Development System** | Many local agents can work in parallel, hand off through Git/artifacts, and integrate without owner reconstructing everything manually. | **PROVEN-SLICE (narrow):** six bounded ZCode workers each wrote one design artifact plus handoff concurrently (28–49 s, ≤8 tool calls); one dispatcher integrated them. Parallel code changes, worktree merges and cross-habitat coordination are unproven. | NOW / continuous | DEV + TRU | Workers changed no code and made no commits. Bounded workers succeeded; unbounded heavy background agents stalled. |
 | MP-47 | **Workstream/dependency/Lock orchestration** | Enable temporary low-handoff coordination through explicit, falsifiable interface hypotheses rather than waiting for whole subsystems. | ACTIVE; Locks A–E candidate/recon. | NOW | DEV | Lanes and Locks are coordination devices, not permanent architecture; a Lock stabilizes interoperability long enough to work and remains replaceable by evidence. |
 | MP-48 | **Model routing / heterogeneous intelligence pool** | Use abundant models for work and scarce frontier models for mature review/adjudication; record actual routed model when known. | ACTIVE policy; ZCode currently `openrouter/auto`; concrete model hidden. | continuous | DEV + TRU | Harness ≠ router ≠ model. |
 | MP-49 | **ZCode / OpenRouter Auto execution substrate** | Use measured ZCode concurrency/workflows safely without assuming historical provider-account topology. | ACTIVE; ≥6 bounded concurrency verified. | NOW | DEV | Keep config read-only; bounded tasks currently outperform unbounded background workers. |
@@ -227,9 +262,11 @@ A program may have more than one owner because the boundary itself is what is be
 
 ---
 
-# 5. What is actually active now
+# 5. Current convergence candidates
 
-The immediate active convergence set is deliberately much smaller than the complete map.
+The convergence set is deliberately much smaller than the complete map. It is the best current reading of which work is justified next, as of 2026-10-05.
+
+"NOW" here means *justified by current evidence*. It does not mean claimed or running: nothing is active unless `agentic-launch/STATUS.md` says so. The numbering is for reference, not a sequence. A team may reorder, merge or replace these threads when evidence supports it.
 
 ## NOW — semantic simulator/product-twin convergence
 
@@ -289,7 +326,7 @@ The simulator must not be reported as live provider proof.
 
 The first major internal product-development checkpoint is **not** “all subsystems finished.”
 
-It is this replayable simulated journey:
+The current target hypothesis is this replayable simulated journey. The proof obligation (a replayable end-to-end semantic trace that ends at a clearly SIMULATED send) matters more than the exact script:
 
 ```
 blank synthetic Ω
@@ -400,6 +437,8 @@ Key specialized source programs include:
 If this tracker and a narrower execution file disagree about **what exists as a program**, update this tracker.
 
 If they disagree about **what is currently claimed/running**, `.project/agentic-launch/STATUS.md` is authoritative for launch runtime state.
+
+If they disagree about **what is proven**, the evidence wins: code, tests, `.project/evidence/`, `.project/REALITY.md` and independent review handoffs outrank any summary cell in this file.
 
 If they disagree about **product intent/invariants**, the seed documents remain authoritative.
 

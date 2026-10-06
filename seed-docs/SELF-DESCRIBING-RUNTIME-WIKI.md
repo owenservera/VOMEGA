@@ -37,6 +37,8 @@ No separate documentation files are required for a plugin to become understandab
 
 ## 2. Important boundary decision
 
+> **Authority note (2026-10-06).** This document's status is ACTIVE HYPOTHESIS. Two things in it are settled by owner requirement: the Wiki is a projection, not a separately authored store, and self-description never grants authority. The stronger statements that follow ("a plugin may not opt out", "the reflective obligation is constitutional" in §22, the core primitives in §24) are a *proposed* constitutional change. `INVARIANTS.md` currently records it as a direction ("the product should move toward the invariant"), and adopting it as law is an owner decision that should follow evidence from a read-only Reflection extraction. Until then, no core or manifest contract changes on this document's authority alone.
+
 The **Wiki renderer/relevance engine does not belong in the constitutional core**.
 
 The constitutional core should enforce only the minimum property required for trustworthy self-description:

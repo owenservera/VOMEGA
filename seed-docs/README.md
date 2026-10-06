@@ -4,6 +4,29 @@ This directory is a fresh project seed for a new autonomous VIVIM-Ω build.
 
 Start with **START-HERE.md**.
 
+## Reading the seed after bootstrap (added 2026-10-06)
+
+Bootstrap has run. The seed still carries product intent, but its documents do not all have the same standing, and some bootstrap-era facts in them have been overtaken by evidence. The project's authority ladder is in `../.project/META-TRACKER.md`; current state starts at `../.project/SITREP.md`.
+
+| Standing | Documents |
+| --- | --- |
+| Durable intent and invariants. These constrain the work | `VISION.md`, `INVARIANTS.md`, `PROOF-AND-MATURITY.md`, `PRODUCT-ANCHOR.md`, `PROJECT-CONTEXT.md`, `AUTONOMY.md`, `AGENTS.md` (product direction and guardrail sections) |
+| Owner-selected current mission. Owen may change it; mechanism is open | `FIRST-PRODUCT-RELEASE-DESIGN.md` |
+| Vocabulary, coverage and method guidance. Not schema, not org chart | `CONCEPTUAL-MODEL.md`, `PRODUCT-JOURNEYS.md`, `WORKSTREAM-LANDSCAPE.md`, `RESEARCH-FRONTIER.md`, `KNOWN-REALITY-AND-OPEN-FRONTIER.md`, `BUILD-FOCUS.md`, `HARVEST-FIRST-ENGINEERING.md`, `HISTORICAL-KNOWLEDGE-MAP.md` |
+| Lab and design hypotheses. Owner-directed in what they aim at, candidate in everything they propose | `SEMANTIC-RUNTIME-LAB.md`, `SEMANTIC-DATA-ENGINE.md`, `MVP-VISUALIZATION-SANDBOX.md`, `AUTOMATED-SEMANTIC-EXPERIMENTS.md`, `COMMAND-VISUAL-LANGUAGE-DESIGN.md`, `SELF-DESCRIBING-RUNTIME-WIKI.md`, `SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md`, `PROVIDER-LAB-STRATEGY.md` |
+| Development-system hypotheses. Optional, experiment-driven | `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`, `ELEPHANT-CONTEXT-NETWORK.md`, `ZCODE-CAPABILITY-SPACE.md` |
+| Historical records | `CODEX-BOOTSTRAP-START-HERE.md` (the bootstrap ran on 2026-10-05), `BENCHMARKS.md` |
+
+Bootstrap-era facts that later evidence superseded. They are left in place as written, and should be read as history:
+
+- **"Five Space Bunny lanes" as the execution pool** (`AGENTS.md`, `AUTONOMY.md`, `PROJECT-CONTEXT.md`, `CODEX-BOOTSTRAP-START-HERE.md`, `ZCODE-CAPABILITY-SPACE.md`, `ELEPHANT-CONTEXT-NETWORK.md`, `DEVELOPMENT-ACCELERATION-HYPOTHESES.md`). ZCode now routes through `openrouter/auto`; the five accounts were never individually probed. Capacity is measured at each launch.
+- **Codex as the bootstrap executor.** Done. No executor holds a standing role.
+- **"Required development organization at bootstrap"** (`AGENTS.md`): four coverage areas with heads and a Commons. The bootstrap created that minimal coverage. It is coverage guidance, not a permanent department structure; the same document says the project may split, merge, replace or retire workstreams.
+- **The floating command box as "one candidate"** (`BUILD-FOCUS.md` §1, `CODEX-BOOTSTRAP-START-HERE.md`). Owen has since selected it as the first-release mission.
+- **Daintree.** It appears nowhere in the seed. It is a separate development habitat that manages Git worktrees and the CLI agents it supports. It does not launch, supervise or manage ZCode.
+
+The Lab documents use strong words inside their own scope: "constitutional kernel", "the reflective obligation is constitutional", "scope lock", "revision law". Those describe the discipline a Lab proposes for itself. They become product law only if `INVARIANTS.md` says so.
+
 The root contains a substantial Ω implementation baseline because the new project needs real code, tests, fixtures, contracts, gates, and prior evidence to inspect.
 
 The root-facing project guidance has deliberately been rewritten so that the old Ω development program does not become the new project's organization or roadmap.
@@ -223,4 +246,4 @@ It favors pinned Profile comparisons, corpus-first regression, semantic diffing,
 
 It scans manifests, contracts, op registration, schemas, config, language contributions, visual contracts and tests; extracts structurally provable facts with exact source anchors; identifies gaps/conflicts/duplication; proposes migration changes; and eventually verifies completeness. It is not a Wiki database and does not invent semantics to reach coverage.
 
-The seed now contains **30 documents**.
+The seed now contains **30 documents**. (Count as of that addition; the directory holds 31 Markdown files on 2026-10-06.)

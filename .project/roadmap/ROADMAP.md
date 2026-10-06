@@ -169,7 +169,12 @@ and must be ready when M1 exits.
 | E · Truth | continuous | evidence/ + test files only | Must differ from the implementer of the reviewed change |
 
 Tracks B and D are offline and corpus/test-refereed — the natural place to fan
-out across the five model lanes once OPS-03 verifies them.
+out across whatever parallel capacity is measured at the time. (This sentence
+originally said "the five model lanes"; that topology is superseded. See
+`../agentic-launch/STATUS.md`.)
+
+The "Best-fit executor profile" column describes what a track needs from its
+environment. It does not assign a model, harness or habitat.
 
 ---
 
@@ -201,7 +206,7 @@ out across the five model lanes once OPS-03 verifies them.
 | R-6 | Open web API trust boundary reused by shell | GOV-06 | Fix before SHL-05 |
 | R-7 | Provider DOM drift during development | PRV-10 | Drift fingerprint; packs isolate quirks |
 | R-8 | Lab mirror UI creeping into product | Review | Design §19: harvest knowledge, not Lab UI |
-| R-9 | Executor lanes unverified ⇒ throughput assumptions wrong | OPS-03 | Verify before fan-out |
+| R-9 | Executor capacity assumed rather than measured ⇒ throughput assumptions wrong | OPS-03 | Measure before each fan-out (one measurement exists: ≥6 bounded ZCode workers, 2026-10-05) |
 | R-10 | Broad-suite failures mask regressions | TRU-02 | Named lanes with explicit exclusions |
 | R-11 | Duplicate external effect after crash | GOV-04 | Attempt record + `uncertain` + no blind retry |
 | R-12 | Multiple-account UX friction (profile juggling) | PRV-12 | Measure; smallest resolving action UX |

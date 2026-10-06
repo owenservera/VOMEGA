@@ -1,5 +1,7 @@
 # SETUP-STATUS (box verification — not OpenCode)
 
+> Historical record of one Linux-box setup check on 2026-10-05 at commit `94a3bb0`. Not current state; see `.project/SITREP.md`.
+
 - Repo: `/workspace/VOMEGA` cloned from `owenservera/VOMEGA` @ `94a3bb0` (main).
 - Bun: 1.4.2 on PATH (`~/.bun/bin/bun`).
 - `cd omega-baseline && bun install --frozen-lockfile --ignore-scripts`: OK (74 installs / 66 packages).

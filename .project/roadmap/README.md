@@ -53,11 +53,33 @@ Merge or split them when evidence warrants.
 - Workstream files hold the authoritative task cards; `TASKS.md` is the index.
   Change both together.
 
-## Adoption (two small edits to existing truth, intentionally not made here)
+## Adoption (optional; not done)
 
-1. `COMMONS.md`: add rows for M0–M3 (task OPS-01).
-2. `SITREP.md`: replace prose "Next actions" with task IDs PRV-01…PRV-03,
-   CMD-01…CMD-03, TRU-01…TRU-02.
+The pack originally proposed two edits to adopt itself: Commons rows for M0–M3
+(task OPS-01) and replacing SITREP's "Next actions" with task IDs. Neither was
+made, and neither is required. The later owner correction (task IDs and
+milestones are a decomposition, not a mandatory path) means SITREP now points at
+evidence and the program map instead of a task list. Adopt task rows only if a
+team finds them useful.
+
+## State of this roadmap on 2026-10-06
+
+- The Status column in `TASKS.md` has not been maintained: every task still says
+  `open`. That is accurate against each card's full acceptance criteria, but it
+  hides partial evidence. `agentic-launch/STATUS.md` records what exists.
+- Partial evidence so far: CMD-02 (17-case seed corpus landed; the ≥60-case
+  acceptance is not met); OPS-03 (the ZCode route was probed and ≥6 workers
+  measured, but the per-lane table the card asks for was not written because the
+  five lanes are no longer the topology); PRV-01 (document-and-path inventory
+  done; the card's command-output proof is not).
+- `.project/evidence/release.json` (TRU-01) and the live-proof protocol (TRU-05)
+  do not exist yet. Files that cite them describe intended artifacts.
+- ID namespaces collide. Roadmap IDs are `CMD/PRV/REG/GOV/SHL/HLP/REL/TRU/OPS-nn`.
+  The seed uses `EXP-01…12`, `EXP-A…G`, `VSX-01…12`, `REF-01…12`. The launch used
+  `<LANE>-L1`. The dev-machine reference queue invented `LNC-02`, `SDW-02`,
+  `EXP-02`, `EXP-03`, `PRV-02` and others, and its `PRV-02`, `EXP-02` and `EXP-03`
+  mean something different from the roadmap and seed items with the same names.
+  Cite an ID together with its source file.
 
 ## Source file added with this roadmap
 
@@ -67,3 +89,7 @@ CMD-02). 17 release cases + a coverage check; known gaps run as
 `test.failing` so a fix forces promotion. Verified: `bun test plugins/vivim-nlcl`
 → 49 pass / 0 fail (31 existing + 18 corpus) on Bun 1.3.14 (Linux); re-verify on
 the Windows Bun 1.4.2 launcher before recording a claim.
+
+Windows re-verification, 2026-10-06: `bun test plugins/vivim-nlcl` → 49 pass /
+0 fail / 205 assertions on Windows Bun 1.4.2 (9 corpus cases pass, 8 pinned
+known gaps run as `test.failing`).

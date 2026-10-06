@@ -1,5 +1,7 @@
 # Incorporation notes — first-release roadmap pack
 
+> Historical record, written before the pack was committed. Since then: the pack is committed; `External-temp/` and `harvests/` were added to the repository; the corpus test was re-verified on Windows Bun 1.4.2 on 2026-10-06 (49 pass / 0 fail). The "Deferred" items about roadmap adoption remain undone and are now optional (`.project/roadmap/README.md`).
+
 Date: 2026-10-05. Source: `.incoming/owen-attach-190120/` (owner attachment).
 Repository HEAD at incorporation: `94a3bb0`. Nothing was committed.
 

@@ -1,5 +1,7 @@
 # Launch Workstreams — Ownership Boundaries for Local Agent Teams
 
+> **Meta grounding:** these nine lanes are temporary coordination vocabulary from the first launch, not departments and not the program list (`.project/META-TRACKER.md`). "Owns" below means "was the suggested home for", never exclusive authority. Merge, split, rename or drop lanes when a different decomposition reduces handoffs. The "First deliverables" lists were inputs to the first wave, which has run; see `STATUS.md` for what exists.
+
 Status: **TEAM-LAUNCH DESIGN**  
 Parent: [README.md](README.md)
 

@@ -2,10 +2,12 @@
 
 > **Historical launch artifact:** the first wave has already run. Do not recreate its executor allocation as a default topology. Reuse its evidence and handoffs, then derive new work from current STATUS + META-TRACKER. Harness assignments were situational, not organizational law.
 
-Status: **READY FOR LOCAL BOOTSTRAP EXECUTION**  
+Status: **EXECUTED 2026-10-05 — HISTORICAL RECORD**  
 Parent: [README.md](README.md)
 
-This is the first bounded dispatch for the local VOMEGA agentic team.
+This was the first bounded dispatch for the local VOMEGA agentic team. It is kept as the record of what was asked. Results and their limits are in [STATUS.md](STATUS.md) and `handoffs/`. The imperative text below ("dispatch", "before dispatching", "default initial allocation") describes that one run. Only the stop conditions in §12 and the merge/review expectations in §10 remain useful as general guidance.
+
+RTE-L1 (§5) was never dispatched. The integrated scenario (§9) and the fan-in questions (§8) were not reached.
 
 It is intentionally designed to:
 

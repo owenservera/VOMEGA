@@ -4,6 +4,8 @@ Index of every roadmap task by milestone. Full cards (description, acceptance, p
 
 Totals: 74 tasks across 9 workstreams.
 
+The Status column has not been maintained since the pack landed; see "State of this roadmap" in [README.md](README.md) for the partial evidence that exists. Task IDs, milestones and dependencies are a current decomposition, not a mandatory path.
+
 ## M0 — Roadmap adoption & proof plumbing
 
 | ID | Task | WS | Depends on | Size | Status |

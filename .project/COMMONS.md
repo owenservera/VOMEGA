@@ -5,6 +5,13 @@ the small coordination register. Heads are accountable for handoffs, not permane
 authority. A fresh executor claims an open row and updates owner/status/evidence
 before editing. A completed session agent is not an active background worker.
 
+How to read this file: the table is the live register. Every dated section below
+it is an append-only handoff record, true when written. Later sections supersede
+earlier ones; nothing below the table is a current instruction. Current launch
+state is `agentic-launch/STATUS.md`. The four rooms (Coordination, Research,
+Product/DevOps, Truth) are the bootstrap coverage areas, kept as routing
+vocabulary, not as departments.
+
 | Work | Owner / accountable room | Status | Dependency / verification / handoff |
 | --- | --- | --- | --- |
 | Seed/product selection | release_gym / Research | complete | all 22 seed docs read; RELEASE-GYM.md |
@@ -13,9 +20,10 @@ before editing. A completed session agent is not an active background worker.
 | Local selected-vault slice | local_continuity / Product | complete; handed off | host recipe, local composition, CLI and tests; fresh relative-path proof passes |
 | Independent code review | review_bootstrap / Truth | approved | final diff, timeout reaping, relative Windows paths and evidence boundaries |
 | Independent TS review | review_typescript / Truth | limited; handed off | full review stopped on missing lint tooling; timeout/types findings corrected; no full typecheck claim |
-| Browser/account transport experiment | next session claimant / Research | queued | finish local proof; metadata-only transport discovery, Account unknown preserved |
+| Browser/account transport experiment | PRV-L1 (ZCode worker) / Research | reconnaissance done 2026-10-05; live part unclaimed | `omega-baseline/experimental/provider-lab/LOCK-E-ASSAY.md`: document-and-path inventory, three transport families compared, no attach, no observation. Live metadata read is blocked on a live-proof protocol (roadmap TRU-05) and a consent boundary; Account stays unknown |
 | Elephant Context Network architecture plan | Claude Code architecture session / Research | plan drafted 2026-10-05; hypothesis not activated | docs/architecture/ELEPHANT-CONTEXT-NETWORK-PLAN.md; doc only, no code, no lane reserved or probed; next: Coordination decides the Phase 0 gate, Truth reviews the plan |
-| First-release roadmap pack incorporation | Claude Code incorporation session / Coordination | landed 2026-10-05; not yet adopted or committed | roadmap/ (16 files) and NLCL release-use corpus test+fixture match the owner's patch byte-for-byte; `bun test plugins/vivim-nlcl` 49/0 and `omega:quick` 62/0 on Linux Bun 1.4.2; details in ../INCORPORATION-NOTES.md; next: claim OPS-01 to adopt task rows, Truth reviews the corpus test, re-verify on the Windows launcher |
+| First-release roadmap pack incorporation | Claude Code incorporation session / Coordination | landed and committed 2026-10-05; task rows never adopted, and adoption is optional (see `roadmap/README.md`) | roadmap/ (16 files) and NLCL release-use corpus test+fixture match the owner's patch byte-for-byte; `bun test plugins/vivim-nlcl` 49/0 and `omega:quick` 62/0 on Linux Bun 1.4.2; details in ../INCORPORATION-NOTES.md; next: claim OPS-01 to adopt task rows, Truth reviews the corpus test, re-verify on the Windows launcher |
+| Meta-coherence pass | Claude Code session / Coordination + Truth | complete 2026-10-06 | documentation and project-control corpus only; no product code. Report: `META-REVIEW-2026-10-06.md`. Re-ran `omega:quick` 62/0 and `bun test plugins/vivim-nlcl` 49/0 on Windows Bun 1.4.2 |
 | Historical broad-suite repair | unclaimed / Product | blocked | missing tooling/examples/fixtures; first concrete blocker watchdog import |
 | Remote sync + bunfig triage | remote_sync_triage / Product | complete; pushed | fast-forwarded to f69bcb9; omega-baseline/bunfig.toml isolated-linker pin committed+pushed (b3e7420; ghost.test.ts assumes per-package links); external drop External-temp/*.zip verified fully implemented (all 16 files content-identical to HEAD in loose/nested/patch layers) then deleted, folder kept; post-pull omega:setup clean, omega:quick 62/62, pulled vivim-nlcl corpus test 18/18 |
 

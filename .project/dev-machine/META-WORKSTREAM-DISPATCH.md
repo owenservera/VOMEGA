@@ -26,6 +26,10 @@ Merge, split or bypass these labels when another decomposition reduces handoffs 
 5. Respect concurrency cap from `press-go.sh` / env `VOMEGA_MAX_PARALLEL` (default 2).  
 6. Skip lanes that would write the same shared contract as an already-enqueued task.
 
+`select-tasks.py` currently fills `harness_prefer: claude` and `reviewer_prefer: grok` for every product task. Those are placeholders that happened to be reachable on the Linux box, not a routing decision.
+
+The task IDs in the reference queue (`LNC-02`, `SDW-02`, `EXP-02`, `EXP-03`, `PRV-02`, `RTE-02`, `VFX-02`, `SKW-02`, `DEV-02`) were invented for that queue. `PRV-02`, `EXP-02` and `EXP-03` collide with different items in `.project/roadmap/` and `seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md`. Cite them with this file's name, or rename them when claiming.
+
 ## Boundedness rules
 
 Each task prompt must include:
@@ -35,6 +39,8 @@ Each task prompt must include:
 - stop conditions  
 - forbidden actions (auth mutation, live browser unless TRU-05 gate open, etc.)  
 - implementer vs reviewer role marker
+
+Boundedness is a default that one observation supports (bounded ZCode workers completed; unbounded heavy background ones stalled). It is not a ceiling on task size for every harness.
 
 ## After workers finish
 

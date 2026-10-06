@@ -1,5 +1,7 @@
 # VOMEGA project-truth digest
 
+> **Historical snapshot at HEAD `325be89` (2026-10-05 23:52 CEST).** Kept as a record of one worker's reading. For current orientation use `.project/SITREP.md`. Known drift: the candidate file is now `first-wave-candidates.REFERENCE.json`; Daintree was restored on the Linux box minutes after this was written; the ranked list and its "wave" language are suggestions, and its task IDs collide with roadmap and seed IDs (see `../META-WORKSTREAM-DISPATCH.md`).
+
 Captured 2026-10-05 23:52 CEST. Source: **HEAD `325be8929a5222232b8fce08ea79063f086705e1`** (main = origin/main, "docs: register complete meta-program tracker in Commons", committed 23:25 CEST).
 Read: META-TRACKER.md, meta-tracker.json, agentic-launch/STATUS.md, SITREP.md, REALITY.md, COMMONS.md (+ grep of FIRST-WAVE.md, roadmap/TASKS.md, release-use-corpus.json). Everything else is unread.
 

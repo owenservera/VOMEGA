@@ -26,6 +26,8 @@ Before major product work, establish repository reality and seed hygiene: confir
 
 ## Multi-provider execution pool
 
+> **Superseded as an environment fact (2026-10-05):** ZCode now routes through `openrouter/auto`, and the five accounts below were never individually probed. The durable parts of this section still hold: provider configuration is read-only, capacity is measured rather than assumed, and no lane becomes a coordinator by default. Current resources are in `../.project/agentic-launch/STATUS.md`.
+
 The development environment has five independently configured ZCode model-provider lanes available for parallel work. Treat them as a shared execution pool:
 
 - **Owen** — 1M-context **Space Bunny Free**
@@ -55,6 +57,8 @@ Before building a large feature:
 7. Begin implementation and proof.
 
 ## Required development organization at bootstrap
+
+> **Bootstrap-time guidance; satisfied on 2026-10-05.** The four coverage areas below exist as routing vocabulary in `../.project/COMMONS.md`. They are not a permanent department structure, and this section's own last paragraph already lets the project split, merge, replace or retire them.
 
 The fresh project is not expected to begin as a flat collection of agents. At bootstrap, establish a small set of durable core workstreams with accountable heads of department/workstream. The exact organization is deliberately discoverable, but the coverage should normally include:
 

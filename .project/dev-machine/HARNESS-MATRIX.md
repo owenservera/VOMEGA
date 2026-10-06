@@ -1,5 +1,7 @@
 # Harness / tooling matrix
 
+A dated observation of one shared Linux box (2026-10-05/06), not an organization chart. The "Notes" column records what was seen, including availability at that moment. Nothing here assigns a tool to a kind of work.
+
 Live probe: `bootstrap/harness-live-probe.json` (2026-10-05 ~23:57 CEST).  
 Daintree restore: `bootstrap/DAINTREE-RESTORE.md`.
 
@@ -8,7 +10,7 @@ Legend: **LIVE** = verified on this Linux box this session · **REPAIR_REQUIRED*
 | Tool | Linux status | Invoke (one-shot / habitat) | Auth (symbolic) | Notes |
 | --- | --- | --- | --- | --- |
 | **Daintree 0.41.0** | **LIVE** (`ii`, running `:16`) | `bash /opt/Daintree/resources/daintree-cli.sh /workspace/VOMEGA` · `--status` · helpers in `/workspace/daintree-master-automation/scripts/` | existing-login / local config under `~/.config/Daintree` (NEVER_EXPORT) | Linux habitat for Git worktrees + supported CLI-agent PTYs + Review Hub. **Does not launch/manage ZCode.** |
-| **claude** (Claude Code 2.1.289) | **LIVE** (`CLAUDE_OK`) | `claude -p "<prompt>" --output-format text\|json` · in Daintree: pin CLI Agents / Ctrl+Alt+C | `~/.claude/.credentials.json` existing-login | Preferred implementer/reviewer while Codex limited. |
+| **claude** (Claude Code 2.1.289) | **LIVE** (`CLAUDE_OK`) | `claude -p "<prompt>" --output-format text\|json` · in Daintree: pin CLI Agents / Ctrl+Alt+C | `~/.claude/.credentials.json` existing-login | Available when probed; Codex was usage-limited at the same moment. |
 | **grok** (Grok Build 1.0.46) | **LIVE** (`GROK_OK`, model grok-4.7) | `grok -p "<prompt>" --output-format plain --max-turns N` | `~/.grok/auth.json` existing-login (grok.com) | Usable one-shot; also Daintree PTY. |
 | **codex** (0.160.0) | **LIMITED** | `codex exec -s read-only\|workspace-write -C <dir> -o last.txt "<prompt>"` | `~/.codex/auth.json` existing-login | Auth OK; **usage limit** observed until ~2026-10-06 00:19 CEST; model seen `gpt-6.1-sol`. Retry after window. |
 | **bun** 1.4.2 | **LIVE** | `bun test …` · `bun run omega:quick` | n/a | Deterministic tests. |
@@ -16,8 +18,8 @@ Legend: **LIVE** = verified on this Linux box this session · **REPAIR_REQUIRED*
 | **gh** 2.46.0 | **LIVE** (owenservera) | `gh pr create` etc. | `~/.config/gh/hosts.yml` existing-login | |
 | **opencode** 1.18.34 | **LIVE** (binary; restored 2026-10-06 00:05) | `opencode run "<prompt>"` | `~/.local/share/opencode/auth.json` existing-login (NEVER_EXPORT) | nvm Node 22.23.3 restored; provider routes not re-probed. |
 | **kilo** 7.8.3 | **LIVE** (binary) | `kilo` | not probed | Restored with opencode. |
-| **OpenRouter** | indirect | via ZCode (Windows) / opencode (broken) | symbolic `OPENROUTER_API_KEY` NEVER_EXPORT | No local CLI on Linux; `:6446` proxy not listening. |
-| **ZCode** | absent on Linux | Windows app + bundled CLI | existing-login | **Windows-primary** habitat; ≥6 concurrency measured historically. |
+| **OpenRouter** | indirect | via ZCode (Windows) / opencode (binary restored; provider routes not probed) | symbolic `OPENROUTER_API_KEY` NEVER_EXPORT | No local CLI on Linux; `:6446` proxy not listening. |
+| **ZCode** | absent on Linux | Windows app + bundled CLI | existing-login | Separate Windows habitat, managed by ZCode itself; ≥6 bounded workers measured once (2026-10-05). |
 | **nvm / Node 22** | **LIVE** (nvm 0.40.3, Node 22.23.3) | `. ~/.nvm/nvm.sh` (unset NPM_CONFIG_PREFIX first) | n/a | Restored 2026-10-06 00:05 CEST; system Node v20.19.2 remains default. |
 
 ## Windows column (all UNVERIFIED_ON_WINDOWS until Owen runs verify; spec: `windows-mirror/desired-state.json`, parity: `WINDOWS-PARITY.md`)

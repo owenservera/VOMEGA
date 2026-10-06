@@ -45,7 +45,9 @@ the continuity proof and examples use `--no-daemon`.
 
 Fresh sessions start at [.project/SITREP.md](.project/SITREP.md). Product intent
 lives in [seed-docs/START-HERE.md](seed-docs/START-HERE.md); current decisions,
-evidence, environment and ownership live in `.project/`.
+evidence, environment and ownership live in `.project/`. The full program map
+and the authority ladder (what is fixed, what is only proposed) are in
+[.project/META-TRACKER.md](.project/META-TRACKER.md).
 
 ## First product release target
 
@@ -53,4 +55,4 @@ The current first public product design is documented in [seed-docs/FIRST-PRODUC
 
 The target is a small floating Windows command box that grows its visible capability surface as the user registers real Provider Accounts. Setup and use should both travel through the same deterministic semantic command system; the first external capability is `prompt.send`.
 
-The current browser/account work is the immediate proof seam toward that release.
+Nothing of that release exists as product yet. Two proof seams lead toward it: a simulated semantic twin of the interaction, and real browser transport plus Account identity. Only the second can produce live evidence.

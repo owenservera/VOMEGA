@@ -64,6 +64,8 @@ def main() -> int:
             why = (c.get("why_unblocked") or "")
             if "NOT yet" in why:
                 continue
+            # harness_prefer / reviewer_prefer are placeholders that were reachable on the
+            # Linux box, not routing policy. Route from current capacity and evidence.
             selected.append({
                 "id": c["id"],
                 "lane": lane,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "status": "team-launch-seed",
+  "status": "first-wave-executed; revisable execution overlay, not a plan to replay",
   "date": "2026-10-05",
   "objective": "Launch local VOMEGA agentic development teams to build the semantic MVP twin and close the live provider seam in parallel.",
   "invariants": [
@@ -16,24 +16,17 @@
     "fixture != live evidence"
   ],
   "resources": {
-    "configured_zcode_lanes": [
-      "Owen",
-      "OpenCode acct 2",
-      "OpenCode acct 3",
-      "OpenCode acct 4",
-      "OpenCode acct 5"
-    ],
-    "configured_model": "space bunny free",
     "additional_local_participants": [
       "Codex",
-      "Claude Code"
+      "Claude Code",
+      "Grok Build",
+      "OpenCode",
+      "Kilo",
+      "Daintree (separate habitat; does not manage ZCode)"
     ],
-    "rule": "verify reachability read-only before dispatch; do not modify provider/auth/model configuration",
-    "candidate_local_participants": [
-      "Grok Build"
-    ],
+    "rule": "resources, not an organization; measure reachability and capacity read-only at each launch; do not modify provider/auth/model configuration",
     "grok_build": {
-      "status": "owner installing; verify locally before dispatch",
+      "status": "binary reachable (1.0.46 observed 2026-10-05); not configured or benchmarked on the Windows machine; live one-shot probe passed on the Linux box",
       "verification": [
         "grok version",
         "grok inspect"
@@ -57,36 +50,39 @@
     },
     "runtimeDiscoveryRequired": true,
     "zcode": {
-      "currentOwnerReportedRoute": "openrouter/auto",
-      "state": "owner-reported; verify in DEV-L1",
-      "historicalConfiguredLanes": [
+      "state": "measured by DEV-L1 on 2026-10-05: >=6 concurrent bounded workers, ceiling not established; re-measure per launch",
+      "historicalLanesAreCapacityAssumption": false,
+      "concurrency": "point-in-time measurement, not a constant",
+      "actualModelAttribution": "capture routed model per run where exposed; otherwise mark router-selected/unknown",
+      "observedRoute": "openrouter/auto"
+    },
+    "historical": {
+      "configuredZcodeLanes": [
         "Owen",
         "OpenCode acct 2",
         "OpenCode acct 3",
         "OpenCode acct 4",
         "OpenCode acct 5"
       ],
-      "historicalLanesAreCapacityAssumption": false,
-      "concurrency": "measure at runtime",
-      "actualModelAttribution": "capture routed model per run where exposed; otherwise mark router-selected/unknown"
-    },
-    "configured_zcode_lanes_status": "historical configuration evidence; not current scheduling topology"
+      "configuredModel": "space bunny free",
+      "status": "historical configuration evidence; never individually probed; not a scheduling topology"
+    }
   },
   "interfaceLocks": [
     {
       "id": "A",
-      "owner": "SDW",
       "name": "MVP semantic IDs and entity relations",
       "unlocks": [
         "LNC",
         "VFX",
         "SKW",
         "EXP"
-      ]
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "SDW"
     },
     {
       "id": "B",
-      "owner": "LNC",
       "name": "UseCommand and validation outcomes",
       "dependsOn": [
         "A"
@@ -95,11 +91,12 @@
         "VFX",
         "EXP",
         "RTE"
-      ]
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "LNC"
     },
     {
       "id": "C",
-      "owner": "VFX",
       "name": "VisualSpec vNext",
       "dependsOn": [
         "A",
@@ -109,27 +106,31 @@
         "EXP",
         "SKW",
         "RTE"
-      ]
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "VFX"
     },
     {
       "id": "D",
-      "owner": "SKW",
       "name": "Minimal Reflection Graph",
       "unlocks": [
         "VFX",
         "EXP",
         "RTE"
-      ]
+      ],
+      "status": "design candidate; not frozen",
+      "proposedBy": "SKW"
     },
     {
       "id": "E",
-      "owner": "PRV",
       "name": "Live Provider/Account evidence contract",
       "unlocks": [
         "SDW",
         "RTE",
         "TRU"
-      ]
+      ],
+      "status": "reconnaissance only",
+      "proposedBy": "PRV"
     }
   ],
   "workstreams": [
@@ -654,7 +655,7 @@
         "Space Bunny Free lanes"
       ]
     },
-    "rule": "Use Astra/Fable as scarce adjudicators; use GPT-6.1 Sol, Claude Opus 5.5, and Grok 4.7 as premium workhorses; use abundant models and Space Bunny lanes for bulk execution.",
+    "rule": "Use Astra/Fable as scarce adjudicators; use GPT-6.1 Sol, Claude Opus 5.5, and Grok 4.7 as premium workhorses; use abundant models and the currently measured bulk route for bulk execution.",
     "crossProviderReview": "For load-bearing contracts, prefer primary proposal from one provider and independent premium review by the other; use frontier adjudication only if disagreement remains.",
     "workstreamDefaults": {
       "SDW": [
@@ -737,7 +738,8 @@
       ],
       "configRule": "do not change cost tier/provider restrictions during preflight without owner request"
     },
-    "workstreamDefaultsAreHeuristics": true
+    "workstreamDefaultsAreHeuristics": true,
+    "evidence": "desk research only; no measured per-task model performance exists yet"
   },
   "metaGrounding": {
     "authority": ".project/META-TRACKER.md",
@@ -748,5 +750,15 @@
     "habitatBoundary": "Daintree and ZCode are separate habitats; Daintree does not launch, supervise or manage ZCode."
   },
   "wavesArePlanningHypotheses": true,
-  "workstreamTopologyIsTemporary": true
+  "workstreamTopologyIsTemporary": true,
+  "reconciled": "2026-10-06",
+  "lockMeaning": "A Lock is a temporary interoperability agreement: stable enough for parallel work, explicitly falsifiable, replaceable when better evidence appears. It is not an architectural freeze.",
+  "waveStatus": {
+    "0": "executed 2026-10-05",
+    "1": "executed 2026-10-05 as design artifacts only; RTE-L1 not dispatched",
+    "2": "not started",
+    "3": "not started",
+    "4": "not started",
+    "5": "not started"
+  }
 }

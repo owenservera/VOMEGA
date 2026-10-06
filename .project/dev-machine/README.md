@@ -12,7 +12,7 @@ Reproducible **development-system experiment snapshot** for advancing VOMEGA. It
 cd /workspace/VOMEGA
 ./.project/dev-machine/health-check.sh
 ./.project/dev-machine/press-go.sh --dry-run   # plan only
-./.project/dev-machine/press-go.sh            # health → enqueue → launch (Daintree-preferring)
+./.project/dev-machine/press-go.sh            # health → suggest → open Daintree if it is running (a Linux-box convenience, not a policy)
 ./.project/dev-machine/press-go.sh --no-daintree   # force git-worktree + CLI fallback
 ```
 
@@ -27,20 +27,20 @@ cd <repo>\.project\dev-machine\windows-mirror
 
 | Path | Purpose |
 | --- | --- |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | Why Daintree-primary + thin git fallback |
-| [PROCESS.md](PROCESS.md) | Control plane, freeze/token rules, implementer≠reviewer, STATUS rules |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Observed tools, the Daintree/ZCode boundary, and the thin tool-neutral machinery |
+| [PROCESS.md](PROCESS.md) | Roles as functions, current safe defaults, escalation to Owen |
 | [HARNESS-MATRIX.md](HARNESS-MATRIX.md) | Invoke each CLI; auth symbolic; repair-required |
 | [META-WORKSTREAM-DISPATCH.md](META-WORKSTREAM-DISPATCH.md) | How SDW..TRU tasks are discovered and enqueued (procedure only) |
 | [RUN-LOG-SCHEMA.md](RUN-LOG-SCHEMA.md) | `runs.jsonl` fields |
 | `health-check.sh` | Deterministic environment gate |
 | `worktree-dispatch.sh` | Create disposable worktree + task prompt stub |
 | `integrate.sh` | Test → review gate → merge/PR → remove worktree |
-| `press-go.sh` | Health → read STATUS → enqueue first unblocked → launch |
+| `press-go.sh` | Health → advisory task suggestion → optionally open Daintree or create worktrees. Platform smoke by default; product launches only with `--product` |
 | `select-tasks.py` | Parse STATUS / candidates → JSON task queue (no LLM) |
 | `templates/` | Bounded task prompt templates (paths only, no pasted corpora) |
 | `bootstrap/` | Restore notes, live harness probe, reference digests |
 | `runs.jsonl` | Append-only ledger (created on first run) |
-| `HANDOFF-NEEDED.md` | Asks for CoS / specialists (do not wake bots from here) |
+| `HANDOFF-NEEDED.md` | Open asks for whoever is coordinating the Linux box |
 | [WINDOWS-PARITY.md](WINDOWS-PARITY.md) | LIVE_ON_LINUX vs UNVERIFIED_ON_WINDOWS vs REPAIR_REQUIRED |
 | [windows-mirror/](windows-mirror/) | Windows pack snapshot: `desired-state.json`, `bootstrap-vomega-dev.ps1`, `verify-vomega-dev.ps1`, `press-go-vomega.ps1` |
 | `sync-windows-mirror.sh` | Sync box mirror `/workspace/mirror-to-windows/VOMEGA-dev-machine/` ↔ `windows-mirror/` |

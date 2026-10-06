@@ -5,7 +5,7 @@
 | Pack overview | [README.md](README.md) | README.md |
 | Desired-state spec | [desired-state.json](desired-state.json) | desired-state.json |
 | Windows bootstrap / verify / press-go | `*.ps1` | `*.ps1` |
-| Process (roles, freeze/token rules, review) | [../PROCESS.md](../PROCESS.md) | `process/PROCESS.md` (snapshot) |
+| Process (roles as functions, safe defaults, escalation) | [../PROCESS.md](../PROCESS.md) | `process/PROCESS.md` (snapshot) |
 | Architecture | [../ARCHITECTURE.md](../ARCHITECTURE.md) | `process/ARCHITECTURE.md` |
 | Harness matrix | [../HARNESS-MATRIX.md](../HARNESS-MATRIX.md) | `process/HARNESS-MATRIX.md` |
 | Lane dispatch procedure | [../META-WORKSTREAM-DISPATCH.md](../META-WORKSTREAM-DISPATCH.md) | `process/META-WORKSTREAM-DISPATCH.md` |

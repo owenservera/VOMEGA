@@ -2,7 +2,9 @@
 
 > **Prompt status:** seed prompts, not permanent roles. A fresh team may reorganize, merge/split lanes or choose different tactics after reading current META-TRACKER, STATUS and evidence.
 
-These prompts are intended for fresh local Codex / Claude Code / ZCode sessions.
+These prompts were written for the first wave, which ran on 2026-10-05. The "first target" in each prompt already has a candidate artifact (see `STATUS.md`); a session reusing a prompt should start from that artifact and its TRU-L1 findings, not redo it.
+
+These prompts are intended for fresh local sessions in any available harness.
 
 They are **launch prompts**, not permanent role definitions.
 
@@ -271,13 +273,13 @@ Before interpreting launch-doc inconsistencies:
 - if clean and behind, fast-forward;
 - if dirty/diverged, preserve work and report instead of pulling blindly.
 
-Current owner-reported ZCode route is `openrouter/auto`. Observe it read-only. Do not assume the historical five Space Bunny accounts equal five current workers. Measure actual safe concurrency and record the concrete routed model per task where exposed.
+The ZCode route measured on 2026-10-05 was `openrouter/auto`, with ≥6 bounded workers. Observe the current route read-only and re-measure; do not reuse that number, and do not assume the historical five Space Bunny accounts equal five workers. Record the concrete routed model per task where exposed. Daintree and ZCode are separate habitats: neither manages the other.
 
 First responsibilities:
 1. verify current executor/harness capacity read-only;
 2. protect provider/auth configuration;
 3. create short-lived task isolation only where needed;
-4. dispatch FIRST-WAVE;
+4. dispatch bounded work derived from current STATUS and META-TRACKER (the first wave has already run);
 5. maintain one merge queue;
 6. ensure handoffs are durable;
 7. trigger independent review;

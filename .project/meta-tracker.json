@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vomega-meta-tracker/1",
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "authority": {
     "programMap": ".project/META-TRACKER.md",
     "launchRuntimeState": ".project/agentic-launch/STATUS.md",
@@ -9,7 +9,18 @@
     "operatingPrinciple": "The map preserves possibilities; it does not prescribe the path.",
     "hardConstraints": "Explicit product/constitutional invariants and protected Lab/proof boundaries.",
     "revisableMechanisms": "Programs, lanes, Locks, milestones, tasks, sequencing, harness/model allocation, worktrees, orchestration and habitats are hypotheses/coordination aids.",
-    "habitatBoundary": "Daintree and ZCode are separate habitats. Daintree does not launch, supervise or manage ZCode; coordinate through Git/task/evidence surfaces."
+    "habitatBoundary": "Daintree and ZCode are separate habitats. Daintree does not launch, supervise or manage ZCode; coordinate through Git/task/evidence surfaces.",
+    "evidence": ".project/evidence/, .project/REALITY.md, source and tests; outranks summary cells in this file",
+    "ladder": [
+      "invariants and proof boundaries",
+      "observed reality and evidence",
+      "owner-selected product mission",
+      "candidate architectures, programs, interfaces",
+      "roadmaps, lanes, Locks, tasks",
+      "agents, models, tools, worktrees, habitats"
+    ],
+    "ownersFieldMeaning": "Lane vocabulary current on 2026-10-05; a routing hint, not an assignment. No lane, harness or model owns a program.",
+    "priorityNowMeaning": "Justified by current evidence; not claimed or running unless STATUS says so."
   },
   "counts": {
     "metaPrograms": 67,
@@ -182,7 +193,7 @@
       "id": "MP-19",
       "name": "Reflection Graph",
       "purpose": "Derive a read-only graph of Plugin/Capability/Command/Schema/Source/etc. from actual loaded structure.",
-      "state": "Candidate node/edge design + manifest inventory only.",
+      "state": "Candidate node/edge design; 24 manifest paths listed, 3 manifests deep-read (vivim-nlcl, vivim-providers, vivim-mind).",
       "priority": "NOW / PARALLEL",
       "owners": "SKW",
       "notes": "Must stay descriptive; live state joins later."
@@ -284,7 +295,7 @@
       "state": "DESIGN / release roadmap.",
       "priority": "NEXT after provider 1",
       "owners": "PRV + TRU",
-      "notes": "Claude second; Gemini conditional."
+      "notes": "The roadmap currently proposes ChatGPT first, Claude second, Gemini conditional. That order is a roadmap hypothesis, not an owner decision."
     },
     {
       "id": "MP-31",
@@ -425,10 +436,10 @@
       "id": "MP-46",
       "name": "Local Agentic Development System",
       "purpose": "Many local agents can work in parallel, hand off through Git/artifacts, and integrate without owner reconstructing everything manually.",
-      "state": "PROVEN first launch slice: ≥6 bounded ZCode workers completed first wave.",
+      "state": "PROVEN-SLICE (narrow): six bounded ZCode workers each wrote one design artifact plus handoff concurrently (28–49 s, ≤8 tool calls); one dispatcher integrated them. Parallel code changes, worktree merges and cross-habitat coordination are unproven.",
       "priority": "NOW / continuous",
       "owners": "DEV + TRU",
-      "notes": "Bounded workers succeeded; unbounded heavy background agents stalled."
+      "notes": "Workers changed no code and made no commits. Bounded workers succeeded; unbounded heavy background agents stalled."
     },
     {
       "id": "MP-47",
@@ -806,6 +817,66 @@
       "name": "Elephant Context Network",
       "parent": "MP-66",
       "disposition": "explicit experiment ladder exists"
+    }
+  ],
+  "labs": [
+    {
+      "id": "semantic-runtime-lab",
+      "name": "Semantic Runtime Lab / Omega Simulator",
+      "programs": [
+        "MP-11",
+        "MP-13",
+        "MP-16",
+        "MP-17"
+      ],
+      "boundary": "Simulated evidence is labelled simulated; pinned experiments replay; Lab adoption is not product adoption.",
+      "notProductLaw": "Lab kernel, Profiles, packs and storage are Lab design candidates."
+    },
+    {
+      "id": "mvp-visualization-sandbox",
+      "name": "MVP Visualization Sandbox",
+      "programs": [
+        "MP-12",
+        "MP-14",
+        "MP-15"
+      ],
+      "boundary": "Stops at SIMULATED prompt.send; fixture Models/Accounts are never provider truth; the UI does not own meaning.",
+      "notProductLaw": "Not a frozen VisualSpec wire format."
+    },
+    {
+      "id": "provider-lab",
+      "name": "Provider Reality / Provider Lab",
+      "programs": [
+        "MP-24",
+        "MP-25",
+        "MP-27",
+        "MP-29"
+      ],
+      "boundary": "No live observation before a live-proof protocol and consent boundary exist; structural evidence by default; auth/provider config untouched.",
+      "notProductLaw": "Not product authority and not a commitment to a Chrome-extension architecture."
+    },
+    {
+      "id": "reflection",
+      "name": "Reflection / self-knowledge",
+      "programs": [
+        "MP-18",
+        "MP-19",
+        "MP-20",
+        "MP-21",
+        "MP-22",
+        "MP-23"
+      ],
+      "boundary": "Extracted fact != suggested meaning; description != authority, availability or proof; read-only by default.",
+      "notProductLaw": "The Reflection ABI obligation is a candidate constitutional property, not adopted law."
+    },
+    {
+      "id": "dev-system",
+      "name": "Development-system acceleration",
+      "programs": [
+        "MP-46..MP-67"
+      ],
+      "boundary": "Repository, tests and evidence outrank agent self-report; no auth, spend or config mutation.",
+      "notProductLaw": "Not a permanent organization, scheduler or source of project truth."
     }
   ]
 }

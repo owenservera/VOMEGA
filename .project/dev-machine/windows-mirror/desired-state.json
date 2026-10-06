@@ -17,7 +17,7 @@
   "secrets_policy": "No passwords, API keys, OAuth tokens, cookies, credential file contents or browser session state. Env vars recorded by NAME only. Auth is symbolic.",
   "hosts": {
     "linux": {
-      "role": "bootstrap/control-plane box",
+      "role": "shared bootstrap box (one observed machine; not a control plane for other habitats)",
       "os": "Debian-like Linux x64 (kernel 6.12)",
       "repo_root": "/workspace/VOMEGA",
       "worktree_root": "/workspace/vomega-worktrees",
@@ -350,7 +350,7 @@
       "name": "daintree",
       "command": "daintree",
       "role": "Git worktree / Review Hub / supported CLI-agent habitat; not a ZCode manager",
-      "required": true,
+      "required": false,
       "desired": {
         "version": ">=0.41.0"
       },
@@ -370,13 +370,13 @@
         "type": "none"
       },
       "repair_required": false,
-      "notes": "Linux: running on DISPLAY=:16, open via .project/dev-machine/bootstrap/open-in-daintree.sh. Windows: secondary habitat. Daintree does not launch, supervise or manage ZCode."
+      "notes": "Linux: running on DISPLAY=:16, open via .project/dev-machine/bootstrap/open-in-daintree.sh. Windows: optional independent habitat. Daintree does not launch, supervise or manage ZCode."
     },
     {
       "name": "zcode",
       "command": "zcode",
       "role": "Independent Windows ZCode session/worker habitat",
-      "required": true,
+      "required": false,
       "desired": {
         "version": ">=3.14.4"
       },
@@ -399,7 +399,7 @@
         "secret_material": "NEVER_EXPORT"
       },
       "repair_required": false,
-      "notes": "router openrouter/auto hides underlying model: record router-selected/unknown Managed by ZCode itself; Daintree is not its control plane."
+      "notes": "router openrouter/auto hides underlying model: record router-selected/unknown. Managed by ZCode itself; Daintree is not its control plane."
     }
   ],
   "routers": [
@@ -491,5 +491,6 @@
     "windows": "UNVERIFIED_ON_WINDOWS: run bootstrap-vomega-dev.ps1 then verify-vomega-dev.ps1 and return verify-report.json"
   },
   "operating_principle": "The map preserves possibilities; it does not prescribe the path. Only explicit invariants and Lab/proof boundaries are hard constraints.",
-  "habitat_boundary": "ZCode and Daintree are independent habitats. Daintree does not launch, supervise or manage ZCode. Coordinate through Git/task/evidence surfaces when both are used."
+  "habitat_boundary": "ZCode and Daintree are independent habitats. Daintree does not launch, supervise or manage ZCode. Coordinate through Git/task/evidence surfaces when both are used.",
+  "habitats_optional": "ZCode and Daintree are optional, independent habitats. Neither is required and neither manages the other; verify reports their presence as PASS/WARN/INFO only."
 }

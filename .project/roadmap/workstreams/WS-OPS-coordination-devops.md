@@ -27,6 +27,13 @@ Out of scope:
 
 - Accelerators must show validated throughput gains (DEVELOPMENT-ACCELERATION-HYPOTHESES).
 
+## Note — 2026-10-06
+
+Two cards below were written before later evidence and owner corrections:
+
+- **OPS-01** asks for SITREP "Next actions" to reference task IDs instead of prose. Task IDs are now explicitly a non-mandatory decomposition, so that acceptance line is optional.
+- **OPS-03** names "ZCode Space Bunny lanes". ZCode now routes through `openrouter/auto`; capacity was measured once (≥6 bounded workers) and should be re-measured per launch. The intent of the card (measure before dispatch, configuration read-only) stands.
+
 ## Task list
 
 | ID | Milestone | Task | Depends on | Size |
