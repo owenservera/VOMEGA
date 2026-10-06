@@ -86,6 +86,7 @@
         }
       ],
       "readFirst": [
+        ".project/deliverables/D1-CODE-MAP.md",
         "omega-baseline/plugins/vivim-nlcl-pure/src/interpret.ts",
         "omega-baseline/plugins/vivim-nlcl-pure/src/grammar.ts",
         "omega-baseline/plugins/vivim-nlcl-pure/src/ground.ts"
@@ -343,6 +344,10 @@
       "surface": [
         "omega-baseline/experimental/d1/src/reflection.ts",
         "omega-baseline/experimental/d1/src/help.ts"
+      ],
+      "readFirst": [
+        ".project/deliverables/D1-REFLECTION-HARVEST-MAP.md",
+        "omega-baseline/experimental/reflection-migrator/README.md"
       ]
     },
     "D1-056": {
@@ -357,7 +362,8 @@
         "omega-baseline/experimental/d1/src/help.ts"
       ],
       "readFirst": [
-        "omega-baseline/experimental/reflection-audit/LOCK-D-CANDIDATE.md",
+        ".project/deliverables/D1-REFLECTION-HARVEST-MAP.md",
+        "omega-baseline/experimental/reflection-migrator/README.md",
         "seed-docs/SELF-KNOWLEDGE-REFLECTION-MIGRATOR.md"
       ]
     },
@@ -371,6 +377,10 @@
       "surface": [
         "omega-baseline/experimental/d1/src/reflection.ts",
         "omega-baseline/experimental/d1/src/help.ts"
+      ],
+      "readFirst": [
+        ".project/deliverables/D1-REFLECTION-HARVEST-MAP.md",
+        "seed-docs/SELF-DESCRIBING-RUNTIME-WIKI.md"
       ]
     },
     "D1-059A": {
