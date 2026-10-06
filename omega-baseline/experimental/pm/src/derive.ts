@@ -1,7 +1,7 @@
 // Derived PM state. Nothing here is stored: plan resolution and evidence state are
 // functions of the seed and the append-only evidence events, so they cannot silently
 // drift from the plan. Execution/proof state is NOT derived here — the ratchet owns it.
-import type { EvidenceEvent, EvidenceState, Phase, PlanLevel } from "./schema.ts";
+import type { BuildEntry, EvidenceEvent, EvidenceState, Milestone, Phase, PlanLevel } from "./schema.ts";
 
 /** Structural input to plan resolution. v0 seeds omit workPackages; v0.1 adds them. */
 export interface PlanInput {
@@ -40,4 +40,35 @@ export function pmEvidenceCoverage(events: EvidenceEvent[], programId: string): 
   if (mine.some((e) => e.kind === "regressed")) return "REGRESSION_REPORTED";
   if (mine.some((e) => e.kind === "proof")) return "PROOF_LINKED";
   return "NO_LINKED_PROOF";
+}
+
+// ---------------------------------------------------------------- build plan derivation
+
+export const GATE_SATISFIED = "SATISFIED";
+
+/**
+ * BLOCKED vs HOLD — the distinction the owner directive requires.
+ * BLOCKED: a required technical gate on the entry's start phase is unsatisfied.
+ * HOLD: the owner chose a stopping boundary, so deeper work is intentionally not selected
+ * even though it may be technically possible. Neither state says "start now": PM never
+ * chooses a next phase.
+ */
+export type EntryBlockState = "BLOCKED" | "UNBLOCKED";
+export type EntryIntent = "CONTINUE" | "EXECUTE_THEN_HOLD";
+
+export function entryIntent(entry: BuildEntry): EntryIntent {
+  return entry.holdAfter ? "EXECUTE_THEN_HOLD" : "CONTINUE";
+}
+
+export function entryBlockState(
+  entry: BuildEntry,
+  blockedByOf: (phaseId: string) => string[],
+  gateStatus: (gateId: string) => string,
+): EntryBlockState {
+  return blockedByOf(entry.startAt).some((g) => gateStatus(g) !== GATE_SATISFIED) ? "BLOCKED" : "UNBLOCKED";
+}
+
+/** A milestone is satisfied only when EVERY required gate is SATISFIED. It never mutates gate state. */
+export function milestoneSatisfied(m: Milestone, gateStatus: (gateId: string) => string): boolean {
+  return m.requiredGates.length > 0 && m.requiredGates.every((g) => gateStatus(g) === GATE_SATISFIED);
 }

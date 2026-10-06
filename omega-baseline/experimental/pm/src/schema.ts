@@ -123,6 +123,74 @@ export const Events = z.strictObject({
 });
 export type Events = z.infer<typeof Events>;
 
+// ---------------------------------------------------------------- build plan (owner-authored)
+
+/** Emphasis is a coarse owner-set attention hint, never a numeric score or rank. */
+export const EMPHASIS = ["PRIMARY", "HIGH", "NORMAL", "LOW"] as const;
+export type Emphasis = (typeof EMPHASIS)[number];
+
+export const WAVE_STATES = ["selected", "seeded-later"] as const;
+
+const BuildEntry = z.strictObject({
+  program: z.string().regex(/^MP-\d{2}$/),
+  startAt: z.string().min(1),
+  executeThrough: z.string().min(1),
+  targetGate: z.string().min(1).optional(),
+  emphasis: z.enum(EMPHASIS),
+  holdAfter: z.string().min(1).optional(),
+  resumeWhen: z.array(z.string()).default([]),
+  note: z.string().default(""),
+});
+export type BuildEntry = z.infer<typeof BuildEntry>;
+
+const Wave = z.strictObject({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  state: z.enum(WAVE_STATES).default("selected"),
+  objective: z.string().default(""),
+  entries: z.array(BuildEntry).default([]),
+});
+export type Wave = z.infer<typeof Wave>;
+
+const Milestone = z.strictObject({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  requiredGates: z.array(z.string()).default([]),
+  unlocksWave: z.string().min(1),
+  note: z.string().default(""),
+});
+export type Milestone = z.infer<typeof Milestone>;
+
+const LateMaturity = z.strictObject({
+  program: z.string().regex(/^MP-\d{2}$/),
+  phases: z.array(z.string()).default([]),
+  condition: z.string().default(""),
+});
+
+const Interoperability = z.strictObject({
+  requirement: z.string().default(""),
+  note: z.string().default(""),
+});
+
+/**
+ * The build plan is OWNER-AUTHORED coordination state: what Owen selected to execute now,
+ * where to stop, and which convergence point opens the next fan-out. Every object is strict,
+ * so decisioning fields (priorityScore, recommendedNext, optimalOrder, autoRank, any
+ * scheduling field) are rejected by the schema rather than merely discouraged.
+ */
+export const BuildPlan = z.strictObject({
+  schema: z.literal("vomega-pm-buildplan/1"),
+  status: z.string().min(1),
+  authority: z.record(z.string(), z.union([z.string(), z.array(z.string())])),
+  sourceDirective: z.string().default(""),
+  rationale: z.string().default(""),
+  waves: z.array(Wave).default([]),
+  milestones: z.array(Milestone).default([]),
+  lateMaturity: z.array(LateMaturity).default([]),
+  interoperability: Interoperability.optional(),
+});
+export type BuildPlan = z.infer<typeof BuildPlan>;
+
 /** Assembled managed set: validated program files keyed by id. */
 export interface ManagedSet {
   programs: Record<string, ProgramFile>;

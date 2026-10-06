@@ -1,0 +1,168 @@
+{
+  "schema": "vomega-pm-buildplan/1",
+  "status": "OWNER-AUTHORED — coordination overlay, not decisioning",
+  "authority": {
+    "whoAuthors": "Owen (owner) only",
+    "whatPMMayDo": [
+      "store and validate this plan",
+      "render it",
+      "show which owner-selected entries are blocked or held by existing gates",
+      "show when every gate condition of an owner-defined milestone is satisfied"
+    ],
+    "whatPMMayNotDo": [
+      "invent a build plan",
+      "choose the next phase or wave",
+      "rank the five programs or infer priority from effort/LOC",
+      "alter wave membership or move a phase between waves",
+      "start work merely because a phase is unblocked",
+      "create an optimal order or recommended-next list"
+    ],
+    "note": "PM renders what Owen selected. It never proposes what Owen should select."
+  },
+  "sourceDirective": ".project/pm/PM-BUILD-PLAN-WAVES-SETUP.md",
+  "rationale": "The phase roadmap records what exists and what technically depends on what. The build plan records what the owner selected to execute now, where to stop, and what convergence point opens the next fan-out. Both layers stay separate: the dependency graph is factual, the build plan is owner coordination state.",
+
+  "waves": [
+    {
+      "id": "ACCEL-W1",
+      "name": "Independent foundations",
+      "state": "selected",
+      "objective": "Start all five accelerator programs in parallel but execute only their independent slices. Concentrate build capacity on the two substrate-producing lines (MP-21 structural self-knowledge, MP-56 trace-to-fixture); use MP-54 and MP-60 to define and validate consumer requirements before their deeper dependencies exist.",
+      "entries": [
+        {
+          "program": "MP-21",
+          "startAt": "MP21-P1",
+          "executeThrough": "MP21-P3",
+          "targetGate": "MP21-G3",
+          "emphasis": "PRIMARY",
+          "note": "Main structural spine. Additional capacity and independent review preferentially here. MP21-G3 is the unlock consumed by MP-54 P2, MP-55 P3 and MP-60 P2."
+        },
+        {
+          "program": "MP-56",
+          "startAt": "MP56-P1",
+          "executeThrough": "MP56-P4",
+          "targetGate": "MP56-G4",
+          "emphasis": "HIGH",
+          "note": "Second substrate line. Synthetic traces first; do not block this line on live Provider traces."
+        },
+        {
+          "program": "MP-55",
+          "startAt": "MP55-P1",
+          "executeThrough": "MP55-P2",
+          "targetGate": "MP55-G2",
+          "emphasis": "NORMAL",
+          "holdAfter": "MP55-P2",
+          "resumeWhen": ["MP21-G3"],
+          "note": "Stop at the reproducible-capsule boundary; hold structural enrichment."
+        },
+        {
+          "program": "MP-54",
+          "startAt": "MP54-P1",
+          "executeThrough": "MP54-P1",
+          "targetGate": "MP54-G1",
+          "emphasis": "NORMAL",
+          "holdAfter": "MP54-P1",
+          "resumeWhen": ["MP21-G3"],
+          "note": "Thin slice only. P1 must extend or reuse the existing Ratchet packet mechanism rather than create a second context system."
+        },
+        {
+          "program": "MP-60",
+          "startAt": "MP60-P1",
+          "executeThrough": "MP60-P1",
+          "targetGate": "MP60-G1",
+          "emphasis": "NORMAL",
+          "holdAfter": "MP60-P1",
+          "resumeWhen": ["MP21-G3"],
+          "note": "Requirements-only: produce the impact-query acceptance corpus and feed those requirements into MP-21 graph design. Do not build a second source parser or structural graph before MP21-G3."
+        }
+      ]
+    },
+    {
+      "id": "ACCEL-W2",
+      "name": "Integration fan-out",
+      "state": "selected",
+      "objective": "Turn independently proven primitives into one interoperable development-acceleration system rather than five separate tools. Later MP-21 phases must not block consumers of MP21-G3.",
+      "entries": [
+        {
+          "program": "MP-21",
+          "startAt": "MP21-P4",
+          "executeThrough": "MP21-P5",
+          "emphasis": "NORMAL",
+          "note": "Continue gap/migration proposals and continuous compliance where justified."
+        },
+        {
+          "program": "MP-54",
+          "startAt": "MP54-P2",
+          "executeThrough": "MP54-P3",
+          "emphasis": "NORMAL",
+          "resumeWhen": ["MP21-G3", "MP55-G2"],
+          "note": "Source-aware bundle, then evidence/failure enrichment."
+        },
+        {
+          "program": "MP-55",
+          "startAt": "MP55-P3",
+          "executeThrough": "MP55-P4",
+          "emphasis": "NORMAL",
+          "resumeWhen": ["MP21-G3"],
+          "note": "Structural enrichment, then the cross-agent diagnostic packet."
+        },
+        {
+          "program": "MP-56",
+          "startAt": "MP56-P5",
+          "executeThrough": "MP56-P5",
+          "emphasis": "LOW",
+          "note": "Continuous harvesting only where useful real or synthetic observations exist. Do not manufacture trace volume merely to execute the phase."
+        },
+        {
+          "program": "MP-60",
+          "startAt": "MP60-P2",
+          "executeThrough": "MP60-P3",
+          "emphasis": "NORMAL",
+          "resumeWhen": ["MP21-G3", "MP56-G4"],
+          "note": "Static structural impact graph, then runtime/test-observed edges when MP56-G4 output is available."
+        }
+      ]
+    },
+    {
+      "id": "ACCEL-W3",
+      "name": "Operational acceleration",
+      "state": "seeded-later",
+      "objective": "Operationalize the acceleration system. Seeded as later owner-plan content; not executable until earlier milestone conditions are satisfied.",
+      "entries": [
+        { "program": "MP-21", "startAt": "MP21-P5", "executeThrough": "MP21-P5", "emphasis": "LOW", "note": "Compliance hardening / incremental use." },
+        { "program": "MP-54", "startAt": "MP54-P4", "executeThrough": "MP54-P4", "emphasis": "NORMAL", "note": "Adaptive context selection." },
+        { "program": "MP-55", "startAt": "MP55-P5", "executeThrough": "MP55-P5", "emphasis": "NORMAL", "note": "Automatic capture/minimization." },
+        { "program": "MP-56", "startAt": "MP56-P5", "executeThrough": "MP56-P5", "emphasis": "LOW", "note": "Continuous harvesting as evidence justifies." },
+        { "program": "MP-60", "startAt": "MP60-P4", "executeThrough": "MP60-P4", "emphasis": "NORMAL", "note": "Affected-test selection. MP60-P5 is explicitly NOT in this wave." }
+      ]
+    }
+  ],
+
+  "milestones": [
+    {
+      "id": "ACCEL-M1",
+      "name": "Core accelerator substrates available",
+      "requiredGates": ["MP21-G3", "MP54-G1", "MP55-G2", "MP56-G4", "MP60-G1"],
+      "unlocksWave": "ACCEL-W2",
+      "note": "An owner-defined coordination milestone computed as the conjunction of five existing program gates. It is not a new technical proof claim and does not mutate any gate state."
+    }
+  ],
+
+  "lateMaturity": [
+    {
+      "program": "MP-54",
+      "phases": ["MP54-P5"],
+      "condition": "Measured optimization, after A/B evidence that bundles improve a validated work metric."
+    },
+    {
+      "program": "MP-60",
+      "phases": ["MP60-P5"],
+      "condition": "Predictive impact/concurrency only after enough real history exists, its E4-E5 decomposition review occurs, and acceleration measurement shows it earns continuation."
+    }
+  ],
+
+  "interoperability": {
+    "requirement": "The five programs must not create five identity/evidence universes. Compatible references are required for at least: SourceAnchor/source digest, EntityRef, TaskRef, GateRef, TestRef, FailureRef, TraceRef, FixtureRef, EvidenceRef, repository revision/HEAD.",
+    "note": "This is a compatibility requirement, not one giant shared schema. MP-60 P1 should help define consumer queries before MP-21 P3 freezes a graph shape."
+  }
+}

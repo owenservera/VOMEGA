@@ -49,6 +49,21 @@ PROGRAM (MP-21/54/55/56/60)
       └── External dependencies  referenced-only (never managed)
 ```
 
+Above that roadmap sits one **owner-authored overlay**, deliberately not derived:
+
+```text
+DEPENDENCY GRAPH  (factual: what can happen)
+        ↓
+OWNER BUILD PLAN  (owner-authored: selected ranges, holds, waves, milestones)
+        ↓
+Ratchet           (execution + proof, once a phase is selected)
+```
+
+`build-plan.json` records waves, per-program phase ranges with emphasis, owner-chosen hold points,
+resume conditions, and convergence milestones computed as the conjunction of existing gates. PM
+validates its references and renders it; PM never authors, ranks, reorders, scores or completes it,
+and never renders a "recommended next".
+
 Phases descend to work packages, tasks and atomic tasks **only when execution is selected**, and
 that layer belongs to the Ratchet. PM never mints task IDs.
 
@@ -105,7 +120,8 @@ evidence event for a program outside scope; and any generated view that is stale
 ## 10. Generated views (the durable data model)
 
 `SELECTED-PROGRAMS.md` · `ROADMAP.md` (all phases) · `DEPENDENCIES.md` (gate graph + external refs) ·
-`ESTIMATES.md` · `PROGRAMS/MP-xx.md` (five dossiers) · `portfolio.json` (machine projection).
+`ESTIMATES.md` · `PROGRAMS/MP-xx.md` (five dossiers) · `BUILD-PLAN.md` (owner-authored waves) ·
+`portfolio.json` (machine projection, including the build-plan projection).
 They are generated and freshness-checked; hand-editing one is an error, not a source.
 
 There is no frontier view, no ranking, no "candidate next work" list and no portfolio score — those

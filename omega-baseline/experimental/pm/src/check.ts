@@ -11,8 +11,8 @@
 // FAILURE, not a warning.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { Events, ProgramFile, Scope, bannedRootKeys } from "./schema.ts";
-import type { Events as EventsT, ProgramFile as ProgramFileT, Scope as ScopeT } from "./schema.ts";
+import { Events, ProgramFile, Scope, BuildPlan, bannedRootKeys } from "./schema.ts";
+import type { Events as EventsT, ProgramFile as ProgramFileT, Scope as ScopeT, BuildPlan as BuildPlanT } from "./schema.ts";
 import { buildPortfolio, gitHead, paths, renderViews, stripVolatileHead, stripVolatileHeadMd, writeViews } from "./project.ts";
 import type { ManagedSet, Portfolio } from "./project.ts";
 import type { Tracker } from "./project.ts";
@@ -137,6 +137,64 @@ function readJson(path: string, label: string): unknown {
   return JSON.parse(readFileSync(path, "utf8"));
 }
 
+/**
+ * Validate the OWNER build plan against the managed set. It checks references and shape only —
+ * never whether the plan is optimal, sensible, or could be improved. Decisioning fields are
+ * rejected by the strict schema; this function proves no reference dangles.
+ */
+export function validateBuildPlan(
+  raw: unknown,
+  managed: Set<string>,
+  phaseOwner: Map<string, string>,
+  gateIds: Set<string>,
+  programIds: Set<string>,
+): { problems: string[]; plan?: BuildPlanT } {
+  const problems: string[] = [];
+  const parsed = BuildPlan.safeParse(raw);
+  if (!parsed.success) {
+    for (const i of parsed.error.issues) problems.push(`BUILD_PLAN_INVALID ${i.path.join(".") || "$"}: ${i.message}`);
+    return { problems };
+  }
+  const plan = parsed.data;
+
+  const waveIds = new Set<string>();
+  for (const w of plan.waves) {
+    if (waveIds.has(w.id)) problems.push(`DUPLICATE_WAVE ${w.id}`);
+    waveIds.add(w.id);
+    for (const e of w.entries) {
+      if (!managed.has(e.program)) problems.push(`BUILD_PLAN_OUT_OF_SCOPE ${w.id} → ${e.program} — PM manages only ${[...managed].join(", ")}`);
+      if (!programIds.has(e.program)) problems.push(`UNKNOWN_PROGRAM ${w.id} → ${e.program}`);
+      for (const [field, phaseId] of [["startAt", e.startAt], ["executeThrough", e.executeThrough], ["holdAfter", e.holdAfter]] as const) {
+        if (!phaseId) continue;
+        if (!phaseOwner.has(phaseId)) problems.push(`UNKNOWN_PHASE ${w.id} ${e.program} ${field} → ${phaseId}`);
+        else if (phaseOwner.get(phaseId) !== e.program) problems.push(`PHASE_PROGRAM_MISMATCH ${w.id} ${e.program} ${field} → ${phaseId} belongs to ${phaseOwner.get(phaseId)}`);
+      }
+      if (e.targetGate && !gateIds.has(e.targetGate)) problems.push(`UNKNOWN_GATE ${w.id} ${e.program} targetGate → ${e.targetGate}`);
+      for (const r of e.resumeWhen) {
+        if (!gateIds.has(r) && !programIds.has(r)) problems.push(`UNKNOWN_RESUME_REF ${w.id} ${e.program} resumeWhen → ${r}`);
+      }
+    }
+  }
+
+  const milestoneIds = new Set<string>();
+  for (const m of plan.milestones) {
+    if (milestoneIds.has(m.id)) problems.push(`DUPLICATE_MILESTONE ${m.id}`);
+    milestoneIds.add(m.id);
+    for (const g of m.requiredGates) if (!gateIds.has(g)) problems.push(`UNKNOWN_GATE ${m.id} requiredGates → ${g}`);
+    if (!waveIds.has(m.unlocksWave)) problems.push(`UNKNOWN_WAVE_REF ${m.id} unlocksWave → ${m.unlocksWave}`);
+  }
+
+  for (const l of plan.lateMaturity) {
+    if (!managed.has(l.program)) problems.push(`BUILD_PLAN_OUT_OF_SCOPE lateMaturity → ${l.program}`);
+    for (const ph of l.phases) {
+      if (!phaseOwner.has(ph)) problems.push(`UNKNOWN_PHASE lateMaturity ${l.program} → ${ph}`);
+      else if (phaseOwner.get(ph) !== l.program) problems.push(`PHASE_PROGRAM_MISMATCH lateMaturity ${l.program} → ${ph}`);
+    }
+  }
+
+  return { problems, plan };
+}
+
 const sameText = (a: string, b: string): boolean => a.replace(/\r\n/g, "\n") === b.replace(/\r\n/g, "\n");
 
 function printRatchetReference(): void {
@@ -175,8 +233,27 @@ export function main(argv: string[]): number {
   for (const w of report.warnings) process.stdout.write(`warn ${w}\n`);
 
   const problems = [...report.problems];
+
+  // Owner build plan (optional): validate references against the managed set; never judge it.
+  let buildPlan: BuildPlanT | null = null;
+  if (report.set && report.scope) {
+    const managed = new Set(report.scope.managedPrograms);
+    const phaseOwner = new Map<string, string>();
+    const gateIds = new Set<string>();
+    for (const [pid, prog] of Object.entries(report.set.programs)) {
+      for (const ph of prog.phases) phaseOwner.set(ph.id, pid);
+      for (const g of prog.gates) gateIds.add(g.id);
+    }
+    const programIds = new Set((tracker.programs ?? []).map((p) => p.id));
+    if (existsSync(paths.buildPlan)) {
+      const bp = validateBuildPlan(readJson(paths.buildPlan, "build-plan"), managed, phaseOwner, gateIds, programIds);
+      problems.push(...bp.problems);
+      buildPlan = bp.plan ?? null;
+    }
+  }
+
   if (report.set && report.events && report.scope) {
-    const pf: Portfolio = buildPortfolio(report.set, report.scope.managedPrograms, tracker, report.events, gitHead());
+    const pf: Portfolio = buildPortfolio(report.set, report.scope.managedPrograms, tracker, report.events, buildPlan, gitHead());
     const contents = renderViews(pf);
     if (!check) {
       writeViews(contents);

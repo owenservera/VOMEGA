@@ -6,7 +6,8 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { canonicalize, digest, short } from "../../ratchet/src/canonical.ts";
-import { pmEvidenceCoverage, planResolution } from "./derive.ts";
+import { entryBlockState, entryIntent, milestoneSatisfied, pmEvidenceCoverage, planResolution } from "./derive.ts";
+import type { BuildPlan } from "./schema.ts";
 import type { Dossier, Events, Gate, Gap, ManagedSet, Phase, ProgramFile } from "./schema.ts";
 
 export interface TrackerProgram {
@@ -27,6 +28,7 @@ const ROOT = join(import.meta.dir, "../../../.."); // repo root
 export const paths = {
   root: ROOT,
   scope: join(ROOT, ".project/pm/scope.json"),
+  buildPlan: join(ROOT, ".project/pm/build-plan.json"),
   programsDir: join(ROOT, ".project/pm/data/programs"),
   events: join(ROOT, ".project/pm/data/evidence-events.json"),
   tracker: join(ROOT, ".project/meta-tracker.json"),
@@ -77,11 +79,47 @@ export interface Portfolio {
   managedScope: string[];
   note: string;
   counts: { programs: number; planResolution: Record<string, number>; pmEvidenceCoverage: Record<string, number>; ungatedPhases: number; needsReview: number };
-  crossProgramGates: { id: string; program: string; statement: string; consumers: string[]; external: boolean }[];
+  crossProgramGates: { id: string; program: string; statement: string; consumers: string[] }[];
+  /** Owner-authored build plan, projected with derived gate state. PM never authors or reorders it. */
+  buildPlan: {
+    sourceDirective: string;
+    status: string;
+    rationale: string;
+    waves: {
+      id: string;
+      name: string;
+      state: string;
+      objective: string;
+      authorization: string;
+      entries: {
+        program: string;
+        range: string;
+        intent: string;
+        emphasis: string;
+        blockState: string;
+        targetGate: string | null;
+        targetGateStatus: string | null;
+        holdAfter: string | null;
+        resumeWhen: string[];
+        note: string;
+      }[];
+    }[];
+    milestones: {
+      id: string;
+      name: string;
+      satisfied: boolean;
+      requiredGates: { gate: string; status: string }[];
+      unlocksWave: string;
+      waveAuthorization: string;
+      note: string;
+    }[];
+    lateMaturity: { program: string; phases: string[]; condition: string }[];
+    interoperability: { requirement: string; note: string } | null;
+  };
   programs: PortfolioProgram[];
 }
 
-export function buildPortfolio(set: ManagedSet, scope: string[], tracker: Tracker, events: Events, sourceHead: string): Portfolio {
+export function buildPortfolio(set: ManagedSet, scope: string[], tracker: Tracker, events: Events, buildPlan: BuildPlan | null, sourceHead: string): Portfolio {
   const managed = new Set(scope);
   const counts = { programs: scope.length, planResolution: {} as Record<string, number>, pmEvidenceCoverage: {} as Record<string, number>, ungatedPhases: 0, needsReview: 0 };
   const byId = new Map(tracker.programs.map((p) => [p.id, p]));
@@ -128,14 +166,79 @@ export function buildPortfolio(set: ManagedSet, scope: string[], tracker: Tracke
       .map((g) => ({ id: g.id, program: p.id, statement: g.statement, consumers: g.consumers }));
   });
 
+  // Owner build plan, projected. Gate state is READ from the program files; the plan itself is
+  // never reordered, re-scored, or completed by PM, and no next-phase recommendation is produced.
+  const gateStatusOf = (gateId: string): string => {
+    for (const prog of Object.values(set.programs)) {
+      const g = prog.gates.find((x) => x.id === gateId);
+      if (g) return g.status;
+    }
+    return "UNKNOWN";
+  };
+  const blockedByOf = (phaseId: string): string[] => {
+    for (const prog of Object.values(set.programs)) {
+      const p = prog.phases.find((x) => x.id === phaseId);
+      if (p) return p.blockedBy;
+    }
+    return [];
+  };
+  const milestones = (buildPlan?.milestones ?? []).map((m) => {
+    const satisfied = milestoneSatisfied(m, gateStatusOf);
+    return {
+      id: m.id,
+      name: m.name,
+      satisfied,
+      requiredGates: m.requiredGates.map((gate) => ({ gate, status: gateStatusOf(gate) })),
+      unlocksWave: m.unlocksWave,
+      waveAuthorization: satisfied
+        ? `${m.id} SATISFIED — ${m.unlocksWave} is owner-authorized by this plan.`
+        : `WAITING FOR ${m.id}`,
+      note: m.note,
+    };
+  });
+  const authFor = (waveId: string): string => {
+    const m = milestones.find((x) => x.unlocksWave === waveId);
+    return m ? m.waveAuthorization : "OWNER-SELECTED";
+  };
+  const buildPlanProjection = buildPlan
+    ? {
+        sourceDirective: buildPlan.sourceDirective,
+        status: buildPlan.status,
+        rationale: buildPlan.rationale,
+        waves: buildPlan.waves.map((w) => ({
+          id: w.id,
+          name: w.name,
+          state: w.state,
+          objective: w.objective,
+          authorization: authFor(w.id),
+          entries: w.entries.map((e) => ({
+            program: e.program,
+            range: `${e.startAt} → ${e.executeThrough}`,
+            intent: entryIntent(e),
+            emphasis: e.emphasis,
+            blockState: entryBlockState(e, blockedByOf, gateStatusOf),
+            targetGate: e.targetGate ?? null,
+            targetGateStatus: e.targetGate ? gateStatusOf(e.targetGate) : null,
+            holdAfter: e.holdAfter ?? null,
+            resumeWhen: e.resumeWhen,
+            note: e.note,
+          })),
+        })),
+        milestones,
+        lateMaturity: buildPlan.lateMaturity,
+        interoperability: buildPlan.interoperability ?? null,
+      }
+    : { sourceDirective: "", status: "NONE — no owner build plan recorded", rationale: "", waves: [], milestones: [], lateMaturity: [], interoperability: null };
+
   return {
     schema: "vomega-pm-portfolio/1",
     sourceHead,
     seedDigest: digest({ scope, programs: [...scope].sort().map((id) => set.programs[id]) }),
     managedScope: scope,
-    note: "Projection of the five owner-selected programs only. Canonical meaning is read from .project/meta-tracker.json; plan/evidence are derived; execution/proof state is owned by the ratchet and referenced live at check time. Do not hand-edit.",
+    note: "Projection of the five owner-selected programs only. Canonical meaning is read from .project/meta-tracker.json; plan/evidence are derived; execution/proof state is owned by the ratchet and referenced live at check time. The build-plan section is OWNER-AUTHORED state, projected verbatim with derived gate state — PM never authors, ranks or reorders it. Do not hand-edit.",
     counts,
     crossProgramGates,
+    buildPlan: buildPlanProjection,
     programs,
   };
 }
@@ -291,6 +394,50 @@ export function renderViews(pf: Portfolio): Record<string, string> {
     for (const src of p.dossier.sources) o.push(`- ${src}`);
     o.push("");
     out[`PROGRAMS/${p.id}.md`] = o.join("\n") + "\n";
+  }
+
+  // BUILD-PLAN.md — the owner-authored execution overlay, projected with derived gate state.
+  if (pf.buildPlan.waves.length) {
+    const b: string[] = ["# BUILD-PLAN — owner-selected waves", "", PROVENANCE(pf), ""];
+    b.push("> **Owner-authored coordination state.** This records what Owen selected to execute, where to stop, and which convergence point opens the next fan-out. The dependency graph says what *can* happen; this says what was *chosen*. PM never ranks, scores, reorders, or recommends a next step — a \"recommended next\" is deliberately not rendered.");
+    b.push("");
+    b.push(`Status: **${pf.buildPlan.status}** · Directive: \`${pf.buildPlan.sourceDirective}\``);
+    b.push("");
+    b.push(`Rationale: ${pf.buildPlan.rationale}`);
+    b.push("");
+    for (const w of pf.buildPlan.waves) {
+      b.push(`## ${w.id} — ${w.name}${w.state === "seeded-later" ? " *(seeded for later; not currently authorized)*" : ""}`, "");
+      b.push(w.objective, "");
+      b.push(`Authorization: **${w.authorization}**`, "");
+      b.push("| Program | Execute | Intent | Emphasis | Gate state | Target gate | Hold after | Resume when |");
+      b.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
+      for (const e of w.entries) {
+        const tg = e.targetGate ? `${e.targetGate} (${e.targetGateStatus})` : "—";
+        const intent = e.intent === "EXECUTE_THEN_HOLD" ? "execute, then **HOLD**" : "continue";
+        b.push(`| ${e.program} | ${e.range} | ${intent} | ${e.emphasis} | ${e.blockState} | ${tg} | ${e.holdAfter ?? "—"} | ${e.resumeWhen.join(", ") || "—"} |`);
+      }
+      b.push("");
+      for (const e of w.entries) if (e.note) b.push(`- ${e.program}: ${e.note}`);
+      b.push("");
+    }
+    if (pf.buildPlan.milestones.length) {
+      b.push("## Convergence milestones", "");
+      for (const m of pf.buildPlan.milestones) {
+        b.push(`**${m.id} — ${m.name}** — ${m.satisfied ? "SATISFIED" : "NOT SATISFIED"}`, "");
+        for (const g of m.requiredGates) b.push(`- [${g.status === "SATISFIED" ? "x" : " "}] ${g.gate} — ${g.status}`);
+        b.push("");
+        b.push(`Unlocks ${m.unlocksWave}: ${m.waveAuthorization}`, "");
+      }
+    }
+    if (pf.buildPlan.lateMaturity.length) {
+      b.push("## Late maturity (explicitly not in any current wave)", "");
+      for (const l of pf.buildPlan.lateMaturity) b.push(`- **${l.program}** ${l.phases.join(", ")} — ${l.condition}`);
+      b.push("");
+    }
+    if (pf.buildPlan.interoperability) {
+      b.push("## Shared interoperability requirement", "", pf.buildPlan.interoperability.requirement, "", pf.buildPlan.interoperability.note, "");
+    }
+    out["BUILD-PLAN.md"] = b.join("\n") + "\n";
   }
 
   // 6. machine-readable projection

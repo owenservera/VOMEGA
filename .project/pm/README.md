@@ -47,11 +47,23 @@ Agents / tools / worktrees
 
 The PM layer must never redefine a program silently, make an unproven claim true, turn an estimate into a commitment, or become the only place important project state exists.
 
+## Build plan (owner-authored waves)
+
+[build-plan.json](build-plan.json) records **what Owen selected to execute now**: which independent
+phase ranges run in a wave, where each program stops (HOLD), which convergence milestone opens the
+next fan-out, and where emphasis should sit. It is owner-authored coordination state, projected with
+derived gate state into `generated/BUILD-PLAN.md`. PM never authors it, ranks the five, reorders a
+wave, infers priority from effort/LOC, or renders a "recommended next". **HOLD** (the owner chose not
+to proceed yet) is reported distinctly from **BLOCKED** (a required technical gate is unsatisfied).
+
+The dependency graph stays factual: it says what *can* happen; the build plan says what was *chosen*.
+
 ## Documents
 
 - [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md) — **the definitive scope correction**: five programs only, no decisioning authority.
 - [PM-BUILD-PLAN-WAVES-SETUP.md](PM-BUILD-PLAN-WAVES-SETUP.md) — **owner-selected Wave 1 → ACCEL-M1 → Wave 2 build-plan setup directive**; records execution shape without giving PM decisioning authority.
 - [scope.json](scope.json) — the managed set of record; owner-owned, enforced by `pm:check`.
+- [build-plan.json](build-plan.json) — the owner-authored execution plan (Wave 1 / ACCEL-M1 / Wave 2, holds, emphasis); validated for references, never for optimality.
 - [ZCODE-BOOTSTRAP-PROMPT.md](ZCODE-BOOTSTRAP-PROMPT.md) — the entry prompt for a fresh ZCode session on PM work.
 - [ZCODE-PM-TEAM.md](ZCODE-PM-TEAM.md) — the custodial team charter and success criterion.
 - [SYSTEM-DESIGN.md](SYSTEM-DESIGN.md) — the operating design of the implemented system.
