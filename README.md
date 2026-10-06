@@ -1,58 +1,34 @@
 # VOMEGA
 
-VIVIM-Ω is a local semantic operating environment under active development.
-The first executable slice stores local records through the existing host, law
-and Vault, then recovers them in a fresh process. Each selected vault owns its
-data. The browser/provider anchor remains unproven.
+VIVIM-Ω is a local, sovereign semantic operating environment under active development. The current first-product mission is a small floating Windows command box where setup, routing, help and the first external capability, `prompt.send`, all travel through one explicit semantic command system.
 
-On Windows, from this repository:
+## Fresh session
+
+Do not read the repository as a documentation corpus.
+
+1. Read [AGENTS.md](AGENTS.md).
+2. Read [.project/SITREP.md](.project/SITREP.md).
+3. If implementing D1, use the Ratchet packet/task and [.project/deliverables/D1-START-HERE.md](.project/deliverables/D1-START-HERE.md).
+4. Read broader seed/design material only when the task changes a semantic/product contract or the packet points to it.
+
+The durable product core is indexed in [seed-docs/README.md](seed-docs/README.md). Historical planning, bootstrap and tooling material lives under [.project/archive/](.project/archive/README.md) and is evidence, not current instruction.
+
+## Current executable baseline
+
+From Windows:
 
 ```powershell
 .\scripts\omega.ps1 setup
 .\scripts\omega.ps1 quick
 .\scripts\omega.ps1 status
-.\scripts\omega.ps1 cli call vault.append@1 '{"ns":"notes","id":"welcome","data":{"text":"Continue here"}}' --vault ../.local/my-world --no-daemon --json
-.\scripts\omega.ps1 cli call vault.get@1 '{"ns":"notes","id":"welcome"}' --vault ../.local/my-world --no-daemon --json
-.\scripts\omega.ps1 cli call vault.verify@1 '{}' --vault ../.local/my-world --no-daemon --json
 ```
 
-The launcher finds an existing Bun executable and scopes PATH to that invocation.
-It changes no global tool or provider configuration. Relative vault paths above
-are resolved from `omega-baseline/`. Vaults contain private signing keys as well
-as user state; keep them in ignored or external directories.
-
-With working Bun on PATH, other environments can run:
+From `omega-baseline/` with Bun available:
 
 ```sh
-cd omega-baseline
 bun run omega:setup
 bun run omega:quick
-bun run omega:cli --help
+bun run ratchet status
 ```
 
-The default CLI uses `compositions/local.json`: real local law and canonical
-storage, with no provider simulator or missing example plugins. It is a trusted
-root-principal developer surface. This slice does not implement natural-language
-interaction, a visual environment, durable Work, or authenticated provider action.
-
-`omega:quick` runs compiler binding, Vault, policy and local CLI regressions.
-`omega:test` and `omega:gate` run the broad baseline suite, which still fails on
-omitted historical support files. These are different proof claims. Absent old
-tooling commands were retired rather than replaced with successful placeholders.
-The quick slice explicitly excludes browser tests needing missing captures and
-driver-parity tests needing missing CI scripts. Warm-daemon behavior is unverified;
-the continuity proof and examples use `--no-daemon`.
-
-Fresh sessions start at [.project/SITREP.md](.project/SITREP.md). Product intent
-lives in [seed-docs/START-HERE.md](seed-docs/START-HERE.md); current decisions,
-evidence, environment and ownership live in `.project/`. The full program map
-and the authority ladder (what is fixed, what is only proposed) are in
-[.project/META-TRACKER.md](.project/META-TRACKER.md).
-
-## First product release target
-
-The current first public product design is documented in [seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md](seed-docs/FIRST-PRODUCT-RELEASE-DESIGN.md).
-
-The target is a small floating Windows command box that grows its visible capability surface as the user registers real Provider Accounts. Setup and use should both travel through the same deterministic semantic command system; the first external capability is `prompt.send`.
-
-Nothing of that release exists as product yet. Two proof seams lead toward it: a simulated semantic twin of the interaction, and real browser transport plus Account identity. Only the second can produce live evidence.
+`omega:quick` proves only its named local slice. Fixture/simulated behavior is never live Provider proof. Current evidence and limitations are in [.project/REALITY.md](.project/REALITY.md).
