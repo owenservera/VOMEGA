@@ -15,6 +15,20 @@ git add -A && git commit -m "D1-004: required fields derived from declaration"
 bun run ratchet release D1-004 --by codex-1
 ```
 
+For D1 execution policy beyond the CLI mechanics, also read
+`../deliverables/D1-EXECUTION-ACCELERATION-DIRECTIVE.md`. That directive is
+coordination only; this Ratchet remains the task/proof authority.
+
+### Execution discipline
+
+- Start from the packet and the red gate. Read broader project material only when the packet is insufficient.
+- A code-changing D1 session should normally move an executable falsifier: red → green, a regression test, or a stronger gate.
+- If a gate already defines the bounded behavior, do not replace implementation with another design pass.
+- One implementation worker should normally hold one active Ratchet task claim at a time.
+- Keep the current critical-spine task single-owner at claim level; use `fanout` for genuinely disjoint off-spine work.
+- A BLOCKED task may be explored on an isolated branch only when its gates can go green from behavior already PROVEN or present on current `main`, and it does not collide with the active spine.
+- Regressions outrank new frontier work.
+
 Rules the tool enforces:
 
 - Only gates green in a fresh probe can be promoted.
@@ -38,12 +52,31 @@ bun run ratchet fanout --n 4 --write .local/ratchet/packets
 
 This writes one packet per task for up to four frontier tasks whose write surfaces do not overlap. Give each worker one packet and one git worktree. Merge order does not matter for disjoint surfaces; `ratchet check` after each merge catches regressions.
 
+If available agent capacity exceeds the disjoint frontier, use the excess capacity for independent review, gate hardening, a bounded harvest assay, failure reproduction, or a measured context experiment. Do not manufacture planning work merely to occupy agents.
+
+### Harvest before inventing
+
+The packet's named source is the start, not permission to ignore proven local mechanisms.
+
+For the current D1 slice in particular:
+
+- interpreter/compiler work assays `plugins/vivim-nlcl-pure` before creating another interpreter path;
+- D1-055…059B assays the provisional `experimental/reflection-migrator/` substrate before creating a second general Reflection parser/identity universe.
+
+When reuse is material, record the disposition (reuse/adapt/wrap/port/reimplement/reject) in the session claim or handoff. Do not create a separate harvest registry unless repeated coordination friction proves one is needed.
+
 ## Review
 
 ```sh
 bun run ratchet review D1-004 --by claude-review            # accept: PROVEN → DONE
 bun run ratchet review D1-004 --by claude-review --reject --note "…"
 ```
+
+The reviewer must run the task verification independently and read both the diff and the gate source. The author's summary is not evidence. Record the reviewer's harness/model when exposed and state independence limits honestly.
+
+For contract, digest, authority/consent, proof-boundary or gate changes, use adversarial review depth. When cheap, try one plausible sabotage in a disposable worktree. A mutant that survives proves the gate is weaker than the claim and should become a strengthened/new gate through the normal spec-change/task procedure.
+
+Never weaken a gate merely to turn the board green.
 
 ## CI / pre-merge gate
 
@@ -70,7 +103,18 @@ bun run d1:gates                 # D1 gates in ratchet mode (green while honest)
 
 - **First run (once):** `bun run ratchet anchor --by <label>` records the digest of every gate file, before implementation claims begin. After that the gate files are anchored.
 - **Change a gate/spec file (C1):** `bun run ratchet spec-change --file <F> --by <label> --reason "<why>"`. This is the only way to change an anchored file: it records from/to digests and the reason, and re-authorizes the new content. To retire a gate file, add `--deleted`. Without this record, `check` fails (`SPEC_CHANGED_ANCHOR`) and `promote` refuses the file's gates — a worker cannot weaken an unpromoted gate and then promote the weakened form.
-- **New or split task:** edit `D1-ATOMIC-TASKS.md`, run `graph`, add the task's `surface` in `specs/d1/spec.json`, and write its gate first (a new gate file is `UNANCHORED_GATE_FILE` until anchored).
+- **New or split task:** edit `D1-ATOMIC-TASKS.md`, run `graph`, add the task's `surface` in `specs/d1/spec.json`, and write its gate first (a new gate file is `UNANCHORED_GATE_FILE` until anchored). Use this existing mechanism for any hardening obligation that cannot be attached cleanly to an existing task; do not create a second backlog.
 - **Retire a task:** `bun run ratchet supersede D1-0xx --by <label> --reason "…"`.
 - **Doc claim changed:** update the document and `specs/facts.json` together, then run `drift`.
 - **Finish:** `bun run ratchet complete --by <label>` once every task except D1-089 is DONE and the tree is committed.
+
+
+## Current D1 gate-quality obligations
+
+The 2026-10-06 acceleration review found several places where a green result could overstate the underlying behavior. Treat these as execution obligations attached to the existing D1 task/gate system:
+
+- D1-002 artifact proof must validate real source paths/exported symbols and the actual interpreter flow rather than a substring placeholder.
+- D1-074…077 metrics must be recomputed from the real scenario/replay corpus, with a deliberately failing case proving each metric can move.
+- before D1 completion, executable coverage must include explicit-target-over-default/prior behavior, Session identity separation where Session is in play, Reflection granting no authority/availability/authenticity/maturity, and realization/source drift invalidating dependent help claims.
+
+Use `spec-change` for anchored gate changes. If a requirement does not fit an existing task cleanly, split/add a Ratchet task and regenerate projections; never track it in a parallel spreadsheet or prose backlog.
