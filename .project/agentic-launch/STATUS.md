@@ -2,7 +2,7 @@
 
 Launch rows as of 2026-10-05; wording and evidence notes reconciled 2026-10-06.
 
-This file is the compact launch-state surface for fresh local sessions. It is the only place that says what is claimed, running or done.
+This file is the compact **aggregate** launch-state surface for fresh local sessions. Granular per-agent/session registrations live under [claims/](claims/) and follow [DEV-AGENT-REGISTRATION.md](DEV-AGENT-REGISTRATION.md). Any development agent doing substantive implementation, test, integration, build/release or independent review work must register there before substantive work begins. STATUS summarizes major slices; it need not duplicate every short-lived worker.
 
 **Right now: no D1 executor is running. The PM roadmap-system workstream is claimed by the ZCode PM team (recon wave).** D1 is selected and incomplete; the earlier Codex claim (`work/d1-semantic-twin` at `26ec6df`) stopped before substantive implementation and was consolidated into `main` (see SITREP and COMMONS). D1 task state is now computed, not written here: `cd omega-baseline && bun run ratchet status` (board: `.project/ratchet/D1-BOARD.md`). Claim D1 tasks with `bun run ratchet claim <TASK> --by <label>`. _Corrected 2026-10-06: the drift fact F-ACTIVE-EXECUTOR-CONSISTENT found this line contradicting SITREP._
 
