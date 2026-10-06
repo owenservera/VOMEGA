@@ -2,7 +2,7 @@
 
 > **Generated — do not hand-edit.** PM manages exactly the five owner-selected programs; the other 62 meta programs stay canonical in `.project/meta-tracker.json` and appear here only as external references.
 >
-> Source HEAD `a428897` · seed digest `854f282c02c3` · regenerate: `bun run pm` · validate: `bun run pm:check` · scope: `.project/pm/scope.json` (owner-directed; see `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md`).
+> Source HEAD `65ecc7f` · seed digest `854f282c02c3` · regenerate: `bun run pm` · validate: `bun run pm:check` · scope: `.project/pm/scope.json` (owner-directed; see `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md`).
 
 > **Owner-authored coordination state.** This records what Owen selected to execute, where to stop, and which convergence point opens the next fan-out. The dependency graph says what *can* happen; this says what was *chosen*. PM never ranks, scores, reorders, or recommends a next step — a "recommended next" is deliberately not rendered.
 

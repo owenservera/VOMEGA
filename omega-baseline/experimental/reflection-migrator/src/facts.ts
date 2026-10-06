@@ -25,7 +25,9 @@ export interface Fact {
 /** Every inference rule P2 may apply. Each is mechanical and stated in full. */
 export const RULES = {
   "routable-kind": "A contract, engine or provider contribution makes the op `<id>@<version>` routable (contracts/src/manifest.ts routableOps).",
-  "file-under-manifest-directory": "A file whose path is under the directory of a product plugin.json belongs to that plugin; the nearest such directory wins.",
+  "path-classification": "A file's role and surface come from the path patterns in classify.ts; `plugin-entry` comes from a manifest's `entry` field.",
+  "file-under-manifest-directory": "A file whose path is under the directory of a product plugin.json is part of that plugin if it is a source file, and located in it if it is a test or fixture; the nearest such directory wins.",
+  "file-under-package-directory": "A source file whose path is under the directory of a package.json is part of that package if it is a source file, and located in it otherwise; the nearest such directory wins.",
   "same-file-const": "An identifier or `X.member` expression is replaced by the string literal a top-level `const` in the same file binds it to.",
   "imported-const": "An imported identifier or `X.member` expression is replaced by the string literal that the single top-level `const` of that name binds it to in the imported relative module or workspace package.",
   "local-wrapper-forwarding": "A function in the same file forwards one of its parameters as the op of a port call, and is called with a string literal in that position.",

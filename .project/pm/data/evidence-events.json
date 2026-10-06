@@ -2,6 +2,9 @@
   "schema": "vomega-pm-events/0",
   "events": [
     { "program": "MP-21", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
+    { "program": "MP-21", "gate": "MP21-G1", "date": "2026-10-06", "kind": "prototype-landed", "ref": "omega-baseline/experimental/reflection-migrator/test/inventory.test.ts" },
+    { "program": "MP-21", "gate": "MP21-G2", "date": "2026-10-06", "kind": "prototype-landed", "ref": "omega-baseline/experimental/reflection-migrator/test/extract.test.ts" },
+    { "program": "MP-21", "gate": "MP21-G3", "date": "2026-10-06", "kind": "prototype-landed", "ref": "omega-baseline/experimental/reflection-migrator/test/consumer.test.ts" },
     { "program": "MP-54", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
     { "program": "MP-55", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
     { "program": "MP-56", "date": "2026-10-06", "kind": "source-inspected", "ref": ".project/pm/recon/WAVE-A.md" },
