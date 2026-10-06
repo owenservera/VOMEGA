@@ -192,7 +192,16 @@
       "at": "2026-10-06T01:23:54.632Z"
     }
   },
-  "reviews": {},
+  "reviews": {
+    "D1-004": [
+      {
+        "by": "gov-trv-c1",
+        "verdict": "accept",
+        "head": "fc1ef8917e2a",
+        "at": "2026-10-06T16:32:08.013Z"
+      }
+    ]
+  },
   "superseded": {},
   "completion": null
 }

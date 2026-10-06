@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "412c5057a479",
+    "head": "fc1ef8917e2a",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -26,8 +26,8 @@
     "OPEN": 5,
     "CLAIMED": 0,
     "BLOCKED": 58,
-    "PROVEN": 14,
-    "DONE": 0,
+    "PROVEN": 13,
+    "DONE": 1,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -78,7 +78,7 @@
     },
     {
       "id": "D1-004",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-004::prompt.send declares account and prompt required, model optional",
@@ -89,7 +89,12 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "gov-trv-c1",
+        "verdict": "accept",
+        "head": "fc1ef8917e2a",
+        "at": "2026-10-06T16:32:08.013Z"
+      }
     },
     {
       "id": "D1-005",
@@ -1294,5 +1299,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:6a3c0d46407adc1455f523a491dfc0e9dad697de8d76ae13b78fddaa58a7e719"
+  "digest": "sha256:f5bc2de8923ab5e7531f6a497abda70af9df3fb352388e233f30d427e8ff3e9c"
 }

@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `412c5057a479`, Bun 1.4.2, win32-x64, 16/80 gates green, digest f7838fcaef8c · promoted gates: 16
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `fc1ef8917e2a`, Bun 1.4.2, win32-x64, 16/80 gates green, digest f7838fcaef8c · promoted gates: 16
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 0 | 14 | 5 | 0 | 58 | 0 | 0 | 77 | 5 | 0 |
+| 1 | 13 | 5 | 0 | 58 | 0 | 0 | 77 | 5 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -27,7 +27,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-001 | PROVEN | 0/0 + 1/1 art. | Pin D1 baseline and test commands |  |
 | D1-002 | PROVEN | 0/0 + 1/1 art. | Map exact reusable interpreter entry points |  |
 | D1-003 | PROVEN | 1/1 | Reproduce corpus U1 false-READY in an isolated test |  |
-| D1-004 | PROVEN | 1/1 | Define required-field metadata for `prompt.send` |  · claimed by gov-impl-c1 until 2026-10-06T20:24:41.339Z |
+| D1-004 | DONE | 1/1 | Define required-field metadata for `prompt.send` |  · claimed by gov-impl-c1 until 2026-10-06T20:24:41.339Z |
 | D1-005 | OPEN ★ | 0/2 | Fix required-field/READY validation |  |
 | D1-006 | BLOCKED | 0/3 | Add regression tests for every required-field unresolved case |  |
 
