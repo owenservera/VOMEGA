@@ -84,6 +84,13 @@ A builder may split a task further, but should not combine tasks in ways that er
 | D1-052 | Render help for Provider/Account/capability/consequence | D1-051 | canonical journey questions answer from current state |
 | D1-053 | Add help-grounding removal test | D1-052 | remove capability/state → current help stops claiming it |
 | D1-054 | Add SIMULATED explanation | D1-052 | user can inspect exactly why current execution is not live proof |
+| D1-055 | Define minimal D1 Reflection extraction boundary | D1-010,D1-024 | exact D1 structural inputs and allowed claim classes documented/tested |
+| D1-056 | Add source anchor/content digest mechanism for D1 reflected items | D1-055 | same source produces stable binding; changed source invalidates/changes binding |
+| D1-057 | Implement read-only D1 Reflection extractor/Migrator slice | D1-055,D1-056 | extracts D1 capability/parameter/realization/action facts; no fabricated claims |
+| D1-058 | Materialize minimal Reflection Graph | D1-057 | D1 semantic structures and source anchors queryable/read-only |
+| D1-059 | Drive contextual Wiki/help from Reflection + World + active semantic handles | D1-051,D1-058 | no parallel authoritative capability/parameter truth |
+| D1-059A | Add source-removal/structural-drift grounding test | D1-059 | removing/changing reflected structure changes/fails help honestly |
+| D1-059B | Record extraction gaps explicitly | D1-057 | missing structural facts appear as missing/unknown, not model inference |
 
 ## Phase G — authority and virtual execution
 
@@ -141,7 +148,7 @@ After the semantic records and validator converge:
 C: registration / command nucleus (020..029)
 D: revision runner (030..034)
 E: projection shell (040..048)
-F: help (050..054)
+F: Reflection / Wiki / help (050..059B)
 G: authority/virtual execution (060..067)
 ```
 
@@ -186,6 +193,10 @@ The shortest path to a visible D1 proof is approximately:
 ```
 
 Registration, help, failure behavior and the remaining gates are still required for completion even when they are not on this shortest visible path.
+
+## Whole-program relationship
+
+These tasks are a bounded D1 execution decomposition crossing multiple meta programs (including MP-06…21 and simulated aspects of MP-31/32/41). They are **not** the VOMEGA workstream list. The canonical whole-program context is `../META-TRACKER.md` (67 major programs + 31 accelerator hypotheses). The live Provider-reality path may advance independently in parallel and should not be inserted into D1 merely to make this task list look sequentially complete.
 
 ## D1 task-board rule
 
