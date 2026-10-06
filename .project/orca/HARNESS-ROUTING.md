@@ -1,111 +1,129 @@
-# Harness and routing design
+# Harness routing — evidence-revised
 
-**Status:** current inventory + conversation-derived routing policy. No harness is permanently assigned to a workstream.
+**Baseline:** Orca v1.4.220.  
+**Rule:** routing is dynamic; no harness/model/account permanently owns a domain.
 
-## 1. Worker pool
-
-The execution pool must include:
-
-- **ZCode**
-- **OpenCode**
-- **Codex**
-- **Grok Build**
-- **Claude Code**
-
-They are not interchangeable labels for the same thing. Each may expose different agent behavior, context, tools, permissions, session models, model routes and cost/usage constraints.
-
-## 2. Current evidenced/configured facts
-
-From existing VOMEGA machine documentation:
-
-- Windows has ZCode installed and a bundled CLI available through Node.
-- A prior Windows launch observed at least six bounded ZCode workers on `openrouter/auto`.
-- Five lanes are configured: Owen, OpenCode acct 2, OpenCode acct 3, OpenCode acct 4 and OpenCode acct 5.
-- Each configured lane has Space Bunny Free enabled with a configured 1,048,576-context window.
-- Those five lanes were not individually proven as five simultaneous live routes.
-- Claude Code, Codex and Grok Build have been observed in the development environments recorded in `../ENVIRONMENT.md` and `../dev-machine/HARNESS-MATRIX.md`.
-- OpenCode is also part of the recorded tool pool.
-- Authentication/provider/model configuration is read-only unless explicitly changed by Owen.
-
-These facts should be re-probed at Orca bootstrap time rather than assumed fresh forever.
-
-## 3. Routing dimensions
-
-A coordinator/router should select capacity using observable dimensions such as:
-
-| Dimension | Question |
-| --- | --- |
-| Capability | Can this harness perform the required tool/action pattern? |
-| Context | How much repository/domain context is required? |
-| Consequence | How costly is a wrong change? |
-| Independence | Would a second provider/harness materially improve review? |
-| Availability | Is the harness/account currently usable? |
-| Capacity | How many bounded workers can actually complete probes now? |
-| Cost | Can abundant/free capacity do the work adequately? |
-| Latency | Is fast turnaround more valuable than maximum depth? |
-| Write collision | Does this task require isolated worktree ownership? |
-| Evidence need | What test/observation must the worker be able to produce? |
-| Observed performance | Which harness has actually performed best for this task class? |
-
-## 4. Initial priors, not fixed assignments
-
-Conversation-derived starting priors:
-
-| Harness | Initial use hypothesis |
-| --- | --- |
-| ZCode | complex autonomous/team workflows, sessions/subagents, broad project tasks |
-| OpenCode | abundant general worker capacity, repetitive implementation/research/test/docs |
-| Codex | precision implementation, debugging, refactors, technical escalation |
-| Claude Code | architecture-sensitive analysis, implementation and independent critique |
-| Grok Build | additional autonomous implementation/research/review capacity and independent second path |
-
-These are hypotheses to measure. The system should be allowed to discover that a different harness wins for a task category.
-
-## 5. Capacity model
-
-Do not model the machine as “five workers”.
-
-A better abstraction is:
+## 1. Five first-class harness families
 
 ```text
-CAPACITY POOL
-├── configured OpenCode/Space Bunny lanes
-│   ├── Owen
-│   ├── acct 2
-│   ├── acct 3
-│   ├── acct 4
-│   └── acct 5
-├── ZCode runtime/session capacity
-├── Codex capacity
-├── Claude Code capacity
-├── Grok Build capacity
-└── future/other validated harnesses
+ZCode | OpenCode | Codex | Grok Build | Claude Code
 ```
 
-Accounts are scheduling resources, not identities of departments.
+The integration depths differ.
 
-## 6. Frontier escalation
+| Harness | Orca stable integration | Immediate note |
+| --- | --- | --- |
+| Claude Code | deep | existing auth, usage, hot-swap, hooks/subagents |
+| Codex | deep | existing auth, usage, account isolation, subagents |
+| ZCode | deep | hard prerequisite: TUI-capable standalone CLI |
+| OpenCode | built-in + auto-setup/status | model remains harness-configured in stable |
+| Grok Build | built-in + auto-setup; model/effort source support | Windows/lifecycle proof required |
 
-Use the cheapest/most abundant adequate route first.
+## 2. Harness-local orchestration is allowed but nested
 
-Escalate when one or more are true:
+Each harness has or can have its own agent/subagent facilities.
+
+Policy:
+
+```text
+Orca Task/Dispatch
+    ↓
+one parent harness worker
+    ↓
+zero or more task-local subagents
+    ↓
+parent owns final result
+```
+
+Do not let an internal subagent silently become a cross-VOMEGA task owner.
+
+## 3. Routing inputs
+
+Score candidate routes on:
+
+- required tools/capabilities;
+- context size/shape;
+- consequence/risk;
+- write collision;
+- model quality needed;
+- independent-review value;
+- current availability/quota;
+- observed latency;
+- cost/scarcity;
+- harness reliability on this task class;
+- ability to produce the required evidence;
+- whether internal subagents materially help.
+
+## 4. Initial priors
+
+These are hypotheses to measure:
+
+| Harness | Initial prior |
+| --- | --- |
+| ZCode | complex autonomous/team tasks, broad project context, internal parallel research/build |
+| OpenCode | abundant general work, repetitive code/tests/docs/research, provider-flexible lanes |
+| Codex | precision implementation, debugging, refactor/test-heavy changes |
+| Grok Build | independent builder/research/review path, autonomous bounded work |
+| Claude Code | architecture-sensitive reasoning/implementation, difficult critique, specification-heavy work |
+
+## 5. Model/account routing reality
+
+### Claude/Codex
+
+Orca stable has the strongest direct account/model integration.
+
+Use existing system-default account first. Add/hot-swap accounts only after baseline proof.
+
+### ZCode
+
+Provider/model/account routing is primarily a ZCode concern until Orca proves visibility/control for the standalone TUI build.
+
+The five configured historical lanes are **not automatically five Orca accounts**.
+
+### OpenCode
+
+Stable Orca can dispatch OpenCode but should initially let OpenCode choose/use its configured model.
+
+Do not require newer main-only per-launch model overrides.
+
+### Grok
+
+Stable source supports model discovery and model/effort choices, but verify them on the installed stable binary and current Grok Build.
+
+## 6. Provider-lane correction
+
+Earlier Orca seed wording was too strong when it called Owen / OpenCode acct 2–5 “five OpenCode lanes”.
+
+Correct formulation:
+
+> VOMEGA has five historically configured provider lanes named Owen and OpenCode acct 2–5, each previously configured with Space Bunny Free and a 1,048,576 context declaration. They were observed as configuration, not individually proven as five simultaneous live Orca/OpenCode routes.
+
+Treat each as **candidate underlying capacity** until re-probed.
+
+## 7. Frontier escalation
+
+Start with cheapest/most abundant adequate capacity.
+
+Escalate for:
 - repeated bounded failure;
-- architectural consequence is high;
-- subtle debugging exceeds lower-tier performance;
-- an independent frontier review has high expected value;
-- context/analysis demand exceeds the current route;
-- user explicitly asks for a scarce/frontier model.
+- high architectural consequence;
+- difficult debugging;
+- need for genuinely independent review;
+- context/reasoning demand beyond current route;
+- user-requested frontier model.
 
-Do not auto-spend merely because a frontier route exists.
+No automatic frontier spend.
 
-## 7. Runtime record
+## 8. Runtime telemetry
 
-Where observable, a task/run record should distinguish:
+For every top-level Dispatch, record as many as are actually observable:
 
 ```text
 task_id
+dispatch_id
 role
 harness
+harness_version
 router
 provider
 account
@@ -114,21 +132,33 @@ session
 worktree
 branch
 context_bundle
+permission_mode
 started_at
 ended_at
 outcome
+files_modified
 evidence_refs
 review_refs
+child_agent_summary
 ```
 
-Unknown values remain unknown. If a router hides the model, record `router-selected/unknown`.
+Unknown stays unknown.
 
-## 8. What Orca must not do
+## 9. Concurrency
 
-Orca integration must not:
-- rewrite existing account credentials;
-- normalize all harnesses to a lowest-common-denominator workflow;
-- hide which harness/account/model actually performed a task when observable;
-- make model selection an Orca-only opaque decision without evidence/logging;
-- reserve the five configured accounts as permanent long-lived worker identities;
-- infer capacity from configuration alone.
+Do not start with 20 sessions.
+
+Ramp:
+1 → 2 concurrent writers → 3–5 heterogeneous workers → 5+ → stress test.
+
+Measure:
+- completion rate;
+- latency;
+- memory/CPU;
+- model/provider throttling;
+- Git collisions;
+- session attribution;
+- coordinator overhead;
+- context network congestion.
+
+Only then size Elephant reservations and maximum worker pool.

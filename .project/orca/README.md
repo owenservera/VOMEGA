@@ -1,84 +1,80 @@
 # Orca execution substrate — VOMEGA
 
-**Status:** conversation-derived design seed; external Orca research and local proof still pending.  
-**Owner decision:** replace Daintree as the intended VOMEGA execution/control habitat with Orca.  
-**Created:** 2026-10-06  
-**Source basis:** prior VOMEGA conversations plus repository state at `748d918358d930c4a711ba3353e03b1c62cc3ada`.
+**Status:** evidence-backed design; local setup/proof pending.  
+**Owner direction:** replace Daintree as the intended primary execution/control habitat with Orca.  
+**Pinned first baseline:** Orca v1.4.220.
 
-## Purpose
+## What changed after research
 
-This folder captures the operating design for adopting Orca as VOMEGA's heterogeneous agent execution substrate.
+The first seed correctly identified Orca as a candidate heterogeneous control plane, but primary-source research materially sharpened the design:
 
-It does **not** make Orca project truth, product architecture, or permanent infrastructure. Orca is replaceable development machinery whose value must be proven by useful, validated product progress.
+1. Orca v1.4.220 already has structured **Run → Task → Dispatch → worker** orchestration, explicit `worker_done`, questions, decision gates and dependencies. It is marked Experimental.
+2. ZCode is a deep Orca integration, but Orca requires a **standalone TUI-capable `zcode` CLI**. Owen's currently recorded desktop-bundled CLI is not sufficient proof.
+3. Orca defaults supported agents toward their permission-bypass mode. VOMEGA will bootstrap **Manual-first**.
+4. Worktrees isolate Git writes, not machine security.
+5. Claude and Codex have the deepest stable account integrations.
+6. OpenCode stable support is real, but some deeper OpenCode launch/model features live only on newer Orca `main`; the design does not depend on them.
+7. Every harness has or can have its own internal agent system. Orca therefore owns **top-level cross-harness provenance**, while harness subagents remain children of one Orca Dispatch.
+8. Orca's website/main can run ahead of stable. First deployment is pinned to v1.4.220 and upgraded deliberately.
 
-The intended boundary is:
+## Target stack
 
 ```text
-VOMEGA project/product truth
-        ↓
-goals + task contracts + evidence obligations
-        ↓
-ORCA
-execution coordination / workspaces / worktrees / lifecycle / visibility
-        ↓
+VOMEGA decides / constrains / accepts
+               ↓
+Orca coordinates top-level work
+               ↓
+Run → Task → Dispatch → parent worker
+               ↓
 ZCode | OpenCode | Codex | Grok Build | Claude Code
-        ↓
-models / accounts / routers / subscriptions
-        ↓
+               ↓
+optional harness-local subagents
+               ↓
 Git + tests + evidence
+               ↓
+VOMEGA acceptance / fan-in
 ```
 
-## Settled owner direction from conversation
+## Truth boundary
 
-1. VOMEGA, not Orca, owns product direction, invariants, program truth, priorities and acceptance.
-2. Orca is intended to replace Daintree as the primary execution/control habitat before VOMEGA invests further in Daintree.
-3. The worker pool is heterogeneous: **ZCode, OpenCode, Codex, Grok Build and Claude Code** all remain independently valuable execution harnesses.
-4. Harness, router, model, account, session and worker role are separate concepts and must never be silently collapsed.
-5. Existing provider/account/auth configuration is read-only unless Owen explicitly authorizes a change.
-6. The five configured OpenCode lanes — Owen and OpenCode acct 2–5 — are capacity candidates, not permanent organizational roles. Their configured Space Bunny Free 1,048,576-context settings are machine facts, not proof of five live simultaneous routes.
-7. Workers should be routed by task requirements, context, risk, cost, current availability and observed performance rather than fixed departmental ownership.
-8. Git/repository state, tests and evidence outrank agent self-report.
-9. Long-context “Elephant” sessions are optional derived cognition. They advise, compare and preserve bounded context; they are not authorities and should not directly own source truth.
-10. Maximum useful parallelism is the target, not maximum agent count.
+- Orca state proves runtime coordination state, not product truth.
+- harness output is a claim until checked.
+- heartbeat proves liveness, not completion.
+- `worker_done` settles an Orca attempt, not VOMEGA acceptance.
+- a worktree is isolation, not sandbox.
+- context is cognition, not authority.
 
-## Truth discipline
+## Current known blocker
 
-This folder intentionally separates three classes of statement:
+Before ZCode becomes an Orca worker, provide a TUI-capable standalone ZCode CLI on PATH and prove it interactively.
 
-- **OWNER DECISION** — direction Owen has explicitly chosen.
-- **CURRENT REPO FACT** — already evidenced by VOMEGA's machine/runtime documents.
-- **RESEARCH / PROOF REQUIRED** — a working assumption about Orca or an intended integration that must be verified before being treated as real.
+Do **not** replace the ZCode desktop app or mutate provider/account settings merely to satisfy Orca.
 
-Earlier conversation statements about Orca features are not promoted to proof here. The next phase is explicit research followed by local validation.
+## Read order
 
-## Relationship to existing VOMEGA surfaces
+1. [CAPABILITY-MATRIX.md](CAPABILITY-MATRIX.md)
+2. [ARCHITECTURE.md](ARCHITECTURE.md)
+3. [HARNESS-ROUTING.md](HARNESS-ROUTING.md)
+4. [BOOTSTRAP.md](BOOTSTRAP.md)
+5. [ORCA-BOOT-01.md](ORCA-BOOT-01.md)
+6. [CONTEXT-AND-ELEPHANTS.md](CONTEXT-AND-ELEPHANTS.md)
+7. [MIGRATION-FROM-DAINTREE.md](MIGRATION-FROM-DAINTREE.md)
+8. [research/README.md](research/README.md)
 
-- `../META-TRACKER.md` remains the whole-program map.
-- `../pm/` remains the first-five-only PM design and must not become an execution authority.
-- `../agentic-launch/` remains historical/reusable execution vocabulary, not the permanent topology.
-- `../dev-machine/` remains the machine/harness evidence surface.
-- `../evidence/`, tests and runtime observations remain the proof surfaces.
-- `../../seed-docs/` remains product/architecture intent and invariants.
+## Relationship to project truth
 
-Existing Daintree-specific text elsewhere is **not silently rewritten by this seed**. It should be reconciled after Orca research and ORCA-BOOT-01 establish what Orca actually does in this environment.
+Unchanged:
+- `../META-TRACKER.md` = whole program map;
+- `../pm/` = first-five-only PM design;
+- `../agentic-launch/` = historical/reusable execution vocabulary;
+- `../dev-machine/` + `../ENVIRONMENT.md` = machine evidence;
+- `../evidence/` + tests = proof;
+- `../../seed-docs/` = product/architecture intent/invariants.
 
-## Documents
+Orca is below all of those in authority.
 
-1. [ARCHITECTURE.md](ARCHITECTURE.md) — ownership boundaries and target runtime topology.
-2. [HARNESS-ROUTING.md](HARNESS-ROUTING.md) — heterogeneous worker pool, routing dimensions and non-equivalence rules.
-3. [BOOTSTRAP.md](BOOTSTRAP.md) — safe adoption/setup sequence without disturbing existing configuration.
-4. [ORCA-BOOT-01.md](ORCA-BOOT-01.md) — first proof required before Orca is treated as the validated execution substrate.
-5. [CONTEXT-AND-ELEPHANTS.md](CONTEXT-AND-ELEPHANTS.md) — context bundles and retained long-context advisory sessions.
-6. [MIGRATION-FROM-DAINTREE.md](MIGRATION-FROM-DAINTREE.md) — what is replaced, what is retained as reference, and what must not be copied blindly.
-7. [RESEARCH-AGENDA.md](RESEARCH-AGENDA.md) — questions for the next external-research phase.
+## Daintree
 
-## Immediate next step
+Daintree is no longer the intended primary runtime dependency.
 
-Do **not** install, reconfigure or migrate anything merely because these documents exist.
-
-Next:
-1. research current Orca capabilities and Windows behavior;
-2. compare research against these requirements;
-3. revise this design where evidence falsifies assumptions;
-4. run ORCA-BOOT-01;
-5. only then update global VOMEGA runtime documentation to describe Orca as proven infrastructure.
+Keep its dated evidence and useful design ideas. Reconcile global Daintree operational guidance only after Orca passes ORCA-BOOT-01, so history is not rewritten as if the switch had already been proven.

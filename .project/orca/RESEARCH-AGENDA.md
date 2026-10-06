@@ -1,168 +1,97 @@
-# Orca research agenda
+# Orca research agenda — post primary-source pass
 
-**Status:** queued for the next phase. No external research was performed to create this seed.
+**Status:** first documentation/source pass completed 2026-10-06. Remaining work is primarily local validation, recent issue mining and performance characterization.
 
-The research should answer whether current Orca can satisfy VOMEGA's execution-control requirements **as it exists now**, especially on Windows.
+## Completed in first pass
 
-## 1. Identity and freshness
+### Orca stable baseline
+- canonical repo/license/platform;
+- v1.4.220 pin;
+- structured orchestration model;
+- experimental status;
+- worktree model;
+- orca.yaml + Windows setup-shell semantics;
+- permission default warning;
+- account/usage behavior;
+- stable-vs-main OpenCode distinction.
 
-- What is the canonical Orca repository/product?
-- Current release/version/date?
-- License?
-- Active maintenance level?
-- Windows support status?
-- Installer/update path?
-- Known breaking changes in recent releases?
+### Harnesses
+- ZCode deep-integration + TUI requirement;
+- OpenCode stable integration and version boundary;
+- Codex deep account/session integration;
+- Grok built-in integration/model-effort source evidence;
+- Claude deep integration + optional Agent Teams;
+- official harness subagent/hooks/MCP/permission surfaces.
 
-## 2. Harness support
+## Remaining research
 
-For each of:
-- ZCode
-- OpenCode
-- Codex
-- Grok Build
-- Claude Code
+### A. Local Windows validation — highest priority
 
-determine:
-- officially supported, generic terminal-compatible, community-supported, or unsupported;
-- launch method;
-- resume/session support;
-- native chat vs terminal/PTY support;
-- subagent visibility;
-- prompt injection/automation support;
-- status detection;
-- account/model awareness;
-- limitations/issues on Windows.
+1. Exact Orca v1.4.220 Windows install/CLI behavior.
+2. Standalone TUI-capable ZCode CLI acquisition/build path that coexists with ZCode desktop.
+3. Which config/provider state standalone ZCode inherits.
+4. Current Windows OpenCode version and whether v1/v2 coexist.
+5. Grok Build Windows hook/status behavior.
+6. Claude/Codex account detection without mutation.
+7. Orca structured worker-start support for ZCode specifically.
+8. Exact launch receipts/telemetry for all five harnesses.
 
-Do not infer “supported” from a logo or a process name.
+### B. Multi-account / five-lane reality
 
-## 3. Orchestration primitives
+Determine precisely what Owen / OpenCode acct 2–5 represent:
+- ZCode provider profiles?
+- OpenCode credentials?
+- OpenRouter accounts/routes?
+- selectable per session?
+- concurrently reachable?
 
-Verify whether current Orca actually provides:
-- coordinator concept;
-- task objects;
-- dependency DAG;
-- dispatch ownership;
-- durable worker identity;
-- blocking ask/reply;
-- worker completion protocol;
-- escalation;
-- decision/approval gates;
-- retained workers;
-- programmatic/CLI control;
-- API/MCP surface;
-- autonomous creation of workers/worktrees.
+No scheduler design should assume the answer.
 
-For each, record source + version + local proof plan.
+### C. Concurrency/resource behavior
 
-## 4. Worktrees and integration
+Measure:
+- 1, 2, 5, 10, 20 sessions;
+- RAM/CPU;
+- provider throttling;
+- session attribution;
+- coordinator message pressure;
+- Git/worktree overhead;
+- context/Elephant congestion.
 
-Research:
-- worktree lifecycle;
-- branch naming;
-- base branch behavior;
-- shared directories/dependencies;
-- merge/rebase/conflict handling;
-- review/diff UI;
-- cleanup;
-- handling of simultaneous writers;
-- repo-local config such as `orca.yaml`;
-- Windows shell semantics.
+### D. Recent Orca issues
 
-## 5. Operator control surface
+Mine recent issues/releases for:
+- Windows regressions;
+- worker-start/orchestration bugs;
+- Codex session attribution;
+- OpenCode status/prompt delivery;
+- Grok hooks;
+- ZCode TUI/session resume;
+- worktree cleanup;
+- multi-account errors.
 
-Can Owen:
-- see all running projects/worktrees/agents;
-- distinguish working/waiting/question/failed/done;
-- inspect logs/output;
-- interrupt/redirect a worker;
-- send follow-up prompts;
-- compare diffs;
-- approve/reject;
-- merge/integrate;
-- identify which harness/account/model was used;
-- manage remote hosts if desired later?
+### E. Context and Elephant fit
 
-## 6. Routing and capacity
+After basic substrate passes:
+- retained worker semantics;
+- session search/history;
+- worker-to-worker/context transfer;
+- Context Bundle injection;
+- Elephant latency/value experiments.
 
-Determine what Orca itself can route versus what VOMEGA must add:
-- harness selection;
-- account selection;
-- model selection;
-- quotas/rate limits;
-- concurrency limits;
-- CPU/RAM pressure;
-- priority queues;
-- retry/backoff;
-- cost awareness;
-- frontier escalation;
-- dynamic reassignment.
+## Decision gates
 
-## 7. Context system fit
+### Gate 1 — install
+Proceed if stable Windows runtime/CLI works.
 
-Research how Orca handles:
-- project instructions;
-- per-task context;
-- context injection;
-- persistent sessions;
-- retained workers;
-- agent-to-agent messages;
-- sending files/diffs to another worker;
-- MCP/skills/plugins;
-- long-context sessions.
+### Gate 2 — five harnesses
+Proceed if all five can be launched without provider/auth damage. ZCode TUI prerequisite must be solved.
 
-Map this to MP-54 Automatic Context Bundles and the Elephant hypothesis without duplicating canonical project state.
+### Gate 3 — supervised orchestration
+Proceed if two heterogeneous workers can complete a controlled Run with explicit lifecycle semantics.
 
-## 8. Evidence/provenance
+### Gate 4 — full adoption
+Promote Orca to “validated current execution substrate” only after ORCA-BOOT-01.
 
-Can Orca expose enough machine-readable history to reconstruct:
-- task;
-- owner;
-- harness;
-- worktree/branch;
-- prompts/messages;
-- timestamps;
-- outcome;
-- diff/commit;
-- review;
-- failure/escalation?
-
-Identify what must remain in VOMEGA's own evidence/run ledger.
-
-## 9. Security/config safety
-
-Verify:
-- credential storage;
-- whether Orca reads or rewrites existing harness configs;
-- shell execution permissions;
-- MCP/tool permissions;
-- secrets exposure in logs;
-- account switching behavior;
-- isolation between worktrees/sessions;
-- update/telemetry behavior.
-
-## 10. Community reality
-
-Search:
-- GitHub issues/discussions;
-- Reddit/X/community reports where useful;
-- recent Windows reports;
-- multi-agent scale reports;
-- ZCode/OpenCode/Grok-specific reports;
-- concurrency/resource failure modes;
-- abandoned/experimental features;
-- real workflows beyond demos.
-
-Separate primary-source capability from anecdotal experience.
-
-## 11. Output format
-
-The research phase should end with:
-
-1. **Capability matrix** — REQUIRED / AVAILABLE / PARTIAL / ABSENT / UNKNOWN.
-2. **Windows fit report**.
-3. **Harness integration matrix**.
-4. **Risk register**.
-5. **Architecture corrections** to this folder.
-6. **Exact ORCA-BOOT-01 implementation plan**.
-7. **Go / adapt / reject recommendation** supported by evidence.
+### Gate 5 — high autonomy
+Increase permission bypass/concurrency only after safety, attribution and resource behavior are measured.

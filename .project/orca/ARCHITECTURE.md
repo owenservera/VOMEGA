@@ -1,184 +1,201 @@
-# Orca target architecture
+# Orca execution architecture — evidence-revised
 
-**Status:** intended operating design; Orca-specific mechanics require research/proof.
+**Status:** target architecture after primary-doc/source research; local Windows proof still required.  
+**Runtime baseline:** Orca v1.4.220.
 
-## 1. Core boundary
-
-Orca is a **replaceable execution control plane**.
-
-It may coordinate work, but it may not become the authority for what VOMEGA is, what must be built, whether a claim is true, or whether a result is accepted.
+## 1. Core control hierarchy
 
 ```text
-                     OWEN
-                       │
-                       ▼
-        ┌───────────────────────────┐
-        │ VOMEGA authority surfaces│
-        │ seed / meta / PM / truth │
-        │ goals / invariants       │
-        │ evidence / acceptance    │
-        └─────────────┬─────────────┘
-                      │
-                      ▼
-        ┌───────────────────────────┐
-        │           ORCA            │
-        │ execution control plane   │
-        │                           │
-        │ task dispatch             │
-        │ isolation/worktrees       │
-        │ runtime lifecycle         │
-        │ visibility / steering     │
-        │ fan-out / fan-in          │
-        └──────┬────┬────┬────┬────┘
-               │    │    │    │
-       ┌───────┘    │    │    └────────┐
-       ▼            ▼    ▼             ▼
-    ZCode       OpenCode Codex     Grok Build
-                                      │
-                                      └── plus Claude Code
+                         OWEN
+                           │
+                           ▼
+              VOMEGA authority/truth
+        seed · meta · PM · repo · evidence
+                           │
+                 bounded objective/task
+                           ▼
+════════════════════════════════════════════════════════════
+                   ORCA v1.4.220
+        heterogeneous execution control plane
+────────────────────────────────────────────────────────────
+ Run namespace / coordinator inbox
+ Task specs + real dependencies
+ Dispatch = authoritative attempt
+ worker lifecycle + ask/reply + gates
+ worktrees / terminals / review / steering
+════════════════════════════════════════════════════════════
+         │          │          │          │          │
+         ▼          ▼          ▼          ▼          ▼
+      ZCode     OpenCode      Codex    Grok Build  Claude Code
+         │          │          │          │          │
+      optional harness-local subagents / teams / tools
+         │          │          │          │          │
+         └──────────┴──────────┴──────────┴──────────┘
+                           │
+                  files/tests/evidence
+                           ▼
+                     VOMEGA fan-in
 ```
 
-The exact Orca primitives used to realize the center box are **RESEARCH / PROOF REQUIRED**.
+## 2. The key boundary: Orca is top-level runtime ownership
 
-## 2. Ownership matrix
+The research changes the design from “Orca launches different CLIs” to:
 
-| Layer | Owns | Must not own |
-| --- | --- | --- |
-| Owen / VOMEGA authority | product direction, explicit owner choices, invariant changes, spend/auth/security escalation | routine worker scheduling |
-| Seed / Meta / PM / roadmap | what exists, why it matters, decomposition, dependencies, proof obligations | live runtime claims unless evidenced |
-| Orca | intended execution topology, workspace/worktree isolation, worker launch/visibility, dispatch, fan-out/fan-in, operator steering | product truth, model truth, acceptance by assertion |
-| Harness | one execution environment's agent/session capabilities | VOMEGA authority |
-| Router/provider/model/account | intelligence/capacity | task ownership semantics |
-| Git/tests/evidence | durable result and proof surfaces | strategic intent by themselves |
-| Elephant/context session | advisory context, comparison, critique, retrieval | canonical truth, final acceptance |
+> **Orca owns cross-harness Task/Dispatch provenance; harness-native multi-agent systems are nested execution details of one Dispatch.**
 
-## 3. Required separations
+This matters because ZCode, Claude, Grok, Codex and OpenCode can themselves fan out.
 
-Preserve the project's existing semantic discipline:
+Without this rule, VOMEGA could accidentally have five independent schedulers creating invisible child ownership.
+
+### Parent-worker contract
+
+If a harness uses internal subagents:
+- the parent Orca worker remains owner;
+- the parent owns the write set;
+- the parent resolves child conflicts;
+- the parent collects tests/evidence;
+- the parent sends one `worker_done` for its Dispatch;
+- a child becomes a top-level VOMEGA worker only if Orca receives a separate Task/Dispatch for it.
+
+## 3. Authority ladder
+
+| Layer | Authority |
+| --- | --- |
+| Owen / protected VOMEGA surfaces | product decisions, invariant changes, spend/auth/security/irreversible choices |
+| Repo/meta/PM/task artifacts | durable objective/decomposition/provenance |
+| Orca Run/Task/Dispatch | execution ownership and lifecycle only |
+| Harness session | execution of one Dispatch |
+| Harness subagents/team | child compute only |
+| Git/tests/evidence | observable result/proof |
+| Elephant/context session | advisory cognition only |
+
+## 4. Semantic separations
 
 ```text
 HARNESS ≠ ROUTER ≠ PROVIDER ≠ ACCOUNT ≠ MODEL ≠ SESSION ≠ WORKER ROLE
-TASK STATE ≠ PROOF
-AGENT CLAIM ≠ EVIDENCE
+WORKTREE ≠ SECURITY SANDBOX
+HEARTBEAT ≠ COMPLETION
+WORKER_DONE ≠ ACCEPTED PRODUCT TRUTH
+ORCA TASK STATE ≠ VOMEGA PROOF
 CONTEXT ≠ AUTHORITY
-ORCHESTRATION ≠ PROJECT TRUTH
 ```
 
-When observable, every run should record the distinct dimensions rather than flattening them into “the agent”.
+An Orca Dispatch can be marked complete while VOMEGA still rejects its artifact because acceptance evidence failed.
 
-## 4. Execution roles
+## 5. Coordinator design
 
-Roles are dynamic functions, never permanent identities.
+The coordinator is a function, not a permanent frontier-model identity.
 
-### Coordinator
+It should:
+1. read the current VOMEGA task/proof obligations;
+2. decompose only where parallelism reduces time or uncertainty;
+3. create self-contained Task specs;
+4. expose true dependencies;
+5. route by current capability/capacity;
+6. monitor questions/escalations/completion;
+7. require evidence;
+8. request independent review when consequence warrants it;
+9. fan-in or refuse integration;
+10. persist a reconstructable handoff.
 
-Responsible for:
-- reading the current VOMEGA objective and proof obligations;
-- decomposing bounded work;
-- exposing dependencies;
-- selecting candidate harness/capacity;
-- detecting collisions;
-- requesting review or escalation;
-- fan-in and handoff quality.
+The coordinator should not routinely edit product code when that sacrifices independence or creates a bottleneck.
 
-Normally the coordinator should avoid becoming the main coding worker when that would reduce independent review or create a bottleneck.
+## 6. Dispatch contract
 
-### Worker
-
-A worker:
-- owns a bounded task/write set;
-- works in an isolated environment when collision risk warrants it;
-- produces artifacts, tests and evidence;
-- reports uncertainty/failure explicitly;
-- does not promote its own result to project truth.
-
-### Reviewer / challenger
-
-For consequential changes:
-- independent from the author where practical;
-- checks the actual diff/result/evidence;
-- may be cross-harness or cross-provider when independence adds value;
-- does not add ceremony where deterministic proof is stronger and sufficient.
-
-### Elephant
-
-A retained long-context advisory session:
-- holds a bounded context domain;
-- answers questions and compares proposals to context;
-- can challenge architectural or code consistency;
-- does not directly become the durable memory layer.
-
-See `CONTEXT-AND-ELEPHANTS.md`.
-
-## 5. Atomic dispatch contract
-
-Every meaningful dispatch should be representable with:
+Each Orca Task spec should carry VOMEGA's extended contract:
 
 ```text
 TARGET
-Exact subsystem/files/environment.
-
 CHANGE
-Concrete requested outcome.
-
 CONSTRAINTS
-Invariants, do-not-touch surfaces, security/auth limits.
-
 OWNERSHIP
-What this worker may edit and what other workers own.
-
 DEPENDENCIES
-Inputs/gates that must exist before completion.
-
 OBSERVABLE ACCEPTANCE
-Tests, artifacts, evidence or external observations required.
-
 AUTHORITY / PROVENANCE
-Which VOMEGA objective/task authorized the work.
-
 HANDOFF
-Result, residual risk, downstream trigger.
 ```
 
-The Orca integration should adapt to this contract, not the reverse.
+Orca's own stable task-spec guidance already aligns with most of these fields.
 
-## 6. Topology principle
+## 7. Worktree policy
 
-Do not encode:
-- one permanent master agent;
-- one harness per department;
-- one account per role;
-- one worktree per long-lived lane;
-- mandatory frontier-model use;
-- a fixed number of workers.
+Use a separate worktree when:
+- concurrent writers can collide;
+- the task is consequential enough to need isolated diff/review;
+- an experimental solution should be disposable.
 
-Instead:
+Do not create a worktree when:
+- the task is read-only;
+- one coordinator is only inspecting;
+- isolation adds more overhead than protection.
+
+Independent tasks should normally branch from the repo default base, not from a current feature branch.
+
+## 8. Security/permission policy
+
+Research exposed an important Orca default: supported agents are commonly launched with their permission-bypass/auto-approval mode unless changed in Settings.
+
+VOMEGA bootstrap therefore starts:
+
+> **Orca Settings → Agents → Agent Permissions = Manual**
+
+Then autonomy is increased by task class after evidence.
+
+A Git worktree is not a sandbox. Harness-native sandboxing/permissions remain in force and must be understood separately.
+
+## 9. Version boundary
+
+Pin the first proof to **Orca v1.4.220**.
+
+Do not depend on main-only features. In particular, newer OpenCode startup/model plumbing on `main` is not required for bootstrap.
+
+After any Orca upgrade, rerun the runtime/harness smoke matrix.
+
+## 10. Known ZCode integration blocker
+
+Existing VOMEGA Windows evidence records a desktop-bundled ZCode runtime invoked through Node and no standalone `zcode` on PATH.
+
+Orca v1.4.220 requires an interactive TUI-capable `zcode`.
+
+Therefore the setup must add/validate a standalone TUI-capable ZCode CLI **without replacing the desktop app or its provider/account configuration**.
+
+Until then:
+- ZCode remains independently usable in its current habitat;
+- it is not yet a validated Orca worker.
+
+## 11. Capacity topology
+
+Do not encode the historical five configured lanes as five permanent workers.
+
+Treat available capacity as dynamic:
 
 ```text
-task requirements
-   ↓
-context + consequence + independence need
-   ↓
-current capacity / quota / latency / cost
-   ↓
-candidate harness + model/account
-   ↓
-isolated execution where needed
-   ↓
-evidence
-   ↓
-integration
+capacity registry
+├── ZCode sessions + its configured provider routes
+├── OpenCode sessions + providers
+├── Codex account/session capacity
+├── Grok Build account/session capacity
+├── Claude Code account/session capacity
+└── retained Context/Elephant sessions when proven valuable
 ```
 
-## 7. Authority failure conditions
+The historical provider labels Owen / OpenCode acct 2–5 remain configured machine facts until live selection/reachability is re-proven.
 
-Orca adoption is invalid if it causes any of the following:
+## 12. Design success condition
 
-- provider credentials/config are mutated incidentally;
-- a runtime status is treated as evidence of correctness;
-- Orca state becomes the only durable record of a task;
-- worker self-report replaces tests/evidence;
-- the five Space Bunny lanes become a hardcoded organization chart;
-- ZCode/OpenCode/Codex/Grok Build/Claude Code are forced into false equivalence;
-- an Orca limitation dictates VOMEGA product architecture;
-- context sessions become unreviewed canonical truth.
+The architecture works when Owen can issue or approve one VOMEGA objective and obtain:
+
+```text
+objective
+→ explicit tasks/dependencies
+→ heterogeneous routed Dispatches
+→ isolated execution
+→ visible blockers/questions
+→ explicit outcomes
+→ independent challenge where useful
+→ tests/evidence
+→ coherent fan-in
+→ durable repo state
+```
+
+without needing to manually babysit every terminal and without Orca becoming the source of product truth.

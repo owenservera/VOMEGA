@@ -1,126 +1,169 @@
-# ORCA-BOOT-01 — execution substrate proof
+# ORCA-BOOT-01 — staged execution-substrate proof
 
-**Status:** proposed acceptance test; not yet executed.
+**Baseline:** Orca v1.4.220  
+**Status:** not executed.
 
 ## Purpose
 
-Prove the thing VOMEGA actually needs from Orca:
+Validate that Orca can become VOMEGA's current heterogeneous execution control plane **on Owen's real Windows machine** without turning runtime status into project truth or damaging existing harness/provider configuration.
 
-> one bounded VOMEGA objective can be decomposed, routed across heterogeneous agent harnesses, executed safely in parallel, reviewed, evidenced and integrated without Orca becoming project truth or disturbing existing provider configuration.
+A successful install is not acceptance.
 
-A successful install or a screen full of agents is **not** acceptance.
+## Prerequisites
 
-## Test shape
+- Orca v1.4.220 running;
+- VOMEGA registered;
+- Agent Permissions = Manual;
+- disposable worktree create/remove proven;
+- Claude, Codex, Grok Build and OpenCode individually probed;
+- separate TUI-capable standalone ZCode CLI proven outside and inside Orca;
+- sanitized before-state for relevant auth/config files;
+- Experimental orchestration enabled only after basic harness launch proof.
 
-Use one real but bounded VOMEGA task set with independent enough write surfaces to permit meaningful fan-out.
+## Stage A — runtime truth
 
-The proof should exercise all five harness families at least once:
+Pass if:
+- `orca status --json` works;
+- repo/worktree IDs are stable enough for commands;
+- worktree create/show/remove works;
+- commands operate on the expected host/repo;
+- no repo/history damage.
 
-- ZCode
-- OpenCode
-- Codex
-- Grok Build
-- Claude Code
+## Stage B — five harness probes
 
-The exact task assigned to each should be chosen from capability fit rather than artificial symmetry.
+Each harness must complete one bounded task through Orca:
 
-## Required behaviors
+| Harness | Minimum proof |
+| --- | --- |
+| Claude Code | launch → task → observable result |
+| Codex | launch → task → observable result |
+| Grok Build | launch → task → observable result |
+| OpenCode | launch → task → observable result |
+| ZCode | **TUI-capable CLI** launch → task → observable result |
 
-### A. Decomposition
+For each record:
+- executable/path/version;
+- harness;
+- model/router/account only when actually observable;
+- worktree;
+- permissions;
+- outcome;
+- evidence.
 
-A coordinator function produces bounded task contracts containing:
+## Stage C — pairwise parallel writers
+
+Run at least two simultaneous isolated writers.
+
+Pass if:
+- they edit separate worktrees/write sets;
+- no prompt/session crossover;
+- results are independently inspectable;
+- each worker's provenance is reconstructable.
+
+## Stage D — supervised two-worker Run
+
+Use Orca structured orchestration.
+
+Required:
+1. `run-create`;
+2. at least two Tasks;
+3. at least one real dependency or explicit independence;
+4. two Dispatches on different harnesses;
+5. a worker question via Orca ask/reply;
+6. a heartbeat or equivalent liveness observation;
+7. one successful `worker_done`;
+8. one deliberate failed `worker_done`;
+9. coordinator processes both;
+10. workers retained/released deliberately.
+
+This proves lifecycle semantics before full fan-out.
+
+## Stage E — nested-agent provenance
+
+At least two different harnesses use an internal subagent/team mechanism.
+
+Pass if:
+- Orca still has exactly one top-level Dispatch owner per parent task;
+- child work is summarized by the parent;
+- final files/evidence are attributable;
+- no child silently claims a separate top-level VOMEGA task.
+
+Claude Agent Teams are **not required**. Ordinary subagents are sufficient.
+
+## Stage F — full heterogeneous campaign
+
+Use one real but bounded VOMEGA objective with tasks matched to harness strengths.
+
+All five harness families participate in the same campaign.
+
+Required behaviors:
+
+### 1. Self-contained Tasks
+Each has:
 - target;
 - change;
 - constraints;
 - ownership;
 - dependencies;
-- observable acceptance;
-- authority/provenance;
-- handoff requirements.
+- acceptance;
+- provenance;
+- handoff.
 
-### B. Isolation
+### 2. Real dependency
+At least one task is blocked on another task or a decision gate.
 
-At least two simultaneous writing workers operate without unsafe shared-checkout collision.
+### 3. Independent review
+At least one meaningful artifact is reviewed by a different harness/worker.
 
-Expected default: disposable worktrees/workspaces where needed.
+### 4. Context consultation
+At least one worker uses a Context Bundle or retained context/Elephant experiment.
 
-### C. Heterogeneous dispatch
+### 5. Failure/escalation
+At least one controlled failure/blocker is surfaced explicitly.
 
-All five harness families complete at least one bounded probe/task in the same overall run or controlled proof campaign.
+### 6. Fan-in
+Coordinator either:
+- produces coherent integration + evidence;
+- or refuses integration with a precise blocker.
 
-Record:
-- harness;
-- account/router/model when observable;
-- start/end/outcome;
-- evidence.
+### 7. Config integrity
+After campaign:
+- compare auth/provider/config state to before-state;
+- distinguish normal runtime bookkeeping from material reconfiguration;
+- no secrets entered Git;
+- historical provider lanes were not silently rewritten.
 
-### D. Dependency
+## Acceptance
 
-At least one task cannot complete until another task's artifact/evidence exists.
+ORCA-BOOT-01 passes only if all are true:
 
-The dependency must be visible and respected rather than handled only through human memory.
+1. VOMEGA remains authority.
+2. All five harness families work through Orca in the proven integration mode.
+3. ZCode uses a TUI-capable standalone CLI, not a falsely assumed desktop bundle.
+4. Cross-harness Task/Dispatch ownership is unambiguous.
+5. Concurrent writes are isolated.
+6. dependency/gate behavior is visible.
+7. worker questions/failures are surfaced.
+8. completion requires explicit lifecycle outcome plus VOMEGA acceptance evidence.
+9. nested harness agents preserve parent Dispatch provenance.
+10. independent review works.
+11. fan-in is reconstructable.
+12. no material auth/provider configuration damage occurs.
+13. Owen can understand which workers are running, blocked, reviewing and settled from Orca plus durable repo state.
+14. concurrency/resource use is acceptable on the actual machine.
 
-### E. Question / escalation
+## Failure taxonomy
 
-At least one worker raises a blocking uncertainty or failure and the system routes it to the appropriate coordinator/owner/reviewer rather than silently guessing.
-
-### F. Independent review
-
-At least one consequential artifact is reviewed by a worker/harness that did not author it.
-
-### G. Context consultation
-
-At least one task uses a bounded Context Bundle or Elephant-style retained context consultation.
-
-The advisory output must not be accepted merely because it came from a large-context session.
-
-### H. Explicit completion
-
-Completion means:
-- artifact exists;
-- required evidence exists;
-- acceptance checks are evaluated;
-- handoff is durable.
-
-Agent prose like “done” is insufficient.
-
-### I. Fan-in
-
-The run produces a coherent integration result or a precise refusal to integrate with blockers stated.
-
-### J. No configuration damage
-
-Verify after the run:
-- existing ZCode/OpenCode/Codex/Grok Build/Claude Code auth/provider settings were not silently rewritten;
-- symbolic account routes remain intact;
-- no secrets entered the repository.
-
-## Acceptance criteria
-
-ORCA-BOOT-01 passes only if:
-
-1. VOMEGA remains the authority surface.
-2. Five harness families are evidenced as usable through the chosen Orca operating pattern.
-3. Concurrent writes are isolated safely.
-4. Dependency ordering works.
-5. worker uncertainty/failure is surfaced.
-6. independent review occurs.
-7. explicit evidence, not self-report, decides completion.
-8. fan-in produces a reconstructable result.
-9. no provider/auth configuration is damaged.
-10. the operator can see enough state to understand what is running, blocked, reviewing and complete.
-11. the proof is reproducible from committed docs plus sanitized observations.
-
-## Failure is useful
-
-If Orca cannot satisfy an item, classify the cause:
-
-- Orca lacks the primitive;
-- adapter/configuration missing;
-- harness limitation;
+Record failures as:
+- Orca stable limitation;
+- Orca bug;
+- stable-vs-main gap;
 - Windows limitation;
-- repo/process limitation;
+- harness integration limitation;
+- TUI/session limitation;
 - provider/account limitation;
-- task design error.
+- VOMEGA task-design problem;
+- permission/sandbox problem;
+- resource/concurrency problem.
 
-Do not hide a failed requirement by weakening the acceptance criterion after the fact. Revise the architecture explicitly if the evidence shows a better design.
+Do not lower the acceptance criterion silently. Change the design explicitly.
