@@ -1,6 +1,6 @@
 # Project Commons and workstream rooms
 
-Current objective and proof: SITREP.md and evidence/bootstrap.json. This file is
+Current objective and proof: SITREP.md and evidence/bootstrap.json. **Canonical program context: `.project/META-TRACKER.md` (67 major programs + 31 accelerator hypotheses).** This file is
 the small coordination register. Heads are accountable for handoffs, not permanent
 authority. A fresh executor claims an open row and updates owner/status/evidence
 before editing. A completed session agent is not an active background worker.
@@ -9,12 +9,13 @@ How to read this file: the table is the live register. Every dated section below
 it is an append-only handoff record, true when written. Later sections supersede
 earlier ones; nothing below the table is a current instruction. Current launch
 state is `agentic-launch/STATUS.md`. The four rooms (Coordination, Research,
-Product/DevOps, Truth) are the bootstrap coverage areas, kept as routing
-vocabulary, not as departments.
+Product/DevOps, Truth) are bootstrap-era routing vocabulary, not the program map,
+not departments, and not standing ownership. Current work may route directly by
+meta program, temporary workstream, task, or another evidence-driven grouping.
 
 | Work | Owner / accountable room | Status | Dependency / verification / handoff |
 | --- | --- | --- | --- |
-| D1 executable semantic twin | Codex / Coordination + Product + Truth | CLAIMED | `26ec6df`; isolated clone and `work/d1-semantic-twin`; D1-001..089, gates and independent review required |
+| D1 executable semantic twin | unclaimed; next executor derives routing from current need | **selected / paused; incomplete** | prior Work/Codex claim stopped before substantive implementation; branch consolidated into `main`; resume from `.project/deliverables/D1-START-HERE.md`; D1-001..089 plus folded-in Reflection/Migrator tasks/gates |
 | Seed/product selection | release_gym / Research | complete | all 22 seed docs read; RELEASE-GYM.md |
 | Baseline/environment audit | baseline_audit + environment_census / Research | complete | REALITY.md, ENVIRONMENT.md; model execution unverified |
 | Install/scripts/continuity truth | Codex bootstrap / Product + Coordination | complete | locked install, launcher append/read/verify/status and quick proof succeed |
