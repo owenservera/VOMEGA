@@ -14,6 +14,7 @@ vocabulary, not as departments.
 
 | Work | Owner / accountable room | Status | Dependency / verification / handoff |
 | --- | --- | --- | --- |
+| D1 executable semantic twin | Codex / Coordination + Product + Truth | CLAIMED | `26ec6df`; isolated clone and `work/d1-semantic-twin`; D1-001..089, gates and independent review required |
 | Seed/product selection | release_gym / Research | complete | all 22 seed docs read; RELEASE-GYM.md |
 | Baseline/environment audit | baseline_audit + environment_census / Research | complete | REALITY.md, ENVIRONMENT.md; model execution unverified |
 | Install/scripts/continuity truth | Codex bootstrap / Product + Coordination | complete | locked install, launcher append/read/verify/status and quick proof succeed |
@@ -282,3 +283,7 @@ The tracker was reconstructed from the current seed, project truth, release road
 Use the meta tracker to answer **what important programs exist**. Use `.project/agentic-launch/STATUS.md` to answer **what is currently claimed/running/completed**. Use `.project/roadmap/` for **first-release task cards/proof obligations**. Seed intent/invariants remain above all three.
 
 No new permanent departments are created by the meta tracker.
+
+## D1 execution claim — 2026-10-06
+
+Owner request: execute D1 autonomously through completion. Coordination: Codex integrates; Product: bounded validator and World workers, integration owner owns session/UI/replay; Truth: independent final review. Source HEAD and origin/main both `26ec6dfc6cbe301b6c48ee04c7a0d35a23c52468`. Existing `/workspace/VOMEGA` has uncommitted work and is left untouched. Auth/provider/model configuration stays read-only. Verification failures route here to Truth + Product with concrete evidence.

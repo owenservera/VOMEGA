@@ -4,7 +4,7 @@ Launch rows as of 2026-10-05; wording and evidence notes reconciled 2026-10-06.
 
 This file is the compact launch-state surface for fresh local sessions. It is the only place that says what is claimed, running or done.
 
-**Right now: nothing is claimed and nothing is running.** The first fan-out and its independent review are complete.
+**Right now: D1 is CLAIMED by Codex / Coordination + Product + Truth.** Source `26ec6dfc6cbe301b6c48ee04c7a0d35a23c52468`; isolated clone `/workspace/scratch/b6f4221be35c/VOMEGA`, branch `work/d1-semantic-twin`. Scope: D1-001..089, synthetic only. Independent bounded implementation and review workers have explicit ownership; no auth/provider/model configuration changes. Next gate: baseline, red-to-green U1 and semantic World contracts.
 
 Detailed topology: [README.md](README.md). Program map and authority ladder: [../META-TRACKER.md](../META-TRACKER.md).
 
