@@ -34,6 +34,17 @@ These documents are not equally authoritative:
 
 **ZCODE-CAPABILITY-SPACE** describes the external development substrate the fresh project can exploit and the boot sequence for designing its own DevOps.
 
+## After bootstrap: current project navigation
+
+The bootstrap has already run. For current project state, do not derive a new plan from this seed alone:
+
+- `../.project/META-TRACKER.md` — canonical whole-program map: 67 major programs + 31 accelerator hypotheses;
+- `../.project/SITREP.md` — current project orientation and selected deliverable;
+- `../.project/agentic-launch/STATUS.md` — what is actually claimed/running/completed;
+- `../.project/REALITY.md` and evidence/tests — what is actually proven.
+
+The broad domains in `WORKSTREAM-LANDSCAPE.md` are coverage categories, not the program list. Bootstrap teams, launch lanes, roadmap workstreams and D1 tasks are narrower execution views.
+
 ## The central distinction
 
 Do not confuse:
