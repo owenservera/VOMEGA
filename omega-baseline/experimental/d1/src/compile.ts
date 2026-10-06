@@ -3,9 +3,13 @@
 //
 // IMPLEMENTED here: D1-024 — the declared-capability command path (utterance →
 // DraftCommand) and the fold of a draft plus its semantic edits into the
-// candidate canonical UseCommand. Still stubs, each still naming its owning
-// task so a red gate says who owns it: registration (D1-021), typed correction
-// (D1-027), READY law (D1-005), command identity (D1-029), interpreter trace
+// candidate canonical UseCommand; D1-026 — the session-path READY law, which
+// delegates to the one law in validate.ts (D1-005, PROVEN in bc226dc) instead
+// of restating it. The `NotImplemented[D1-005]` label that used to sit on this
+// file's `validation` was stale: D1-005 is DONE and its law lives in
+// validate.ts; the compile-path surface is D1-026's. Still stubs, each still
+// naming its owning task so a red gate says who owns it: registration (D1-021),
+// typed correction (D1-027), command identity (D1-029), interpreter trace
 // (D1-025).
 //
 // Harvest disposition (OPERATING.md, "Harvest before inventing"): ADAPT, not
@@ -25,11 +29,13 @@
 // chosen provider, resolved here.
 // Nothing in this file is authority.
 import { NCLL_VERSION, ground, lex } from "../../../plugins/vivim-nlcl-pure/src/index.ts";
-import type { Interpretation, RiskClass, Token, WorldModel } from "../../../plugins/vivim-nlcl-pure/src/index.ts";
+import type { EntityView, Interpretation, IR, IRSlot, RiskClass, Token, WorldModel } from "../../../plugins/vivim-nlcl-pure/src/index.ts";
 import type { CapabilityDecl, RealizationDecl } from "./declarations.ts";
 import { capabilityDecl, loadDeclarations } from "./declarations.ts";
 import type { D1State, DraftCommand, InterpretationResult, SemanticEdit, Unresolved, UseCommand, Validation, World } from "./contract.ts";
 import { notImplemented } from "./not-implemented.ts";
+// D1-005's law is imported, never copied: one rule set decides READY.
+import { validateInterpretation } from "./validate.ts";
 import { compatibleAccounts } from "./world.ts";
 
 /** The engine behind a D1 trace: nlcl's lexer/grounder plus D1's frame layer. */
@@ -224,9 +230,134 @@ export function commandDigest(cmd: UseCommand): string {
   return notImplemented("D1-029", `commandDigest(${cmd.capability})`);
 }
 
-/** D1-005/061: READY law over the session's current command (includes authority state). */
+/**
+ * D1-026: the READY law over the session's current command.
+ *
+ * There is ONE READY law — D1-005's `validateInterpretation` (validate.ts,
+ * PROVEN in bc226dc). This does not restate it: the compiled UseCommand is
+ * PROJECTED into the reading shape that law already consumes, and the law
+ * decides. Every session fact the reading shape has no room for may only ever
+ * withhold READY, never grant it — the law is one-directional and so is this.
+ *
+ * The projection is what carries ambiguity into validation. The tie set the
+ * compile path preserved in `unresolved` travels as equal-score grounding
+ * matches, and the session reports it as a materially ambiguous reading, so the
+ * law returns needs-choice. Nothing here ever picks an Account: an ambiguous
+ * required Account cannot resolve because no code path in this function chooses
+ * between the alternatives — both stay readable on the command.
+ */
 export function validation(state: D1State): Validation {
-  return notImplemented("D1-005", `validation(active revision ${state.active})`);
+  const cmd = currentCommand(state);
+  if (!cmd) return sessionVerdict("unknown", [], [`no command is compiled for revision ${state.active}`]);
+  const law = validateInterpretation(readingOf(state, cmd), state.world);
+  if (law.state !== "ready") return law;
+  // The compile path's own record outranks the reading, and only ever downward:
+  // a route `unresolvedFor` already recorded as unresolved cannot be READY.
+  const blocker = cmd.unresolved[0];
+  if (!blocker) return law;
+  const alternatives = blocker.options.length > 0 ? ` (${blocker.options.join(", ")})` : "";
+  return sessionVerdict(
+    blocker.reason === "ambiguous" ? "needs-choice" : "needs-info",
+    [blocker.field],
+    [`${blocker.field}: ${blocker.reason}${alternatives}`],
+  );
+}
+
+/** No ranking between alternatives: the session holds a tie, not an order. */
+const UNRANKED = 1;
+
+/**
+ * Project a compiled UseCommand into the reading shape `validateInterpretation`
+ * consumes. Every value is copied from the command, the World, or the compile
+ * path's own record; nothing is invented and no alternative is dropped. Empty
+ * collections mean "not projected", never "nothing exists" — the law reads
+ * none of them, and a fabricated reading would be a second claim of fact.
+ */
+function readingOf(state: D1State, cmd: UseCommand): Interpretation {
+  const world = state.world;
+  const decl = capabilityDecl(cmd.capability)!;
+  const trace = state.draft?.result.detail as D1Trace | undefined;
+  const said = trace?.mention ?? null;
+  const slots: Record<string, IRSlot> = {};
+  const payload: Record<string, unknown> = {};
+  let ambiguous = false;
+
+  for (const p of decl.params) {
+    if (p.semantic in ROUTE_FIELD) {
+      const field = ROUTE_FIELD[p.semantic as keyof typeof ROUTE_FIELD];
+      const value = cmd[field];
+      // Alternatives come from the command's own unresolved record, so a resolved
+      // field carries no phantom tie: after "use Work" the choice is made and the
+      // ambiguity is genuinely gone.
+      const options = cmd.unresolved.find((u) => u.field === field && u.reason === "ambiguous")?.options ?? [];
+      if (options.length > 1) ambiguous = true;
+      // A slot carries only what is true: a grounded id, or the words that failed
+      // to resolve to one. With neither it is omitted, and the law's own "no
+      // account was named" stands — a null placeholder would be read back as a
+      // value the user typed.
+      if (value || said) {
+        slots[p.name] = {
+          value: value ?? said,
+          display: value ?? options.join(" | "),
+          canonical: value ? `@${value}` : `?${field}`,
+          // Absent while unresolved: D1 never picks, so there is no entity to name.
+          entityId: value ?? undefined,
+          confidence: 0, // asserted nowhere: this projection has no graded reading
+          matches: options.map((id) => ({ entity: recordOf(world, p.type, id), score: UNRANKED, reason: `tied ${field} alternatives` })),
+        };
+      }
+      continue;
+    }
+    payload[p.name] = cmd.params[p.name] ?? null;
+  }
+
+  return {
+    input: state.revisions.find((r) => r.n === state.active)?.text ?? "",
+    // "ambiguous" is the interpreter's own channel for a materially ambiguous
+    // reading, and it is how the law is told not to expect a decision here.
+    status: ambiguous ? "ambiguous" : "ok",
+    nlclVersion: NCLL_VERSION,
+    worldV: world.revision,
+    ir: {
+      intent: cmd.capability,
+      family: "→",
+      slots,
+      payload,
+      modifiers: {},
+      // Natural language ≠ canonical command: this projection carries neither a
+      // reading nor a canonical command string. Inventing one here would be a
+      // second claim about the command, and the law reads neither.
+      canonical: "",
+      reading: "",
+      // Confidence ≠ proof: this projection has no graded reading of its own.
+      confidence: 0,
+      provenance: { verbs: [] },
+    } satisfies IR,
+    alternatives: [],
+    tokens: [],
+    canonical: null,
+    reading: null,
+    confidence: 0,
+    effects: [],
+    suggestions: [],
+    gaps: [],
+    stages: [],
+  };
+}
+
+/** The World record an alternative names, as the grounder would see it. Copied, never invented. */
+function recordOf(world: World, type: string, id: string): EntityView {
+  const rec =
+    type === "account" ? world.accounts.find((r) => r.id === id)
+    : type === "provider" ? world.providers.find((r) => r.id === id)
+    : type === "model" ? world.models.find((r) => r.id === id)
+    : undefined;
+  return { id, type, label: rec?.label ?? id, names: rec?.names ?? [] };
+}
+
+/** Builds a Validation value. A constructor, not a second law: the state above is already decided. */
+function sessionVerdict(state: Validation["state"], missing: string[], reasons: string[]): Validation {
+  return { state, missing, reasons };
 }
 
 /** Optional helper for tests and tools: the raw interpreter output for one revision. */

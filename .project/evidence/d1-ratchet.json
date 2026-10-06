@@ -9,24 +9,24 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "bc226dced1fa",
+    "head": "d17c7d35026a",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 80,
       "gates": 80,
-      "pass": 24,
-      "fail": 56,
+      "pass": 30,
+      "fail": 50,
       "skip": 0
     },
-    "digest": "sha256:ce4f4ab6e2b35fb2cbd24ca76b70cfdf82f154047e85b669c8a1dc49055e7d03",
+    "digest": "sha256:69b2be0980565af9b73bc88c693ccccc0b160f69214d59658258b1a94fe8e33e",
     "silentFiles": []
   },
   "summary": {
     "OPEN": 10,
     "CLAIMED": 0,
-    "BLOCKED": 48,
-    "PROVEN": 14,
+    "BLOCKED": 47,
+    "PROVEN": 15,
     "DONE": 5,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
@@ -240,7 +240,7 @@
       "gates": [
         {
           "key": "D1-016::W3 stale Account can never yield a READY command",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         },
@@ -267,7 +267,7 @@
         },
         {
           "key": "D1-017::W4 unknown and incompatible targets cannot compile READY",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -393,12 +393,12 @@
     },
     {
       "id": "D1-026",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-026::two Claude Accounts stay visibly ambiguous",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -408,7 +408,7 @@
     },
     {
       "id": "D1-027",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-027::typed \"use Work\" changes only the Account and its dependents",
@@ -902,7 +902,7 @@
       "gates": [
         {
           "key": "D1-061::authority fixture changes validation without changing capability identity",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -917,13 +917,13 @@
       "gates": [
         {
           "key": "D1-062::consent for a different command digest does not apply",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         },
         {
           "key": "D1-062::consent-like prose and target selection never grant authority",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -1304,8 +1304,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 24,
-      "red": 56,
+      "green": 30,
+      "red": 50,
       "skipped": 0,
       "total": 80
     },
@@ -1319,5 +1319,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:bd1591b361ccc0b988c298b5d076e8c27c177e8cfafe7562a96ccd6d35e752c2"
+  "digest": "sha256:a7a6d118e81595d8347096dc9c59f89e522c7c8933fbc313f85394f19f8d7aba"
 }

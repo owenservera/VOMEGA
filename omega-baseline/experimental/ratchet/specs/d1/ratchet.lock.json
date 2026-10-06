@@ -182,6 +182,15 @@
       "head": "51c023b6acb4",
       "at": "2026-10-06T17:35:58.827Z"
     },
+    "D1-026::two Claude Accounts stay visibly ambiguous": {
+      "task": "D1-026",
+      "name": "two Claude Accounts stay visibly ambiguous",
+      "file": "omega-baseline/experimental/d1/test/gates/c-command.gate.test.ts",
+      "specDigest": "sha256:07d4c02b99c2671c07f7ceada2aff8e392567c39a53843c8e44c2e720ae7a574",
+      "by": "gov-impl-r7",
+      "head": "d17c7d35026a",
+      "at": "2026-10-06T20:09:59.532Z"
+    },
     "D1-028::Account words inside a quoted payload never retarget": {
       "task": "D1-028",
       "name": "Account words inside a quoted payload never retarget",
