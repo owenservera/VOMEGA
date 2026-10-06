@@ -315,7 +315,24 @@ Before D1 completion, ensure executable coverage exists for:
 
 Attach each obligation to the nearest existing D1 task/gate when that remains semantically clear. If not, split/add a Ratchet task through the existing "Changing the plan" procedure. Do not invent an external tracker.
 
-## 12. Current dated execution emphasis
+## 12. Future negative-intent compatibility — preserve, do not block
+
+The owner-directed [Negative Intent Signal Engine](../../seed-docs/NEGATIVE-INTENT-SIGNAL-ENGINE.md) is a D5 semantic design concept, not a new D1 completion requirement.
+
+D1 should preserve the smallest evidence needed to test it later:
+
+- revision identity and late-result suppression;
+- candidate/unresolved alternatives where the interpreter already exposes them;
+- explicit semantic edits and typed/clicked convergence;
+- semantic diff/replay;
+- provenance for selected/defaulted fields;
+- enough dependency/invalidation information to estimate late-correction cost.
+
+Do **not** build a second parser, generalized evolutionary optimizer or permanent negative-intent subsystem merely to finish D1.
+
+D1-026/027/033/046/073/076/077 provide useful seed scenarios for the later experiment. If implementation naturally exposes the candidate manifold, retain it rather than collapsing irreversibly to top-1.
+
+## 13. Current dated execution emphasis
 
 As of `c0dd6c0`:
 
@@ -335,7 +352,7 @@ For D1 specifically, the current execution bias is:
 
 This is a dated execution emphasis, not a timeless program priority and not authority to change PM waves.
 
-## 13. Measuring acceleration without creating a scorekeeping bureaucracy
+## 14. Measuring acceleration without creating a scorekeeping bureaucracy
 
 Measure interventions where the work already lives: the session claim, review note, Ratchet evidence, or material Commons handoff.
 
@@ -355,7 +372,7 @@ A new persistent scorecard, daemon or accelerator tracker is justified only if r
 
 Any accelerator intervention that does not improve its named bottleneck should be simplified or removed.
 
-## 14. Functions, not permanent roles
+## 15. Functions, not permanent roles
 
 The following functions may be assigned temporarily:
 
@@ -369,7 +386,7 @@ The following functions may be assigned temporarily:
 
 They are not departments, standing agents or permanent owners. Existing DEV/TRU/PM/worker structures may perform them.
 
-## 15. Retirement
+## 16. Retirement
 
 This directive is temporary D1 execution machinery.
 
@@ -381,7 +398,7 @@ When D1 is independently reviewed and its completion commit is recorded:
 
 Do not let a D1 acceleration directive become a permanent project organization.
 
-## 16. Acceptance of this documentation/PM integration
+## 17. Acceptance of this documentation/PM integration
 
 This integration is correct only if:
 
