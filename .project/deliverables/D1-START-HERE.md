@@ -38,6 +38,7 @@ Read these before implementation:
 7. [Semantic Data Engine](../../seed-docs/SEMANTIC-DATA-ENGINE.md)
 8. [MVP Visualization Sandbox](../../seed-docs/MVP-VISUALIZATION-SANDBOX.md)
 9. [Automated Semantic Experiments](../../seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md)
+10. [D1 midstream correction / provenance](D1-MIDSTREAM-CORRECTION-ADDENDUM.md) — retained as the record of why Reflection/Migrator was added; its requirements are now folded into the primary D1 spec/tasks.
 
 The seed documents define intent and protected distinctions. This D1 pack defines the **current bounded deliverable and build order**. It does not promote candidate Lab architecture into Ω constitutional law.
 
@@ -78,7 +79,7 @@ D1 is done only when all release gates in the specification pass, including:
 - `prompt.send` executes only through a virtual realization;
 - every execution receipt is unambiguously marked `SIMULATED`;
 - replay of a pinned complete journey produces the same semantic/evidence identity;
-- contextual help is projected from semantic state, not a hand-authored parallel Wiki truth store;
+- the D1 capability slice is minimally self-describing: source-bound structural facts are extracted into a read-only Reflection representation, joined with active World/interpretation state, and projected into contextual Wiki/help without a parallel authoritative help database;
 - the artifact can be launched by another developer with one documented command;
 - existing named baseline tests remain green or any unrelated pre-existing blocker is explicitly preserved.
 
@@ -95,10 +96,10 @@ Stop and surface the evidence instead of guessing if D1 requires:
 
 Otherwise, continue autonomously until D1 is runnable and evidenced.
 
-## After D1
+## Relationship to parallel work and the next product convergence
 
-D1 deliberately leaves the live Provider/Account path outside itself.
+D1 deliberately leaves live Provider/Account execution outside its own completion claim, but that live-reality path may advance **in parallel** under the Meta Tracker; it is not a mandated serial “D2”.
 
-The next graduation target is to replace one synthetic Provider/Account/realization boundary with a real read-only authenticated browser relationship under the live-proof protocol, then promote one `prompt.send` from SIMULATED to automated-live evidence.
+After D1, the next core **product convergence** is MP-02 + MP-03: the actual Floating Command Box first product release/end-to-end journey. That convergence draws from D1, minimal Reflection/Wiki, independent live Provider/Account proof, authority/evidence semantics, product surface, local continuity, packaging, and Truth. Do not serialize those workstreams unless evidence demands it.
 
-Do not expand D1 into that work.
+The 67-program Meta Tracker remains the whole-program context; D1 is only one evidence-bearing integration slice.
