@@ -8,6 +8,14 @@ The per-program "current state" cells are a dated summary. Where they disagree w
 
 ---
 
+## Documentation alignment rule
+
+This tracker is the canonical whole-program map for the current repository. It preserves **67 major meta programs** plus the **31 named development-acceleration hypotheses**. Other documents may define product slices, Labs, release tasks, historical launch lanes, or temporary execution groupings, but none of those narrower views replaces this map.
+
+When current-facing documentation describes "the workstreams", "the program", "what comes next", ownership, or active scope, read it through this map and the authority ladder below. The eleven broad domains in `seed-docs/WORKSTREAM-LANDSCAPE.md`, the nine agentic-launch lanes, and the nine first-release roadmap workstreams are useful coverage/decomposition views only.
+
+Historical documents may retain earlier terminology when clearly marked historical. Do not rewrite history merely to make old artifacts sound current.
+
 ## 0. What this tracker is
 
 VOMEGA currently has three different planning layers that must not be confused:
