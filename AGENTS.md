@@ -5,11 +5,14 @@ for, what the current mission is, what is fixed, what is proven and where each
 kind of state lives. `.project/META-TRACKER.md` holds the authority ladder, the
 Labs and the full program map.
 
-Only two things are fixed: the invariants in `seed-docs/INVARIANTS.md` and the
-proof boundaries in `seed-docs/PROOF-AND-MATURITY.md`. The first-release shape is
-Owen's current product decision. Everything else in this repository — designs,
-Lab documents, Locks, lanes, roadmap milestones, task IDs, model routing, the
-dev-machine pack — is a hypothesis or a coordination aid. Read the complete seed
+The hard boundaries are the invariants in `seed-docs/INVARIANTS.md` and the
+proof boundaries in `seed-docs/PROOF-AND-MATURITY.md`. Owen's current
+first-release mission is also protected until he explicitly changes it. The
+project also preserves the **existence and purpose** of its major Labs as
+owner-directed proving environments; their internal architecture, mechanisms and
+outputs remain hypotheses. Everything below those boundaries — candidate designs,
+Locks, lanes, roadmap milestones, task IDs, model routing, dev-machine topology,
+and implementation strategy — is a hypothesis or coordination aid. Read the complete seed
 before a major commitment, and treat the seed's design documents as candidates.
 Historical decision numbers in baseline comments are evidence leads, not
 inherited project authority.
