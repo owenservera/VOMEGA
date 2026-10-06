@@ -110,6 +110,16 @@ describe("scope enforcement", () => {
     expect(r.problems.some((p) => p.startsWith("MISSING_PROGRAM MP-54"))).toBe(true);
   });
 
+  test("a managed id that is not a real canonical program fails", () => {
+    const r = validate(
+      [raw(programFile("MP-21")), raw(programFile("MP-54"))],
+      noEvents,
+      { schema: "vomega-pm-scope/0", managedPrograms: ["MP-21", "MP-99"] },
+      TRACKER,
+    );
+    expect(r.problems.some((p) => p.startsWith("UNKNOWN_MANAGED_PROGRAM MP-99"))).toBe(true);
+  });
+
   test("a canonical tracker field at file root is banned", () => {
     const f = JSON.parse(JSON.stringify(programFile("MP-21")));
     f.state = "usurped from the tracker";

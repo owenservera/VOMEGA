@@ -48,6 +48,7 @@ export function validate(rawFiles: RawFile[], rawEvents: unknown, scopeRaw: unkn
   const scope = scopeParsed.data;
   const managed = new Set(scope.managedPrograms);
   const trackerIds = new Set((tracker.programs ?? []).map((p) => p.id));
+  for (const id of managed) if (!trackerIds.has(id)) problems.push(`UNKNOWN_MANAGED_PROGRAM ${id} — declared in scope.json but not in meta-tracker.json`);
 
   // 1. schema per file (canonical meaning keys are banned at file root; dossier owns meaning).
   const parsed: { name: string; file: ProgramFileT }[] = [];
@@ -181,14 +182,21 @@ export function main(argv: string[]): number {
       writeViews(contents);
       process.stdout.write(`wrote ${Object.keys(contents).length} generated file(s) under .project/pm/generated/\n`);
     } else {
-      const rel = (p: string): string => p.replace(paths.root, ".");
-      for (const [name, fresh] of Object.entries(contents)) {
+      const fresh = new Set(Object.keys(contents));
+      const walk = (dir: string, prefix: string): string[] =>
+        readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(join(dir, e.name), `${prefix}${e.name}/`) : [`${prefix}${e.name}`],
+        );
+      for (const found of walk(paths.outDir, "")) {
+        const foundRel = found.replace(/\\/g, "/");
+        if (!fresh.has(foundRel)) problems.push(`PROJECTION_ORPHAN generated/${foundRel} — not produced by the current projector; a stale view must never persist (delete it, then run: bun run pm)`);
+      }
+      for (const [name, freshContent] of Object.entries(contents)) {
         const target = join(paths.outDir, name);
         const norm = (t: string): string => (name.endsWith(".json") ? stripVolatileHead(t) : stripVolatileHeadMd(t));
         if (!existsSync(target)) problems.push(`PROJECTION_MISSING generated/${name} — run: bun run pm`);
-        else if (!sameText(norm(readFileSync(target, "utf8")), norm(fresh))) problems.push(`PROJECTION_STALE generated/${name} — run: bun run pm`);
+        else if (!sameText(norm(readFileSync(target, "utf8")), norm(freshContent))) problems.push(`PROJECTION_STALE generated/${name} — run: bun run pm`);
       }
-      void rel;
     }
   }
 

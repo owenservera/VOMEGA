@@ -60,6 +60,7 @@ export interface PortfolioProgram {
   gateCount: number;
   ungatedPhases: string[];
   needsReview: string[];
+  evidencePointers: { date: string; kind: string; ref: string }[];
   externalDependencies: { ref: string; reason: string }[];
   phases: Phase[];
   gates: Gate[];
@@ -107,6 +108,7 @@ export function buildPortfolio(set: ManagedSet, scope: string[], tracker: Tracke
       gateCount: file.gates.length,
       ungatedPhases: ungated,
       needsReview: review,
+      evidencePointers: events.events.filter((e) => e.program === id).map((e) => ({ date: e.date, kind: e.kind, ref: e.ref })),
       externalDependencies: file.externalDependencies,
       phases: file.phases,
       gates: file.gates,
@@ -153,6 +155,14 @@ export function renderViews(pf: Portfolio): Record<string, string> {
   s.push(`Managed set: **${pf.managedScope.join(", ")}** — ${pf.counts.programs} programs. Plan resolution: ${Object.entries(pf.counts.planResolution).map(([k, v]) => `${k} ${v}`).join(" · ")}. Evidence: ${Object.entries(pf.counts.evidenceState).map(([k, v]) => `${k} ${v}`).join(" · ")}.`);
   s.push("");
   s.push("PM has no decisioning authority: it does not choose, rank, add, drop, activate or redesign programs. Scope changes only by explicit owner instruction recorded in `.project/pm/scope.json`.");
+  s.push("");
+  s.push("## Why these five (owner decision, not PM's)");
+  s.push("");
+  s.push("The owner selected these five as **development multipliers**: they accelerate work across many other programs rather than serving a single product dependency. MP-21 turns repository structure into source-bound machine-readable self-knowledge; MP-54 and MP-60 consume those stable identities (bundles and impact queries) instead of reparsing the repo; MP-55 and MP-56 convert failures and observed behavior into portable, reproducible test assets that feed MP-60. The selection is recorded in `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md` §1 and §4; PM did not choose it and cannot revisit it.");
+  s.push("");
+  s.push("## How work descends into execution and proof");
+  s.push("");
+  s.push("Phases are planning units. When a phase is selected for execution it descends: phase → work package → task → atomic task → proof. The executable layer in this repository is the **Ω Proof Ratchet** (`omega-baseline/experimental/ratchet/`), which computes task/gate/proof state from a spec and is the atomic execution/proof owner; `pm:check` references its state live and PM never stores a copy. No managed phase is currently scheduled into Ratchet tasks, so no phase below is claimed as running — a green plan is not execution.");
   s.push("");
   s.push("| ID | Program | Why it exists (canonical) | Canonical state | Plan | Evidence | Phases | Gates |");
   s.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
@@ -228,6 +238,11 @@ export function renderViews(pf: Portfolio): Record<string, string> {
     o.push("");
     o.push("## Falsifiers / open questions", "");
     for (const x of p.dossier.falsifiers) o.push(`- ${x}`);
+    o.push("");
+    o.push("## Evidence pointers", "");
+    o.push(`- canonical identity/state/priority: \`.project/meta-tracker.json\` (program row, read live at generation time)`);
+    for (const ev of p.evidencePointers) o.push(`- ${ev.date} ${ev.kind} — \`${ev.ref}\``);
+    o.push(`- current evidence state: **${p.evidenceState}** — recorded events live in \`.project/pm/data/evidence-events.json\`; only a \`proof\` event promotes this. Execution/proof state is owned by the Ω Proof Ratchet (\`omega-baseline/experimental/ratchet/\`) and referenced live by \`pm:check\`; PM never stores a copy.`);
     o.push("");
     o.push("## Phases", "");
     o.push("| Phase | Objective | Effort | LOC | Blocked by | Exit gates |");
