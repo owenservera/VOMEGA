@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `8cd2cf23bd15`, Bun 1.4.2, win32-x64, 24/80 gates green, digest ce4f4ab6e2b3 · promoted gates: 22
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `bc226dced1fa`, Bun 1.4.2, win32-x64, 24/80 gates green, digest ce4f4ab6e2b3 · promoted gates: 22
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 4 | 15 | 10 | 0 | 48 | 0 | 0 | 77 | 10 | 0 |
+| 5 | 14 | 10 | 0 | 48 | 0 | 0 | 77 | 10 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -62,7 +62,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-025 | DONE | 1/1 | Compile direct `prompt.send` utterance |  · claimed by gov-impl-r3 until 2026-10-06T21:35:18.359Z |
 | D1-026 | OPEN ★ | 0/1 | Preserve two-Account ambiguity |  |
 | D1-027 | BLOCKED | 0/1 | Apply explicit text correction “use Work” |  |
-| D1-028 | PROVEN | 1/1 | Protect quoted payload from routing |  · claimed by gov-impl-r5 until 2026-10-06T22:12:30.281Z |
+| D1-028 | DONE | 1/1 | Protect quoted payload from routing |  · claimed by gov-impl-r5 until 2026-10-06T22:12:30.281Z |
 | D1-029 | OPEN ★ | 0/1 | Implement deterministic command digest |  |
 
 ### Phase D — realtime session semantics

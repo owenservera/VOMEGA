@@ -24,17 +24,17 @@
     },
     {
       "id": "F-CORPUS-PINNED-GAPS",
-      "claim": "The release-use corpus has 8 pinned known gaps (baseline fail).",
-      "assertedBy": [".project/SITREP.md"],
+      "claim": "The release-use corpus has 7 pinned known gaps (was 8; re-pinned 2026-10-06 after D1-005 promoted U1 from pinned fail to passing with interpreter evidence).",
+      "assertedBy": [".project/SITREP.md", ".project/evidence/d1-ratchet.json"],
       "probe": { "kind": "json-count", "file": "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json", "path": "cases", "where": { "baseline": "fail" } },
-      "expect": 8
+      "expect": 7
     },
     {
       "id": "F-CORPUS-PASSING",
-      "claim": "The release-use corpus has 9 passing cases.",
-      "assertedBy": [".project/SITREP.md"],
+      "claim": "The release-use corpus has 10 passing cases (was 9; re-pinned 2026-10-06 after D1-005 promoted U1 from pinned fail to passing with interpreter evidence).",
+      "assertedBy": [".project/SITREP.md", ".project/evidence/d1-ratchet.json"],
       "probe": { "kind": "json-count", "file": "omega-baseline/plugins/vivim-nlcl/test/fixtures/release-use-corpus.json", "path": "cases", "where": { "baseline": "pass" } },
-      "expect": 9
+      "expect": 10
     },
     {
       "id": "F-ACTIVE-EXECUTOR-CONSISTENT",
