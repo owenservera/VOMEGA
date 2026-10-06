@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "d17c7d35026a",
+    "head": "5652e5a768a3",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -23,15 +23,15 @@
     "silentFiles": []
   },
   "summary": {
-    "OPEN": 10,
+    "OPEN": 11,
     "CLAIMED": 0,
-    "BLOCKED": 47,
-    "PROVEN": 15,
+    "BLOCKED": 45,
+    "PROVEN": 16,
     "DONE": 5,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
-    "frontier": 10,
+    "frontier": 11,
     "missingProof": 0
   },
   "tasks": [
@@ -898,12 +898,12 @@
     },
     {
       "id": "D1-061",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-061::authority fixture changes validation without changing capability identity",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -913,7 +913,7 @@
     },
     {
       "id": "D1-062",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-062::consent for a different command digest does not apply",
@@ -934,7 +934,7 @@
     },
     {
       "id": "D1-063",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-063::virtual prompt.send runs only for a committed, valid, authorized command",
@@ -1319,5 +1319,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:a7a6d118e81595d8347096dc9c59f89e522c7c8933fbc313f85394f19f8d7aba"
+  "digest": "sha256:b8867ab7f07aeac059edaa24838b0cd5af8107e09d4fcb168f5cba696633d0ef"
 }

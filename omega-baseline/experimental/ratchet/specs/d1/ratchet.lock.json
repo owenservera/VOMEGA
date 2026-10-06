@@ -245,6 +245,15 @@
       "head": "408bfcfcde52",
       "at": "2026-10-06T18:06:20.232Z"
     },
+    "D1-061::authority fixture changes validation without changing capability identity": {
+      "task": "D1-061",
+      "name": "authority fixture changes validation without changing capability identity",
+      "file": "omega-baseline/experimental/d1/test/gates/g-execution.gate.test.ts",
+      "specDigest": "sha256:55e540cac9fdaa1b5d8f6546b2599adeae66615ac0c166d7aa3aae5aa7cffddd",
+      "by": "gov-impl-r10",
+      "head": "5652e5a768a3",
+      "at": "2026-10-06T20:16:32.918Z"
+    },
     "D1-067::live-evidence predicate is not trivially false": {
       "task": "D1-067",
       "name": "live-evidence predicate is not trivially false",

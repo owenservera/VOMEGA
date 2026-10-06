@@ -4,17 +4,17 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `d17c7d35026a`, Bun 1.4.2, win32-x64, 30/80 gates green, digest 69b2be098056 · promoted gates: 23
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `5652e5a768a3`, Bun 1.4.2, win32-x64, 30/80 gates green, digest 69b2be098056 · promoted gates: 24
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 5 | 15 | 10 | 0 | 47 | 0 | 0 | 77 | 10 | 0 |
+| 5 | 16 | 11 | 0 | 45 | 0 | 0 | 77 | 11 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
-- **D1-061** Add deterministic authority fixture — crit 15, unblocks 24; `bun run ratchet packet D1-061`
 - **D1-040** Define minimal deterministic D1 projection contract — crit 14, unblocks 24; `bun run ratchet packet D1-040`
 - **D1-027** Apply explicit text correction “use Work” — crit 14, unblocks 22; `bun run ratchet packet D1-027`
+- **D1-063** Implement virtual `prompt.send` realization — crit 14, unblocks 22; `bun run ratchet packet D1-063`
 - **D1-029** Implement deterministic command digest — crit 12, unblocks 19; `bun run ratchet packet D1-029`
 - **D1-050** Expose minimal semantic help metadata from same source records — crit 12, unblocks 16; `bun run ratchet packet D1-050`
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
@@ -22,6 +22,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 - **D1-006** Add regression tests for every required-field unresolved case — crit 1, unblocks 0; `bun run ratchet packet D1-006`
 - **D1-016** Add World W3: stale Claude Work — crit 1, unblocks 0; `bun run ratchet packet D1-016`
 - **D1-017** Add World W4: unknown/incompatible target — crit 1, unblocks 0; `bun run ratchet packet D1-017`
+- **D1-062** Prevent interpretation from granting authority — crit 1, unblocks 0; `bun run ratchet packet D1-062`
 
 ## All tasks
 
@@ -111,9 +112,9 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
 | D1-060 | DONE | 1/1 | Define D1 consequence record for `prompt.send` |  · claimed by gov-impl-r4 until 2026-10-06T22:03:41.870Z |
-| D1-061 | OPEN ★ | 1/1 | Add deterministic authority fixture | PROMOTE_PENDING 1 |
-| D1-062 | BLOCKED | 2/2 | Prevent interpretation from granting authority | PROMOTE_PENDING 2 |
-| D1-063 | BLOCKED | 0/1 | Implement virtual `prompt.send` realization |  |
+| D1-061 | PROVEN | 1/1 | Add deterministic authority fixture |  · claimed by gov-impl-r10 until 2026-10-07T00:13:14.907Z |
+| D1-062 | OPEN ★ | 2/2 | Prevent interpretation from granting authority | PROMOTE_PENDING 2 |
+| D1-063 | OPEN ★ | 0/1 | Implement virtual `prompt.send` realization |  |
 | D1-064 | BLOCKED | 0/1 | Emit execution-start/attempt/result events |  |
 | D1-065 | BLOCKED | 0/1 | Emit machine-readable SIMULATED receipt |  |
 | D1-066 | BLOCKED | 0/1 | Implement deterministic simulated failure path |  |
