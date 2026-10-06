@@ -32,9 +32,14 @@
     "d1:gates": "bun test experimental/d1/test/gates",
     "pm": "bun run experimental/pm/src/check.ts project",
     "pm:check": "bun run experimental/pm/src/check.ts check",
-    "pm:test": "bun test experimental/pm/test"
+    "pm:test": "bun test experimental/pm/test",
+    "reflect": "bun run experimental/reflection-migrator/src/cli.ts",
+    "reflect:test": "bun test experimental/reflection-migrator/test"
   },
   "dependencies": {
     "zod": "^4.6.2"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
   }
 }

@@ -161,4 +161,18 @@ State: v0 shipped (`56fe9c4`, review fixes `b4ed79d`); **owner correction being 
 
 Handoff: team instance in `.project/pm/TEAM-INSTANCE.md`; recon findings in `.project/pm/recon/WAVE-A.md`; proposal + review in `.project/pm/recon/V0-PROPOSAL.md` and `recon/REVIEW-V0.md`. Truth boundary: META-TRACKER remains canonical; every PM state cell is a projection, and no PM document outranks source/tests/evidence.
 
+## ACCEL-W1 execution claims — 2026-10-06
+
+Execution of the owner-selected Wave 1 in [../pm/build-plan.json](../pm/build-plan.json) (view: [../pm/generated/BUILD-PLAN.md](../pm/generated/BUILD-PLAN.md)). One row per claimed wave entry; add a row rather than editing someone else's. Gate status stays in the PM program files and is changed only on evidence.
+
+| Wave entry | Phase range → target gate | Claimant | Source HEAD | Write surface | State |
+| --- | --- | --- | --- | --- | --- |
+| MP-21 (PRIMARY) | MP21-P1 → MP21-P3 → MP21-G3 | `claude-code-opus-mp21` (Claude Code, Opus 5.5, main worktree) | `10a8beb` (local == `origin/main`) | `omega-baseline/experimental/reflection-migrator/**`; in `omega-baseline/package.json` the `reflect*` script lines and the `typescript` dev dependency (with its `bun.lock` entry) | **claimed — MP21-P1 implemented, awaiting independent review; MP21-G1 still TBD; P2 not started** |
+| MP-56 (HIGH) | MP56-P1 → MP56-P4 → MP56-G4 | unclaimed | — | — | open |
+| MP-55 | MP55-P1 → MP55-P2 → MP55-G2, then HOLD | unclaimed | — | — | open |
+| MP-54 | MP54-P1 → MP54-G1, then HOLD | unclaimed | — | — | open |
+| MP-60 | MP60-P1 → MP60-G1, then HOLD | unclaimed | — | — | open |
+
+MP-21 claim notes: read-only over product source (nothing under `plugins/`, `contracts/`, `host/` is edited); no auth, provider or model configuration touched; no D1 or roadmap task claimed. The existing D1 Reflection stub (`experimental/d1/src/reflection.ts`, D1-055..059B) is a separate, declaration-scoped slice and is not modified. Expected handoff: one evidence-bearing increment per gate (G1, G2, G3), each needing a reviewer who did not write it before its gate is marked SATISFIED. The MP-60 P1 claimant should send impact-query requirements before MP21-P3 freezes a graph shape.
+
 **Nothing else is claimed; no other executor is running.**

@@ -391,3 +391,23 @@ Owner directive [PM-BUILD-PLAN-WAVES-SETUP.md](pm/PM-BUILD-PLAN-WAVES-SETUP.md) 
 - **Tests:** all ten cases the directive requires — out-of-scope program, unknown phase, unknown gate, unknown wave link, forbidden score field, HOLD≠BLOCKED, milestone conjunction, no gate mutation, no recommended next, determinism — plus shipped-plan checks (Wave 1/ACCEL-M1/Wave 2/later-wave present; all five programs; MP-60 P5 in no wave). Suite 36 pass / 0 fail.
 
 Verified: `pm:test` 36/0; `pm:check` ok (1 warning = MP60-P5 E5 flag); `omega:quick` 62/0/1622; `ratchet drift` 6/6. No scheduler, no gate watcher, no automatic dispatch, no ranking — representation only.
+
+## ACCEL-W1 claim: MP-21 P1→P3 — 2026-10-06
+
+Claimant `claude-code-opus-mp21` (Claude Code, Opus 5.5, main worktree), source HEAD `10a8beb` == `origin/main`. Owner request: read the PM layer and self-assign within the owner-selected build plan. Taken: the **MP-21 wave entry** of ACCEL-W1 (PRIMARY; MP21-P1 → P2 → P3, target gate MP21-G3), because the build plan directs additional capacity to the structural spine and MP21-G3 is the unlock for MP54-P2, MP55-P3 and MP60-P2. This is a claim of an existing owner-selected entry, not a change to the plan: wave membership, emphasis and holds are untouched.
+
+Write surface: `omega-baseline/experimental/reflection-migrator/**` plus `reflect*` script lines in `omega-baseline/package.json`. Product source is read-only for this work. Not claimed: MP-56, MP-55, MP-54, MP-60 (still open in `agentic-launch/STATUS.md`), any D1 or roadmap task, any config.
+
+Open request to whoever takes MP60-P1: the impact-query acceptance corpus should reach MP-21 before P3 freezes EntityRef and edge shape. Next action: MP21-P1 source inventory and SourceAnchor identity, with the G1 determinism check as an executable test.
+
+### MP21-P1 increment — 2026-10-06 (uncommitted in the main worktree at time of writing)
+
+Built `omega-baseline/experimental/reflection-migrator/` (`src/` anchor, classify, symbols, inventory, git, cli; `test/inventory.test.ts`; README with the P1 decisions). Read-only over product source.
+
+- **What it does:** reads the tree from Git objects at a commit, classifies every file by path (`role` source/test/fixture, `surface`), and mints SourceAnchors for files, manifest plugin/contribution declarations and top-level TypeScript declarations. Anchor id = kind + path + symbol; commit, file `contentHash`, per-symbol `spanHash` and line range describe the observed version.
+- **Evidence for MP21-G1 (verified-local, not reviewed):** `bun run reflect verify` at `10a8beb` reports two scans byte-identical and all 3,534 anchor ids unique, exit 0. `bun run reflect:test` 21 pass / 0 fail / 49 assertions, including line-shift, single-symbol-edit and contribution-reorder stability. Baseline counts: 495 files, 27 product manifests + 18 fixture manifests, 0 unclassified, 3 explicit unknowns (fixture `entry` files that do not exist).
+- **Regressions checked:** `pm:check` ok (1 warning, the standing MP60-P5 flag), `pm:test` 36/0, `ratchet drift` clean, `omega:quick` 62/0/1622.
+- **Decision made in this increment:** `typescript@5.9.3` added as a pinned dev dependency of `omega-baseline` (parser only, no type checker). `Bun.Transpiler.scan` was assayed and rejected because it drops type-only exports. This touches the shared `package.json` and `bun.lock`.
+- **Not claimed:** MP21-G1 is not marked SATISFIED and no PM data or generated view was edited. Type checking of the new code was limited to a `tsc --noEmit --strict` run whose only errors were the missing Bun/Node ambient types this repo does not install.
+
+Requests: (1) Truth — an independent reviewer for the P1 code and the G1 evidence, then a `prototype-landed` or `proof` event for MP21-G1 from the PM custodians. (2) MP60-P1 claimant — impact-query requirements before P3. Next action for this claimant: MP21-P2 structural extraction, starting with manifest facts and manifest↔runtime op parity.
