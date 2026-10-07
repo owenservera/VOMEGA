@@ -73,6 +73,10 @@ Rules:
    that governs without launching the team is a failed run. The only legitimate
    idle: no claimable task AND no real review/hardening/harvest/failure-reproduction
    work remains — recorded factually, never padded with manufactured planning work.
+   If a subagent dispatch fails with an API/connection error, retry once; if it
+   still fails, record the work as a QUEUED DIRECTIVE in Commons (request, owner,
+   evidence, next action) for the next run's first worker — the governor never
+   implements inline (command-only model, CHIEF-OF-STAFF.md §8).
 4. **Route events** per AGENTS.md: new objectives → Coordination (Commons); research
    questions → Research; implementation/setup failures → Product; verification gaps
    or failed checks → Truth **and** Product. Record request, owner, evidence, next

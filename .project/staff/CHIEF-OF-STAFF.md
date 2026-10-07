@@ -65,3 +65,11 @@ Plus the **decision queue**: only items genuinely Owen-reserved or evidence-stal
 
 - The dev-loop family doc (`24X7-DEV-LOOP.md`) remains the dev lane's protocol; this charter is the layer above it.
 - **The OPS+PM fold-in is LIVE** (applied to automation `automation-2c7bbcf3` by the devops standing thread on 2026-10-07 morning — steps 3b/3c plus a step-0 lock-touch rule): the family automation runs ops/PM sweeps in-line, guarded by per-lane locks, while the owner-initiated council/devops/PM threads run deeper lane work. The CoS consumes both through the meeting surfaces above and never duplicates a sweep that a fresh lane lock shows as held.
+
+## 8. Command-only model (2026-10-07, owner directive)
+
+- Owner directive: the CoS no longer directly touches code, docs, or any repository file. It implements Owen's directives exclusively by commanding the team (dispatched bounded workers and the standing lane threads), then verifies the outcomes against evidence.
+- The CoS retains: read-only state inspection (git, ratchet status/probe, claims, logs), command dispatch, verification, routing, the lock file `.local/dev-loop/governor.lock` (its own telemetry), and the brief.
+- The CoS gives up: all direct writes — no doc edits, no code, no ratchet mutations, no sweep execution, no review application. Every such act is a commanded worker's act. The former 'governor-direct degraded mode' (gov-impl-gov) is RETIRED: on subagent API failure the CoS retries, then records the work as a queued directive for the next worker run — it never implements inline.
+- Ratchet review verdicts are applied by a commanded worker carrying the reviewer's verdict text verbatim; the CoS then reads the applied state to verify.
+- Directive record: [DIRECTIVES/20261007-command-model.md](DIRECTIVES/20261007-command-model.md).
