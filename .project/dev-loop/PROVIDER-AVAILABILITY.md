@@ -19,6 +19,47 @@ via Commons, exactly like the devops sweep routes other environment facts.
 Secrets stay out of the repo: keys are referenced by 10-char prefix only; the full keys live in
 the config file, which is outside version control.
 
+## 1a. Currently dark — read this first (measured 2026-10-07 09:43–09:46Z)
+
+Do not dispatch anything in this list. Every entry carries route · model · status ·
+measured · failure mode.
+
+| Route | Model | Status | Measured | Failure mode |
+| --- | --- | --- | --- | --- |
+| claude-code-oauth | claude-fable-5-1, claude-fable-5 | DARK | 2026-10-07 09:46Z | 429 — account has no usage credits |
+| claude-code-oauth | claude-opus-4-1-20250805, claude-opus-4-20250514, claude-sonnet-4-20250514, claude-3-7-sonnet-20250219, claude-3-5-haiku-20241022 | DARK | 2026-10-07 09:46Z | 404 — listed by the proxy, not routable at generation |
+| grok-build-oauth | grok-build-0.1, grok-4.6, grok-4.3 | DARK | 2026-10-07 09:43Z | no proxy routing (400 "unknown provider for model") |
+| kilocode-free | (all) | DARK | 2026-10-07 09:43Z | endpoint unreachable (provider disabled in config) |
+| opencode-zen-chat-2, opencode-zen-responses, opencode-zen-responses-2, zai-standard-api, openai | (all) | OFF | 2026-10-07 | disabled in `provider_config.json` — owner-reserved, never probed while off |
+
+Live and verified at the same timestamp: **codex-oauth 9/9** (gpt-6-sol, gpt-6.1-sol,
+gpt-6-luna, gpt-6-astra, gpt-5.6-sol, gpt-5.6-terra, gpt-5.6-luna, gpt-5.5,
+codex-auto-review), **claude-code-oauth 11/18**, openrouter PASS, and the five
+opencode/new-provider free routes (`space-bunny-free` on new-provider + acct-2..5) PASS.
+
+## 1b. Dispatch ladder (owner directive 2026-10-07, DESK D-20261007-010)
+
+Every **subagent** dispatch picks its model explicitly. Never let a subagent inherit a
+blocked session model, and never report failure while an untried rung exists: on a
+blocked dispatch (credits / rate limit / provider down / model not found / cannot
+connect), retry **once immediately** on the next rung.
+
+1. **GPT/Codex family** (9/9 live 2026-10-07) — default lane for load-bearing work
+   (reviews, gates, truth checks): `codex-oauth/gpt-6.1-sol`, then `gpt-6-astra`,
+   `gpt-6-sol`, `gpt-5.6-sol`, `gpt-5.5`.
+2. **Claude family** (11/18 live): `claude-code-oauth/claude-opus-5-5`, `claude-sonnet-5-5`,
+   `claude-sonnet-5`, `claude-haiku-4-5-20251001`, `claude-opus-5`.
+3. **Free routes**: `new-provider/space-bunny-free`, `opencode-acct-2..5/space-bunny-free`,
+   `openrouter/openrouter/auto`.
+
+Ladder exhausted → status-board line with phase `blocked`, note `model-ladder-exhausted`,
+reply BLOCKED naming every rung and its error. Never silently degrade to a weak model on
+a load-bearing review.
+
+**Thread session models have NO automatic fallback** — if a session's model goes dark, its
+whole thread fails until Owen re-picks (ZCode exposes no setting for this). Subagent ladders
+do not help there. This file is the liveness source to check before assuming a lane is up.
+
 ## 2. How to re-derive (every sweep)
 
 ```sh
