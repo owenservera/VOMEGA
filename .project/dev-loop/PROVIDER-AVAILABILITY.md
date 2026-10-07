@@ -37,28 +37,29 @@ gpt-6-luna, gpt-6-astra, gpt-5.6-sol, gpt-5.6-terra, gpt-5.6-luna, gpt-5.5,
 codex-auto-review), **claude-code-oauth 11/18**, openrouter PASS, and the five
 opencode/new-provider free routes (`space-bunny-free` on new-provider + acct-2..5) PASS.
 
-## 1b. Dispatch ladder (owner directive 2026-10-07, DESK D-20261007-010)
+## 1b. Model routing — what is actually controllable (corrected 2026-10-07, DESK D-20261007-013)
 
-Every **subagent** dispatch picks its model explicitly. Never let a subagent inherit a
-blocked session model, and never report failure while an untried rung exists: on a
-blocked dispatch (credits / rate limit / provider down / model not found / cannot
-connect), retry **once immediately** on the next rung.
+D-20261007-010 asked every subagent dispatch to choose a model from a fallback ladder.
+**D-013 superseded it: the standard Agent tool has no model argument.** Its schema
+(checked by the DEVops thread) exposes only `description`, `prompt`,
+`run_in_background` and `subagent_type`. A persona or prompt instruction does not
+select a model. So:
 
-1. **GPT/Codex family** (9/9 live 2026-10-07) — default lane for load-bearing work
-   (reviews, gates, truth checks): `codex-oauth/gpt-6.1-sol`, then `gpt-6-astra`,
-   `gpt-6-sol`, `gpt-5.6-sol`, `gpt-5.5`.
-2. **Claude family** (11/18 live): `claude-code-oauth/claude-opus-5-5`, `claude-sonnet-5-5`,
-   `claude-sonnet-5`, `claude-haiku-4-5-20251001`, `claude-opus-5`.
-3. **Free routes**: `new-provider/space-bunny-free`, `opencode-acct-2..5/space-bunny-free`,
-   `openrouter/openrouter/auto`.
+- **Subagents inherit their model from the harness.** No per-dispatch fallback exists
+  through the Agent tool, and none has been tested.
+- **Thread session models are owner-selected and have no automatic fallback.** If a
+  thread's model goes dark, that thread fails until Owen re-picks. Preserve his
+  selections; never re-pin or change provider/model configuration.
+- **Workflow runs** (`CreateWorkflow` / `AmendWorkflow`) do accept a `subagent_model`.
+  That is the only explicit routing control seen in the tool schemas so far. It has
+  not been tested as a fallback, and using it is the owner's call.
 
-Ladder exhausted → status-board line with phase `blocked`, note `model-ladder-exhausted`,
-reply BLOCKED naming every rung and its error. Never silently degrade to a weak model on
-a load-bearing review.
+Preference order if a supported selector is ever used (the original ladder, kept for
+reference): GPT/Codex family (9/9 live) → Claude family (11/18 live) → free routes. Never
+the §1a dark models.
 
-**Thread session models have NO automatic fallback** — if a session's model goes dark, its
-whole thread fails until Owen re-picks (ZCode exposes no setting for this). Subagent ladders
-do not help there. This file is the liveness source to check before assuming a lane is up.
+This file reports liveness only. A passing probe here does **not** prove that any
+session or subagent fallback works.
 
 ## 2. How to re-derive (every sweep)
 
