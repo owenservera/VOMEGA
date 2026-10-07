@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "f0f30a093575",
+    "head": "fa0401427d32",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -26,8 +26,8 @@
     "OPEN": 11,
     "CLAIMED": 0,
     "BLOCKED": 37,
-    "PROVEN": 15,
-    "DONE": 14,
+    "PROVEN": 14,
+    "DONE": 15,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -281,7 +281,7 @@
     },
     {
       "id": "D1-017",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-017::W4 'work claude' with authority allowed is the one-factor positive control",
@@ -317,11 +317,11 @@
       "artifacts": [],
       "missingProof": false,
       "review": {
-        "by": "dev-trv-d14329",
-        "verdict": "reject",
-        "head": "21ee385bd7fa",
-        "at": "2026-10-07T14:51:57.662Z",
-        "note": "REJECT. Gate strengthening is real and non-vacuous (46de059: name unchanged, quoted assertions kept, loop over both forms; mutant 1 revert-of-cc2e96f and mutant 2 'unheldRoute returns null when no quote' both turn it red). But the property the gate NAMES is still false on shipped code: an unrecognised explicit target on the unquoted path still fills the single compatible Account and reaches ready. Seven natural utterances with authority allowed on W4 return account=account:claude-work, state=ready, no unresolved record: 'send hello to Gemini!', 'send hello to Gemini?', 'send hello to the team!', 'send hello to Gemini - thanks', \"send hello to Gemini 'x'\", 'send hello to Gemini \"x\"'. Root cause 1 compile.ts:508 'if (tail.some(t => t.kind !== \"word\" && t.kind !== \"punct\")) return null;' - '!', '?' and '-' lex as kind 'symbol' (only ',' and '.' are 'punct'), so any sentence-final symbol silently disarms the unheld-route guard and falls through to the single-compatible fill. Root cause 2 compile.ts:499-500 'const q = body.findIndex(quote); const from = q < 0 ? 0 : q + 1;' - a quote token anywhere after the route makes 'from' skip past the preposition, the loop never runs, and the route is dropped. Fairness: not a regression - at bd241e2 ten of twelve probe forms retargeted; cc2e96f narrows the class to these six but does not close it. The gate cannot see the residue because it tests exactly 'send hello to Gemini' with no terminator and no trailing token, and mutant 3 (dropping 'on' from TARGET_PREPS) stays green, so the gate is also silent on the fail-safe false-positive side ('send hello on Monday' becomes unknown-target needs-info). Governance: b-world.gate.test.ts is anchored, so state.ts:105 consults only the spec-change digest and state.ts:120 lists only non-promoted gates in 'promotable' - the strengthened gate keeps promoted provenance specDigest sha256:4444b120 / by dev-impl-d006 / head f6c603d69bcd while the file is now sha256:b0b2b172, so check emits no SPEC_CHANGED and no PROMOTE_PENDING and verify prints [promoted] by dev-impl-d006. dev-d006 re-promoted after its own spec-change; dev-d14329 did not. verify D1-017 green, status --probe REGRESSED 0, check exit 0 (5 pre-existing warnings)."
+        "by": "dev-trv-d14329b",
+        "verdict": "accept",
+        "head": "fa0401427d32",
+        "at": "2026-10-07T19:19:56.673Z",
+        "note": "ACCEPT (independent, adversarial, mutation-tested; label dev-trv-d14329b). Prior reject dev-trv-d14329 is answered on every disarm it named. Scope: 2aabfed (gate), f0f30a0 (fix), 3917d73 (projections). HEAD advanced 3917d73 -> fa04014 mid-review; the two intervening commits touch neither experimental/d1 nor experimental/ratchet, so D1-017 code+spec are byte-identical to 3917d73. GATE (upheld): name 'an explicit unknown target never resolves to another Account, even with authority allowed' is byte-identical across 2aabfed^/2aabfed/HEAD; all five D1-017 gates retained, none renamed or removed (b-world.gate.test.ts:88,93,101,121,129). 2aabfed is +6/-2, strictly stricter: only the loop's string list grew, every assertion at :110-117 is retained. SPEC_CHANGE is real: 2aabfed recorded it in ratchet.lock.json and the on-disk file digest sha256:ebc1758... matches the recorded 'to' exactly, so check correctly emits no SPEC_CHANGED -- the prior reviewer's governance gap is closed. CODE (upheld): f0f30a0 is confined to omega-baseline/experimental/d1/src/compile.ts and, inside it, to unheldRoute (compile.ts:500-510); 3917d73 regenerates only .project/evidence/d1-ratchet.json and .project/ratchet/D1-BOARD.md. VERIFY: RATCHET_MODE=probe bun run ratchet verify D1-017 -> 'D1-017 PROVEN', all 5 gates [promoted], exit 0. STATUS: bun run ratchet status --probe -> probe 0137952be72a (45/85 green); DONE 14 / PROVEN 15 / OPEN 11 / BLOCKED 37 / REGRESSED 0. CHECK: exit 0, 'check ok (5 warning(s))', all five PROMOTE_PENDING are unrelated to D1-017. NO REGRESSION: full-suite gate outcome set (pass/fail per gate, 125 lines) is byte-identical between 46de059 and HEAD -- zero newly-red, zero newly-green. MUTATION (each on a disposable /tmp worktree, all removed): (a) compile.ts reverted to f0f30a0^ -> gate FAILS at b-world.gate.test.ts:110 (Expected: not 'ready'). (b) unheldRoute made to REQUIRE a quote token -> gate FAILS, same line: the unquoted form retargets. (c) unheldRoute disabled (return null) -> gate FAILS, same line. So all three prior disarmings -- trailing ! ? -, trailing clause, quote after route -- are each independently load-bearing and discriminated against by a red gate. PROBES (authority forced allowed via fixture spread + prompt.send@1=allowed; W4 unless noted; account never filled): every one of the 7 gate strings returns state=needs-info, account=null, provider=null, unresolved=[account=unknown, options=[]], reason 'account: \"gemini\" grounded to no account' ('the team' for the multi-word case) -- needs-info, never ready, never claude-work. Also: 'send hello to Gemini.' needs-info/no fill; 'send hello to Gemini, please' needs-info/no fill; 'send hello to Gemini \"x\"' needs-info/no fill; 'send hello to work claude!' ready/account:claude-work (correct, held route); 'send hello to work claude' ready/account:claude-work; W1 'send hello' ready/account:claude-work (unchanged default fill); W2 'send hello to claude!' needs-choice, provider:provider:claude, options=[account:claude-personal, account:claude-work] (ambiguity preserved, D1 never picks); 'send \\'tell it to Gemini\\' to work claude' ready/account:claude-work with prompt exactly 'tell it to Gemini' -- quoted payload untouched and never retargets; 'send \\'x\\' about the outage' ready/account:claude-work with prompt 'x' -- 'about' correctly not a target preposition. ZERO false negatives among the gate strings and their near neighbours. RESIDUALS (recorded, follow-up warranted, NOT grounds for rejection -- each is byte-identical at bd241e2, 46de059 and HEAD, i.e. neither introduced nor closed by f0f30a0): (R1) params.prompt still carries the route words when a non-word token follows the route: 'send hello to Gemini!' -> prompt 'hello to Gemini!' (not 'hello'). Root cause compile.ts:525 -- payloadOf returns a CONTIGUOUS text.slice from the first unconsumed token to the last, so an unconsumed trailing '!' extends the slice back over the consumed route. It also hits HELD routes: 'send hello to work claude!' is READY with prompt 'hello to work claude!'. Confirmed pre-existing and unchanged by this fix. (R2) multi-recipient utterances still fill: 'send hello to Gemini via work claude', 'send hello to work claude and to Gemini', 'send hello to Gemini, then to work claude' all return ready/account:claude-work with the unheld target silently dropped. Root cause compile.ts:155 -- unheldRoute runs only when grounded.mention === null, so once the grounder finds the held 'work claude' the unheld mention is never read. Identical at bd241e2 and 46de059. The gate NAME still claims 'never', which is broader than the single-recipient behaviour exercised; per 'no rename hiding gaps' the right follow-up is an explicit gate for the multi-recipient class, not a rename. (R3) fail-safe false positive, documented in the code comment at compile.ts:489-499 and unchanged by f0f30a0: 'on' is a TARGET_PREP, so 'send hello on Monday' refuses as unknown target needs-info/monday, and 'send hello to Gemini on Friday' refuses on 'friday'. Fails safe, never retargets, but it narrows the phrase surface with no gate pinning it. (R4) COVERAGE GAP, new evidence: the gate is insensitive to mention CONTENT. Mutant (b') unheldRoute's word-run extended to the end of the utterance (terminators and all) stays GREEN. It degrades the mention to 'gemini !', 'gemini ?', 'gemini - thanks', 'gemini x', 'the team !' while the no-fill property still holds, so the directive is not violated -- but the gate asserts reason/options/account only (b-world.gate.test.ts:110-117) and never the mention string, so any future regression that keeps the decision and corrupts the mention would pass silently. A single expect on the mention text for 'the team' would close it. (R5) HEAD moved during review and the working tree carries pre-existing uncommitted .project/ edits from concurrent council/devops sessions; neither affects the D1-017 code or spec digest."
       }
     },
     {
@@ -1406,5 +1406,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:40cf7e385c92933f66de7ab590e002f28493edd3d88be2ebc49be8acfb2a3643"
+  "digest": "sha256:95e453ec44d4dd2ebce976d4db40b268bc5c662feadd9107b8fb805d9d3848f5"
 }
