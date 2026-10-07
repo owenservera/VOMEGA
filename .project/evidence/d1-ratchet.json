@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "f6c603d69bcd",
+    "head": "ee1be8a11d71",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -26,8 +26,8 @@
     "OPEN": 11,
     "CLAIMED": 0,
     "BLOCKED": 37,
-    "PROVEN": 16,
-    "DONE": 13,
+    "PROVEN": 14,
+    "DONE": 15,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -242,7 +242,7 @@
     },
     {
       "id": "D1-016",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-016::W3 stale Account can never yield a READY command",
@@ -272,16 +272,16 @@
       "artifacts": [],
       "missingProof": false,
       "review": {
-        "by": "dev-trv-1110",
-        "verdict": "reject",
-        "head": "2a81cf06fec2",
-        "at": "2026-10-07T11:12:15.895Z",
-        "note": "Gate 'W3 stale Account can never yield a READY command' (b-world.gate.test.ts:57) is non-discriminating: probe shows W3-as-authored and W3-mutated-to-freshness=fresh give IDENTICAL validation (needs-consent, account=account:claude-work, unresolved=[]). With authority.prompt.send@1=allowed the STALE account compiles state=READY, unresolved=[]. compile.ts:571-580 records no blocker for an explicitly named Account the World holds, so freshness never reaches the compiled command. Gate 1 (compatibleAccounts==[]) is genuine; gate 2 is green only because every D1 world sets prompt.send@1=consent-required."
+        "by": "dev-trv-d006",
+        "verdict": "accept",
+        "head": "ee1be8a11d71",
+        "at": "2026-10-07T13:52:31.459Z",
+        "note": "ACCEPT (independent, adversarial). Verified at HEAD 76fe02b, working tree clean for the reviewed files. Gate hardening is real: both original D1-016 assertions are retained verbatim and four gates now run under a forced authority=allowed World (b-world.gate.test.ts:72-86), so the verdict is decided by freshness rather than by needs-consent. Discrimination proven by mutation, not by reading: deleting the single freshness line (validate.ts:130) from a /tmp copy turns EXACTLY one gate red - 'W3 stale Account is refused for freshness even when authority allows it' - while the pre-existing 'W3 stale Account can never yield a READY command' stays green, which is the direct confirmation of dev-trv-1110's finding that the original gate was vacuous. Positive control is one-factor: with the authority map merged identically in both arms, W3-stale -> needs-info ('account: \\account:claude-work\\ is stale, not fresh') and W3-fresh -> ready. The blocker is load-bearing end to end, not just a label: dispatch commit is rejected NOT_READY needs-info for the stale Account and granted only for the fresh control; granting consent does not revive it. Freshness is read in exactly one readiness place (validate.ts:130) and precedes realization and authority (validate.ts:131-137); observable proof of the ordering is that W3 at its authored consent-required authority now returns needs-info/stale rather than needs-consent. No bypass exists: commit is gated by validation() (session.ts:67-68) and project.ts:101 reports ready only from an accepted commit; executeVirtual is still a stub. RESIDUAL GAPS (recorded, not blocking): (1) no gate pins the freshness-before-authority ORDERING - a one-line assertion that fixture W3 (consent-required) returns needs-info with a /stale/ reason would lock COUNCIL's requirement down; (2) the gate would also pass if freshness were implemented as a compile-path blocker in unresolvedFor, so it pins behaviour but not the architectural placement inside the one READY law; (3) spec.json still declares D1-016 surface as src/world.ts + worlds/, while the implementation now lives in validate.ts (D1-005's file) - a provenance/surface mismatch worth reconciling. Freshness verdict state 'needs-info' is a reasonable, internally consistent label here: contract.ts:121 has no 'stale' verdict, and the compile path already mapped its 'stale' unresolved reason to needs-info, so the two paths agree."
       }
     },
     {
       "id": "D1-017",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-017::W4 'work claude' with authority allowed is the one-factor positive control",
@@ -317,11 +317,11 @@
       "artifacts": [],
       "missingProof": false,
       "review": {
-        "by": "dev-trv-1110",
-        "verdict": "reject",
-        "head": "2a81cf06fec2",
-        "at": "2026-10-07T11:12:21.579Z",
-        "note": "Gate 'W4 unknown and incompatible targets cannot compile READY' (b-world.gate.test.ts:67) is non-discriminating: 'send x to mailbox home' gives IDENTICAL validation (needs-consent, account=account:mailbox-home, unresolved=[]) whether or not provider:mailbox has a prompt.send realization. With authority=allowed, the mailbox Account (no realization) compiles state=READY, and 'send x to Gemini' SILENTLY RETARGETS to account=account:claude-work and compiles READY via the single-compatible fallback at compile.ts:508-511 - the exact D1-005/U1 defect. Gate 1 (compatibleAccounts==[WORK]) is genuine; gate 2 is green only because every D1 world sets prompt.send@1=consent-required."
+        "by": "dev-trv-d006",
+        "verdict": "accept",
+        "head": "ee1be8a11d71",
+        "at": "2026-10-07T13:52:41.689Z",
+        "note": "ACCEPT (independent, adversarial) with one named residual hole. Verified at HEAD 76fe02b, working tree clean for the reviewed files. All three original D1-017 assertions are retained and three gates were added under forced authority=allowed (b-world.gate.test.ts:101-125). Discrimination proven by mutation on a /tmp copy, each mutation turning EXACTLY one gate red: reverting the draftFor mention guard (compile.ts:528) -> 'an explicit unknown target never resolves to another Account' fails; removing the unresolvedFor unknown branch (compile.ts:607) -> same gate fails on reason/options; removing the unheldRoute wiring (compile.ts:155) -> same gate fails because the mention never appears; removing the per-Account realization check (validate.ts:131-132) -> 'an Account no realization serves is unavailable even when authority allows it' fails. Every half of the fix is independently load-bearing. Defect reproduction matches dev-trv-1110 exactly: at d20d605 (hardened gates, pre-fix code) 'send x to Gemini' under W4 with authority=allowed resolved to account:claude-work, validated ready and COMMITTED; at HEAD it resolves to account=null with unresolved=[account:unknown, options:[]] and commit is rejected NOT_READY. The old single-compatible fallback is therefore discriminated against, and unresolvedFor no longer offers the compatible set as the choice on offer (pre-fix it offered both accounts). No regression anywhere: full-suite probe diff d20d605 -> HEAD is exactly two gates newly green (the two new D-016/D-017 gates) and zero newly red across all 85 gates; ratchet status --probe reports REGRESSED 0. RESIDUAL GAPS (recorded, follow-up warranted, not a rejection): (1) the retarget hole is closed only for QUOTED payloads, exactly as compile.ts:487-491 documents. 'send hello to Gemini' (unquoted) under W1/W4 with authority=allowed STILL resolves to account:claude-work and compiles READY and commits - the same U1 defect class. The promoted gate name 'an explicit unknown target never resolves to another Account' is therefore broader than the behaviour it exercises; recommend either renaming it to state the quoted-payload scope, or opening an explicit gate for the unquoted case so the boundary is a measured claim rather than a comment. (2) unheldRoute over-captures post-quote clauses that are not routes: 'send x about the outage', 'send x for review', 'send x into the fire' now refuse as unknown targets where they previously defaulted; this fails safe (never retargets) and regresses no promoted gate, but it is an untested narrowing of the phrase surface. (3) unheldRoute cannot capture payload words or steal a grounded target - it only fires when grounding found nothing and only when a quote exists, so payloadOf always returns the quote verbatim; verified across 'with urgency to work claude', 'via/from/at work claude', 'to work claude please', all still READY. (4) allowedAuthority()'s unused patch parameter is dead code in a hardened gate file. (5) unrelated pre-existing behaviour, not introduced here: W2 'send x' with no route reports needs-info/missing rather than needs-choice, identically before and after this change (compile.ts:274 maps every non-ambiguous blocker to needs-info)."
       }
     },
     {
@@ -1406,5 +1406,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:c84f23f0bf821e0bf20370eaad6c9f13a3bfcd2f3bef93baf5c9158d7ea2a556"
+  "digest": "sha256:4fff66686d7b83f2e37d97269bdb61b7ce391f2c75e1f8e44cdfd246b9c85d63"
 }
