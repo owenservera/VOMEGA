@@ -151,7 +151,8 @@ export function interpretRevision(state: D1State, n: number): InterpretationResu
   const decl = capabilityDecl(capability)!;
   const wm = toInterpreterWorld(world);
   const body = tokens.slice(1);
-  const grounding = groundTarget(text, body, wm);
+  const grounded = groundTarget(text, body, wm);
+  const grounding = grounded.mention === null ? { ...grounded, mention: unheldRoute(body) } : grounded;
   const payload = payloadOf(text, body, grounding.mentionTokens);
   const draft = draftFor(capability, decl, world, grounding, payload);
   return {
@@ -483,6 +484,21 @@ function correctionFor(
   return { ...base, kind: "edit", edits: [{ kind: "select", field, value, via: "typed" }], detail: trace };
 }
 
+/**
+ * An explicit route that names nothing the World holds ("send 'x' to Gemini"). Only read
+ * after a quoted payload, where the words after a route preposition cannot be payload;
+ * unquoted text stays ambiguous between payload and route and is not claimed here.
+ */
+function unheldRoute(body: Token[]): string | null {
+  const q = body.findIndex((t) => t.kind === "quote");
+  if (q < 0) return null;
+  const after = body.slice(q + 1);
+  const prep = after.findIndex((t) => t.kind === "word" && ROUTE_PREPS.has(t.norm));
+  if (prep < 0) return null;
+  const words = after.slice(prep + 1).filter((t) => t.kind === "word").map((t) => t.norm);
+  return words.length > 0 ? words.join(" ") : null;
+}
+
 /** The payload: a quoted span verbatim (its words can never retarget), else the unconsumed text. */
 function payloadOf(text: string, body: Token[], consumed: Set<number>): string {
   const quoted = body.find((t) => t.kind === "quote");
@@ -506,6 +522,9 @@ function draftFor(capability: string, decl: CapabilityDecl, world: World, g: Gro
   const alternatives: Record<string, string[]> = { ...g.candidates };
 
   let account = g.account;
+  // An explicit route the World does not hold ("to Gemini": mention present, no grounded
+  // Account) is an unknown target, never an invitation to substitute the one compatible
+  // Account. Default and single-compatible fill only a route nobody named.
   if (account === null && g.mention === null) {
     const standing = world.defaults[capability];
     const fromDefault = standing && world.accounts.some((a) => a.id === standing) ? standing : null;
@@ -583,6 +602,9 @@ function unresolvedFor(decl: CapabilityDecl, cmd: UseCommand, world: World, trac
       // The only declared-required route field is `account`, so the compatible set is the choice on offer.
       const compatible = compatibleAccounts(world, cmd.capability).map((a) => a.id).sort();
       const stale = world.accounts.filter((a) => a.freshness === "stale").map((a) => a.id).sort();
+      // A named route that grounded to nothing ("to Gemini") is an unknown target; offering
+      // the compatible set here would invite the retarget draftFor refuses.
+      if (tied.length <= 1 && trace?.mention != null) { out.push({ field, reason: "unknown", options: [] }); continue; }
       if (tied.length > 1) out.push({ field, reason: "ambiguous", options: [...tied].sort() });
       else if (compatible.length > 0) out.push({ field, reason: "missing", options: compatible });
       else if (stale.length > 0) out.push({ field, reason: "stale", options: stale });

@@ -120,10 +120,14 @@ export function validateInterpretation(interp: Interpretation, world?: World): V
   }
   // Capability ≠ Realization: a realization serves one Provider's Accounts, so a
   // grounded Account target is compatible only if a realization serves its Provider.
+// Freshness is read here, beside the realization check and BEFORE authority: it is
+// part of the one READY law, not a compile-path blocker, so no non-say path can
+  // bypass it. `unresolvedFor` may still offer a stale Account as a choice.
   for (const name of requiredFields(capability).required) {
     if (decl.params.find((p) => p.name === name)!.type !== "account") continue;
     const account = world.accounts.find((a) => a.id === interp.ir.slots[name]?.entityId);
     if (!account) continue;
+    if (account.freshness !== "fresh") return verdict("needs-info", [name], [`${name}: "${account.id}" is ${account.freshness}, not fresh`]);
     const served = world.realizations.some((r) => r.capability === capability && r.status === "available" && r.provider === account.provider);
     if (!served) return verdict("unavailable", [], [`${name}: no available realization of ${capability} serves ${account.provider} (${account.id})`]);
   }
