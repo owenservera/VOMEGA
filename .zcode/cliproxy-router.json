@@ -1,0 +1,69 @@
+{
+  "schema": "cliproxy-router-policy.v1",
+  "profiles": {
+    "fast": {
+      "description": "VOMEGA short work: sweeps, pm:check, cheap probes. Cheap live models only.",
+      "prefer_patterns": [
+        "haiku",
+        "flash",
+        "build-fast"
+      ],
+      "avoid_patterns": [
+        "imagine",
+        "video",
+        "mini",
+        "opus-5"
+      ]
+    },
+    "build": {
+      "description": "DEV implementation: D1 red->green against exact gates. Instruction-following families first.",
+      "prefer_patterns": [
+        "gpt-",
+        "opus",
+        "sonnet"
+      ],
+      "avoid_patterns": [
+        "imagine",
+        "video",
+        "mini"
+      ]
+    },
+    "reason": {
+      "description": "COUNCIL chair and hard gate-law debugging. Strongest live reasoner; COUNCIL passes an explicit id when it needs a named family.",
+      "prefer_patterns": [
+        "opus",
+        "sol"
+      ],
+      "avoid_patterns": [
+        "imagine",
+        "video",
+        "mini",
+        "fast"
+      ]
+    },
+    "review": {
+      "description": "Independent review. Defaults to a family different from a GPT-based implementer; COUNCIL passes an explicit id when it needs a named family.",
+      "prefer_patterns": [
+        "opus",
+        "sonnet"
+      ],
+      "avoid_patterns": [
+        "imagine",
+        "video"
+      ]
+    },
+    "long-context": {
+      "description": "Reading the D1 codebase and long files.",
+      "prefer_patterns": [
+        "opus",
+        "gpt-6",
+        "sol"
+      ],
+      "avoid_patterns": [
+        "imagine",
+        "video",
+        "mini"
+      ]
+    }
+  }
+}
