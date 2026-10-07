@@ -33,6 +33,11 @@ reorder or truncate a JSONL file. One JSON object per line.
  "directive":"<full text>","evidence_required":["..."],"supersedes":"<id|null>"}
 ```
 
+Pacing: every directive is processed **the moment it is seen**, as fast as the work
+allows. `deadline` and `reply_expected_by` are **optional overdue alarms, never
+schedules** — nobody waits for, schedules toward, or defers to them; CoS normally sends
+them as `null`. `priority` only orders work when several directives are pending.
+
 Id rule: `D-<YYYYMMDD>-<NNN>` where NNN = (line count of that inbox before appending) + 1,
 zero-padded to 3.
 
