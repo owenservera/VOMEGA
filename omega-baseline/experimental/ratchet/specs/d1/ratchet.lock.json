@@ -345,6 +345,24 @@
         "at": "2026-10-06T16:32:08.013Z"
       }
     ],
+    "D1-016": [
+      {
+        "by": "dev-trv-1110",
+        "verdict": "reject",
+        "head": "2a81cf06fec2",
+        "at": "2026-10-07T11:12:15.895Z",
+        "note": "Gate 'W3 stale Account can never yield a READY command' (b-world.gate.test.ts:57) is non-discriminating: probe shows W3-as-authored and W3-mutated-to-freshness=fresh give IDENTICAL validation (needs-consent, account=account:claude-work, unresolved=[]). With authority.prompt.send@1=allowed the STALE account compiles state=READY, unresolved=[]. compile.ts:571-580 records no blocker for an explicitly named Account the World holds, so freshness never reaches the compiled command. Gate 1 (compatibleAccounts==[]) is genuine; gate 2 is green only because every D1 world sets prompt.send@1=consent-required."
+      }
+    ],
+    "D1-017": [
+      {
+        "by": "dev-trv-1110",
+        "verdict": "reject",
+        "head": "2a81cf06fec2",
+        "at": "2026-10-07T11:12:21.579Z",
+        "note": "Gate 'W4 unknown and incompatible targets cannot compile READY' (b-world.gate.test.ts:67) is non-discriminating: 'send x to mailbox home' gives IDENTICAL validation (needs-consent, account=account:mailbox-home, unresolved=[]) whether or not provider:mailbox has a prompt.send realization. With authority=allowed, the mailbox Account (no realization) compiles state=READY, and 'send x to Gemini' SILENTLY RETARGETS to account=account:claude-work and compiles READY via the single-compatible fallback at compile.ts:508-511 - the exact D1-005/U1 defect. Gate 1 (compatibleAccounts==[WORK]) is genuine; gate 2 is green only because every D1 world sets prompt.send@1=consent-required."
+      }
+    ],
     "D1-024": [
       {
         "by": "gov-trv-r4",
@@ -385,12 +403,39 @@
         "at": "2026-10-06T18:39:07.122Z"
       }
     ],
+    "D1-029": [
+      {
+        "by": "dev-trv-1110",
+        "verdict": "accept",
+        "head": "2a81cf06fec2",
+        "at": "2026-10-07T11:11:33.011Z",
+        "note": "compile.ts:234-243 reads OUT only authority.decision (consent), keeps authority.requirement and basis.worldDigest; digest.ts canonicalizes key order. Gate c-command.gate.test.ts:88-94 is discriminating (reversedKeys helper, Personal!=Work). 60a2066 touches only compile.ts + ratchet.lock.json."
+      }
+    ],
+    "D1-033": [
+      {
+        "by": "dev-trv-1110",
+        "verdict": "accept",
+        "head": "2a81cf06fec2",
+        "at": "2026-10-07T11:12:10.755Z",
+        "note": "session.ts:56-59 enforces revision binding (STALE_REVISION) before recording the edit, so the gate at d-session.gate.test.ts:47-48 discriminates; edits reset per interpretation at session.ts:94. Typed and clicked converge on one SemanticEdit kind ('select'), via distinguishes provenance only (compile.ts:483 vs project.ts unresolvedOf). Recompile effect is witnessed by the adjacent D1-027 gate."
+      }
+    ],
     "D1-040": [
       {
         "by": "gov-trv-r15",
         "verdict": "accept",
         "head": "1b2212657c3d",
         "at": "2026-10-07T09:41:53.557Z"
+      }
+    ],
+    "D1-041": [
+      {
+        "by": "dev-trv-1110",
+        "verdict": "accept",
+        "head": "2a81cf06fec2",
+        "at": "2026-10-07T11:12:05.911Z",
+        "note": "project.ts is a genuine pure projection (no module state; lifecycleOf reads the one law via compile.ts validation; route keeps Provider/Account/Model/Realization as 5 separate slots; evidenceClass is the literal SIMULATED). Gates e-projection.gate.test.ts:26,32 pass incl. structuredClone. CAVEAT: acceptance clause 'no raw-language parsing in renderer' has NO gate and no renderer to test - ui.ts:8 is still a D1-042 stub."
       }
     ],
     "D1-060": [

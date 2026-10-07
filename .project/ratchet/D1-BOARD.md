@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `60a20667686a`, Bun 1.4.2, win32-x64, 39/80 gates green, digest e4bb19916a46 · promoted gates: 32
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `2a81cf06fec2`, Bun 1.4.2, win32-x64, 39/80 gates green, digest e4bb19916a46 · promoted gates: 32
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 9 | 19 | 12 | 0 | 37 | 0 | 0 | 77 | 12 | 0 |
+| 12 | 16 | 12 | 0 | 37 | 0 | 0 | 77 | 12 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -48,8 +48,8 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-013 | PROVEN | 1/1 | Add World W0: no Accounts |  |
 | D1-014 | PROVEN | 1/1 | Add World W1: Claude Work only |  |
 | D1-015 | PROVEN | 1/1 | Add World W2: Claude Work + Personal |  |
-| D1-016 | PROVEN | 2/2 | Add World W3: stale Claude Work |  · claimed by dev-impl-1110 until 2026-10-07T15:07:21.020Z |
-| D1-017 | PROVEN | 2/2 | Add World W4: unknown/incompatible target |  · claimed by dev-impl-1110 until 2026-10-07T15:07:22.695Z |
+| D1-016 | PROVEN | 2/2 | Add World W3: stale Claude Work | latest review is not an independent accept |
+| D1-017 | PROVEN | 2/2 | Add World W4: unknown/incompatible target | latest review is not an independent accept |
 | D1-018 | PROVEN | 1/1 | Add World W5: optional Provider/Model route stress case |  |
 
 ### Phase C — registration and command nucleus
@@ -65,7 +65,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-026 | DONE | 1/1 | Preserve two-Account ambiguity |  |
 | D1-027 | DONE | 1/1 | Apply explicit text correction “use Work” |  · claimed by gov-impl-r14 until 2026-10-07T13:06:20.013Z |
 | D1-028 | DONE | 1/1 | Protect quoted payload from routing |  |
-| D1-029 | PROVEN | 1/1 | Implement deterministic command digest |  |
+| D1-029 | DONE | 1/1 | Implement deterministic command digest |  |
 
 ### Phase D — realtime session semantics
 
@@ -74,7 +74,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-030 | PROVEN | 1/1 | Add InterpretationSession/revision identity |  |
 | D1-031 | PROVEN | 1/1 | Bind interpretation result to originating revision |  |
 | D1-032 | PROVEN | 1/1 | Suppress obsolete late results |  |
-| D1-033 | PROVEN | 2/2 | Represent semantic edits explicitly |  · claimed by dev-impl-1110 until 2026-10-07T15:07:19.378Z |
+| D1-033 | DONE | 2/2 | Represent semantic edits explicitly |  |
 | D1-034 | OPEN ★ | 0/1 | Bind committed command to immutable revision |  |
 
 ### Phase E — projection and product twin
@@ -82,7 +82,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
 | D1-040 | DONE | 1/1 | Define minimal deterministic D1 projection contract |  · claimed by gov-impl-r12 until 2026-10-07T12:55:42.286Z |
-| D1-041 | PROVEN | 2/2 | Implement pure semantic projector |  · claimed by dev-impl-1110 until 2026-10-07T15:07:17.931Z |
+| D1-041 | DONE | 2/2 | Implement pure semantic projector |  |
 | D1-042 | OPEN ★ | 0/1 | Render text input + interpretation state |  |
 | D1-043 | OPEN ★ | 0/1 | Render Provider/Account/Model route |  |
 | D1-044 | OPEN ★ | 0/1 | Render unresolved Account chooser |  |
