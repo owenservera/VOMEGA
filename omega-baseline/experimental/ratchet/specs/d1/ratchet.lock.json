@@ -44,6 +44,14 @@
       "at": "2026-10-06T02:37:07.178Z",
       "from": "sha256:4b8f5e2463931516dbebe0a9cac03709c179836620c4ddba9971ec782001ad02",
       "to": "sha256:a3f64b6da6d81c6e70084a7d5854deef3f2c84182f4115f2ba6aa2d2f85910ca"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "by": "dev-d006",
+      "reason": "D-006/COUNCIL: dev-trv-1110 rejected D1-016/D1-017 because their cannot-compile-READY gates pass under needs-consent without ever testing freshness or realization. Strengthened, never weakened: forced authority=allowed one-factor Worlds, explicit state/blocker assertions, one positive control per task, original assertions kept.",
+      "at": "2026-10-07T11:51:06.709Z",
+      "from": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "to": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0"
     }
   ],
   "promoted": {

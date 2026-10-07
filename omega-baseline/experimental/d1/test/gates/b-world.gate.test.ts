@@ -1,10 +1,19 @@
 // Phase B — minimal semantic World (D1-010..018).
 import { describe, expect } from "bun:test";
-import { compatibleAccounts, loadNamedWorld, loadWorld, readWorldFile, say, initialState, validation, WorldError } from "../../src/index.ts";
+import { compatibleAccounts, currentCommand, loadNamedWorld, loadWorld, readWorldFile, say, initialState, validation, WorldError } from "../../src/index.ts";
 import { gate } from "./_gate.ts";
 import { PERSONAL, reversedKeys, WORK } from "./_helpers.ts";
 
 const raw = (id: string) => readWorldFile(id) as Record<string, unknown>;
+
+/**
+ * D-006 hardening: a World that differs from its fixture ONLY in authority.
+ * "allowed" removes the consent stop, so the verdict is decided by structure —
+ * freshness (D1-016) or realization/route (D1-017) — and not by needs-consent.
+ * Every change beyond this one field would be a second variable.
+ */
+const allowedAuthority = (id: string, patch: Record<string, unknown> = {}) =>
+  loadWorld({ ...(readWorldFile(id) as object), ...patch, authority: { ...((readWorldFile(id) as { authority?: object }).authority ?? {}), "prompt.send@1": "allowed" } });
 
 describe("Phase B — semantic World", () => {
   gate("D1-010", "Provider, Account, Model, Capability and Realization stay distinct records", () => {
@@ -59,6 +68,23 @@ describe("Phase B — semantic World", () => {
     expect(validation(s).state).not.toBe("ready");
   });
 
+  // --- D-006 strengthening (non-vacuous): consent must not be what blocks a stale target.
+  gate("D1-016", "W3 stale Account is refused for freshness even when authority allows it", () => {
+    const s = say(initialState(allowedAuthority("W3")), "send 'review this' to work claude");
+    const v = validation(s);
+    expect(v.state).not.toBe("ready");
+    // The blocker is freshness, named on the record — not prose, not an authority state.
+    expect(v.missing).toContain("account");
+    expect(v.reasons.join(" ")).toMatch(/stale/);
+    expect(v.state).not.toBe("needs-consent");
+  });
+
+  gate("D1-016", "W3 with a fresh Account and authority allowed is the one-factor positive control", () => {
+    const w = loadWorld({ ...(readWorldFile("W3") as object), accounts: [{ ...(readWorldFile("W3") as { accounts: object[] }).accounts[0], freshness: "fresh" }] as never, authority: { "prompt.send@1": "allowed" } });
+    const s = say(initialState(w), "send 'review this' to work claude");
+    expect(validation(s).state).toBe("ready");
+  });
+
   gate("D1-017", "W4 mailbox Account has no prompt.send realization", () => {
     const w = loadNamedWorld("W4");
     expect(compatibleAccounts(w, "prompt.send@1").map((a) => a.id)).toEqual([WORK]);
@@ -69,6 +95,33 @@ describe("Phase B — semantic World", () => {
       const s = say(initialState(loadNamedWorld("W4")), text);
       expect(validation(s).state).not.toBe("ready");
     }
+  });
+
+  // --- D-006 strengthening (non-vacuous): an explicit unknown target must never retarget.
+  gate("D1-017", "an explicit unknown target never resolves to another Account, even with authority allowed", () => {
+    const s = say(initialState(allowedAuthority("W4")), "send 'x' to Gemini");
+    const cmd = currentCommand(s)!;
+    expect(validation(s).state).not.toBe("ready");
+    // The named target survives as an unresolved record; it is not silently dropped.
+    const u = cmd.unresolved.find((x) => x.field === "account");
+    expect(u).toBeDefined();
+    expect(u!.reason).toBe("unknown");
+    expect(u!.options).not.toContain(WORK);
+    expect(cmd.account).not.toBe(WORK);
+    expect(cmd.provider).not.toBe("provider:gemini");
+  });
+
+  gate("D1-017", "an Account no realization serves is unavailable even when authority allows it", () => {
+    const s = say(initialState(allowedAuthority("W4")), "send 'x' to mailbox home");
+    const v = validation(s);
+    expect(v.state).toBe("unavailable");
+    expect(v.reasons.join(" ")).toMatch(/realization|provider:mailbox/);
+    expect(v.state).not.toBe("needs-consent");
+  });
+
+  gate("D1-017", "W4 'work claude' with authority allowed is the one-factor positive control", () => {
+    const s = say(initialState(allowedAuthority("W4")), "send 'x' to work claude");
+    expect(validation(s).state).toBe("ready");
   });
 
   gate("D1-018", "W5 keeps Provider, Account and Model as separate route records", () => {
