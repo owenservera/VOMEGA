@@ -4,7 +4,7 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `511fe073b04f`, Bun 1.4.2, win32-x64, 30/80 gates green, digest 69b2be098056 · promoted gates: 24
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `c6f40afaa40c`, Bun 1.4.2, win32-x64, 30/80 gates green, digest 69b2be098056 · promoted gates: 24
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -34,7 +34,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-002 | PROVEN | 0/0 + 1/1 art. | Map exact reusable interpreter entry points |  |
 | D1-003 | PROVEN | 1/1 | Reproduce corpus U1 false-READY in an isolated test |  |
 | D1-004 | DONE | 1/1 | Define required-field metadata for `prompt.send` |  |
-| D1-005 | PROVEN | 2/2 | Fix required-field/READY validation |  · claimed by gov-impl-r6 until 2026-10-06T22:22:15.207Z |
+| D1-005 | PROVEN | 2/2 | Fix required-field/READY validation |  |
 | D1-006 | OPEN ★ | 2/3 | Add regression tests for every required-field unresolved case | PROMOTE_PENDING 2 |
 
 ### Phase B — minimal semantic World
@@ -59,11 +59,11 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-021 | BLOCKED | 0/1 | Interpret “add my Claude work account” |  |
 | D1-022 | BLOCKED | 0/1 | Interpret “add another Claude account and call it Personal” |  |
 | D1-023 | BLOCKED | 0/1 | Persist D1 synthetic registration in session World state |  |
-| D1-024 | DONE | 1/1 | Define candidate canonical `prompt.send` UseCommand |  · claimed by gov-impl-r2 until 2026-10-06T21:07:18.249Z |
-| D1-025 | DONE | 1/1 | Compile direct `prompt.send` utterance |  · claimed by gov-impl-r3 until 2026-10-06T21:35:18.359Z |
-| D1-026 | DONE | 1/1 | Preserve two-Account ambiguity |  · claimed by gov-impl-r7 until 2026-10-06T22:55:38.585Z |
+| D1-024 | DONE | 1/1 | Define candidate canonical `prompt.send` UseCommand |  |
+| D1-025 | DONE | 1/1 | Compile direct `prompt.send` utterance |  |
+| D1-026 | DONE | 1/1 | Preserve two-Account ambiguity |  |
 | D1-027 | OPEN ★ | 0/1 | Apply explicit text correction “use Work” |  |
-| D1-028 | DONE | 1/1 | Protect quoted payload from routing |  · claimed by gov-impl-r5 until 2026-10-06T22:12:30.281Z |
+| D1-028 | DONE | 1/1 | Protect quoted payload from routing |  |
 | D1-029 | OPEN ★ | 0/1 | Implement deterministic command digest |  |
 
 ### Phase D — realtime session semantics
@@ -111,8 +111,8 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-060 | DONE | 1/1 | Define D1 consequence record for `prompt.send` |  · claimed by gov-impl-r4 until 2026-10-06T22:03:41.870Z |
-| D1-061 | PROVEN | 1/1 | Add deterministic authority fixture |  · claimed by gov-impl-r10 until 2026-10-07T00:13:14.907Z |
+| D1-060 | DONE | 1/1 | Define D1 consequence record for `prompt.send` |  |
+| D1-061 | PROVEN | 1/1 | Add deterministic authority fixture |  |
 | D1-062 | OPEN ★ | 2/2 | Prevent interpretation from granting authority | PROMOTE_PENDING 2 |
 | D1-063 | OPEN ★ | 0/1 | Implement virtual `prompt.send` realization |  |
 | D1-064 | BLOCKED | 0/1 | Emit execution-start/attempt/result events |  |

@@ -137,3 +137,23 @@ model: the governor convenes the multi-model design council per
 contradictions verbatim, and rulings that are recommendations, never authority.
 Surfaces: saved workflow `design-council`, `/council` command, and the §4 direct
 procedure for unattended cycles.
+
+## 8. Daily build-guidance bridge (local controller duties)
+
+The owner's daily external review cannot see unpushed local work. Per
+[`../build-guidance/LOCAL-STATE-PROTOCOL.md`](../build-guidance/LOCAL-STATE-PROTOCOL.md)
+the governor IS the local controller and must:
+
+- **Publish the aggregate snapshot** to telemetry branch `ops/local-state` at
+  `.project/build-guidance/local-state.json` (schema
+  `../build-guidance/local-state.schema.json`): at local build-day start, after a
+  material dispatch/fan-out change, when a worker becomes materially blocked, after
+  a significant merge/integration, and before the controller stops. Never merge
+  `ops/local-state` into `main`; it is observation, never authority or proof.
+- **Treat the daily review's dispatch cards as advisory input** constrained by
+  current repo truth: re-check dependencies and write-surface collisions locally
+  before assigning workers; never let guidance invent programs, gates or authority
+  (its own §Authority boundary agrees).
+- Drift classes D-A…D-I from [`../build-guidance/DRIFT-ASSESSMENT.md`](../build-guidance/DRIFT-ASSESSMENT.md)
+  map onto the governor's routing: S3 → stop the lane and surface; S2 → enter
+  today's drain plan; D-I (local/remote visibility) → push/merge/snapshot hygiene.

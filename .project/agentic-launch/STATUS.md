@@ -4,11 +4,9 @@ Date: 2026-10-06. This is an aggregate view only. Per-worker truth lives in `cla
 
 ## Active claims
 
-| Claim | Worker | Work |
-| --- | --- | --- |
-| [20261006-1701-devops-team-zcode.md](claims/20261006-1701-devops-team-zcode.md) | ZCode governor (OPS-LEAD) + bounded OPS subagents | Design + set up the devops team: ops-sweep design doc, recurring automation, first sweep evidence |
+No active claim. All team-setup claims are closed and their deliverables landed (`fefff77`): 24/7 dev loop (1617), design council (1641), devops team + first sweep (1701), always-on PM team (1932), teams gap assessment (1940). The recurring family automation opens and closes its own cycle claims per run; reviews are by separate automated subagent contexts, never independent human review. MP-21 Wave-1 P1–P3 remains under review hold pending independent human review.
 
-Closed 2026-10-06: [20261006-1641-design-council-zcode.md](claims/20261006-1641-design-council-zcode.md) — multi-model design council (protocol + saved workflow + `/council`; codex LIVE, GLM LIVE, claude/grok unavailable pending owner auth) and the loop upgrade to a 10-minute continuous drain; [20261006-1617-devloop-24x7-zcode.md](claims/20261006-1617-devloop-24x7-zcode.md) — loop setup + first governed cycle (D1-004 DONE at `fc1ef89`; review by separate automated subagent context, not independent human review). The recurring loop opens and closes its own cycle claims per run.
+Closed 2026-10-06/07: 1701 — devops team design + first sweep (baselines green; d1:gates exit 1 routed to dev loop; 10-ahead unpushed surfaced); 1932 — PM team design + measured team.json (runtimeVerified true); 1940 — gap assessment (council .cmd voice fix, quorum 2; D1-026 preserved-and-landed `5652e5a`/`be0f906`; remote daily build-guidance loop integrated, snapshot published to `ops/local-state`).
 
 ## Major slices
 
