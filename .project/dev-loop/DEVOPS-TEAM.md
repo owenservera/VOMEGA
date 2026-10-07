@@ -62,6 +62,17 @@ OPS-ENV — **environment drift** (record to `.local/ops/env-<date>.json`, local
   `.project/ENVIRONMENT.md`;
 - harness voice probes (codex/claude/grok one-shots) — updates the council's
   standing availability table when changed (§6 of DESIGN-COUNCIL.md);
+- **provider availability probe** (owner directive 2026-10-07):
+  `bun .project/dev-loop/provider-probe.mjs` — at most once per 24 h (last-run
+  timestamp = final line of `.local/ops/provider-probe.log`); per-route PASS/FAIL
+  against the table in [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md), **including the
+  per-model sweep of both 8317 families** (claude ×18, gpt ×9 — a `/v1/models` listing is not
+  availability: 5 listed claude models 404 at generation, fable-5-1/5 are 429 credits-blocked).
+  Model-selection results feed [MODEL-SELECTION.md](MODEL-SELECTION.md). A NEW
+  fail (a previously-passing route or model) is a Truth AND Product event with a Commons
+  row; a known fail (grok routing absent at the proxy, fable credits, the 5 unroutable
+  claude models, kilocode endpoint down) is recorded standing state, never re-reported as
+  news. Probes report, never repair.
 - stale locks (`.local/dev-loop/*.lock` older than 60 minutes), `.local/` growth;
 - anything auth/provider/model-shaped that needs repair is **routed to Owen**
   (read-only rule), never fixed.
@@ -132,9 +143,10 @@ change cadence or delete at any time.
 | Fact | Measured | Value |
 | --- | --- | --- |
 | baselines | 2026-10-07 09:33:36Z (standing-thread sweep, read-only mode) | omega:quick 62/0 (10.64s) · ratchet check **SKIPPED** (dirty in-flight tree; projection regen deferred to a clean window) · ratchet status 37/80 green, **REGRESSED 0**, probe fresh @ `74b36f6` · d1:gates **exit 1** — 11 expected-red gates: 006×2/016/017/062×2 match the known-red set, D1-033/D1-041×2/D1-045/D1-051 are frontier-owned reds (no regression) · vivim-nlcl 49/0 |
-| environment | 2026-10-07 09:33Z | bun 1.4.2 · git 2.51.2.windows.1 · node v24.11.1 (unchanged) · voices: probes throttled 24h — table current 2026-10-07 (codex LIVE; claude OAuth expired, grok no key — Owen-reserved) |
+| environment | 2026-10-07 09:33Z | bun 1.4.2 · git 2.51.2.windows.1 · node v24.11.1 (unchanged) · voices: probes throttled 24h — table current 2026-10-07 (codex LIVE; claude CLI OAuth expired but **API route LIVE** via wired `claude-code-oauth` provider; grok no key and no proxy routing — Owen-reserved) |
 | main vs origin | 2026-10-07 09:33Z | **21 ahead** 0 behind; unpushed commits inventoried (owner decides push) |
 | ratchet | 2026-10-07 09:33Z | 37/80 green @ `74b36f6`; DONE 7 · PROVEN 16 · OPEN 11 · BLOCKED 43 · REGRESSED 0 · frontier: D1-063, D1-041, D1-033, D1-029, D1-050, D1-020, D1-055, D1-006 |
 | outcome | 2026-10-07 09:33:36Z | **YELLOW** — readiness changed (24/80→37/80 board advance, 21 unpushed); d1:gates exit 1 is the recorded known-red class; no regression |
 | coordination | 2026-10-07 09:13–09:15Z | governor-lock handover observed while an automation run was dispatching: a live session governor's lock stamp was 28 min old (past the 20-min stampede window) and then changed hands to a "chief-of-staff" governor (`gov-run-20261007-cos`). No double-run harm confirmed, but the risk is real → step-0 **lock-touch rule** amended into 24X7-DEV-LOOP.md §3 and the automation prompt (touch the lock's mtime during long runs). Routed by claim `20261007-0916-devops-standing-thread-zcode`; **adopted in practice 09:24:54Z** (CoS lock touched, "live CoS run, lock-touch"). |
 | fold-in | 2026-10-07 09:14Z | OPS (3b) + PM (3c) sweep clauses applied to `automation-2c7bbcf3` — gap from closeout 20261006-1701 closed. Verified: clauses live in the prompt (CronList, runCount 39); 09:23Z run stampede-exited correctly (CoS lock fresh); the §3 sweep procedure itself executed by the standing thread at 09:33:36Z (read-only mode). First automation-carried OPS sweep pending the first idle window (sweeps.log throttle defers it until ~10:03Z). |
+| providers | 2026-10-07 09:43Z probe / 09:46Z per-model sweep (PM thread 4, owner directive) | 15 providers wired in `~/.zcode/v2/provider_config.json` (9 enabled, 6 disabled); full inventory + probe method: [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md). LIVE: claude-code-oauth (11/18 models generation-PASS — fable-5-1/5 credits-blocked 429, 5 listed models 404), codex-oauth (9/9 PASS incl. gpt-6-sol), 6446 proxy ×5 keys (200; latency varies 1.5–13.7s), openrouter (models + free gen). FAIL: grok-build-oauth — proxy serves **no grok models** (routed to Owen, report-only). kilocode 5380 unreachable (disabled, consistent). Daily probe (route + per-model sweep) runs in step 3b with a 24h throttle; log `.local/ops/provider-probe.log`; selection: [MODEL-SELECTION.md](MODEL-SELECTION.md). |
