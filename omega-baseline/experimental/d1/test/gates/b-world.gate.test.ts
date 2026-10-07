@@ -99,8 +99,12 @@ describe("Phase B — semantic World", () => {
 
   // --- D-006 strengthening (non-vacuous): an explicit unknown target must never retarget.
   gate("D1-017", "an explicit unknown target never resolves to another Account, even with authority allowed", () => {
-    // Both the quoted and the unquoted payload forms: "never" must hold for each.
-    for (const text of ["send 'x' to Gemini", "send hello to Gemini"]) {
+    // "Never" must hold across the class, not two exact strings: quoted and unquoted
+    // payloads, sentence terminators, a trailing clause, and a quote after the route.
+    for (const text of [
+      "send 'x' to Gemini", "send hello to Gemini", "send hello to Gemini!", "send hello to Gemini?",
+      "send hello to Gemini - thanks", "send hello to Gemini 'x'", "send hello to the team!",
+    ]) {
       const s = say(initialState(allowedAuthority("W4")), text);
       const cmd = currentCommand(s)!;
       expect(validation(s).state).not.toBe("ready");
