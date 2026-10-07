@@ -71,6 +71,31 @@ cooled and unroutable models itself; this ledger reports only what was measured.
 This file reports liveness only. A passing probe here does **not** prove that any
 session or subagent fallback works.
 
+## 1c. Reserve tier (non-CPA) — measured 2026-10-07 19:14Z (DESK D-20261007-018)
+
+These routes sit outside the CPA overlay by construction: the router enumerates CPA
+`/v1/models`, and `providerFor()` maps only `claude-*`, `gpt-*`, `codex-*` and `grok-*`.
+They are tracked here as an explicit reserve. Each was probed with one tiny generation
+(≤8 tokens); the full family sweep was not run.
+
+| Route | Endpoint | Model | Status | Measured | Latency | Failure mode / state |
+| --- | --- | --- | --- | --- | --- | --- |
+| new-provider | localhost:6446 | space-bunny-free | PASS | 2026-10-07 19:14Z | 1.5s | — |
+| opencode-acct-2 | localhost:6446 | space-bunny-free | PASS | 2026-10-07 19:14Z | 1.1s | — |
+| opencode-acct-3 | localhost:6446 | space-bunny-free | PASS | 2026-10-07 19:14Z | 0.9s | — |
+| opencode-acct-4 | localhost:6446 | space-bunny-free | PASS | 2026-10-07 19:14Z | 0.9s | — |
+| opencode-acct-5 | localhost:6446 | space-bunny-free | PASS | 2026-10-07 19:14Z | 0.7s | — |
+| openrouter | openrouter.ai | openrouter/free (+ nemotron-3.5-lightning:free) | PASS | 2026-10-07 19:14Z | 0.8s / 6.2s | **Not at 0.** Key status: usage 9.57 of a 50 limit, **40.43 credits remaining**, `is_free_tier=false`, no rate limit reported. Free models generate. |
+
+The report that OpenRouter was "at 0" did not reproduce at 19:14Z: credits are not
+exhausted, there is no rate limit, and free models are still served. If a dashboard shows
+0, it is not this key's measured state.
+
+**Counting rule.** The five 6446 accounts all serve the **same model**
+(`space-bunny-free`). They give concurrency (parallel breadth), not quorum independence,
+so they count as **one family**. A council ruling still needs two independent families
+from the CPA tier.
+
 ## 2. How to re-derive (every sweep)
 
 ```sh
