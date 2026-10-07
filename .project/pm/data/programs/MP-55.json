@@ -237,7 +237,8 @@
       "consumers": [
         "MP55-P2"
       ],
-      "producingPhase": "MP55-P1"
+      "producingPhase": "MP55-P1",
+      "status": "TBD"
     },
     {
       "id": "MP55-G2",
@@ -247,7 +248,8 @@
         "MP55-P3",
         "MP54-P3"
       ],
-      "producingPhase": "MP55-P2"
+      "producingPhase": "MP55-P2",
+      "status": "TBD"
     },
     {
       "id": "MP55-G3",
@@ -256,7 +258,8 @@
       "consumers": [
         "MP55-P4"
       ],
-      "producingPhase": "MP55-P3"
+      "producingPhase": "MP55-P3",
+      "status": "TBD"
     },
     {
       "id": "MP55-G4",
@@ -265,14 +268,16 @@
       "consumers": [
         "MP55-P5"
       ],
-      "producingPhase": "MP55-P4"
+      "producingPhase": "MP55-P4",
+      "status": "TBD"
     },
     {
       "id": "MP55-G5",
       "statement": "automatic capsule preserves the seeded failure signature",
       "evidence": "an automatically captured capsule matches the seeded signature byte-for-byte on the named fields",
       "consumers": [],
-      "producingPhase": "MP55-P5"
+      "producingPhase": "MP55-P5",
+      "status": "TBD"
     }
   ],
   "gaps": []

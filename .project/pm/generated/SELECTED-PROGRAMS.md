@@ -2,7 +2,7 @@
 
 > **Generated — do not hand-edit.** PM manages exactly the five owner-selected programs; the other 62 meta programs stay canonical in `.project/meta-tracker.json` and appear here only as external references.
 >
-> Source HEAD `65ecc7f` · seed digest `854f282c02c3` · regenerate: `bun run pm` · validate: `bun run pm:check` · scope: `.project/pm/scope.json` (owner-directed; see `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md`).
+> Source HEAD `138b82a` · seed digest `854f282c02c3` · regenerate: `bun run pm` · validate: `bun run pm:check` · scope: `.project/pm/scope.json` (owner-directed; see `.project/pm/PM-CORRECTION-FIRST-FIVE-ONLY.md`).
 
 Managed set: **MP-21, MP-54, MP-55, MP-56, MP-60** — 5 programs.
 
