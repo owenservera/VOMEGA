@@ -111,6 +111,12 @@ interface WorkflowReport {
 const MIN_FAMILIES = 2; // #providers
 const VOICE_CALL_CEILING = 6; // COST/TIME: #models (3) + 3
 const ROUNDS = 2; // #rounds: first answers + one more round
+const ROUTER = "node";
+const ROUTER_ARGS = [
+  "C:/Users/VIVIM.inc/.agents/skills/cliproxy-router/cliproxy.mjs",
+  "route",
+];
+const PROJECT = "C:/0-BlackBoxProject-0/VOMEGA";
 
 const question = String(args.question ?? "").trim();
 const context = String(args.context ?? "").trim();
@@ -215,6 +221,59 @@ const failVoice = (voice: string, family: string, e: unknown): VoiceVerdict => (
 });
 
 const isLive = (v: VoiceVerdict) => v.status === "available" || v.status === "available-unparsed";
+
+interface RoutePick {
+  /** "router" | "override" | "unknown". */
+  kind: string;
+  /** "reason" | "review". */
+  profile: string;
+  /** Model id the router selected, or "" when it could not be read. */
+  id: string;
+  /** Provider the router named for that id. */
+  provider: string;
+  /** The router's own "why". */
+  why: string;
+}
+
+const routerErr = (profile: string, e: unknown): RoutePick => ({
+  kind: "unknown",
+  profile,
+  id: "",
+  provider: "",
+  why: "router call failed: " + String(e).slice(0, 120),
+});
+
+/**
+ * Voice selection goes through the router entrypoint (DESIGN-COUNCIL.md §3.3): the router
+ * drops what is unroutable or in cooldown, so its selection IS the availability measurement.
+ * The chair overrides it only to keep two independent families, and says so in the record.
+ */
+const askRouter = async (profile: string): Promise<RoutePick> => {
+  try {
+    const r = await world.run(ROUTER, [...ROUTER_ARGS, profile, "--project", PROJECT], { timeoutMs: 60_000 });
+    if (r.exitCode !== 0) {
+      return { kind: "unknown", profile, id: "", provider: "", why: `router exit ${r.exitCode}: ` + r.stderr.slice(-120) };
+    }
+    const j = JSON.parse(lastJsonObject(r.stdout) ?? "{}") as {
+      selected?: { id?: string; provider?: string; why?: string[] };
+    };
+    const sel = j.selected ?? {};
+    return {
+      kind: "router",
+      profile,
+      id: sel.id ?? "",
+      provider: sel.provider ?? "",
+      why: (sel.why ?? []).join("; "),
+    };
+  } catch (e) {
+    return routerErr(profile, e);
+  }
+};
+
+const routeLine = (p: RoutePick, overrideReason: string): string =>
+  p.kind === "router"
+    ? `route: profile=${p.profile} id=${p.id} provider=${p.provider} explicit=no (why: ${p.why})`
+    : `route: profile=${p.profile} id=${p.id || "unknown"} provider=${p.provider || "unknown"} explicit=${overrideReason === "" ? "no" : "yes"} (why: ${p.why}${overrideReason === "" ? "" : "; override: " + overrideReason})`;
 
 const countedFamilies = (vs: VoiceVerdict[], dropped: string[]): string[] => {
   const fams = new Set<string>();
@@ -331,7 +390,17 @@ const askClaude = async (prompt: string): Promise<VoiceVerdict> => {
 };
 
 phase("Hear the independent voices");
-log(`Router: ${protocol} (${stakes}). Convening the in-session voice, the GPT and Claude families, and Grok unless the ledger lists it dark.`);
+log(`Router: ${protocol} (${stakes}). Asking the model router, then convening the in-session voice and the GPT, Claude and Grok families.`);
+const reasonPick = await askRouter("reason");
+const reviewPick = await askRouter("review");
+const independence = "a ruling needs two independent families, so each family is called on its own model rather than the router's single pick";
+const routeLines: string[] = [
+  routeLine(reasonPick, ""),
+  routeLine(reviewPick, ""),
+  `route: profile=reason id=gpt-6.1-sol provider=openai (codex CLI) explicit=yes (override: ${independence})`,
+  `route: profile=reason id=claude-opus-5-5 provider=claude-code-oauth explicit=yes (override: ${independence}; falls back to claude-sonnet-5-5)`,
+  `route: profile=reason id=grok-4.7 provider=grok-build-oauth explicit=yes (override: ${independence}; the router's reason/review profiles list no grok candidate)`,
+];
 
 const sessionVoice = agent("voice-in-session", {
   system:
@@ -353,14 +422,14 @@ const askSession = async (prompt: string): Promise<VoiceVerdict> => {
   };
 };
 
-const grokDark = await files.grep("^\\| grok-build-oauth .*DARK", ".project/dev-loop/PROVIDER-AVAILABILITY.md");
+/** One call to the Grok family through the authorized local proxy (the grok CLI has no key). */
 const askGrok = async (prompt: string): Promise<VoiceVerdict> => {
-  if (grokDark.length > 0) {
-    return { ...failVoice("grok", "grok", "listed DARK in PROVIDER-AVAILABILITY.md §1a; no call spent"), evidence: "dark list" };
-  }
   voiceCalls++;
   try {
-    return parseVoice("grok", "grok", await world.run("grok.cmd", ["-p", prompt, "--max-tool-rounds", "1"], { timeoutMs: 600_000 }), "");
+    const r = await world.run("node", [".local/dev-loop/grok-voice.mjs", "-t", prompt, "grok-4.7", "3000"], {
+      timeoutMs: 600_000,
+    });
+    return parseVoice("grok", "grok", r, "model grok-4.7");
   } catch (e) {
     return failVoice("grok", "grok", e);
   }
@@ -503,6 +572,8 @@ let ruling = await chair.ask<Ruling>(
     "\n\nRound 1 answers (independent):\n" +
     JSON.stringify(firstRound, null, 2) +
     (secondRoundRan ? "\n\nFinal answers after round 2:\n" + JSON.stringify(finalRound, null, 2) : "") +
+    "\n\nRouting (copy these lines into the record verbatim):\n" +
+    routeLines.join("\n") +
     "\n\nBreakers tripped so far:\n" +
     JSON.stringify(breakers, null, 2) +
     "\n\nRule. Mark any voice that went outside the brief (ruled on owner-reserved ground, ignored the question, " +
@@ -563,6 +634,9 @@ const md = [
   "",
   "## Circuit breakers",
   ...(breakers.length === 0 ? ["_None tripped._"] : breakers.map((b) => "- **" + b.breaker + "**: " + b.detail)),
+  "",
+  "## Routing",
+  ...routeLines.map((l) => "- `" + l + "`"),
   "",
   "## Voices",
   ...ruling.voicesHeard.map((l) => "- " + l),

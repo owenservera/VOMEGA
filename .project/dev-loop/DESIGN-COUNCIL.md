@@ -61,10 +61,10 @@ Voice mechanisms (read-only, scratch cwd `.local/dev-loop/scratch/`, git-ignored
 
 | Slot | Mechanism | Family id |
 | --- | --- | --- |
-| V1 — in-session voice | ZCode subagent (`general-purpose`, read-only brief) | `session` (whatever the thread model is — see §3.3) |
+| V1 — in-session voice | ZCode subagent (`general-purpose`, read-only brief) | `session` (whatever the thread model is — see §3.2) |
 | V2 — Codex voice | `codex.cmd exec -s read-only -C <scratch> "<brief>"` | `codex` (ChatGPT Codex account) |
-| V3 — Claude voice | `.local/dev-loop/claude-voice.mjs <brief> [model]` — authorized proxy route, key read-only in memory | `claude` (Claude Code OAuth) |
-| V4 — Grok voice | `grok.cmd -p "<brief>" --max-tool-rounds 1` | `grok` |
+| V3 — Claude voice | `node .local/dev-loop/claude-voice.mjs <brief> [model]` — authorized proxy route, key read-only in memory | `claude` (Claude Code OAuth) |
+| V4 — Grok voice | `node .local/dev-loop/grok-voice.mjs <brief> [model]` — proxy route (LIVE, D-20261007-011); the `grok` CLI is not a voice route | `grok` (grok-build-oauth) |
 
 Third-family reserve rung (free routes, added to the known-live reserve in D-20261007-009;
 family ids from the provider routes in [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md) §4):
@@ -91,12 +91,33 @@ Diversity rules:
   voices are excluded, and the chair's own failed calls during a convening are reported to CoS so
   DEVops can update that list.
 
-### 3.3 Model choice within a family
+### 3.3 Model choice within a family — the router entrypoint
 
-Which model answers is governed by [MODEL-SELECTION.md](MODEL-SELECTION.md) (owner ladder,
-generation-PASS only, class floors, mandatory `model-selection:` line). The family id comes from
-the provider route, not the model name. Never repair, reorder or write auth/provider/model
-configuration to make a voice available — report it to CoS.
+Voice **selection** goes through one entrypoint, not hand-picked ids and not a hand-maintained
+dark list (owner directive, D-20261007-011):
+
+```sh
+node ~/.agents/skills/cliproxy-router/cliproxy.mjs route reason --project C:/0-BlackBoxProject-0/VOMEGA
+node ~/.agents/skills/cliproxy-router/cliproxy.mjs route review --project C:/0-BlackBoxProject-0/VOMEGA
+```
+
+- `reason` for analysis voices (panel, round-robin, judge); `review` for the challenger. The
+  router decides; it drops what is unroutable or in cooldown, so its selection **is** the
+  availability measurement and the hand-kept dark list is no longer the council's input.
+- **Independence overrides the router.** A ruling needs two *independent* families, so when the
+  router's pick would leave the panel single-family, the chair passes an **explicit model id** to
+  the family helper and records that it overrode the router and why. An override is a routing
+  decision, not a silent one.
+- Every ruling carries one line per voice:
+  `route: profile=<reason|review> id=<model> provider=<provider> explicit=yes/no` plus the
+  router's `why`.
+- **Never repair** `config.yaml`, auth files or provider configuration to make a voice available
+  (Owen-reserved). Report it to CoS.
+
+Transport per family: GPT through `codex.cmd exec -s read-only -C <scratch>`; Claude and Grok
+through the proxy helpers `.local/dev-loop/claude-voice.mjs` / `.local/dev-loop/grok-voice.mjs`,
+which resolve the key read-only in memory and never print it. Which model a helper gets comes from
+the router (or an explicit override), not from a fixed list.
 
 ## 4. The five protocols
 
@@ -216,8 +237,10 @@ router (PANEL / PANEL+CHALLENGE / ROUND-ROBIN+JUDGE); QUORUM-LOSS (counts provid
 never counts the in-session voice, whose provider the script cannot see); DRIFT (chair flags
 drifted voices, quorum recomputed); CONVERGENCE (unanimous on a dispute caps confidence at
 medium); COST/TIME as a voice-call ceiling of `#models`+3 = 6; the Claude voice through the
-authorized proxy with one fallback rung (`claude-opus-5-5` → `claude-sonnet-5-5`); and Grok skipped
-without a call while the ledger lists it dark. **Not in the workflow:** VOTE (the router never
+authorized proxy with one fallback rung (`claude-opus-5-5` → `claude-sonnet-5-5`); Grok through the
+proxy helper on `grok-4.7`; and the router entrypoint (§3.3) asked for `reason` and `review` before the
+voices, with every voice's `route:` line (router pick or explicit override, and why) written into the
+ruling record (D-20261007-011). **Not in the workflow:** VOTE (the router never
 selects it), a wall-clock limit (a workflow cannot read the clock), and LOOP-BREAKER (cannot trip at
 `#rounds` 2). Verification so far: typechecked locally against the workflow API with a planted-error
 control, and its metadata parses; it has **not** been run, so its first interactive use is its
@@ -231,17 +254,17 @@ alive because this table says LIVE.
 | Voice / family | Mechanism | Last measured | Result |
 | --- | --- | --- | --- |
 | `session` (in-session subagent) | ZCode subagent, read-only brief | harness-exposed identity, per run | LIVE while the thread model answers; record the observed model, never a remembered one |
-| `codex` (GPT) | the D-009 panel brief, then `codex.cmd exec -s read-only "Reply OK"` | 2026-10-07 11:52–11:55Z | **DARK** — "You've hit your usage limit … try again at 4:08 PM" (ChatGPT Codex account cap; the CLI resolves to `gpt-6.1-sol`, provider openai). 4:08 PM machine-local is about 14:08Z; recovery **not re-measured**. Distinct from the `codex-oauth` API route, which is PASS in the ledger. |
-| `claude` (Claude) | the D-009 panel brief via `.local/dev-loop/claude-voice.mjs`, `claude-opus-5-5` then `claude-sonnet-5-5` | 2026-10-07 11:52–11:55Z | **DARK (429)** — proxy rate_limit_error "All credentials … are cooling down via provider claude" on both REVIEW rungs. Recovery **not re-measured**. The `claude -p` CLI remains broken (OAuth expired, Owen-reserved). |
-| `grok` | `grok.cmd -p "Reply OK" --max-tool-rounds 1` | 2026-10-07 09:43Z | **UNAVAILABLE** — "API key required"; proxy serves no grok models (Owen-reserved) |
+| `codex` (GPT) | the D-009 panel brief, then `codex.cmd exec -s read-only "Reply OK"` | 2026-10-07 11:52–11:55Z dark; re-probed ~14:5xZ | **LIVE again** — `CODEX-VOICE-OK` on the re-probe after the ~4:08 PM local cap window. Router `status` still lists `gpt-6.1-sol` cooled for quota with ~32m remaining; the CLI resolves to `gpt-6.1-sol`, provider openai. Distinct from the `codex-oauth` API route. |
+| `claude` (Claude) | the D-009 panel brief via `.local/dev-loop/claude-voice.mjs`, `claude-opus-5-5` then `claude-sonnet-5-5` | 2026-10-07 11:52–11:55Z; re-probed ~14:5xZ on `claude-sonnet-5` | **DARK (429)** — proxy rate_limit_error on every rung tried, including a later `claude-sonnet-5` probe. Router `status` shows `claude-opus-5-5` cooled for quota with ~3h28m remaining and `claude-fable-5-1` cooled for ~585h. The `claude -p` CLI remains broken (OAuth expired, Owen-reserved). |
+| `grok` (Grok) | `node .local/dev-loop/grok-voice.mjs -t "Reply OK" <model>`; router `cliproxy.mjs status` catalog | 2026-10-07 ~14:5xZ | **LIVE via the proxy (CPA)** — `grok-4.7` answered through `grok-build-oauth` on 127.0.0.1:8317 (HTTP 200). The `grok` CLI itself is still broken ("API key required"); the CLI is not a voice route. Catalog holds ~18 grok ids (`grok-4.7`, `grok-4.6`, `grok-4.3`, `grok-4.5`, `grok-3-mini`, `grok-4.20-*`, image/video ids excluded). |
 | `opencode` (free reserve) | `new-provider` / `opencode-acct-2..5` `space-bunny-free` | 2026-10-07 09:43Z (ledger) | PASS at last probe; not yet exercised as a council voice |
 | `openrouter` (free reserve) | `openrouter/auto` | 2026-10-07 09:43Z (ledger) | PASS at last probe; not yet exercised as a council voice |
 
-Quorum status: **LOST** from the 2026-10-07 11:52–11:55Z measurement onward. With the Codex CLI
-and both Claude REVIEW rungs dark, at most one family answers (the GPT session itself), so the
-§6 QUORUM-LOSS breaker trips and **no ruling can be convened until Codex or Claude recovers**. A
-convening attempted in that state is BLOCKED, never single-family. Recovery is re-measured at the
-next convening, not by standalone probes. The ledger
+Quorum status: **RECOVERED, three candidate families** as of the ~14:5xZ re-measurement
+(D-20261007-011): `codex` GPT **LIVE** again, `grok` **LIVE via the proxy**, `claude` still **DARK**
+(429 across every rung). The council can convene on GPT + Grok without waiting for Claude; a
+convening that reaches only GPT is still BLOCKED by §6 QUORUM-LOSS. Re-measure with the router
+entrypoint (§3.3) at each convening, not by standalone probes. The ledger
 [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md) is the authority on what is live; this
 table is the chair's last measurement, not a standing promise.
 
