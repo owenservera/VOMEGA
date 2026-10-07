@@ -1,14 +1,118 @@
 {
   "schema": "vomega-local-state/1",
-  "generatedAt": "2026-10-07T08:23:00Z",
-  "observer": "remote-bootstrap",
-  "machine": "unknown",
+  "generatedAt": "2026-10-07T08:53:02Z",
+  "observer": "ZCode governor session gov-run-20261006-2245 (local controller per .project/build-guidance/LOCAL-STATE-PROTOCOL.md)",
+  "machine": "Windows 10.0.29680 x64, Git Bash (win32)",
   "remoteMain": "7ce9e32e6f6f979985454cf147db99b64a77c78c",
-  "notes": "Telemetry branch initialized. No local controller snapshot has been published yet.",
-  "worktrees": [],
-  "checks": [],
+  "notes": "origin/main merged into local main at c6f40af (2026-10-07T08:47Z, zero file overlap with local D1 work, no conflicts). Main carries 15 unpushed commits of D1 ratchet work (D1-024/025/026/028/040-era promotes+reviews) plus the team-setup closeout. Daily build-guidance loop integrated: bridge section added to .project/dev-loop/24X7-DEV-LOOP.md; this is the day-start + post-merge snapshot.",
+  "worktrees": [
+    {
+      "path": "C:/0-BlackBoxProject-0/VOMEGA",
+      "branch": "main",
+      "head": "c6f40afaa40c",
+      "dirty": false,
+      "ahead": 15,
+      "behind": 0,
+      "lastCommitAt": "2026-10-07T08:47:38+02:00",
+      "claims": [
+        {
+          "id": "20261006-1617-devloop-24x7-zcode",
+          "status": "COMPLETE",
+          "taskRefs": [
+            "D1-004"
+          ],
+          "blocker": null,
+          "nextAction": null
+        },
+        {
+          "id": "20261006-1641-design-council-zcode",
+          "status": "COMPLETE",
+          "taskRefs": [],
+          "blocker": null,
+          "nextAction": null
+        },
+        {
+          "id": "20261006-1701-devops-team-zcode",
+          "status": "COMPLETE",
+          "taskRefs": [],
+          "blocker": null,
+          "nextAction": null
+        },
+        {
+          "id": "20261006-1932-pm-team-always-on-zcode",
+          "status": "COMPLETE",
+          "taskRefs": [
+            "MP-21",
+            "MP-54",
+            "MP-55",
+            "MP-56",
+            "MP-60"
+          ],
+          "blocker": null,
+          "nextAction": null
+        },
+        {
+          "id": "20261006-1940-teams-gap-assessment-zcode",
+          "status": "COMPLETE",
+          "taskRefs": [
+            "D1-026"
+          ],
+          "blocker": null,
+          "nextAction": null
+        }
+      ],
+      "blocker": null,
+      "nextAction": "drain frontier D1-040 (ratchet next) with pipelined TRV; six green-but-unpromoted gates (D1-006 x2, D1-016, D1-017, D1-062 x2) queued as promotion-cheap follow-ups"
+    },
+    {
+      "path": "C:/Users/VIVIM.inc/orca/workspaces/VOMEGA/https-github.com-owenservera-VOMEGA-blob-main-.project-pm-PM-BUILD-PLAN-WAVES-SETUP.md",
+      "branch": "owenservera/https-github.com-owenservera-VOMEGA-blob-main-.project-pm-PM-BUILD-PLAN-WAVES-SETUP.md",
+      "head": "a428897",
+      "dirty": true,
+      "ahead": 0,
+      "behind": 74,
+      "lastCommitAt": "2026-10-06T07:22:09+02:00",
+      "claims": [],
+      "blocker": "stale orca-managed worktree: 74 commits behind origin/main with 1 uncommitted file; branch fully contained in origin/main history (nothing unique); not owned by this controller",
+      "nextAction": "owner/orca decides: refresh or retire the worktree"
+    }
+  ],
+  "checks": [
+    {
+      "name": "ratchet status+probe",
+      "observedAt": "2026-10-07T08:52:00Z",
+      "status": "PASS",
+      "detail": "probe 30/80 green @ c6f40af; board DONE 6 / PROVEN 15 / OPEN 11 / BLOCKED 45; REGRESSED 0"
+    },
+    {
+      "name": "pm:check",
+      "observedAt": "2026-10-07T08:46:30Z",
+      "status": "PASS",
+      "detail": "ok (1 warning: NEEDS_REVIEW MP-60 P5 decomposition review)"
+    },
+    {
+      "name": "pm:test",
+      "observedAt": "2026-10-07T08:52:40Z",
+      "status": "PASS",
+      "detail": "47 pass / 0 fail / 743 expect()"
+    },
+    {
+      "name": "omega:quick",
+      "observedAt": "2026-10-07T08:52:55Z",
+      "status": "PASS",
+      "detail": "62 pass / 0 fail / 1622 expect() (10.78s)"
+    },
+    {
+      "name": "d1:gates",
+      "observedAt": "2026-10-07T08:46:45Z",
+      "status": "FAIL",
+      "detail": "exit 1: six green-but-unpromoted gates (D1-006 x2, D1-016, D1-017, D1-062 x2) — ratchet correctly demanding promotions; routed to the dev loop, not a regression"
+    }
+  ],
   "visibilityRisks": [
-    "Local worktree state is not yet visible remotely.",
-    "Daily guidance must treat local-agent activity as unknown until the local controller publishes a fresh snapshot."
+    "main is 15 commits ahead of origin/main — the daily reviewer cannot see any of the D1 ratchet or team-setup work until pushed (owner decides push)",
+    "orca worktree stale (74 behind, 1 uncommitted file) — D-E/D-I drift",
+    "family-automation prompt fold-in (OPS+PM sweep clauses) drafted but not yet applied: CronUpdate is blocked while a scheduled automation is running; apply from a fresh session",
+    "MP-21 Wave-1 P1-P3 remains under independent-review hold (human reviewer still outstanding; automated subagent review does not satisfy it)"
   ]
 }
