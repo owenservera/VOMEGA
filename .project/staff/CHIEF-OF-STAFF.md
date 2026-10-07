@@ -73,3 +73,8 @@ Plus the **decision queue**: only items genuinely Owen-reserved or evidence-stal
 - The CoS gives up: all direct writes — no doc edits, no code, no ratchet mutations, no sweep execution, no review application. Every such act is a commanded worker's act. The former 'governor-direct degraded mode' (gov-impl-gov) is RETIRED: on subagent API failure the CoS retries, then records the work as a queued directive for the next worker run — it never implements inline.
 - Ratchet review verdicts are applied by a commanded worker carrying the reviewer's verdict text verbatim; the CoS then reads the applied state to verify.
 - Directive record: [DIRECTIVES/20261007-command-model.md](DIRECTIVES/20261007-command-model.md).
+
+## 9. Roles chart and merge delegation (2026-10-07)
+
+- The team roles chart (RACI) is recorded at [RACI.md](RACI.md).
+- Owner delegation 2026-10-07: the CoS is Accountable for merge/push decisions and for having the evidence first (a DEVops merge-readiness report); DEVops executes only a push the CoS explicitly authorizes by commit range; Owen retains veto and all owner-reserved items.
