@@ -270,10 +270,13 @@ const askRouter = async (profile: string): Promise<RoutePick> => {
   }
 };
 
+const familyOf = (id: string): string =>
+  id.startsWith("gpt-") || id.startsWith("codex-") ? "gpt" : id.startsWith("claude-") ? "claude" : id.startsWith("grok-") ? "grok" : "unknown";
+
 const routeLine = (p: RoutePick, overrideReason: string): string =>
   p.kind === "router"
-    ? `route: profile=${p.profile} id=${p.id} provider=${p.provider} explicit=no (why: ${p.why})`
-    : `route: profile=${p.profile} id=${p.id || "unknown"} provider=${p.provider || "unknown"} explicit=${overrideReason === "" ? "no" : "yes"} (why: ${p.why}${overrideReason === "" ? "" : "; override: " + overrideReason})`;
+    ? `route: tier=cpa profile=${p.profile} id=${p.id} provider=${p.provider} family=${familyOf(p.id)} explicit=no why=${p.why}`
+    : `route: tier=cpa profile=${p.profile} id=${p.id || "unknown"} provider=${p.provider || "unknown"} family=${familyOf(p.id)} explicit=${overrideReason === "" ? "no" : "yes"} why=${p.why}${overrideReason === "" ? "" : "; override: " + overrideReason}`;
 
 const countedFamilies = (vs: VoiceVerdict[], dropped: string[]): string[] => {
   const fams = new Set<string>();
@@ -397,9 +400,9 @@ const independence = "a ruling needs two independent families, so each family is
 const routeLines: string[] = [
   routeLine(reasonPick, ""),
   routeLine(reviewPick, ""),
-  `route: profile=reason id=gpt-6.1-sol provider=openai (codex CLI) explicit=yes (override: ${independence})`,
-  `route: profile=reason id=claude-opus-5-5 provider=claude-code-oauth explicit=yes (override: ${independence}; falls back to claude-sonnet-5-5)`,
-  `route: profile=reason id=grok-4.7 provider=grok-build-oauth explicit=yes (override: ${independence}; the router's reason/review profiles list no grok candidate)`,
+  `route: tier=cpa profile=reason id=gpt-6.1-sol provider=openai(codex CLI) family=gpt explicit=yes why=${independence}`,
+  `route: tier=cpa profile=reason id=claude-opus-5-5 provider=claude-code-oauth family=claude explicit=yes why=${independence}; falls back to claude-sonnet-5-5`,
+  `route: tier=cpa profile=reason id=grok-4.7 provider=grok-build-oauth family=grok explicit=yes why=${independence}; no grok candidate in the router profiles`,
 ];
 
 const sessionVoice = agent("voice-in-session", {

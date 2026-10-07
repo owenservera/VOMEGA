@@ -66,10 +66,24 @@ Voice mechanisms (read-only, scratch cwd `.local/dev-loop/scratch/`, git-ignored
 | V3 — Claude voice | `node .local/dev-loop/claude-voice.mjs <brief> [model]` — authorized proxy route, key read-only in memory | `claude` (Claude Code OAuth) |
 | V4 — Grok voice | `node .local/dev-loop/grok-voice.mjs <brief> [model]` — proxy route (LIVE, D-20261007-011); the `grok` CLI is not a voice route | `grok` (grok-build-oauth) |
 
-Third-family reserve rung (free routes, added to the known-live reserve in D-20261007-009;
-family ids from the provider routes in [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md) §4):
-`new-provider`/`space-bunny-free` → family `opencode`; `opencode-acct-2..5` → same family
-`opencode`; `openrouter/auto` → family `openrouter`.
+**Reserve tier (non-CPA; D-20261007-012).** The router cannot see these routes, so they are called
+directly with `node .local/dev-loop/reserve-voice.mjs <brief> <account> [model]`:
+
+| Account | Endpoint | Family |
+| --- | --- | --- |
+| `new-provider`, `opencode-acct-2` … `opencode-acct-5` | localhost:6446, `space-bunny-free` | **`space-bunny`** — all five accounts are **one** family |
+| `openrouter` | openrouter.ai, `openrouter/auto` | `openrouter(<routed model>)` — the routed model's family, as reported by the response |
+
+Reserve rules:
+
+- **The reserve tier never satisfies quorum.** Quorum still needs two independent **CPA** families
+  (GPT, Claude, Grok). A ruling with one CPA family plus any number of reserve voices is BLOCKED.
+- **It is valid for breadth.** Five space-bunny accounts give five concurrent answers from **one**
+  family. Record each as `family=space-bunny account=<acct>` so the chair never mistakes volume for
+  independence.
+- **It is a fallback, not a first choice.** When a CPA voice is blocked, re-ask the router first
+  (it already excludes cooled and unroutable ids). Only if no CPA id is left for that slot, use a
+  reserve voice and label it `tier=reserve` in the record.
 
 Diversity rules:
 
@@ -108,9 +122,17 @@ node ~/.agents/skills/cliproxy-router/cliproxy.mjs route review --project C:/0-B
   router's pick would leave the panel single-family, the chair passes an **explicit model id** to
   the family helper and records that it overrode the router and why. An override is a routing
   decision, not a silent one.
-- Every ruling carries one line per voice:
-  `route: profile=<reason|review> id=<model> provider=<provider> explicit=yes/no` plus the
-  router's `why`.
+- Every ruling carries one line per voice (two tiers; D-20261007-012):
+
+  ```text
+  route: tier=cpa profile=<reason|review> id=<model> provider=<provider> family=<gpt|claude|grok> explicit=<yes|no> why=<router why | override reason>
+  route: tier=reserve id=<model> provider=<account> family=<space-bunny|openrouter(<model>)> explicit=yes why=<which CPA voice was blocked>
+  ```
+
+  Worked examples (2026-10-07 ~14:5xZ):
+  `route: tier=cpa profile=reason id=gpt-6-sol provider=codex-oauth family=gpt explicit=no why=prefer sol` ·
+  `route: tier=cpa profile=reason id=grok-4.7 provider=grok-build-oauth family=grok explicit=yes why=independence; no grok candidate in the router profiles` ·
+  `route: tier=reserve id=space-bunny-free provider=new-provider family=space-bunny explicit=yes why=claude family blocked (429)`.
 - **Never repair** `config.yaml`, auth files or provider configuration to make a voice available
   (Owen-reserved). Report it to CoS.
 
@@ -257,14 +279,16 @@ alive because this table says LIVE.
 | `codex` (GPT) | the D-009 panel brief, then `codex.cmd exec -s read-only "Reply OK"` | 2026-10-07 11:52–11:55Z dark; re-probed ~14:5xZ | **LIVE again** — `CODEX-VOICE-OK` on the re-probe after the ~4:08 PM local cap window. Router `status` still lists `gpt-6.1-sol` cooled for quota with ~32m remaining; the CLI resolves to `gpt-6.1-sol`, provider openai. Distinct from the `codex-oauth` API route. |
 | `claude` (Claude) | the D-009 panel brief via `.local/dev-loop/claude-voice.mjs`, `claude-opus-5-5` then `claude-sonnet-5-5` | 2026-10-07 11:52–11:55Z; re-probed ~14:5xZ on `claude-sonnet-5` | **DARK (429)** — proxy rate_limit_error on every rung tried, including a later `claude-sonnet-5` probe. Router `status` shows `claude-opus-5-5` cooled for quota with ~3h28m remaining and `claude-fable-5-1` cooled for ~585h. The `claude -p` CLI remains broken (OAuth expired, Owen-reserved). |
 | `grok` (Grok) | `node .local/dev-loop/grok-voice.mjs -t "Reply OK" <model>`; router `cliproxy.mjs status` catalog | 2026-10-07 ~14:5xZ | **LIVE via the proxy (CPA)** — `grok-4.7` answered through `grok-build-oauth` on 127.0.0.1:8317 (HTTP 200). The `grok` CLI itself is still broken ("API key required"); the CLI is not a voice route. Catalog holds ~18 grok ids (`grok-4.7`, `grok-4.6`, `grok-4.3`, `grok-4.5`, `grok-3-mini`, `grok-4.20-*`, image/video ids excluded). |
-| `opencode` (free reserve) | `new-provider` / `opencode-acct-2..5` `space-bunny-free` | 2026-10-07 09:43Z (ledger) | PASS at last probe; not yet exercised as a council voice |
-| `openrouter` (free reserve) | `openrouter/auto` | 2026-10-07 09:43Z (ledger) | PASS at last probe; not yet exercised as a council voice |
+| `space-bunny` (reserve tier) | `node .local/dev-loop/reserve-voice.mjs -t "Reply OK" new-provider` | 2026-10-07 ~14:5xZ | **LIVE** — `RESERVE-VOICE-OK` on `new-provider`. Other four accounts not separately probed. **Never counts toward quorum.** |
+| `openrouter` (reserve tier) | `openrouter/auto` | 2026-10-07 09:43Z (ledger) | PASS at last ledger probe; not yet exercised as a council voice. **Never counts toward quorum.** |
 
-Quorum status: **RECOVERED, three candidate families** as of the ~14:5xZ re-measurement
-(D-20261007-011): `codex` GPT **LIVE** again, `grok` **LIVE via the proxy**, `claude` still **DARK**
-(429 across every rung). The council can convene on GPT + Grok without waiting for Claude; a
-convening that reaches only GPT is still BLOCKED by §6 QUORUM-LOSS. Re-measure with the router
-entrypoint (§3.3) at each convening, not by standalone probes. The ledger
+**Quorum verdict (measured by the chair, 2026-10-07 ~14:5xZ): MET — two live independent CPA
+families, GPT and Grok.** `codex` GPT **LIVE** (Codex CLI answered), `grok` **LIVE** via the proxy
+(`grok-4.7`, HTTP 200), `claude` **DARK** (429 on every rung tried). Three CPA candidate families;
+Claude is the third once it recovers. The reserve tier (`space-bunny` LIVE) adds breadth but cannot
+replace a missing CPA family. A convening that reaches only one CPA family is BLOCKED by §6
+QUORUM-LOSS. Re-measure with the router entrypoint (§3.3) at each convening; never trust a relayed
+claim. The ledger
 [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md) is the authority on what is live; this
 table is the chair's last measurement, not a standing promise.
 
