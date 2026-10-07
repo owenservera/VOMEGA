@@ -1,0 +1,14 @@
+{
+  "schema": "vomega-local-state/1",
+  "generatedAt": "2026-10-07T08:23:00Z",
+  "observer": "remote-bootstrap",
+  "machine": "unknown",
+  "remoteMain": "7ce9e32e6f6f979985454cf147db99b64a77c78c",
+  "notes": "Telemetry branch initialized. No local controller snapshot has been published yet.",
+  "worktrees": [],
+  "checks": [],
+  "visibilityRisks": [
+    "Local worktree state is not yet visible remotely.",
+    "Daily guidance must treat local-agent activity as unknown until the local controller publishes a fresh snapshot."
+  ]
+}
