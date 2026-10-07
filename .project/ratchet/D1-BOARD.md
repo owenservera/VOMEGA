@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `2a81cf06fec2`, Bun 1.4.2, win32-x64, 39/80 gates green, digest e4bb19916a46 · promoted gates: 32
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `03607396cf71`, Bun 1.4.2, win32-x64, 40/80 gates green, digest 34ad404fd78a · promoted gates: 35
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 12 | 16 | 12 | 0 | 37 | 0 | 0 | 77 | 12 | 0 |
+| 12 | 17 | 11 | 0 | 37 | 0 | 0 | 77 | 11 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -18,7 +18,6 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
 - **D1-044** Render unresolved Account chooser — crit 12, unblocks 12; `bun run ratchet packet D1-044`
 - **D1-055** Define minimal D1 Reflection extraction boundary — crit 6, unblocks 6; `bun run ratchet packet D1-055`
-- **D1-006** Add regression tests for every required-field unresolved case — crit 1, unblocks 0; `bun run ratchet packet D1-006`
 - **D1-042** Render text input + interpretation state — crit 1, unblocks 0; `bun run ratchet packet D1-042`
 - **D1-043** Render Provider/Account/Model route — crit 1, unblocks 0; `bun run ratchet packet D1-043`
 - **D1-047** Render consequence/external-transfer preview — crit 1, unblocks 0; `bun run ratchet packet D1-047`
@@ -36,7 +35,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-003 | PROVEN | 1/1 | Reproduce corpus U1 false-READY in an isolated test |  |
 | D1-004 | DONE | 1/1 | Define required-field metadata for `prompt.send` |  |
 | D1-005 | PROVEN | 2/2 | Fix required-field/READY validation |  |
-| D1-006 | OPEN ★ | 2/3 | Add regression tests for every required-field unresolved case | PROMOTE_PENDING 2 |
+| D1-006 | PROVEN | 3/3 | Add regression tests for every required-field unresolved case |  · claimed by dev-impl-1135 until 2026-10-07T15:16:31.367Z |
 
 ### Phase B — minimal semantic World
 

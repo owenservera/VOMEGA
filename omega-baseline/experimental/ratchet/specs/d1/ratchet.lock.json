@@ -83,6 +83,33 @@
       "head": "8cd2cf23bd15",
       "at": "2026-10-06T18:34:15.098Z"
     },
+    "D1-006::incompatible account (no realization) is never READY": {
+      "task": "D1-006",
+      "name": "incompatible account (no realization) is never READY",
+      "file": "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts",
+      "specDigest": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+      "by": "dev-impl-1135",
+      "head": "03607396cf71",
+      "at": "2026-10-07T11:17:24.365Z"
+    },
+    "D1-006::missing account target is never READY": {
+      "task": "D1-006",
+      "name": "missing account target is never READY",
+      "file": "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts",
+      "specDigest": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+      "by": "dev-impl-1135",
+      "head": "03607396cf71",
+      "at": "2026-10-07T11:17:24.365Z"
+    },
+    "D1-006::missing payload is never READY and names prompt": {
+      "task": "D1-006",
+      "name": "missing payload is never READY and names prompt",
+      "file": "omega-baseline/experimental/d1/test/gates/a-truth.gate.test.ts",
+      "specDigest": "sha256:be97a9c87b688350abc9b1be6a75f4d58aa5fbf0145c17df9f001774fc730a6b",
+      "by": "dev-impl-1135",
+      "head": "03607396cf71",
+      "at": "2026-10-07T11:17:24.365Z"
+    },
     "D1-010::Provider, Account, Model, Capability and Realization stay distinct records": {
       "task": "D1-010",
       "name": "Provider, Account, Model, Capability and Realization stay distinct records",

@@ -118,6 +118,15 @@ export function validateInterpretation(interp: Interpretation, world?: World): V
   if (!world.realizations.some((r) => r.capability === capability && r.status === "available")) {
     return verdict("unavailable", [], [`no available realization for ${capability}`]);
   }
+  // Capability ≠ Realization: a realization serves one Provider's Accounts, so a
+  // grounded Account target is compatible only if a realization serves its Provider.
+  for (const name of requiredFields(capability).required) {
+    if (decl.params.find((p) => p.name === name)!.type !== "account") continue;
+    const account = world.accounts.find((a) => a.id === interp.ir.slots[name]?.entityId);
+    if (!account) continue;
+    const served = world.realizations.some((r) => r.capability === capability && r.status === "available" && r.provider === account.provider);
+    if (!served) return verdict("unavailable", [], [`${name}: no available realization of ${capability} serves ${account.provider} (${account.id})`]);
+  }
   const requirement = world.authority[capability] ?? "denied";
   if (requirement === "denied") return verdict("refused", [], [`${capability} is not permitted by World ${world.id}`]);
   // Consent is its own action. An interpretation carries no consent record.
