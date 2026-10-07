@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "ee1be8a11d71",
+    "head": "cc2e96f5f506",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -1406,5 +1406,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:4fff66686d7b83f2e37d97269bdb61b7ce391f2c75e1f8e44cdfd246b9c85d63"
+  "digest": "sha256:495af3fc88fc24f632ae99d95175e8999a1194c617dc0507ff8f0ce8424aa9ce"
 }
