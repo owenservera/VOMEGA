@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `03607396cf71`, Bun 1.4.2, win32-x64, 40/80 gates green, digest 34ad404fd78a · promoted gates: 35
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `f9f82a146fb0`, Bun 1.4.2, win32-x64, 40/80 gates green, digest 34ad404fd78a · promoted gates: 35
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 12 | 17 | 11 | 0 | 37 | 0 | 0 | 77 | 11 | 0 |
+| 13 | 16 | 11 | 0 | 37 | 0 | 0 | 77 | 11 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -35,7 +35,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-003 | PROVEN | 1/1 | Reproduce corpus U1 false-READY in an isolated test |  |
 | D1-004 | DONE | 1/1 | Define required-field metadata for `prompt.send` |  |
 | D1-005 | PROVEN | 2/2 | Fix required-field/READY validation |  |
-| D1-006 | PROVEN | 3/3 | Add regression tests for every required-field unresolved case |  · claimed by dev-impl-1135 until 2026-10-07T15:16:31.367Z |
+| D1-006 | DONE | 3/3 | Add regression tests for every required-field unresolved case |  · claimed by dev-impl-1135 until 2026-10-07T15:16:31.367Z |
 
 ### Phase B — minimal semantic World
 
