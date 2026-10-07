@@ -9,29 +9,29 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "bd8ebca3910a",
+    "head": "60a20667686a",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 80,
       "gates": 80,
-      "pass": 37,
-      "fail": 43,
+      "pass": 39,
+      "fail": 41,
       "skip": 0
     },
-    "digest": "sha256:a4510cfc773d5b4452f616d8a7369454227d6b0187bad29cfeba6fa8d1a940d5",
+    "digest": "sha256:e4bb19916a4624d8bcb5f29eb3320fb9740eccf0bd12c51dc789171730ee3b34",
     "silentFiles": []
   },
   "summary": {
-    "OPEN": 11,
+    "OPEN": 12,
     "CLAIMED": 0,
-    "BLOCKED": 43,
-    "PROVEN": 16,
-    "DONE": 7,
+    "BLOCKED": 37,
+    "PROVEN": 19,
+    "DONE": 9,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
-    "frontier": 11,
+    "frontier": 12,
     "missingProof": 0
   },
   "tasks": [
@@ -236,12 +236,12 @@
     },
     {
       "id": "D1-016",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-016::W3 stale Account can never yield a READY command",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         },
         {
@@ -257,7 +257,7 @@
     },
     {
       "id": "D1-017",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-017::W4 mailbox Account has no prompt.send realization",
@@ -268,7 +268,7 @@
         {
           "key": "D1-017::W4 unknown and incompatible targets cannot compile READY",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -413,7 +413,7 @@
     },
     {
       "id": "D1-027",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-027::typed \"use Work\" changes only the Account and its dependents",
@@ -424,7 +424,12 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "gov-trv-r15",
+        "verdict": "accept",
+        "head": "1b2212657c3d",
+        "at": "2026-10-07T09:41:55.755Z"
+      }
     },
     {
       "id": "D1-028",
@@ -448,12 +453,12 @@
     },
     {
       "id": "D1-029",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-029::command digest is deterministic and semantic",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -508,7 +513,7 @@
     },
     {
       "id": "D1-033",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-033::an Account choice is an explicit semantic edit bound to a revision",
@@ -519,7 +524,7 @@
         {
           "key": "D1-033::typed correction produces the same kind of semantic edit",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -529,7 +534,7 @@
     },
     {
       "id": "D1-034",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-034::later draft editing cannot retarget a committed command",
@@ -544,7 +549,7 @@
     },
     {
       "id": "D1-040",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-040::projection exposes interpretation, route, validation, unresolved, consequence, help and actions",
@@ -555,22 +560,27 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "gov-trv-r15",
+        "verdict": "accept",
+        "head": "1b2212657c3d",
+        "at": "2026-10-07T09:41:53.557Z"
+      }
     },
     {
       "id": "D1-041",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-041::projection is pure: same state gives the same projection",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         },
         {
           "key": "D1-041::visual treatment cannot change command meaning (projection purity)",
           "observed": "pass",
-          "promoted": false,
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -580,7 +590,7 @@
     },
     {
       "id": "D1-042",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-042::twin renders the text input and current reading",
@@ -595,7 +605,7 @@
     },
     {
       "id": "D1-043",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-043::twin renders Provider, Account and Model as separately labelled route parts",
@@ -610,7 +620,7 @@
     },
     {
       "id": "D1-044",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-044::unresolved Account chooser shows both Accounts with none selected",
@@ -644,7 +654,7 @@
       "gates": [
         {
           "key": "D1-046::typed and clicked Work produce the same canonical command digest",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -655,7 +665,7 @@
     },
     {
       "id": "D1-047",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-047::external-transfer consequence is visible before execution",
@@ -670,7 +680,7 @@
     },
     {
       "id": "D1-048",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-048::failure lifecycle renders failed-simulated",
@@ -1315,8 +1325,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 37,
-      "red": 43,
+      "green": 39,
+      "red": 41,
       "skipped": 0,
       "total": 80
     },
@@ -1330,5 +1340,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:8dd8ca39941ecb9cc00a4974ed32af68e6171ac9e34a6c99cf6064e51d2dbaf1"
+  "digest": "sha256:d91d9a4196f65e32cde95e7a0be38d6fb27851ce4eefe15d12129fc2d5018bf5"
 }

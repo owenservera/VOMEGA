@@ -137,6 +137,15 @@
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
     },
+    "D1-016::W3 stale Account can never yield a READY command": {
+      "task": "D1-016",
+      "name": "W3 stale Account can never yield a READY command",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "dev-impl-1110",
+      "head": "60a20667686a",
+      "at": "2026-10-07T11:07:22.221Z"
+    },
     "D1-016::W3 stale Account is not reported as available": {
       "task": "D1-016",
       "name": "W3 stale Account is not reported as available",
@@ -154,6 +163,15 @@
       "by": "claude-opus-5.5-seed",
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
+    },
+    "D1-017::W4 unknown and incompatible targets cannot compile READY": {
+      "task": "D1-017",
+      "name": "W4 unknown and incompatible targets cannot compile READY",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
+      "by": "dev-impl-1110",
+      "head": "60a20667686a",
+      "at": "2026-10-07T11:07:23.795Z"
     },
     "D1-018::W5 keeps Provider, Account and Model as separate route records": {
       "task": "D1-018",
@@ -254,6 +272,15 @@
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
     },
+    "D1-033::typed correction produces the same kind of semantic edit": {
+      "task": "D1-033",
+      "name": "typed correction produces the same kind of semantic edit",
+      "file": "omega-baseline/experimental/d1/test/gates/d-session.gate.test.ts",
+      "specDigest": "sha256:d88330caecbfbc8c87d4db7bc872f3b51570389b4ef764ce468c584faa5728c4",
+      "by": "dev-impl-1110",
+      "head": "60a20667686a",
+      "at": "2026-10-07T11:07:20.522Z"
+    },
     "D1-040::projection exposes interpretation, route, validation, unresolved, consequence, help and actions": {
       "task": "D1-040",
       "name": "projection exposes interpretation, route, validation, unresolved, consequence, help and actions",
@@ -262,6 +289,24 @@
       "by": "gov-impl-r12",
       "head": "53ca7859b0aa",
       "at": "2026-10-07T09:02:06.720Z"
+    },
+    "D1-041::projection is pure: same state gives the same projection": {
+      "task": "D1-041",
+      "name": "projection is pure: same state gives the same projection",
+      "file": "omega-baseline/experimental/d1/test/gates/e-projection.gate.test.ts",
+      "specDigest": "sha256:e14a1b2c94ab402748c7138ca0f04ce66aa3cb44398c9094a6b9bd5de77c5b61",
+      "by": "dev-impl-1110",
+      "head": "60a20667686a",
+      "at": "2026-10-07T11:07:18.928Z"
+    },
+    "D1-041::visual treatment cannot change command meaning (projection purity)": {
+      "task": "D1-041",
+      "name": "visual treatment cannot change command meaning (projection purity)",
+      "file": "omega-baseline/experimental/d1/test/gates/e-projection.gate.test.ts",
+      "specDigest": "sha256:e14a1b2c94ab402748c7138ca0f04ce66aa3cb44398c9094a6b9bd5de77c5b61",
+      "by": "dev-impl-1110",
+      "head": "60a20667686a",
+      "at": "2026-10-07T11:07:18.928Z"
     },
     "D1-060::prompt.send consequence is an external transfer, separate from authority": {
       "task": "D1-060",

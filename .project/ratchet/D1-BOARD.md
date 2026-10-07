@@ -4,24 +4,25 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `bd8ebca3910a`, Bun 1.4.2, win32-x64, 37/80 gates green, digest a4510cfc773d · promoted gates: 26
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `60a20667686a`, Bun 1.4.2, win32-x64, 39/80 gates green, digest e4bb19916a46 · promoted gates: 32
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 7 | 16 | 11 | 0 | 43 | 0 | 0 | 77 | 11 | 0 |
+| 9 | 19 | 12 | 0 | 37 | 0 | 0 | 77 | 12 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
 - **D1-063** Implement virtual `prompt.send` realization — crit 14, unblocks 22; `bun run ratchet packet D1-063`
-- **D1-041** Implement pure semantic projector — crit 13, unblocks 23; `bun run ratchet packet D1-041`
-- **D1-033** Represent semantic edits explicitly — crit 13, unblocks 21; `bun run ratchet packet D1-033`
-- **D1-029** Implement deterministic command digest — crit 12, unblocks 19; `bun run ratchet packet D1-029`
+- **D1-034** Bind committed command to immutable revision — crit 12, unblocks 18; `bun run ratchet packet D1-034`
 - **D1-050** Expose minimal semantic help metadata from same source records — crit 12, unblocks 16; `bun run ratchet packet D1-050`
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
+- **D1-044** Render unresolved Account chooser — crit 12, unblocks 12; `bun run ratchet packet D1-044`
 - **D1-055** Define minimal D1 Reflection extraction boundary — crit 6, unblocks 6; `bun run ratchet packet D1-055`
 - **D1-006** Add regression tests for every required-field unresolved case — crit 1, unblocks 0; `bun run ratchet packet D1-006`
-- **D1-016** Add World W3: stale Claude Work — crit 1, unblocks 0; `bun run ratchet packet D1-016`
-- **D1-017** Add World W4: unknown/incompatible target — crit 1, unblocks 0; `bun run ratchet packet D1-017`
+- **D1-042** Render text input + interpretation state — crit 1, unblocks 0; `bun run ratchet packet D1-042`
+- **D1-043** Render Provider/Account/Model route — crit 1, unblocks 0; `bun run ratchet packet D1-043`
+- **D1-047** Render consequence/external-transfer preview — crit 1, unblocks 0; `bun run ratchet packet D1-047`
+- **D1-048** Render lifecycle states — crit 1, unblocks 0; `bun run ratchet packet D1-048`
 - **D1-062** Prevent interpretation from granting authority — crit 1, unblocks 0; `bun run ratchet packet D1-062`
 
 ## All tasks
@@ -47,8 +48,8 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-013 | PROVEN | 1/1 | Add World W0: no Accounts |  |
 | D1-014 | PROVEN | 1/1 | Add World W1: Claude Work only |  |
 | D1-015 | PROVEN | 1/1 | Add World W2: Claude Work + Personal |  |
-| D1-016 | OPEN ★ | 2/2 | Add World W3: stale Claude Work | PROMOTE_PENDING 1 |
-| D1-017 | OPEN ★ | 2/2 | Add World W4: unknown/incompatible target | PROMOTE_PENDING 1 |
+| D1-016 | PROVEN | 2/2 | Add World W3: stale Claude Work |  · claimed by dev-impl-1110 until 2026-10-07T15:07:21.020Z |
+| D1-017 | PROVEN | 2/2 | Add World W4: unknown/incompatible target |  · claimed by dev-impl-1110 until 2026-10-07T15:07:22.695Z |
 | D1-018 | PROVEN | 1/1 | Add World W5: optional Provider/Model route stress case |  |
 
 ### Phase C — registration and command nucleus
@@ -62,9 +63,9 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-024 | DONE | 1/1 | Define candidate canonical `prompt.send` UseCommand |  |
 | D1-025 | DONE | 1/1 | Compile direct `prompt.send` utterance |  |
 | D1-026 | DONE | 1/1 | Preserve two-Account ambiguity |  |
-| D1-027 | PROVEN | 1/1 | Apply explicit text correction “use Work” |  · claimed by gov-impl-r14 until 2026-10-07T13:06:20.013Z |
+| D1-027 | DONE | 1/1 | Apply explicit text correction “use Work” |  · claimed by gov-impl-r14 until 2026-10-07T13:06:20.013Z |
 | D1-028 | DONE | 1/1 | Protect quoted payload from routing |  |
-| D1-029 | OPEN ★ | 0/1 | Implement deterministic command digest |  |
+| D1-029 | PROVEN | 1/1 | Implement deterministic command digest |  |
 
 ### Phase D — realtime session semantics
 
@@ -73,22 +74,22 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-030 | PROVEN | 1/1 | Add InterpretationSession/revision identity |  |
 | D1-031 | PROVEN | 1/1 | Bind interpretation result to originating revision |  |
 | D1-032 | PROVEN | 1/1 | Suppress obsolete late results |  |
-| D1-033 | OPEN ★ | 2/2 | Represent semantic edits explicitly | PROMOTE_PENDING 1 |
-| D1-034 | BLOCKED | 0/1 | Bind committed command to immutable revision |  |
+| D1-033 | PROVEN | 2/2 | Represent semantic edits explicitly |  · claimed by dev-impl-1110 until 2026-10-07T15:07:19.378Z |
+| D1-034 | OPEN ★ | 0/1 | Bind committed command to immutable revision |  |
 
 ### Phase E — projection and product twin
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-040 | PROVEN | 1/1 | Define minimal deterministic D1 projection contract |  · claimed by gov-impl-r12 until 2026-10-07T12:55:42.286Z |
-| D1-041 | OPEN ★ | 2/2 | Implement pure semantic projector | PROMOTE_PENDING 2 |
-| D1-042 | BLOCKED | 0/1 | Render text input + interpretation state |  |
-| D1-043 | BLOCKED | 0/1 | Render Provider/Account/Model route |  |
-| D1-044 | BLOCKED | 0/1 | Render unresolved Account chooser |  |
+| D1-040 | DONE | 1/1 | Define minimal deterministic D1 projection contract |  · claimed by gov-impl-r12 until 2026-10-07T12:55:42.286Z |
+| D1-041 | PROVEN | 2/2 | Implement pure semantic projector |  · claimed by dev-impl-1110 until 2026-10-07T15:07:17.931Z |
+| D1-042 | OPEN ★ | 0/1 | Render text input + interpretation state |  |
+| D1-043 | OPEN ★ | 0/1 | Render Provider/Account/Model route |  |
+| D1-044 | OPEN ★ | 0/1 | Render unresolved Account chooser |  |
 | D1-045 | BLOCKED | 1/1 | Route chooser click through semantic edit reducer | PROMOTE_PENDING 1 |
-| D1-046 | BLOCKED | 0/1 | Prove typed/clicked parity |  |
-| D1-047 | BLOCKED | 0/1 | Render consequence/external-transfer preview |  |
-| D1-048 | BLOCKED | 0/2 | Render lifecycle states |  |
+| D1-046 | BLOCKED | 1/1 | Prove typed/clicked parity | PROMOTE_PENDING 1 |
+| D1-047 | OPEN ★ | 0/1 | Render consequence/external-transfer preview |  |
+| D1-048 | OPEN ★ | 0/2 | Render lifecycle states |  |
 
 ### Phase F — grounded contextual help
 
