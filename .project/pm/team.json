@@ -1,7 +1,13 @@
 {
   "schema": "vomega-pm-team/0",
   "updated": "2026-10-06",
-  "status": "ACTIVE_WAVE_B_PENDING",
+  "status": "OPERATING_ALWAYS_ON",
+  "operatingMode": {
+    "since": "2026-10-06T19:35Z",
+    "mechanism": "recurring PM sweep folded into the family automation (dev-loop governor) + standalone 30-min fallback spec",
+    "protocol": ".project/dev-loop/PM-TEAM.md",
+    "note": "boundaries unchanged: PM is projection, not truth; five owner-scoped programs; no priority/scope authority; waveA verdict below still governs the design"
+  },
   "banding": {
     "standing": ["PMC-LEAD", "PMC-TRU"],
     "onDemand": ["PMC-CUR", "PMC-AUT", "PMC-DEP"],
@@ -20,13 +26,16 @@
   },
   "notClaimed": ["D1 tasks", "roadmap tasks", "product code", "auth/provider/model config"],
   "measured": {
-    "head": "93075cf",
+    "head": "d17c7d3",
     "bunVersion": "1.4.2",
-    "nodeVersion": "v24.11.1",
     "canonicalProgramCount": 67,
     "roadmapTaskCount": 74,
-    "ratchetGateCounts": { "total": 80, "greenAtLastProbe": 15 },
-    "zcodeCliOnBashPath": false,
+    "ratchetGateCounts": { "total": 80, "greenAtLastProbe": 24 },
+    "ratchetTaskCounts": { "done": 5, "proven": 14, "open": 10, "blocked": 48, "regressed": 0 },
+    "pmCheck": "ok (1 warning: NEEDS_REVIEW MP-60 P5)",
+    "pmTest": "47 pass / 0 fail / 743 expect()",
+    "runtimeVerified": true,
+    "runtimeVerifiedAt": "2026-10-06T19:33Z",
     "harnessNote": "unbounded heavy background subagents stalled; bounded (<=8 tool-call) workers completed"
   },
   "roster": [

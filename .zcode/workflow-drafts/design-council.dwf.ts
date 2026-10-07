@@ -198,7 +198,7 @@ push(
   pending,
   (async (): Promise<VoiceVerdict> => {
     try {
-      return parseVoice("codex-gpt", await world.run("codex", ["exec", "-s", "read-only", "-C", ".local/dev-loop/scratch", brief], { timeoutMs: 600_000 }));
+      return parseVoice("codex-gpt", await world.run("codex.cmd", ["exec", "-s", "read-only", "-C", ".local/dev-loop/scratch", brief], { timeoutMs: 600_000 }));
     } catch (e) {
       return failVoice("codex-gpt", e);
     }
@@ -218,7 +218,7 @@ push(
   pending,
   (async (): Promise<VoiceVerdict> => {
     try {
-      return parseVoice("grok-grok", await world.run("grok", ["-p", brief, "--max-tool-rounds", "1"], { timeoutMs: 600_000 }));
+      return parseVoice("grok-grok", await world.run("grok.cmd", ["-p", brief, "--max-tool-rounds", "1"], { timeoutMs: 600_000 }));
     } catch (e) {
       return failVoice("grok-grok", e);
     }
