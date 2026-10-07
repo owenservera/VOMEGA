@@ -105,12 +105,12 @@ is alive because this table says LIVE.
 
 | Voice | Probe | Result |
 | --- | --- | --- |
-| codex (GPT-6.x) | `codex.cmd exec -s read-only "Reply OK"` 2026-10-06 19:45Z | **LIVE** — `CODEX-VOICE-OK` (note: on Windows the workflow must spawn `codex.cmd`, not `codex` — `world.run` cannot exec the extensionless npm shim, which caused the 16:55Z ENOENT; fixed in the saved workflow) |
-| claude (Claude) | `claude -p "Reply OK"` 2026-10-06 19:45Z | FAILED — "OAuth session expired and could not be refreshed" (owner said setup was done at ~19:0xZ; probe still fails — re-auth/refresh is Owen-reserved) |
-| grok (Grok) | `grok.cmd -p "Reply OK"` 2026-10-06 19:45Z | FAILED — "API key required" (Owen-reserved) |
+| codex (GPT-6.x) | `codex.cmd exec -s read-only "Reply OK"` 2026-10-07 | **LIVE** — `CODEX-VOICE-OK` (note: on Windows the workflow must spawn `codex.cmd`, not `codex` — `world.run` cannot exec the extensionless npm shim, which caused the 2026-10-06 16:55Z ENOENT; fixed in the saved workflow) |
+| claude (Claude) | `claude -p "Reply OK"` 2026-10-07 | FAILED — "OAuth session expired and could not be refreshed" (failed the same way 2026-10-06 19:45Z; re-auth/refresh is Owen-reserved) |
+| grok (Grok) | `grok.cmd -p "Reply OK"` 2026-10-07 | FAILED — "API key required" (Owen-reserved; unchanged since 2026-10-06 19:45Z) |
 | ZCode GLM-5.3-Flash | this session | LIVE (the governor itself runs on it) |
 
-Quorum status: **2 live voices (GLM + GPT)** — meets the two-voice minimum as of 19:45Z.
+Quorum status: **2 live voices (GLM + GPT)** — meets the two-voice minimum as of 2026-10-07.
 
 ## 7. Boundaries
 

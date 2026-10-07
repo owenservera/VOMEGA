@@ -1,9 +1,10 @@
 # 24/7 development loop — governor + dev team
 
-Status: **ACTIVE** (owner-directed, 2026-10-06; re-cadenced same day from hourly to a continuous drain)
-Governor: the ZCode main session ("governor") that runs this loop.
+Status: **ACTIVE** — the dev lane under the Chief of Staff charter (2026-10-07)
+Governor: the ZCode main session ("governor"), which is Owen's dedicated Chief-of-Staff agent per [`../staff/CHIEF-OF-STAFF.md`](../staff/CHIEF-OF-STAFF.md). This file is that charter's dev-lane protocol: routing, review pipeline and boundaries live there; the cycle mechanics live here.
 Cadence: **every 10 minutes**; each run drains up to **8 governed cycles back-to-back**, pipelines the reviewer, and ends early only when no real bounded work remains. Owner direction: the team is never left idle while claimable work exists.
-Claim: [`../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md`](../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md) (setup) · council: [`../agentic-launch/claims/20261006-1641-design-council-zcode.md`](../agentic-launch/claims/20261006-1641-design-council-zcode.md)
+Lane ownership (2026-10-07): design council, devops and PM run in Owen-initiated separate threads AND as in-family sweep steps 3b/3c applied to the automation by the devops thread; per-lane locks (`.local/dev-loop/devops.lock`, `.local/pm/pm.lock`) guard against duplication; all lanes meet through Git, claims, STATUS/Commons and the `ops/local-state` snapshot (§8).
+Claim: [`../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md`](../agentic-launch/claims/20261006-1617-devloop-24x7-zcode.md) (setup) · council: [`../agentic-launch/claims/20261006-1641-design-council-zcode.md`](../agentic-launch/claims/20261006-1641-design-council-zcode.md) · CoS redesign: [`../agentic-launch/claims/20261007-0920-cos-redesign-zcode.md`](../agentic-launch/claims/20261007-0920-cos-redesign-zcode.md)
 
 This file is the reconstructable record of the loop: what it is, who is on the team,
 what each cycle must do, and the boundaries it must not cross. If the automation is
