@@ -54,7 +54,12 @@ Rules:
 0. **Stampede guard.** If `.local/dev-loop/governor.lock` exists and was modified in
    the last 20 minutes, another governor run is likely active — exit immediately
    with a one-line report. Otherwise take the lock (run id + UTC timestamp) and
-   remove it in the final step, even on failure.
+   remove it in the final step, even on failure. **Lock-touch rule:** a governor
+   that works longer than the 20-minute window must touch the lock's mtime as it
+   goes (e.g. append the current UTC minute to it) — an untouched stamp from a
+   still-live session reads as stale and invites a double run (observed
+   2026-10-07 09:13–09:15Z; routed by the devops thread, claim
+   `20261007-0916-devops-standing-thread-zcode`).
 1. **Checkout truth.** Record local `HEAD`; `git fetch origin`; fast-forward a clean
    checkout that is behind; if dirty or diverged, preserve work and surface it —
    never reset/pull over someone else's changes.

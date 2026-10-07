@@ -98,18 +98,34 @@ OPS-REL — **release readiness** (report only):
 
 ## 6. Automation registration (recreate from here)
 
-Mechanism (current, 2026-10-06): the sweep runs **inside the 10-minute governor
-automation** (`automation-2c7bbcf3`, `*/10 * * * *`) — the drain (§ of
-24X7-DEV-LOOP.md) and the sweep share one governor run, so the sweep fills exactly
-the window where the drain legitimately idles and no second lock is needed. A run
-that ends without either drained work or a sweep result has failed its duty.
+Mechanism (**fold-in applied 2026-10-07T09:14Z** by the devops standing thread,
+claim `../agentic-launch/claims/20261007-0916-devops-standing-thread-zcode.md`):
+the sweep runs **inside the 10-minute governor automation**
+(`automation-2c7bbcf3-18a4-4d0d-848a-d7691d0f908c`, `*/10 * * * *`) as prompt step
+3b — after the drain ends, at most one sweep per run, throttled to one sweep per
+30 minutes (the last line of `.local/ops/sweeps.log` is the throttle record), voice
+probes throttled to once per 24h (the probe dates in DESIGN-COUNCIL.md §6 tell),
+reds matched against the §7 standing facts (a red matching recorded standing state
+is YELLOW; only a new red is RED), and a run that ends with **neither drained work
+nor a sweep result** (fresh sweep, or a one-line "sweep throttled" record when the
+drain idled) has failed its duty. No second lock is needed — the sweep shares the
+governor run's own stampede discipline; if the worktree is dirty with in-flight
+changes the drain did not create, the sweep runs read-only and records BLOCKED.
 
-Fallback (if the teams are ever split): a standalone recurring automation every 30
-minutes (`*/30 * * * *`) running this §3 sweep with the §2 devops lock and the
-read-only coordination rule against a fresh governor lock.
+The PM sweep rides the same automation as prompt step 3c with its own
+`.local/pm/pm.lock` guard (PM-TEAM.md §5). Standing-thread hosts coexist with the
+automation clauses via the locks: the PM team has a standing thread
+(`20261007-0911-pm-team-thread4-zcode`) and the devops team has this one
+(`20261007-0916-devops-standing-thread-zcode`); the automation clause covers the
+sweeps whenever no standing thread is alive.
+
+Fallback (if the family automation is ever split): a standalone recurring
+automation every 30 minutes (`*/30 * * * *`) running this §3 sweep with the §2
+devops lock and the read-only coordination rule against a fresh governor lock.
 
 Unattended runs must never block on an interactive confirmation. Verify the
-mechanism with CronList. Owner controls: change cadence or delete at any time.
+mechanism with CronList plus the sweeps.log rows it produces. Owner controls:
+change cadence or delete at any time.
 
 ## 7. Standing system-health facts (measured, per sweep)
 
@@ -120,3 +136,5 @@ mechanism with CronList. Owner controls: change cadence or delete at any time.
 | main vs origin | 2026-10-06 19:55Z | **10 ahead** 0 behind; unpushed commits inventoried (owner decides push) |
 | ratchet | 2026-10-06 19:55Z | 24/80 green @ bc226dc-line; DONE 5 · PROVEN 14 · OPEN 10 · BLOCKED 48; D1-026 CLAIMED (in-flight preserved) |
 | outcome | 2026-10-06 19:55:53Z | **YELLOW** — projections stale (regenerated in-sweep), d1:gates exit 1 (routed), 10 unpushed (surfaced) |
+| coordination | 2026-10-07 09:13–09:15Z | governor-lock handover observed while an automation run was dispatching: a live session governor's lock stamp was 28 min old (past the 20-min stampede window) and then changed hands to a "chief-of-staff" governor (`gov-run-20261007-cos`). No double-run harm confirmed, but the risk is real → step-0 **lock-touch rule** amended into 24X7-DEV-LOOP.md §3 and the automation prompt (touch the lock's mtime during long runs). Routed by claim `20261007-0916-devops-standing-thread-zcode`. |
+| fold-in | 2026-10-07 09:14Z | OPS (3b) + PM (3c) sweep clauses applied to `automation-2c7bbcf3` — gap from closeout 20261006-1701 closed. First sweep-carrying run: pending a window with a stale/absent governor lock (09:23Z run expected to stampede-exit). |

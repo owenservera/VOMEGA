@@ -62,9 +62,13 @@ material (drift found and routed, or a milestone/hold state change).
 
 ## 5. Registration (recreate from here)
 
-- Fold-in (current): the family automation (dev-loop governor, every 10 min) runs
-  **at most one PM sweep per governor run** after the drain ends, with its own
-  lock — see the automation prompt's PM clause.
+- Fold-in (**applied 2026-10-07T09:14Z**): the family automation
+  (`automation-2c7bbcf3-18a4-4d0d-848a-d7691d0f908c`, dev-loop governor, every
+  10 min) runs **at most one PM sweep per governor run** after the drain ends,
+  with the `.local/pm/pm.lock` stampede guard — prompt step 3c. The standing PM
+  thread (`../agentic-launch/claims/20261007-0911-pm-team-thread4-zcode.md`) runs
+  the same sweep from its own session; the lock makes the two coexist, and the
+  automation clause is the fallback when the standing thread is not alive.
 - Standalone fallback (if the family automation is ever split): a recurring
   automation every 30 minutes (`*/30 * * * *`) running §3 with the
   `.local/pm/pm.lock` stampede guard and a read-only mode while the dev-loop
@@ -74,7 +78,7 @@ material (drift found and routed, or a milestone/hold state change).
 
 | Fact | Measured | Value |
 | --- | --- | --- |
-| pm:check | 2026-10-06 19:33Z | ok (1 warning: NEEDS_REVIEW MP-60 P5 decomposition review) |
-| pm:test | 2026-10-06 19:33Z | 47 pass / 0 fail / 743 expect() |
-| ratchet reference | 2026-10-06 19:33Z | 24/80 green; DONE 5 · PROVEN 14 · OPEN 10 · BLOCKED 48 @ bc226dc |
-| team.json runtimeVerified | 2026-10-06 19:33Z | true (first live sweep) |
+| pm:check | 2026-10-07 09:15Z | ok (1 warning: NEEDS_REVIEW MP-60 P5 decomposition review) |
+| pm:test | 2026-10-07 09:15Z | 47 pass / 0 fail / 743 expect() |
+| ratchet reference | 2026-10-07 09:15Z | 37/80 green; DONE 7 · PROVEN 16 · OPEN 11 · BLOCKED 43 @ 8a7300f (probe run this sweep) |
+| team.json runtimeVerified | 2026-10-07 09:15Z | true (standing thread 4 sweep) |
