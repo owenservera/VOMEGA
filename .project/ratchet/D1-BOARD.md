@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `cc2e96f5f506`, Bun 1.4.2, win32-x64, 45/85 gates green, digest 066dfc8dc3c6 · promoted gates: 40
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `f0f30a093575`, Bun 1.4.2, win32-x64, 45/85 gates green, digest 066dfc8dc3c6 · promoted gates: 40
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 15 | 14 | 11 | 0 | 37 | 0 | 0 | 77 | 11 | 0 |
+| 14 | 15 | 11 | 0 | 37 | 0 | 0 | 77 | 11 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -35,7 +35,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-003 | PROVEN | 1/1 | Reproduce corpus U1 false-READY in an isolated test |  |
 | D1-004 | DONE | 1/1 | Define required-field metadata for `prompt.send` |  |
 | D1-005 | PROVEN | 2/2 | Fix required-field/READY validation |  |
-| D1-006 | DONE | 3/3 | Add regression tests for every required-field unresolved case |  · claimed by dev-impl-1135 until 2026-10-07T15:16:31.367Z |
+| D1-006 | DONE | 3/3 | Add regression tests for every required-field unresolved case |  |
 
 ### Phase B — minimal semantic World
 
@@ -48,7 +48,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-014 | PROVEN | 1/1 | Add World W1: Claude Work only |  |
 | D1-015 | PROVEN | 1/1 | Add World W2: Claude Work + Personal |  |
 | D1-016 | DONE | 4/4 | Add World W3: stale Claude Work |  |
-| D1-017 | DONE | 5/5 | Add World W4: unknown/incompatible target |  |
+| D1-017 | PROVEN | 5/5 | Add World W4: unknown/incompatible target | latest review is not an independent accept |
 | D1-018 | PROVEN | 1/1 | Add World W5: optional Provider/Model route stress case |  |
 
 ### Phase C — registration and command nucleus

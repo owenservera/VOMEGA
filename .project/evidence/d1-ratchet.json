@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "cc2e96f5f506",
+    "head": "f0f30a093575",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -26,8 +26,8 @@
     "OPEN": 11,
     "CLAIMED": 0,
     "BLOCKED": 37,
-    "PROVEN": 14,
-    "DONE": 15,
+    "PROVEN": 15,
+    "DONE": 14,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -281,7 +281,7 @@
     },
     {
       "id": "D1-017",
-      "state": "DONE",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-017::W4 'work claude' with authority allowed is the one-factor positive control",
@@ -317,11 +317,11 @@
       "artifacts": [],
       "missingProof": false,
       "review": {
-        "by": "dev-trv-d006",
-        "verdict": "accept",
-        "head": "ee1be8a11d71",
-        "at": "2026-10-07T13:52:41.689Z",
-        "note": "ACCEPT (independent, adversarial) with one named residual hole. Verified at HEAD 76fe02b, working tree clean for the reviewed files. All three original D1-017 assertions are retained and three gates were added under forced authority=allowed (b-world.gate.test.ts:101-125). Discrimination proven by mutation on a /tmp copy, each mutation turning EXACTLY one gate red: reverting the draftFor mention guard (compile.ts:528) -> 'an explicit unknown target never resolves to another Account' fails; removing the unresolvedFor unknown branch (compile.ts:607) -> same gate fails on reason/options; removing the unheldRoute wiring (compile.ts:155) -> same gate fails because the mention never appears; removing the per-Account realization check (validate.ts:131-132) -> 'an Account no realization serves is unavailable even when authority allows it' fails. Every half of the fix is independently load-bearing. Defect reproduction matches dev-trv-1110 exactly: at d20d605 (hardened gates, pre-fix code) 'send x to Gemini' under W4 with authority=allowed resolved to account:claude-work, validated ready and COMMITTED; at HEAD it resolves to account=null with unresolved=[account:unknown, options:[]] and commit is rejected NOT_READY. The old single-compatible fallback is therefore discriminated against, and unresolvedFor no longer offers the compatible set as the choice on offer (pre-fix it offered both accounts). No regression anywhere: full-suite probe diff d20d605 -> HEAD is exactly two gates newly green (the two new D-016/D-017 gates) and zero newly red across all 85 gates; ratchet status --probe reports REGRESSED 0. RESIDUAL GAPS (recorded, follow-up warranted, not a rejection): (1) the retarget hole is closed only for QUOTED payloads, exactly as compile.ts:487-491 documents. 'send hello to Gemini' (unquoted) under W1/W4 with authority=allowed STILL resolves to account:claude-work and compiles READY and commits - the same U1 defect class. The promoted gate name 'an explicit unknown target never resolves to another Account' is therefore broader than the behaviour it exercises; recommend either renaming it to state the quoted-payload scope, or opening an explicit gate for the unquoted case so the boundary is a measured claim rather than a comment. (2) unheldRoute over-captures post-quote clauses that are not routes: 'send x about the outage', 'send x for review', 'send x into the fire' now refuse as unknown targets where they previously defaulted; this fails safe (never retargets) and regresses no promoted gate, but it is an untested narrowing of the phrase surface. (3) unheldRoute cannot capture payload words or steal a grounded target - it only fires when grounding found nothing and only when a quote exists, so payloadOf always returns the quote verbatim; verified across 'with urgency to work claude', 'via/from/at work claude', 'to work claude please', all still READY. (4) allowedAuthority()'s unused patch parameter is dead code in a hardened gate file. (5) unrelated pre-existing behaviour, not introduced here: W2 'send x' with no route reports needs-info/missing rather than needs-choice, identically before and after this change (compile.ts:274 maps every non-ambiguous blocker to needs-info)."
+        "by": "dev-trv-d14329",
+        "verdict": "reject",
+        "head": "21ee385bd7fa",
+        "at": "2026-10-07T14:51:57.662Z",
+        "note": "REJECT. Gate strengthening is real and non-vacuous (46de059: name unchanged, quoted assertions kept, loop over both forms; mutant 1 revert-of-cc2e96f and mutant 2 'unheldRoute returns null when no quote' both turn it red). But the property the gate NAMES is still false on shipped code: an unrecognised explicit target on the unquoted path still fills the single compatible Account and reaches ready. Seven natural utterances with authority allowed on W4 return account=account:claude-work, state=ready, no unresolved record: 'send hello to Gemini!', 'send hello to Gemini?', 'send hello to the team!', 'send hello to Gemini - thanks', \"send hello to Gemini 'x'\", 'send hello to Gemini \"x\"'. Root cause 1 compile.ts:508 'if (tail.some(t => t.kind !== \"word\" && t.kind !== \"punct\")) return null;' - '!', '?' and '-' lex as kind 'symbol' (only ',' and '.' are 'punct'), so any sentence-final symbol silently disarms the unheld-route guard and falls through to the single-compatible fill. Root cause 2 compile.ts:499-500 'const q = body.findIndex(quote); const from = q < 0 ? 0 : q + 1;' - a quote token anywhere after the route makes 'from' skip past the preposition, the loop never runs, and the route is dropped. Fairness: not a regression - at bd241e2 ten of twelve probe forms retargeted; cc2e96f narrows the class to these six but does not close it. The gate cannot see the residue because it tests exactly 'send hello to Gemini' with no terminator and no trailing token, and mutant 3 (dropping 'on' from TARGET_PREPS) stays green, so the gate is also silent on the fail-safe false-positive side ('send hello on Monday' becomes unknown-target needs-info). Governance: b-world.gate.test.ts is anchored, so state.ts:105 consults only the spec-change digest and state.ts:120 lists only non-promoted gates in 'promotable' - the strengthened gate keeps promoted provenance specDigest sha256:4444b120 / by dev-impl-d006 / head f6c603d69bcd while the file is now sha256:b0b2b172, so check emits no SPEC_CHANGED and no PROMOTE_PENDING and verify prints [promoted] by dev-impl-d006. dev-d006 re-promoted after its own spec-change; dev-d14329 did not. verify D1-017 green, status --probe REGRESSED 0, check exit 0 (5 pre-existing warnings)."
       }
     },
     {
@@ -1406,5 +1406,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:495af3fc88fc24f632ae99d95175e8999a1194c617dc0507ff8f0ce8424aa9ce"
+  "digest": "sha256:40cf7e385c92933f66de7ab590e002f28493edd3d88be2ebc49be8acfb2a3643"
 }
