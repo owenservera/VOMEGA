@@ -9,24 +9,24 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "53ca7859b0aa",
+    "head": "bd8ebca3910a",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 80,
       "gates": 80,
-      "pass": 34,
-      "fail": 46,
+      "pass": 37,
+      "fail": 43,
       "skip": 0
     },
-    "digest": "sha256:10a880d9fcb10dc885ea42a8ab14bb77ced7d40114027da116ff98a0d481f93b",
+    "digest": "sha256:a4510cfc773d5b4452f616d8a7369454227d6b0187bad29cfeba6fa8d1a940d5",
     "silentFiles": []
   },
   "summary": {
     "OPEN": 11,
     "CLAIMED": 0,
-    "BLOCKED": 44,
-    "PROVEN": 15,
+    "BLOCKED": 43,
+    "PROVEN": 16,
     "DONE": 7,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
@@ -413,12 +413,12 @@
     },
     {
       "id": "D1-027",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-027::typed \"use Work\" changes only the Account and its dependents",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -508,7 +508,7 @@
     },
     {
       "id": "D1-033",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-033::an Account choice is an explicit semantic edit bound to a revision",
@@ -518,7 +518,7 @@
         },
         {
           "key": "D1-033::typed correction produces the same kind of semantic edit",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -569,7 +569,7 @@
         },
         {
           "key": "D1-041::visual treatment cannot change command meaning (projection purity)",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -1315,8 +1315,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 34,
-      "red": 46,
+      "green": 37,
+      "red": 43,
       "skipped": 0,
       "total": 80
     },
@@ -1330,5 +1330,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:fe5a4c961451d1d71dd7773d2b9d34569b6f0d62b0676d0a8e85d211a0623f8f"
+  "digest": "sha256:8dd8ca39941ecb9cc00a4974ed32af68e6171ac9e34a6c99cf6064e51d2dbaf1"
 }

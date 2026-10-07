@@ -7,10 +7,12 @@
 // delegates to the one law in validate.ts (D1-005, PROVEN in bc226dc) instead
 // of restating it. The `NotImplemented[D1-005]` label that used to sit on this
 // file's `validation` was stale: D1-005 is DONE and its law lives in
-// validate.ts; the compile-path surface is D1-026's. Still stubs, each still
-// naming its owning task so a red gate says who owns it: registration (D1-021),
-// typed correction (D1-027), command identity (D1-029), interpreter trace
-// (D1-025).
+// validate.ts; the compile-path surface is D1-026's; D1-027 — the typed
+// correction, grounded by the SAME grounder as the command path and carried as
+// the SAME SemanticEdit value a click produces, so typed and clicked corrections
+// converge on one semantic edit path. Still stubs, each still naming its owning
+// task so a red gate says who owns it: registration (D1-021), command identity
+// (D1-029), interpreter trace (D1-025).
 //
 // Harvest disposition (OPERATING.md, "Harvest before inventing"): ADAPT, not
 // reimplement. plugins/vivim-nlcl-pure supplies the lexer (so words inside a
@@ -57,7 +59,7 @@ const COMMAND_VERBS: Record<string, readonly string[]> = {
 /** Verbs that open a registration — recognized only to hand the task to its owner (D1-021). */
 const REGISTER_VERBS = new Set(["add", "register"]);
 
-/** Verbs that open a typed correction — recognized only to hand the task to its owner (D1-027). */
+/** Verbs that open a typed correction. The verb opens it and nothing more: it names no field. */
 const CHOOSE_VERBS = new Set(["use", "switch", "choose", "select"]);
 
 /** Words that separate a routed target from the payload. They only split mentions and open a payload. */
@@ -129,7 +131,7 @@ export function interpretRevision(state: D1State, n: number): InterpretationResu
 
   // Recognized-but-unimplemented surfaces keep naming their owning task.
   if (verb && REGISTER_VERBS.has(verb)) return notImplemented("D1-021", `interpretRevision(revision ${n}: registration "${text}")`);
-  if (verb && CHOOSE_VERBS.has(verb)) return notImplemented("D1-027", `interpretRevision(revision ${n}: correction "${text}")`);
+  if (verb && CHOOSE_VERBS.has(verb)) return correctionFor(text, tokens, syntaxNotes, world, base);
 
   // A capability the World does not offer is not a command, however well it reads.
   const capability = verb
@@ -418,6 +420,56 @@ function groundTarget(text: string, body: Token[], wm: WorldModel): Grounding {
     model: resolve("model"),
     candidates,
   };
+}
+
+/**
+ * Which field a correction edits when one mention grounds to several kinds. An
+ * Account derives its Provider and a Model derives its Provider (the declarations'
+ * `derivedFrom`), so the narrower record wins and the dependent Provider is
+ * re-derived downstream in `currentCommand`. A Provider on its own is the last resort.
+ */
+const CORRECTION_FIELDS = ["account", "model", "provider"] as const;
+
+/**
+ * D1-027: a typed correction, read as a SEMANTIC EDIT — not as a new command.
+ *
+ * The verb only opens it; what it names is grounded by the SAME `groundTarget` the
+ * command path uses, so a typed correction and a click produce the identical
+ * `SemanticEdit` value and reach the command through one semantic edit path. Only the
+ * named field travels: capability, payload and params are not re-read here, so
+ * "use Work" changes the Account and what is derived from it, and nothing else.
+ *
+ * It resolves fields; it grants nothing. A field a mention TIES on ("use Claude" over
+ * two Accounts) gets no edit, so that field's tie stays visible while only that field
+ * is left alone; a mention that names nothing the World holds produces no edit at all
+ * and invents no id. The result is still bound to its revision: an obsolete revision's
+ * correction is rejected before any edit is appended, so it can never overwrite
+ * current state (D1-032).
+ */
+function correctionFor(
+  text: string,
+  tokens: Token[],
+  syntaxNotes: string[],
+  world: World,
+  base: Omit<InterpretationResult, "kind">,
+): InterpretationResult {
+  const g = groundTarget(text, tokens.slice(1), toInterpreterWorld(world));
+  const trace = { engine: INTERPRETER_VERSION, mention: g.mention, candidates: g.candidates, tokens: tokens.length, syntaxNotes } satisfies D1Trace;
+  const field = CORRECTION_FIELDS.find((f) => g[f] !== null);
+  const value = field ? g[field] : null;
+  if (!field || value === null) {
+    const ties = Object.entries(g.candidates)
+      .filter(([, ids]) => ids.length > 1)
+      .map(([f, ids]) => `${f} (${ids.join(", ")})`);
+    const reason =
+      g.mention === null ? `correction "${text}" names no target`
+      : ties.length > 0 ? `correction "${text}" leaves a tie: ${ties.join("; ")}`
+      : `correction "${text}" names no record the World holds`;
+    return { ...base, kind: "unknown", detail: { ...trace, reason } };
+  }
+  // `via` is presentation provenance only (contract.ts), so typed and clicked corrections
+  // keep one canonical command identity (D1-029).
+  return { ...base, kind: "edit", edits: [{ kind: "select", field, value, via: "typed" }], detail: trace };
 }
 
 /** The payload: a quoted span verbatim (its words can never retarget), else the unconsumed text. */

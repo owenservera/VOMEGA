@@ -191,6 +191,15 @@
       "head": "d17c7d35026a",
       "at": "2026-10-06T20:09:59.532Z"
     },
+    "D1-027::typed \"use Work\" changes only the Account and its dependents": {
+      "task": "D1-027",
+      "name": "typed \"use Work\" changes only the Account and its dependents",
+      "file": "omega-baseline/experimental/d1/test/gates/c-command.gate.test.ts",
+      "specDigest": "sha256:07d4c02b99c2671c07f7ceada2aff8e392567c39a53843c8e44c2e720ae7a574",
+      "by": "gov-impl-r14",
+      "head": "bd8ebca3910a",
+      "at": "2026-10-07T09:09:32.197Z"
+    },
     "D1-028::Account words inside a quoted payload never retarget": {
       "task": "D1-028",
       "name": "Account words inside a quoted payload never retarget",

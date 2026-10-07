@@ -4,17 +4,17 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `53ca7859b0aa`, Bun 1.4.2, win32-x64, 34/80 gates green, digest 10a880d9fcb1 · promoted gates: 25
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `bd8ebca3910a`, Bun 1.4.2, win32-x64, 37/80 gates green, digest a4510cfc773d · promoted gates: 26
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 7 | 15 | 11 | 0 | 44 | 0 | 0 | 77 | 11 | 0 |
+| 7 | 16 | 11 | 0 | 43 | 0 | 0 | 77 | 11 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
-- **D1-027** Apply explicit text correction “use Work” — crit 14, unblocks 22; `bun run ratchet packet D1-027`
 - **D1-063** Implement virtual `prompt.send` realization — crit 14, unblocks 22; `bun run ratchet packet D1-063`
 - **D1-041** Implement pure semantic projector — crit 13, unblocks 23; `bun run ratchet packet D1-041`
+- **D1-033** Represent semantic edits explicitly — crit 13, unblocks 21; `bun run ratchet packet D1-033`
 - **D1-029** Implement deterministic command digest — crit 12, unblocks 19; `bun run ratchet packet D1-029`
 - **D1-050** Expose minimal semantic help metadata from same source records — crit 12, unblocks 16; `bun run ratchet packet D1-050`
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
@@ -62,7 +62,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-024 | DONE | 1/1 | Define candidate canonical `prompt.send` UseCommand |  |
 | D1-025 | DONE | 1/1 | Compile direct `prompt.send` utterance |  |
 | D1-026 | DONE | 1/1 | Preserve two-Account ambiguity |  |
-| D1-027 | OPEN ★ | 0/1 | Apply explicit text correction “use Work” |  |
+| D1-027 | PROVEN | 1/1 | Apply explicit text correction “use Work” |  · claimed by gov-impl-r14 until 2026-10-07T13:06:20.013Z |
 | D1-028 | DONE | 1/1 | Protect quoted payload from routing |  |
 | D1-029 | OPEN ★ | 0/1 | Implement deterministic command digest |  |
 
@@ -73,7 +73,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-030 | PROVEN | 1/1 | Add InterpretationSession/revision identity |  |
 | D1-031 | PROVEN | 1/1 | Bind interpretation result to originating revision |  |
 | D1-032 | PROVEN | 1/1 | Suppress obsolete late results |  |
-| D1-033 | BLOCKED | 1/2 | Represent semantic edits explicitly |  |
+| D1-033 | OPEN ★ | 2/2 | Represent semantic edits explicitly | PROMOTE_PENDING 1 |
 | D1-034 | BLOCKED | 0/1 | Bind committed command to immutable revision |  |
 
 ### Phase E — projection and product twin
@@ -81,7 +81,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
 | D1-040 | PROVEN | 1/1 | Define minimal deterministic D1 projection contract |  · claimed by gov-impl-r12 until 2026-10-07T12:55:42.286Z |
-| D1-041 | OPEN ★ | 1/2 | Implement pure semantic projector | PROMOTE_PENDING 1 |
+| D1-041 | OPEN ★ | 2/2 | Implement pure semantic projector | PROMOTE_PENDING 2 |
 | D1-042 | BLOCKED | 0/1 | Render text input + interpretation state |  |
 | D1-043 | BLOCKED | 0/1 | Render Provider/Account/Model route |  |
 | D1-044 | BLOCKED | 0/1 | Render unresolved Account chooser |  |
