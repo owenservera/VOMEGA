@@ -58,6 +58,16 @@ Preference order if a supported selector is ever used (the original ladder, kept
 reference): GPT/Codex family (9/9 live) → Claude family (11/18 live) → free routes. Never
 the §1a dark models.
 
+**Routing entrypoint (owner directive 2026-10-07).** Model routing goes through the single
+entrypoint `~/.agents/skills/cliproxy-router/cliproxy.mjs`; this project's overlay is
+`.zcode/cliproxy-router.json` (profiles fast / build / reason / review / long-context).
+The `claude-*`, `gpt-*`, `grok-*` and `codex-*` ids are CPA-routed and their live
+selection is decided by that entrypoint. Port 6446 (`new-provider`, `opencode-acct-2..5`)
+and `openrouter` are **not** CPA and stay outside that entrypoint.
+
+**The §1a dark list is a RECORD, not the router's decision input.** The router excludes
+cooled and unroutable models itself; this ledger reports only what was measured.
+
 This file reports liveness only. A passing probe here does **not** prove that any
 session or subagent fallback works.
 
