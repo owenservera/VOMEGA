@@ -9,17 +9,17 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "f9f82a146fb0",
+    "head": "f6c603d69bcd",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
-      "tests": 80,
-      "gates": 80,
-      "pass": 40,
+      "tests": 85,
+      "gates": 85,
+      "pass": 45,
       "fail": 40,
       "skip": 0
     },
-    "digest": "sha256:34ad404fd78aebc860e90efe2b41aaae5e06d7f0967010e6038189c7191cdcfc",
+    "digest": "sha256:066dfc8dc3c65d258ea6c3cade6a6b5a528da43e2bb50f4e41e50f4b2d5b34c1",
     "silentFiles": []
   },
   "summary": {
@@ -255,6 +255,18 @@
           "observed": "pass",
           "promoted": true,
           "specChanged": false
+        },
+        {
+          "key": "D1-016::W3 stale Account is refused for freshness even when authority allows it",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-016::W3 with a fresh Account and authority allowed is the one-factor positive control",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
         }
       ],
       "artifacts": [],
@@ -272,6 +284,12 @@
       "state": "PROVEN",
       "gates": [
         {
+          "key": "D1-017::W4 'work claude' with authority allowed is the one-factor positive control",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
           "key": "D1-017::W4 mailbox Account has no prompt.send realization",
           "observed": "pass",
           "promoted": true,
@@ -279,6 +297,18 @@
         },
         {
           "key": "D1-017::W4 unknown and incompatible targets cannot compile READY",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::an Account no realization serves is unavailable even when authority allows it",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::an explicit unknown target never resolves to another Account, even with authority allowed",
           "observed": "pass",
           "promoted": true,
           "specChanged": false
@@ -1361,10 +1391,10 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 40,
+      "green": 45,
       "red": 40,
       "skipped": 0,
-      "total": 80
+      "total": 85
     },
     "semanticCompletion": false,
     "reviewedCompletion": null
@@ -1376,5 +1406,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:d94c9b43851bffd8a397d23d29105a63c49a042501472665554be40a21d535c1"
+  "digest": "sha256:c84f23f0bf821e0bf20370eaad6c9f13a3bfcd2f3bef93baf5c9158d7ea2a556"
 }

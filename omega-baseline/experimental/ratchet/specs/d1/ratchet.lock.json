@@ -190,6 +190,33 @@
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
     },
+    "D1-016::W3 stale Account is refused for freshness even when authority allows it": {
+      "task": "D1-016",
+      "name": "W3 stale Account is refused for freshness even when authority allows it",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0",
+      "by": "dev-impl-d006",
+      "head": "f6c603d69bcd",
+      "at": "2026-10-07T13:42:52.550Z"
+    },
+    "D1-016::W3 with a fresh Account and authority allowed is the one-factor positive control": {
+      "task": "D1-016",
+      "name": "W3 with a fresh Account and authority allowed is the one-factor positive control",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0",
+      "by": "dev-impl-d006",
+      "head": "f6c603d69bcd",
+      "at": "2026-10-07T13:42:52.550Z"
+    },
+    "D1-017::W4 'work claude' with authority allowed is the one-factor positive control": {
+      "task": "D1-017",
+      "name": "W4 'work claude' with authority allowed is the one-factor positive control",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0",
+      "by": "dev-impl-d006",
+      "head": "f6c603d69bcd",
+      "at": "2026-10-07T13:42:56.078Z"
+    },
     "D1-017::W4 mailbox Account has no prompt.send realization": {
       "task": "D1-017",
       "name": "W4 mailbox Account has no prompt.send realization",
@@ -207,6 +234,24 @@
       "by": "dev-impl-1110",
       "head": "60a20667686a",
       "at": "2026-10-07T11:07:23.795Z"
+    },
+    "D1-017::an Account no realization serves is unavailable even when authority allows it": {
+      "task": "D1-017",
+      "name": "an Account no realization serves is unavailable even when authority allows it",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0",
+      "by": "dev-impl-d006",
+      "head": "f6c603d69bcd",
+      "at": "2026-10-07T13:42:56.078Z"
+    },
+    "D1-017::an explicit unknown target never resolves to another Account, even with authority allowed": {
+      "task": "D1-017",
+      "name": "an explicit unknown target never resolves to another Account, even with authority allowed",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0",
+      "by": "dev-impl-d006",
+      "head": "f6c603d69bcd",
+      "at": "2026-10-07T13:42:56.078Z"
     },
     "D1-018::W5 keeps Provider, Account and Model as separate route records": {
       "task": "D1-018",
