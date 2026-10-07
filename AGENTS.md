@@ -15,6 +15,10 @@ For bounded implementation, **do not reread the full documentation corpus**.
 
 D1 mechanics: [.project/ratchet/OPERATING.md](.project/ratchet/OPERATING.md). D1 mission: [.project/deliverables/D1-START-HERE.md](.project/deliverables/D1-START-HERE.md).
 
+## Daily build-guidance visibility
+
+Daily build guidance is defined in [.project/build-guidance/README.md](.project/build-guidance/README.md). Ordinary workers do not maintain a second tracker: keep the normal session claim accurate and close it honestly. A local controller/orchestrator that can see multiple worktrees should publish the aggregate snapshot defined in [.project/build-guidance/LOCAL-STATE-PROTOCOL.md](.project/build-guidance/LOCAL-STATE-PROTOCOL.md) to the fixed `ops/local-state` telemetry branch. That snapshot is observation, never authority or proof.
+
 ## When broader reading is required
 
 If the task changes product/semantic/authority/proof architecture, read the relevant core documents from [seed-docs/README.md](seed-docs/README.md). The minimum protected set is VISION, PRODUCT-ANCHOR, INVARIANTS, PROOF-AND-MATURITY and the current first-release mission.
