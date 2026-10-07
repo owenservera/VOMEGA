@@ -51,6 +51,15 @@ zero-padded to 3.
 | BLOCKED | could not proceed; `blockers` says on what/whom |
 | NACK | wrong, owner-reserved or out of lane — say why; never retried |
 
+## Parsing rule (malformed lines)
+
+Readers MUST parse JSONL **one line at a time** and **skip** any line that fails to
+parse — note it in your reply or log, never act on it. Because files are append-only,
+a malformed line stays forever; the fix is a new directive whose `supersedes` names the
+bad id (e.g. `D-20261007-003` supersedes the malformed `D-20261007-002`). The
+ChiefOfStaff validates every line with a JSON encoder before appending; teams do the
+same for their replies.
+
 ## Idempotence
 
 A directive is processed ⇔ its `id` appears as `"in-reply-to"` in that team's replies
