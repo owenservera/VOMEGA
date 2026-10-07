@@ -152,7 +152,8 @@ export function interpretRevision(state: D1State, n: number): InterpretationResu
   const wm = toInterpreterWorld(world);
   const body = tokens.slice(1);
   const grounded = groundTarget(text, body, wm);
-  const grounding = grounded.mention === null ? { ...grounded, mention: unheldRoute(body) } : grounded;
+  const unheld = grounded.mention === null ? unheldRoute(body) : null;
+  const grounding = unheld ? { ...grounded, mention: unheld.mention, mentionTokens: unheld.tokens } : grounded;
   const payload = payloadOf(text, body, grounding.mentionTokens);
   const draft = draftFor(capability, decl, world, grounding, payload);
   return {
@@ -484,19 +485,30 @@ function correctionFor(
   return { ...base, kind: "edit", edits: [{ kind: "select", field, value, via: "typed" }], detail: trace };
 }
 
+/** Prepositions that introduce a recipient, as opposed to a topic or purpose ("about", "for"). */
+const TARGET_PREPS = new Set(["to", "via", "using", "through", "on"]);
+
 /**
- * An explicit route that names nothing the World holds ("send 'x' to Gemini"). Only read
- * after a quoted payload, where the words after a route preposition cannot be payload;
- * unquoted text stays ambiguous between payload and route and is not claimed here.
+ * An explicit route that names nothing the World holds: "send 'x' to Gemini" and
+ * "send hello to Gemini" alike. It is the trailing run after the LAST recipient
+ * preposition — after the quote when there is one, else anywhere in the body — so an
+ * unquoted payload keeps its own words and loses only the route. Read only when
+ * grounding found nothing; a named-but-unheld target is preserved, never replaced.
  */
-function unheldRoute(body: Token[]): string | null {
+function unheldRoute(body: Token[]): { mention: string; tokens: Set<number> } | null {
   const q = body.findIndex((t) => t.kind === "quote");
-  if (q < 0) return null;
-  const after = body.slice(q + 1);
-  const prep = after.findIndex((t) => t.kind === "word" && ROUTE_PREPS.has(t.norm));
+  const from = q < 0 ? 0 : q + 1;
+  let prep = -1;
+  for (let i = body.length - 1; i >= from; i--) {
+    if (body[i]!.kind === "word" && TARGET_PREPS.has(body[i]!.norm)) { prep = i; break; }
+  }
   if (prep < 0) return null;
-  const words = after.slice(prep + 1).filter((t) => t.kind === "word").map((t) => t.norm);
-  return words.length > 0 ? words.join(" ") : null;
+  const tail = body.slice(prep + 1);
+  // The route runs to the end of the utterance; a quote or another clause after it is not a route.
+  if (tail.some((t) => t.kind !== "word" && t.kind !== "punct")) return null;
+  const words = tail.filter((t) => t.kind === "word");
+  if (words.length === 0) return null;
+  return { mention: words.map((t) => t.norm).join(" "), tokens: new Set([body[prep]!.i, ...words.map((t) => t.i)]) };
 }
 
 /** The payload: a quoted span verbatim (its words can never retarget), else the unconsumed text. */
