@@ -4,17 +4,17 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `c6f40afaa40c`, Bun 1.4.2, win32-x64, 30/80 gates green, digest 69b2be098056 · promoted gates: 24
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `53ca7859b0aa`, Bun 1.4.2, win32-x64, 34/80 gates green, digest 10a880d9fcb1 · promoted gates: 25
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 6 | 15 | 11 | 0 | 45 | 0 | 0 | 77 | 11 | 0 |
+| 7 | 15 | 11 | 0 | 44 | 0 | 0 | 77 | 11 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
-- **D1-040** Define minimal deterministic D1 projection contract — crit 14, unblocks 24; `bun run ratchet packet D1-040`
 - **D1-027** Apply explicit text correction “use Work” — crit 14, unblocks 22; `bun run ratchet packet D1-027`
 - **D1-063** Implement virtual `prompt.send` realization — crit 14, unblocks 22; `bun run ratchet packet D1-063`
+- **D1-041** Implement pure semantic projector — crit 13, unblocks 23; `bun run ratchet packet D1-041`
 - **D1-029** Implement deterministic command digest — crit 12, unblocks 19; `bun run ratchet packet D1-029`
 - **D1-050** Expose minimal semantic help metadata from same source records — crit 12, unblocks 16; `bun run ratchet packet D1-050`
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
@@ -80,12 +80,12 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
-| D1-040 | OPEN ★ | 0/1 | Define minimal deterministic D1 projection contract |  |
-| D1-041 | BLOCKED | 0/2 | Implement pure semantic projector |  |
+| D1-040 | PROVEN | 1/1 | Define minimal deterministic D1 projection contract |  · claimed by gov-impl-r12 until 2026-10-07T12:55:42.286Z |
+| D1-041 | OPEN ★ | 1/2 | Implement pure semantic projector | PROMOTE_PENDING 1 |
 | D1-042 | BLOCKED | 0/1 | Render text input + interpretation state |  |
 | D1-043 | BLOCKED | 0/1 | Render Provider/Account/Model route |  |
 | D1-044 | BLOCKED | 0/1 | Render unresolved Account chooser |  |
-| D1-045 | BLOCKED | 0/1 | Route chooser click through semantic edit reducer |  |
+| D1-045 | BLOCKED | 1/1 | Route chooser click through semantic edit reducer | PROMOTE_PENDING 1 |
 | D1-046 | BLOCKED | 0/1 | Prove typed/clicked parity |  |
 | D1-047 | BLOCKED | 0/1 | Render consequence/external-transfer preview |  |
 | D1-048 | BLOCKED | 0/2 | Render lifecycle states |  |
@@ -95,7 +95,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
 | D1-050 | OPEN ★ | 0/1 | Expose minimal semantic help metadata from same source records |  |
-| D1-051 | BLOCKED | 0/1 | Map active semantic handles to help topics |  |
+| D1-051 | BLOCKED | 1/1 | Map active semantic handles to help topics | PROMOTE_PENDING 1 |
 | D1-052 | BLOCKED | 0/2 | Render help for Provider/Account/capability/consequence |  |
 | D1-053 | BLOCKED | 0/1 | Add help-grounding removal test |  |
 | D1-054 | BLOCKED | 0/1 | Add SIMULATED explanation |  |
@@ -112,7 +112,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | ID | State | Gates green/total | Outcome | Notes |
 | --- | --- | --- | --- | --- |
 | D1-060 | DONE | 1/1 | Define D1 consequence record for `prompt.send` |  |
-| D1-061 | PROVEN | 1/1 | Add deterministic authority fixture |  |
+| D1-061 | DONE | 1/1 | Add deterministic authority fixture |  |
 | D1-062 | OPEN ★ | 2/2 | Prevent interpretation from granting authority | PROMOTE_PENDING 2 |
 | D1-063 | OPEN ★ | 0/1 | Implement virtual `prompt.send` realization |  |
 | D1-064 | BLOCKED | 0/1 | Emit execution-start/attempt/result events |  |

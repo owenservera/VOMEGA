@@ -236,6 +236,15 @@
       "head": "bddb8cb856f1",
       "at": "2026-10-06T01:23:54.632Z"
     },
+    "D1-040::projection exposes interpretation, route, validation, unresolved, consequence, help and actions": {
+      "task": "D1-040",
+      "name": "projection exposes interpretation, route, validation, unresolved, consequence, help and actions",
+      "file": "omega-baseline/experimental/d1/test/gates/e-projection.gate.test.ts",
+      "specDigest": "sha256:e14a1b2c94ab402748c7138ca0f04ce66aa3cb44398c9094a6b9bd5de77c5b61",
+      "by": "gov-impl-r12",
+      "head": "53ca7859b0aa",
+      "at": "2026-10-07T09:02:06.720Z"
+    },
     "D1-060::prompt.send consequence is an external transfer, separate from authority": {
       "task": "D1-060",
       "name": "prompt.send consequence is an external transfer, separate from authority",
@@ -311,6 +320,15 @@
         "verdict": "accept",
         "head": "8cd2cf23bd15",
         "at": "2026-10-06T18:18:54.766Z"
+      }
+    ],
+    "D1-061": [
+      {
+        "by": "gov-trv-r11",
+        "verdict": "accept",
+        "head": "53ca7859b0aa",
+        "at": "2026-10-07T09:00:44.364Z",
+        "note": "TRV independent review of 511fe07. Bookkeeping-only commit (evidence/board/claims/lock; no source or gate edit). Gate body pre-existing (authored e843241), byte-identical parent 5652e5a -> HEAD; specDigest matches lock, no anchor drift. verify D1-061 PROVEN. Gate is NOT vacuous: reproduced 4 authority mutations outside the repo, all fail it (requirement->\"allowed\" yields [ready,ready,ready]; authority lookup->null yields [refused,refused,refused]). One report imprecision, not a gate defect: the claim that an account-identity leak fails assertion 3 INDEPENDENTLY is not reproducible - in all 4 leak variants I tried assertion 1 fired first (validation depends on account grounding), so assertion 3 was masked. Recorded weakness re assertion 2 (capability identity structurally entangled) is correct and does not block acceptance."
       }
     ]
   },

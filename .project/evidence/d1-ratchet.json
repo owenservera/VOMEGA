@@ -9,25 +9,25 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "c6f40afaa40c",
+    "head": "53ca7859b0aa",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 80,
       "gates": 80,
-      "pass": 30,
-      "fail": 50,
+      "pass": 34,
+      "fail": 46,
       "skip": 0
     },
-    "digest": "sha256:69b2be0980565af9b73bc88c693ccccc0b160f69214d59658258b1a94fe8e33e",
+    "digest": "sha256:10a880d9fcb10dc885ea42a8ab14bb77ced7d40114027da116ff98a0d481f93b",
     "silentFiles": []
   },
   "summary": {
     "OPEN": 11,
     "CLAIMED": 0,
-    "BLOCKED": 45,
+    "BLOCKED": 44,
     "PROVEN": 15,
-    "DONE": 6,
+    "DONE": 7,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -544,12 +544,12 @@
     },
     {
       "id": "D1-040",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-040::projection exposes interpretation, route, validation, unresolved, consequence, help and actions",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -559,11 +559,11 @@
     },
     {
       "id": "D1-041",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-041::projection is pure: same state gives the same projection",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         },
@@ -629,7 +629,7 @@
       "gates": [
         {
           "key": "D1-045::chooser options carry semantic edit actions only",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -710,7 +710,7 @@
       "gates": [
         {
           "key": "D1-051::active Account ambiguity ranks why-choose first",
-          "observed": "fail",
+          "observed": "pass",
           "promoted": false,
           "specChanged": false
         }
@@ -903,7 +903,7 @@
     },
     {
       "id": "D1-061",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-061::authority fixture changes validation without changing capability identity",
@@ -914,7 +914,13 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "gov-trv-r11",
+        "verdict": "accept",
+        "head": "53ca7859b0aa",
+        "at": "2026-10-07T09:00:44.364Z",
+        "note": "TRV independent review of 511fe07. Bookkeeping-only commit (evidence/board/claims/lock; no source or gate edit). Gate body pre-existing (authored e843241), byte-identical parent 5652e5a -> HEAD; specDigest matches lock, no anchor drift. verify D1-061 PROVEN. Gate is NOT vacuous: reproduced 4 authority mutations outside the repo, all fail it (requirement->\"allowed\" yields [ready,ready,ready]; authority lookup->null yields [refused,refused,refused]). One report imprecision, not a gate defect: the claim that an account-identity leak fails assertion 3 INDEPENDENTLY is not reproducible - in all 4 leak variants I tried assertion 1 fired first (validation depends on account grounding), so assertion 3 was masked. Recorded weakness re assertion 2 (capability identity structurally entangled) is correct and does not block acceptance."
+      }
     },
     {
       "id": "D1-062",
@@ -1309,8 +1315,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 30,
-      "red": 50,
+      "green": 34,
+      "red": 46,
       "skipped": 0,
       "total": 80
     },
@@ -1324,5 +1330,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:8eabe2c6ca35bc2bdc161a3f54ad75b42b54731ebb27da91980b7c59d57f6ead"
+  "digest": "sha256:fe5a4c961451d1d71dd7773d2b9d34569b6f0d62b0676d0a8e85d211a0623f8f"
 }
