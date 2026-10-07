@@ -206,14 +206,22 @@ ruling file and reported to CoS** — a blocked quorum is a routed event, not a 
 | Surface | Use | Mechanism |
 | --- | --- | --- |
 | **This thread's DESK directive** | the standing unattended path (the COUNCIL lane automation + inbox watcher) | direct procedure of §7 via Bash CLI/proxy one-shots + subagent chair — no confirmation dialog can block an unattended run |
-| **Saved workflow `design-council`** | interactive, full pipeline, typed report + published ruling artifact | `CreateWorkflow` `saved: { name: "design-council", args: { question, context? } }`; pin `subagent_model` to diversify the ZCode-side voice across runs |
+| **Saved workflow `design-council`** | interactive, full pipeline, typed report + published ruling artifact | `CreateWorkflow` `saved: { name: "design-council", args: { question, context?, stakes? } }`; `stakes` overrides the scout's grade (`routine` / `contested` / `dispute`) |
 | **`/council <question>`** | interactive, same protocol from the input box | workspace command reading this doc |
 
-This document is the single source of truth. **Sync status (2026-10-07):** the DESK direct
-procedure and `/council` follow the five-protocol design; the saved workflow `design-council`
-still implements the earlier single procedure (independent voices + one rebuttal + chair ruling,
-roughly PANEL with a JUDGE-style chair) and has no router or breakers. Until it is updated, use it
-only for routine-graded questions and apply §5–§6 by hand.
+This document is the single source of truth. **Sync status (2026-10-07, D-20261007-12162):** the
+DESK direct procedure, `/council` and the saved workflow `design-council` all follow the
+five-protocol design. The workflow implements: the owner-reserved ABSTAIN test first; the stakes
+router (PANEL / PANEL+CHALLENGE / ROUND-ROBIN+JUDGE); QUORUM-LOSS (counts provider families, and
+never counts the in-session voice, whose provider the script cannot see); DRIFT (chair flags
+drifted voices, quorum recomputed); CONVERGENCE (unanimous on a dispute caps confidence at
+medium); COST/TIME as a voice-call ceiling of `#models`+3 = 6; the Claude voice through the
+authorized proxy with one fallback rung (`claude-opus-5-5` → `claude-sonnet-5-5`); and Grok skipped
+without a call while the ledger lists it dark. **Not in the workflow:** VOTE (the router never
+selects it), a wall-clock limit (a workflow cannot read the clock), and LOOP-BREAKER (cannot trip at
+`#rounds` 2). Verification so far: typechecked locally against the workflow API with a planted-error
+control, and its metadata parses; it has **not** been run, so its first interactive use is its
+first real test.
 
 ## 9. Standing multi-model status
 
@@ -223,14 +231,17 @@ alive because this table says LIVE.
 | Voice / family | Mechanism | Last measured | Result |
 | --- | --- | --- | --- |
 | `session` (in-session subagent) | ZCode subagent, read-only brief | harness-exposed identity, per run | LIVE while the thread model answers; record the observed model, never a remembered one |
-| `codex` (GPT) | `codex.cmd exec -s read-only "Reply OK"` | 2026-10-07 ~11:5xZ | **DARK** — "You've hit your usage limit … try again at 4:08 PM" (chatgpt Codex account cap; distinct from the `codex-oauth` API route, which is separate and PASS in the ledger) |
-| `claude` (Claude) | `.local/dev-loop/claude-voice.mjs -t "Reply OK" [model]` | 2026-10-07 ~11:5xZ | **DARK (429)** — proxy rate_limit_error: credentials cooling down for both `claude-opus-5-5` and `claude-sonnet-5-5` at the moment of a real panel. The `claude -p` CLI remains broken (OAuth expired, Owen-reserved). |
+| `codex` (GPT) | the D-009 panel brief, then `codex.cmd exec -s read-only "Reply OK"` | 2026-10-07 11:52–11:55Z | **DARK** — "You've hit your usage limit … try again at 4:08 PM" (ChatGPT Codex account cap; the CLI resolves to `gpt-6.1-sol`, provider openai). 4:08 PM machine-local is about 14:08Z; recovery **not re-measured**. Distinct from the `codex-oauth` API route, which is PASS in the ledger. |
+| `claude` (Claude) | the D-009 panel brief via `.local/dev-loop/claude-voice.mjs`, `claude-opus-5-5` then `claude-sonnet-5-5` | 2026-10-07 11:52–11:55Z | **DARK (429)** — proxy rate_limit_error "All credentials … are cooling down via provider claude" on both REVIEW rungs. Recovery **not re-measured**. The `claude -p` CLI remains broken (OAuth expired, Owen-reserved). |
 | `grok` | `grok.cmd -p "Reply OK" --max-tool-rounds 1` | 2026-10-07 09:43Z | **UNAVAILABLE** — "API key required"; proxy serves no grok models (Owen-reserved) |
 | `opencode` (free reserve) | `new-provider` / `opencode-acct-2..5` `space-bunny-free` | 2026-10-07 09:43Z (ledger) | PASS at last probe; not yet exercised as a council voice |
 | `openrouter` (free reserve) | `openrouter/auto` | 2026-10-07 09:43Z (ledger) | PASS at last probe; not yet exercised as a council voice |
 
-Quorum status: **DARK below two families** as of 2026-10-07 ~11:5xZ (see §6 QUORUM-LOSS; a
-convening attempted in that window is BLOCKED, not single-family). The ledger
+Quorum status: **LOST** from the 2026-10-07 11:52–11:55Z measurement onward. With the Codex CLI
+and both Claude REVIEW rungs dark, at most one family answers (the GPT session itself), so the
+§6 QUORUM-LOSS breaker trips and **no ruling can be convened until Codex or Claude recovers**. A
+convening attempted in that state is BLOCKED, never single-family. Recovery is re-measured at the
+next convening, not by standalone probes. The ledger
 [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md) is the authority on what is live; this
 table is the chair's last measurement, not a standing promise.
 
