@@ -254,7 +254,17 @@ The test is:
 
 If yes, register it.
 
-## 13. Current deliberately-light boundary
+## 13. Local controller snapshot
+
+The daily build-guidance loop needs visibility into work that has not yet reached GitHub. Do not solve this by making every worker maintain another status file.
+
+If a local controller/orchestrator can inspect multiple VOMEGA worktrees, it should publish the aggregate observational snapshot defined in `../build-guidance/LOCAL-STATE-PROTOCOL.md` to the fixed `ops/local-state` telemetry branch. Ordinary workers only keep their existing claim accurate.
+
+The snapshot may report branch/HEAD, dirty state, visible claims, task refs, blockers, next action and observed checks. It must not contain secrets and does not authorize or prove anything.
+
+When remote visibility matters, workers should push their work branch after meaningful commits when safe; if work intentionally remains local, the controller records that explicitly as a visibility risk.
+
+## 14. Current deliberately-light boundary
 
 For now, do **not** add:
 
@@ -272,7 +282,7 @@ For now, do **not** add:
 
 If this file-based protocol becomes a bottleneck, measure the friction first. Then MP-53 / MP-65 or another selected accelerator can automate the smallest proven need.
 
-## 14. Agent start checklist
+## 15. Agent start checklist
 
 Before substantive work:
 

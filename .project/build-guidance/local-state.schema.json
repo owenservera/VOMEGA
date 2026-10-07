@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vomega-local-state/1",
+  "title": "VOMEGA local build-state snapshot",
+  "type": "object",
+  "required": ["schema", "generatedAt", "observer", "remoteMain", "worktrees", "visibilityRisks"],
+  "properties": {
+    "schema": { "const": "vomega-local-state/1" },
+    "generatedAt": { "type": "string" },
+    "observer": { "type": "string" },
+    "machine": { "type": "string" },
+    "remoteMain": { "type": "string" },
+    "notes": { "type": "string" },
+    "worktrees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "branch", "head", "dirty", "claims"],
+        "properties": {
+          "path": { "type": "string" },
+          "branch": { "type": "string" },
+          "head": { "type": "string" },
+          "dirty": { "type": "boolean" },
+          "ahead": { "type": ["integer", "null"] },
+          "behind": { "type": ["integer", "null"] },
+          "lastCommitAt": { "type": ["string", "null"] },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "status"],
+              "properties": {
+                "id": { "type": "string" },
+                "status": { "type": "string" },
+                "taskRefs": { "type": "array", "items": { "type": "string" } },
+                "blocker": { "type": ["string", "null"] },
+                "nextAction": { "type": ["string", "null"] }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "observedAt", "status"],
+        "properties": {
+          "name": { "type": "string" },
+          "observedAt": { "type": "string" },
+          "status": { "enum": ["PASS", "FAIL", "NOT_RUN", "UNKNOWN"] },
+          "detail": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "visibilityRisks": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

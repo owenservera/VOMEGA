@@ -52,6 +52,7 @@ Historical/bootstrap/tool/harness material is under `.project/archive/` and is n
 | D1 mission | `deliverables/D1-START-HERE.md` |
 | D1 task/proof truth | `ratchet/OPERATING.md`, Ratchet CLI/probe/board/evidence |
 | current worker claims | `agentic-launch/claims/` |
+| daily drift/build guidance | `build-guidance/DRIFT-ASSESSMENT.md`; local telemetry on `ops/local-state` |
 | five selected accelerator programs | `pm/scope.json`, `pm/build-plan.json`, generated PM views |
 | whole-program map | `META-TRACKER.md` / `meta-tracker.json` |
 | actual code evidence/limitations | `REALITY.md` + tests/evidence |
