@@ -52,6 +52,14 @@
       "at": "2026-10-07T11:51:06.709Z",
       "from": "sha256:a43bf4b4aa9b8709a1ed1eba23e3874e44cd0b7b0605f28ac0609e6d7fc4078c",
       "to": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "by": "dev-d14329",
+      "reason": "D-20261007-14329: the D1-017 gate 'an explicit unknown target never resolves to another Account' only exercised the quoted form, so its name overstated what it proved (unquoted 'send hello to Gemini' still retargeted to claude-work). Strengthened, not renamed: the same assertions now run over both quoted and unquoted forms.",
+      "at": "2026-10-07T14:44:38.978Z",
+      "from": "sha256:4444b120d7f06921ab4d16d24aeedf53dcf7c20e1396805f93fbda135d09cbc0",
+      "to": "sha256:b0b2b172de8b38cf9f0e1a4a5f004fac07580e70347ff9705e12a7d5738bdc94"
     }
   ],
   "promoted": {

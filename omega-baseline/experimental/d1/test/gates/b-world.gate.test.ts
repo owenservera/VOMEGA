@@ -99,16 +99,19 @@ describe("Phase B — semantic World", () => {
 
   // --- D-006 strengthening (non-vacuous): an explicit unknown target must never retarget.
   gate("D1-017", "an explicit unknown target never resolves to another Account, even with authority allowed", () => {
-    const s = say(initialState(allowedAuthority("W4")), "send 'x' to Gemini");
-    const cmd = currentCommand(s)!;
-    expect(validation(s).state).not.toBe("ready");
-    // The named target survives as an unresolved record; it is not silently dropped.
-    const u = cmd.unresolved.find((x) => x.field === "account");
-    expect(u).toBeDefined();
-    expect(u!.reason).toBe("unknown");
-    expect(u!.options).not.toContain(WORK);
-    expect(cmd.account).not.toBe(WORK);
-    expect(cmd.provider).not.toBe("provider:gemini");
+    // Both the quoted and the unquoted payload forms: "never" must hold for each.
+    for (const text of ["send 'x' to Gemini", "send hello to Gemini"]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      const cmd = currentCommand(s)!;
+      expect(validation(s).state).not.toBe("ready");
+      // The named target survives as an unresolved record; it is not silently dropped.
+      const u = cmd.unresolved.find((x) => x.field === "account");
+      expect(u).toBeDefined();
+      expect(u!.reason).toBe("unknown");
+      expect(u!.options).not.toContain(WORK);
+      expect(cmd.account).not.toBe(WORK);
+      expect(cmd.provider).not.toBe("provider:gemini");
+    }
   });
 
   gate("D1-017", "an Account no realization serves is unavailable even when authority allows it", () => {
