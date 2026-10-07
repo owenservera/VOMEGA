@@ -62,17 +62,17 @@ material (drift found and routed, or a milestone/hold state change).
 
 ## 5. Registration (recreate from here)
 
-- Fold-in (**applied 2026-10-07T09:14Z**): the family automation
-  (`automation-2c7bbcf3-18a4-4d0d-848a-d7691d0f908c`, dev-loop governor, every
-  10 min) runs **at most one PM sweep per governor run** after the drain ends,
-  with the `.local/pm/pm.lock` stampede guard — prompt step 3c. The standing PM
-  thread (`../agentic-launch/claims/20261007-0911-pm-team-thread4-zcode.md`) runs
-  the same sweep from its own session; the lock makes the two coexist, and the
-  automation clause is the fallback when the standing thread is not alive.
-- Standalone fallback (if the family automation is ever split): a recurring
-  automation every 30 minutes (`*/30 * * * *`) running §3 with the
-  `.local/pm/pm.lock` stampede guard and a read-only mode while the dev-loop
-  governor lock is fresh (< 10 min).
+- Current (2026-10-07): the PM thread owns its own automation
+  `automation-a081625c-968d-40df-876d-69a75113ddfe` (`*/5 * * * *`). Each run
+  answers unanswered directives in `.project/staff/DESK/inbox/pm.jsonl` (one reply
+  line each in `replies/pm.jsonl`, contract `.project/staff/DESK/README.md`), then
+  runs the §3 sweep only if the last `.local/pm/sweeps.log` line is >30 min old and
+  `.local/pm/pm.lock` is not fresh (<20 min). There is no fallback carrier: the
+  family governor `automation-2c7bbcf3` that held the earlier step-3c fold-in is
+  **paused** (owner directive 2026-10-07; each team now runs in its own thread).
+- Recreate (if this thread's automation is lost): one recurring automation in the
+  PM thread with the same prompt and cadence. One automation per thread; it never
+  creates further automations.
 
 ## 6. Standing facts (measured, per sweep)
 
@@ -80,5 +80,5 @@ material (drift found and routed, or a milestone/hold state change).
 | --- | --- | --- |
 | pm:check | 2026-10-07 09:15Z | ok (1 warning: NEEDS_REVIEW MP-60 P5 decomposition review) |
 | pm:test | 2026-10-07 09:15Z | 47 pass / 0 fail / 743 expect() |
-| ratchet reference | 2026-10-07 09:15Z | 37/80 green; DONE 7 · PROVEN 16 · OPEN 11 · BLOCKED 43 @ 8a7300f (probe run this sweep) |
+| ratchet reference | 2026-10-07 09:15Z | 37/80 green; DONE 7 · PROVEN 16 · OPEN 11 · BLOCKED 43 · REGRESSED 0 @ 8a7300f (probe run this sweep; board unchanged by docs-only commits since) |
 | team.json runtimeVerified | 2026-10-07 09:15Z | true (standing thread 4 sweep) |
