@@ -490,25 +490,22 @@ const TARGET_PREPS = new Set(["to", "via", "using", "through", "on"]);
 
 /**
  * An explicit route that names nothing the World holds: "send 'x' to Gemini" and
- * "send hello to Gemini" alike. It is the trailing run after the LAST recipient
- * preposition — after the quote when there is one, else anywhere in the body — so an
- * unquoted payload keeps its own words and loses only the route. Read only when
- * grounding found nothing; a named-but-unheld target is preserved, never replaced.
+ * "send hello to Gemini!" alike. The route is the contiguous word run right after the
+ * LAST recipient preposition anywhere in the body; it ends at the first non-word token
+ * (a terminator, a dash, a quote), so trailing text can neither disarm it nor join it.
+ * A quoted span is one token, so prepositions inside a payload are never read here.
+ * Read only when grounding found nothing; a named-but-unheld target is preserved,
+ * never replaced. Errs toward refusing: "send hello on Monday" reads as a target.
  */
 function unheldRoute(body: Token[]): { mention: string; tokens: Set<number> } | null {
-  const q = body.findIndex((t) => t.kind === "quote");
-  const from = q < 0 ? 0 : q + 1;
-  let prep = -1;
-  for (let i = body.length - 1; i >= from; i--) {
-    if (body[i]!.kind === "word" && TARGET_PREPS.has(body[i]!.norm)) { prep = i; break; }
+  for (let i = body.length - 1; i >= 0; i--) {
+    if (body[i]!.kind !== "word" || !TARGET_PREPS.has(body[i]!.norm)) continue;
+    const words: Token[] = [];
+    for (let j = i + 1; j < body.length && body[j]!.kind === "word"; j++) words.push(body[j]!);
+    if (words.length === 0) continue;
+    return { mention: words.map((t) => t.norm).join(" "), tokens: new Set([body[i]!.i, ...words.map((t) => t.i)]) };
   }
-  if (prep < 0) return null;
-  const tail = body.slice(prep + 1);
-  // The route runs to the end of the utterance; a quote or another clause after it is not a route.
-  if (tail.some((t) => t.kind !== "word" && t.kind !== "punct")) return null;
-  const words = tail.filter((t) => t.kind === "word");
-  if (words.length === 0) return null;
-  return { mention: words.map((t) => t.norm).join(" "), tokens: new Set([body[prep]!.i, ...words.map((t) => t.i)]) };
+  return null;
 }
 
 /** The payload: a quoted span verbatim (its words can never retarget), else the unconsumed text. */
