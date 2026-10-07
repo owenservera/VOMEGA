@@ -61,7 +61,12 @@ OPS-ENV — **environment drift** (record to `.local/ops/env-<date>.json`, local
 - `bun --version`, `git --version`, `node --version` against the recorded facts in
   `.project/ENVIRONMENT.md`;
 - harness voice probes (codex/claude/grok one-shots) — updates the council's
-  standing availability table when changed (§6 of DESIGN-COUNCIL.md);
+  standing availability table when changed (§9 of DESIGN-COUNCIL.md);
+- **provider darkness is a council routing input** (DESIGN-COUNCIL.md §3.2, §5, §6): a
+  provider or model going dark (or coming back) changes which council protocols can reach
+  quorum. Record it in the dark list of [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md)
+  §1a; the council chair reads that list before every convening and never re-pins a model to
+  route around it;
 - **provider availability probe** (owner directive 2026-10-07):
   `bun .project/dev-loop/provider-probe.mjs` — at most once per 24 h (last-run
   timestamp = final line of `.local/ops/provider-probe.log`); per-route PASS/FAIL
@@ -115,7 +120,7 @@ the sweep runs **inside the 10-minute governor automation**
 (`automation-2c7bbcf3-18a4-4d0d-848a-d7691d0f908c`, `*/10 * * * *`) as prompt step
 3b — after the drain ends, at most one sweep per run, throttled to one sweep per
 30 minutes (the last line of `.local/ops/sweeps.log` is the throttle record), voice
-probes throttled to once per 24h (the probe dates in DESIGN-COUNCIL.md §6 tell),
+probes throttled to once per 24h (the probe dates in DESIGN-COUNCIL.md §9 tell),
 reds matched against the §7 standing facts (a red matching recorded standing state
 is YELLOW; only a new red is RED), and a run that ends with **neither drained work
 nor a sweep result** (fresh sweep, or a one-line "sweep throttled" record when the

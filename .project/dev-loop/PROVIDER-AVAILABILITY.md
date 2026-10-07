@@ -235,7 +235,7 @@ Generated 2026-10-07; regenerate this section whenever the config changes.
   For family models this is generation-PASS — a `/v1/models` listing alone is not availability.
 - **Fail**: non-200, timeout, or connection refused — recorded verbatim with latency and snippet.
 - **Cadence**: daily via the devops sweep (24h throttle on the probe log's last timestamp);
-  the council voice probe (DESIGN-COUNCIL.md §6) and this probe share one rule: probes report,
+  the council voice probe (DESIGN-COUNCIL.md §9) and this probe share one rule: probes report,
   they never repair — auth/routing is Owen-reserved.
 - **Escalation**: a NEW fail (previously-passing route or model) routes to Truth AND Product per
   AGENTS.md with a Commons row; a known fail (grok routing absent, fable credits, the 5
