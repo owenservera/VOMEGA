@@ -209,6 +209,15 @@
       "head": "5b6c8653b4a6",
       "at": "2026-10-06T18:13:51.082Z"
     },
+    "D1-029::command digest is deterministic and semantic": {
+      "task": "D1-029",
+      "name": "command digest is deterministic and semantic",
+      "file": "omega-baseline/experimental/d1/test/gates/c-command.gate.test.ts",
+      "specDigest": "sha256:07d4c02b99c2671c07f7ceada2aff8e392567c39a53843c8e44c2e720ae7a574",
+      "by": "gov-impl-r18",
+      "head": "33a23b8b04db",
+      "at": "2026-10-07T09:58:18.226Z"
+    },
     "D1-030::every input edit gets a monotonic revision identity": {
       "task": "D1-030",
       "name": "every input edit gets a monotonic revision identity",

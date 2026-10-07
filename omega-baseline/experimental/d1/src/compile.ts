@@ -10,9 +10,10 @@
 // validate.ts; the compile-path surface is D1-026's; D1-027 — the typed
 // correction, grounded by the SAME grounder as the command path and carried as
 // the SAME SemanticEdit value a click produces, so typed and clicked corrections
-// converge on one semantic edit path. Still stubs, each still naming its owning
-// task so a red gate says who owns it: registration (D1-021), command identity
-// (D1-029), interpreter trace (D1-025).
+// converge on one semantic edit path. D1-029 — the deterministic command
+// identity, canonicalized over everything the command asserts except the consent
+// decision. Still stubs, each still naming its owning task so a red gate says who
+// owns it: registration (D1-021), interpreter trace (D1-025).
 //
 // Harvest disposition (OPERATING.md, "Harvest before inventing"): ADAPT, not
 // reimplement. plugins/vivim-nlcl-pure supplies the lexer (so words inside a
@@ -35,6 +36,7 @@ import type { EntityView, Interpretation, IR, IRSlot, RiskClass, Token, WorldMod
 import type { CapabilityDecl, RealizationDecl } from "./declarations.ts";
 import { capabilityDecl, loadDeclarations } from "./declarations.ts";
 import type { D1State, DraftCommand, InterpretationResult, SemanticEdit, Unresolved, UseCommand, Validation, World } from "./contract.ts";
+import { digest } from "./digest.ts";
 import { notImplemented } from "./not-implemented.ts";
 // D1-005's law is imported, never copied: one rule set decides READY.
 import { validateInterpretation } from "./validate.ts";
@@ -229,7 +231,16 @@ export function currentCommand(state: D1State): UseCommand | null {
  * granting consent cannot change the identity it was granted for.
  */
 export function commandDigest(cmd: UseCommand): string {
-  return notImplemented("D1-029", `commandDigest(${cmd.capability})`);
+  // Exactly one field is read OUT: the consent decision. Every other field the
+  // command asserts about itself travels, and `digest` canonicalizes key order,
+  // so two semantically identical commands serialize identically whatever order
+  // they were assembled in.
+  const { authority, ...identity } = cmd;
+  // `authority.requirement` is a declaration-level fact about WHAT authority the
+  // capability needs — not consent, and it moves only with the World, which
+  // `basis.worldDigest` already binds. Namespaced under `command` so a command
+  // identity can never collide with a World or evidence digest of equal content.
+  return digest({ command: identity, requirement: authority.requirement });
 }
 
 /**
