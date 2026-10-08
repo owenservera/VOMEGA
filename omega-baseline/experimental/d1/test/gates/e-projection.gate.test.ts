@@ -45,9 +45,15 @@ describe("Phase E — projection and twin", () => {
   });
 
   gate("D1-043", "twin renders Provider, Account and Model as separately labelled route parts", () => {
-    const html = renderHtml(project(says(ambiguous(), "use Work")));
+    const p = project(says(ambiguous(), "use Work"));
+    const html = renderHtml(p);
     for (const label of ["Provider", "Account", "Model"]) expect(html).toContain(label);
     expect(html).toContain("Claude · Work");
+    // Each value is rendered in its own slot: swapping Provider and Account must be visible.
+    const slot = (name: string) => html.match(new RegExp(`data-slot="${name}"[^]*?</div>`))?.[0] ?? "";
+    expect(slot("account")).toContain(p.route.account.label!);
+    expect(slot("provider")).toContain(p.route.provider.label!);
+    expect(slot("provider")).not.toContain(p.route.account.label!);
   });
 
   gate("D1-044", "unresolved Account chooser shows both Accounts with none selected", () => {
@@ -82,6 +88,10 @@ describe("Phase E — projection and twin", () => {
     expect(p.consequence).toMatchObject({ class: "external-transfer", crossesLocalBoundary: true });
     expect(p.consequence!.carries).toContain("params.prompt");
     expect(renderHtml(p)).toMatch(/leave|crosses|sent to/i);
+    // The preview must tell the two outcomes apart: a local-only consequence may not
+    // read as a transfer, so an understated or overstated boundary is caught.
+    const local = renderHtml({ ...p, consequence: { ...p.consequence!, class: "local-only", crossesLocalBoundary: false, to: null } });
+    expect(local).not.toMatch(/leave|crosses|sent to/i);
   });
 
   gate("D1-048", "lifecycle moves needs-choice → needs-consent → ready → completed-simulated", () => {

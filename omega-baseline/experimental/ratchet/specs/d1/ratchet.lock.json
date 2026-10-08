@@ -100,6 +100,14 @@
       "at": "2026-10-08T14:16:24.152Z",
       "from": "sha256:ac56a616b69bcccd205f6ccd36e3187d042a7d62048a5e6019650a421e0cd6cd",
       "to": "sha256:23bd59da362bf700ea63f69da02b95427e70b744fbeb023173d34fec7ead3d47"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/e-projection.gate.test.ts",
+      "by": "dev-d042b",
+      "reason": "dev-trv-d042 rejected D1-043 and D1-047 as blind: D1-043 now asserts each route value renders inside its own slot (Provider/Account swap is caught); D1-047 now also renders a local-only consequence and asserts it does not read as a transfer. Stricter only; existing assertions kept; names unchanged.",
+      "at": "2026-10-08T20:13:18.115Z",
+      "from": "sha256:e14a1b2c94ab402748c7138ca0f04ce66aa3cb44398c9094a6b9bd5de77c5b61",
+      "to": "sha256:d113eba2959aa20f82658c90e4fc1493b2fe8f38ba2ede067d656d5d584fe75b"
     }
   ],
   "promoted": {
