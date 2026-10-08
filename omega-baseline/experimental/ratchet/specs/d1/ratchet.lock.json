@@ -68,6 +68,14 @@
       "at": "2026-10-07T14:53:06.674Z",
       "from": "sha256:b0b2b172de8b38cf9f0e1a4a5f004fac07580e70347ff9705e12a7d5738bdc94",
       "to": "sha256:ebc175865e555a739bbec08c085b02ffe19193bf001e4f6fd32da067fbc65cd5"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "by": "dev-d013",
+      "reason": "D-20261008-013: new separate gate 'an unheld recipient named beside a held one is never dropped' for the residual R2 (send hello to Gemini via work claude was READY on claude-work). Added gate only; no existing gate widened or renamed.",
+      "at": "2026-10-08T00:32:06.345Z",
+      "from": "sha256:ebc175865e555a739bbec08c085b02ffe19193bf001e4f6fd32da067fbc65cd5",
+      "to": "sha256:227e6f7b917ccb36621700c91332b65f2ede51e881fddfe3c26bc0ec801bddf3"
     }
   ],
   "promoted": {

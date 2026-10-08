@@ -131,6 +131,27 @@ describe("Phase B — semantic World", () => {
     expect(validation(s).state).toBe("ready");
   });
 
+  // D-20261008-013: a held recipient named beside an unheld one must not absorb the
+  // command — the unheld target survives and blocks, whichever order they come in.
+  gate("D1-017", "an unheld recipient named beside a held one is never dropped", () => {
+    for (const text of [
+      "send hello to Gemini via work claude", "send 'x' to Gemini via work claude",
+      "send hello to work claude and to Gemini", "send hello to Gemini, then to work claude",
+    ]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      const cmd = currentCommand(s)!;
+      expect(validation(s).state).not.toBe("ready");
+      expect(cmd.account).not.toBe(WORK);
+      const u = cmd.unresolved.find((x) => x.field === "account");
+      expect(u).toBeDefined();
+      expect(u!.reason).toBe("unknown");
+    }
+    // Control: a non-recipient clause beside a held recipient is not a second target.
+    const ok = say(initialState(allowedAuthority("W4")), "send note on Monday to work claude");
+    expect(validation(ok).state).toBe("ready");
+    expect(currentCommand(ok)!.account).toBe(WORK);
+  });
+
   gate("D1-018", "W5 keeps Provider, Account and Model as separate route records", () => {
     const w = loadNamedWorld("W5");
     expect(w.providers.length).toBe(2);
