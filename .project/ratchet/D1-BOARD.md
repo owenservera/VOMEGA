@@ -4,7 +4,7 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `a5df76c1262c`, Bun 1.4.2, win32-x64, 50/90 gates green, digest 367214b2db36 · promoted gates: 45
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `3a46298004cf`, Bun 1.4.2, win32-x64, 51/91 gates green, digest c733ba46e5e5 · promoted gates: 46
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -48,7 +48,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-014 | PROVEN | 1/1 | Add World W1: Claude Work only |  |
 | D1-015 | PROVEN | 1/1 | Add World W2: Claude Work + Personal |  |
 | D1-016 | DONE | 4/4 | Add World W3: stale Claude Work |  |
-| D1-017 | PROVEN | 10/10 | Add World W4: unknown/incompatible target | latest review is not an independent accept |
+| D1-017 | PROVEN | 11/11 | Add World W4: unknown/incompatible target | latest review is not an independent accept |
 | D1-018 | PROVEN | 1/1 | Add World W5: optional Provider/Model route stress case |  |
 
 ### Phase C — registration and command nucleus

@@ -9,17 +9,17 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "a5df76c1262c",
+    "head": "3a46298004cf",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
-      "tests": 90,
-      "gates": 90,
-      "pass": 50,
+      "tests": 91,
+      "gates": 91,
+      "pass": 51,
       "fail": 40,
       "skip": 0
     },
-    "digest": "sha256:367214b2db362703ca8f9b559e3be722373e74cba9fb842d8fdae2ac6f1c0e17",
+    "digest": "sha256:c733ba46e5e547fadbef74c0ca456b6204287fb5298dd5ba8babed9662d63661",
     "silentFiles": []
   },
   "summary": {
@@ -309,6 +309,12 @@
         },
         {
           "key": "D1-017::a recipient that only partly matches a Provider is not held",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::a send verb after a held recipient does not hide an unheld one",
           "observed": "pass",
           "promoted": true,
           "specChanged": false
@@ -1421,10 +1427,10 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 50,
+      "green": 51,
       "red": 40,
       "skipped": 0,
-      "total": 90
+      "total": 91
     },
     "semanticCompletion": false,
     "reviewedCompletion": null
@@ -1436,5 +1442,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:54117d829ec388ad55f527ff74d30fe05855cd342f19b01de9b3a392c969ea8e"
+  "digest": "sha256:fed5ade8b7acf87b70053fc5484dfd2e95c5826acada2cf5e9834fa1e22cdbf8"
 }

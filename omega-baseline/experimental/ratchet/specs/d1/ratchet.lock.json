@@ -301,6 +301,15 @@
       "head": "7535f11e95bf",
       "at": "2026-10-08T13:50:08.049Z"
     },
+    "D1-017::a send verb after a held recipient does not hide an unheld one": {
+      "task": "D1-017",
+      "name": "a send verb after a held recipient does not hide an unheld one",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:23bd59da362bf700ea63f69da02b95427e70b744fbeb023173d34fec7ead3d47",
+      "by": "dev-impl-d016b",
+      "head": "3a46298004cf",
+      "at": "2026-10-08T14:17:22.511Z"
+    },
     "D1-017::an Account no realization serves is unavailable even when authority allows it": {
       "task": "D1-017",
       "name": "an Account no realization serves is unavailable even when authority allows it",
