@@ -62,7 +62,7 @@ interface VoiceAnswer {
 interface VoiceVerdict {
   /** Voice slot: "in-session", "codex", "claude" or "grok". */
   voice: string;
-  /** Provider family used for quorum: "gpt", "claude", "grok"; "session" for the in-session voice, whose provider the script cannot see and which never counts toward quorum. */
+  /** Provider family: "gpt", "claude", "grok" (CPA tier, count toward quorum); "space-bunny" or "openrouter(<model>)" (reserve tier, breadth only, never quorum); "session" for the in-session voice, whose provider the script cannot see and which never counts toward quorum. */
   family: string;
   /** "available", "available-unparsed", or why the voice was skipped. */
   status: string;
@@ -278,9 +278,13 @@ const routeLine = (p: RoutePick, overrideReason: string): string =>
     ? `route: tier=cpa profile=${p.profile} id=${p.id} provider=${p.provider} family=${familyOf(p.id)} explicit=no why=${p.why}`
     : `route: tier=cpa profile=${p.profile} id=${p.id || "unknown"} provider=${p.provider || "unknown"} family=${familyOf(p.id)} explicit=${overrideReason === "" ? "no" : "yes"} why=${p.why}${overrideReason === "" ? "" : "; override: " + overrideReason}`;
 
+/** "cpa" families count toward quorum; "reserve" adds breadth only; "session" never counts (provider not visible). */
+const tierOf = (family: string): string =>
+  family === "session" ? "session" : family === "gpt" || family === "claude" || family === "grok" ? "cpa" : "reserve";
+
 const countedFamilies = (vs: VoiceVerdict[], dropped: string[]): string[] => {
   const fams = new Set<string>();
-  for (const v of vs) if (isLive(v) && v.family !== "session" && !dropped.includes(v.voice)) fams.add(v.family);
+  for (const v of vs) if (isLive(v) && tierOf(v.family) === "cpa" && !dropped.includes(v.voice)) fams.add(v.family);
   return [...fams].sort();
 };
 
@@ -438,7 +442,71 @@ const askGrok = async (prompt: string): Promise<VoiceVerdict> => {
   }
 };
 
-const firstRound = await Promise.all([askSession(brief), askCodex(brief), askClaude(brief), askGrok(brief)]);
+/** One reserve-tier call (non-CPA; the router cannot see it). Breadth only: tierOf() never counts it toward quorum. */
+const askReserve = async (slot: string, account: string, prompt: string): Promise<VoiceVerdict> => {
+  voiceCalls++;
+  const voice = slot + "-reserve";
+  try {
+    const r = await world.run("node", [".local/dev-loop/reserve-voice.mjs", "-t", prompt, account], { timeoutMs: 600_000 });
+    const line = /route:[^\n]*/.exec(r.stderr);
+    const fam = /family=(\S+)/.exec(line === null ? "" : line[0]);
+    if (line !== null) routeLines.push(line[0] + ` why=${slot} CPA voice blocked; router re-asked once first`);
+    return parseVoice(voice, fam === null ? "space-bunny" : fam[1] ?? "space-bunny", r, line === null ? `account ${account}` : line[0]);
+  } catch (e) {
+    return failVoice(voice, "space-bunny", e);
+  }
+};
+
+/** Proxy helper per CPA family, for a router-offered retry id. GPT goes through the Codex CLI, which takes no model id here. */
+const familyHelper = (family: string): string =>
+  family === "claude" ? ".local/dev-loop/claude-voice.mjs" : family === "grok" ? ".local/dev-loop/grok-voice.mjs" : "";
+
+/**
+ * A blocked CPA voice re-asks the router once (it excludes cooled and unroutable ids). If the router now
+ * offers an untried id in the same family and that family has a proxy helper, that id is tried once.
+ * Otherwise the slot falls back to one reserve voice, labelled tier=reserve; it never satisfies quorum.
+ */
+const withReserve = async (
+  slot: string,
+  family: string,
+  account: string,
+  prompt: string,
+  primary: VoiceVerdict,
+): Promise<VoiceVerdict> => {
+  if (isLive(primary) || voiceCalls >= VOICE_CALL_CEILING) return primary;
+  const again = await askRouter("reason");
+  routeLines.push(routeLine(again, "") + ` (re-asked after ${slot} was blocked)`);
+  const helper = familyHelper(family);
+  if (again.id !== "" && familyOf(again.id) === family && helper !== "" && voiceCalls < VOICE_CALL_CEILING) {
+    voiceCalls++;
+    try {
+      const r = await world.run("node", [helper, "-t", prompt, again.id, "3000"], { timeoutMs: 600_000 });
+      const retried = parseVoice(slot, family, r, `model ${again.id} (router re-ask)`);
+      if (isLive(retried)) return retried;
+    } catch {
+      // fall through to the reserve tier
+    }
+  }
+  if (voiceCalls >= VOICE_CALL_CEILING) return primary;
+  return askReserve(slot, account, prompt);
+};
+
+/** Every voice dispatch goes through one place, so the reserve fallback applies in every round. */
+const askSlot = async (voice: string, prompt: string): Promise<VoiceVerdict> => {
+  if (voice === "in-session") return askSession(prompt);
+  if (voice === "codex") return withReserve("codex", "gpt", "opencode-acct-3", prompt, await askCodex(prompt));
+  if (voice === "claude") return withReserve("claude", "claude", "new-provider", prompt, await askClaude(prompt));
+  if (voice === "grok") return withReserve("grok", "grok", "opencode-acct-2", prompt, await askGrok(prompt));
+  const account = voice === "codex-reserve" ? "opencode-acct-3" : voice === "claude-reserve" ? "new-provider" : "opencode-acct-2";
+  return askReserve(voice.replace(/-reserve$/, ""), account, prompt);
+};
+
+const firstRound = await Promise.all([
+  askSlot("in-session", brief),
+  askSlot("codex", brief),
+  askSlot("claude", brief),
+  askSlot("grok", brief),
+]);
 for (const v of firstRound) report({ round: 1, ...v }, "voices");
 
 let finalRound: VoiceVerdict[] = firstRound;
@@ -506,17 +574,7 @@ if (stakes === "contested") {
     answerFormat +
     "\nThe original brief follows.\n\n" +
     brief;
-  const challenged = await Promise.all(
-    challengers.map((v) =>
-      v.voice === "in-session"
-        ? askSession(challenge("in-session"))
-        : v.voice === "codex"
-          ? askCodex(challenge("codex"))
-          : v.voice === "claude"
-            ? askClaude(challenge("claude"))
-            : askGrok(challenge("grok")),
-    ),
-  );
+  const challenged = await Promise.all(challengers.map((v) => askSlot(v.voice, challenge(v.voice))));
   for (const v of challenged) report({ round: 2, ...v }, "voices");
   finalRound = firstRound.map((v) => challenged.find((c) => c.voice === v.voice && isLive(c)) ?? v);
   secondRoundRan = true;
@@ -537,14 +595,7 @@ if (stakes === "contested") {
       answerFormat +
       "\nThe original brief follows.\n\n" +
       brief;
-    const t =
-      voice === "in-session"
-        ? await askSession(prompt)
-        : voice === "codex"
-          ? await askCodex(prompt)
-          : voice === "claude"
-            ? await askClaude(prompt)
-            : await askGrok(prompt);
+    const t = await askSlot(voice, prompt);
     report({ round: 2, ...t }, "voices");
     if (isLive(t)) turns.push(t);
   }

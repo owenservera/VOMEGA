@@ -262,7 +262,11 @@ medium); COST/TIME as a voice-call ceiling of `#models`+3 = 6; the Claude voice 
 authorized proxy with one fallback rung (`claude-opus-5-5` → `claude-sonnet-5-5`); Grok through the
 proxy helper on `grok-4.7`; and the router entrypoint (§3.3) asked for `reason` and `review` before the
 voices, with every voice's `route:` line (router pick or explicit override, and why) written into the
-ruling record (D-20261007-011). **Not in the workflow:** VOTE (the router never
+ruling record (D-20261007-011); and the reserve fallback (D-20261008-013): every voice dispatch goes
+through one `askSlot`, so in every round a blocked CPA voice re-asks the router once, tries an
+untried in-family id the router offers (Claude/Grok proxy helpers only), and otherwise falls back to
+one `reserve-voice.mjs` call labelled `tier=reserve family=space-bunny|openrouter(<model>)`. Quorum
+counts only `tier=cpa` families, so a reserve voice can never satisfy it. **Not in the workflow:** VOTE (the router never
 selects it), a wall-clock limit (a workflow cannot read the clock), and LOOP-BREAKER (cannot trip at
 `#rounds` 2). Verification so far: typechecked locally against the workflow API with a planted-error
 control, and its metadata parses; it has **not** been run, so its first interactive use is its
@@ -277,16 +281,18 @@ alive because this table says LIVE.
 | --- | --- | --- | --- |
 | `session` (in-session subagent) | ZCode subagent, read-only brief | harness-exposed identity, per run | LIVE while the thread model answers; record the observed model, never a remembered one |
 | `codex` (GPT) | the D-009 panel brief, then `codex.cmd exec -s read-only "Reply OK"` | 2026-10-07 11:52–11:55Z dark; re-probed ~14:5xZ | **LIVE again** — `CODEX-VOICE-OK` on the re-probe after the ~4:08 PM local cap window. Router `status` still lists `gpt-6.1-sol` cooled for quota with ~32m remaining; the CLI resolves to `gpt-6.1-sol`, provider openai. Distinct from the `codex-oauth` API route. |
-| `claude` (Claude) | the D-009 panel brief via `.local/dev-loop/claude-voice.mjs`, `claude-opus-5-5` then `claude-sonnet-5-5` | 2026-10-07 11:52–11:55Z; re-probed ~14:5xZ on `claude-sonnet-5` | **DARK (429)** — proxy rate_limit_error on every rung tried, including a later `claude-sonnet-5` probe. Router `status` shows `claude-opus-5-5` cooled for quota with ~3h28m remaining and `claude-fable-5-1` cooled for ~585h. The `claude -p` CLI remains broken (OAuth expired, Owen-reserved). |
+| `claude` (Claude) | the D-009 panel brief via `.local/dev-loop/claude-voice.mjs`, `claude-opus-5-5` then `claude-sonnet-5-5` | dark 2026-10-07 11:52Z–~14:5xZ; re-probed 2026-10-08 ~00:3xZ | **LIVE again** — `claude-opus-5-5` answered through the proxy (D-013 dry run; selection line now reports ladder-pos=1). Was DARK (429 on every rung) through the 2026-10-07 afternoon. The `claude -p` CLI remains broken (OAuth expired, Owen-reserved). |
 | `grok` (Grok) | `node .local/dev-loop/grok-voice.mjs -t "Reply OK" <model>`; router `cliproxy.mjs status` catalog | 2026-10-07 ~14:5xZ | **LIVE via the proxy (CPA)** — `grok-4.7` answered through `grok-build-oauth` on 127.0.0.1:8317 (HTTP 200). The `grok` CLI itself is still broken ("API key required"); the CLI is not a voice route. Catalog holds ~18 grok ids (`grok-4.7`, `grok-4.6`, `grok-4.3`, `grok-4.5`, `grok-3-mini`, `grok-4.20-*`, image/video ids excluded). |
 | `space-bunny` (reserve tier) | `node .local/dev-loop/reserve-voice.mjs -t "Reply OK" new-provider` | 2026-10-07 ~14:5xZ | **LIVE** — `RESERVE-VOICE-OK` on `new-provider`. Other four accounts not separately probed. **Never counts toward quorum.** |
 | `openrouter` (reserve tier) | `openrouter/auto` | 2026-10-07 09:43Z (ledger) | PASS at last ledger probe; not yet exercised as a council voice. **Never counts toward quorum.** |
 
-**Quorum verdict (measured by the chair, 2026-10-07 ~14:5xZ): MET — two live independent CPA
-families, GPT and Grok.** `codex` GPT **LIVE** (Codex CLI answered), `grok` **LIVE** via the proxy
-(`grok-4.7`, HTTP 200), `claude` **DARK** (429 on every rung tried). Three CPA candidate families;
-Claude is the third once it recovers. The reserve tier (`space-bunny` LIVE) adds breadth but cannot
-replace a missing CPA family. A convening that reaches only one CPA family is BLOCKED by §6
+**Quorum verdict:** MET on GPT + Grok at 2026-10-07 ~14:5xZ (Claude then DARK). Claude answered again
+at 2026-10-08 ~00:3xZ, so three CPA families were candidates at that point; GPT and Grok were not
+re-probed in that pass. **Router entrypoint broken since 2026-10-08 01:00 local:** `cliproxy.mjs`
+imports a missing `~/.agents/skills/model-profile.mjs` (ERR_MODULE_NOT_FOUND). The workflow degrades
+safely (router pick reads as unknown, fallback goes straight to the reserve voice), but router-based
+selection is unavailable until the skill owner fixes it; reported, not repaired. The reserve tier
+(`space-bunny` LIVE) adds breadth but cannot replace a missing CPA family. A convening that reaches only one CPA family is BLOCKED by §6
 QUORUM-LOSS. Re-measure with the router entrypoint (§3.3) at each convening; never trust a relayed
 claim. The ledger
 [PROVIDER-AVAILABILITY.md](PROVIDER-AVAILABILITY.md) is the authority on what is live; this
