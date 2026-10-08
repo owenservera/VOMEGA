@@ -9,17 +9,17 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "7a96038951c2",
+    "head": "d92ed4127bec",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
-      "tests": 86,
-      "gates": 86,
-      "pass": 46,
+      "tests": 87,
+      "gates": 87,
+      "pass": 47,
       "fail": 40,
       "skip": 0
     },
-    "digest": "sha256:ccd3a44ce758dc7bd9af55bcb0ed36a18f9e0b72e342222284a3d08d26f4a786",
+    "digest": "sha256:f0021fdec1b5621d8cc004b09901a98e87d190533a75ec4e96d34ece674293ff",
     "silentFiles": []
   },
   "summary": {
@@ -315,6 +315,12 @@
         },
         {
           "key": "D1-017::an unheld recipient named beside a held one is never dropped",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::an unheld recipient sharing a preposition with a held one is never dropped",
           "observed": "pass",
           "promoted": true,
           "specChanged": false
@@ -1397,10 +1403,10 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 46,
+      "green": 47,
       "red": 40,
       "skipped": 0,
-      "total": 86
+      "total": 87
     },
     "semanticCompletion": false,
     "reviewedCompletion": null
@@ -1412,5 +1418,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:68c1d4345fa55e424fafcb6667e3878285c34ba061d28304e6be697597d88594"
+  "digest": "sha256:107ee20840a3b6fa239ed5c7de5051c327b3a0c4dd8f810f174aaff7580bf5af"
 }

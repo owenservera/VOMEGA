@@ -294,6 +294,15 @@
       "head": "79c204dc9228",
       "at": "2026-10-08T00:34:28.452Z"
     },
+    "D1-017::an unheld recipient sharing a preposition with a held one is never dropped": {
+      "task": "D1-017",
+      "name": "an unheld recipient sharing a preposition with a held one is never dropped",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:106ec3cc08b54aa077d88fa99d4449cb939c0d89146ba4de9b697bfe76e7d01b",
+      "by": "dev-impl-d015",
+      "head": "d92ed4127bec",
+      "at": "2026-10-08T05:12:33.136Z"
+    },
     "D1-018::W5 keeps Provider, Account and Model as separate route records": {
       "task": "D1-018",
       "name": "W5 keeps Provider, Account and Model as separate route records",
