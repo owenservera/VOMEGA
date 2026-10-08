@@ -33,9 +33,12 @@ export function renderHtml(p: Projection): string {
     })
     .join("\n");
 
-  const consequence = p.consequence
-    ? `<p class="consequence">${p.consequence.crossesLocalBoundary ? "This command crosses the local boundary" : "This command stays local"}: ${esc(p.consequence.carries.join(", "))} would be sent to ${esc(p.consequence.to ?? "an unresolved Provider")}.</p>`
-    : "";
+  const c = p.consequence;
+  const consequence = !c
+    ? ""
+    : c.crossesLocalBoundary
+      ? `<p class="consequence">This command crosses the local boundary: ${esc(c.carries.join(", "))} would be sent to ${esc(c.to ?? "an unresolved Provider")}.</p>`
+      : `<p class="consequence">This command stays on this machine; nothing is transferred.</p>`;
 
   const actions = p.actions
     .map((a) => `<button type="button" class="action" data-action="${esc(JSON.stringify(a))}">${esc(a.type)}</button>`)
