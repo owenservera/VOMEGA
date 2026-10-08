@@ -155,8 +155,8 @@ export function interpretRevision(state: D1State, n: number): InterpretationResu
   const unheld = grounded.mention === null ? unheldRoute(body) : null;
   // A held recipient named beside an unheld one ("to Gemini via work claude") may not
   // absorb the command: the unheld target wins and the route stays unresolved.
-  const conflict = grounded.mention !== null ? unheldLink(routeChain(body), wm) : null;
-  const chainTokens = conflict ? new Set([...grounded.mentionTokens, ...routeChain(body).flat().map((t) => t.i)]) : null;
+  const conflict = grounded.mention !== null ? unheldLink(routeChain(body, wm), wm) : null;
+  const chainTokens = conflict ? new Set([...grounded.mentionTokens, ...routeChain(body, wm).flat().map((t) => t.i)]) : null;
   const grounding = unheld
     ? { ...grounded, mention: unheld.mention, mentionTokens: unheld.tokens }
     : conflict
@@ -528,10 +528,34 @@ const CONNECTORS = new Set(["and", "then", "or"]);
  * no preposition opens, so payload text ("explain this error: build failed") is never
  * read as a route.
  */
-function routeChain(body: Token[]): Token[][] {
+function routeChain(body: Token[], wm: WorldModel): Token[][] {
+  const withBare = chainFrom(body, true);
+  // Bare names join only after a link that names a held recipient; otherwise the text
+  // before the punctuation is payload ("to explain this error: build failed").
+  const last = withBare.links[withBare.links.length - 1];
+  if (withBare.bare.length > 0 && !(last && isHeld(last.slice(1).filter((t) => !CONNECTORS.has(t.norm)), wm))) {
+    return chainFrom(body, false).links;
+  }
+  if (withBare.links.length === 0) return [];
+  const prep = last![0]!;
+  return [...withBare.links, ...withBare.bare.map((words) => [prep, ...words])];
+}
+
+function chainFrom(body: Token[], takeBare: boolean): { links: Token[][]; bare: Token[][] } {
   const links: Token[][] = [];
   let i = body.length - 1;
   while (i >= 0 && body[i]!.kind !== "word") i--;
+  // Bare names after the last link, joined by a comma or semicolon ("to work claude, Gemini").
+  const bare: Token[][] = [];
+  while (takeBare) {
+    let j = i;
+    const words: Token[] = [];
+    while (j >= 0 && body[j]!.kind === "word" && !CHAIN_PREPS.has(body[j]!.norm)) words.unshift(body[j--]!);
+    if (words.length === 0 || j < 0 || body[j]!.kind !== "punct" || ![",", ";"].includes(body[j]!.norm)) break;
+    bare.unshift(words);
+    i = j;
+    while (i >= 0 && (body[i]!.kind === "punct" || (body[i]!.kind === "word" && CONNECTORS.has(body[i]!.norm)))) i--;
+  }
   while (i >= 0) {
     const words: Token[] = [];
     while (i >= 0 && body[i]!.kind === "word" && !CHAIN_PREPS.has(body[i]!.norm)) words.unshift(body[i--]!);
@@ -540,7 +564,21 @@ function routeChain(body: Token[]): Token[][] {
     i--;
     while (i >= 0 && (body[i]!.kind === "punct" || (body[i]!.kind === "word" && CONNECTORS.has(body[i]!.norm)))) i--;
   }
-  return links;
+  return { links, bare };
+}
+
+/** Words that open a clause rather than name a recipient: "and say thanks", ", please". */
+const CLAUSE_OPENERS = new Set([
+  ...Object.values(COMMAND_VERBS).flat(), ...REGISTER_VERBS, ...CHOOSE_VERBS,
+  "say", "thank", "thanks", "please", "cheers", "regards",
+]);
+
+/** A grounding at least this strong names a record; "personal claude" → Provider at 0.55 does not. */
+const HELD = 0.9;
+
+function isHeld(name: Token[], wm: WorldModel): boolean {
+  const text = name.map((t) => t.norm).join(" ");
+  return (["provider", "account", "model"] as const).some((k) => (ground(text, wm.entities, [k]).primary?.score ?? 0) >= HELD);
 }
 
 /**
@@ -556,10 +594,8 @@ function unheldLink(links: Token[][], wm: WorldModel): Token[] | null {
       else names[names.length - 1]!.push(t);
     }
     for (const name of names) {
-      if (name.length === 0) continue;
-      const text = name.map((t) => t.norm).join(" ");
-      const held = (["provider", "account", "model"] as const).some((k) => (ground(text, wm.entities, [k]).primary?.score ?? 0) > 0);
-      if (!held) return [link[0]!, ...name];
+      if (name.length === 0 || CLAUSE_OPENERS.has(name[0]!.norm)) continue;
+      if (!isHeld(name, wm)) return [link[0]!, ...name];
     }
   }
   return null;
