@@ -721,6 +721,42 @@
         "note": "project.ts is a genuine pure projection (no module state; lifecycleOf reads the one law via compile.ts validation; route keeps Provider/Account/Model/Realization as 5 separate slots; evidenceClass is the literal SIMULATED). Gates e-projection.gate.test.ts:26,32 pass incl. structuredClone. CAVEAT: acceptance clause 'no raw-language parsing in renderer' has NO gate and no renderer to test - ui.ts:8 is still a D1-042 stub."
       }
     ],
+    "D1-042": [
+      {
+        "by": "dev-trv-d042",
+        "verdict": "accept",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:10:59.524Z",
+        "note": "ACCEPT (gate gap noted). verify green at 51a60c1; renderHtml confined to ui.ts, imports only ./contract.ts types, no parsing of p.input/p.reading (only esc()), no module state; deterministic + frozen-input safe. Rendered input and reading both correct in the dump. GATE WEAKNESS: deleting the <p class=reading> line leaves D1-042 GREEN - the assertion html.toContain(project(s).reading) is satisfied by the Provider route-value, which is also \"Claude\" (ui.ts:13 vs ui.ts:48). Deleting the <input> DOES turn it red. Gate is not vacuous but its reading clause has no teeth."
+      }
+    ],
+    "D1-043": [
+      {
+        "by": "dev-trv-d042",
+        "verdict": "reject",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:11:06.880Z",
+        "note": "REJECT on gate power, not on code. The implementation is correct: ui.ts:18-20 emits three distinct data-slot route parts and the dump shows Capability/Provider/Account/Model each labelled with their own value. But the gate at e-projection.gate.test.ts:49-50 cannot detect the exact failure its own name claims ('separately labelled'): swapping the Account and Provider slots (routePart(\"Account\", p.route.provider) / routePart(\"Provider\", p.route.account)) leaves D1-043 GREEN. Reason: it only asserts the words Provider/Account/Model appear somewhere, plus toContain(\"Claude · Work\") - and that string is the projection's own account label (project.ts), rendered in whichever slot it is placed. Removing the route section entirely does turn it red, so the gate is not vacuous, but it cannot see Provider=Account conflation - the invariant this task exists to enforce. Fix: assert per-slot association (e.g. the account label appears inside the data-slot=\"account\" element), then re-promote."
+      }
+    ],
+    "D1-044": [
+      {
+        "by": "dev-trv-d042",
+        "verdict": "accept",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:11:14.608Z",
+        "note": "ACCEPT (gate gap noted). Code does avoid pre-choosing: ui.ts:30 emits plain buttons with data-id + data-action, no selected/checked/aria-* attribute of any kind (verified by reading and by the rendered dump). Gate is non-vacuous: removing the chooser turns D1-044 red, and adding aria-pressed=\"true\" to the first option turns it red. GATE WEAKNESS: the negative assertion is spelling-specific (e-projection.gate.test.ts:62) - adding data-selected=\"true\" to the first option also leaves D1-044 GREEN, so it cannot prove 'none selected' for preselection expressed any other way. Recommend widening to a DOM-level check that no option carries any selection state."
+      }
+    ],
+    "D1-047": [
+      {
+        "by": "dev-trv-d042",
+        "verdict": "reject",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:11:24.133Z",
+        "note": "REJECT on gate power, not on code. Implementation is correct: ui.ts:36-38 renders the consequence and the dump shows 'This command crosses the local boundary: params.prompt would be sent to provider:claude.' Removing the consequence does turn D1-047 red. But e-projection.gate.test.ts:84 asserts only /leave|crosses|sent to/i, and that cannot tell the two boundary outcomes apart: forcing the renderer to ALWAYS say 'This command stays local' (ui.ts:37 ternary hardcoded to the local branch) leaves D1-047 GREEN, because 'sent to' still matches. Same for hardcoding 'crosses'. So a renderer that understates an external transfer as local - the user-facing safety failure this task exists to prevent - is invisible to this gate. The local-only branch is not exercised by any gate at all. Fix: assert the external-transfer projection renders the crossing sentence and a local-only projection renders the opposite, then re-promote."
+      }
+    ],
     "D1-060": [
       {
         "by": "gov-trv-r5",

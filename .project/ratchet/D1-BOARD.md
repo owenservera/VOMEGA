@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `6a19fe0b1cc3`, Bun 1.4.2, win32-x64, 55/91 gates green, digest 5f37331b42d2 · promoted gates: 50
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `51a60c18665d`, Bun 1.4.2, win32-x64, 55/91 gates green, digest 5f37331b42d2 · promoted gates: 50
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 14 | 19 | 8 | 0 | 36 | 0 | 0 | 77 | 8 | 0 |
+| 16 | 17 | 8 | 0 | 36 | 0 | 0 | 77 | 8 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -79,12 +79,12 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | --- | --- | --- | --- | --- |
 | D1-040 | DONE | 1/1 | Define minimal deterministic D1 projection contract |  |
 | D1-041 | DONE | 2/2 | Implement pure semantic projector |  |
-| D1-042 | PROVEN | 1/1 | Render text input + interpretation state |  |
-| D1-043 | PROVEN | 1/1 | Render Provider/Account/Model route |  |
-| D1-044 | PROVEN | 1/1 | Render unresolved Account chooser |  |
+| D1-042 | DONE | 1/1 | Render text input + interpretation state |  |
+| D1-043 | PROVEN | 1/1 | Render Provider/Account/Model route | latest review is not an independent accept |
+| D1-044 | DONE | 1/1 | Render unresolved Account chooser |  |
 | D1-045 | OPEN ★ | 1/1 | Route chooser click through semantic edit reducer | PROMOTE_PENDING 1 |
 | D1-046 | BLOCKED | 1/1 | Prove typed/clicked parity | PROMOTE_PENDING 1 |
-| D1-047 | PROVEN | 1/1 | Render consequence/external-transfer preview |  |
+| D1-047 | PROVEN | 1/1 | Render consequence/external-transfer preview | latest review is not an independent accept |
 | D1-048 | OPEN ★ | 0/2 | Render lifecycle states |  |
 
 ### Phase F — grounded contextual help

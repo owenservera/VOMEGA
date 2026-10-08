@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "6a19fe0b1cc3",
+    "head": "51a60c18665d",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -26,8 +26,8 @@
     "OPEN": 8,
     "CLAIMED": 0,
     "BLOCKED": 36,
-    "PROVEN": 19,
-    "DONE": 14,
+    "PROVEN": 17,
+    "DONE": 16,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -692,7 +692,7 @@
     },
     {
       "id": "D1-042",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-042::twin renders the text input and current reading",
@@ -703,7 +703,13 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "dev-trv-d042",
+        "verdict": "accept",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:10:59.524Z",
+        "note": "ACCEPT (gate gap noted). verify green at 51a60c1; renderHtml confined to ui.ts, imports only ./contract.ts types, no parsing of p.input/p.reading (only esc()), no module state; deterministic + frozen-input safe. Rendered input and reading both correct in the dump. GATE WEAKNESS: deleting the <p class=reading> line leaves D1-042 GREEN - the assertion html.toContain(project(s).reading) is satisfied by the Provider route-value, which is also \"Claude\" (ui.ts:13 vs ui.ts:48). Deleting the <input> DOES turn it red. Gate is not vacuous but its reading clause has no teeth."
+      }
     },
     {
       "id": "D1-043",
@@ -718,11 +724,17 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "dev-trv-d042",
+        "verdict": "reject",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:11:06.880Z",
+        "note": "REJECT on gate power, not on code. The implementation is correct: ui.ts:18-20 emits three distinct data-slot route parts and the dump shows Capability/Provider/Account/Model each labelled with their own value. But the gate at e-projection.gate.test.ts:49-50 cannot detect the exact failure its own name claims ('separately labelled'): swapping the Account and Provider slots (routePart(\"Account\", p.route.provider) / routePart(\"Provider\", p.route.account)) leaves D1-043 GREEN. Reason: it only asserts the words Provider/Account/Model appear somewhere, plus toContain(\"Claude · Work\") - and that string is the projection's own account label (project.ts), rendered in whichever slot it is placed. Removing the route section entirely does turn it red, so the gate is not vacuous, but it cannot see Provider=Account conflation - the invariant this task exists to enforce. Fix: assert per-slot association (e.g. the account label appears inside the data-slot=\"account\" element), then re-promote."
+      }
     },
     {
       "id": "D1-044",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-044::unresolved Account chooser shows both Accounts with none selected",
@@ -733,7 +745,13 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "dev-trv-d042",
+        "verdict": "accept",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:11:14.608Z",
+        "note": "ACCEPT (gate gap noted). Code does avoid pre-choosing: ui.ts:30 emits plain buttons with data-id + data-action, no selected/checked/aria-* attribute of any kind (verified by reading and by the rendered dump). Gate is non-vacuous: removing the chooser turns D1-044 red, and adding aria-pressed=\"true\" to the first option turns it red. GATE WEAKNESS: the negative assertion is spelling-specific (e-projection.gate.test.ts:62) - adding data-selected=\"true\" to the first option also leaves D1-044 GREEN, so it cannot prove 'none selected' for preselection expressed any other way. Recommend widening to a DOM-level check that no option carries any selection state."
+      }
     },
     {
       "id": "D1-045",
@@ -778,7 +796,13 @@
       ],
       "artifacts": [],
       "missingProof": false,
-      "review": null
+      "review": {
+        "by": "dev-trv-d042",
+        "verdict": "reject",
+        "head": "51a60c18665d",
+        "at": "2026-10-08T20:11:24.133Z",
+        "note": "REJECT on gate power, not on code. Implementation is correct: ui.ts:36-38 renders the consequence and the dump shows 'This command crosses the local boundary: params.prompt would be sent to provider:claude.' Removing the consequence does turn D1-047 red. But e-projection.gate.test.ts:84 asserts only /leave|crosses|sent to/i, and that cannot tell the two boundary outcomes apart: forcing the renderer to ALWAYS say 'This command stays local' (ui.ts:37 ternary hardcoded to the local branch) leaves D1-047 GREEN, because 'sent to' still matches. Same for hardcoding 'crosses'. So a renderer that understates an external transfer as local - the user-facing safety failure this task exists to prevent - is invisible to this gate. The local-only branch is not exercised by any gate at all. Fix: assert the external-transfer projection renders the crossing sentence and a local-only projection renders the opposite, then re-promote."
+      }
     },
     {
       "id": "D1-048",
@@ -1442,5 +1466,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:fdc0ce16acf612609035f844c5951a41b4878ca29a8d112ca2b9f0b9e94df4a7"
+  "digest": "sha256:787698c1dacf794c89f36eb133ce70113fae9915a885ee0f816443c84b290962"
 }
