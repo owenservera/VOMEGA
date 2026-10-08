@@ -275,6 +275,24 @@
       "head": "60a20667686a",
       "at": "2026-10-07T11:07:23.795Z"
     },
+    "D1-017::a clause after a held recipient is not a second recipient": {
+      "task": "D1-017",
+      "name": "a clause after a held recipient is not a second recipient",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:ac56a616b69bcccd205f6ccd36e3187d042a7d62048a5e6019650a421e0cd6cd",
+      "by": "dev-impl-d016",
+      "head": "7535f11e95bf",
+      "at": "2026-10-08T13:50:08.049Z"
+    },
+    "D1-017::a recipient that only partly matches a Provider is not held": {
+      "task": "D1-017",
+      "name": "a recipient that only partly matches a Provider is not held",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:ac56a616b69bcccd205f6ccd36e3187d042a7d62048a5e6019650a421e0cd6cd",
+      "by": "dev-impl-d016",
+      "head": "7535f11e95bf",
+      "at": "2026-10-08T13:50:08.049Z"
+    },
     "D1-017::an Account no realization serves is unavailable even when authority allows it": {
       "task": "D1-017",
       "name": "an Account no realization serves is unavailable even when authority allows it",
@@ -292,6 +310,15 @@
       "by": "dev-impl-d006",
       "head": "f6c603d69bcd",
       "at": "2026-10-07T13:42:56.078Z"
+    },
+    "D1-017::an unheld recipient joined by punctuation is never dropped": {
+      "task": "D1-017",
+      "name": "an unheld recipient joined by punctuation is never dropped",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:ac56a616b69bcccd205f6ccd36e3187d042a7d62048a5e6019650a421e0cd6cd",
+      "by": "dev-impl-d016",
+      "head": "7535f11e95bf",
+      "at": "2026-10-08T13:50:08.049Z"
     },
     "D1-017::an unheld recipient named beside a held one is never dropped": {
       "task": "D1-017",
