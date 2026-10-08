@@ -1,19 +1,19 @@
 {
   "schema": "vomega-local-state/1",
-  "generatedAt": "2026-10-07T13:47:35Z",
+  "generatedAt": "2026-10-08T05:13:26Z",
   "observer": "DEVops standing thread (automation-6a2b7413)",
   "machine": "WIN-10 / VIVIM.inc",
-  "remoteMain": "ee1be8a11d71bd53f78d797569d9400c66a7bed4",
-  "notes": "Published after significant integration (main push). Observation only; never authority.",
+  "remoteMain": "5da811e6a1ac9debd43b86cf278793986c8e07c7",
+  "notes": "Published after main push (D-20261008-020). Observation only; never authority.",
   "worktrees": [
     {
       "path": "C:/0-BlackBoxProject-0/VOMEGA",
       "branch": "main",
-      "head": "ee1be8a11d71bd53f78d797569d9400c66a7bed4",
+      "head": "d7cd86b1e5a071fdcdd1e75dd9154972ef974184",
       "dirty": true,
-      "ahead": 0,
+      "ahead": 3,
       "behind": 0,
-      "lastCommitAt": "2026-10-07T13:35:31+02:00",
+      "lastCommitAt": "2026-10-08T07:12:42+02:00",
       "claims": [
         {
           "id": "20261007-0911-pm-team-thread4-zcode",
@@ -57,34 +57,22 @@
   },
   "checks": [
     {
-      "name": "ratchet check",
-      "observedAt": "2026-10-07T13:47:35Z",
+      "name": "ratchet check @5da811e",
+      "observedAt": "2026-10-08T05:13:26Z",
       "status": "PASS",
-      "detail": "exit 0; 45+/85 green REGRESSED 0"
-    },
-    {
-      "name": "omega:quick",
-      "observedAt": "2026-10-07T13:47:35Z",
-      "status": "PASS",
-      "detail": "62/0"
-    },
-    {
-      "name": "d1:gates",
-      "observedAt": "2026-10-07T13:47:35Z",
-      "status": "PASS",
-      "detail": "80/5 - all 5 PROMOTE_PENDING (known)"
+      "detail": "exit 0, REGRESSED 0"
     },
     {
       "name": "secrets scan (pushed range)",
-      "observedAt": "2026-10-07T13:47:35Z",
+      "observedAt": "2026-10-08T05:13:26Z",
       "status": "PASS",
       "detail": "0 hits"
     }
   ],
   "visibilityRisks": [
-    "main pushed 2026-10-07 (7ce9e32..ee1be8a): remote now matches local - unpushed-backlog risk cleared",
-    "dirty worktree: threads hold uncommitted files; never git add -A",
-    "5 PROMOTE_PENDING gates (D1-045/046/051/062x2) await DEV promotion",
-    "thread session models have no automatic fallback"
+    "main pushed bd241e2..5da811e (18 commits) at 2026-10-08T05:13:26Z; local 3 ahead (D1-017 new gate + fix + promotion) await next authorization",
+    "cliproxy-router entrypoint broken since ~2026-10-07T23:00Z (missing ../model-profile.mjs) - model allocation (D-019) held",
+    "dirty shared tree: never git add -A",
+    "thread session models have no automatic fallback; uncommanded Codex->Claude switch traced to ZCode client (owner-reserved)"
   ]
 }
