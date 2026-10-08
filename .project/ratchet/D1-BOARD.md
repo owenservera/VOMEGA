@@ -4,7 +4,7 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `fa0401427d32`, Bun 1.4.2, win32-x64, 45/85 gates green, digest 066dfc8dc3c6 · promoted gates: 40
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `79c204dc9228`, Bun 1.4.2, win32-x64, 46/86 gates green, digest ccd3a44ce758 · promoted gates: 41
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -48,7 +48,7 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | D1-014 | PROVEN | 1/1 | Add World W1: Claude Work only |  |
 | D1-015 | PROVEN | 1/1 | Add World W2: Claude Work + Personal |  |
 | D1-016 | DONE | 4/4 | Add World W3: stale Claude Work |  |
-| D1-017 | DONE | 5/5 | Add World W4: unknown/incompatible target |  |
+| D1-017 | DONE | 6/6 | Add World W4: unknown/incompatible target |  |
 | D1-018 | PROVEN | 1/1 | Add World W5: optional Provider/Model route stress case |  |
 
 ### Phase C — registration and command nucleus

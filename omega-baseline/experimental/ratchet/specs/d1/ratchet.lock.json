@@ -277,6 +277,15 @@
       "head": "f6c603d69bcd",
       "at": "2026-10-07T13:42:56.078Z"
     },
+    "D1-017::an unheld recipient named beside a held one is never dropped": {
+      "task": "D1-017",
+      "name": "an unheld recipient named beside a held one is never dropped",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:227e6f7b917ccb36621700c91332b65f2ede51e881fddfe3c26bc0ec801bddf3",
+      "by": "dev-impl-d013",
+      "head": "79c204dc9228",
+      "at": "2026-10-08T00:34:28.452Z"
+    },
     "D1-018::W5 keeps Provider, Account and Model as separate route records": {
       "task": "D1-018",
       "name": "W5 keeps Provider, Account and Model as separate route records",
