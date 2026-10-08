@@ -4,11 +4,11 @@
 > Evidence class of every gate: **SIMULATED**. Nothing on this board is live Provider/Account/browser evidence.
 > Green here is not completion: this board is a projection of the ratchet, which is authoritative only for computed D1 task/gate state. Raw truth: `bun run ratchet probe`. See `.project/ratchet/DESIGN.md` §Authority.
 
-Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `f1f306fb3ab9`, Bun 1.4.2, win32-x64, 51/91 gates green, digest c733ba46e5e5 · promoted gates: 46
+Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · probe: HEAD `6a19fe0b1cc3`, Bun 1.4.2, win32-x64, 55/91 gates green, digest 5f37331b42d2 · promoted gates: 50
 
 | DONE | PROVEN | OPEN | CLAIMED | BLOCKED | REGRESSED | SUPERSEDED | total | frontier | missing proof |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 14 | 15 | 11 | 0 | 37 | 0 | 0 | 77 | 11 | 0 |
+| 14 | 19 | 8 | 0 | 36 | 0 | 0 | 77 | 8 | 0 |
 
 ## Frontier (ranked by critical path, then tasks unblocked)
 
@@ -16,11 +16,8 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 - **D1-034** Bind committed command to immutable revision — crit 12, unblocks 18; `bun run ratchet packet D1-034`
 - **D1-050** Expose minimal semantic help metadata from same source records — crit 12, unblocks 16; `bun run ratchet packet D1-050`
 - **D1-020** Add semantic registration operation for synthetic Provider/Account relation — crit 12, unblocks 13; `bun run ratchet packet D1-020`
-- **D1-044** Render unresolved Account chooser — crit 12, unblocks 12; `bun run ratchet packet D1-044`
+- **D1-045** Route chooser click through semantic edit reducer — crit 11, unblocks 11; `bun run ratchet packet D1-045`
 - **D1-055** Define minimal D1 Reflection extraction boundary — crit 6, unblocks 6; `bun run ratchet packet D1-055`
-- **D1-042** Render text input + interpretation state — crit 1, unblocks 0; `bun run ratchet packet D1-042`
-- **D1-043** Render Provider/Account/Model route — crit 1, unblocks 0; `bun run ratchet packet D1-043`
-- **D1-047** Render consequence/external-transfer preview — crit 1, unblocks 0; `bun run ratchet packet D1-047`
 - **D1-048** Render lifecycle states — crit 1, unblocks 0; `bun run ratchet packet D1-048`
 - **D1-062** Prevent interpretation from granting authority — crit 1, unblocks 0; `bun run ratchet packet D1-062`
 
@@ -82,12 +79,12 @@ Source task list: `.project/deliverables/D1-ATOMIC-TASKS.md` (db0cdd956eb7) · p
 | --- | --- | --- | --- | --- |
 | D1-040 | DONE | 1/1 | Define minimal deterministic D1 projection contract |  |
 | D1-041 | DONE | 2/2 | Implement pure semantic projector |  |
-| D1-042 | OPEN ★ | 0/1 | Render text input + interpretation state |  |
-| D1-043 | OPEN ★ | 0/1 | Render Provider/Account/Model route |  |
-| D1-044 | OPEN ★ | 0/1 | Render unresolved Account chooser |  |
-| D1-045 | BLOCKED | 1/1 | Route chooser click through semantic edit reducer | PROMOTE_PENDING 1 |
+| D1-042 | PROVEN | 1/1 | Render text input + interpretation state |  |
+| D1-043 | PROVEN | 1/1 | Render Provider/Account/Model route |  |
+| D1-044 | PROVEN | 1/1 | Render unresolved Account chooser |  |
+| D1-045 | OPEN ★ | 1/1 | Route chooser click through semantic edit reducer | PROMOTE_PENDING 1 |
 | D1-046 | BLOCKED | 1/1 | Prove typed/clicked parity | PROMOTE_PENDING 1 |
-| D1-047 | OPEN ★ | 0/1 | Render consequence/external-transfer preview |  |
+| D1-047 | PROVEN | 1/1 | Render consequence/external-transfer preview |  |
 | D1-048 | OPEN ★ | 0/2 | Render lifecycle states |  |
 
 ### Phase F — grounded contextual help

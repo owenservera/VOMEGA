@@ -9,29 +9,29 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "f1f306fb3ab9",
+    "head": "6a19fe0b1cc3",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
       "tests": 91,
       "gates": 91,
-      "pass": 51,
-      "fail": 40,
+      "pass": 55,
+      "fail": 36,
       "skip": 0
     },
-    "digest": "sha256:c733ba46e5e547fadbef74c0ca456b6204287fb5298dd5ba8babed9662d63661",
+    "digest": "sha256:5f37331b42d2167d6c355f8ff48c9f54455f0929f32d811f6d0496b2bbbf44a2",
     "silentFiles": []
   },
   "summary": {
-    "OPEN": 11,
+    "OPEN": 8,
     "CLAIMED": 0,
-    "BLOCKED": 37,
-    "PROVEN": 15,
+    "BLOCKED": 36,
+    "PROVEN": 19,
     "DONE": 14,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
-    "frontier": 11,
+    "frontier": 8,
     "missingProof": 0
   },
   "tasks": [
@@ -692,12 +692,12 @@
     },
     {
       "id": "D1-042",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-042::twin renders the text input and current reading",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -707,12 +707,12 @@
     },
     {
       "id": "D1-043",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-043::twin renders Provider, Account and Model as separately labelled route parts",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -722,12 +722,12 @@
     },
     {
       "id": "D1-044",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-044::unresolved Account chooser shows both Accounts with none selected",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -737,7 +737,7 @@
     },
     {
       "id": "D1-045",
-      "state": "BLOCKED",
+      "state": "OPEN",
       "gates": [
         {
           "key": "D1-045::chooser options carry semantic edit actions only",
@@ -767,12 +767,12 @@
     },
     {
       "id": "D1-047",
-      "state": "OPEN",
+      "state": "PROVEN",
       "gates": [
         {
           "key": "D1-047::external-transfer consequence is visible before execution",
-          "observed": "fail",
-          "promoted": false,
+          "observed": "pass",
+          "promoted": true,
           "specChanged": false
         }
       ],
@@ -1427,8 +1427,8 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 51,
-      "red": 40,
+      "green": 55,
+      "red": 36,
       "skipped": 0,
       "total": 91
     },
@@ -1442,5 +1442,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:e63197a44567b81f4b23ded3c6ae74f84f0664e2e9987818c72c330a7745f6ab"
+  "digest": "sha256:fdc0ce16acf612609035f844c5951a41b4878ca29a8d112ca2b9f0b9e94df4a7"
 }
