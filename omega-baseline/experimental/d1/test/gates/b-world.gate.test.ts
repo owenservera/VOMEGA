@@ -209,6 +209,16 @@ describe("Phase B — semantic World", () => {
     expect(validation(unheld).state).not.toBe("ready");
   });
 
+  // dev-trv-d016 reject: a send verb after a held recipient opens a second send, so the
+  // name it governs is a recipient and an unheld one must still block.
+  gate("D1-017", "a send verb after a held recipient does not hide an unheld one", () => {
+    for (const text of ["send hello to work claude and tell Gemini", "send hello to work claude, then ask Gemini", "send hello to work claude and send Gemini"]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      expect(validation(s).state).not.toBe("ready");
+      expect(currentCommand(s)!.account).not.toBe(WORK);
+    }
+  });
+
   gate("D1-018", "W5 keeps Provider, Account and Model as separate route records", () => {
     const w = loadNamedWorld("W5");
     expect(w.providers.length).toBe(2);
