@@ -543,12 +543,24 @@ function routeChain(body: Token[]): Token[][] {
   return links;
 }
 
-/** A recipient link naming no Provider, Account or Model the World holds ("to Gemini"). */
+/**
+ * A recipient naming no Provider, Account or Model the World holds ("to Gemini").
+ * One preposition may introduce several recipients ("to Gemini and work claude"), so
+ * each link is split on connectors and every name is grounded on its own.
+ */
 function unheldLink(links: Token[][], wm: WorldModel): Token[] | null {
   for (const link of links) {
-    const text = link.slice(1).map((t) => t.norm).join(" ");
-    const held = (["provider", "account", "model"] as const).some((k) => (ground(text, wm.entities, [k]).primary?.score ?? 0) > 0);
-    if (!held) return link;
+    const names: Token[][] = [[]];
+    for (const t of link.slice(1)) {
+      if (CONNECTORS.has(t.norm)) names.push([]);
+      else names[names.length - 1]!.push(t);
+    }
+    for (const name of names) {
+      if (name.length === 0) continue;
+      const text = name.map((t) => t.norm).join(" ");
+      const held = (["provider", "account", "model"] as const).some((k) => (ground(text, wm.entities, [k]).primary?.score ?? 0) > 0);
+      if (!held) return [link[0]!, ...name];
+    }
   }
   return null;
 }
