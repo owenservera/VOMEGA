@@ -568,10 +568,10 @@ function chainFrom(body: Token[], takeBare: boolean): { links: Token[][]; bare: 
 }
 
 /** Words that open a clause rather than name a recipient: "and say thanks", ", please". */
-const CLAUSE_OPENERS = new Set([
-  ...Object.values(COMMAND_VERBS).flat(), ...REGISTER_VERBS, ...CHOOSE_VERBS,
-  "say", "thank", "thanks", "please", "cheers", "regards",
-]);
+const CLAUSE_OPENERS = new Set([...REGISTER_VERBS, ...CHOOSE_VERBS, "say", "thank", "thanks", "please", "cheers", "regards"]);
+
+/** A send verb opens a second send: the words it governs name a recipient ("and tell Gemini"). */
+const SEND_VERBS = new Set(Object.values(COMMAND_VERBS).flat());
 
 /** A grounding at least this strong names a record; "personal claude" → Provider at 0.55 does not. */
 const HELD = 0.9;
@@ -593,8 +593,9 @@ function unheldLink(links: Token[][], wm: WorldModel): Token[] | null {
       if (CONNECTORS.has(t.norm)) names.push([]);
       else names[names.length - 1]!.push(t);
     }
-    for (const name of names) {
-      if (name.length === 0 || CLAUSE_OPENERS.has(name[0]!.norm)) continue;
+    for (const raw of names) {
+      const name = raw.length > 1 && SEND_VERBS.has(raw[0]!.norm) ? raw.slice(1) : raw;
+      if (name.length === 0 || CLAUSE_OPENERS.has(name[0]!.norm) || SEND_VERBS.has(name[0]!.norm)) continue;
       if (!isHeld(name, wm)) return [link[0]!, ...name];
     }
   }
