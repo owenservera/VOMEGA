@@ -153,7 +153,15 @@ export function interpretRevision(state: D1State, n: number): InterpretationResu
   const body = tokens.slice(1);
   const grounded = groundTarget(text, body, wm);
   const unheld = grounded.mention === null ? unheldRoute(body) : null;
-  const grounding = unheld ? { ...grounded, mention: unheld.mention, mentionTokens: unheld.tokens } : grounded;
+  // A held recipient named beside an unheld one ("to Gemini via work claude") may not
+  // absorb the command: the unheld target wins and the route stays unresolved.
+  const conflict = grounded.mention !== null ? unheldLink(routeChain(body), wm) : null;
+  const chainTokens = conflict ? new Set([...grounded.mentionTokens, ...routeChain(body).flat().map((t) => t.i)]) : null;
+  const grounding = unheld
+    ? { ...grounded, mention: unheld.mention, mentionTokens: unheld.tokens }
+    : conflict
+      ? { mention: conflict.slice(1).map((t) => t.norm).join(" "), mentionTokens: chainTokens!, provider: null, account: null, model: null, candidates: {} }
+      : grounded;
   const payload = payloadOf(text, body, grounding.mentionTokens);
   const draft = draftFor(capability, decl, world, grounding, payload);
   return {
@@ -504,6 +512,43 @@ function unheldRoute(body: Token[]): { mention: string; tokens: Set<number> } | 
     for (let j = i + 1; j < body.length && body[j]!.kind === "word"; j++) words.push(body[j]!);
     if (words.length === 0) continue;
     return { mention: words.map((t) => t.norm).join(" "), tokens: new Set([body[i]!.i, ...words.map((t) => t.i)]) };
+  }
+  return null;
+}
+
+/** Recipient prepositions that chain routes; "on" is left out so "on Monday" is not a second recipient. */
+const CHAIN_PREPS = new Set(["to", "via", "using", "through"]);
+/** Words and marks that join one recipient clause to the next: "to A and to B", "to A, then to B". */
+const CONNECTORS = new Set(["and", "then", "or"]);
+
+/**
+ * The trailing chain of recipient clauses, read right to left: "to Gemini via work
+ * claude" → [gemini, work claude]. Each link is a word run opened by a recipient
+ * preposition; links may be joined by connectors. The chain stops at the first run
+ * no preposition opens, so payload text ("explain this error: build failed") is never
+ * read as a route.
+ */
+function routeChain(body: Token[]): Token[][] {
+  const links: Token[][] = [];
+  let i = body.length - 1;
+  while (i >= 0 && body[i]!.kind !== "word") i--;
+  while (i >= 0) {
+    const words: Token[] = [];
+    while (i >= 0 && body[i]!.kind === "word" && !CHAIN_PREPS.has(body[i]!.norm)) words.unshift(body[i--]!);
+    if (words.length === 0 || i < 0 || body[i]!.kind !== "word" || !CHAIN_PREPS.has(body[i]!.norm)) break;
+    links.unshift([body[i]!, ...words]);
+    i--;
+    while (i >= 0 && (body[i]!.kind === "punct" || (body[i]!.kind === "word" && CONNECTORS.has(body[i]!.norm)))) i--;
+  }
+  return links;
+}
+
+/** A recipient link naming no Provider, Account or Model the World holds ("to Gemini"). */
+function unheldLink(links: Token[][], wm: WorldModel): Token[] | null {
+  for (const link of links) {
+    const text = link.slice(1).map((t) => t.norm).join(" ");
+    const held = (["provider", "account", "model"] as const).some((k) => (ground(text, wm.entities, [k]).primary?.score ?? 0) > 0);
+    if (!held) return link;
   }
   return null;
 }
