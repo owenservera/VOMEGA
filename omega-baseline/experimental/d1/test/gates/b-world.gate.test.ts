@@ -152,6 +152,27 @@ describe("Phase B — semantic World", () => {
     expect(currentCommand(ok)!.account).toBe(WORK);
   });
 
+  // D-20261008-015: one preposition can introduce several recipients ("to A and B");
+  // an unheld one among them survives and blocks, in either position.
+  gate("D1-017", "an unheld recipient sharing a preposition with a held one is never dropped", () => {
+    for (const text of [
+      "send hello to Gemini and work claude", "send hello to work claude and Gemini",
+      "send hello to Gemini or work claude", "send 'x' to work claude and Gemini",
+    ]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      const cmd = currentCommand(s)!;
+      expect(validation(s).state).not.toBe("ready");
+      expect(cmd.account).not.toBe(WORK);
+      const u = cmd.unresolved.find((x) => x.field === "account");
+      expect(u).toBeDefined();
+      expect(u!.reason).toBe("unknown");
+    }
+    // Control: "and" inside the payload, before the route, is not a recipient.
+    const ok = say(initialState(allowedAuthority("W4")), "send hello and goodbye to work claude");
+    expect(validation(ok).state).toBe("ready");
+    expect(currentCommand(ok)!.account).toBe(WORK);
+  });
+
   gate("D1-018", "W5 keeps Provider, Account and Model as separate route records", () => {
     const w = loadNamedWorld("W5");
     expect(w.providers.length).toBe(2);

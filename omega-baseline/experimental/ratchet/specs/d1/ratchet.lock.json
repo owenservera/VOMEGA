@@ -76,6 +76,14 @@
       "at": "2026-10-08T00:32:06.345Z",
       "from": "sha256:ebc175865e555a739bbec08c085b02ffe19193bf001e4f6fd32da067fbc65cd5",
       "to": "sha256:227e6f7b917ccb36621700c91332b65f2ede51e881fddfe3c26bc0ec801bddf3"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "by": "dev-d015",
+      "reason": "D-20261008-015: new separate gate 'an unheld recipient sharing a preposition with a held one is never dropped' for the preposition-ellipsis residual (send hello to Gemini and work claude was READY on claude-work). Added gate only; nothing widened or renamed.",
+      "at": "2026-10-08T05:11:42.844Z",
+      "from": "sha256:227e6f7b917ccb36621700c91332b65f2ede51e881fddfe3c26bc0ec801bddf3",
+      "to": "sha256:106ec3cc08b54aa077d88fa99d4449cb939c0d89146ba4de9b697bfe76e7d01b"
     }
   ],
   "promoted": {
