@@ -219,6 +219,45 @@ describe("Phase B — semantic World", () => {
     }
   });
 
+  // COUNCIL R-20261008-014-1 (rule-now), gate_statement (1)-(4), verbatim inputs.
+  gate("D1-017", "council (1): a held route never absorbs a further addressee or recipient", () => {
+    for (const text of [
+      "send hello to work claude and please tell Gemini", "send hello to work claude. tell Gemini",
+      "tell Gemini to work claude", "send hello to work claude, mailbox home",
+    ]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      expect(validation(s).state).not.toBe("ready");
+      expect(currentCommand(s)!.account).not.toBe(WORK);
+    }
+  });
+
+  gate("D1-017", "council (2): a READY payload carries no part of its route span", () => {
+    for (const text of ["send hello to work claude", "send hello to work claude, thanks", "send hello to work claude, please", "send hello to work claude and say thanks"]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      expect(validation(s).state).toBe("ready");
+      expect(currentCommand(s)!.params["prompt"]).toBe("hello");
+    }
+  });
+
+  gate("D1-017", "council (3): an allowed courtesy tail never shields a further recipient", () => {
+    for (const tail of [" and say thanks", ", thanks", ", please"]) {
+      for (const more of [" and tell Gemini", " Gemini", ". tell Gemini", ", mailbox home"]) {
+        const s = say(initialState(allowedAuthority("W4")), `send hello to work claude${tail}${more}`);
+        expect(validation(s).state).not.toBe("ready");
+      }
+    }
+  });
+
+  gate("D1-017", "council (4): a plain or quoted send to a held recipient stays READY with its exact payload", () => {
+    for (const [text, payload] of [["send hello to work claude", "hello"], ["send 'tell Gemini hi' to work claude", "tell Gemini hi"]] as const) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      expect(validation(s).state).toBe("ready");
+      const cmd = currentCommand(s)!;
+      expect(cmd.account).toBe(WORK);
+      expect(cmd.params["prompt"]).toBe(payload);
+    }
+  });
+
   gate("D1-018", "W5 keeps Provider, Account and Model as separate route records", () => {
     const w = loadNamedWorld("W5");
     expect(w.providers.length).toBe(2);

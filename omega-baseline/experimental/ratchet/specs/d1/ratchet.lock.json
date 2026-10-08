@@ -108,6 +108,14 @@
       "at": "2026-10-08T20:13:18.115Z",
       "from": "sha256:e14a1b2c94ab402748c7138ca0f04ce66aa3cb44398c9094a6b9bd5de77c5b61",
       "to": "sha256:d113eba2959aa20f82658c90e4fc1493b2fe8f38ba2ede067d656d5d584fe75b"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "by": "dev-d020",
+      "reason": "D-20261008-020: four new gates from COUNCIL R-20261008-014-1 gate_statement (1)-(4), verbatim inputs. Verified in a worktree at e62e67e: (1)-(3) red, (4) green. Additions only; no existing gate rewritten or weakened; option A (refusing the three courtesy tails) not taken.",
+      "at": "2026-10-08T23:57:04.422Z",
+      "from": "sha256:23bd59da362bf700ea63f69da02b95427e70b744fbeb023173d34fec7ead3d47",
+      "to": "sha256:92c6ed3ddc82e74ac4cd917d1c7553adb26f65470fdddfb69edc72a9059d586c"
     }
   ],
   "promoted": {
