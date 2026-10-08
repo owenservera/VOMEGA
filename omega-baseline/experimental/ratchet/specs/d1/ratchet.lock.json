@@ -84,6 +84,14 @@
       "at": "2026-10-08T05:11:42.844Z",
       "from": "sha256:227e6f7b917ccb36621700c91332b65f2ede51e881fddfe3c26bc0ec801bddf3",
       "to": "sha256:106ec3cc08b54aa077d88fa99d4449cb939c0d89146ba4de9b697bfe76e7d01b"
+    },
+    {
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "by": "dev-d016",
+      "reason": "D-20261008-016: three new separate gates: (1) 'a recipient that only partly matches a Provider is not held' (personal claude READY on claude-work), (2) 'an unheld recipient joined by punctuation is never dropped' (work claude, Gemini READY), (3) 'a clause after a held recipient is not a second recipient' (pins the fail-safe over-refusal of 'and say thanks' to READY, both ways). Added gates only; nothing widened or renamed.",
+      "at": "2026-10-08T13:47:12.783Z",
+      "from": "sha256:106ec3cc08b54aa077d88fa99d4449cb939c0d89146ba4de9b697bfe76e7d01b",
+      "to": "sha256:ac56a616b69bcccd205f6ccd36e3187d042a7d62048a5e6019650a421e0cd6cd"
     }
   ],
   "promoted": {

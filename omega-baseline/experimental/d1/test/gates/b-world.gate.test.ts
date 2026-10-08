@@ -173,6 +173,42 @@ describe("Phase B — semantic World", () => {
     expect(currentCommand(ok)!.account).toBe(WORK);
   });
 
+  // D-20261008-016 (1): a name that only partly matches a Provider ("personal claude"
+  // where no Personal Account exists) is not a recipient the World holds.
+  gate("D1-017", "a recipient that only partly matches a Provider is not held", () => {
+    for (const text of ["send hello to work claude and personal claude", "send hello to personal claude and work claude"]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      expect(validation(s).state).not.toBe("ready");
+      expect(currentCommand(s)!.account).not.toBe(WORK);
+    }
+    // Control: in W2 both Accounts exist, so naming both is a choice, never a silent pick.
+    const both = say(initialState(allowedAuthority("W2")), "send hello to work claude and personal claude");
+    expect(validation(both).state).not.toBe("ready");
+  });
+
+  // D-20261008-016 (2): a bare name joined by a comma or semicolon is still a recipient.
+  gate("D1-017", "an unheld recipient joined by punctuation is never dropped", () => {
+    for (const text of ["send hello to work claude, Gemini", "send hello to work claude; Gemini", "send 'x' to work claude, Gemini"]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      const cmd = currentCommand(s)!;
+      expect(validation(s).state).not.toBe("ready");
+      expect(cmd.account).not.toBe(WORK);
+      expect(cmd.unresolved.find((x) => x.field === "account")?.reason).toBe("unknown");
+    }
+  });
+
+  // D-20261008-016 (3): a clause after the route is payload, not a recipient — pinned
+  // both ways: it must not block a held route, and it must not hide an unheld one.
+  gate("D1-017", "a clause after a held recipient is not a second recipient", () => {
+    for (const text of ["send hello to work claude and say thanks", "send hello to work claude, thanks", "send hello to work claude, please"]) {
+      const s = say(initialState(allowedAuthority("W4")), text);
+      expect(validation(s).state).toBe("ready");
+      expect(currentCommand(s)!.account).toBe(WORK);
+    }
+    const unheld = say(initialState(allowedAuthority("W4")), "send hello to work claude and Gemini");
+    expect(validation(unheld).state).not.toBe("ready");
+  });
+
   gate("D1-018", "W5 keeps Provider, Account and Model as separate route records", () => {
     const w = loadNamedWorld("W5");
     expect(w.providers.length).toBe(2);
