@@ -1,19 +1,19 @@
 {
   "schema": "vomega-local-state/1",
-  "generatedAt": "2026-10-08T05:13:26Z",
+  "generatedAt": "2026-10-08T14:05:59Z",
   "observer": "DEVops standing thread (automation-6a2b7413)",
   "machine": "WIN-10 / VIVIM.inc",
-  "remoteMain": "5da811e6a1ac9debd43b86cf278793986c8e07c7",
-  "notes": "Published after main push (D-20261008-020). Observation only; never authority.",
+  "remoteMain": "1b958fded52589e7c3bf05b187a224821393f258",
+  "notes": "Published after main push 1b958fd and ref repair. Observation only; never authority.",
   "worktrees": [
     {
       "path": "C:/0-BlackBoxProject-0/VOMEGA",
       "branch": "main",
-      "head": "d7cd86b1e5a071fdcdd1e75dd9154972ef974184",
+      "head": "a5df76c1262ce82c2d838a342156ef327703ae30",
       "dirty": true,
       "ahead": 3,
       "behind": 0,
-      "lastCommitAt": "2026-10-08T07:12:42+02:00",
+      "lastCommitAt": "2026-10-08T15:50:17+02:00",
       "claims": [
         {
           "id": "20261007-0911-pm-team-thread4-zcode",
@@ -57,22 +57,34 @@
   },
   "checks": [
     {
-      "name": "ratchet check @5da811e",
-      "observedAt": "2026-10-08T05:13:26Z",
+      "name": "omega:quick",
+      "observedAt": "2026-10-08T14:05:59Z",
       "status": "PASS",
-      "detail": "exit 0, REGRESSED 0"
+      "detail": "62/0"
     },
     {
-      "name": "secrets scan (pushed range)",
-      "observedAt": "2026-10-08T05:13:26Z",
+      "name": "ratchet check",
+      "observedAt": "2026-10-08T14:05:59Z",
       "status": "PASS",
-      "detail": "0 hits"
+      "detail": "exit 0, REGRESSED 0, 50/90 green"
+    },
+    {
+      "name": "d1:gates",
+      "observedAt": "2026-10-08T14:05:59Z",
+      "status": "PASS",
+      "detail": "85/5, all 5 known PROMOTE_PENDING"
+    },
+    {
+      "name": "local main ref integrity",
+      "observedAt": "2026-10-08T14:05:59Z",
+      "status": "PASS",
+      "detail": "was NUL-filled at 13:50Z (HEAD unresolvable); restored from reflog to a5df76c, fsck connectivity clean"
     }
   ],
   "visibilityRisks": [
-    "main pushed bd241e2..5da811e (18 commits) at 2026-10-08T05:13:26Z; local 3 ahead (D1-017 new gate + fix + promotion) await next authorization",
+    "main pushed 5da811e..1b958fd at 2026-10-08T13:5xZ; local 3 ahead (D1-017 D-016 gates + promotion) await authorization",
+    "local refs/heads/main was corrupted (NUL bytes) ~13:50Z, repaired by DEVops from reflog; root cause unknown (likely interrupted ref write on Windows)",
     "cliproxy-router entrypoint broken since ~2026-10-07T23:00Z (missing ../model-profile.mjs) - model allocation (D-019) held",
-    "dirty shared tree: never git add -A",
-    "thread session models have no automatic fallback; uncommanded Codex->Claude switch traced to ZCode client (owner-reserved)"
+    "DEVops inbox fallback did not cover an ~8h watcher outage (D-021 stall)"
   ]
 }
