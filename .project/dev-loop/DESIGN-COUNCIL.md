@@ -324,6 +324,30 @@ ruling file and reported to CoS** — a blocked quorum is a routed event, not a 
    confidence, classification, contradictions, decider, voices heard/skipped with families) goes to
    the DESK reply; a Commons/STATUS row only when material.
 
+## 7a. Owner-ratified semantics decisions (record, not authority)
+
+The council records owner decisions that change semantics it depends on, so a later convening cites
+the decision instead of a memory. Recording is not enforcement: the implementing gate is DEV's, and
+the council never edits gates or product code.
+
+### 7a.1 Trailing text after a held route — option A, 2026-10-09 (D-20261009-005)
+
+- **Owner decision: option A is APPROVED.** After a held route resolves, a command is READY **only
+  if the unquoted remainder is empty**.
+- **The three courtesy forms are REVOKED** as exemptions: `and say thanks`, `, thanks` and
+  `, please` are now trailing text like any other, so they yield NEEDS-INFO rather than READY. The
+  earlier rule from the D-014 ruling (remainder empty **or** exactly one of those three forms)
+  no longer holds anywhere.
+- **Trade-off accepted:** **ask rather than guess.** Over-refusal is the permitted failure
+  direction; under-acceptance (silently guessing at the operator's intent from trailing text) is
+  the forbidden one. The cost is extra clarification rounds on polite phrasings; that cost is
+  accepted on purpose.
+- **Who implements it:** DEV rewrites the affected gate **stricter** — not weakened, not renamed —
+  records this owner decision as the reason, and states the accepted over-refusal set. The council
+  does not touch the gate.
+- **Council surfaces unchanged.** The saved workflow `design-council` and the route-line template
+  (§3.3) carry no trailing-text courtesy logic, so neither needs a change from this decision.
+
 ## 8. Invocation surfaces
 
 | Surface | Use | Mechanism |
