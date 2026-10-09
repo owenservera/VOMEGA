@@ -110,3 +110,22 @@ Two honest consequences:
   `claude-*`, `gpt-*`, `codex-*` and `grok-*`, and `cliproxy.mjs` is still broken on the
   missing `../model-profile.mjs`. Lane routing bypasses the cliproxy entrypoint until it is
   repaired. The overlay does not govern these lanes.
+
+### Router verification 2026-10-09 (D-20261009-023 closure)
+
+The repaired entrypoint answers again. `cliproxy.mjs resolve <role> --probe` returns the
+owner-mandated lane account for every role, each probed live, none falling back:
+
+| Role | Lane | Model id | fellBack |
+| --- | --- | --- | --- |
+| build | opencode-acct-2 | opencode-2/space-bunny-free | false |
+| ops | opencode-acct-3 | opencode-3/space-bunny-free | false |
+| pm | opencode-acct-4 | opencode-4/space-bunny-free | false |
+| reason | opencode-acct-5 | opencode-5/space-bunny-free | false |
+| review | new-provider | owen/space-bunny-free | false |
+
+`status` reports proxy up (management 200). Two cautions from the router doc, recorded
+rather than glossed: these ids are CPA-side aliases, which does **not** mean ZCode provider
+entries were migrated (the port-6446 providers still exist as direct ZCode providers), and
+whether a lane truly isolates its upstream account is **unverified**. Selecting a lane is
+not a claim of isolation.
