@@ -371,6 +371,42 @@
       "head": "d92ed4127bec",
       "at": "2026-10-08T05:12:33.136Z"
     },
+    "D1-017::council (1): a held route never absorbs a further addressee or recipient": {
+      "task": "D1-017",
+      "name": "council (1): a held route never absorbs a further addressee or recipient",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:92c6ed3ddc82e74ac4cd917d1c7553adb26f65470fdddfb69edc72a9059d586c",
+      "by": "dev-impl-d020",
+      "head": "416e96eee54e",
+      "at": "2026-10-09T00:02:08.381Z"
+    },
+    "D1-017::council (2): a READY payload carries no part of its route span": {
+      "task": "D1-017",
+      "name": "council (2): a READY payload carries no part of its route span",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:92c6ed3ddc82e74ac4cd917d1c7553adb26f65470fdddfb69edc72a9059d586c",
+      "by": "dev-impl-d020",
+      "head": "416e96eee54e",
+      "at": "2026-10-09T00:02:08.381Z"
+    },
+    "D1-017::council (3): an allowed courtesy tail never shields a further recipient": {
+      "task": "D1-017",
+      "name": "council (3): an allowed courtesy tail never shields a further recipient",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:92c6ed3ddc82e74ac4cd917d1c7553adb26f65470fdddfb69edc72a9059d586c",
+      "by": "dev-impl-d020",
+      "head": "416e96eee54e",
+      "at": "2026-10-09T00:02:08.381Z"
+    },
+    "D1-017::council (4): a plain or quoted send to a held recipient stays READY with its exact payload": {
+      "task": "D1-017",
+      "name": "council (4): a plain or quoted send to a held recipient stays READY with its exact payload",
+      "file": "omega-baseline/experimental/d1/test/gates/b-world.gate.test.ts",
+      "specDigest": "sha256:92c6ed3ddc82e74ac4cd917d1c7553adb26f65470fdddfb69edc72a9059d586c",
+      "by": "dev-impl-d020",
+      "head": "416e96eee54e",
+      "at": "2026-10-09T00:02:08.381Z"
+    },
     "D1-018::W5 keeps Provider, Account and Model as separate route records": {
       "task": "D1-018",
       "name": "W5 keeps Provider, Account and Model as separate route records",

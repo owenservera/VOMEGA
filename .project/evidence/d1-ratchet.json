@@ -9,17 +9,17 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "38ce48f82049",
+    "head": "416e96eee54e",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
-      "tests": 91,
-      "gates": 91,
-      "pass": 55,
+      "tests": 95,
+      "gates": 95,
+      "pass": 59,
       "fail": 36,
       "skip": 0
     },
-    "digest": "sha256:5f37331b42d2167d6c355f8ff48c9f54455f0929f32d811f6d0496b2bbbf44a2",
+    "digest": "sha256:60a1e9f23cb380bbf1ff5f69f187a7a2c5379c8563e397650a7b9f79a3f3e8cb",
     "silentFiles": []
   },
   "summary": {
@@ -345,6 +345,30 @@
         },
         {
           "key": "D1-017::an unheld recipient sharing a preposition with a held one is never dropped",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::council (1): a held route never absorbs a further addressee or recipient",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::council (2): a READY payload carries no part of its route span",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::council (3): an allowed courtesy tail never shields a further recipient",
+          "observed": "pass",
+          "promoted": true,
+          "specChanged": false
+        },
+        {
+          "key": "D1-017::council (4): a plain or quoted send to a held recipient stays READY with its exact payload",
           "observed": "pass",
           "promoted": true,
           "specChanged": false
@@ -1451,10 +1475,10 @@
   "interpretation": {
     "ratchetModeGreen": "the ratchet-mode gate suite (`bun run d1:gates`) exits green while open gates run as expected failures — it means open gaps are represented honestly and promoted gates have not regressed, NOT that the deliverable works",
     "probeTruth": {
-      "green": 55,
+      "green": 59,
       "red": 36,
       "skipped": 0,
-      "total": 91
+      "total": 95
     },
     "semanticCompletion": false,
     "reviewedCompletion": null
@@ -1466,5 +1490,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:e512c49a4db0f278866bcb9645db09acc4308d87251bc64b0a9478d49974c7b4"
+  "digest": "sha256:3f0d2ae4678d58cb4fca53335e3720aa7a8bed85128ff37aee30477ce7cb638a"
 }
