@@ -3,7 +3,7 @@
 Status: **ACTIVE CHARTER** (owner-directed redesign, 2026-10-07)
 Holder: this ZCode thread — a single dedicated agent.
 Claim: [`../agentic-launch/claims/20261007-0920-cos-redesign-zcode.md`](../agentic-launch/claims/20261007-0920-cos-redesign-zcode.md)
-Companions: [../dev-loop/24X7-DEV-LOOP.md](../dev-loop/24X7-DEV-LOOP.md) (the dev lane this charter runs) · build-guidance loop (`.project/build-guidance/`).
+Companions: [../dev-loop/24X7-DEV-LOOP.md](../dev-loop/24X7-DEV-LOOP.md) (historical family-governor mechanics, not the current scheduler) · [PRODUCT-LOOP.md](PRODUCT-LOOP.md) (ten-team product allocation, not yet proof of active threads) · build-guidance loop (`.project/build-guidance/`).
 
 Owner directive (2026-10-07): *"redesign this thread and you as a dedicated single agent as my chief of staff — everything goes through you up and down."*
 
@@ -64,7 +64,7 @@ Plus the **decision queue**: only items genuinely Owen-reserved or evidence-stal
 ## 7. Redesign consequences recorded
 
 - The dev-loop family doc (`24X7-DEV-LOOP.md`) remains the dev lane's protocol; this charter is the layer above it.
-- **The OPS+PM fold-in is LIVE** (applied to automation `automation-2c7bbcf3` by the devops standing thread on 2026-10-07 morning — steps 3b/3c plus a step-0 lock-touch rule): the family automation runs ops/PM sweeps in-line, guarded by per-lane locks, while the owner-initiated council/devops/PM threads run deeper lane work. The CoS consumes both through the meeting surfaces above and never duplicates a sweep that a fresh lane lock shows as held.
+- **Superseded operating record:** earlier on 2026-10-07 the family governor automation had folded in OPS+PM sweeps. Later that day it was deleted in favor of one automation per dedicated DEV, DEVops, PM and COUNCIL thread, communicating through DESK (see `zcode-setup/TEAM-AND-COMMS.md`). Do not restore a duplicate family governor. CoS still routes directives and results without editing code, changing Ratchet task truth, or asserting unverified team liveness.
 
 ## 8. Command-only model (2026-10-07, owner directive)
 

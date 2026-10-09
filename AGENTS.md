@@ -2,6 +2,8 @@
 
 Start at [.project/SITREP.md](.project/SITREP.md). It contains current mission, proof state, active execution surfaces and unresolved owner boundaries.
 
+**Product-loop entry:** [.project/staff/PRODUCT-LOOP.md](.project/staff/PRODUCT-LOOP.md) and [ZCode launch instructions](zcode-setup/PRODUCT-LOOP-LAUNCH.md) define the ten bounded product missions, including existing DEV and DevOps. These are operating and onboarding rules, not claims of live ZCode sessions; Ratchet, DESK, PM scope, and owner authority remain unchanged.
+
 ## Default worker rule
 
 For bounded implementation, **do not reread the full documentation corpus**.

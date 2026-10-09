@@ -2,6 +2,8 @@
 
 Written 2026-10-07. This is a record of how the team and comms were actually set up in ZCode, including the limits we hit. It is not a claim that every piece is finished or verified.
 
+**2026-10-09 extension:** the ten-team operating allocation is in [PRODUCT-LOOP](../.project/staff/PRODUCT-LOOP.md), with [new-lane ZCode setup](PRODUCT-LOOP-LAUNCH.md) and a [machine-readable routing roster](product-loop-lanes.json). This is a historical record of the original working threads, not a live-status source for additional teams. Existing DESK and one-automation-per-thread behavior remain unchanged.
+
 Workspace: `C:\0-BlackBoxProject-0\VOMEGA`
 At the time of writing: local `main` is `3113386`, **40 commits ahead** of `origin/main` (`7ce9e32`), 0 behind. A push of that backlog was authorized to DEVops; confirmation that it landed is not in this document.
 

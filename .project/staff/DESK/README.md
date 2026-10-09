@@ -22,7 +22,11 @@ Never use the orca worktree.
 | `inbox/<team>.jsonl` | CoS |
 | `replies/<team>.jsonl` | that team |
 
-Teams: `devdrain`, `devops`, `pm`, `council`. Append with `>>` only; never rewrite,
+Existing teams: `devdrain`, `devops`, `pm`, `council`. The optional product-loop lanes `execution`, `semantic`, `visual`, `sim-a`, `sim-b`, `evidence`, `provider-lab`, `windows` are registered in [the lane roster](../../../zcode-setup/product-loop-lanes.json). Registration does NOT mean that a thread or automation has started.
+
+For each additional lane, CoS is the sole writer of `inbox/<lane>.jsonl` and the team is sole writer of `replies/<lane>.jsonl`. New teams write only `status/<lane>.jsonl`; the original shared `status/board.jsonl` remains a legacy feed that new teams must not append to. CoS may read all status files. `node zcode-setup/init-product-loop.mjs --apply` creates missing empty files only; never truncates live logs. [Launch guide](../../../zcode-setup/PRODUCT-LOOP-LAUNCH.md) and [operating design](../PRODUCT-LOOP.md) describe the boundaries.
+
+Append with `>>` only; never rewrite,
 reorder or truncate a JSONL file. One JSON object per line.
 
 ## Directive schema (inbox lines)

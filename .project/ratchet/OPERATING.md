@@ -11,9 +11,14 @@ bun run ratchet verify D1-004               # raw truth for this task's gates; e
 # … implement inside the packet's write surface …
 bun run ratchet promote --task D1-004 --by codex-1
 bun run ratchet sync                        # probe + graph + board + evidence
-git add -A && git commit -m "D1-004: required fields derived from declaration"
+# Stage only files explicitly owned by the task, after inspecting other workers' changes.
+# git add -- <exact-task-file-paths> ...
+git diff --cached --name-only
+git commit -m "D1-004: required fields derived from declaration"
 bun run ratchet release D1-004 --by codex-1
 ```
+
+**Shared-worktree caution (2026-10-09):** the former broad staging example could capture another agent's changes. Explicitly stage only packet-owned code and authorized Ratchet projections after checking the working tree and claims. If lock, claims or projections contain foreign uncommitted edits, stop and route to DEV integration; never use stash, hard reset, clean, or broad staging to clear them. The product-loop configuration is described in [PRODUCT-LOOP](../staff/PRODUCT-LOOP.md).
 
 The durable acceleration rules have been folded directly into this operating guide, root `AGENTS.md` and D1 Start Here. No separate acceleration layer is required.
 

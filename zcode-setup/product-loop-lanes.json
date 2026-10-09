@@ -1,0 +1,82 @@
+{
+  "schema": "vomega.product-loop-lanes/1",
+  "defined": "2026-10-09",
+  "authority": "routing-and-ownership-only-not-product-or-proof",
+  "coordinator": "cos",
+  "existingSupport": [
+    "pm",
+    "council"
+  ],
+  "lanes": [
+    {
+      "id": "01",
+      "key": "devdrain",
+      "state": "existing",
+      "purpose": "core-command-truth",
+      "start": "D1-034 or D1-020 after fresh Ratchet"
+    },
+    {
+      "id": "02",
+      "key": "execution",
+      "state": "new",
+      "purpose": "execution-and-receipts",
+      "start": "D1-063 dependency probe then bounded implementation"
+    },
+    {
+      "id": "03",
+      "key": "semantic",
+      "state": "new",
+      "purpose": "demand-pulled-semantic-intelligence",
+      "start": "one legacy-source method vs current unresolved language"
+    },
+    {
+      "id": "04",
+      "key": "visual",
+      "state": "new",
+      "purpose": "visual-semantic-compiler-ux",
+      "start": "one UI-only unresolved-span treatment"
+    },
+    {
+      "id": "05",
+      "key": "sim-a",
+      "state": "new",
+      "purpose": "control-simulated-users",
+      "start": "baseline actor runs on pinned D1 World"
+    },
+    {
+      "id": "06",
+      "key": "sim-b",
+      "state": "new",
+      "purpose": "treatment-simulated-users",
+      "start": "paired/crossover test on same goals"
+    },
+    {
+      "id": "07",
+      "key": "evidence",
+      "state": "new",
+      "purpose": "reproducers-replay-regressions",
+      "start": "reproduce one finding via session.run"
+    },
+    {
+      "id": "08",
+      "key": "provider-lab",
+      "state": "new",
+      "purpose": "synthetic-provider-session-conformance",
+      "start": "synthetic switch/stale test; no live authorization"
+    },
+    {
+      "id": "09",
+      "key": "windows",
+      "state": "new",
+      "purpose": "executable-windows-surface",
+      "start": "D1-082 prerequisites/launcher path"
+    },
+    {
+      "id": "10",
+      "key": "devops",
+      "state": "existing",
+      "purpose": "integration-and-reliability",
+      "start": "isolation DESK resources safe stage/push"
+    }
+  ]
+}

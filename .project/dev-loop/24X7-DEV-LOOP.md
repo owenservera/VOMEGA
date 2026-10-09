@@ -1,6 +1,6 @@
 # 24/7 development loop — governor + dev team
 
-Status: **ACTIVE** — the dev lane under the Chief of Staff charter (2026-10-07)
+Status: **HISTORICAL WORKER MECHANICS ONLY (not active schedule)** — the former ten-minute family governor was retired on 2026-10-07. Current ZCode operation uses separate team threads, DESK, and one automation per team; follow `zcode-setup/TEAM-AND-COMMS.md` and `.project/staff/PRODUCT-LOOP.md` for current routing. Retain the bounded Ratchet/reviewer rules here, but **do not recreate the old automation in §6**.
 Governor: the ZCode main session ("governor"), which is Owen's dedicated Chief-of-Staff agent per [`../staff/CHIEF-OF-STAFF.md`](../staff/CHIEF-OF-STAFF.md). This file is that charter's dev-lane protocol: routing, review pipeline and boundaries live there; the cycle mechanics live here.
 Cadence: **every 10 minutes**; each run drains up to **8 governed cycles back-to-back**, pipelines the reviewer, and ends early only when no real bounded work remains. Owner direction: the team is never left idle while claimable work exists.
 Lane ownership (2026-10-07): design council, devops and PM run in Owen-initiated separate threads AND as in-family sweep steps 3b/3c applied to the automation by the devops thread; per-lane locks (`.local/dev-loop/devops.lock`, `.local/pm/pm.lock`) guard against duplication; all lanes meet through Git, claims, STATUS/Commons and the `ops/local-state` snapshot (§8).
@@ -97,7 +97,10 @@ bun run ratchet verify <TASK>                 # raw truth; exit 0 iff green
 # … IMPL implements inside the packet write surface …
 bun run ratchet promote --task <TASK> --by gov-impl-<n>
 bun run ratchet sync
-git add -A && git commit -m "D1-xxx: <what>"
+# Stage only packet-owned code and Ratchet projections after checking foreign work.
+# git add -- <exact packet-owned paths> ...
+git diff --cached --name-only
+git commit -m "D1-xxx: <what>"
 bun run ratchet review <TASK> --by gov-trv-<n>   # TRV, never IMPL's label
 ```
 
