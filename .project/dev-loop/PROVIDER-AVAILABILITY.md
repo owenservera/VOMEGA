@@ -96,6 +96,22 @@ exhausted, there is no rate limit, and free models are still served. If a dashbo
 so they count as **one family**. A council ruling still needs two independent families
 from the CPA tier.
 
+## 1d. Reserve tier PROMOTED TO PRIMARY for lanes (owner directive 2026-10-09, DESK D-20261009-023)
+
+The §1c reserve routes are no longer a fallback for the team lanes: each lane now runs on one
+of them. Re-measured 2026-10-09 06:20Z (one tiny generation each, port 6446):
+
+| Lane | Provider id | Model | Status | Latency |
+| --- | --- | --- | --- | --- |
+| DEV | opencode-acct-2 | space-bunny-free | PASS | 0.7s |
+| DEVops | opencode-acct-3 | space-bunny-free | PASS | 0.9s |
+| PM | opencode-acct-4 | space-bunny-free | PASS | 1.3s |
+| COUNCIL chair | opencode-acct-5 | space-bunny-free | PASS | 0.7s |
+| COUNCIL second voice | new-provider | space-bunny-free | PASS | 1.5s |
+
+Same model on all five lanes, so they are ONE family for quorum. The full allocation and its
+consequences are in [MODEL-SELECTION.md](MODEL-SELECTION.md).
+
 ## 2. How to re-derive (every sweep)
 
 ```sh

@@ -78,3 +78,35 @@ instead of fable-5-1 from one line.
   or auth (Owen-reserved).
 - Spend stays minimal: probes are ≤16 output tokens; class walks prefer the ladder position
   stated by the class, not the largest model that could be justified.
+
+## Lane allocation — all lanes on space-bunny-free (owner directive 2026-10-09, DESK D-20261009-023)
+
+This supersedes the per-lane build / reason / review / fast allocation. Every lane runs the
+same model, `space-bunny-free`, and each lane uses a different opencode account so that its
+credentials are independent. Probed 2026-10-09 06:20Z with one tiny generation per account
+on port 6446:
+
+| Lane | ZCode provider (label) | Provider id | Model | Probe |
+| --- | --- | --- | --- | --- |
+| DEV | opencode acct 2 | opencode-acct-2 | space-bunny-free | PASS 0.7s |
+| DEVops | opencode acct 3 | opencode-acct-3 | space-bunny-free | PASS 0.9s |
+| PM | opencode acct 4 | opencode-acct-4 | space-bunny-free | PASS 1.3s |
+| COUNCIL chair | opencode acct 5 | opencode-acct-5 | space-bunny-free | PASS 0.7s |
+| COUNCIL second voice | owen | new-provider | space-bunny-free | PASS 1.5s |
+
+**This is applied in the ZCode UI, not by project config.** A thread's session model is
+chosen per thread in the ZCode client. Nothing in this repo selects it: the Agent tool has
+no model argument, and the project overlay `.zcode/cliproxy-router.json` is read only by
+`cliproxy.mjs route`, which nothing uses to set a session model. Owen applies the table above
+by hand in each thread's model picker. DEVops does not edit auth or `provider_config.json`.
+
+Two honest consequences:
+
+- **Quorum.** All five lanes run the same model, so for council quorum they are **one
+  family**. Independence is now at the credential level only. The CPA tier is no longer the
+  lane path, so a council ruling that needs two independent families must still get the
+  second family from a CPA voice (GPT or Claude).
+- **Router.** The CPA router cannot express these routes: `providerFor()` maps only
+  `claude-*`, `gpt-*`, `codex-*` and `grok-*`, and `cliproxy.mjs` is still broken on the
+  missing `../model-profile.mjs`. Lane routing bypasses the cliproxy entrypoint until it is
+  repaired. The overlay does not govern these lanes.
