@@ -93,20 +93,50 @@ ZCode UI; the council never re-pins anything. The accounts are reached with
   as a council voice. The owner directive moves every lane to `space-bunny-free`, so using a CPA
   voice as the second family is an **owner decision**, queued for Owen via CoS. The council
   does not reintroduce it by itself.
-- **Choice: the council records `quorum: unavailable`; it does not assert a quorum.** In this
-  configuration every convening is stopped by §6 QUORUM-LOSS: status **BLOCKED**, no ruling, no
-  confidence label, and the record carries `quorum: unavailable (one family: space-bunny)`.
-  The chair may attach the space-bunny answers to the BLOCKED record as **breadth evidence**
-  (Position / Falsifier per voice, verbatim). They are never called a ruling, a council
-  verdict or multi-model.
-  *Why this choice and not a downgraded "single-family ruling":* (1) calling agreement across
-  five copies of one model a quorum would be false, and a confidence label would turn sample
-  agreement into apparent proof (confidence ≠ proof); (2) letting one family rule would weaken
-  the QUORUM-LOSS gate, and gates are not weakened to pass them; (3) the question still moves:
-  CoS gets the breadth evidence plus a precise blocker (a second model family is needed, which is
-  Owen's call), instead of a ruling that looks independent and is not.
-- **The gate is unchanged.** §6 QUORUM-LOSS still fires below two counted families. Only the
-  family accounting changed: `space-bunny` (primary) and the reserve tier are never counted.
+- **Choice, as amended by owner exception (D-20261009-004, 2026-10-09): the council produces a
+  ruling from two answering voices, labelled an exception.** The definition above is unchanged and
+  stays visible: quorum is two distinct model families. What the owner exception changes is the
+  **outcome** while no second family is routable — see §3.2b. In the default configuration without
+  that exception the record carries `quorum: unavailable (one family: space-bunny)` and the
+  convening ends BLOCKED by §6 QUORUM-LOSS.
+- **The definition and the family accounting are never changed by this.** §3.2a and the route-line
+  `independence=none` marker stand; only the recorded outcome moves, and only under the dated,
+  expiring exception in §3.2b.
+- **The two-voice requirement is never relaxed.** The exception lowers the *family* requirement
+  only; a convening with fewer than **two answering voices** still blocks (§6 QUORUM-LOSS).
+
+#### 3.2b Owner-granted single-family exception (D-20261009-004, 2026-10-09) — OPEN
+
+Recorded as an **exception to the outcome rule, not a change to the quorum definition.**
+
+- **Owner decision, 2026-10-09.** Both council voices run on the family the council already uses:
+  chair on `opencode-acct-5` (router role `reason`), challenger/reviewer on `new-provider` (role
+  `review`), both model `space-bunny-free`. Reason given: **routing repair in progress, so no
+  genuine second family is available.**
+- **What stays.** §3.2a's definition is intact and visible: quorum is at least **two distinct
+  model families**. `independence=none` stays on every primary route line. No ruling may be
+  labelled multi-model or claim independence.
+- **What changes — the outcome.** A convening with **two or more answering voices** produces a
+  ruling instead of a block, labelled verbatim:
+
+  ```text
+  quorum: OWNER-EXCEPTION (single family, space-bunny) - not independently corroborated
+  ```
+
+- **Confidence stays honest.** Default confidence under this exception is capped at **low**, and
+  the ruling states plainly that **two copies of one model agreeing is not independent
+  corroboration**. A reviewer may still record `refused`, or the chair may set `medium` only by
+  naming what independent evidence (a test, a measurement, a source outside both lanes) supports
+  it; `high` is unavailable under this exception.
+- **Two answering voices are still required.** The exception relaxes the *family* requirement
+  only. Fewer than two answering voices → BLOCKED by §6 QUORUM-LOSS. CONVERGENCE, DRIFT,
+  LOOP-BREAKER and COST/TIME are unchanged.
+- **Expiry condition — status OPEN.** The exception **lapses automatically the moment routing is
+  repaired and a second model family is live**. When that happens, §3.2a governs again with no
+  further decision: every convenience is either genuinely two-family (normal ruling) or blocked.
+  Register: `quorum-exception-2026-10-09` · status **OPEN** · lapses when **"routing repaired and
+  second family live"** · chair confirms at each convening and reports the lapse to CoS so this
+  cannot quietly become permanent.
 
 Reserve rules:
 
@@ -146,9 +176,19 @@ Voice **selection** goes through one entrypoint, not hand-picked ids and not a h
 dark list (owner directive, D-20261007-011):
 
 ```sh
+node ~/.agents/skills/cliproxy-router/cliproxy.mjs resolve <role> --probe --project C:/0-BlackBoxProject-0/VOMEGA
 node ~/.agents/skills/cliproxy-router/cliproxy.mjs route reason --project C:/0-BlackBoxProject-0/VOMEGA
 node ~/.agents/skills/cliproxy-router/cliproxy.mjs route review --project C:/0-BlackBoxProject-0/VOMEGA
 ```
+
+- **Lane roles resolve through `resolve <role>`** (D-20261009-003; the entrypoint was repaired
+  2026-10-09 and is live). Roles `build` / `ops` / `pm` / `reason` / `review` map to the five
+  space-bunny lanes with an automatic fallback ladder; `reason` = `opencode-acct-5` (chair),
+  `review` = `new-provider` (challenger). The `route` calls above remain for CPA-family selection.
+- **The five lanes are ONE model family, and upstream isolation between them is UNVERIFIED**
+  (D-20261009-003). Resolving a different role buys **breadth, never independence**; the council
+  does not assume the lanes are isolated from each other upstream, so their agreement is not
+  treated as independent of itself. This does not change the quorum rule (c6ab55e stands).
 
 - `reason` for analysis voices (panel, round-robin, judge); `review` for the challenger. The
   router decides; it drops what is unroutable or in cooldown, so its selection **is** the
@@ -250,7 +290,7 @@ ruling file and reported to CoS** — a blocked quorum is a routed event, not a 
 
 | Breaker | Trips when | Action |
 | --- | --- | --- |
-| **QUORUM-LOSS** | fewer than **two live independent families** for the chosen protocol | **BLOCKED**, no ruling. Record every voice tried and its error. Wait or request a reserve rung (§3.2); never rule single-family and never call it multi-model. |
+| **QUORUM-LOSS** | fewer than **two answering voices**, **or** fewer than **two live independent families** with no §3.2b owner exception in force | **BLOCKED**, no ruling. Record every voice tried and its error. Under the §3.2b exception, two answering voices on one family do **not** trip this breaker, but the ruling is labelled `quorum: OWNER-EXCEPTION (single family, space-bunny) - not independently corroborated` with confidence capped at low. Never call any such ruling multi-model. |
 | **CONVERGENCE** | a PANEL is **unanimous on a high-stakes question** (real-dispute grade or above) | **Escalate**, never rubber-stamp: run CHALLENGE (or ROUND-ROBIN+JUDGE) before ruling, or record that the ruling rests on unanimous-but-unverified agreement. |
 | **LOOP-BREAKER** | **three** rounds with **no change** in any voice's position (including `#rounds` beyond the cap) | **STOP**: the council is stuck, not converging. Rule with the spread as-is and name the decider experiment, or record "refusing to decide". |
 | **DRIFT** | a voice answers **outside the brief's constraints** (touches owner-reserved ground, ignores the question, invents evidence) | **Drop that voice's answer**, record the drop and the reason; recompute quorum with the remaining families. Two drifts from one voice → drop the voice. |
@@ -326,10 +366,18 @@ alive because this table says LIVE.
 | `space-bunny` (reserve tier) | `node .local/dev-loop/reserve-voice.mjs -t "Reply OK" new-provider` | 2026-10-07 ~14:5xZ | **LIVE** — `RESERVE-VOICE-OK` on `new-provider`. Other four accounts not separately probed. **Never counts toward quorum.** |
 | `openrouter` (reserve tier) | `openrouter/auto` | 2026-10-07 09:43Z (ledger) | PASS at last ledger probe; not yet exercised as a council voice. **Never counts toward quorum.** |
 
-**Quorum verdict (2026-10-09, D-20261009-015): UNAVAILABLE.** The council's lanes are now the
-`space-bunny-free` primary accounts, which are one family (§3.2a). Every convening records
-`quorum: unavailable` and ends BLOCKED by §6 QUORUM-LOSS until Owen authorizes a second model
-family. The history below is the measurement before the move.
+**Quorum verdict (2026-10-09): OWNER EXCEPTION IN FORCE.** The council's lanes are the
+`space-bunny-free` primary accounts, one family (§3.2a); the definition of quorum is still two
+distinct model families. Under §3.2b (owner decision 2026-10-09, reason: routing repair in
+progress) a convening with **two or more answering voices** produces a ruling labelled
+`quorum: OWNER-EXCEPTION (single family, space-bunny) - not independently corroborated`, with
+confidence capped at **low**. Fewer than two answering voices still blocks. Exception
+`quorum-exception-2026-10-09` is **OPEN** and lapses automatically when routing is repaired and a
+second model family is live. **Router entrypoint repaired 2026-10-09** (D-20261009-003): lane
+roles resolve through `resolve <role>`; upstream isolation between the five lanes is unverified.
+
+**Earlier verdict (D-20261009-015, superseded on outcome only):** every convening recorded
+`quorum: unavailable` and ended BLOCKED by §6 QUORUM-LOSS while no owner exception existed.
 
 **Previous quorum verdict:** MET on GPT + Grok at 2026-10-07 ~14:5xZ (Claude then DARK). Claude answered again
 at 2026-10-08 ~00:3xZ, so three CPA families were candidates at that point; GPT and Grok were not

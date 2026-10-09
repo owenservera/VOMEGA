@@ -525,8 +525,26 @@ for (const v of firstRound) report({ round: 1, ...v }, "voices");
 
 let finalRound: VoiceVerdict[] = firstRound;
 const families = countedFamilies(firstRound, []);
+const answeringVoices = firstRound.filter(isLive);
 
-if (families.length < MIN_FAMILIES) {
+/**
+ * Owner-granted single-family exception (D-20261009-004, 2026-10-09), register quorum-exception-2026-10-09,
+ * status OPEN. It relaxes the FAMILY requirement only, and only while the definition in DESIGN-COUNCIL.md
+ * §3.2a (two distinct model families) stays intact and visible. It lapses automatically once routing is
+ * repaired and a second model family is live: set OWNER_SINGLE_FAMILY_EXCEPTION = false on that day and the
+ * normal two-family gate governs with no further decision. Fewer than MIN_VOICES answering always blocks.
+ */
+const OWNER_SINGLE_FAMILY_EXCEPTION = true;
+const MIN_VOICES = 2;
+const ownerException = OWNER_SINGLE_FAMILY_EXCEPTION && families.length < MIN_FAMILIES && answeringVoices.length >= MIN_VOICES;
+const quorumLabel = ownerException
+  ? "quorum: OWNER-EXCEPTION (single family, space-bunny) - not independently corroborated"
+  : families.length >= MIN_FAMILIES
+    ? `quorum: met on ${families.length} families (${families.join(", ")})`
+    : "quorum: unavailable";
+if (ownerException) breakers.push({ breaker: "OWNER-EXCEPTION", detail: `${quorumLabel}; confidence capped at low; exception quorum-exception-2026-10-09 OPEN (lapses when routing is repaired and a second family is live)` });
+
+if (families.length < MIN_FAMILIES && !ownerException) {
   breakers.push({
     breaker: "QUORUM-LOSS",
     detail: `${families.length} independent famil${families.length === 1 ? "y" : "ies"} live (${families.join(", ") || "none"}); at least ${MIN_FAMILIES} needed. No ruling.`,
@@ -658,6 +676,10 @@ if (ruling.drifted.length > 0) {
     ruling = { ...ruling, ruling: "Refused: quorum was lost after a drifted voice was dropped. " + ruling.ruling, confidence: "refused" };
   }
 }
+if (ownerException) {
+  breakers.push({ breaker: "OWNER-EXCEPTION-CAP", detail: "confidence above low is unavailable under quorum-exception-2026-10-09 (single family); the chair may keep refused." });
+  if (ruling.confidence !== "refused" && ruling.confidence !== "low") ruling = { ...ruling, confidence: "low" };
+}
 if (stakes === "dispute" && ruling.unanimous && ruling.confidence === "high") {
   breakers.push({
     breaker: "CONVERGENCE",
@@ -686,6 +708,8 @@ const md = [
   "**Question:** " + question,
   "",
   "**Router:** " + protocol + ". " + gradeLine,
+  "",
+  "**Quorum:** " + quorumLabel + (ownerException ? ". Two copies of one model agreeing is not independent corroboration; confidence is capped at low." : "."),
   "",
   "**Variables (proposed defaults, pending Owen):** #providers " + MIN_FAMILIES + ", call ceiling " + VOICE_CALL_CEILING + ", #rounds " + ROUNDS + ". Voice calls used: " + voiceCalls + ".",
   "",
@@ -733,7 +757,8 @@ const result: WorkflowReport = {
     severity: "low",
   })),
   verified: [
-    `independent families heard: ${countedFamilies(finalRound, ruling.drifted).join(", ")}`,
+    `quorum: ${quorumLabel}`,
+    `independent families heard: ${countedFamilies(finalRound, ruling.drifted).join(", ") || "none (single-family owner exception)"}`,
     `${voiceCalls} voice calls under a ceiling of ${VOICE_CALL_CEILING}`,
     "ruling record written by the chair to " + ruling.recordPath,
   ],
