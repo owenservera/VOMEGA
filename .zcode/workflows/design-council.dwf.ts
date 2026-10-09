@@ -62,7 +62,7 @@ interface VoiceAnswer {
 interface VoiceVerdict {
   /** Voice slot: "in-session", "codex", "claude" or "grok". */
   voice: string;
-  /** Provider family: "gpt", "claude", "grok" (CPA tier, count toward quorum); "space-bunny" or "openrouter(<model>)" (reserve tier, breadth only, never quorum); "session" for the in-session voice, whose provider the script cannot see and which never counts toward quorum. */
+  /** Provider family: "gpt", "claude", "grok" (CPA tier, count toward quorum); "space-bunny" (primary tier, one family across all accounts, independence=none, never quorum); "openrouter(<model>)" (reserve tier, breadth only, never quorum); "session" for the in-session voice, whose provider the script cannot see and which never counts toward quorum. */
   family: string;
   /** "available", "available-unparsed", or why the voice was skipped. */
   status: string;
@@ -278,9 +278,19 @@ const routeLine = (p: RoutePick, overrideReason: string): string =>
     ? `route: tier=cpa profile=${p.profile} id=${p.id} provider=${p.provider} family=${familyOf(p.id)} explicit=no why=${p.why}`
     : `route: tier=cpa profile=${p.profile} id=${p.id || "unknown"} provider=${p.provider || "unknown"} family=${familyOf(p.id)} explicit=${overrideReason === "" ? "no" : "yes"} why=${p.why}${overrideReason === "" ? "" : "; override: " + overrideReason}`;
 
-/** "cpa" families count toward quorum; "reserve" adds breadth only; "session" never counts (provider not visible). */
+/**
+ * Only "cpa" families count toward quorum. "primary" is the space-bunny-free account pool (one family,
+ * independence=none; D-20261009-015): distinct credentials on one model are breadth, never a second family.
+ * "reserve" adds breadth only; "session" never counts (provider not visible).
+ */
 const tierOf = (family: string): string =>
-  family === "session" ? "session" : family === "gpt" || family === "claude" || family === "grok" ? "cpa" : "reserve";
+  family === "session"
+    ? "session"
+    : family === "gpt" || family === "claude" || family === "grok"
+      ? "cpa"
+      : family === "space-bunny"
+        ? "primary"
+        : "reserve";
 
 const countedFamilies = (vs: VoiceVerdict[], dropped: string[]): string[] => {
   const fams = new Set<string>();
@@ -450,8 +460,12 @@ const askReserve = async (slot: string, account: string, prompt: string): Promis
     const r = await world.run("node", [".local/dev-loop/reserve-voice.mjs", "-t", prompt, account], { timeoutMs: 600_000 });
     const line = /route:[^\n]*/.exec(r.stderr);
     const fam = /family=(\S+)/.exec(line === null ? "" : line[0]);
-    if (line !== null) routeLines.push(line[0] + ` why=${slot} CPA voice blocked; router re-asked once first`);
-    return parseVoice(voice, fam === null ? "space-bunny" : fam[1] ?? "space-bunny", r, line === null ? `account ${account}` : line[0]);
+    const family = fam === null ? "space-bunny" : fam[1] ?? "space-bunny";
+    if (line !== null) {
+      const base = tierOf(family) === "primary" ? line[0].replace(/tier=\S+/, "tier=primary") + " independence=none" : line[0];
+      routeLines.push(base + ` why=${slot} CPA voice blocked; router re-asked once first`);
+    }
+    return parseVoice(voice, family, r, line === null ? `account ${account}` : line[0]);
   } catch (e) {
     return failVoice(voice, "space-bunny", e);
   }

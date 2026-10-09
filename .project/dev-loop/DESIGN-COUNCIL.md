@@ -66,18 +66,53 @@ Voice mechanisms (read-only, scratch cwd `.local/dev-loop/scratch/`, git-ignored
 | V3 — Claude voice | `node .local/dev-loop/claude-voice.mjs <brief> [model]` — authorized proxy route, key read-only in memory | `claude` (Claude Code OAuth) |
 | V4 — Grok voice | `node .local/dev-loop/grok-voice.mjs <brief> [model]` — proxy route (LIVE, D-20261007-011); the `grok` CLI is not a voice route | `grok` (grok-build-oauth) |
 
-**Reserve tier (non-CPA; D-20261007-012).** The router cannot see these routes, so they are called
-directly with `node .local/dev-loop/reserve-voice.mjs <brief> <account> [model]`:
+**Primary lanes since 2026-10-09 (owner directive, relayed as D-20261009-015).** Every lane,
+council voices included, moves to model `space-bunny-free`, each on a different opencode account
+(chair: `opencode-acct-5`; second voice: `new-provider`). Owen selects the thread model in the
+ZCode UI; the council never re-pins anything. The accounts are reached with
+`node .local/dev-loop/reserve-voice.mjs <brief> <account> [model]`:
 
-| Account | Endpoint | Family |
-| --- | --- | --- |
-| `new-provider`, `opencode-acct-2` … `opencode-acct-5` | localhost:6446, `space-bunny-free` | **`space-bunny`** — all five accounts are **one** family |
-| `openrouter` | openrouter.ai, `openrouter/auto` | `openrouter(<routed model>)` — the routed model's family, as reported by the response |
+| Account | Endpoint | Tier | Family |
+| --- | --- | --- | --- |
+| `opencode-acct-5` (chair), `new-provider` (second voice), `opencode-acct-2` … `opencode-acct-4` | localhost:6446, `space-bunny-free` | **primary** | **`space-bunny`** — all accounts are **one** family |
+| `openrouter` | openrouter.ai, `openrouter/auto` | reserve | `openrouter(<routed model>)` — the routed model's family, as reported by the response |
+
+#### 3.2a What independence means now, and the quorum rule (D-20261009-015)
+
+- **Distinct credentials on one model are breadth, not independence.** Five accounts on
+  `space-bunny-free` are five samples of **one** model: same weights, same training, same blind
+  spots. Separate accounts remove shared rate limits and shared session state; they do not
+  remove shared reasoning errors. Every primary-lane voice is recorded with
+  `independence=none`.
+- **Independence requires a different model family.** Quorum means at least **two distinct model
+  families** among the answering voices, as before. `space-bunny` is one family no matter how
+  many accounts answer, so the primary lanes on their own contribute **one** family.
+- **The reserve tier never satisfies quorum.** `openrouter` (and any future reserve route)
+  adds breadth only, even when its routed model is a different family. This rule is unchanged.
+- **A true second family** today could only come from a CPA family (GPT, Claude, Grok) running
+  as a council voice. The owner directive moves every lane to `space-bunny-free`, so using a CPA
+  voice as the second family is an **owner decision**, queued for Owen via CoS. The council
+  does not reintroduce it by itself.
+- **Choice: the council records `quorum: unavailable`; it does not assert a quorum.** In this
+  configuration every convening is stopped by §6 QUORUM-LOSS: status **BLOCKED**, no ruling, no
+  confidence label, and the record carries `quorum: unavailable (one family: space-bunny)`.
+  The chair may attach the space-bunny answers to the BLOCKED record as **breadth evidence**
+  (Position / Falsifier per voice, verbatim). They are never called a ruling, a council
+  verdict or multi-model.
+  *Why this choice and not a downgraded "single-family ruling":* (1) calling agreement across
+  five copies of one model a quorum would be false, and a confidence label would turn sample
+  agreement into apparent proof (confidence ≠ proof); (2) letting one family rule would weaken
+  the QUORUM-LOSS gate, and gates are not weakened to pass them; (3) the question still moves:
+  CoS gets the breadth evidence plus a precise blocker (a second model family is needed, which is
+  Owen's call), instead of a ruling that looks independent and is not.
+- **The gate is unchanged.** §6 QUORUM-LOSS still fires below two counted families. Only the
+  family accounting changed: `space-bunny` (primary) and the reserve tier are never counted.
 
 Reserve rules:
 
-- **The reserve tier never satisfies quorum.** Quorum still needs two independent **CPA** families
-  (GPT, Claude, Grok). A ruling with one CPA family plus any number of reserve voices is BLOCKED.
+- **The reserve tier never satisfies quorum.** Neither does the primary `space-bunny` family on
+  its own (§3.2a). A ruling with one counted family plus any number of primary or reserve
+  voices is BLOCKED.
 - **It is valid for breadth.** Five space-bunny accounts give five concurrent answers from **one**
   family. Record each as `family=space-bunny account=<acct>` so the chair never mistakes volume for
   independence.
@@ -127,7 +162,12 @@ node ~/.agents/skills/cliproxy-router/cliproxy.mjs route review --project C:/0-B
   ```text
   route: tier=cpa profile=<reason|review> id=<model> provider=<provider> family=<gpt|claude|grok> explicit=<yes|no> why=<router why | override reason>
   route: tier=reserve id=<model> provider=<account> family=<space-bunny|openrouter(<model>)> explicit=yes why=<which CPA voice was blocked>
+  route: tier=primary id=space-bunny-free provider=<opencode-acct-5|new-provider|opencode-acct-N> family=space-bunny independence=none explicit=yes why=<chair|second voice|breadth>
   ```
+
+  Every `tier=primary` line carries `independence=none` (§3.2a). Worked example (2026-10-09):
+  `route: tier=primary id=space-bunny-free provider=opencode-acct-5 family=space-bunny independence=none explicit=yes why=chair` ·
+  `route: tier=primary id=space-bunny-free provider=new-provider family=space-bunny independence=none explicit=yes why=second voice`.
 
   Worked examples (2026-10-07 ~14:5xZ):
   `route: tier=cpa profile=reason id=gpt-6-sol provider=codex-oauth family=gpt explicit=no why=prefer sol` ·
@@ -286,7 +326,12 @@ alive because this table says LIVE.
 | `space-bunny` (reserve tier) | `node .local/dev-loop/reserve-voice.mjs -t "Reply OK" new-provider` | 2026-10-07 ~14:5xZ | **LIVE** — `RESERVE-VOICE-OK` on `new-provider`. Other four accounts not separately probed. **Never counts toward quorum.** |
 | `openrouter` (reserve tier) | `openrouter/auto` | 2026-10-07 09:43Z (ledger) | PASS at last ledger probe; not yet exercised as a council voice. **Never counts toward quorum.** |
 
-**Quorum verdict:** MET on GPT + Grok at 2026-10-07 ~14:5xZ (Claude then DARK). Claude answered again
+**Quorum verdict (2026-10-09, D-20261009-015): UNAVAILABLE.** The council's lanes are now the
+`space-bunny-free` primary accounts, which are one family (§3.2a). Every convening records
+`quorum: unavailable` and ends BLOCKED by §6 QUORUM-LOSS until Owen authorizes a second model
+family. The history below is the measurement before the move.
+
+**Previous quorum verdict:** MET on GPT + Grok at 2026-10-07 ~14:5xZ (Claude then DARK). Claude answered again
 at 2026-10-08 ~00:3xZ, so three CPA families were candidates at that point; GPT and Grok were not
 re-probed in that pass. **Router entrypoint broken since 2026-10-08 01:00 local:** `cliproxy.mjs`
 imports a missing `~/.agents/skills/model-profile.mjs` (ERR_MODULE_NOT_FOUND). The workflow degrades
