@@ -157,12 +157,15 @@ export function interpretRevision(state: D1State, n: number): InterpretationResu
   // absorb the command: the unheld target wins and the route stays unresolved.
   const conflict = grounded.mention !== null ? unheldLink(routeChain(body, wm), wm) : null;
   const chainTokens = conflict ? new Set([...grounded.mentionTokens, ...routeChain(body, wm).flat().map((t) => t.i)]) : null;
+  const held = !unheld && !conflict && grounded.mention !== null ? heldRouteRule(text, verb, body, grounded, wm, world) : null;
   const grounding = unheld
     ? { ...grounded, mention: unheld.mention, mentionTokens: unheld.tokens }
     : conflict
       ? { mention: conflict.slice(1).map((t) => t.norm).join(" "), mentionTokens: chainTokens!, provider: null, account: null, model: null, candidates: {} }
-      : grounded;
-  const payload = payloadOf(text, body, grounding.mentionTokens);
+      : held?.refuse
+        ? { mention: held.refuse, mentionTokens: grounded.mentionTokens, provider: null, account: null, model: null, candidates: {} }
+        : grounded;
+  const payload = held?.payload ?? payloadOf(text, body, grounding.mentionTokens);
   const draft = draftFor(capability, decl, world, grounding, payload);
   return {
     ...base,
@@ -600,6 +603,80 @@ function unheldLink(links: Token[][], wm: WorldModel): Token[] | null {
     }
   }
   return null;
+}
+
+/**
+ * The only remainders a held route may carry after it (COUNCIL R-20261008-014-1, rule
+ * now): nothing, or exactly one of these courtesy tails. Anything else is refused — never
+ * read as payload and never as a second route. Widening this set is an owner decision.
+ */
+const ALLOWED_TAILS = new Set(["", "and say thanks", ", thanks", ", please"]);
+
+/** Verbs whose object is an addressee: "tell Gemini …" names who, not what. */
+const ADDRESSEE_VERBS = new Set(["tell", "ask", "message"]);
+
+/**
+ * The exact-remainder rule for a route that grounded to a held recipient. It reads the
+ * utterance by position, not by word lists: the payload is exactly the text before the
+ * route (or the quote), the remainder after the route must be an allowed tail, a
+ * tell/ask addressee before the route conflicts with it, and no unquoted word outside
+ * the route span may ground to any record. A refusal names the offending text; it is
+ * never silently dropped and never routed.
+ */
+function heldRouteRule(
+  text: string,
+  verb: string | null,
+  body: Token[],
+  g: Grounding,
+  wm: WorldModel,
+  world: World,
+): { refuse?: string; payload?: string } | null {
+  const pos = body.map((t, k) => (g.mentionTokens.has(t.i) ? k : -1)).filter((k) => k >= 0);
+  if (pos.length === 0) return null;
+  const first = pos[0]!;
+  const route = new Set([g.provider, g.account, g.model, ...Object.values(g.candidates).flat()].filter((x): x is string => !!x));
+  // The grounded run can swallow following words ("work claude and please tell Gemini").
+  // The route span ends at the last word that belongs to a route record's own names in
+  // the World; everything after it is remainder.
+  const own = new Set(
+    [...world.providers, ...world.accounts, ...world.models]
+      .filter((r) => route.has(r.id))
+      .flatMap((r) => [...r.names, r.label])
+      .flatMap((n) => n.toLowerCase().split(/[^a-z0-9]+/))
+      .filter(Boolean),
+  );
+  let last = first;
+  while (last + 1 <= pos[pos.length - 1]! && own.has(body[last + 1]!.norm)) last++;
+  // Outside the route span no unquoted word may name a record at all — another one, or
+  // this one again (a repeated route would make the earlier route text payload).
+  const otherRecord = (ts: Token[]): Token | undefined =>
+    ts.find((t) => t.kind === "word" && (["provider", "account", "model"] as const).some((k) => {
+      const m = ground(t.norm, wm.entities, [k]).primary;
+      return !!m && m.score >= HELD;
+    }));
+
+  // Addressee form ("Ask Claude to explain …"): the route opens the body and what follows is the payload.
+  if (!body.slice(0, first).some((t) => t.kind === "word" || t.kind === "quote")) {
+    const stray = otherRecord(body.slice(last + 1));
+    return stray ? { refuse: stray.norm } : null;
+  }
+
+  const prepPos = first > 0 && body[first - 1]!.kind === "word" && ROUTE_PREPS.has(body[first - 1]!.norm) ? first - 1 : first;
+  const pre = body.slice(0, prepPos);
+  const preWords = pre.filter((t) => t.kind === "word");
+  const remainder = text.slice(body[last]!.end).trim().toLowerCase().replace(/[.!]$/, "").trim();
+
+  if (verb && ADDRESSEE_VERBS.has(verb) && preWords.length > 0) return { refuse: preWords.map((t) => t.norm).join(" ") };
+  if (!ALLOWED_TAILS.has(remainder)) return { refuse: remainder };
+  const stray = otherRecord(pre);
+  if (stray) return { refuse: stray.norm };
+
+  const quoted = pre.find((t) => t.kind === "quote");
+  if (quoted) return preWords.length > 0 ? { refuse: preWords.map((t) => t.norm).join(" ") } : { payload: quoted.quote ?? "" };
+  const spanned = pre.filter((t) => t.kind === "word" || t.kind === "punct");
+  while (spanned.length > 0 && spanned[spanned.length - 1]!.kind === "punct") spanned.pop();
+  while (spanned.length > 0 && spanned[0]!.kind === "punct") spanned.shift();
+  return { payload: spanned.length > 0 ? text.slice(spanned[0]!.start, spanned[spanned.length - 1]!.end) : "" };
 }
 
 /** The payload: a quoted span verbatim (its words can never retarget), else the unconsumed text. */
