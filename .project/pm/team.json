@@ -41,9 +41,8 @@
     "auth/provider/model config"
   ],
   "measured": {
-    "head": "98959c3",
-    "headNote": "ratchet probe stale at 33a23b8 (HEAD 98959c3; DEV holds a CLAIMED task — PM did not re-probe)",
-    "originMain": "25 ahead, unpushed — owner decides",
+    "head": "c6ab55e",
+    "originMain": "unpushed behind CoS-authorized push; owner decides",
     "bunVersion": "1.4.2",
     "canonicalProgramCount": 67,
     "managedPhases": 25,
@@ -52,23 +51,23 @@
       "managedPhases": "generated/ROADMAP.md — all 25 phases across the managed five"
     },
     "ratchetGateCounts": {
-      "total": 80,
-      "greenAtLastProbe": 39
+      "total": 95,
+      "greenAtLastProbe": 59
     },
     "ratchetTaskCounts": {
-      "done": 9,
+      "done": 18,
       "proven": 15,
-      "open": 9,
-      "claimed": 1,
-      "blocked": 43,
+      "open": 8,
+      "blocked": 36,
       "regressed": 0
     },
     "pmCheck": "ok (1 warning: NEEDS_REVIEW MP-60 P5)",
     "pmTest": "47 pass / 0 fail / 743 expect()",
     "runtimeVerified": true,
-    "runtimeVerifiedAt": "2026-10-07T11:04Z",
+    "runtimeVerifiedAt": "2026-10-09T06:24Z",
     "pmTru": "first sweep exercise 2026-10-07T09:20Z: verdict DRIFT — MP-54/55/60 dossier gates had no status field (instrumentation gap misreported as uniform TBD); normalized to status TBD + views regenerated; measured numbers all confirmed by independent context",
-    "harnessNote": "standing dedicated PM thread (thread 4) hosts PM-LEAD sweeps; automation clause (governor step 3c, pm.lock guard) is the fallback when the standing thread is not alive"
+    "harnessNote": "standing dedicated PM thread (thread 4) hosts PM-LEAD sweeps; automation clause (governor step 3c, pm.lock guard) is the fallback when the standing thread is not alive",
+    "ratchetNote": "D1-017 reworked under a COUNCIL ruling (R-20261008-014-1 exact-remainder rule): +4 gates (4360d18), fix 416e96e, promoted c762183 -> 59/95; awaiting separate review."
   },
   "roster": [
     {

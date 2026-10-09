@@ -9,7 +9,7 @@
     "digest": "sha256:db0cdd956eb7a9ffb0dc10044032a661da212c5f645381401d572aacdb2916f9"
   },
   "probe": {
-    "head": "416e96eee54e",
+    "head": "ef9497329e67",
     "bun": "1.4.2",
     "platform": "win32-x64",
     "totals": {
@@ -26,8 +26,8 @@
     "OPEN": 8,
     "CLAIMED": 0,
     "BLOCKED": 36,
-    "PROVEN": 15,
-    "DONE": 18,
+    "PROVEN": 14,
+    "DONE": 19,
     "SUPERSEDED": 0,
     "REGRESSED": 0,
     "total": 77,
@@ -281,7 +281,7 @@
     },
     {
       "id": "D1-017",
-      "state": "PROVEN",
+      "state": "DONE",
       "gates": [
         {
           "key": "D1-017::W4 'work claude' with authority allowed is the one-factor positive control",
@@ -377,11 +377,11 @@
       "artifacts": [],
       "missingProof": false,
       "review": {
-        "by": "dev-trv-d016b",
-        "verdict": "reject",
-        "head": "f1f306fb3ab9",
-        "at": "2026-10-08T14:28:13.117Z",
-        "note": "dev-trv-d016b (separate automated subagent, mutation-tested) REJECTS the D-016b fix: gate 0a295e4 + fix 3a46298 close the three named strings but leave the identical false READY open, and commit 7535f11 introduced a broader one. Mutation: reverting 3a46298 turns the new gate red (fix is live, non-vacuous); dropping the SEND_VERBS strip turns it red; dropping the CLAUSE_OPENERS half alone leaves it GREEN (that half is redundant - the new gate pins the strip, not the removal). The three D-016 gates each die under their own mutant (HELD=0 -> 'a recipient that only partly matches a Provider is not held' red; bare path disabled -> 'an unheld recipient joined by punctuation is never dropped' red; empty CLAUSE_OPENERS -> 'a clause after a held recipient is not a second recipient' red). REGRESSION vs last accepted 1b958fd: 'send hello to work claude and please tell Gemini' was needs-info at 1b958fd, is READY on account:claude-work with unresolved=[] and prompt='hello' at 7535f11 and still at HEAD f1f306f. Gemini is named as a second recipient, is unheld, and is silently swallowed into the route chain. Same class as the dev-trv-d016 reject, still open. Root cause is ordering, not the lexicon: compile.ts:597 strips a leading SEND_VERB, but compile.ts:598 short-circuits on CLAUSE_OPENERS first, so any clause word in front of the verb ('please','thanks','cheers','regards','thank','say') restores the false READY. Also regressed to READY vs 1b958fd: 'and please send Gemini', 'and please ask Gemini', 'and then please tell Gemini', 'and thanks tell Gemini', 'and cheers tell Gemini', 'and regards tell Gemini', 'and thank Gemini', 'and say please Gemini', 'and use Gemini', 'and choose Gemini', 'and register Gemini', 'and add Gemini', 'and tell ask Gemini'. Pre-existing (READY at 1b958fd too, unchanged by D-016b, so the commit's stated invariant is narrower than the gate title implies): 'send hello to work claude, please tell Gemini', 'and thanks, tell Gemini', 'send hello to work claude. tell Gemini', '... - tell Gemini', '...! tell Gemini', 'and tell Gemini, then ask Gemini', 'tell Gemini to work claude', 'ask Gemini about work claude'. Confirmed repair (diagnostic only, not applied): skip leading CLAUSE_OPENERS words before the SEND_VERBS strip at compile.ts:597 - all 22 b-world gates stay green and every 'please'-variant above turns needs-info. Next fix must add the 'please'-prefixed strings to the gate as a separate case, not widen this one."
+        "by": "dev-trv-d020",
+        "verdict": "accept",
+        "head": "c6ab55ea45e9",
+        "at": "2026-10-09T06:43:46.828Z",
+        "note": "TRV dev-trv-d020 (independent adversarial, mutation + property): gates are additions only (4360d18 +39/-0 gate file, +8 lock spec-change; no existing gate edited; option A not taken); code confined to compile.ts (416e96e +79/-2). Red/green at e62e67e with HEAD's gate file: (1)-(3) RED, (4) GREEN - they discriminate. At HEAD c762183: ratchet verify D1-017 PROVEN 15/15; status --probe REGRESSED 0; ratchet check exit 0. Mutations: (b) ADDRESSEE_VERBS removed -> council (1) red; (d) own-name route-span trim dropped -> council (2)+(4) red; (e) payload from payloadOf -> council (2) red; (a) ALLOWED_TAILS widened -> NOT killed, but equivalent on a 1720-utterance differential corpus (0 diffs) for 4 widenings incl. one naming a second recipient; (c) otherRecord always undefined -> NOT killed by any D1 gate and behaviour-changing (19 diffs: e.g. 'send hello to work claude and say thanks. work' READY with payload 'hello to work claude and say thanks'; '...thanks. mailbox home' routes to mailbox-home) - RESIDUAL GAP: the ruling's no-stray-record clause is implemented (compile.ts:652-655,671) but pinned by no gate; full D1 suite identical 59/36 under it. Property check at HEAD, W1/W2/W4/W5, prompt.send allowed: 3136 spec-form insert cases (every World name + Gemini/gemini/zorblax at end, after '. ', verb-first, and-tell, x tails none+3) = 0 READY; 32 control rows all READY; W3 has no compatible account. Head vs e62e67e differential (1720): 0 new false READY; 193 newly READY->refused, all of them a further recipient/addressee/stray name, plus council over_refusal_accepted forms. Residual gaps listed in the TRV reply: trailing-punct payload now trimmed ('send hi. to work claude' payload 'hi.' at e62e67e vs 'hi' now, ungated); payload naming the route's own record refused ('send the work claude summary to work claude') with a misleading 'grounded to no account' reason. ACCEPT with gaps; no --reject."
       }
     },
     {
@@ -1490,5 +1490,5 @@
     "Reviewer identity (`--by <label>`) is an auditable coordination label, not cryptographic proof that two labels are independent underlying actors; the engine enforces label separation, not actor independence (C2).",
     "Ratchet-mode green (`d1:gates`) is not completion; only the probe-green frontier plus independent reviews, and finally the completion record, are (C4)."
   ],
-  "digest": "sha256:3f0d2ae4678d58cb4fca53335e3720aa7a8bed85128ff37aee30477ce7cb638a"
+  "digest": "sha256:1c19e5053b0742352cca89d543bf2677705cfb2e429e8c15160da0b4d119cf35"
 }

@@ -21,3 +21,4 @@ sessions/
 # store (records.jsonl + records.chain.json), never committed; the chain of
 # custody is witnessed locally, the law that governs it is committed
 boot/
+.grok/
