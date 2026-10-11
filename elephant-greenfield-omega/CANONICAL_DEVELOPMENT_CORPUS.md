@@ -1,5 +1,8 @@
 # ⚓ VOMEGA — Canonical Development Corpus (2026-10-11)
 
+> **Decision-process intake (starts blank):** [Labs · Deliberations · Owen Guidance](DECISION_PROCESS_TRACKER.md). This logs questions and routing, not previously made decisions; existing scoped decision authorities remain unchanged.
+
+
 **Status:** ACTIVE NAVIGATION + consolidation policy. **Not a new PM system, runtime registry, experiment authority or product architecture.** This file is the one development-documentation navigation and precedence map across `.project/` and `elephant-greenfield-omega/`; it does not relocate original source code or alter the active D1 Ratchet.
 
 ## Most recent operator intent — in priority order
