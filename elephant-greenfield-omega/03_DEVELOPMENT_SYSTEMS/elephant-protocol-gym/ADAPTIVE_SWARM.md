@@ -1,5 +1,8 @@
 # Adaptive Elephant Swarm — Parallel Self-Organization to MVP v0.5
 
+> **UNIVERSAL SDK GRADUATION RULE:** The [owner's all-code-and-tooling interface requirement](UNIVERSAL_SEMANTIC_GOVERNANCE.md) is an objective for **every** adaptive Elephant stream, not only S1 self-model. Streams must progressively use Machine↔Human command/Wiki/visual projections to explain and propose/test their *own* settings, tools, allocation and protocols; after a domain has independent U4 verification, normal changes bypassing the semantic chain fail. U0–U3 bootstrap paths remain truthful. [Earlier Elephant intelligence](ELEPHANT_INTELLIGENCE_PRESERVATION.md) must be source-linked and never dropped.
+
+
 **Status:** OWNER-REQUESTED EXPERIMENT DESIGN / READY-TO-LAUNCH PROMPTS, **NOT LAUNCHED, NOT AN IMPLEMENTED ORCHESTRATOR**. Date: 2026-10-11.
 **Scope:** exploratory, elastically parallel Elephant system self-organization, self-articulation and self-testing of the gap from the protected original baseline to the *updated* minimum MVP v0.5 requirements.
 **Authority:** [Gym D1–D4 launch policy](LAUNCH_POLICY.md), [SDK self-hosting objective](SDK_SELF_HOSTING_DOGFOOD.md), [visual parity contract](CORE_VISUAL_LANGUAGE.md) and [all-state turn publication](../../01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md).
