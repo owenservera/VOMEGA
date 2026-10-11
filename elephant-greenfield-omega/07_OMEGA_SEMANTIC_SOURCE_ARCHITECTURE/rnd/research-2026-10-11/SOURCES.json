@@ -1,0 +1,286 @@
+{
+  "research_date": "2026-10-11",
+  "method": "Primary documentation and first-party sources, with standards-status caveats. Vendor descriptions not independent suitability proof.",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "MLIR dialects and extensible operations",
+      "url": "https://mlir.llvm.org/getting_started/Glossary/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Dialect namespaces, operations, types, attributes and multi-level IR; not knowledge provenance.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S02",
+      "title": "MLIR dialect conversion",
+      "url": "https://mlir.llvm.org/docs/DialectConversion/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Conversion legality, patterns and type converter; no claim-level evidence contract.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S03",
+      "title": "Spoofax language designer workbench",
+      "url": "https://spoofax.dev/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Syntax, Statix static semantics, scope graphs and term transformations.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S04",
+      "title": "Spoofax NaBL2 name binding",
+      "url": "https://www.metaborg.org/en/latest/source/langdev/meta/lang/nabl2/reference.html",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Namespace-qualified declarations and references; older documentation.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S05",
+      "title": "MPS 2026.1 basic concepts",
+      "url": "https://www.jetbrains.com/help/mps/basic-notions.html",
+      "source_class": "official",
+      "why_it_matters_and_limits": "AST-persistent projectional languages, concepts and editors.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S06",
+      "title": "Racket creating languages",
+      "url": "https://docs.racket-lang.org/guide/languages.html",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Layered readers, expanders, and module languages.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S07",
+      "title": "Tree-sitter documentation",
+      "url": "https://tree-sitter.github.io/tree-sitter/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Incremental syntax trees, error recovery, polyglot parser ecosystem.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S08",
+      "title": "TypeScript compiler API wiki",
+      "url": "https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API",
+      "source_class": "official",
+      "why_it_matters_and_limits": "AST, Program, TypeChecker, compiler API; warns TS 7.1 different API.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S09",
+      "title": "SCIP Code Intelligence Protocol",
+      "url": "https://github.com/scip-code/scip",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Language-neutral code navigation symbols and source references, not semantic truth.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S10",
+      "title": "JSON Schema specification",
+      "url": "https://json-schema.org/specification",
+      "source_class": "standard",
+      "why_it_matters_and_limits": "Meta-schema validates itself, structural and validation vocabularies.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S11",
+      "title": "CUE implementation reference",
+      "url": "https://github.com/cue-lang/cue/blob/master/doc/ref/impl.md",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Declarative constraints and unification, not general side-effect semantics.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S12",
+      "title": "Dhall documentation",
+      "url": "https://docs.dhall-lang.org/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Constrained programmable configuration and normalization.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S13",
+      "title": "W3C SHACL Recommendation",
+      "url": "https://www.w3.org/TR/shacl/",
+      "source_class": "standard",
+      "why_it_matters_and_limits": "RDF shape constraints and validation reports. Recursion behavior not generally defined.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S14",
+      "title": "WebAssembly WIT interface type format",
+      "url": "https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Interface/package/world imports/exports; realization ABI, not global semantics.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S15",
+      "title": "Protocol Buffers unknown fields",
+      "url": "https://protobuf.dev/programming-guides/editions/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Unknown fields retained in binary, but JSON conversion can discard them.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S16",
+      "title": "W3C JSON-LD 1.1 Recommendation",
+      "url": "https://www.w3.org/TR/json-ld11/",
+      "source_class": "standard",
+      "why_it_matters_and_limits": "JSON-based linked data and global semantic identifiers.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S17",
+      "title": "W3C RDF 1.2 Concepts Candidate Recommendation",
+      "url": "https://www.w3.org/TR/rdf12-concepts/",
+      "source_class": "candidate-standard",
+      "why_it_matters_and_limits": "2026 Candidate Recommendation Snapshot, not final W3C Recommendation.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S18",
+      "title": "W3C SHACL 1.2 Core Working Draft October 2026",
+      "url": "https://www.w3.org/TR/2026/WD-shacl12-core-20261008/",
+      "source_class": "working-draft",
+      "why_it_matters_and_limits": "Recent draft may alter design; do not treat as stable recommendation.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S19",
+      "title": "W3C PROV-O Recommendation",
+      "url": "https://www.w3.org/TR/prov-o/",
+      "source_class": "standard",
+      "why_it_matters_and_limits": "Entities activities agents and provenance relationships.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S20",
+      "title": "OpenTelemetry semantic convention groups",
+      "url": "https://opentelemetry.io/docs/specs/semconv/general/semantic-convention-groups/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Machine-readable semantic attribute groups, stability and deprecation.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S21",
+      "title": "Souffle Datalog language",
+      "url": "https://souffle-lang.org/datalog-language",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Typed relations, clauses, recursion and generated query execution.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S22",
+      "title": "Salsa incremental computations",
+      "url": "https://docs.rs/salsa/latest/salsa/index.html",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Tracked functions and dependency invalidation; Rust ecosystem.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S23",
+      "title": "Nix derivations and reproducible outputs",
+      "url": "https://github.com/NixOS/nix/blob/master/doc/manual/source/store/derivation/index.md",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Input/output derivations and content-addressed build semantics.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S24",
+      "title": "egg equality saturation ACM 2026",
+      "url": "https://doi.org/10.1145/3815481",
+      "source_class": "peer-reviewed",
+      "why_it_matters_and_limits": "E-graphs compact equivalent expressions; requires correct rewrite conditions.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S25",
+      "title": "SQLite FTS5 documentation",
+      "url": "https://www.sqlite.org/fts5.html",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Embedded full-text virtual tables; only one of several required query families.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S26",
+      "title": "Oxigraph Rust docs",
+      "url": "https://docs.rs/oxigraph/latest/oxigraph/store/struct.Store.html",
+      "source_class": "official",
+      "why_it_matters_and_limits": "RDF store, SPARQL and transactions; separate RocksDB feature.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S27",
+      "title": "DuckDB Parquet documentation",
+      "url": "https://duckdb.org/docs/current/data/parquet/overview",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Columnar scans with projections and filters; analytics specialization.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S28",
+      "title": "RocksDB documentation",
+      "url": "https://rocksdb.org/docs/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Persistent ordered key/value storage and LSM data structures.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S29",
+      "title": "Open Policy Agent and Rego",
+      "url": "https://www.openpolicyagent.org/docs",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Policy decisions decoupled from enforcement; authorization still runtime job.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S30",
+      "title": "Adobe Photoshop UXP batchPlay",
+      "url": "https://developer.adobe.com/photoshop/uxp/ps_reference/media/batchplay/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Adobe actionJSON descriptors and versioned app-specific execution options.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S31",
+      "title": "Dafny verification-aware programming",
+      "url": "https://dafny.org/dafny/DafnyRef/DafnyRef",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Contracts, program proofs, and source to verified compilation.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S32",
+      "title": "RFC 8785 JSON Canonicalization Scheme",
+      "url": "https://www.rfc-editor.org/info/rfc8785/",
+      "source_class": "standard-informational",
+      "why_it_matters_and_limits": "Deterministic JSON serialization with explicit restrictions.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S33",
+      "title": "GitHub Linguist languages.yml",
+      "url": "https://github.com/github-linguist/linguist/blob/main/lib/linguist/languages.yml",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Language/file extension classifier. Not sufficient to infer execution semantics.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S34",
+      "title": "JetBrains MPS language composition",
+      "url": "https://www.jetbrains.com/mps/concepts/",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Editable AST and projections without textual parsing.",
+      "access_checked_on": "2026-10-11"
+    },
+    {
+      "id": "S35",
+      "title": "OCaml ppx deriving",
+      "url": "https://github.com/ocaml-ppx/ppx_deriving",
+      "source_class": "official",
+      "why_it_matters_and_limits": "Type-directed generation via annotations; hygiene concerns.",
+      "access_checked_on": "2026-10-11"
+    }
+  ]
+}
