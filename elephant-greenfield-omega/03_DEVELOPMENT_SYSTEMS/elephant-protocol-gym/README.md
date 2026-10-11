@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **CANONICAL OWNER-APPROVED GYM LAUNCH POLICY:** [Decisions 1–4](LAUNCH_POLICY.md) — existing feeder + real/source fixture, reusable/replaceable automation, Machine ↔ Human feedback for every run, maximal exploratory freedom subject to truth/safety/evidence and reviewed canon updates. This short policy governs the Gym; detailed decision files are supporting explanations.
+
+
 > **OWNER DECISION 3 — LEARNING SIGNAL:** [Every run exposes a Machine ↔ Human comparison](MACHINE_HUMAN_SIGNAL.md), including source/intent basis, machine interpretation, readable human meaning, evidence and what the comparison teaches. Implementation is open; this is not a requirement for a particular UI or framework.
 
 
