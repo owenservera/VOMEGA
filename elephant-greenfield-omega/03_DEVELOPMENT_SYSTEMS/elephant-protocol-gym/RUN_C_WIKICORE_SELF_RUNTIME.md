@@ -1,5 +1,8 @@
 # DRY RUN C — WikiCore Verbs and Self-Runtime
 
+> **Specific prior art to inspect:** [The existing 17-family symbolic language, pure TS interpreter and source-grounded self-knowledge research](SYMBOLIC_LANGUAGE_INTAKE.md). Compare historical `?` introspection and `=` teaching mechanisms to new WikiCore/self-runtime proposals. Do not adopt old glyph or permission semantics merely because they exist.
+
+
 **Mandatory common canon:** Read [the Gym Launch Policy](LAUNCH_POLICY.md) alongside the shared seed before beginning. Explore freely inside its four owner-approved truth/safety/feedback/evidence rules; submit any shared-canon change for review. Existing tools are replaceable controls, not forced implementation choices.
 **Independent exploration. Do not read other run prompts or their results yet.**
 
