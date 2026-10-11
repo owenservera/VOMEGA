@@ -1,5 +1,8 @@
 # Preliminary specification — Ω WebAssembly Semantic Publishing Kit
 
+> **Rule 1 precedence:** [ONE Machine ↔ Human learning loop](../../../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). This Wasm/TS kit is a proposed realization *inside* a co-evolving SDK/compiler/runtime + representations loop, not a separate late phase. Observed human/machine/Wiki/intended-meaning discrepancies directly generate versioned SDK/compiler/runtime candidate experiments.
+
+
 **Spec revision:** PROPOSAL-0.1 · **Status:** DESIGN / OPEN FOR CHALLENGE / NOT IMPLEMENTED.  
 **Parent architecture:** [Phase 0 experimental reference](../../../README.md) and [current 3-tool PRD](../../PRD_AND_DESIGN.md). These remain running baselines and must not be rewritten by adopting this draft.  
 **Applies to:** last hot stage of the LLM-native development automation loop, not necessarily the final shipped Ω application.
