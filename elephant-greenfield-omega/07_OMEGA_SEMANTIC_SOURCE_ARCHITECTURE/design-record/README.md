@@ -1,5 +1,8 @@
 # The Living Semantic Design Record
 
+> **Owner-directed spatial parity clarification:** The shared Gym human-facing substrate is an effectively infinite 3D canvas, initially a floating text box; Machine/Human/Wiki/spatial views share one source-pinned real-time semantic/execution manifold with full parity as a testable target. Reuse [today's parity and spatial design](../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md). WebAssembly is [only an optional experimental accelerator](../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md), not required.
+
+
 **Light experimental launch:** [Elephant Protocol Gym](../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/README.md) is the practical four-arm starter. Its runs discover methods rather than inheriting the candidate WikiCore inventory as mandatory design.
 
 **State:** ACTIVE FIRST PASS / REVIEWABLE. **Scope:** the Semantic SDK, compiler, runtime, self-describing source, wiki and intent projections, with its embedding in Elephant R&D. **Last substantive revision:** 2026-10-11.
