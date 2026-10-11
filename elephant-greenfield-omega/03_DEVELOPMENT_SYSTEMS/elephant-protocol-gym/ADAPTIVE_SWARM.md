@@ -1,5 +1,8 @@
 # Adaptive Elephant Swarm — Parallel Self-Organization to MVP v0.5
 
+> **APPROVED DESIGNER PRIORITY:** Apply [owner-approved five corrections and P1–P4 evidence sequence](OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md) when planning adaptive streams. Do not confuse six initially assigned domains with six permanently required teams; test real SDK/protocol self-explanation and gated adjustment before claiming that parallel self-organization produces improvements. Existing Z.ai A/B/C and Claude v0.2 executor intelligence stay separately recoverable.
+
+
 > **UNIVERSAL SDK GRADUATION RULE:** The [owner's all-code-and-tooling interface requirement](UNIVERSAL_SEMANTIC_GOVERNANCE.md) is an objective for **every** adaptive Elephant stream, not only S1 self-model. Streams must progressively use Machine↔Human command/Wiki/visual projections to explain and propose/test their *own* settings, tools, allocation and protocols; after a domain has independent U4 verification, normal changes bypassing the semantic chain fail. U0–U3 bootstrap paths remain truthful. [Earlier Elephant intelligence](ELEPHANT_INTELLIGENCE_PRESERVATION.md) must be source-linked and never dropped.
 
 
