@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Universal self-governance checks:** For every code/tool/protocol domain a run touches, record its current [U0–U5 command-interface graduation stage](UNIVERSAL_SEMANTIC_GOVERNANCE.md) and independent witness, if any. If U4 claimed, check routine modifications for bypass and trace source→command→Wiki→visual→authorization→test→evidence→rollback. Preserve [historical intelligence](ELEPHANT_INTELLIGENCE_PRESERVATION.md), including failed alternatives; do not upgrade a design to working capability.
+
+
 > **Adaptive-swarm experiments:** If this run belongs to [ADAPTIVE_SWARM.md](ADAPTIVE_SWARM.md), record stream identity, source epoch, frozen vs current MVP objective distinction, observed self-state vs self-report, requirement→evidence gap, actual trial, alternative topology proposal, marginal cost and independent referee/owner status. Publish *all* maturity packs even for unchanged or blocked streams.
 
 
