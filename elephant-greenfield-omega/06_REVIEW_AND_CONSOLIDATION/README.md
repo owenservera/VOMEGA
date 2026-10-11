@@ -1,9 +1,13 @@
 # Elephant Greenfield Ω — Review and Consolidation Program
 
-**Status:** PLANNED / initial repo audit complete; no live Z.ai rounds changed and no archive migrations executed.
-**Census:** main `df58f8886097fcbfc9ba862a58a75b363e258dbe` at 2026-10-11; 391 Elephant files, 195 files beneath the proposal-specific development subtree, 59 identical-blob groups including intentional fixture repeats. Counts are an inventory, not a delete list.
+**Status:** R0 static inventory completed; R1 primary read-path audit partially completed. R2–R8 remain unexecuted. No live Z.ai rounds or archive paths changed.
+**Current documented static census:** `ecd015c38b9d7e1e3b0946119e6e32119bd03b4a` (2026-10-11): 396 files and 58 nonempty duplicate groups. This is a fixed Git-tree snapshot, not a measurement of remote agents. See [actual R0/R1 receipts](R0_R1_STATIC_AUDIT.md).
 
 This is a **bounded research, decision, and cleanup sequence**, not another permanent Elephant architecture or a mandate to complete ten rounds. The outcome is a compact and source-certain active surface. It must preserve independently submitted proposals, active sessions and all evidence (including failed experiments).
+
+## Elephant Lab-only cleanup and observations
+
+This review has **no remit to edit** `mvp/`, `.project/` or other VOMEGA folders. The mirrored v0.5 source is context only. [R0/R1 findings](R0_R1_STATIC_AUDIT.md) and the [blocked archive register](ARCHIVE_CANDIDATES.json) describe why no legacy files were deleted.
 
 ## Start here
 1. [REVIEW_SEQUENCE.md](REVIEW_SEQUENCE.md) — rounds R0–R8, parallel reviewer lenses, gates, and outputs.

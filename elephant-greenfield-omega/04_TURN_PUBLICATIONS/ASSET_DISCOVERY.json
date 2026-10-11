@@ -1,0 +1,319 @@
+{
+  "schema_version": "0.1.0",
+  "scope": "elephant-greenfield-omega/ ONLY",
+  "basis_commit": "ecd015c38b9d7e1e3b0946119e6e32119bd03b4a",
+  "snapshot_date": "2026-10-11",
+  "authority": "Discovery index only; source-owned manifests, original evidence, code and normative publication contract supersede this view.",
+  "hash_note": "git_blob_sha_at_basis is for the frozen basis commit only, NOT necessarily a current file digest after this cleanup commit.",
+  "proof_note": "replay_command is a suggested local read-only/mock check, not evidence of execution in this cleanup pass.",
+  "private_source": {
+    "name": "Elephant_Dogfood_Source_Seed_v2_2026-10-11.zip",
+    "availability": "OWNER_PRIVATE_NOT_GITHUB",
+    "sha256": "a917fa57c24c84150fa61d8ab493f54d495306cd9350026bdfb3820b1cfaa62a",
+    "verified_file_count_reported": 191
+  },
+  "assets": [
+    {
+      "id": "start",
+      "purpose": "Canonical lab navigation, neutral law and research boundary",
+      "kind": "NAVIGATION",
+      "status": "GIT_PRESENT",
+      "files": [
+        {
+          "path": "PROJECT_START_HERE.md",
+          "git_blob_sha_at_basis": "6cf39c9638d46a14a56e89ea6d10bd66c0dccc9a",
+          "bytes_at_basis": 6996
+        }
+      ]
+    },
+    {
+      "id": "mvp-v05",
+      "purpose": "V0.5 product target; not a change to E0/E1/E2 controlled experiment",
+      "kind": "REFERENCE",
+      "status": "PRODUCT_TARGET_ONLY",
+      "files": [
+        {
+          "path": "00_CORE_BASELINE/04_MVP_V0_5_PRODUCT_NORTH_STAR.md",
+          "git_blob_sha_at_basis": "281f12ae842298998a0144694cc6c2503b6f2f2d",
+          "bytes_at_basis": 6347
+        }
+      ]
+    },
+    {
+      "id": "mini-benchmark",
+      "purpose": "Frozen simulated Alpha/Beta/Gamma experiment workload",
+      "kind": "BENCHMARK",
+      "status": "FROZEN_SIMULATED_TARGET",
+      "files": [
+        {
+          "path": "00_CORE_BASELINE/02_GREENFIELD_OMEGA_SEED.md",
+          "git_blob_sha_at_basis": "f98e7f87eb0a2f3c555849233e275efa155ce2d8",
+          "bytes_at_basis": 2602
+        }
+      ]
+    },
+    {
+      "id": "turn-release",
+      "purpose": "All-state per-turn capability-pack publication; normative",
+      "kind": "CONTRACT",
+      "status": "NORMATIVE_NOT_CERTIFICATION",
+      "files": [
+        {
+          "path": "01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md",
+          "git_blob_sha_at_basis": "c59b8424c4df46fc05616e2093d689a6f40ff005",
+          "bytes_at_basis": 6112
+        },
+        {
+          "path": "04_TURN_PUBLICATIONS/TURN_RELEASE_FIELDS_AND_LIFECYCLE.md",
+          "git_blob_sha_at_basis": "3805880fe56a8449375f3d03cfccc714a201559e",
+          "bytes_at_basis": 2703
+        }
+      ]
+    },
+    {
+      "id": "o1-ecp",
+      "purpose": "Original deterministic ECP mock and tests",
+      "kind": "MOCK_TOOLKIT",
+      "status": "REPO_PRESENT_MOCK_ONLY",
+      "files": [
+        {
+          "path": "tools/ecp/README.md",
+          "git_blob_sha_at_basis": "e8de9bf97b52eb3ec5833dddd06822e98ce60d1a",
+          "bytes_at_basis": 1352
+        },
+        {
+          "path": "tools/ecp/core.mjs",
+          "git_blob_sha_at_basis": "f144b94d2715f1f2cd18298b4c99f601ddc1a354",
+          "bytes_at_basis": 9761
+        },
+        {
+          "path": "tools/ecp/ecp.mjs",
+          "git_blob_sha_at_basis": "d5a7f523f9f480287a5204b55908ab411bb50228",
+          "bytes_at_basis": 1489
+        },
+        {
+          "path": "tools/ecp/ecp.test.mjs",
+          "git_blob_sha_at_basis": "14b80046189b642ab4d767757e93660b5b37afa9",
+          "bytes_at_basis": 5363
+        }
+      ],
+      "replay_command": "node --test elephant-greenfield-omega/tools/ecp/ecp.test.mjs"
+    },
+    {
+      "id": "claude-ecp",
+      "purpose": "Claude independently proposed ECP v0.2 and capsule kernel",
+      "kind": "ARCHITECTURE_WITH_MOCK",
+      "status": "REPO_PRESENT_NO_LIVE_ELEPHANT_PROOF",
+      "files": [
+        {
+          "path": "02_ARCHITECTURE_PROPOSALS/claude/README.md",
+          "git_blob_sha_at_basis": "b3f09035559c0aa78d5022c6283f8017ad6f92be",
+          "bytes_at_basis": 3793
+        },
+        {
+          "path": "02_ARCHITECTURE_PROPOSALS/claude/ARCHITECTURE.md",
+          "git_blob_sha_at_basis": "4c2a7e5a2f95eea37139fb2749fb40d103d78d6b",
+          "bytes_at_basis": 23800
+        },
+        {
+          "path": "02_ARCHITECTURE_PROPOSALS/claude/kernel/kernel.mjs",
+          "git_blob_sha_at_basis": "2021ca64ed11bfc56907b090ccadd30ace99b6ba",
+          "bytes_at_basis": 26544
+        },
+        {
+          "path": "02_ARCHITECTURE_PROPOSALS/claude/kernel/kernel.test.mjs",
+          "git_blob_sha_at_basis": "fed2d2da6109cfa8251052314ec5383d31fd1ffb",
+          "bytes_at_basis": 25293
+        }
+      ],
+      "replay_command": "node --test elephant-greenfield-omega/02_ARCHITECTURE_PROPOSALS/claude/kernel/kernel.test.mjs"
+    },
+    {
+      "id": "claude-runner",
+      "purpose": "Claude's isolated experimental controller and test runners",
+      "kind": "PROCESS_PROTOTYPE",
+      "status": "REPO_PRESENT_SYNTHETIC_ONLY_MANIFEST_MISMATCH_REPORTED",
+      "files": [
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/README.md",
+          "git_blob_sha_at_basis": "2a8af475c9bbe9d145d770a9b587340a7c410416",
+          "bytes_at_basis": 3849
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/tools/round.mjs",
+          "git_blob_sha_at_basis": "37b214e30d36d59347d76fc2b531414a8e676803",
+          "bytes_at_basis": 23933
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/tools/team.test.mjs",
+          "git_blob_sha_at_basis": "1bebb9e33b85edc28d16ca50fa582b5f60afa016",
+          "bytes_at_basis": 29623
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/tools/e2e.test.mjs",
+          "git_blob_sha_at_basis": "68738e03bc018e22272ede117b1fbd738862234f",
+          "bytes_at_basis": 16477
+        }
+      ],
+      "replay_command": "cd elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack && node --test team/tools/team.test.mjs team/tools/e2e.test.mjs"
+    },
+    {
+      "id": "universal-dna",
+      "purpose": "Challengeable Elephant genome, self-report measurement and scorer",
+      "kind": "RESEARCH_AND_SYNTHETIC_SCORER",
+      "status": "REPO_PRESENT_NOT_LIVE_ELEPHANT_PROOF",
+      "files": [
+        {
+          "path": "05_UNIVERSAL_ELEPHANT_DNA/README.md",
+          "git_blob_sha_at_basis": "ac572e865e69d7872882bbba66893ccad9c626b1",
+          "bytes_at_basis": 6163
+        },
+        {
+          "path": "05_UNIVERSAL_ELEPHANT_DNA/genome.operational.json",
+          "git_blob_sha_at_basis": "f9c1270f8351464a209ec6153dd97943dae57b0d",
+          "bytes_at_basis": 27115
+        },
+        {
+          "path": "05_UNIVERSAL_ELEPHANT_DNA/validation/harness.mjs",
+          "git_blob_sha_at_basis": "48f9e9d357b0fb14a567bc36c2296cbda2a6e183",
+          "bytes_at_basis": 9623
+        }
+      ],
+      "replay_command": "node elephant-greenfield-omega/05_UNIVERSAL_ELEPHANT_DNA/validation/harness.mjs --self-test"
+    },
+    {
+      "id": "semantic-factory",
+      "purpose": "Semantic intelligence design, examples and typed schemas",
+      "kind": "DESIGN_AND_SCHEMA",
+      "status": "REPO_CONTRACTS_PRESENT_NEXT_SOURCE_PRIVATE_NOT_MIRRORED",
+      "files": [
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/README.md",
+          "git_blob_sha_at_basis": "586614a1a418cdfab20c081a89a9985fda1e7fde",
+          "bytes_at_basis": 5857
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/MANIFEST.json",
+          "git_blob_sha_at_basis": "72d03e0859eba0bfbbb81985ba8ddf5dec4074a5",
+          "bytes_at_basis": 2638
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/schemas/semantic-intelligence-record.schema.json",
+          "git_blob_sha_at_basis": "f1930315bf8447be9a6ed02f8715652ec4132711",
+          "bytes_at_basis": 3415
+        }
+      ]
+    },
+    {
+      "id": "dogfood",
+      "purpose": "Source inventory, curated handoff preflight and mock tests",
+      "kind": "TOOLKIT",
+      "status": "REPO_SCRIPTS_PRESENT_PRIVATE_SOURCE_NOT_MIRRORED",
+      "files": [
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/dogfood-zai/README.md",
+          "git_blob_sha_at_basis": "afbf9220423997d61d1d854f3aec8af187aacc2a",
+          "bytes_at_basis": 5451
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/dogfood-zai/SEED_REGISTRY.json",
+          "git_blob_sha_at_basis": "ad606eb98bb9b27f4c5ac98d86ce2f6718daba45",
+          "bytes_at_basis": 3568
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/dogfood-zai/inventory.mjs",
+          "git_blob_sha_at_basis": "3baf9c393832ad59e437d855e2372993bd8a11e3",
+          "bytes_at_basis": 1960
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/dogfood-zai/source-preflight.mjs",
+          "git_blob_sha_at_basis": "6bb2ada4a6dd46776ead00f6881c87e9c0dd11b9",
+          "bytes_at_basis": 5375
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/dogfood-zai/source-preflight.test.mjs",
+          "git_blob_sha_at_basis": "b3aa32b2e0b287a3d42e30cf3632a615a52ef0a4",
+          "bytes_at_basis": 2628
+        }
+      ],
+      "replay_command": "node --test elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/dogfood-zai/source-preflight.test.mjs"
+    },
+    {
+      "id": "private-source-seed",
+      "purpose": "191 curated source/evidence files; bytes require owner's private handoff",
+      "kind": "PRIVATE_EXTERNAL",
+      "status": "PRIVATE_EXTERNAL_NOT_IN_GIT",
+      "files": [
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/dogfood-zai/SOURCE_CUSTODY_AND_REPLAY.md",
+          "git_blob_sha_at_basis": "355dafb3e28b9f1c0254d78a69b6ab9b8061c7b0",
+          "bytes_at_basis": 5570
+        },
+        {
+          "path": "04_TURN_PUBLICATIONS/ARTIFACT-CATALOG.md",
+          "git_blob_sha_at_basis": "6339adc091bc1cca0f0b9bcdb16a2dbe4ccbf3ee",
+          "bytes_at_basis": 4810
+        }
+      ]
+    },
+    {
+      "id": "general-zai",
+      "purpose": "A/B/C general experiment instructions; protect earlier launch paths",
+      "kind": "COMPATIBILITY",
+      "status": "INSTRUCTIONS_PRESENT_REMOTE_RUN_UNVERIFIED",
+      "files": [
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/general-zai-lab/README.md",
+          "git_blob_sha_at_basis": "1a58a9c6371f0051fc096df9176ec42569b53ee0",
+          "bytes_at_basis": 2706
+        },
+        {
+          "path": "BOOTSTRAP-ZAI-EXPERIMENT-LAB/01_PRIMARY_BOOTSTRAP_PROMPT.md",
+          "git_blob_sha_at_basis": "348932819b34cb9bec24ab3ab1c4dac4bdc8e85e",
+          "bytes_at_basis": 21273
+        }
+      ]
+    },
+    {
+      "id": "ours-zai",
+      "purpose": "Proposal-specific O1 experiment bootstrap",
+      "kind": "LAUNCH_MATERIAL",
+      "status": "REPO_PRESENT_LIVE_RUN_UNVERIFIED",
+      "files": [
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/proposal-specific/ours-zai/README.md",
+          "git_blob_sha_at_basis": "2d8f7c98a668f7f7f18648edf9e1f3aace7e5362",
+          "bytes_at_basis": 1599
+        },
+        {
+          "path": "03_DEVELOPMENT_SYSTEMS/proposal-specific/ours-zai/BOOTSTRAP_PROMPT.md",
+          "git_blob_sha_at_basis": "11714e2513959291a4f6dd447675a4ce498b5617",
+          "bytes_at_basis": 7121
+        }
+      ]
+    },
+    {
+      "id": "publication-catalog",
+      "purpose": "Turn disclosures, author claims, receipts and searchable artifact descriptions",
+      "kind": "EVIDENCE_INDEX",
+      "status": "REPO_REPORTS_PRESENT_NOT_FULLY_VERIFIED",
+      "files": [
+        {
+          "path": "04_TURN_PUBLICATIONS/CURRENT_PUBLICATION_INDEX.md",
+          "git_blob_sha_at_basis": "b123afa6ec65627f6fb5cab7d14e2d3566e92db9",
+          "bytes_at_basis": 3115
+        },
+        {
+          "path": "04_TURN_PUBLICATIONS/ARTIFACT-CATALOG.md",
+          "git_blob_sha_at_basis": "6339adc091bc1cca0f0b9bcdb16a2dbe4ccbf3ee",
+          "bytes_at_basis": 4810
+        },
+        {
+          "path": "04_TURN_PUBLICATIONS/2026-10-11-INGESTED-RESULTS.md",
+          "git_blob_sha_at_basis": "df451beb364b3b7506fe0d3c1821757381cfb0cd",
+          "bytes_at_basis": 5333
+        }
+      ]
+    }
+  ]
+}

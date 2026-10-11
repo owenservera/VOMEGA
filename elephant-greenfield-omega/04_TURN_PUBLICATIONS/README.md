@@ -1,5 +1,7 @@
 # 04 — Turn Publications and Capability-Pack Exchange
 
+**Find assets first:** [human-readable toolkit and artifact lookup](ASSET_LOOKUP.md) and [machine-readable Git/path/custody index](ASSET_DISCOVERY.json). These are discovery aids only; no new publication mechanism and no implied live maturity.
+
 This is the durable receiving and lookup layer for every independently operating author, general Z.ai A/B/C track, and proposal-specific Z.ai development instance.
 
 **No maturity gate:** at the end of EVERY bounded top-level development turn, publish a complete, versioned inventory of **ALL** the track's capability packs and their actual transferable materials, including discovered hypotheses, unverified drafts, partial or failing code, blocked attempts, negative results, verified tools, and retired/rejected work. A no-op or blocked turn must still publish the full inventory with an honest delta. At every experiment round close, publish a consolidated round snapshot too.

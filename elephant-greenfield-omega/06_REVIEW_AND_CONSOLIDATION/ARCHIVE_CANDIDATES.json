@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1.0",
+  "scope": "elephant-greenfield-omega ONLY",
+  "basis_commit": "ecd015c38b9d7e1e3b0946119e6e32119bd03b4a",
+  "archive_action": "NONE",
+  "requirements": "owner-approved reviewed migration after verified consumer audit, import repair, clean replay and rollback record",
+  "candidates": [
+    {
+      "id": "legacy-o1-topology",
+      "path": "elephant-greenfield-omega/protocol/",
+      "state": "BLOCKED_CONSUMERS_UNKNOWN",
+      "action": "KEEP_ACTIVE_COMPAT"
+    },
+    {
+      "id": "legacy-o1-prompts",
+      "path": "elephant-greenfield-omega/prompts/",
+      "state": "BLOCKED_CONSUMERS_UNKNOWN",
+      "action": "KEEP_ACTIVE_COMPAT"
+    },
+    {
+      "id": "general-zai-bootstrap",
+      "path": "elephant-greenfield-omega/BOOTSTRAP-ZAI-EXPERIMENT-LAB/",
+      "state": "BLOCKED_LIVE_SESSION_CUTOVER_UNKNOWN",
+      "action": "KEEP_ACTIVE_COMPAT"
+    },
+    {
+      "id": "claude-runtime-mirror",
+      "path": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/outputs/claude/",
+      "state": "BLOCKED_RUNNER_DEPENDENCY_AND_MANIFEST_MISMATCH",
+      "action": "KEEP_ORIGINAL_SNAPSHOT"
+    },
+    {
+      "id": "claude-fixture-clones",
+      "path": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/fixtures/",
+      "state": "BLOCKED_FIXTURE_ISOLATION_UNTESTED",
+      "action": "KEEP_ORIGINAL_FIXTURES"
+    },
+    {
+      "id": "legacy-output-placeholders",
+      "path": "elephant-greenfield-omega/outputs/",
+      "state": "BLOCKED_LEGACY_CONSUMER_UNTESTED",
+      "action": "KEEP_UNTIL_PROVEN_UNNECESSARY"
+    }
+  ]
+}

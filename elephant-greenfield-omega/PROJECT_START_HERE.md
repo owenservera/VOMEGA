@@ -1,8 +1,18 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
-**Organizational revision 2026-10-11.** We are separating shared research context from what we must deliver, from independent architecture authorship, from real independent developer execution. Historical files are left intact to avoid interrupting the active general Z.ai Round 1.
+**Scope: Elephant Lab only.** This guide does not govern the larger VOMEGA project. **Organizational revision 2026-10-11.** We are separating shared research context from what we must deliver, from independent architecture authorship, from real independent developer execution. Historical files are left intact to avoid interrupting the active general Z.ai Round 1.
 
-## Five top-level areas
+## Fast path — minimal agent reading
+
+1. **Any Elephant author/builder:** read [neutral baseline](00_CORE_BASELINE/README.md) and [required evidence/publication outputs](01_EXPECTED_OUTPUTS/README.md); do not preload the entire historical corpus.
+2. **Independent architecture design:** read [proposal policy](02_ARCHITECTURE_PROPOSALS/README.md), then only the author's scoped proposal.
+3. **Development or existing Z.ai session:** read [development systems](03_DEVELOPMENT_SYSTEMS/README.md) and *that track's* launch overlay; do not restart old sessions for housekeeping.
+4. **Find a toolkit, code, private archive or published pack:** use [the single asset lookup](04_TURN_PUBLICATIONS/ASSET_LOOKUP.md), with [machine-readable source index](04_TURN_PUBLICATIONS/ASSET_DISCOVERY.json).
+5. **DNA candidate research:** [05_UNIVERSAL_ELEPHANT_DNA](05_UNIVERSAL_ELEPHANT_DNA/README.md) is optional per declared cohort, not architecture law. [R0/R1 static cleanup evidence](06_REVIEW_AND_CONSOLIDATION/R0_R1_STATIC_AUDIT.md) is an audit, not a new execution process.
+
+The owner-defined [v0.5 product snapshot](00_CORE_BASELINE/04_MVP_V0_5_PRODUCT_NORTH_STAR.md) is a **product target**, while the [original smaller simulated benchmark](00_CORE_BASELINE/02_GREENFIELD_OMEGA_SEED.md) remains frozen. Use status evidence before treating a feature as real.
+
+## Five operational research areas
 
 1. [00_CORE_BASELINE](00_CORE_BASELINE/README.md) — neutral vision, shared frozen Ω product seed, source/truth policy and prior research links.
 2. [01_EXPECTED_OUTPUTS](01_EXPECTED_OUTPUTS/README.md) — required shape of useful capability packs, evidence/portability/economics, and the **mandatory complete pack portfolio publication at the end of EVERY top-level development turn, regardless of maturity**.

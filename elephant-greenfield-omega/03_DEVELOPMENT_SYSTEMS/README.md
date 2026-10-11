@@ -5,7 +5,7 @@
 ## Two fundamentally distinct execution paths
 
 ### General Z.ai exploration lab
-[general-zai-lab](general-zai-lab/README.md): the existing Z.ai Full-Stack initiative, previously housed in ../BOOTSTRAP-ZAI-EXPERIMENT-LAB/, is the **architecture-agnostic exploration track**. It retains original A and B competing strategies, the one-round-behind ecosystem challenger C, real four-plus-two fan-out and independent Truth benchmarking. **Existing Round 1 must not be restarted or silently respecified.** It need not endorse the O1 architecture. Its current launch prompt remains at ../BOOTSTRAP-ZAI-EXPERIMENT-LAB/01_PRIMARY_BOOTSTRAP_PROMPT.md.
+[general-zai-lab](general-zai-lab/README.md): the existing Z.ai Full-Stack initiative, previously housed in ../BOOTSTRAP-ZAI-EXPERIMENT-LAB/, is the **architecture-agnostic exploration track**. It retains original A and B competing strategies, the one-round-behind ecosystem challenger C, a prescribed four-plus-two fan-out and independent Truth benchmarking; the presence of these instructions is **not proof that live parallel agents or a remote Z.ai session are running**. **Existing Round 1 must not be restarted or silently respecified.** It need not endorse the O1 architecture. Its current launch prompt remains at ../BOOTSTRAP-ZAI-EXPERIMENT-LAB/01_PRIMARY_BOOTSTRAP_PROMPT.md.
 
 ### One independent Z.ai session for EACH unique proposal
 [proposal-specific](proposal-specific/README.md): instantiate one full, separate top-level Z.ai builder/controller per accepted versioned architecture proposal. It receives only **00 baseline + 01 deliverables + its own anchored proposal** and runs its own code/test research and four-or-more genuine child experiments. It is constrained to test/improve/falsify the assigned proposal, not to become another unbounded general lab. If it learns a substantively different architecture would be superior, preserve a visible anchor control, label the derived new design and submit it separately with lineage.
@@ -14,7 +14,7 @@
 
 ## Universal DNA research is cross-track, not a replacement developer system
 
-The candidate [Elephant genome seed](../05_UNIVERSAL_ELEPHANT_DNA/README.md) is available to all new architecture studies as **optional explicitly versioned research context**. Its 20 proposed genes and six phenotype tests are challengeable; they are not imposed retroactively on active general, O1 or Claude rounds. The [Semantic Factory](semantic-factory-zai/README.md) is one permanent workload to pressure-test that DNA alongside unrelated domains.
+The candidate [Elephant genome seed](../05_UNIVERSAL_ELEPHANT_DNA/README.md) is available to all new architecture studies as **optional explicitly versioned research context**. Its 20 proposed genes and six phenotype tests are challengeable; they are not imposed retroactively on active general, O1 or Claude rounds. The [Semantic Factory](semantic-factory-zai/README.md) is one proposed workload to pressure-test that DNA alongside unrelated domains.
 
 ## All paths inherit the same hard requirements
 - Actual context-segregated subagents, distinct IDs and permissions, real workspace isolation, genuine model/tool calls and meaningful experimental fan-out.

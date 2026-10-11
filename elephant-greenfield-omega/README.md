@@ -5,7 +5,7 @@
 **Edition:** 2026-10-11 / v0.1 / standalone, implementation-oriented hypothesis.
 **Scope:** compare E0 (zero Elephants), E1 (one), E2 (two concurrently active). Fresh Ω codebase, not a modification of legacy VOMEGA. This folder is the experiment starter, not evidence that any provider sessions are connected.
 
-## OPEN THIS FIRST
+## O1 v0.1 historical read order — not the current lab start
 
 1. **`00_LAUNCH_PROMPTS.md`** — launch sequence and the complete model-specific design challenges.
 2. `01_MASTER_CHARTER.md` — why the experiment exists, what success means, scope and falsifiers.
@@ -17,7 +17,7 @@
 8. `tools/ecp/` — standard-library Node.js **simulation harness** proving basic request/response state, staleness, idempotency, flush/rotation, permissions, and journaling; **not** a real model integration.
 9. `ip/` — novelty hypotheses, prior-art search and evidence discipline; **not** legal patentability conclusions.
 
-## First useful actions
+## Historical O1 experiment actions (optional; not universal lab instructions)
 
 - Open `00_LAUNCH_PROMPTS.md` and issue the provider-specific briefs to independent sessions.
 - Compare designs **before** sharing their answers, using `prompts/JUDGE_SYNTHESIS.md`.
