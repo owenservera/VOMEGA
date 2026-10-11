@@ -1,0 +1,90 @@
+{
+  "schema": "omega-semantic-publication/PROPOSED-0.1",
+  "disclaimer": "ILLUSTRATIVE_NON_EXECUTABLE_RECORD_NOT_VERIFIED_NOT_HASHED; draft fields, not a validated publication nor fixed API",
+  "proposal_id": "WASM-SEMANTIC-PUBLISHER-2026-10-11",
+  "record": {
+    "publication_id": null,
+    "publication_digest": null,
+    "input": {
+      "raw_text": "ask claude work to explain this error",
+      "input_revision": 12,
+      "input_content_hash": null
+    },
+    "semantic": {
+      "status": "READY",
+      "command": {
+        "capability": "cap:prompt.send",
+        "args": {
+          "account": "account:claude-work",
+          "prompt": "explain this error"
+        }
+      },
+      "semantic_digest": null,
+      "ambiguity": {
+        "blocking": false,
+        "alternatives": []
+      },
+      "missing": [],
+      "effects_authorized": false,
+      "consequences": [
+        {
+          "id": "leaves-this-computer",
+          "meaning": "External provider would receive the words if later separately authorized; no provider is contacted by this publishing kit"
+        }
+      ]
+    },
+    "presentation": {
+      "plain_reading": {
+        "text": "Send “explain this error” to your Work account on Claude. Your words will leave this computer.",
+        "template_id": "cap:prompt.send/READY",
+        "status": "DECLARED_EXAMPLE_NOT_VERIFIED"
+      },
+      "wiki": {
+        "capability_id": "cap:prompt.send",
+        "claim_status": "DECLARED_NOT_RUNTIME_PROVEN",
+        "facts": [
+          {
+            "id": "cap:prompt.send/param/account",
+            "name": "account",
+            "type": "ref:account",
+            "required": true,
+            "source_anchor": "vendor/runA/omega.osl#cap:prompt.send"
+          },
+          {
+            "id": "cap:prompt.send/param/prompt",
+            "name": "prompt",
+            "type": "text",
+            "required": true,
+            "source_anchor": "vendor/runA/omega.osl#cap:prompt.send"
+          },
+          {
+            "id": "cap:prompt.send/consequence/leaves-this-computer",
+            "name": "leaves-this-computer",
+            "value": true,
+            "source_anchor": "vendor/runA/omega.osl#cap:prompt.send"
+          }
+        ],
+        "missing_claims": []
+      }
+    },
+    "provenance": {
+      "contract_revision": "EXAMPLE_ONLY_NOT_A_VERIFIED_CONTRACT_HASH",
+      "source_hash": null,
+      "wasm_binary_hash": null,
+      "interpreter_kind": "PROPOSED_WASM_NOT_EXECUTED",
+      "evidence_class": "UNKNOWN",
+      "proof": {
+        "round_trip": "NOT_RUN",
+        "injectivity": "NOT_RUN",
+        "completeness": "NOT_RUN",
+        "human_machine_parity": "NOT_RUN"
+      },
+      "privacy": "LOCAL_ONLY"
+    }
+  },
+  "mode_contract": {
+    "machine": "serialize CANONICAL record bytes once, not a separate semantic publication",
+    "human": "render the SAME frozen canonical record using declared source-backed templates; mode switch cannot run reinterpretation or mutate record",
+    "note": "The uncomputed null hashes prevent this example from masquerading as an issued and verifiable publication. Actual publication IDs and hashes require an agreed canonical encoding algorithm and tests."
+  }
+}
