@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Owner-approved review lens:** Check whether the run addresses [P1–P4 self-hosting evidence priorities and five designer corrections](OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md) rather than feature-counting MP-21/NLCL imports or number of agents. Historical archaeology is comparative evidence, not architecture approval; self-reorganization is a hypothesis until tested against simpler controls.
+
+
 > **Universal self-governance checks:** For every code/tool/protocol domain a run touches, record its current [U0–U5 command-interface graduation stage](UNIVERSAL_SEMANTIC_GOVERNANCE.md) and independent witness, if any. If U4 claimed, check routine modifications for bypass and trace source→command→Wiki→visual→authorization→test→evidence→rollback. Preserve [historical intelligence](ELEPHANT_INTELLIGENCE_PRESERVATION.md), including failed alternatives; do not upgrade a design to working capability.
 
 
