@@ -1,5 +1,8 @@
 # ⚓ VOMEGA — Canonical Development Corpus (2026-10-11)
 
+> **Owner decision update, Batch 02 (2026-10-11):** [REV-007–REV-012](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) are now the latest explicit greenfield guidance. **Legacy product/D1/Ratchet are historical reference for this greenfield, not its governing build authority**. Rule 1 must be **embedded in Elephant development**; its exact integration is an open [master TODO](MASTER_TODO.md). MVP and other obviously relevant documentation roots are included in the *review*, while source code stays preserved. Use Git commits and revision dates as key chronological evidence, not as automatic owner authorization. Any older statements below assigning current product/Ratchet authority represent unreconciled legacy navigation and are subordinate to this banner; no code or archive changes were made in Batch 02.
+
+
 > **Decision-process intake (starts blank):** [Labs · Deliberations · Owen Guidance](DECISION_PROCESS_TRACKER.md). This logs questions and routing, not previously made decisions; existing scoped decision authorities remain unchanged.
 
 
@@ -24,12 +27,12 @@
 | Topic | Current active authority | Keep out of active instruction |
 |---|---|---|
 | Global repo operations and safety | Root [AGENTS.md](../AGENTS.md) and [.project/SITREP.md](../.project/SITREP.md), current owner decisions | Old launch scripts, archived historical command lists |
-| Product D1 execution/proof | [.project/deliverables/D1-START-HERE.md](../.project/deliverables/D1-START-HERE.md), [.project/ratchet/OPERATING.md](../.project/ratchet/OPERATING.md), current Ratchet tasks and guards | Retired integration directives and old task planners |
-| Product loop/team authority | [.project/staff/PRODUCT-LOOP.md](../.project/staff/PRODUCT-LOOP.md), current DESK and claims | Provisional unlaunched organizations treated as mandatory |
-| PM evolution | [.project/pm/SYSTEM-DESIGN.md](../.project/pm/SYSTEM-DESIGN.md), [.project/pm/EVOLUTION-RULES.md](../.project/pm/EVOLUTION-RULES.md), scope/build-plan/data | Retired correction redirect stubs |
+| Historical product D1 execution/proof | [.project/deliverables/D1-START-HERE.md](../.project/deliverables/D1-START-HERE.md), [.project/ratchet/OPERATING.md](../.project/ratchet/OPERATING.md) — **historical reference, not greenfield authority** | Do not import former task/gate machinery as current greenfield law |
+| Historical product/team organization | [.project/staff/PRODUCT-LOOP.md](../.project/staff/PRODUCT-LOOP.md) — **reference only for greenfield** | Avoid promoting old team hierarchy without new owner guidance |
+| Historical PM design | [.project/pm/SYSTEM-DESIGN.md](../.project/pm/SYSTEM-DESIGN.md), [.project/pm/EVOLUTION-RULES.md](../.project/pm/EVOLUTION-RULES.md) — **historical reference** | Do not bootstrap another PM or current greenfield Ratchet from historical documents |
 | Elephant R&D / entry | [PROJECT_START_HERE.md](PROJECT_START_HERE.md), [03_DEVELOPMENT_SYSTEMS](03_DEVELOPMENT_SYSTEMS/README.md) | Original zero-to-two study launch instructions |
 | Elephant evidence/research basis | [00_CORE_BASELINE](00_CORE_BASELINE/README.md), [01_EXPECTED_OUTPUTS](01_EXPECTED_OUTPUTS/README.md), [04_TURN_PUBLICATIONS](04_TURN_PUBLICATIONS/README.md) | Any proposed architecture masquerading as proof |
-| Semantic SDK feedback-loop law | [07 Rule 1](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md), [SDK anchor](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/SDK_COMPILER_RUNTIME_ANCHOR.md) | Sequential 'perfect SDK, optimize UI later' instructions |
+| Core Elephant-integrated Semantic SDK learning loop | [07 Rule 1](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md), [SDK anchor](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/SDK_COMPILER_RUNTIME_ANCHOR.md), [Master TODO](MASTER_TODO.md) | Sequential 'perfect SDK, optimize UI later' instructions or detached SDK side project |
 | Valid architecture alternatives | [02_ARCHITECTURE_PROPOSALS](02_ARCHITECTURE_PROPOSALS/README.md) scoped/dated proposals | Competing proposals treated as live global authority |
 | Corpus review and archive map | [Elephant review chunk manifest](.archive/2026-10-11/REVIEW_CHUNK_MANIFEST.md), [.project chunk map](../.project/.archive/2026-10-11/REVIEW_CHUNK_MANIFEST.md) | Direct links to archived prompts as launch instructions |
 
@@ -57,7 +60,7 @@
 
 **P3 — ongoing .project state:** `.project/staff/`, `agentic-launch/`, `ratchet/`, `dev-machine/`, `pm/generated/`, `evidence/`, `deliverables/`. Don't move executable scripts, runtime artifacts, evidence indexes or operational claims without checking exact consumers. Historical docs under these areas need a second targeted pass.
 
-**P4 — external roots, ask owner:** `seed-docs/`, `omega-baseline/`, `mvp/`, `harvests/`, root `AGENTS.md` and others. They can **inform** the active corpus, but their relocation or text changes are not authorized by this cleanup. Existing `seed-docs/` truths remain source references, not silently archived.
+**P4 — other roots / expanded review authorized by REV-008:** review `mvp/` and other clearly relevant development-design documents in `seed-docs/`, `omega-baseline/`, `harvests/` or similar roots as candidates. **This is a review/inventory mandate, not blanket permission to move original source code, test evidence or active consumers.** Recheck commit chronology, paths and dependency safety before specific relocations. Existing `seed-docs/` truths remain source references, not silently archived.
 
 ## Validation honesty and reference debt
 
