@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **OWNER UNIVERSALITY / NO-LOSS REQUIREMENT:** [Every code and tool domain, including all Elephant context/operating settings and the SDK tooling itself, must eventually become controllable via the same source-grounded Machine↔Human command-to-Wiki interface](UNIVERSAL_SEMANTIC_GOVERNANCE.md). Staged U0–U5 progression prevents a bootstrap deadlock; U4-enrolled normal changes cannot bypass semantic validation, authority, evidence and visual parity. [Preserve previous Elephant architectures, tools, failures and research](ELEPHANT_INTELLIGENCE_PRESERVATION.md); retained knowledge is not automatically approved code.
+
+
 > **ADAPTIVE PARALLEL EXPERIMENT (OPTIONAL LAUNCH ARM):** See [ADAPTIVE_SWARM.md](ADAPTIVE_SWARM.md) for independent, elastically scalable Elephant sessions doing evidence-backed requirement gap discovery, self-organization and SDK/Elephant protocol dogfooding toward updated MVP v0.5. Frozen simulated baseline remains distinct from current owner requirements; self-model claims need telemetry, self-reorganization needs falsifiable trials and source/wiki/visual learning signals, and canon edits need review. Independent Run A–D prompts remain intact.
 
 
