@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Symbolic language experiments:** When a run uses legacy command glyphs, name the exact TS implementation and pinned source; distinguish lexical recognition, frame/grounded interpretation, canonical publication, Human/Wiki/3D projection and authorized execution. Report any meaning collisions, Unicode aliases and safety differences. See [symbol intake](SYMBOLIC_LANGUAGE_INTAKE.md).
+
+
 > **Canonical review authority:** [LAUNCH_POLICY.md](LAUNCH_POLICY.md). Treat locally developed protocols and toolkits as proposals unless admitted through documented review. Independent experiments may redesign anything within operational truth/safety/feedback/evidence safeguards.
 
 
