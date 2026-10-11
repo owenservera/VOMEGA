@@ -1,6 +1,6 @@
 # Claude-Specific Z.ai Development Program (Submitted v0.2)
 
-**Status: imported executable process prototype; independent Claude-specific Z.ai session NOT launched or verified.** This directory is a development system, not the architecture itself. See `../../../../02_ARCHITECTURE_PROPOSALS/claude/` for Claude's ECP v0.2 cognitive architecture. See `ASSESSMENT_AND_MIGRATION.md` for transfer-worthy practices, defects and required adaptation to the current project organization.
+**Status: imported executable process prototype; independent Claude-specific Z.ai session NOT launched or verified.** This directory is a development system, not the architecture itself. See `../../../02_ARCHITECTURE_PROPOSALS/claude/` for Claude's ECP v0.2 cognitive architecture. See `ASSESSMENT_AND_MIGRATION.md` for transfer-worthy practices, defects and required adaptation to the current project organization.
 
 ## Preserved source
 
