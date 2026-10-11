@@ -1,0 +1,129 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.visual.parity",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "visual",
+  "title": "Core machine/Human/3D visual language",
+  "authority": "owner_direction",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/CORE_VISUAL_LANGUAGE.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/corpus/self-hosting-cases.json",
+      "role": "candidate",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Derived machine-readable visual assertions and actual visible 3D human intelligence maintain source/command/uncertainty/effect parity across user styling changes.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "semantic_publication",
+        "meaning": "Immutable source/meaning/authority basis",
+        "required": false
+      },
+      {
+        "id": "visual_theme",
+        "meaning": "User-editable cosmetic layout and glyph pack",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "visual_assertions",
+        "meaning": "Machine-readable what each visible object means",
+        "required": false
+      },
+      {
+        "id": "render_witness",
+        "meaning": "Actual perception/render status when testable",
+        "required": false
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "DESIGN_ONLY",
+    "preconditions": [
+      "Same command epoch and publication ID across views"
+    ],
+    "forbidden": [
+      "Cosmetic style modification changes command digest",
+      "Hidden material warnings",
+      "Visual gesture bypasses effect gate"
+    ]
+  },
+  "phases": [
+    {
+      "id": "derive",
+      "action": "derive",
+      "completion": "DERIVE"
+    },
+    {
+      "id": "render",
+      "action": "render",
+      "completion": "RENDER"
+    },
+    {
+      "id": "change_theme",
+      "action": "change_theme",
+      "completion": "CHANGE_THEME"
+    },
+    {
+      "id": "validate_parity",
+      "action": "validate_parity",
+      "completion": "VALIDATE_PARITY"
+    },
+    {
+      "id": "negative_mutation",
+      "action": "negative_mutation",
+      "completion": "NEGATIVE_MUTATION"
+    }
+  ],
+  "gates": [
+    {
+      "id": "STYLE_INVARIANT",
+      "check": "Canonical digest unchanged after style swap",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "CONSENT_DISTINCT",
+      "check": "Glyph ✓ is not independently verified outcome",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "WARN_VISIBLE",
+      "check": "Material risk remains perceptible",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "RENDER_CHECK",
+      "check": "Actual UI matches assertions",
+      "blocking": false,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    }
+  ],
+  "outputs": [],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "Design and DG-05–DG-10 falsifiers proposed"
+    ],
+    "limitations": [
+      "Headless parity alone cannot certify actual human 3D comprehension"
+    ]
+  },
+  "modules": [],
+  "metrics": [],
+  "controls": []
+}
