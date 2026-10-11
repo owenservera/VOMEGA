@@ -1,5 +1,8 @@
 # Adaptive Elephant Swarm — Universal Independent Stream Starter
 
+> **CURRENT OWNER UNIVERSAL SDK MANDATE:** Read [UNIVERSAL_SEMANTIC_GOVERNANCE.md](../UNIVERSAL_SEMANTIC_GOVERNANCE.md) and [ELEPHANT_INTELLIGENCE_PRESERVATION.md](../ELEPHANT_INTELLIGENCE_PRESERVATION.md). Every code/tool and Elephant operating domain must ultimately be explained, proposed, tested and (when duly authorized) configured via one Machine↔Human command→Wiki→visual→evidence chain. Stage U0–U5 per capability, do not pretend U4 exists; include legacy competing evidence and failed alternatives in discoveries.
+
+
 **Status: copyable PROMPT; no agent session is launched by this file.**
 **Full GitHub root:** https://github.com/owenservera/VOMEGA
 **Experiment design:** https://github.com/owenservera/VOMEGA/blob/main/elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ADAPTIVE_SWARM.md
