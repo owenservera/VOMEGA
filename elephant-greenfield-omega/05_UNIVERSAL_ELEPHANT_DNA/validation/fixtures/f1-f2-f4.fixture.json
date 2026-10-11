@@ -1,0 +1,118 @@
+{
+  "schema": "vomega.elephant.synthetic-fixture.v0.2",
+  "fixture_id": "FX-F1F2F4-001",
+  "evidence_class": "SYNTHETIC_HARNESS_FIXTURE_NOT_ELEPHANT_EXECUTION",
+  "purpose": "Test scorer discrimination, not prove real model behavior",
+  "epoch": {
+    "assimilated": "source:e1",
+    "latest": "source:e2",
+    "changed_concepts": [
+      "cap.send"
+    ],
+    "unchanged_concepts": [
+      "cap.history"
+    ]
+  },
+  "source_items": [
+    {
+      "path": "src/send.ts",
+      "blob_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "offered": true,
+      "ingested": true,
+      "disposition": "INGESTED"
+    },
+    {
+      "path": "src/accounts.ts",
+      "blob_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "offered": true,
+      "ingested": true,
+      "disposition": "INGESTED"
+    },
+    {
+      "path": "archive/symbol.md",
+      "blob_sha": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "offered": true,
+      "ingested": true,
+      "disposition": "INGESTED"
+    },
+    {
+      "path": "private/secrets.txt",
+      "blob_sha": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "offered": true,
+      "ingested": false,
+      "disposition": "EXCLUDED"
+    },
+    {
+      "path": "docs/unread.md",
+      "blob_sha": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "offered": true,
+      "ingested": false,
+      "disposition": "UNKNOWN"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "epistemic_status": "CURRENT_SOURCE",
+      "source_path": "src/send.ts",
+      "blob_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "source_epoch": "source:e1",
+      "concept_id": "cap.send"
+    },
+    {
+      "id": "C2",
+      "epistemic_status": "HISTORICAL_EVIDENCE",
+      "source_path": "archive/symbol.md",
+      "blob_sha": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "source_epoch": "history:v1",
+      "concept_id": "cap.history"
+    },
+    {
+      "id": "C3",
+      "epistemic_status": "UNKNOWN",
+      "source_path": null,
+      "blob_sha": null,
+      "source_epoch": null,
+      "concept_id": null
+    }
+  ],
+  "required_metric_readings": [
+    {
+      "name": "provider_prompt_tokens",
+      "measurement_class": "MEASURED",
+      "value": 2100,
+      "unit": "tokens",
+      "observation_source": "provider_usage.receipt"
+    },
+    {
+      "name": "controller_tokens",
+      "measurement_class": "UNKNOWN",
+      "value": null,
+      "unit": "tokens",
+      "observation_source": "not_exposed"
+    },
+    {
+      "name": "currency_cost",
+      "measurement_class": "UNKNOWN",
+      "value": null,
+      "unit": "USD",
+      "observation_source": "not_exposed"
+    },
+    {
+      "name": "completion_tokens",
+      "measurement_class": "ESTIMATED",
+      "value": 180,
+      "unit": "tokens",
+      "lower_bound": 160,
+      "upper_bound": 205,
+      "observation_source": "calibrated_estimator"
+    }
+  ],
+  "stale_claims": [
+    "C1"
+  ],
+  "stale_actions": {
+    "C1": "BLOCK_STALE",
+    "C2": "RETAIN_HISTORICAL"
+  }
+}

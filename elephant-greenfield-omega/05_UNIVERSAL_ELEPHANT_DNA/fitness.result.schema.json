@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Elephant fitness observation v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "run_id",
+    "probe_id",
+    "gene_ids",
+    "source_epoch",
+    "phenotype",
+    "evidence_class",
+    "grade",
+    "observed_score",
+    "required_score",
+    "measurement_class",
+    "evaluator",
+    "fixture_ref",
+    "artifact_refs",
+    "reason"
+  ],
+  "properties": {
+    "schema": {
+      "const": "vomega.elephant.fitness-result.v0.2"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "probe_id": {
+      "type": "string"
+    },
+    "gene_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^DNA-[0-9]{2}$"
+      }
+    },
+    "source_epoch": {
+      "type": "string"
+    },
+    "phenotype": {
+      "enum": [
+        "HARNESS_FIXTURE",
+        "PRODUCT",
+        "HARVEST",
+        "RESEARCH",
+        "OTHER"
+      ]
+    },
+    "evidence_class": {
+      "enum": [
+        "HARNESS_SELF_TEST",
+        "ACTUAL_RUN",
+        "EXTERNAL_AUDIT"
+      ]
+    },
+    "grade": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "LIMITED",
+        "UNKNOWN",
+        "NOT_RUN"
+      ]
+    },
+    "observed_score": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "required_score": {
+      "type": "number"
+    },
+    "measurement_class": {
+      "enum": [
+        "MEASURED",
+        "ESTIMATED",
+        "UNKNOWN"
+      ]
+    },
+    "evaluator": {
+      "type": "string"
+    },
+    "fixture_ref": {
+      "type": "string"
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reason": {
+      "type": "string"
+    }
+  }
+}

@@ -1,10 +1,26 @@
-# Universal Elephant DNA — Cross-Use-Case Seed v0.1
+# Universal Elephant DNA — Conceptual Seed v0.1 + Falsification Spec v0.2
 
 **Status: CANDIDATE GENOME / DESIGN RESEARCH, 2026-10-11. Not ratified as a constitutional product rule, not an implemented runtime, not a new active Z.ai session.**
 
 This is a shared conceptual seed for what **any Elephant must be able to demonstrate**, independent of domain, model, memory capacity, transport, implementation or product. It combines the 20 proposed traits from the October 11 discussion with bounded evidence from the Round 0 Z.ai workspaces and the existing Semantic Factory. It does **not** prescribe 20 software modules or replace any experiment architecture.
 
 **Core thesis:** An Elephant is a persistent, reconstructable, bounded cognitive entity with an operationally inspectable self-model; source/evidence-grounded knowledge; deliberate context ingress, recall and egress; peer interoperability; and evidence-led method improvement. No claim of subjective self-awareness is intended. The model's claim about its state is not telemetry.
+
+## Start here for executable validation (v0.2 candidate)
+
+The conceptual seed below remains **v0.1 and unchanged**. The new **v0.2 operational layer** is a falsification-ready research specification, not a declaration that 20 universal genes exist or that live Elephants have passed tests.
+
+- [Operational registry](genome.operational.json) and its [schema](genome.schema.json): each of the twenty seed traits now has an observable competency, conditional scope, a transport-neutral input/output/event contract, a distinct primary probe, numeric trial threshold, dependencies, an ablation hypothesis and provisional phenotype classification. [Readable registry](gene_registry.md) and [gene × test matrix](fitness_matrix.csv).
+- [Introspection response schema](introspection.reply.schema.json) and [fitness result schema](fitness.result.schema.json): host witnesses must substantiate MEASURED values; absent data is UNKNOWN. Scores belong to independent evaluators.
+- [Pressure test protocol](pressure_test_protocol.md) and [ablation plan](ablation_plan.md): clearly separate synthetic harness scoring, actual Elephant behavior, causal removal/restoration and cross-phenotype universality.
+- [Runnable stdlib F1/F2/F4 scorer](validation/harness.mjs): synthetic item receipts, source hashes, missing token counters and changed epoch. [Fixtures](validation/fixtures/f1-f2-f4.fixture.json), [good synthetic reply](validation/examples/good.introspection.json), [eight deliberate ablations](validation/examples/ablations.json).
+- [Constrained Z.ai challenge prompt](zai_challenge_prompt.md) and [decision log](decision_log.md). Challenge DNA-04/16 first; do not manufacture evidence or require twenty narrative gene reports per turn.
+
+```bash
+node elephant-greenfield-omega/05_UNIVERSAL_ELEPHANT_DNA/validation/harness.mjs --self-test
+```
+
+**Critical limit:** Passing the deterministic scorer demonstrates a fixture and scorer work. It does not prove any model observed/understood the underlying sources, validated context isolation, recovered after real session loss, or improved over E0. F3/F5/F6 and the remaining individual Gxx probes are planned and marked NOT_RUN. Conditional peer genes are not forced on an isolated E1.
 
 ## Read order
 

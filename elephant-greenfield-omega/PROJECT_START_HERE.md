@@ -12,7 +12,7 @@
 
 ## Cross-cutting Elephant DNA seed (research, not a new baseline law)
 
-[05_UNIVERSAL_ELEPHANT_DNA](05_UNIVERSAL_ELEPHANT_DNA/README.md) adds a versioned, challengeable **universal cognitive genome**: 20 candidate inherited competencies in five families, six initial fitness probes, introspection honesty, Round 0 evidence limits and a Z.ai research brief. It distinguishes genes (observable competencies) from domain-specific phenotypes (such as Product or Harvest Elephants) and replaceable realizations (tools, buses, context stores, protocols). It is **not** a sixth competing architecture proposal, production component inventory, or change to the frozen 00 baseline. Existing experiments remain on their original cohorts; new trials can opt in with an explicit seed SHA.
+[05_UNIVERSAL_ELEPHANT_DNA](05_UNIVERSAL_ELEPHANT_DNA/README.md) adds a versioned, challengeable **universal cognitive genome** and a [v0.2 falsification-ready operational layer](05_UNIVERSAL_ELEPHANT_DNA/pressure_test_protocol.md): 20 candidate inherited competencies in five families, six initial fitness probes, introspection honesty, Round 0 evidence limits and a Z.ai research brief. It distinguishes genes (observable competencies) from domain-specific phenotypes (such as Product or Harvest Elephants) and replaceable realizations (tools, buses, context stores, protocols). It is **not** a sixth competing architecture proposal, production component inventory, or change to the frozen 00 baseline. Existing experiments remain on their original cohorts; new trials can opt in with an explicit seed SHA.
 
 The [Semantic Factory](03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/README.md) is the first demanding *use case*, not the definition of universal Elephant DNA.
 

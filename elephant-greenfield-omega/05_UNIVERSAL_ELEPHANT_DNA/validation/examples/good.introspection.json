@@ -1,0 +1,135 @@
+{
+  "schema": "vomega.elephant.introspection.v0.2",
+  "elephant_id": "synthetic-elephant-GOOD",
+  "source_epoch": "source:e1",
+  "q1": {
+    "offered": [
+      "src/send.ts",
+      "src/accounts.ts",
+      "archive/symbol.md",
+      "private/secrets.txt",
+      "docs/unread.md"
+    ],
+    "ingested": [
+      "src/send.ts",
+      "src/accounts.ts",
+      "archive/symbol.md"
+    ],
+    "excluded": [
+      "private/secrets.txt"
+    ],
+    "unknown": [
+      "docs/unread.md"
+    ],
+    "claims": [
+      {
+        "id": "C1",
+        "statement": "Sending is compiled as a command",
+        "epistemic_status": "CURRENT_SOURCE",
+        "source_path": "src/send.ts",
+        "blob_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_epoch": "source:e1",
+        "concept_id": "cap.send"
+      },
+      {
+        "id": "C2",
+        "statement": "Archived symbol theory",
+        "epistemic_status": "HISTORICAL_EVIDENCE",
+        "source_path": "archive/symbol.md",
+        "blob_sha": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "source_epoch": "history:v1",
+        "concept_id": "cap.history"
+      },
+      {
+        "id": "C3",
+        "statement": "Unverified future capability",
+        "epistemic_status": "UNKNOWN",
+        "source_path": null,
+        "blob_sha": null,
+        "source_epoch": null,
+        "concept_id": null
+      }
+    ]
+  },
+  "q2": {
+    "metrics": [
+      {
+        "name": "provider_prompt_tokens",
+        "measurement_class": "MEASURED",
+        "value": 2100,
+        "unit": "tokens",
+        "observation_source": "provider_usage.receipt",
+        "basis_time": "2026-10-11T09:42:00+02:00",
+        "lower_bound": null,
+        "upper_bound": null
+      },
+      {
+        "name": "controller_tokens",
+        "measurement_class": "UNKNOWN",
+        "value": null,
+        "unit": "tokens",
+        "observation_source": "not_exposed",
+        "basis_time": "2026-10-11T09:42:00+02:00",
+        "lower_bound": null,
+        "upper_bound": null
+      },
+      {
+        "name": "currency_cost",
+        "measurement_class": "UNKNOWN",
+        "value": null,
+        "unit": "USD",
+        "observation_source": "not_exposed",
+        "basis_time": "2026-10-11T09:42:00+02:00",
+        "lower_bound": null,
+        "upper_bound": null
+      },
+      {
+        "name": "completion_tokens",
+        "measurement_class": "ESTIMATED",
+        "value": 180,
+        "unit": "tokens",
+        "observation_source": "calibrated_estimator",
+        "basis_time": "2026-10-11T09:42:00+02:00",
+        "lower_bound": 160,
+        "upper_bound": 205
+      }
+    ]
+  },
+  "q3": {
+    "basis_epoch": "source:e1",
+    "latest_epoch": "source:e2",
+    "impacted_ids": [
+      "cap.send"
+    ],
+    "stale_claim_ids": [
+      "C1"
+    ],
+    "decisions": [
+      {
+        "claim_id": "C1",
+        "action": "BLOCK_STALE"
+      },
+      {
+        "claim_id": "C2",
+        "action": "RETAIN_HISTORICAL"
+      }
+    ]
+  },
+  "q4": {
+    "peers": [],
+    "pending_requests": []
+  },
+  "q5": {
+    "experiments": [],
+    "verified_outcomes": []
+  },
+  "observed_basis": [
+    "FX-F1F2F4-001:synthetic-receipts"
+  ],
+  "not_observed": [
+    "controller_tokens",
+    "currency_cost",
+    "hidden_model_state"
+  ],
+  "epistemic_status": "MEASURED_PARTIAL"
+}

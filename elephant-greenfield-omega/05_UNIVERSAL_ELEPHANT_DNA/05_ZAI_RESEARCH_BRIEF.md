@@ -1,6 +1,6 @@
 # 05 — Z.ai Universal Elephant DNA Research Brief
 
-**Proposed prompt for a separate research pass; not evidence of a started session.** Read the existing [00 baseline](../00_CORE_BASELINE/README.md), [01 expected outputs](../01_EXPECTED_OUTPUTS/README.md), [DNA seed](01_GENOME_SEED.md), [self-model](02_SELF_MODEL_AND_INTROSPECTION.md), [fitness evidence](03_FITNESS_AND_ROUND0_EVIDENCE.md), and [crosswalk](04_ECOSYSTEM_CROSSWALK.md). For the concrete use case, read [Semantic Factory](../03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/README.md) and its seven-round goals.
+**Historical broad v0.1 research brief. For current bounded first-turn experiments, use [v0.2 falsification challenge prompt](zai_challenge_prompt.md) and [executable fitness protocol](pressure_test_protocol.md). Neither implies a started session.** Read the existing [00 baseline](../00_CORE_BASELINE/README.md), [01 expected outputs](../01_EXPECTED_OUTPUTS/README.md), [DNA seed](01_GENOME_SEED.md), [self-model](02_SELF_MODEL_AND_INTROSPECTION.md), [fitness evidence](03_FITNESS_AND_ROUND0_EVIDENCE.md), and [crosswalk](04_ECOSYSTEM_CROSSWALK.md). For the concrete use case, read [Semantic Factory](../03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/README.md) and its seven-round goals.
 
 ## Assignment
 

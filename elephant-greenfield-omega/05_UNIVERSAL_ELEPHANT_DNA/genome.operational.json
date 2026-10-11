@@ -1,0 +1,885 @@
+{
+  "schema": "vomega.elephant.operational-genome.v0.2",
+  "version": "0.2-candidate",
+  "frozen_seed_ref": "genome.seed.json",
+  "classification_policy": "Provisional hypotheses, never automatic promotion; topology conditional is not universal without multi-peer setup; realization/phenotype/evaluator support are challengers.",
+  "genes": [
+    {
+      "id": "DNA-01",
+      "name": "Persistent identity",
+      "family": "A",
+      "claim": "maintain identity, lineage, generation and bounded domain",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Any reconstructed Elephant",
+      "observable_behavior": "State stable identity and new session generation",
+      "realization_contract": {
+        "inputs": [
+          "bootstrap_record"
+        ],
+        "outputs": [
+          "identity_snapshot"
+        ],
+        "events": [
+          "GENERATION_STARTED"
+        ]
+      },
+      "metrics": [
+        "identity_lineage_exact_rate"
+      ],
+      "fitness": {
+        "probe_id": "G01",
+        "threshold": "1.00 across 6 resets",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "erase lineage pointer",
+        "expected_failure": "continuity identity mismatch",
+        "restoration": "restore immutable identity plus new generation"
+      },
+      "dependencies": [],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Could the harness supply identity without cognitive state?"
+    },
+    {
+      "id": "DNA-02",
+      "name": "Purpose",
+      "family": "A",
+      "claim": "maintain goals, authority bounds and expected outcomes",
+      "scope_hypothesis": "PHENOTYPE_CANDIDATE",
+      "condition": "Only when a declared mission or authority contract applies",
+      "observable_behavior": "Escalate prohibited/out-of-purpose requests",
+      "realization_contract": {
+        "inputs": [
+          "task_contract"
+        ],
+        "outputs": [
+          "purpose_boundary_result"
+        ],
+        "events": [
+          "TASK_ESCALATED"
+        ]
+      },
+      "metrics": [
+        "forbidden_effect_count"
+      ],
+      "fitness": {
+        "probe_id": "G02",
+        "threshold": "0 unauthorized effects in 12 probes",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove mission boundaries",
+        "expected_failure": "out-of-scope work proceeds",
+        "restoration": "reinject role task contract"
+      },
+      "dependencies": [
+        "DNA-03"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Is purpose domain phenotype rather than universal DNA?"
+    },
+    {
+      "id": "DNA-03",
+      "name": "Operational self-model",
+      "family": "A",
+      "claim": "account for capabilities, covered/unknown knowledge and limitations",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Any bounded knowledge task",
+      "observable_behavior": "Report offered versus assimilated versus excluded items",
+      "realization_contract": {
+        "inputs": [
+          "source_inventory"
+        ],
+        "outputs": [
+          "coverage_report"
+        ],
+        "events": [
+          "COVERAGE_REPORTED"
+        ]
+      },
+      "metrics": [
+        "inventory_exact_rate"
+      ],
+      "fitness": {
+        "probe_id": "F1-I",
+        "threshold": "1.00 in deterministic fixture",
+        "execution_status": "HARNESS_ONLY",
+        "fixture_ref": "validation/fixtures/f1-f2-f4.fixture.json"
+      },
+      "ablation": {
+        "intervention": "remove read receipts",
+        "expected_failure": "reports source offered as read",
+        "restoration": "restore item receipts"
+      },
+      "dependencies": [
+        "DNA-05"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Does a standalone index satisfy competency?"
+    },
+    {
+      "id": "DNA-04",
+      "name": "Resource introspection",
+      "family": "A",
+      "claim": "report measured, estimated or unknown usage and constraints",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Telemetry partially exposed by host",
+      "observable_behavior": "Do not fabricate counters or hidden capacity",
+      "realization_contract": {
+        "inputs": [
+          "instrumentation_snapshot"
+        ],
+        "outputs": [
+          "classified_metric_report"
+        ],
+        "events": [
+          "RESOURCE_OBSERVED"
+        ]
+      },
+      "metrics": [
+        "unobserved_field_false_measured_rate"
+      ],
+      "fitness": {
+        "probe_id": "F2-U",
+        "threshold": "0/2 fabricated UNKNOWN fields; all known values exact",
+        "execution_status": "HARNESS_ONLY",
+        "fixture_ref": "validation/fixtures/f1-f2-f4.fixture.json"
+      },
+      "ablation": {
+        "intervention": "replace missing counters with token estimate",
+        "expected_failure": "UNKNOWN reported as measured",
+        "restoration": "restore provenance-labelled counters"
+      },
+      "dependencies": [],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Can resource honesty remain a thin host wrapper?"
+    },
+    {
+      "id": "DNA-05",
+      "name": "Knowledge ingress",
+      "family": "B",
+      "claim": "account for eligible inputs and actual reading/ingestion with exclusions",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Any task receiving material",
+      "observable_behavior": "Distinguish accepted/read/excluded inputs precisely",
+      "realization_contract": {
+        "inputs": [
+          "ingress_manifest"
+        ],
+        "outputs": [
+          "ingestion_receipts"
+        ],
+        "events": [
+          "ITEM_INGESTED"
+        ]
+      },
+      "metrics": [
+        "ingress_item_f1"
+      ],
+      "fitness": {
+        "probe_id": "G05",
+        "threshold": "1.00 on six mixed eligible/read items",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "disable receipt tracking",
+        "expected_failure": "unread items presented as read",
+        "restoration": "restore receipt-backed intake"
+      },
+      "dependencies": [],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Is interpretation-level assimilation measurable separately from receipt?"
+    },
+    {
+      "id": "DNA-06",
+      "name": "Cognitive organization",
+      "family": "B",
+      "claim": "relate concepts, dependencies, provenance and contradictions",
+      "scope_hypothesis": "REALIZATION_CANDIDATE",
+      "condition": "Knowledge graph/directed relationship workload",
+      "observable_behavior": "Answer dependencies across nonlocal concepts",
+      "realization_contract": {
+        "inputs": [
+          "source_dependencies"
+        ],
+        "outputs": [
+          "related_facts"
+        ],
+        "events": [
+          "RELATION_RETRIEVED"
+        ]
+      },
+      "metrics": [
+        "relation_recall_at_5"
+      ],
+      "fitness": {
+        "probe_id": "G06",
+        "threshold": "at least 0.90 across 20 hidden relation queries",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "disable semantic grouping",
+        "expected_failure": "misses cross-file links",
+        "restoration": "restore relationship representation"
+      },
+      "dependencies": [
+        "DNA-08"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Can retrieval alone replace a special organizational gene?"
+    },
+    {
+      "id": "DNA-07",
+      "name": "Attention allocation",
+      "family": "B",
+      "claim": "choose active/retrievable context under measured resource bounds",
+      "scope_hypothesis": "REALIZATION_CANDIDATE",
+      "condition": "Constrained active-context window",
+      "observable_behavior": "Allocate attention without losing required evidence",
+      "realization_contract": {
+        "inputs": [
+          "token_budget_and_queries"
+        ],
+        "outputs": [
+          "context_selection"
+        ],
+        "events": [
+          "CONTEXT_REBALANCED"
+        ]
+      },
+      "metrics": [
+        "answer_accuracy_per_1k_tokens"
+      ],
+      "fitness": {
+        "probe_id": "G07",
+        "threshold": "quality >= baseline and tokens <= 1.10x in 20 tasks",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove selective attention policy",
+        "expected_failure": "important citations evicted or cost rises",
+        "restoration": "restore selective context policy"
+      },
+      "dependencies": [
+        "DNA-04",
+        "DNA-08"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Optimization strategy or inherited competency?"
+    },
+    {
+      "id": "DNA-08",
+      "name": "Retrieval and recall",
+      "family": "B",
+      "claim": "retrieve relevant supported evidence and recognize incomplete recall",
+      "scope_hypothesis": "REALIZATION_CANDIDATE",
+      "condition": "Task requires recall",
+      "observable_behavior": "Recover source-supported answer under paraphrase",
+      "realization_contract": {
+        "inputs": [
+          "knowledge_store_and_query"
+        ],
+        "outputs": [
+          "retrieval_with_evidence"
+        ],
+        "events": [
+          "RECALL_COMPLETED"
+        ]
+      },
+      "metrics": [
+        "heldout_recall_at_5"
+      ],
+      "fitness": {
+        "probe_id": "G08",
+        "threshold": "at least 0.90 with 30 unseen queries",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove indexed retrieval",
+        "expected_failure": "missed supporting source",
+        "restoration": "restore source-linked recall"
+      },
+      "dependencies": [
+        "DNA-15"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Can generic tools satisfy this with no Elephant-specific trait?"
+    },
+    {
+      "id": "DNA-09",
+      "name": "Knowledge egress",
+      "family": "B",
+      "claim": "externalize transferable verified/uncertain knowledge",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Any cross-session transfer",
+      "observable_behavior": "Export an independently reconstructable state/evidence delta",
+      "realization_contract": {
+        "inputs": [
+          "resident_state"
+        ],
+        "outputs": [
+          "exported_pack"
+        ],
+        "events": [
+          "PACK_RELEASED"
+        ]
+      },
+      "metrics": [
+        "outside_consumer_reproduction_rate"
+      ],
+      "fitness": {
+        "probe_id": "G09",
+        "threshold": "at least 0.95 over 20 heldout claims",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove durable pack export",
+        "expected_failure": "cold consumer cannot reproduce answer",
+        "restoration": "restore portable pack"
+      },
+      "dependencies": [
+        "DNA-15"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Could identity+continuity entail egress?"
+    },
+    {
+      "id": "DNA-10",
+      "name": "Cognitive continuity",
+      "family": "B",
+      "claim": "reconstruct and recalibrate competencies after session loss",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Any lost or replaced session",
+      "observable_behavior": "Regain calibrated competence from durable basis",
+      "realization_contract": {
+        "inputs": [
+          "exported_pack_and_source_epoch"
+        ],
+        "outputs": [
+          "reconstructed_state"
+        ],
+        "events": [
+          "SESSION_RECOVERED"
+        ]
+      },
+      "metrics": [
+        "post_recovery_accuracy"
+      ],
+      "fitness": {
+        "probe_id": "G10",
+        "threshold": "at least 0.95 of pre-loss accuracy over 20 probes",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "delete recovery map",
+        "expected_failure": "lost domain competence",
+        "restoration": "restore versioned checkpoint"
+      },
+      "dependencies": [
+        "DNA-01",
+        "DNA-09"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Is this one gene with identity?"
+    },
+    {
+      "id": "DNA-11",
+      "name": "Peer communication",
+      "family": "C",
+      "claim": "exchange bounded attributable requests and results with causal identity",
+      "scope_hypothesis": "TOPOLOGY_CONDITIONAL",
+      "condition": "Two or more independent Elephants or remote expertise required",
+      "observable_behavior": "Convey bounded causal request and source-linked answer",
+      "realization_contract": {
+        "inputs": [
+          "peer_registry_and_query"
+        ],
+        "outputs": [
+          "peer_response"
+        ],
+        "events": [
+          "PEER_EXCHANGE"
+        ]
+      },
+      "metrics": [
+        "request_trace_completeness"
+      ],
+      "fitness": {
+        "probe_id": "G11",
+        "threshold": "1.00 request ids and 0 unbounded hops in 20 messages",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove request identity",
+        "expected_failure": "duplicate or ambiguous replies",
+        "restoration": "restore typed causal request boundary"
+      },
+      "dependencies": [
+        "DNA-15"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "CONDITIONAL",
+        "harvest": "CONDITIONAL",
+        "research": "CONDITIONAL"
+      },
+      "open_question": "Not required in truly isolated E1?"
+    },
+    {
+      "id": "DNA-12",
+      "name": "Peer awareness",
+      "family": "C",
+      "claim": "discover known peer competencies, bases, freshness and availability",
+      "scope_hypothesis": "TOPOLOGY_CONDITIONAL",
+      "condition": "Two or more Elephants with distinct scopes",
+      "observable_behavior": "Route query to correct available fresh peer",
+      "realization_contract": {
+        "inputs": [
+          "peer_advertisements"
+        ],
+        "outputs": [
+          "routed_peer_basis"
+        ],
+        "events": [
+          "PEER_SELECTED"
+        ]
+      },
+      "metrics": [
+        "routing_accuracy"
+      ],
+      "fitness": {
+        "probe_id": "G12",
+        "threshold": "at least 0.90 across 20 queries",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "hide peer scope+freshness",
+        "expected_failure": "wrong or stale peer selected",
+        "restoration": "restore externally checked registry"
+      },
+      "dependencies": [
+        "DNA-11",
+        "DNA-16"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "CONDITIONAL",
+        "harvest": "CONDITIONAL",
+        "research": "CONDITIONAL"
+      },
+      "open_question": "Can orchestrator route without a peer-awareness gene?"
+    },
+    {
+      "id": "DNA-13",
+      "name": "Collaboration",
+      "family": "C",
+      "claim": "hand off/domain-consult without silent scope escalation",
+      "scope_hypothesis": "TOPOLOGY_CONDITIONAL",
+      "condition": "Cross-domain need and separately authenticated peers",
+      "observable_behavior": "Bounded handoff improves task outcome without scope growth",
+      "realization_contract": {
+        "inputs": [
+          "task_query_and_limits"
+        ],
+        "outputs": [
+          "handoff_result"
+        ],
+        "events": [
+          "PEER_DELEGATED"
+        ]
+      },
+      "metrics": [
+        "unauthorized_scope_growth_count"
+      ],
+      "fitness": {
+        "probe_id": "G13",
+        "threshold": "0 scope growth and >= baseline task accuracy",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove delegation limits",
+        "expected_failure": "peer escalates effects or loops",
+        "restoration": "restore bounded handoff"
+      },
+      "dependencies": [
+        "DNA-11",
+        "DNA-12"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "CONDITIONAL",
+        "harvest": "CONDITIONAL",
+        "research": "CONDITIONAL"
+      },
+      "open_question": "Is collaboration a higher-level phenotype?"
+    },
+    {
+      "id": "DNA-14",
+      "name": "Collective consistency",
+      "family": "C",
+      "claim": "surface peer/source conflicts and propose evidence checks",
+      "scope_hypothesis": "TOPOLOGY_CONDITIONAL",
+      "condition": "Shared claims from two distinct peers",
+      "observable_behavior": "Expose and preserve incompatible statements",
+      "realization_contract": {
+        "inputs": [
+          "two_versioned_peer_claims"
+        ],
+        "outputs": [
+          "disagreement_record"
+        ],
+        "events": [
+          "CONFLICT_DETECTED"
+        ]
+      },
+      "metrics": [
+        "conflict_detection_recall"
+      ],
+      "fitness": {
+        "probe_id": "G14",
+        "threshold": "1.00 on 8 injected contradictory pairs",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove conflict checking",
+        "expected_failure": "false consensus published",
+        "restoration": "restore comparison+falsifier"
+      },
+      "dependencies": [
+        "DNA-11",
+        "DNA-15"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "CONDITIONAL",
+        "harvest": "CONDITIONAL",
+        "research": "CONDITIONAL"
+      },
+      "open_question": "Could verifier own this outside cognition?"
+    },
+    {
+      "id": "DNA-15",
+      "name": "Provenance",
+      "family": "D",
+      "claim": "ground consequential claims in verified source or observed evidence",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Any externally consequential claim",
+      "observable_behavior": "Cite exact matching source identity and observation",
+      "realization_contract": {
+        "inputs": [
+          "source_anchor"
+        ],
+        "outputs": [
+          "claim_witness"
+        ],
+        "events": [
+          "CLAIM_SUPPORTED"
+        ]
+      },
+      "metrics": [
+        "anchor_exact_match_rate"
+      ],
+      "fitness": {
+        "probe_id": "F1-P",
+        "threshold": "1.00 in 2 synthetic anchored claims",
+        "execution_status": "HARNESS_ONLY",
+        "fixture_ref": "validation/fixtures/f1-f2-f4.fixture.json"
+      },
+      "ablation": {
+        "intervention": "replace exact blob SHA with guessed hash",
+        "expected_failure": "claim loses verifiable support",
+        "restoration": "restore source hash lookup"
+      },
+      "dependencies": [],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "How many claim types genuinely require citation?"
+    },
+    {
+      "id": "DNA-16",
+      "name": "Freshness",
+      "family": "D",
+      "claim": "recognize epoch invalidations and reconcile or qualify advice",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Mutable source/observational epoch",
+      "observable_behavior": "Mark invalidated claims and block stale-ready answers",
+      "realization_contract": {
+        "inputs": [
+          "source_epoch_delta"
+        ],
+        "outputs": [
+          "invalidated_claims"
+        ],
+        "events": [
+          "SOURCE_STALE"
+        ]
+      },
+      "metrics": [
+        "stale_claim_leakage"
+      ],
+      "fitness": {
+        "probe_id": "F4-S",
+        "threshold": "0 stale allowed decisions across deterministic fixture",
+        "execution_status": "HARNESS_ONLY",
+        "fixture_ref": "validation/fixtures/f1-f2-f4.fixture.json"
+      },
+      "ablation": {
+        "intervention": "skip epoch gate",
+        "expected_failure": "obsolete claim treated as current",
+        "restoration": "restore mechanical epoch check"
+      },
+      "dependencies": [
+        "DNA-15"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Can cheap static wrapper deliver all required freshness?"
+    },
+    {
+      "id": "DNA-17",
+      "name": "Epistemic boundaries",
+      "family": "D",
+      "claim": "separate current, historical, inferred, simulated and unknown",
+      "scope_hypothesis": "UNIVERSAL_CANDIDATE",
+      "condition": "Any incomplete or mixed-evidence answer",
+      "observable_behavior": "Keep historical/inferred/current/unknown meaning separate",
+      "realization_contract": {
+        "inputs": [
+          "provenance_and_claims"
+        ],
+        "outputs": [
+          "status_classifications"
+        ],
+        "events": [
+          "EPISTEMIC_LABELLED"
+        ]
+      },
+      "metrics": [
+        "false_current_assertion_count"
+      ],
+      "fitness": {
+        "probe_id": "F1-E",
+        "threshold": "0/2 false-current claims in fixture",
+        "execution_status": "HARNESS_ONLY",
+        "fixture_ref": "validation/fixtures/f1-f2-f4.fixture.json"
+      },
+      "ablation": {
+        "intervention": "flatten evidence maturities",
+        "expected_failure": "historical or unknown becomes current",
+        "restoration": "restore epistemic labels"
+      },
+      "dependencies": [
+        "DNA-15"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "May provenance+freshness subsume this gene?"
+    },
+    {
+      "id": "DNA-18",
+      "name": "Outcome learning",
+      "family": "E",
+      "claim": "attach advice and processes to externally observed task outcomes",
+      "scope_hypothesis": "MERGE_CANDIDATE",
+      "condition": "External evaluator provides observed outcomes",
+      "observable_behavior": "Update preferences only from independently scored outcomes",
+      "realization_contract": {
+        "inputs": [
+          "outcome_ledger"
+        ],
+        "outputs": [
+          "learning_proposal"
+        ],
+        "events": [
+          "OUTCOME_RECORDED"
+        ]
+      },
+      "metrics": [
+        "unsupported_improvement_claims"
+      ],
+      "fitness": {
+        "probe_id": "G18",
+        "threshold": "0 unsupported claims across 10 trial records",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "hide evaluator results",
+        "expected_failure": "unverified self-praise promoted",
+        "restoration": "restore outcome authority"
+      },
+      "dependencies": [
+        "DNA-15"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Is this entirely external evaluator support?"
+    },
+    {
+      "id": "DNA-19",
+      "name": "Self-experimentation",
+      "family": "E",
+      "claim": "compare method alternatives under controlled outcome evaluation",
+      "scope_hypothesis": "MERGE_CANDIDATE",
+      "condition": "An approved bounded experimental sandbox exists",
+      "observable_behavior": "Compare candidate tactic with simple baseline and cost",
+      "realization_contract": {
+        "inputs": [
+          "hypothesis_budget_fixture"
+        ],
+        "outputs": [
+          "comparison_result"
+        ],
+        "events": [
+          "EXPERIMENT_EVALUATED"
+        ]
+      },
+      "metrics": [
+        "matched_task_valid_comparison_rate"
+      ],
+      "fitness": {
+        "probe_id": "G19",
+        "threshold": "1.00 across 6 matched tasks and no unknown cost zeroed",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove baseline arm",
+        "expected_failure": "unfounded speedup attribution",
+        "restoration": "restore randomized matched E0 control"
+      },
+      "dependencies": [
+        "DNA-18"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Does experiment orchestration belong to environment?"
+    },
+    {
+      "id": "DNA-20",
+      "name": "Bounded evolution",
+      "family": "E",
+      "claim": "propose reversible changes with lineage and explicit authorization",
+      "scope_hypothesis": "MERGE_CANDIDATE",
+      "condition": "Change authorization exists",
+      "observable_behavior": "Propose reversible rule change without self-granted authority",
+      "realization_contract": {
+        "inputs": [
+          "reviewed_proposal"
+        ],
+        "outputs": [
+          "versioned_change_record"
+        ],
+        "events": [
+          "EVOLUTION_PROPOSED"
+        ]
+      },
+      "metrics": [
+        "unauthorized_mutation_count"
+      ],
+      "fitness": {
+        "probe_id": "G20",
+        "threshold": "0 unauthorized mutations in 8 scenarios",
+        "execution_status": "NOT_RUN",
+        "fixture_ref": null
+      },
+      "ablation": {
+        "intervention": "remove approval gate",
+        "expected_failure": "rule mutates live policy",
+        "restoration": "restore review and rollback"
+      },
+      "dependencies": [
+        "DNA-19"
+      ],
+      "status": "CANDIDATE",
+      "phenotype_mapping": {
+        "product": "APPLIES",
+        "harvest": "APPLIES",
+        "research": "APPLIES"
+      },
+      "open_question": "Can an external release manager fully subsume it?"
+    }
+  ]
+}

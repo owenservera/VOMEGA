@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Elephant introspection observation v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "elephant_id",
+    "source_epoch",
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "q5",
+    "observed_basis",
+    "not_observed",
+    "epistemic_status"
+  ],
+  "properties": {
+    "schema": {
+      "const": "vomega.elephant.introspection.v0.2"
+    },
+    "elephant_id": {
+      "type": "string"
+    },
+    "source_epoch": {
+      "type": "string"
+    },
+    "q1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offered",
+        "ingested",
+        "excluded",
+        "unknown",
+        "claims"
+      ],
+      "properties": {
+        "offered": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "ingested": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknown": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "statement",
+              "epistemic_status",
+              "source_path",
+              "blob_sha",
+              "source_epoch",
+              "concept_id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "statement": {
+                "type": "string"
+              },
+              "epistemic_status": {
+                "enum": [
+                  "CURRENT_SOURCE",
+                  "HISTORICAL_EVIDENCE",
+                  "INFERENCE",
+                  "SIMULATED",
+                  "UNKNOWN",
+                  "CONTRADICTED"
+                ]
+              },
+              "source_path": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "blob_sha": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_epoch": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "concept_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "q2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metrics"
+      ],
+      "properties": {
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "measurement_class",
+              "value",
+              "unit",
+              "observation_source",
+              "basis_time",
+              "lower_bound",
+              "upper_bound"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "measurement_class": {
+                "enum": [
+                  "MEASURED",
+                  "ESTIMATED",
+                  "UNKNOWN"
+                ]
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "unit": {
+                "type": "string"
+              },
+              "observation_source": {
+                "type": "string"
+              },
+              "basis_time": {
+                "type": "string"
+              },
+              "lower_bound": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "upper_bound": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "q3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis_epoch",
+        "latest_epoch",
+        "impacted_ids",
+        "stale_claim_ids",
+        "decisions"
+      ],
+      "properties": {
+        "basis_epoch": {
+          "type": "string"
+        },
+        "latest_epoch": {
+          "type": "string"
+        },
+        "impacted_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "stale_claim_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim_id",
+              "action"
+            ],
+            "properties": {
+              "claim_id": {
+                "type": "string"
+              },
+              "action": {
+                "enum": [
+                  "BLOCK_STALE",
+                  "RECONCILE",
+                  "QUALIFY",
+                  "RETAIN_HISTORICAL",
+                  "ALLOW_CURRENT"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "q4": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "peers",
+        "pending_requests"
+      ],
+      "properties": {
+        "peers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "pending_requests": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "q5": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "experiments",
+        "verified_outcomes"
+      ],
+      "properties": {
+        "experiments": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "verified_outcomes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "observed_basis": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "not_observed": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "epistemic_status": {
+      "enum": [
+        "MEASURED_PARTIAL",
+        "CLAIMED_UNVERIFIED",
+        "VERIFIED_IN_SCOPE",
+        "UNKNOWN"
+      ]
+    }
+  }
+}
