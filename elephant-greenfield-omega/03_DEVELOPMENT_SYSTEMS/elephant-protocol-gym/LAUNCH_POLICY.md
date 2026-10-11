@@ -1,5 +1,8 @@
 # Canonical Elephant Protocol Gym Launch Policy
 
+> **NEW OWNER-APPROVED DESIGNER INTERPRETATION:** [2026-10-11 disposition and research priorities](OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md) retain legacy archaeology as non-prescriptive research, require full historic Elephant intelligence recovery, prioritize independently evidenced universal SDK/Elephant self-governance and visual parity, and treat organization/fan-out design as falsifiable experiments. This updates research priority, **not** D1–D4 operational authority or launch state.
+
+
 > **PRIMARY EXPERIMENTAL PRODUCT & VISUAL INVARIANT (2026-10-11):** The [SDK-embedded dev-tool/self-dogfooding loop](SDK_SELF_HOSTING_DOGFOOD.md) is the first tangible instrument for learning how the Elephant operating protocol works. Its [core visual language](CORE_VISUAL_LANGUAGE.md) must support high-density human intelligence, a machine-readable visual counterpart, full parity with shared meaning/evidence, and user-programmable visual styles whose changes cannot silently mutate semantic command chains or bypass safety. Implementation details remain experimental, subject to D1–D4.
 
 
