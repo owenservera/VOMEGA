@@ -1,0 +1,185 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.runner.claude-v02",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "executor",
+  "title": "Claude v0.2 two-turn round executor",
+  "authority": "research_only",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/02_ROUND_PROTOCOL.md",
+      "role": "historical",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/03_ARMS_AND_ISOLATION.md",
+      "role": "historical",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/tools/round.mjs",
+      "role": "code",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/tools/e2e.test.mjs",
+      "role": "test",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Run a freeze/census/arms seal/oracle blind scoring/assimilation round with auditable writes, isolation labels, deterministic selection and recovery.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "census",
+        "meaning": "Host capabilities and trust labels",
+        "required": false
+      },
+      {
+        "id": "manifest",
+        "meaning": "Frozen cohort, controlled seeds and test/oracle hashes",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ledger",
+        "meaning": "Append-only verifiable run events",
+        "required": false
+      },
+      {
+        "id": "selection",
+        "meaning": "Independent mechanical result and held-out evaluation",
+        "required": false
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "NEEDS_CENSUS",
+    "preconditions": [
+      "Node environment and actual workspace checked",
+      "Frozen test/oracle hashes and isolated arm workspaces",
+      "Source run in actual target habitat before claiming live independence"
+    ],
+    "forbidden": [
+      "Claim two independent agent contexts from role-play",
+      "Unseal oracle before sealed arm submissions"
+    ]
+  },
+  "phases": [
+    {
+      "id": "open",
+      "action": "open",
+      "completion": "OPEN"
+    },
+    {
+      "id": "census",
+      "action": "census",
+      "completion": "CENSUS"
+    },
+    {
+      "id": "freeze",
+      "action": "freeze",
+      "completion": "FREEZE"
+    },
+    {
+      "id": "provision",
+      "action": "provision",
+      "completion": "PROVISION"
+    },
+    {
+      "id": "launch",
+      "action": "launch",
+      "completion": "LAUNCH"
+    },
+    {
+      "id": "seal",
+      "action": "seal",
+      "completion": "SEAL"
+    },
+    {
+      "id": "probes",
+      "action": "probes",
+      "completion": "PROBES"
+    },
+    {
+      "id": "stage",
+      "action": "stage",
+      "completion": "STAGE"
+    },
+    {
+      "id": "unseal",
+      "action": "unseal",
+      "completion": "UNSEAL"
+    },
+    {
+      "id": "judge",
+      "action": "judge",
+      "completion": "JUDGE"
+    },
+    {
+      "id": "commit",
+      "action": "commit",
+      "completion": "COMMIT"
+    },
+    {
+      "id": "select",
+      "action": "select",
+      "completion": "SELECT"
+    },
+    {
+      "id": "assimilate",
+      "action": "assimilate",
+      "completion": "ASSIMILATE"
+    },
+    {
+      "id": "close",
+      "action": "close",
+      "completion": "CLOSE"
+    }
+  ],
+  "gates": [
+    {
+      "id": "MANIFEST_FROZEN",
+      "check": "Manifest hash stable",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "ARMS_SEALED",
+      "check": "Arm outputs sealed before oracle",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "PROBES_COMMITTED",
+      "check": "Edge probes before staging",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "SELECTION_APPLIED",
+      "check": "Deterministic reselection reproducible",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    }
+  ],
+  "outputs": [],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "Repo code and fixtures/tests exist; source-inspected but not rerun during this conversion"
+    ],
+    "limitations": [
+      "v0.2 two-track cadence is Claude-specific and not mandatory for all Gyms"
+    ]
+  },
+  "modules": [],
+  "metrics": [],
+  "controls": []
+}
