@@ -1,5 +1,8 @@
 # Ω Semantic Publisher Lab — TS-family / WebAssembly final-stage proposal
 
+> **⚓ RULE 1 — clarification:** [Semantic SDK/compiler/runtime and Human/Machine representations co-evolve in ONE loop](../../../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). Wiki/UI/intent/self-knowledge/AI-native protocols provide the feedback that changes the SDK. Wasm is a replaceable candidate implementation of the shared observation/publication utility, not a later independent optimization stage.
+
+
 **Status: DESIGN PROPOSAL / DELIBERATING / NOT IMPLEMENTED / NOT APPROVED.**  
 **Date:** 2026-10-11 · **Scope:** a *single experimental component* of the LLM-native development-automation supercharging toolkit, **not** a final Ω product/MVP architecture decision.
 
