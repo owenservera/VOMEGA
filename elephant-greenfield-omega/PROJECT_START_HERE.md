@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+**Consolidated build-grade vision (2026-10-11):** [Ω Universal Semantic System Master Blueprint](./07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/MASTER_UNIVERSAL_SEMANTIC_SYSTEM_BLUEPRINT_2026-10-11.md) — source-native self-describing kernel, compiler/IR, rebuildable indexes, runtime, Elephant integration, experiments and open decisions. This is a blueprint, not proof of production implementation.
+
+
 > **Decision batches and greenfield master TODO:** [Decision tracker](DECISION_PROCESS_TRACKER.md) · [Batch 02 owner approvals](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) · [Master TODO](MASTER_TODO.md). Old product/Ratchet documents are historical reference **for this greenfield** under REV-007; specific earlier source/evidence remains preserved. Rule 1 is to be embedded into Elephant development under REV-012, implementation details pending.
 
 
