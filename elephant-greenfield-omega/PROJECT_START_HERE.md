@@ -1,5 +1,7 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+**Owner-approved Elephant Protocol Gym canon:** [Four-decision launch policy](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/LAUNCH_POLICY.md); source feeder reuse, replaceable automation, Machine ↔ Human learning signals and experimental freedom within evidence/safety boundaries. Prepared, not launched.
+
 **New prepared dry-run pack:** [Elephant Protocol Gym](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/README.md) includes one shared seed, one plain TS fixture, four independent prompts and a comparison note. It is not a launched session or a new mandated architecture.
 
 > **CURRENT SEMANTIC DESIGN SOURCE OF RECORD:** [Living Semantic Design Record](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/README.md). Its [shared state](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/01_AGREED_STATE.md) is an explicitly labelled reviewable first pass; its [decision board](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/06_DECISION_BOARD.md) distinguishes unchosen mechanisms from governing rules, and [editing protocol](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/07_EDITING_PROTOCOL.md) explains how to change evergreen pages without inventing owner approval. Dated research remains evidence and depth.
