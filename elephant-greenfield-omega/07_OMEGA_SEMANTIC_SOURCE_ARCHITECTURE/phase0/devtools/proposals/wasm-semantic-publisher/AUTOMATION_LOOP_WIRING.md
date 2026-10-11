@@ -1,5 +1,8 @@
 # Automation Lab Wiring — from a typed correction to a tested semantic-compiler improvement
 
+> **Rule 1 precedence:** [Machine ↔ Human correspondence drives the semantic learning loop](../../../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). All candidate changes in this factory should trace to an observed or clearly simulated intent/source/representation discrepancy and replay through the shared Machine/Human core; this is ONE continuously evolving effort.
+
+
 **Status:** conceptual topology and executable-lab blueprint. **NOT RUN.** This document describes how to accelerate the *last stage* of a broader LLM-native automation factory; it does not impose Wasm/TypeScript constraints on upstream Elephant/agent teams.
 
 ## The end-to-end circuit
