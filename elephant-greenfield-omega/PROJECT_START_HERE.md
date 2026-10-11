@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Human–machine spatial/parity anchor:** [Gym initial state: infinite 3D canvas + shared real-time execution manifold + full parity](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md). Existing Rule 1 and parity benchmarks are reused; [Wasm is optional booster R&D](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md).
+
+
 **Owner-approved Elephant Protocol Gym canon:** [Four-decision launch policy](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/LAUNCH_POLICY.md); source feeder reuse, replaceable automation, Machine ↔ Human learning signals and experimental freedom within evidence/safety boundaries. Prepared, not launched.
 
 **New prepared dry-run pack:** [Elephant Protocol Gym](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/README.md) includes one shared seed, one plain TS fixture, four independent prompts and a comparison note. It is not a launched session or a new mandated architecture.
