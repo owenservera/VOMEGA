@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "status": "CANDIDATE_SEEDS_NOT_AUDITED",
+  "status": "PARTIALLY_AUDITED_REPLAY_READY_OWNER_PRIVATE",
   "purpose": "Source-first ZAI self-hosting experimental cohort; paths are not proof of execution.",
   "entries": [
     {
@@ -43,16 +43,24 @@
     {
       "id": "zai-semantic-round1-archive",
       "path": null,
-      "kind": "unavailable_external_bundle",
-      "evidence": "AUTHOR_REPORTED_AND_INSPECTED_ARCHIVE_NOT_MIRRORED",
-      "role": "requires original ZIP/TAR ingestion, provenance, sanitization and exact hash"
+      "kind": "owner_private_original_archive",
+      "evidence": "SOURCE_RECOVERED_IN_OWNER_LIBRARY_NOT_MIRRORED_TO_GITHUB",
+      "role": "requires original ZIP/TAR ingestion, provenance, sanitization and exact hash; use only sanitized curated portable source handoff"
     },
     {
       "id": "claude-round1-archive",
       "path": null,
-      "kind": "unavailable_external_bundle",
-      "evidence": "AUTHOR_REPORTED_AND_INSPECTED_ARCHIVE_NOT_MIRRORED",
-      "role": "requires original ZIP/TAR ingestion, provenance, sanitization and exact hash"
+      "kind": "owner_private_original_archive",
+      "evidence": "SOURCE_RECOVERED_IN_OWNER_LIBRARY_NOT_MIRRORED_TO_GITHUB",
+      "role": "requires original ZIP/TAR ingestion, provenance, sanitization and exact hash; use only sanitized curated portable source handoff"
+    },
+    {
+      "id": "curated-semantic-and-ecp-code",
+      "path": null,
+      "kind": "private_handoff_source_bundle",
+      "evidence": "191_FILE_HASHES_VERIFIED; CLAUDE_MOCK_32_TESTS_PASSED; ZAI_FULL_BUILD_NOT_RUN",
+      "role": "Portable curated source in user-owned zip; intentionally not published to public GitHub",
+      "requires": "owner provides Elephant_Dogfood_Source_Seed_v2_2026-10-11.zip and verified manifest pin"
     }
   ],
   "rules": {
@@ -60,5 +68,14 @@
     "promotion": "hash + license + sanitize + runtime replay + manifest",
     "publication": "Complete portfolio after every top-level turn regardless of maturity",
     "cohort": "freeze commit hash and all input hashes before comparable trials"
+  },
+  "portable_handoff": {
+    "filename": "Elephant_Dogfood_Source_Seed_v2_2026-10-11.zip",
+    "sha256": "a917fa57c24c84150fa61d8ab493f54d495306cd9350026bdfb3820b1cfaa62a",
+    "file_count": 191,
+    "manifest_sha256": "ab1439f91faec30d4e10c949fdc83052926e68a5871a884dbae4f079457e6030",
+    "location": "USER_OWNED_PRIVATE_CHAT_HANDOFF_NOT_GITHUB",
+    "local_seed_root": "dogfood-zai/source",
+    "baseline": "32_OF_32_LOCALLY_REPRODUCED_SYNTHETIC"
   }
 }
