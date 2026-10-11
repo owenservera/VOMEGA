@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **INITIAL-STATE ANCHOR:** Use [INITIAL_STATE.md](INITIAL_STATE.md): shared human-facing substrate = effectively infinite 3D canvas, initially floating text box; real-time Machine ↔ Human execution/meaning manifold; full source-pinned semantic parity across machine, human/wiki and spatial views. Labs may run headlessly but must preserve the ability to test parity. The previous Wasm kernel constraint is now only an [optional booster candidate](WASM_BOOSTER.md).
+
+
 > **GOVERNING LAUNCH CONTRACT:** Read [LAUNCH_POLICY.md](LAUNCH_POLICY.md) with this seed. The owner approved four rules: reuse the existing feeder, reuse replaceable automation, expose one Machine ↔ Human learning signal per experiment, and permit broad protocol/toolkit redesign inside truth, safety, evidence and independent-review boundaries. Shared canon is changed only after review.
 
 
