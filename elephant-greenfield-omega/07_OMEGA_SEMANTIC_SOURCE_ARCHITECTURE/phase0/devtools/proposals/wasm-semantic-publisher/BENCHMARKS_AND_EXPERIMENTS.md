@@ -1,5 +1,8 @@
 # Benchmark plan — live interpretation, Human/Machine parity, Wiki coherence and lab speed
 
+> **TECHNOLOGY-NEUTRAL REUSE:** B-LIVE, B-WIKI, B-PARITY and B-VELOCITY are reusable parity/learning benchmark families for the [infinite 3D manifold](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md). Measurements/fields specific to Wasm apply **only** to the [optional booster candidate](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md); do not require Wasm in every benchmark arm.
+
+
 **Status:** PRE-REGISTRATION DRAFT / NO NEW WASM MEASUREMENTS / ALL NUMERICAL TARGETS PROPOSED UNTIL TESTED.  
 **Source baseline:** [current PRD and evidence](../../PRD_AND_DESIGN.md); [Phase 0 original corpus and mock gate](../../../README.md). Existing Python and devtools experiments are comparator results, not Wasm results. Keep independently verified results separate from author-scored values.
 
