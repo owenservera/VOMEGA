@@ -1,5 +1,8 @@
 # Ω Semantic SDK · Phase 0 integration lab
 
+> **OPEN DESIGN (not implemented):** [Wasm final-stage Semantic Publisher Lab proposal](devtools/proposals/wasm-semantic-publisher/README.md). A dev-automation accelerator with one semantic publication projected to Machine/Human, rapid language/compiler variation testing and live source-linked Wiki; it does **not** replace the Python mock reference or the deployed v0.1.1 three-tool prototype.
+
+
 
 ## Three-tool development loop — installed v0.1.1
 
