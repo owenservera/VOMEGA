@@ -1,5 +1,7 @@
 # Elephant Greenfield Ω — active navigation
 
+- **Evergreen semantic design source of record:** [Living Semantic Design Record](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/README.md) — readable agreed-direction narrative, annotated unknowns, Elephant integration, decision board and edit protocol; distinct from dated proposals and historical experiment evidence.
+
 - **Active experimental HOW (2026-10-11):** [Source-First Semantic Saturation & Compression Lab](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/SOURCE_FIRST_SEMANTIC_SATURATION_LAB_2026-10-11.md) — maximal semantic description of plain TypeScript, then blind measured compression/reconstruction; also calibrates Elephant context and handoff design. Complements Rule 1 and the universal semantic blueprint.
 
 **Current entry point:** [PROJECT_START_HERE.md](PROJECT_START_HERE.md). **One VOMEGA development corpus:** [shared canonical development index](CANONICAL_DEVELOPMENT_CORPUS.md).
