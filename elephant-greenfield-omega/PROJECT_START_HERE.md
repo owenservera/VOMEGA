@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Phase 0 Gym emphasis:** [SDK tools and Elephant protocol self-dogfood](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SDK_SELF_HOSTING_DOGFOOD.md) with [high-density, user-reprogrammable Machine↔Human↔3D visual intelligence](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/CORE_VISUAL_LANGUAGE.md). Meaning/command/action chains must remain coherent under visual changes; all new experiments retain existing evidence and safety gates.
+
+
 > **Elephant Gym outcome alignment:** [Legacy intelligence alignment map](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/LEGACY_ALIGNMENT_MAP.md) defines ten historically anticipated capability classes for post-experiment gap review—not mandated modules, fixed architecture or ten parallel teams.
 
 
