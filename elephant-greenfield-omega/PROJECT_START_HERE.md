@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Elephant Gym outcome alignment:** [Legacy intelligence alignment map](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/LEGACY_ALIGNMENT_MAP.md) defines ten historically anticipated capability classes for post-experiment gap review—not mandated modules, fixed architecture or ten parallel teams.
+
+
 > **Existing symbolic-command research recovered:** [Elephant Gym source-intake and six microexperiments](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SYMBOLIC_LANGUAGE_INTAKE.md) reuse the historical 17-family vocabulary and actual TypeScript interpreter. The grammar is a candidate, not a requirement of the new SDK.
 
 
