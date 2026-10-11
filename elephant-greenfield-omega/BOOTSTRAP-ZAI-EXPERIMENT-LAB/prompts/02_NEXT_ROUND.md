@@ -11,3 +11,7 @@ Never skip E0 baseline when claiming E1/E2 speedup. Never claim real Elephant pe
 ## Three-track extension for subsequent rounds (2026-10-11)
 
 Preserve the original four A/B separate experiments and the two evolving primary masters; add **C1/C2** two distinct real executions under one-round-behind ecosystem-first C. Freeze three candidate versions and benchmark them on independently owned common fixtures. Operator and Truth judge must be separate from C-Design. A and B separately adopt/repair/reject locked C discoveries during the following round; C reads only previous A/B locked evidence. For full revised closure and next-round controller instructions use prompts/05_C_ROLES_AND_TRI_TRACK_ROUND_CLOSE.md.
+
+## Additional turn-level publication gate
+
+The round requirement above is not sufficient by itself: at the end of EACH top-level controller development TURN, whether or not a round is complete, publish A/B/C full capability-pack portfolio snapshots. Include all owned immature, unchanged, failing, blocked, mature, rejected and retired packs with real versioned material or verified immutable references. This must precede next-turn dispatch; unknown publication success is UNPUBLISHED, not COMPLETE. See ../../01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md from this prompts/ folder. Keep C's prior-A/B-round evidence intake and independently verified benchmark authority separate. Do not rewrite existing in-flight Round 1 experiments.
