@@ -1,0 +1,230 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.economy.timecredit",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "economy",
+  "title": "Claude Time Credit experiment economy",
+  "authority": "research_only",
+  "sources": [
+    {
+      "uri": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip",
+      "role": "artifact",
+      "evidence": "LOCAL_REPRODUCED",
+      "note": "SHA-256 04b474308dc86493482639088f4e1bc8b58a7bdc4cab25fffc17304dcb1fd30f; uploaded by user; 26 synthetic unit tests passed locally"
+    },
+    {
+      "uri": "EPG-TIME-CREDIT-GYM-PACK/config/rate-card.json",
+      "role": "candidate",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "EPG-TIME-CREDIT-GYM-PACK/config/gates.json",
+      "role": "candidate",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Account for worker, referee and human time in Time Credits with frozen task cards and independently verified paying gates; economy is opt-in, not Gym law.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "rate_card",
+        "meaning": "Frozen TC conversion policy",
+        "required": true
+      },
+      {
+        "id": "task_card",
+        "meaning": "Frozen runnable task allowance, par and benchmark",
+        "required": true
+      },
+      {
+        "id": "ledger",
+        "meaning": "Actual ledger with verified event chronology and evidence refs",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "credit_statement",
+        "meaning": "Source-labelled spend, gates, earned credits and uncertainty",
+        "required": true
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "NEEDS_CENSUS",
+    "preconditions": [
+      "Actual task runnable and suite+oracle frozen",
+      "Evidence of independent referee, clocks and rate card freeze"
+    ],
+    "forbidden": [
+      "Use synthetic demo as real agent performance",
+      "Earn on UNKNOWN paying gate",
+      "Convert unknown token/USD costs without sourced rate"
+    ],
+    "blockers": [
+      "SDK-FAIL-01 task explicitly deferred until real failing test/oracle",
+      "Payment policy, par, allowance and experimental incentive adoption not approved"
+    ]
+  },
+  "phases": [
+    {
+      "id": "preregister",
+      "action": "preregister",
+      "completion": "PREREGISTER_RECORDED"
+    },
+    {
+      "id": "freeze",
+      "action": "freeze",
+      "completion": "FREEZE_RECORDED"
+    },
+    {
+      "id": "arm-run",
+      "action": "arm-run",
+      "completion": "ARM-RUN_RECORDED"
+    },
+    {
+      "id": "seal",
+      "action": "seal",
+      "completion": "SEAL_RECORDED"
+    },
+    {
+      "id": "referee",
+      "action": "referee",
+      "completion": "REFEREE_RECORDED"
+    },
+    {
+      "id": "derive-statement",
+      "action": "derive-statement",
+      "completion": "DERIVE-STATEMENT_RECORDED"
+    },
+    {
+      "id": "compare",
+      "action": "compare",
+      "completion": "COMPARE_RECORDED"
+    }
+  ],
+  "gates": [
+    {
+      "id": "T0",
+      "check": "Ledger integrity/config/ordering/time",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "T1",
+      "check": "Public and oracle pass and seal order",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "T2",
+      "check": "No unwitnessed claims",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "T3",
+      "check": "Worker TC within allowance",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "T4",
+      "check": "Beat E0 class median",
+      "blocking": false,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "T5",
+      "check": "Token cap only with measured usage",
+      "blocking": false,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "T6",
+      "check": "USD cap only with sourced costs",
+      "blocking": false,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "read_only_statement",
+      "meaning": "Derived credit statement, no self-awarded pay",
+      "required": false
+    },
+    {
+      "id": "evidence_status",
+      "meaning": "Pass/fail/unknown/excluded",
+      "required": false
+    },
+    {
+      "id": "optional_economy",
+      "meaning": "No automatic impact on owner policy",
+      "required": false
+    }
+  ],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "Local test suite passed 26/26 on supplied ZIP, synthetic ledgers only",
+      "SDK-FAIL-01 states runnable:false"
+    ],
+    "limitations": [
+      "Time Credit payments/penalties are optimization incentives, not independent correctness nor owner authority",
+      "No measured real agent class advantage"
+    ]
+  },
+  "modules": [],
+  "metrics": [
+    {
+      "id": "spend_tc",
+      "unit": "TC",
+      "evidence_source": "DERIVED",
+      "missing": "UNKNOWN"
+    },
+    {
+      "id": "accept_rate",
+      "unit": "ratio",
+      "evidence_source": "DERIVED",
+      "missing": "UNKNOWN"
+    },
+    {
+      "id": "time_to_green",
+      "unit": "minutes",
+      "evidence_source": "HOST",
+      "missing": "UNKNOWN"
+    }
+  ],
+  "controls": [
+    "E0",
+    "PROTO",
+    "SEEDED"
+  ],
+  "extensions": {
+    "epg.time_credit": {
+      "native_schema": "epg-rate-card/0.1 + epg-gates/0.1 + epg-task-card/0.1 + epg-credit-statement/0.1",
+      "rate_card_ref": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#config/rate-card.json",
+      "gates_ref": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#config/gates.json",
+      "tool_ref": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#tools/credits.mjs",
+      "runnable_tasks": [
+        "C1",
+        "C3"
+      ],
+      "deferred_tasks": [
+        "SDK-FAIL-01"
+      ],
+      "local_test_count": 26,
+      "local_test_result": "PASS_SYNTHETIC_LEDGER_MECHANICS_ONLY",
+      "status": "OPTIONAL_RESEARCH_PROPOSAL"
+    }
+  }
+}
