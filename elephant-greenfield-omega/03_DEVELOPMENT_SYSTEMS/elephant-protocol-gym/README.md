@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **FOR SECOND OPINION — NEW R0 FIVE-GYM PILOT PROPOSAL:** [Full timed, one-turn independent fan-out and B1 assembly design](PROPOSAL_R0_FIVE_GYM_TIMED_FANOUT_TO_B1_2026-10-11.md) · [five independent briefs and review packet](r0-five-gym/README.md). This is a proposal, **not** approved launch or a change to the previously prepared six-stream Adaptive Swarm. Full E0/evaluator/integrator costs and all-maturity publications are included.
+
+
 > **OWNER-APPROVED DESIGNER DIRECTION (2026-10-11):** [Five corrections, universal SDK self-governance thesis and P1–P4 evidence priorities](OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md). [Original archaeology proposal](PROPOSAL_LEGACY_SEMANTIC_ARCHAEOLOGY_AND_REUSE_2026-10-11.md) remains unchanged as a historical research asset, **not** controlling architecture or launch policy. Preserve all Elephant research intelligence; test a real command→Wiki→visual→tool witness before claiming self-hosting or scaling parallelism. No experiment launched by this decision.
 
 
