@@ -1,5 +1,8 @@
 # Ω Semantic Publisher Lab — TS-family / WebAssembly final-stage proposal
 
+> **SUPERSEDING OWNER TECHNOLOGY CLARIFICATION (2026-10-11):** The *parity, live Plain Reading/Wiki, Enter-publication, source revision and test methodology* in this historical proposal remain reusable. Its **required WebAssembly kernel and no-Node/no-Python final-stage realization are no longer requirements**; WebAssembly is now a [replaceable Gym development booster candidate](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md). The common interactive substrate is an [effectively infinite 3D canvas with a shared human–machine real-time execution manifold and full semantic parity](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md). Preserve the original proposal below as dated design history, not current canon.
+
+
 > **⚓ RULE 1 — clarification:** [Semantic SDK/compiler/runtime and Human/Machine representations co-evolve in ONE loop](../../../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). Wiki/UI/intent/self-knowledge/AI-native protocols provide the feedback that changes the SDK. Wasm is a replaceable candidate implementation of the shared observation/publication utility, not a later independent optimization stage.
 
 
