@@ -1,5 +1,8 @@
 # Ω Foundational Semantic SDK — R&D intake
 
+> **⚓ GOVERNING RULE 1:** [Machine ↔ Human co-evolution](RULE_1_MACHINE_HUMAN_COEVOLUTION.md). SDK/compiler/runtime, all Human/Machine representations and the experiment runner form **one feedback circuit**, not stages. Representation gaps teach the SDK; experiments automate validated fixes. [Corrected SDK anchor](SDK_COMPILER_RUNTIME_ANCHOR.md).
+
+
 > **Research proposal — deliberating, not implemented:** [portable TypeScript-family / WebAssembly semantic publisher](phase0/devtools/proposals/wasm-semantic-publisher/README.md). Defines an experimental final-stage kit (live Plain Reading + Wiki + one canonical Machine/Human publication), agentic tuning loop and falsifiable benchmarks; upstream Elephant tools remain unrestricted. This is **not** an SDK architecture freeze.
 
 
