@@ -1,0 +1,82 @@
+{
+  "name": "elephant-semantic-factory",
+  "version": "2.0-design",
+  "status": "unlaunched_design",
+  "files": [
+    {
+      "path": "01_CHARTER_AND_TOPOLOGY.md",
+      "sha256": "9fa85b7b742a4d9f1c2f65671c020bec7191e3fa9d2b87a3f53bc1bb895ed4f2",
+      "bytes": 6704
+    },
+    {
+      "path": "02_SEMANTIC_ANCHORS_AND_OUTPUTS.md",
+      "sha256": "8727af85293e0e25fb39ed08eb97eaa774618512c036050fd98696144f25a6d4",
+      "bytes": 8298
+    },
+    {
+      "path": "03_UNIFIED_SEMANTIC_PRODUCT_GROUP.md",
+      "sha256": "3ac767f67dccbe05b5a3cb35fa5af58bd2bc31f7e30ac6ccf1b8dab046ffb82b",
+      "bytes": 9139
+    },
+    {
+      "path": "04_TOOL_AND_PROTOCOL_EVOLUTION.md",
+      "sha256": "a1e28d5646af2fbbaa1204e6a606b8e7ef7db1a7c22ff5cf5cc08984aa9908d0",
+      "bytes": 8348
+    },
+    {
+      "path": "05_EXPERIMENTS_AND_MEASUREMENT.md",
+      "sha256": "32d26651cd1e4f1a33e7a5e861f258e11b58d0db17670c67594221a416fde215",
+      "bytes": 9463
+    },
+    {
+      "path": "06_SEVEN_ROUND_PRODUCT_AND_LIBRARY_GATES.md",
+      "sha256": "ddae0895ec24724d73df009d25ff52006225995f99cc25f5275c2f7e1962632b",
+      "bytes": 8167
+    },
+    {
+      "path": "07_DEVELOPER_GATEWAY_AND_ECP.md",
+      "sha256": "acf079c1fa39640052be9435d8fb530dc456671d3560c90319a4fa1d5048bb0a",
+      "bytes": 7424
+    },
+    {
+      "path": "08_ZAI_LAUNCH_PROMPT.md",
+      "sha256": "7427222c4f664ed04305c20a5d8bf01d57847bd822d9f7b4713ff6b8b12d5f18",
+      "bytes": 10879
+    },
+    {
+      "path": "README.md",
+      "sha256": "371ad3e4e372385843a67ddcb63094a77e1d1e192002c98b06b62ce81365fbca",
+      "bytes": 4767
+    },
+    {
+      "path": "examples/example-dev-work-packet.json",
+      "sha256": "e595fc6c647ad3e991aca609ad73901d923a812eea6b503ee2dc35e874bfc7b4",
+      "bytes": 1204
+    },
+    {
+      "path": "examples/example-semantic-record.json",
+      "sha256": "6d0ab9db36a76ee81ea5baf48ab6cb4bded0f418d5d806a73c07def7b043e285",
+      "bytes": 1094
+    },
+    {
+      "path": "examples/example-tool-pack.json",
+      "sha256": "7a4cb5c8ef4805d6e5ea1527747b1ac54876e8b1bac5314fe363e1d2eb4b5fe0",
+      "bytes": 844
+    },
+    {
+      "path": "schemas/dev-work-packet.schema.json",
+      "sha256": "458235c494fd473e899b6889463b25df4415999ec51639a97926cfba1c8674a7",
+      "bytes": 2224
+    },
+    {
+      "path": "schemas/semantic-intelligence-record.schema.json",
+      "sha256": "e55e5e260fe2626e3503df31d0e361ec69dcb2f23fdd1150d37368a9b0c57bd7",
+      "bytes": 3415
+    },
+    {
+      "path": "schemas/tool-protocol-pack.schema.json",
+      "sha256": "941f89b996eb75b5a1e1ebdbb1df840f1a4c2ed210f8b06f148ce8942d077359",
+      "bytes": 1772
+    }
+  ]
+}

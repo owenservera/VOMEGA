@@ -1,0 +1,43 @@
+{
+  "packet_id": "example-DWP-R3-001",
+  "round": 3,
+  "ratchet_link": null,
+  "product_elephant_id": "EXAMPLE_product_semantic",
+  "product_model_revision": "EXAMPLE_PMR_HASH",
+  "product_base_sha": "REPLACE_WITH_VERIFIED_GIT_SHA",
+  "goal": "Preserve unresolved target Account in candidate canonical command.",
+  "required_behavior": "Missing @account must remain unresolved and non-READY; no change in consent rules.",
+  "allowed_paths": [
+    "omega-baseline/experimental/d1/src/compile.ts"
+  ],
+  "forbidden_paths": [
+    ".env",
+    "omega-baseline/plugins/provider-llm/src/live.ts"
+  ],
+  "allowed_symbols": [
+    "compile"
+  ],
+  "non_goals": [
+    "Do not implement a new parser.",
+    "Do not change provider authentication."
+  ],
+  "test_commands": [
+    "PLACEHOLDER: discover and run exact current relevant D1 unit tests"
+  ],
+  "effects_allowed": [
+    "read_current_source",
+    "edit_allowlisted_worktree",
+    "run_synthetic_tests"
+  ],
+  "lease_id": "EXAMPLE_LEASE",
+  "escalation_channel": "ECP-P:DEV_GAP",
+  "completion_fields": [
+    "base_sha",
+    "diff_sha",
+    "changed_paths",
+    "test_results",
+    "contradictions",
+    "unresolved_risks"
+  ],
+  "current_status": "DRAFT"
+}

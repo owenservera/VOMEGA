@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate Historical Semantic Intelligence Record v0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "capability",
+        "language_frame",
+        "symbol_family",
+        "visual_pattern",
+        "runtime_recipe",
+        "failure",
+        "design_decision",
+        "negative_knowledge",
+        "test",
+        "other"
+      ]
+    },
+    "semantic_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "historical",
+        "current",
+        "external_experiment"
+      ]
+    },
+    "evidence_class": {
+      "type": "string",
+      "enum": [
+        "source_declaration",
+        "test_mocked",
+        "test_executed",
+        "historical_observation",
+        "design_only",
+        "inference",
+        "unknown"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "repository",
+          "commit_sha",
+          "path",
+          "blob_sha"
+        ],
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "commit_sha": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "blob_sha": {
+            "type": "string"
+          },
+          "symbol": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "line_start": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "target"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "confidence_not_proof": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "unknown"
+      ]
+    },
+    "current_product_disposition": {
+      "type": "string",
+      "enum": [
+        "not_evaluated",
+        "candidate",
+        "adapted_in_test",
+        "rejected",
+        "deferred",
+        "verified_current"
+      ]
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "falsifier": {
+      "type": "string"
+    },
+    "last_reconciled_epoch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reconciliation_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "record_id",
+    "kind",
+    "claim",
+    "origin",
+    "evidence_class",
+    "source_refs",
+    "relations",
+    "confidence_not_proof",
+    "current_product_disposition",
+    "open_questions",
+    "falsifier",
+    "last_reconciled_epoch",
+    "reconciliation_evidence"
+  ]
+}

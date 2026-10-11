@@ -1,0 +1,21 @@
+{
+  "pack_id": "example-context-epoch-invalidator",
+  "version": "0.0.1-hypothesis",
+  "kind": "tool",
+  "triggering_friction": "Source change may cause stale Elephant advice.",
+  "hypothesis": "Contract-aware invalidation reduces stale answers at lower token expense than full reload.",
+  "baseline": "Whole snapshot rebuild after each accepted source change",
+  "candidate": "Changed-symbol dependency invalidator",
+  "source_epoch": "REPLACE_WITH_VERIFIED_GIT_SHA",
+  "artifacts": [
+    "proposal:04_TOOL_AND_PROTOCOL_EVOLUTION.md"
+  ],
+  "maturity": "DISCOVERED",
+  "experiment_ref": null,
+  "observed_gain": null,
+  "cost_report": "UNKNOWN; no run performed",
+  "unknowns": [
+    "Provider session delta semantics unverified"
+  ],
+  "next_falsifier": "Compare held-out contract changes vs full-reload stale-defect count and total time."
+}

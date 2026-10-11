@@ -1,0 +1,33 @@
+{
+  "record_id": "example-historic-symbol-family",
+  "kind": "symbol_family",
+  "semantic_id": "candidate:symbol.reference",
+  "claim": "The current lexicon describes @ as a reference family; downstream grounding must be separately verified.",
+  "origin": "current",
+  "evidence_class": "source_declaration",
+  "source_refs": [
+    {
+      "repository": "owenservera/VOMEGA",
+      "commit_sha": "REPLACE_WITH_VERIFIED_GIT_SHA",
+      "path": "omega-baseline/plugins/vivim-nlcl-pure/src/symbols.ts",
+      "blob_sha": "REPLACE_WITH_VERIFIED_BLOB_SHA",
+      "symbol": "SYMBOL_FAMILIES",
+      "line_start": 1
+    }
+  ],
+  "relations": [
+    {
+      "kind": "can_refer_to",
+      "target": "concept:entity",
+      "status": "hypothesis"
+    }
+  ],
+  "confidence_not_proof": "medium",
+  "current_product_disposition": "candidate",
+  "open_questions": [
+    "Does every current interpretation path preserve an unresolved Account?"
+  ],
+  "falsifier": "Run source-pinned NL and symbolic ambiguity cases against current compiler.",
+  "last_reconciled_epoch": null,
+  "reconciliation_evidence": []
+}

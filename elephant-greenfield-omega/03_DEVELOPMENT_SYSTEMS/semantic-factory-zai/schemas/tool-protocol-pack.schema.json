@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Elephant Improvement Tool/Protocol Candidate Pack v0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "pack_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "tool",
+        "protocol",
+        "benchmark",
+        "method",
+        "failure_capsule",
+        "other"
+      ]
+    },
+    "triggering_friction": {
+      "type": "string"
+    },
+    "hypothesis": {
+      "type": "string"
+    },
+    "baseline": {
+      "type": "string"
+    },
+    "candidate": {
+      "type": "string"
+    },
+    "source_epoch": {
+      "type": "string"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "maturity": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "PROTOTYPED",
+        "BENCHMARKED",
+        "INTEGRATED_TRIAL",
+        "VERIFIED_FOR_SCOPE",
+        "REJECTED",
+        "PAUSED",
+        "SUPERSEDED"
+      ]
+    },
+    "experiment_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_gain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cost_report": {
+      "type": "string"
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_falsifier": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "pack_id",
+    "version",
+    "kind",
+    "triggering_friction",
+    "hypothesis",
+    "baseline",
+    "candidate",
+    "source_epoch",
+    "artifacts",
+    "maturity",
+    "experiment_ref",
+    "observed_gain",
+    "cost_report",
+    "unknowns",
+    "next_falsifier"
+  ]
+}
