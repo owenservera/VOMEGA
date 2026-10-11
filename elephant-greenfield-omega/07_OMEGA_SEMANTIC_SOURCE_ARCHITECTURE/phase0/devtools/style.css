@@ -1,0 +1,13 @@
+:root{color-scheme:dark;font-family:system-ui,Segoe UI,sans-serif;background:#0d1519;color:#e8f1f1}*{box-sizing:border-box}
+body{margin:0}header{padding:18px 24px;border-bottom:1px solid #344d52;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header b{font-size:27px;color:#95ddd0}header small{font-size:12px;color:#9db5b7}header strong{margin-left:auto;font-size:12px;color:#9dd6bb}
+main{display:grid;grid-template-columns:1.15fr 1fr .95fr;gap:14px;padding:18px;min-height:calc(100vh - 70px)}section{border:1px solid #365258;border-radius:14px;padding:19px;min-width:0;background:#152227}
+h2{font-size:16px;margin:0 0 12px}h3{font-size:13px;margin:20px 0 7px;color:#a6cfcc}
+label{display:block;font-size:13px;margin:12px 0 8px;color:#c2d3d7}
+textarea,select,input{font:inherit;background:#0d1b20;border:1px solid #426068;color:#e5f2f2;border-radius:7px;padding:10px;width:100%;line-height:1.4}
+textarea{resize:vertical}button{font:inherit;background:#264c4d;color:#dcf4ec;border:1px solid #4c7676;border-radius:8px;padding:9px 12px;cursor:pointer}button:hover{background:#315c59}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,textarea:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #91d3c4}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.reading{padding:16px;background:#20393b;border-radius:10px;min-height:75px;line-height:1.55;font-size:16px;white-space:pre-wrap}
+small,.muted{color:#a3bbbf;font-size:12px}.pill{color:#94f4cd;font-size:11px;letter-spacing:1px}.danger{color:#ffc6b9}
+pre{background:#0b181c;padding:12px;border-radius:8px;overflow-wrap:anywhere;white-space:pre-wrap;max-height:330px;overflow-y:auto;font-size:11px;line-height:1.5}
+#alts button{width:100%;text-align:left;margin-top:8px;font-size:12px}.metrics{border-top:1px solid #426068;padding:10px 0;margin-top:15px}
+@media(max-width:1040px){main{grid-template-columns:1fr 1fr}section:nth-child(3){grid-column:1/-1}}@media(max-width:680px){main{grid-template-columns:1fr}section:nth-child(3){grid-column:auto}header strong{margin-left:0}}
