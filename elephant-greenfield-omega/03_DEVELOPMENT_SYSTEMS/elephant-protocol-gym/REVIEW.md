@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Canonical review authority:** [LAUNCH_POLICY.md](LAUNCH_POLICY.md). Treat locally developed protocols and toolkits as proposals unless admitted through documented review. Independent experiments may redesign anything within operational truth/safety/feedback/evidence safeguards.
+
+
 > **Decision 3 acceptance:** Each run note requires a Machine ↔ Human Signal section with source/task, machine view, ordinary-language human view, observed agreement/discrepancy/unknown, witness and one learning consequence. See [signal rule](MACHINE_HUMAN_SIGNAL.md). A purely speculative proposal must say NOT_RUN rather than claiming an observed discrepancy.
 
 
