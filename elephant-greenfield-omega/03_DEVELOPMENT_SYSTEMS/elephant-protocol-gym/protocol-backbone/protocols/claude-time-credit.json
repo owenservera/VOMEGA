@@ -180,7 +180,8 @@
     ],
     "limitations": [
       "Time Credit payments/penalties are optimization incentives, not independent correctness nor owner authority",
-      "No measured real agent class advantage"
+      "No measured real agent class advantage",
+      "Claude R0 is E0 x3 calibration on C1; its R1 is nine matched E0/PROTO/SEEDED executions, NOT the five heterogeneous Gym B1 pilot"
     ]
   },
   "modules": [],
@@ -205,9 +206,9 @@
     }
   ],
   "controls": [
-    "E0",
-    "PROTO",
-    "SEEDED"
+    "E0 ordinary coding",
+    "PROTO evidence protocol only",
+    "SEEDED protocol plus verified historical source pack"
   ],
   "extensions": {
     "epg.time_credit": {
@@ -224,7 +225,34 @@
       ],
       "local_test_count": 26,
       "local_test_result": "PASS_SYNTHETIC_LEDGER_MECHANICS_ONLY",
-      "status": "OPTIONAL_RESEARCH_PROPOSAL"
+      "status": "OPTIONAL_RESEARCH_PROPOSAL",
+      "design": {
+        "stream0": "Controller/harness preparation and actual executor census, not a paid Gym arm",
+        "calibration": {
+          "round": "R0",
+          "task": "C1",
+          "class": "E0",
+          "repetitions": 3,
+          "par_reestimated_from": "passing E0 median total spend",
+          "too_easy_if": "under 5 min",
+          "all_fail": "investigate task/harness before R1"
+        },
+        "round1": {
+          "classes": [
+            "E0",
+            "PROTO",
+            "SEEDED"
+          ],
+          "seeds_per_class": 3,
+          "total_arms": 9,
+          "allocation": "randomized complete blocks",
+          "difference": "PROTO adds evidence discipline; SEEDED adds frozen source-linked historical Elephant intelligence to PROTO"
+        },
+        "result_interpretation": "N=3 is exploratory; supported effect requires direction replication over C1 and C3 with adequate n",
+        "no_payment_if": "any paying gate FAIL, UNKNOWN remains null not zero",
+        "costs": "Worker time plus referee plus human intervention plus surcharge; token/USD stay separately UNKNOWN unless sourced/frozen",
+        "risk": "Optimization reward for easy fixed tasks may conflict with exploration and owner-v0.5 discovery. Never substitute credits for capability."
+      }
     }
   }
 }
