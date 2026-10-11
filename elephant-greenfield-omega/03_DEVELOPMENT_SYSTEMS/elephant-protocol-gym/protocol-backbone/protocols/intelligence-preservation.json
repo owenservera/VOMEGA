@@ -1,0 +1,108 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.research.library",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "feeder",
+  "title": "Historical Elephant intelligence custody and reuse",
+  "authority": "owner_direction",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ELEPHANT_INTELLIGENCE_PRESERVATION.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/FEEDER_REUSE.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/PROPOSAL_LEGACY_SEMANTIC_ARCHAEOLOGY_AND_REUSE_2026-10-11.md",
+      "role": "historical",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Discover and source-pin every useful prior Elephant proposal, tool, failure and published pack without mandating its old architecture.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "source_manifest",
+        "meaning": "Available assets, source digests and missing files",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "coverage_map",
+        "meaning": "Per-asset tested or unobserved SDK target, alternatives and provenance",
+        "required": false
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "NEEDS_CENSUS",
+    "preconditions": [
+      "Use existing asset lookup/source preflight, verify real assets and hashes"
+    ],
+    "forbidden": [
+      "Regenerate missing private assets from narrative",
+      "Treat old claims as verified current tests",
+      "Replace competitive proposals by one canonical architecture"
+    ]
+  },
+  "phases": [
+    {
+      "id": "discover",
+      "action": "discover",
+      "completion": "DISCOVER"
+    },
+    {
+      "id": "verify",
+      "action": "verify",
+      "completion": "VERIFY"
+    },
+    {
+      "id": "classify",
+      "action": "classify",
+      "completion": "CLASSIFY"
+    },
+    {
+      "id": "crosswalk",
+      "action": "crosswalk",
+      "completion": "CROSSWALK"
+    },
+    {
+      "id": "challenge",
+      "action": "challenge",
+      "completion": "CHALLENGE"
+    },
+    {
+      "id": "publish",
+      "action": "publish",
+      "completion": "PUBLISH"
+    }
+  ],
+  "gates": [
+    {
+      "id": "LINEAGE_PRESERVED",
+      "check": "Include failures, alternatives and unknowns",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    }
+  ],
+  "outputs": [],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "Research coverage contract and legacy source index exist"
+    ],
+    "limitations": [
+      "Attachment private bundles may be unavailable to agent"
+    ]
+  },
+  "modules": [],
+  "metrics": [],
+  "controls": []
+}
