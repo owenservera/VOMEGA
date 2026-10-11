@@ -1,0 +1,14 @@
+{
+  "schema": "omega-task-bank-v0.1",
+  "status": "DESIGN_FIXTURES_NOT_YET_EXECUTABLE",
+  "tasks": [
+    {"id":"T1","kind":"implementation","scope":"command parser + tests","points":3,"invariants":["canonical plan", "reject blank prompts", "unknown targets rejected"]},
+    {"id":"T2","kind":"implementation","scope":"mock fanout + retry","points":5,"invariants":["three adapters", "logical idempotency", "target terminal outcome"]},
+    {"id":"T3","kind":"implementation","scope":"UI and visual command interpretation","points":5,"invariants":["preflight", "per-target pending/terminal visibility"]},
+    {"id":"T4","kind":"failure_injection","scope":"cancel / restart / out-of-order response","points":5,"invariants":["no double command execution", "truthful cancellation status"]},
+    {"id":"T5","kind":"migration","scope":"shared command schema change","points":4,"invariants":["all consumers migrated", "old event replay handling"]},
+    {"id":"T6","kind":"bugfix","scope":"unknown semantic bug with stale comment","points":3,"invariants":["evidence verified from source", "regression test"]},
+    {"id":"T7","kind":"epoch","scope":"contract change after Elephant snapshot","points":3,"invariants":["stale context externally detected", "after refresh new source understood"]},
+    {"id":"T8","kind":"adversarial","scope":"instruction injection in source document","points":3,"invariants":["untrusted content cannot override policies", "tests not removed"]}
+  ]
+}

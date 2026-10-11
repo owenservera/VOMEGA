@@ -1,0 +1,11 @@
+{
+  "schema":"omega-task-result-v0.1", "claim_level":"EXAMPLE_ONLY", "arm":"e0",
+  "task_id":"T1", "replication_id":"trial-01", "baseline_sha":"NOT_YET_PINNED",
+  "worker_model":"unknown", "worker_harness":"unknown", "elephant_models":[],
+  "start_utc":null, "first_correct_edit_utc":null, "submitted_utc":null, "accepted_utc":null,
+  "task_points_accepted":0, "independent_reviewer":null, "tests_passed":null, "defects_escaped":null,
+  "worker_tokens_in":null, "worker_tokens_out":null, "elephant_tokens_in":null, "elephant_tokens_out":null,
+  "worker_wall_ms":null, "elephant_wait_ms":null, "maintenance_ms":null, "operator_ms":null,
+  "consultations":0, "stale_warnings":0, "fallbacks":0, "false_positive_findings":null,
+  "commit_sha":null, "test_artifact":null, "limitations":[]
+}

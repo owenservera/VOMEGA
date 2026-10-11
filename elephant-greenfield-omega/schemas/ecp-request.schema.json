@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/ecp/0.1/request",
+  "title":"ECP v0.1 Request envelope (experimental)",
+  "type":"object", "additionalProperties":false,
+  "required":["version","id","idempotency_key","arm","kind","from","task_id","base_sha","question","required_domains"],
+  "properties":{
+    "version":{"const":"ecp/0.1"},"id":{"type":"string","minLength":3,"maxLength":128},
+    "idempotency_key":{"type":"string","minLength":3,"maxLength":128},
+    "arm":{"enum":["e0","e1","e2"]},
+    "kind":{"enum":["ASK","REVIEW","IMPACT","TRACE","EXTRACT","PROPOSE_PATCH"]},
+    "from":{"type":"string"},"to":{"type":["string","null"]},
+    "task_id":{"type":"string"},"trace_id":{"type":"string"},"parent_id":{"type":["string","null"]},
+    "issued_at":{"type":"string","format":"date-time"},"deadline_at":{"type":"string","format":"date-time"},
+    "base_sha":{"type":"string","pattern":"^[a-fA-F0-9]{40,64}$"},
+    "required_domains":{"type":"array","minItems":1,"maxItems":2,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "question":{"type":"string","minLength":1,"maxLength":20000},"intent":{"type":"string"},
+    "artifacts":{"type":"array","maxItems":20,"items":{"type":"object","required":["type","path","sha256"],"properties":{"type":{"enum":["git_diff","file","reference","trace","test_evidence"]},"path":{"type":"string"},"sha256":{"type":"string","pattern":"^[a-fA-F0-9]{64}$"}},"additionalProperties":false}},
+    "allow_code_proposals":{"type":"boolean"},
+    "policy":{"type":"object","additionalProperties":true},"limits":{"type":"object","additionalProperties":true},
+    "evidence":{"type":"array","items":{"type":"string"}},"expected":{"type":"string"}
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/ecp/0.1/response",
+  "title":"ECP v0.1 advisory response (experimental)",
+  "type":"object","required":["version","request_id","node_id","status","authority","basis","findings","not_examined"],
+  "properties":{
+    "version":{"const":"ecp/0.1"},"request_id":{"type":"string"},"node_id":{"type":"string"},
+    "status":{"enum":["COMPLETED","STALE_ADVISORY","REJECTED","CANCELLED","DEADLINE_EXCEEDED","ERROR","PARTIAL"]},
+    "authority":{"const":"advisory_unverified"},
+    "basis":{"type":"object","required":["pack_sha","incorporated_sha","unincorporated_paths"],
+      "properties":{"pack_sha":{"type":"string"},"incorporated_sha":{"type":"string"},"manifest_hash":{"type":"string"},"unincorporated_paths":{"type":"array","items":{"type":"string"}},"base_mismatch":{"type":"boolean"},"out_of_domain":{"type":"array","items":{"type":"string"}}},"additionalProperties":true},
+    "findings":{"type":"array","items":{"type":"object","required":["claim","check"],"properties":{"id":{"type":"string"},"kind":{"type":"string"},"claim":{"type":"string"},"check":{"type":"string"},"confidence":{"enum":["low","medium","high","unknown"]},"anchors":{"type":"array","items":{"type":"object"}}},"additionalProperties":true}},
+    "not_examined":{"type":"array","items":{"type":"string"}},"cost":{"type":"object"},"journal_seq":{"type":"integer"}
+  },"additionalProperties":true
+}

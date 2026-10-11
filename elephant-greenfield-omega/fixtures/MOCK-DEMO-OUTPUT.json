@@ -1,0 +1,255 @@
+{
+  "NOTICE": "MOCK ONLY — no AI provider or real source mutation",
+  "e0": {
+    "request_id": "demo-e0",
+    "status": "FALLBACK_DIRECT_SOURCE",
+    "responses": [],
+    "mock": true
+  },
+  "e1": {
+    "request_id": "demo-e1",
+    "status": "COMPLETED",
+    "responses": [
+      {
+        "node_id": "elephant:command",
+        "status": "COMPLETED",
+        "authority": "advisory_unverified",
+        "basis": {
+          "pack_sha": "de95418e05ff305e9baeb9d8f26fab387ac48568f425cee30e252e0b75ca85ce",
+          "incorporated_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "unincorporated_paths": [],
+          "generation": 1
+        },
+        "findings": [
+          {
+            "claim_key": "general",
+            "verdict": "UNKNOWN",
+            "claim": "mock consultation",
+            "confidence": "MOCK_ONLY",
+            "check": "independent source/test verification required"
+          }
+        ],
+        "not_examined": [
+          "live code / actual provider cognition"
+        ]
+      }
+    ],
+    "disagreements": [],
+    "mock": true
+  },
+  "e2": {
+    "request_id": "demo-e2",
+    "status": "COMPLETED",
+    "responses": [
+      {
+        "node_id": "elephant:command",
+        "status": "COMPLETED",
+        "authority": "advisory_unverified",
+        "basis": {
+          "pack_sha": "de95418e05ff305e9baeb9d8f26fab387ac48568f425cee30e252e0b75ca85ce",
+          "incorporated_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "unincorporated_paths": [],
+          "generation": 1
+        },
+        "findings": [
+          {
+            "claim_key": "shared-contract",
+            "verdict": "SAFE",
+            "claim": "mock contract impact",
+            "confidence": "MOCK_ONLY",
+            "check": "independent source/test verification required"
+          }
+        ],
+        "not_examined": [
+          "live code / actual provider cognition"
+        ]
+      },
+      {
+        "node_id": "elephant:surface",
+        "status": "COMPLETED",
+        "authority": "advisory_unverified",
+        "basis": {
+          "pack_sha": "7f8aa039e4355a02eb533672c6d4f6925265f9cd73679ce5eae89e9a1d4e310e",
+          "incorporated_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "unincorporated_paths": [],
+          "generation": 1
+        },
+        "findings": [
+          {
+            "claim_key": "shared-contract",
+            "verdict": "UNSAFE",
+            "claim": "mock contract impact",
+            "confidence": "MOCK_ONLY",
+            "check": "independent source/test verification required"
+          }
+        ],
+        "not_examined": [
+          "live code / actual provider cognition"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "claim_key": "shared-contract",
+        "nodes": [
+          "elephant:command",
+          "elephant:surface"
+        ],
+        "verdicts": [
+          "SAFE",
+          "UNSAFE"
+        ],
+        "falsifier": "independent contract tests and source inspection"
+      }
+    ],
+    "mock": true
+  },
+  "stale": {
+    "request_id": "demo-stale",
+    "status": "STALE_ADVISORY",
+    "responses": [
+      {
+        "node_id": "elephant:command",
+        "status": "STALE_ADVISORY",
+        "authority": "advisory_unverified",
+        "basis": {
+          "pack_sha": "de95418e05ff305e9baeb9d8f26fab387ac48568f425cee30e252e0b75ca85ce",
+          "incorporated_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "unincorporated_paths": [
+            "simulated:command"
+          ],
+          "generation": 1
+        },
+        "findings": [
+          {
+            "claim_key": "general",
+            "verdict": "UNKNOWN",
+            "claim": "mock consultation",
+            "confidence": "MOCK_ONLY",
+            "check": "independent source/test verification required"
+          }
+        ],
+        "not_examined": [
+          "live code / actual provider cognition"
+        ]
+      }
+    ],
+    "disagreements": [],
+    "mock": true
+  },
+  "finalNodes": [
+    {
+      "id": "elephant:command",
+      "domain": "command",
+      "baseSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "incorporatedSha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "packSha": "330439706dad7fad552ad835a8509d6ecff101f7489e389e1da121e65b2bdf7c",
+      "changedPaths": [],
+      "status": "READY",
+      "generation": 2,
+      "transactionCount": 0
+    },
+    {
+      "id": "elephant:surface",
+      "domain": "surface",
+      "baseSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "incorporatedSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "packSha": "7f8aa039e4355a02eb533672c6d4f6925265f9cd73679ce5eae89e9a1d4e310e",
+      "changedPaths": [],
+      "status": "READY",
+      "generation": 1,
+      "transactionCount": 1
+    }
+  ],
+  "journal": [
+    {
+      "seq": 1,
+      "event": "REQUEST",
+      "id": "demo-e0",
+      "key": "demo-e0",
+      "arm": "e0"
+    },
+    {
+      "seq": 2,
+      "event": "RESULT",
+      "id": "demo-e0",
+      "status": "FALLBACK_DIRECT_SOURCE"
+    },
+    {
+      "seq": 3,
+      "event": "REGISTER",
+      "id": "elephant:command",
+      "domain": "command",
+      "baseSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "seq": 4,
+      "event": "REQUEST",
+      "id": "demo-e1",
+      "key": "demo-e1",
+      "arm": "e1"
+    },
+    {
+      "seq": 5,
+      "event": "RESULT",
+      "id": "demo-e1",
+      "status": "COMPLETED",
+      "disagreements": 0
+    },
+    {
+      "seq": 6,
+      "event": "REGISTER",
+      "id": "elephant:surface",
+      "domain": "surface",
+      "baseSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "seq": 7,
+      "event": "REQUEST",
+      "id": "demo-e2",
+      "key": "demo-e2",
+      "arm": "e2"
+    },
+    {
+      "seq": 8,
+      "event": "RESULT",
+      "id": "demo-e2",
+      "status": "COMPLETED",
+      "disagreements": 1
+    },
+    {
+      "seq": 9,
+      "event": "SIMULATED_ACCEPTED_COMMIT",
+      "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "changedDomains": [
+        "command"
+      ]
+    },
+    {
+      "seq": 10,
+      "event": "REQUEST",
+      "id": "demo-stale",
+      "key": "demo-stale",
+      "arm": "e1"
+    },
+    {
+      "seq": 11,
+      "event": "RESULT",
+      "id": "demo-stale",
+      "status": "STALE_ADVISORY",
+      "disagreements": 0
+    },
+    {
+      "seq": 12,
+      "event": "SIMULATED_SYNC",
+      "id": "elephant:command",
+      "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "seq": 13,
+      "event": "ROTATE_MOCK",
+      "id": "elephant:command",
+      "generation": 2
+    }
+  ]
+}

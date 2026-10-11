@@ -1,0 +1,3 @@
+# E0 worker prompt — BASELINE, no Elephants
+
+Implement the assigned Prompt Fanout Mini task using only canonical current source, task brief, tests and ordinary bounded context bundles. Never access Elephant outputs, cached sessions, E1/E2 commits or other arms' solutions. Work in your assigned E0 disposable Git worktree. Record time to first correct edit, source files consulted, token estimates if visible, actual tests, failures, revisions, accepted artifact and final integration SHA. Follow code authority matrix and keep secrets out of logs. If blocked, state what evidence is missing instead of inventing an advisor. The core product acceptance criteria are identical across E0/E1/E2.

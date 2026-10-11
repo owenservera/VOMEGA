@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+.local/
+local/
+secrets/
+credentials/
+*.log
+*.key
+*.pem
+!outputs/**/.gitkeep
