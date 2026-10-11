@@ -1,0 +1,65 @@
+{
+  "schema": "omega-research-candidate/0.1",
+  "id": "omega-wasm-final-stage-semantic-publisher",
+  "parent": "elephant-greenfield-omega/07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/devtools",
+  "date": "2026-10-11",
+  "scope": "LLM-native automation laboratory last-stage candidate, not full Omega MVP",
+  "maturity": "DISCOVERED_DESIGN",
+  "review_status": "DELIBERATING_NOT_FROZEN",
+  "implementation": "NOT_STARTED",
+  "claims": [
+    {
+      "id": "one-record-two-views",
+      "classification": "PROPOSAL",
+      "verification": "NOT_RUN"
+    },
+    {
+      "id": "Wasm-semantic-kernel",
+      "classification": "PROPOSAL",
+      "verification": "NOT_RUN"
+    },
+    {
+      "id": "TS-family-build",
+      "classification": "OPEN_TECH_CHOICE",
+      "verification": "NOT_RUN"
+    },
+    {
+      "id": "source-derived-live-wiki",
+      "classification": "PROPOSAL",
+      "verification": "NOT_RUN"
+    },
+    {
+      "id": "batch-harness-near-instant-tuning",
+      "classification": "HYPOTHESIS",
+      "verification": "NOT_RUN"
+    }
+  ],
+  "benchmarks": {
+    "B-LIVE": "NOT_RUN",
+    "B-WIKI": "NOT_RUN",
+    "B-PARITY": "NOT_RUN",
+    "B-VELOCITY": "NOT_RUN"
+  },
+  "provenance": {
+    "owner_proposals": "conversation 2026-10-11: machine/human modes, Enter publication, no Node/Python runtime, TS-family and WebAssembly final stage; fast high-volume iteration",
+    "assistant_design": "single immutable envelope, browser DOM bridge, batched Wasm path, independent evaluation gates",
+    "baseline": "Phase 0 Python source and devtools v0.1.1, maintained unchanged"
+  },
+  "outputs": [
+    "README.md",
+    "PROPOSAL_AND_DECISIONS.md",
+    "PRELIMINARY_SPEC.md",
+    "AUTOMATION_LOOP_WIRING.md",
+    "BENCHMARKS_AND_EXPERIMENTS.md",
+    "PUBLICATION_ENVELOPE_CANDIDATE.json",
+    "PROPOSAL_STATUS.json"
+  ],
+  "non_claims": [
+    "No actual Wasm binary",
+    "No shipped static Human UI",
+    "No verified performance figures",
+    "No frozen MVP architecture",
+    "No independent comprehensive human study",
+    "No final five Z.ai computer prompts"
+  ]
+}
