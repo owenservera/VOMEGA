@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Approved Elephant Gym designer direction (2026-10-11):** [Owner-approved five corrections and P1–P4 experimental priorities](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md). Keep legacy archaeology intact as research; preserve all Elephant intelligence and test universal SDK command/Wiki/visual/tool self-governance before declaring autonomous scaling effective.
+
+
 > **Owner's universal SDK requirement:** [Everything that is code, tooling, runtime, development or Elephant operating protocol eventually must be understood and governed through the common Machine↔Human command/Wiki/3D visual system](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/UNIVERSAL_SEMANTIC_GOVERNANCE.md), with staged independently evidenced U0–U5 gates and explicit bootstrap/recovery. [Recover and preserve ALL earlier Elephant intelligence](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ELEPHANT_INTELLIGENCE_PRESERVATION.md)—competing architectures, executable runners, simulated and live evidence, failures and research.
 
 
