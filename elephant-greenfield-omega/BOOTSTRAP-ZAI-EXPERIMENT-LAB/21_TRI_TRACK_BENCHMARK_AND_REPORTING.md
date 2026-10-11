@@ -42,3 +42,7 @@ Suggested output under the greenfield experimental project: evidence/rounds/RNN/
 
 ## Publication blocker examples
 False parallelism, missing child IDs, self-scoring, current A/B design leaked to C, mutated holdouts, tool adapter without runnable proof, comparability not disclosed, fabricated/zeroed unknown tokens, framework overhead omitted, and an E2 claim based on one session. A/B's original Round 1 may close while C is blocked; DO NOT fake a completed three-track cycle.
+
+## Additional end-state evidence layers
+
+Evaluate pack-level functionality, portability and stated contracts separately from system-level benchmark throughput. Composition of released packs across tracks is a new controlled experiment; capture adapter effort, dependency conflicts, source-epoch risks, setup and lifecycle cost, and whole-system regressions. Never add high individual pack scores and declare an integrated winner. Keep the strong E0/E1/E2 baselines and independent Truth evaluator. See files 23 through 26.
