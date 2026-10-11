@@ -24,3 +24,7 @@ This supersedes the **NOT VERIFIED HERE** position only for the fact that origin
 - [Stopping and ingestion rule](STOPPING-AND-ASSIMILATION-RULE.md)
 
 **Artifact hosting limit:** The original uploaded ZIP/TAR bundles are not yet mirrored in repository storage. Their full contents should not be misrepresented as version-controlled source. This index is navigational research intelligence; source bundle publication remains a separate custody/sanitization step.
+
+## Second-pass dogfood source replay, not a turn publication
+
+The [source-first dogfood lab](../03_DEVELOPMENT_SYSTEMS/dogfood-zai/README.md) recovered and verified a private 191-file handoff and independently replayed 32 synthetic Claude kernel tests, **NOT** a persistent Elephant, multi-agent ZAI execution or a complete agent-turn publication. Status of the independent dogfood ZAI streams: **PREPARED / NOT LAUNCHED**. Do not convert read-only source preflight evidence into an invented stream ID or maturity certification.
