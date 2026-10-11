@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **SYMBOLIC INPUT CANDIDATE:** Review the [source-audited 17-family symbolic language](SYMBOLIC_LANGUAGE_INTAKE.md) before reinventing command notation. The repository already includes the TS lexer, frames, IR and pure interpreter. Study it as a reusable comparator; keep meanings, source version and gaps explicit. Human natural language, symbol notation, and spatial semantic input are candidate views of the same Rule 1 publication—not independent authorities. No symbol may bypass consent.
+
+
 > **INITIAL-STATE ANCHOR:** Use [INITIAL_STATE.md](INITIAL_STATE.md): shared human-facing substrate = effectively infinite 3D canvas, initially floating text box; real-time Machine ↔ Human execution/meaning manifold; full source-pinned semantic parity across machine, human/wiki and spatial views. Labs may run headlessly but must preserve the ability to test parity. The previous Wasm kernel constraint is now only an [optional booster candidate](WASM_BOOSTER.md).
 
 
