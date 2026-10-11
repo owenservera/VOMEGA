@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **NEW INDEPENDENT EXPERIMENT — ADAPTIVE SWARM:** [Elastic parallel Elephant self-organization and MVP v0.5 gap learning](ADAPTIVE_SWARM.md); [copyable per-stream prompt](adaptive-swarm/STREAM_STARTER.md) and [machine-readable launch manifest](adaptive-swarm/launch-manifest.json). Test how Elephants actually introspect, explain, reorganize and improve their SDK/protocols, while tracking the frozen baseline against the evolving owner-approved MVP target. **PREPARED, NOT LAUNCHED**; parallelism and topology are experiment variables.
+
+
 > **PRIMARY PHASE 0 DOGFOOD:** The [Semantic SDK must expose its own development toolchain and the Elephant's operating protocols](SDK_SELF_HOSTING_DOGFOOD.md) through command → source-grounded Wiki → bounded test → evidence → revised interpretation. The [core visual intelligence language](CORE_VISUAL_LANGUAGE.md) is part of this learning path: high-density human↔machine↔3D parity and user-customizable visual encodings must be tested without breaking machine command chains. [Starter falsifiers](corpus/self-hosting-cases.json).
 
 
