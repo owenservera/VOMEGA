@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **OWNER-APPROVED DESIGNER DIRECTION (2026-10-11):** [Five corrections, universal SDK self-governance thesis and P1–P4 evidence priorities](OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md). [Original archaeology proposal](PROPOSAL_LEGACY_SEMANTIC_ARCHAEOLOGY_AND_REUSE_2026-10-11.md) remains unchanged as a historical research asset, **not** controlling architecture or launch policy. Preserve all Elephant research intelligence; test a real command→Wiki→visual→tool witness before claiming self-hosting or scaling parallelism. No experiment launched by this decision.
+
+
 > **UNIVERSAL SDK RULE (owner requirement):** [Everything that is code, tooling, runtime and Elephant operating protocol ultimately comes under one Machine ↔ Human command/wiki/visual governance circuit](UNIVERSAL_SEMANTIC_GOVERNANCE.md). Staged U0–U5 gates require demonstrated read/propose/test/effect/replay/parity before declaring a domain interface-only; bootstrap and authorized recovery remain explicit. [All prior Elephant intelligence remains discoverable and testable](ELEPHANT_INTELLIGENCE_PRESERVATION.md).
 
 
