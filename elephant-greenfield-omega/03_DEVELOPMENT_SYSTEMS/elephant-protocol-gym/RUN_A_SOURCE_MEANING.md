@@ -1,4 +1,6 @@
 # DRY RUN A — Source First, Meaning Second
+
+**Mandatory common canon:** Read [the Gym Launch Policy](LAUNCH_POLICY.md) alongside the shared seed before beginning. Explore freely inside its four owner-approved truth/safety/feedback/evidence rules; submit any shared-canon change for review. Existing tools are replaceable controls, not forced implementation choices.
 **Independent exploration. Do not read other run prompts or their results yet.**
 
 **Start prompt (copy into its own Elephant/Z.ai/agent session):**
