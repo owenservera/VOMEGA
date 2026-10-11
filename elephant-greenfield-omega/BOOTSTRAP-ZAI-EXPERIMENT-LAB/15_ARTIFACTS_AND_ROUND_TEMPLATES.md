@@ -41,3 +41,7 @@ Controller publishes: four qualifying-arm evidence check, live concurrency proof
 ## Storage convention
 
 Keep these records in one versioned project documentation/evidence directory with stable IDs; store large transcripts, model responses, screenshots and sample data in access-controlled local artifact storage with hashes and bounded retention. On consolidated Git main, retain manifests, schema docs, source, sanitized scorecards, necessary test fixtures, two approach candidates and reproducible evidence pointers. Prefer short-lived worktrees for active experiments; never require permanent branches for master ownership.
+
+## Additional Track C artifact contract (2026-10-11)
+
+Persist: prior-round C design intake SHA and access attestations; C1 and C2 isolated worker records and code/test/log evidence; C runnable release SHA + dependencies and license/version checklist; native-vs-tool comparison records; frozen A/B/C candidate submissions, common benchmark/hidden fixture hashes, latency and observed/estimated/UNKNOWN token measurements; benchmark operator ID separately from C-Design; independent Truth signoff; longitudinal A/B/C scores with E-level and C age/feature compatibility; separate A/B next-round tool adoption or prior-code repair decisions. Never backfill missing C experiments and never rewrite original A/B manifests. See 19/20/21/22 docs and prompts/05_C_ROLES_AND_TRI_TRACK_ROUND_CLOSE.md.

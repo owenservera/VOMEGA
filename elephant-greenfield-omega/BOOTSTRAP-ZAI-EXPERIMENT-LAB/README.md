@@ -49,3 +49,9 @@
 ## External reference point
 
 This pack complements, but does not silently overwrite, the existing `elephant-greenfield-omega` protocol and mock harness. The earlier deterministic mock tests are useful contract checks, but are not evidence of live model sessions, genuine subagent concurrency, or real development acceleration.
+
+## LIVE R1 ADDENDUM (2026-10-11): Track C
+
+The **two original primary master approaches A and B remain intact**, each running the original two real arms. Introduce **Track C**, a separate one-completed-round-behind ecosystem-integration candidate with **two additional real context-isolated experiments** and a shared three-way benchmark operation that requires **independent Truth evaluator signoff**. Do NOT restart running R1 A/B arms. Full tri-track research round = four original A/B arms plus C1/C2. Original four-arm A/B-only closure may still be reported honestly while C catches up.
+
+**Start now:** [Paste the live Round 1 hot injection](prompts/04_HOT_INJECT_TRACK_C_ROUND1.md) into the top-level Z.ai controller. New references: [C operating charter](19_TRACK_C_LAGGED_ECOSYSTEM_CHALLENGER.md), [standards and framework radar](20_PROTOCOL_FRAMEWORK_REUSE_RADAR.md), [benchmark/publication contract](21_TRI_TRACK_BENCHMARK_AND_REPORTING.md), [cross-track learning](22_CROSS_TRACK_LEARNING_AND_ADOPTION.md), [separate C roles and next-round prompt](prompts/05_C_ROLES_AND_TRI_TRACK_ROUND_CLOSE.md). These documents are an additive operating amendment; earlier Round 0/1 results must never be rewritten as if C had been present historically.

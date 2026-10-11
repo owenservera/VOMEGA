@@ -54,3 +54,7 @@ Candidates: dynamic domain split/merge based on query hit-rate and saturation; r
 ## Research discipline
 
 For every new arm ask: what concrete uncertainty will it resolve, what observation would falsify the favored theory, what is the simpler E0 alternative, how will the judge reproduce the result, and what will each of the two masters be allowed to learn after results lock? Avoid four variations that differ only in prompt adjectives, button color or agent names. Reuse the same task complexity, hidden fixtures and model budgets when comparing alternatives, and measure coordination overhead rather than amortizing it away.
+
+## Parallel Track C experiment ladder (2026-10-11)
+
+While A/B conducts R1 E0, **C R1 studies locked A/B R0 only** and executes two extra arm trials: C1 A2A/ECP task + artifact adapter vs minimal local transport; C2 OpenTelemetry GenAI parent/child token tracing vs native ledger, with MCP consult-tool an optional separately validated probe. A/B's R1 four arms remain unchanged. After frozen current-round submissions, independent benchmark A/B/C on matched functionality and verified full lifecycle cost. In R2 (A/B E1), C R2 studies locked A/B R1 and may test MCP, LangGraph checkpoint recovery or AG-UI streaming driven by measured bottlenecks. In R3/R4 consider durable Temporal replay and ACP client integration if justified. Continue one-round lag, six real arm executions, three runnable candidates, signed benchmark, and next-round separate A/B assimilation. C's implementation age is NOT the Elephant count E0/E1/E2. See 19 through 22.

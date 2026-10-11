@@ -32,3 +32,7 @@ For direct E0/E1/E2 comparisons, keep task cards, source baseline, tests, enviro
 ## Stop and failover behavior
 
 If actual multi-agent execution cannot be proven on Z.ai Full-Stack, do not run staged simulations labeled real. Either move the execution plane to a verified local harness while keeping the webapp as UI, or end the round with the precise blocker and a recovery plan. Any unavailable Elephant should trigger an honestly labeled E0/context-bundle fallback; never hide a configuration mismatch as a successful Elephant answer. Keep maximum token/runtime/concurrency limits to avoid unbounded iteration.
+
+## Additive third research track (2026-10-11)
+
+The A/B dual-master and four-arm research minimum above is preserved. **C = separate lagged ecosystem-first candidate, not a third Elephant or substitute for original master A/B.** At round n C-Design has access only to locked A/B n-1; C adds independently executed C1/C2 framework/protocol experiments. Its benchmark operator is separate and may see A/B n only once submissions freeze. Independent Truth evaluation certifies results; A/B each decide adoption separately for round n+1. Full three-track rounds require six actual isolated executions and three runnable versions. See 19_TRACK_C_LAGGED_ECOSYSTEM_CHALLENGER.md and 21_TRI_TRACK_BENCHMARK_AND_REPORTING.md.

@@ -37,3 +37,7 @@ Inspect event schema, token source, parent-child rollup, wall-clock overlap, too
 ## Independent red-team reviewer
 
 Try to falsify the experiment: detect context leakage, hidden master convergence, stale Elephant advice, fake parallelism, unverified UI data, budget hiding, duplicate events and weak null baselines. Propose safe synthetic faults and evidence needed to confirm vulnerability. Never attack external systems or expose secrets.
+
+## Track C role addendum (2026-10-11)
+
+New **C-Design Master** has prior-round locked A/B evidence only and cannot see live A/B current work; **C1/C2** are two actual isolated tool/framework workers; **C-Benchmark-Operator** is a different read-only evaluation context permitted to inspect current frozen A/B/C submissions only after lock; **Truth Evaluator** independently controls holdouts and signs or rejects publication. The original A/B four role/task executions remain mandatory. For role-specific instructions and independence proof see prompts/05_C_ROLES_AND_TRI_TRACK_ROUND_CLOSE.md.

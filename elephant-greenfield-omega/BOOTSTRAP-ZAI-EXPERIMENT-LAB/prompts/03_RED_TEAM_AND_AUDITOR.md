@@ -7,3 +7,7 @@ Test these five fraud/error classes: (1) four arm cards but one shared model con
 Evaluate whether A and B independently chose among all four arms only *after* results were locked, and whether each retains a runnable distinct next candidate. Ensure the quality of the real Ω seed product improved rather than only orchestration code growing. Audit whether E1/E2 gains survive full load/refresh/review costs. Confirm sensitive data and provider credentials are excluded from logs/snapshots; never request or print secrets.
 
 Output: one verdict per challenged property (PROVEN, LIMITED, FAILED, UNKNOWN), highest-risk evidence gaps, a minimal safe reproduction per failure, proposed test to distinguish competing explanations, and one corrective experiment proposal suitable for the next four-arm round. Never certify the system operational because its UI appears polished.
+
+## Track C adversarial checks (2026-10-11)
+
+Verify C-Design could not read live A/B n; C-Benchmark operator did not transmit frozen current-round A/B source to C-Design; C had two real isolated extra arms and was not merely labels; framework/version/license claims match actual installed tools; full token/dependency/startup costs were attributed; benchmark fixture was frozen before results; independent Truth judge—not C—certified the leaderboard; C's one-round age and feature-level mismatch were disclosed; and A/B did not prematurely ingest C current-round results or collapse into identical designs.

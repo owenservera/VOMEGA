@@ -25,3 +25,7 @@ For each candidate, conduct a prior-art search of academic, open-source and comm
 ## Pre-registration and statistical humility
 
 Small early sample sizes cannot establish generalizable speedup. Include negative/null outcomes. Test repeated matched tasks with blind variations, run order randomization when practical, comparable model budgets and independent grading. Publish absolute counts, medians, variance, confidence limits when defensible, and known non-independence of repeated agent calls. Do not overinterpret single-round victories or token savings that fail to produce faster correct outputs.
+
+## Additive build-vs-buy and prior-art comparison (2026-10-11)
+
+Track C systematically checks claimed novel Elephant mechanisms against official protocol/framework behavior such as A2A, MCP, ACP, AG-UI, OpenTelemetry GenAI, LangGraph and Temporal, documenting spec versions, source, evidence, license, remaining novel ECP aspects and measured integration cost. A and B remain free to invent; C supplies credible prior art and proven reusable primitives. A/B may accept/reject those **independently in the next round**, never as retroactive mandate. Public prior-art comparison is not an assertion of patentability. See 20_PROTOCOL_FRAMEWORK_REUSE_RADAR.md and 22_CROSS_TRACK_LEARNING_AND_ADOPTION.md.

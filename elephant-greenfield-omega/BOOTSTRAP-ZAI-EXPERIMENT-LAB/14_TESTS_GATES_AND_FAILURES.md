@@ -34,3 +34,7 @@ Stop or downscope an experimental feature if quality degrades, bottlenecks move 
 ## Final proof standard
 
 A credible milestone is a repository state plus reproducible task tests, runnable backend/UI, four independent captured child runs, measured ledger, evaluator report, context/epoch proof, and two separate master next versions. Merely generating documents, mock screenshots, sample JSON, or an attractive cockpit cannot satisfy the milestone.
+
+## Additional acceptance and falsifiers for Track C (2026-10-11)
+
+A full three-track round needs C1/C2 as two extra actual child/worktree executions, a runnable third C candidate, proof C-Design saw only locked prior A/B work, independent C-Benchmark operator identity, Truth reviewer signoff and matched task/source cohorts with feature-age bias declared. Reject invented agent sessions, self-grading, changed holdouts, hidden setup/operational costs, unverified framework installs and unknown token numbers labelled zero. A/B R1 completion and full A/B/C R1 completion are separate states. See 21_TRI_TRACK_BENCHMARK_AND_REPORTING.md.
