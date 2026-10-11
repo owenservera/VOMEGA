@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **RECOVERED SYMBOLIC INTELLIGENCE:** [17 historic command-symbol families and existing deterministic TypeScript implementation](SYMBOLIC_LANGUAGE_INTAKE.md) are **source-inspected experimental inputs**, not a proven full grammar or mandated SDK language. Preserve existing symbolic/NL/3D parity research, Unicode/operator ambiguity and independent consent boundaries.
+
+
 > **OWNER-DIRECTED INITIAL EXPERIENCE:** The [effectively infinite 3D canvas, shared real-time human–machine execution manifold and full-parity target](INITIAL_STATE.md) are inherited from the existing MVP/Rule 1 research. [WebAssembly is an optional development booster](WASM_BOOSTER.md), not a required SDK or canvas runtime.
 
 
