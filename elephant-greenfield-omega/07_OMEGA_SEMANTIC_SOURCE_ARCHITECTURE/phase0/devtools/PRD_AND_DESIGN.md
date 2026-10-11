@@ -1,5 +1,8 @@
 # Ω Development Loop — Live Lab / Experiment Runner / Change Lab
 
+> **Conceptual correction (Rule 1, 2026-10-11):** [Machine ↔ Human co-evolution](../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md) governs this earlier v0.1 PRD. These tools are **one** feedback loop; representation, source and intent mismatches drive changes to the SDK/compiler/runtime as well as to Wiki and UI. The original prototype scope below remains accurately labelled; its three panels do not imply three ordered project phases.
+
+
 **Revision:** R0-v0.1 · **State:** implemented first-pass loopback prototype, mock-only; not production SDK and not an automated agent sandbox.
 **Parent:** `phase0/` integration lab; this extension does not replace the Phase 0 interface, oracle, gate or source fixture.
 
