@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ω Development Tools — Live / Experiment / Change</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,Segoe UI,sans-serif;background:#0d1519;color:#e8f1f1}*{box-sizing:border-box}
+body{margin:0}header{padding:18px 24px;border-bottom:1px solid #344d52;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header b{font-size:27px;color:#95ddd0}header small{font-size:12px;color:#9db5b7}header strong{margin-left:auto;font-size:12px;color:#9dd6bb}
+main{display:grid;grid-template-columns:1.15fr 1fr .95fr;gap:14px;padding:18px;min-height:calc(100vh - 70px)}section{border:1px solid #365258;border-radius:14px;padding:19px;min-width:0;background:#152227}
+h2{font-size:16px;margin:0 0 12px}h3{font-size:13px;margin:20px 0 7px;color:#a6cfcc}
+label{display:block;font-size:13px;margin:12px 0 8px;color:#c2d3d7}
+textarea,select,input{font:inherit;background:#0d1b20;border:1px solid #426068;color:#e5f2f2;border-radius:7px;padding:10px;width:100%;line-height:1.4}
+textarea{resize:vertical}button{font:inherit;background:#264c4d;color:#dcf4ec;border:1px solid #4c7676;border-radius:8px;padding:9px 12px;cursor:pointer}button:hover{background:#315c59}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,textarea:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #91d3c4}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.reading{padding:16px;background:#20393b;border-radius:10px;min-height:75px;line-height:1.55;font-size:16px;white-space:pre-wrap}
+small,.muted{color:#a3bbbf;font-size:12px}.pill{color:#94f4cd;font-size:11px;letter-spacing:1px}.danger{color:#ffc6b9}
+pre{background:#0b181c;padding:12px;border-radius:8px;overflow-wrap:anywhere;white-space:pre-wrap;max-height:330px;overflow-y:auto;font-size:11px;line-height:1.5}
+#alts button{width:100%;text-align:left;margin-top:8px;font-size:12px}.metrics{border-top:1px solid #426068;padding:10px 0;margin-top:15px}
+@media(max-width:1040px){main{grid-template-columns:1fr 1fr}section:nth-child(3){grid-column:1/-1}}@media(max-width:680px){main{grid-template-columns:1fr}section:nth-child(3){grid-column:auto}header strong{margin-left:0}}
+</style></head><body>
+<header><b>Ω</b><span>DEVELOPMENT LOOP <small>Phase 0 extension · Mock only</small></span><strong id="health">Checking source…</strong></header>
+<main>
+<section aria-label="Live semantic interpretation">
+<h2>01 · Live Lab</h2><div class="muted">Write → understand → correct. Each change invalidates previous approval.</div>
+<label for="command">User command</label><textarea id="command" rows="4" placeholder="tell chatgpt personal account balance please"></textarea>
+<div id="state" class="pill" role="status" aria-live="polite">No interpretation</div>
+<h3>Interpretation shown to the user</h3><div id="reading" class="reading" aria-live="polite"></div>
+<div id="alts" aria-label="Alternative interpretations"></div>
+<div class="controls"><button id="confirm" disabled>Confirm mock action</button><button id="incorrect" disabled>This isn't what I meant</button></div>
+<label for="expected">My expected status (proposed, not automatically accepted)</label>
+<select id="expected"><option>READY</option><option>NEEDS_CHOICE</option><option>NEEDS_INFO</option><option>INVALID</option><option>UNKNOWN</option></select>
+<label for="feedback">Correction or explanation</label><textarea id="feedback" rows="2" placeholder="These words belong to the message…"></textarea>
+<button id="capture" disabled>Capture proposed regression</button>
+<h3>Evidence / Why?</h3><pre id="trace"></pre><pre id="receipt"></pre>
+<div class="metrics" id="live-metrics" aria-live="polite"></div>
+</section>
+<section aria-label="Auto-generated semantic wiki">
+<h2>02 · Source wiki</h2><div class="muted">Derived from the same ΩSL declarations; source not equivalent to proven behavior.</div>
+<h3 id="wiki-title">Choose a recognized command</h3><div id="wiki-state" class="pill"></div>
+<pre id="wiki"></pre><h3>Change Lab · impact preview</h3>
+<label for="consequence">Try another declared consequence (preview only)</label>
+<input id="consequence" value="stays-here" placeholder="stays-here"/>
+<button id="impact-button" disabled>Analyze source change</button><pre id="impact"></pre>
+</section>
+<section aria-label="Experiment and regression runner">
+<h2>03 · Experiment Runner</h2><div class="muted">Data-only comparisons. No candidate scripts are executed.</div>
+<button id="cases-button">Refresh captured cases</button><pre id="cases"></pre>
+<h3>Candidate responses JSON</h3><div class="muted">Map case ID → {"state": {...}, "reading": "..."}</div>
+<textarea id="candidates" rows="8" spellcheck="false" placeholder='{"case:example": {"state": {"status": "READY"}, "reading": "..."}}'></textarea>
+<button id="evaluate">Compare to proposed expectations</button><pre id="scores"></pre>
+<h3>Two separate benchmark families</h3><pre id="benchmarks">LIVE: interpreter latency, display churn, stale suppression, false execution.
+WIKI: declaration/source coverage, changed source impact, stale docs, missing tests.
+Human comprehension, independent correctness and real usage are not yet measured.</pre>
+</section>
+</main>
+<script type="module">
+const el=id=>document.getElementById(id);const boot=await fetch('/api/bootstrap').then(r=>r.json());
+let rev=0,preview=null,current=null,commandChangedAt=0,clientTimes=[],lastWiki=null;
+const clearApproval=()=>{preview=null;el('confirm').disabled=true;el('receipt').textContent='';};
+async function api(path,body){const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Omega-CSRF':boot.csrf},body:JSON.stringify({session:boot.session,...body})});const data=await response.json();if(!response.ok)throw Error(data.error);return data;}
+function present(result){current=result;el('reading').textContent=result.reading;el('state').textContent=result.state.ambiguous?.length?'AMBIGUOUS · confirmation blocked':result.state.status;el('trace').textContent=JSON.stringify({trace:result.state.trace,revision:result.input_revision,source:result.source_hash},null,2);clearApproval();el('alts').replaceChildren();
+ for(const reading of result.alternatives||[]){const button=document.createElement('button');button.textContent=reading;button.onclick=async()=>{const selectedRev=rev;try{const p=await api('/api/choose',{revision:selectedRev,reading});if(selectedRev===rev){preview=p;el('reading').textContent=p.reading;el('state').textContent='CHOICE · verify before confirming';el('confirm').disabled=!p;}}catch(e){el('state').textContent=e.message;}};el('alts').append(button)}
+ preview=result.preview;if(preview)el('confirm').disabled=false;
+ el('incorrect').disabled=false;el('capture').disabled=false;
+ lastWiki=result.wiki;renderWiki(lastWiki);
+}
+function renderWiki(doc){if(!doc){el('wiki-title').textContent='No declared capability';el('wiki').textContent='';el('wiki-state').textContent='';el('impact-button').disabled=true;return}el('wiki-title').textContent=doc.capability;el('wiki-state').textContent=(doc.status||'')+' · '+(doc.runtime_source_fresh?'source fresh':'SOURCE CHANGED · restart required');el('wiki').textContent=JSON.stringify(doc,null,2);el('impact-button').disabled=!doc.declaration;}
+let queue=Promise.resolve();el('command').addEventListener('input',()=>{const r=++rev,text=el('command').value;commandChangedAt=performance.now();clearApproval();el('incorrect').disabled=true;el('capture').disabled=true;el('state').textContent='Interpreting…';
+ queue=queue.catch(()=>{}).then(async()=>{const result=await api('/api/interpret',{input:text,revision:r});if(r!==rev)return;clientTimes.push(performance.now()-commandChangedAt);if(clientTimes.length>300)clientTimes.shift();present(result);const sorted=clientTimes.slice().sort((a,b)=>a-b);el('live-metrics').textContent='UI input→render p95: '+(sorted[Math.ceil(sorted.length*.95)-1]||0).toFixed(1)+' ms · reading changed: '+result.reading_changed;}).catch(e=>{if(r===rev){el('state').textContent='BLOCKED · '+e.message;renderWiki(null)}});
+});
+el('confirm').onclick=async()=>{const p=preview,r=rev;clearApproval();if(!p)return;try{const receipt=await api('/api/confirm',{preview:p,consent:true});if(r!==rev)throw Error('Changed input; previous confirmation invalid');el('receipt').textContent=JSON.stringify(receipt,null,2);el('state').textContent='MOCK RECORDED';}catch(e){el('state').textContent='BLOCKED · '+e.message}};
+el('incorrect').onclick=()=>{el('feedback').focus();el('feedback').placeholder='Describe the intended meaning. Your correction remains proposed until reviewed.'};
+el('capture').onclick=async()=>{if(!current)return;try{const state=current.state;const desired={status:el('expected').value};if(desired.status===state.status){if(state.capability)desired.capability=state.capability;if(state.args)desired.args=state.args;}const entry=await api('/api/capture',{input:el('command').value,expected:desired,observed:state,feedback:el('feedback').value});el('state').textContent='PROPOSED CASE · '+entry.id;await refreshCases();}catch(e){el('state').textContent=e.message}};
+async function refreshCases(){const d=await fetch('/api/cases').then(r=>r.json());el('cases').textContent=JSON.stringify(d,null,2)}
+el('cases-button').onclick=refreshCases;
+el('evaluate').onclick=async()=>{try{const candidates=JSON.parse(el('candidates').value||'{}');const result=await api('/api/evaluate',{candidates});el('scores').textContent=JSON.stringify(result,null,2)}catch(e){el('scores').textContent='BLOCKED · '+e.message}};
+el('impact-button').onclick=async()=>{if(!lastWiki?.declaration)return;try{const d=await api('/api/impact',{capability:lastWiki.capability,new_consequence:el('consequence').value});el('impact').textContent=JSON.stringify(d,null,2)}catch(e){el('impact').textContent='BLOCKED · '+e.message}};
+setInterval(async()=>{try{const m=await fetch('/api/metrics').then(r=>r.json());el('health').textContent=m.runtime_fresh?'Mock runtime source current':'SOURCE CHANGED · approvals blocked'}catch{el('health').textContent='Disconnected'}},2500);
+</script></body></html>
