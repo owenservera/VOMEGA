@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **New experimental design (2026-10-11; NOT_FROZEN):** [TS-family / WebAssembly semantic publishing kit](./07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/devtools/proposals/wasm-semantic-publisher/README.md). This is a deliberating *final-stage* component of the LLM-native automation loop: live typed intent, a source-derived Human Wiki, a canonical Machine publication, and high-volume experiment replay. No changes to existing Python Phase 0 tools, full Ω MVP architecture or active agent assignments are implied.
+
+
 
 ## Semantic SDK development tooling (2026-10-11)
 
