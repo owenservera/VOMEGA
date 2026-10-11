@@ -1,5 +1,8 @@
 # Ω Foundational Semantic SDK — R&D intake
 
+**Consolidated build-grade vision (2026-10-11):** [Ω Universal Semantic System Master Blueprint](./MASTER_UNIVERSAL_SEMANTIC_SYSTEM_BLUEPRINT_2026-10-11.md) — source-native self-describing kernel, compiler/IR, rebuildable indexes, runtime, Elephant integration, experiments and open decisions. This is a blueprint, not proof of production implementation.
+
+
 > **⚓ GOVERNING RULE 1:** [Machine ↔ Human co-evolution](RULE_1_MACHINE_HUMAN_COEVOLUTION.md). SDK/compiler/runtime, all Human/Machine representations and the experiment runner form **one feedback circuit**, not stages. Representation gaps teach the SDK; experiments automate validated fixes. [Corrected SDK anchor](SDK_COMPILER_RUNTIME_ANCHOR.md).
 
 
