@@ -35,6 +35,8 @@ def serve(port=8770):
         def do_GET(self):
             if not self._allowed():return self._send(403,{'error':'HOST_DENIED'})
             if self.path=='/':return self._send(200,(PHASE0/'devtools/dashboard.html').read_bytes(),'text/html')
+            if self.path=='/ui.js':return self._send(200,(PHASE0/'devtools/ui.js').read_bytes(),'text/javascript')
+            if self.path=='/style.css':return self._send(200,(PHASE0/'devtools/style.css').read_bytes(),'text/css')
             if self.path=='/api/bootstrap':return self._send(200,{'session':lab.session(),'csrf':csrf})
             if self.path=='/api/metrics':return self._send(200,tools.status())
             if self.path=='/api/cases':return self._send(200,{'cases':tools.cases()})
