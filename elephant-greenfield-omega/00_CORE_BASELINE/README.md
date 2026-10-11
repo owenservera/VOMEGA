@@ -7,3 +7,7 @@ Start with [vision and scope](01_VISION_BOUNDARIES_AND_EPOCHS.md), [frozen produ
 Versioning rule: freeze each benchmark seed at a declared hash. Changes to baseline are explicit, dated, compatible/incompatible, and force affected measurements to be labelled as a **new cohort**, not silently compared with the old cohort. Live Round 1 baseline is not rewritten.
 
 The initial source documents remain available in ../01_MASTER_CHARTER.md and ../02_GREENFIELD_OMEGA_PRODUCT.md and the original proposal-specific protocol/ folder. Historical research is linked in ../reference/SOURCES.md. The shared baseline below restates the research question without declaring that the earlier authored ECP is the only solution.
+
+## Product target overlay (not a benchmark amendment)
+
+[MVP v0.5 source-pinned snapshot](04_MVP_V0_5_PRODUCT_NORTH_STAR.md) mirrors the owner-defined [canonical product North Star](../../mvp/NORTH-STAR.md). It supplies **future user-facing product direction**, while [02_GREENFIELD_OMEGA_SEED.md](02_GREENFIELD_OMEGA_SEED.md) continues to freeze the narrower Alpha/Beta/Gamma simulated evaluation workload. Do not blend cohort scores or treat desired features as implemented evidence.

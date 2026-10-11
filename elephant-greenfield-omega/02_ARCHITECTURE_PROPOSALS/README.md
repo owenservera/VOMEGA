@@ -4,7 +4,7 @@ Each architecture proposal is a **separate authorial hypothesis**, NOT a develop
 
 ## Structure
 - [ours](ours/README.md): the existing assistant-authored greenfield Elephant/ECP architectural hypothesis assembled from the legacy docs.
-- [claude](claude/README.md): reserved intake area for a genuine independent Claude architecture proposal; **not yet submitted**.
+- [claude](claude/README.md): independently submitted Claude ECP v0.2 capsule-first proposal, source kernel and documented evidence limitations; imported but not live-product-certified.
 - [others](others/README.md): conventions for further separate authors; create one folder per actual independently identifiable proposal rather than one combined 'others' design.
 
 ## Required author proposal shape (not a prescribed component list)

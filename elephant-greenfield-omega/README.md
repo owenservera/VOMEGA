@@ -1,3 +1,5 @@
+> **Canonical 2026-10-11 entrypoint:** [PROJECT_START_HERE.md](PROJECT_START_HERE.md). This file preserves the earlier v0.1 O1 study. [Bounded review & consolidation program](06_REVIEW_AND_CONSOLIDATION/README.md) and [source-pinned v0.5 MVP target](00_CORE_BASELINE/04_MVP_V0_5_PRODUCT_NORTH_STAR.md) clarify present navigation and future cleanup; the old paths remain compatible with live sessions.
+
 # GREENFIELD Ω — Elephant Protocol Research & Build Pack
 
 **Edition:** 2026-10-11 / v0.1 / standalone, implementation-oriented hypothesis.

@@ -16,6 +16,10 @@
 
 The [Semantic Factory](03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/README.md) is the first demanding *use case*, not the definition of universal Elephant DNA.
 
+## Review and consolidation program (2026-10-11)
+
+[The bounded R0–R8 review](06_REVIEW_AND_CONSOLIDATION/README.md) maps current source authority, MVP v0.5 versus the frozen simulated experiment, formalize-now interfaces, artifact provenance and proposed reversible archive cutovers. Its [initial findings](06_REVIEW_AND_CONSOLIDATION/INITIAL_AUDIT_AND_DISPOSITION.md) are provisional; **no active Z.ai path, experiment or original evidence has been migrated or deleted**. The user-defined [MVP North Star](../mvp/NORTH-STAR.md) is now mirrored source-pinned in [00_CORE_BASELINE](00_CORE_BASELINE/04_MVP_V0_5_PRODUCT_NORTH_STAR.md) as a **product target only**. The existing mock test cohort remains unchanged.
+
 ## Critical distinction
 
 **Architecture authors** supply different designs; **developer sessions** experimentally build, challenge and evolve one design. The general Z.ai lab is a separate unrestricted inquiry with resident-first A, rebuild-first B and one-round-behind ecosystem C. Each dedicated Z.ai lab is separately started for one author proposal and runs its own genuine four-plus context-isolated experiments. No author folder or Z.ai bootstrap prompt claims a live session exists.
