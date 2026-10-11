@@ -1,5 +1,7 @@
 # WikiCore — A Candidate Method and Verb Research Program
 
+> **Research inventory only:** the candidate verbs are hypotheses, not an approved WikiCore API. Independent [Elephant Protocol Gym](../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/README.md) runs should discover methods without being instructed to implement this table.
+
 **Role:** evergreen method-language inquiry, not an adopted external or internal protocol.
 **Status:** CANDIDATE / OPEN_LAB. **Last edited:** 2026-10-11. **Question:** what is the smallest useful vocabulary of semantic operations that can serve source, wiki, runtime, user intent and Elephants?
 
