@@ -30,3 +30,7 @@
 - SHA-256: `ac59160805deb53cdafb39d504ccf9cb299dd4c07ebe0d1867103f8337596b5d`
 - 191 files: 56 ZAI semantic-factory source/docs and 135 Claude ECP source/portfolios/preregistrations/probes/evidence files; includes `ARTIFACT-MANIFEST.json` with per-file SHA-256 values.
 - The portable export was delivered with the conversation. **It is not yet hosted by GitHub; it cannot be retrieved from this index alone.** It is a curated subset, not the originals or a complete mirror of every file in the experimental workspaces.
+
+## 2026-10-11 second-pass custody update
+
+The previously indexed archives were **recovered from the owner's file library** and a private, validated **191-file** source-first dogfood handoff was produced. This does not make binary files public GitHub assets. The private handoff `Elephant_Dogfood_Source_Seed_v2_2026-10-11.zip` has SHA-256 `a917fa57c24c84150fa61d8ab493f54d495306cd9350026bdfb3820b1cfaa62a`, exact source manifest SHA-256 `ab1439f91faec30d4e10c949fdc83052926e68a5871a884dbae4f079457e6030`, 191 curated files, an 11-family source index, a read-only preflight and first-turn ZAI instructions. A locally independent **mock-only** Claude kernel replay passed 32/32 tests and the intake checker passed 5/5 synthetic tests. The ZAI partial Next code was not built. Full source custody/replay: [dogfood-zai/SOURCE_CUSTODY_AND_REPLAY.md](../03_DEVELOPMENT_SYSTEMS/dogfood-zai/SOURCE_CUSTODY_AND_REPLAY.md). Externally running ZAI sessions must receive the actual archive; catalog links alone do not provide its bytes.
