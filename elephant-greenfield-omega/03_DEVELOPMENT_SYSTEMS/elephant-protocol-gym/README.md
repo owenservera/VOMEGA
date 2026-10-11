@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **OWNER DECISION 2 — AUTOMATION REUSE:** [Use and challenge existing developer tools](AUTOMATION_REUSE.md). All four arms can reuse the Phase 0 Live/Experiment/Change tooling and other proven assets as replaceable baselines; replacement and improvement are evidence-led, never blocked by toolkit loyalty.
+
+
 > **OWNER DECISION 1 — FEEDER REUSE:** [Use the existing source feeder/custody chain](FEEDER_REUSE.md). The controlled TypeScript fixture and verified available real Elephant code are both first-class inputs; do not recreate ingestion, and do not claim private sources are remotely accessible.
 ## Semantic protocol-conditioning runs — lightweight launch pack
 
