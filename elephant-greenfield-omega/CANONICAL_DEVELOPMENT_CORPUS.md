@@ -1,5 +1,8 @@
 # ⚓ VOMEGA — Canonical Development Corpus (2026-10-11)
 
+> **Semantic SDK evergreen documentation (2026-10-11):** [Living Semantic Design Record](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/README.md) is the current readable design state within the existing Rule 1 scope, not a new global authority or approval process. Edit its stable files in place with recorded statuses, and route actual approvals through [the existing decision tracker](DECISION_PROCESS_TRACKER.md). The master dated blueprint and old experiments remain preserved research/evidence; source code and owner decisions retain their own custody.
+
+
 > **Owner decision update, Batch 02 (2026-10-11):** [REV-007–REV-012](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) are now the latest explicit greenfield guidance. **Legacy product/D1/Ratchet are historical reference for this greenfield, not its governing build authority**. Rule 1 must be **embedded in Elephant development**; its exact integration is an open [master TODO](MASTER_TODO.md). MVP and other obviously relevant documentation roots are included in the *review*, while source code stays preserved. Use Git commits and revision dates as key chronological evidence, not as automatic owner authorization. Any older statements below assigning current product/Ratchet authority represent unreconciled legacy navigation and are subordinate to this banner; no code or archive changes were made in Batch 02.
 
 
