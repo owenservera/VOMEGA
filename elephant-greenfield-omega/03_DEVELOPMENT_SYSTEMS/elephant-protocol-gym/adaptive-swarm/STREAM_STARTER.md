@@ -1,5 +1,8 @@
 # Adaptive Elephant Swarm — Universal Independent Stream Starter
 
+> **OWNER-APPROVED GYM DESIGNER BRIEF:** Read [OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md](../OWNER_APPROVED_DESIGNER_DIRECTION_2026-10-11.md) before proposing stream topology or reused architecture. The prior archaeology proposal is a research reference, not a blueprint. Prioritize source-grounded self-hosted command→Wiki→visual→real test witness, then safe self-adjustment, parity and independently justified scaling; retain historical Elephant evidence, hypotheses and failed packs.
+
+
 > **CURRENT OWNER UNIVERSAL SDK MANDATE:** Read [UNIVERSAL_SEMANTIC_GOVERNANCE.md](../UNIVERSAL_SEMANTIC_GOVERNANCE.md) and [ELEPHANT_INTELLIGENCE_PRESERVATION.md](../ELEPHANT_INTELLIGENCE_PRESERVATION.md). Every code/tool and Elephant operating domain must ultimately be explained, proposed, tested and (when duly authorized) configured via one Machine↔Human command→Wiki→visual→evidence chain. Stage U0–U5 per capability, do not pretend U4 exists; include legacy competing evidence and failed alternatives in discoveries.
 
 
