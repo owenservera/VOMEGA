@@ -1,5 +1,7 @@
 # The Living Semantic Design Record
 
+**Light experimental launch:** [Elephant Protocol Gym](../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/README.md) is the practical four-arm starter. Its runs discover methods rather than inheriting the candidate WikiCore inventory as mandatory design.
+
 **State:** ACTIVE FIRST PASS / REVIEWABLE. **Scope:** the Semantic SDK, compiler, runtime, self-describing source, wiki and intent projections, with its embedding in Elephant R&D. **Last substantive revision:** 2026-10-11.
 
 This is the **evergreen, editable design source of record**, not a dated research report and not a declaration that speculative implementations are approved. It exists because the project was becoming too complicated to reconstruct from conversations, old proposals, overlapping specifications and experiments. A new collaborator should be able to learn the ambition in normal language, recognize what has actually been agreed, see what remains unknown and change one aspect of the design without rewriting everything else.
