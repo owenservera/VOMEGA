@@ -1,10 +1,10 @@
 # ⚓ VOMEGA Development Decision Process Tracker
 
-**State:** EMPTY / READY FOR INTAKE · **Created:** 2026-10-11 · **Scope:** development/documentation corpus across `.project/` and `elephant-greenfield-omega/`.
+**State:** ACTIVE / REVIEWING IN REVERSE CHRONOLOGICAL BATCHES · **Created:** 2026-10-11 · **Scope:** development/documentation corpus across `.project/` and `elephant-greenfield-omega/`.
 
-This is a **blank operational decision-intake tracker**, not a retroactive list of decisions, a second product PM, or a new executive authority. Existing owner decisions remain effective in their original sources (e.g. `.project/DECISIONS.md` and [Rule 1](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md)); **none has been automatically imported or rewritten as a new decision**. Its purpose is to surface what deserves deliberation, what can be tested, and where explicit Owen guidance is needed.
+This is a **blank operational decision-intake tracker**, not a retroactive list of decisions, a second product PM, or a new executive authority. Existing owner decisions remain effective in their original sources (e.g. `.project/DECISIONS.md` and [Rule 1](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md)); **none was automatically imported or rewritten as a new decision**. Its purpose is to surface what deserves deliberation, what can be tested, and where explicit Owen guidance is needed.
 
-**Current counts:** 0 intake items · 0 open deliberations · 0 pending lab decisions · 0 pending Owen decisions · 0 dispositions.
+**Reviewed Batch 01 (2026-10-11):** 6 adjudications presented; 4 AGREE responses (including one qualified), 2 UNANSWERED with substantive owner comments; 3 open follow-up items, 0 lab decisions. The batch source and exact comments are in [Batch 01 receipt](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md). No assistant proposal is considered ratified without the submitted user response.
 
 ## Decision process / paths
 
@@ -50,12 +50,21 @@ reviewer_notes: null
 
 **Priority/precedence:** latest explicit owner guidance weighs highest **within its subject scope**; protected invariants, observable source/runtime truth and permission boundaries still hold. A newer agent document does not supersede an earlier owner instruction without explicit owner direction. Preserve original paths and lineage when documents are archived.
 
-## Empty active queue
+## Active queue — only after submitted interview
 
 | ID | Question | Path | Status | Evidence/source | Owen guidance | Next action |
 | --- | --- | --- | --- | --- | --- | --- |
+| DECQ-0001 | Outer cleanup scope: MVP and other obvious candidate roots | OWEN_GUIDANCE, DOCUMENTARY_RECONCILIATION | NEEDS_DELIBERATION | [REV-004 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | `UNANSWERED` + exact comment `Yes plus MVP or other obvious candidate` | Specify inclusion and safe source/code boundary |
+| DECQ-0002 | Reclassify product/Ratchet as historical for this greenfield | OWEN_GUIDANCE, DOCUMENTARY_RECONCILIATION | NEEDS_DELIBERATION | [REV-005 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | `UNANSWERED` + exact comment `Product and ratchet are historical only this greenfieldis` | Resolve canonical hierarchy; check actual consumers before moves |
+| DECQ-0003 | Internalize active Elephant labs into core dev learning process | LAB, DELIBERATION, OWEN_GUIDANCE | NEEDS_DELIBERATION | [REV-006 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | `AGREE` qualified; full comment preserved in batch | Distinguish common feedback/evidence intake vs shared runtime orchestration |
 
-*No items yet. This intentionally starts blank.*
+## Reviewed batches (owner responses, not inferred history)
+
+| Batch | Status | Reviewed cards | Decision dispositions | Cursor |
+| --- | --- | --- | --- | --- |
+| [2026-10-11 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | SUBMITTED | REV-001 to REV-006 | REV-001/002/003 AGREED; REV-006 AGREED_WITH_QUALIFICATION; REV-004/005 UNANSWERED_WITH_GUIDANCE, not approved | Batch 02, older 2026-10-11 decisions |
+
+The tracker **began blank** and is now populated solely by the submitted Batch 01 feedback. Other historical owner decisions continue to apply in their primary source files; this ledger has not imported or ratified them automatically.
 
 ## Operating actions
 
