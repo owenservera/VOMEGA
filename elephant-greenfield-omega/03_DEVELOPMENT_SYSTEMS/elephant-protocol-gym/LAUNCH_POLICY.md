@@ -1,5 +1,8 @@
 # Canonical Elephant Protocol Gym Launch Policy
 
+> **Owner clarification to initial-state design (2026-10-11):** The shared **human-facing substrate is an effectively infinite 3D canvas** with a real-time shared execution/meaning manifold and **full Machine ↔ Human ↔ spatial semantic parity** as a testable objective. This extends, but does not replace, Rule 1 and D1–D4. Headless independent experiments remain allowed. **WebAssembly is an optional research/development booster, never a required runtime.** [Existing-source-grounded initial-state record](INITIAL_STATE.md) · [Optional booster](WASM_BOOSTER.md).
+
+
 **Status:** OWNER-CONFIRMED decisions 1–4. **Scope:** Elephant Protocol Gym (EPG) exploratory development. **Effective:** 2026-10-11. **Implementation state:** PREPARED, NOT LAUNCHED. **Authority:** explicit owner answers in the four-step October 11 interview, incorporated without claiming evidence of live sessions.
 
 ## Purpose
