@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Adaptive-swarm experiments:** If this run belongs to [ADAPTIVE_SWARM.md](ADAPTIVE_SWARM.md), record stream identity, source epoch, frozen vs current MVP objective distinction, observed self-state vs self-report, requirement→evidence gap, actual trial, alternative topology proposal, marginal cost and independent referee/owner status. Publish *all* maturity packs even for unchanged or blocked streams.
+
+
 > **SELF-HOSTING/VISUAL WITNESS:** In a run concerning the Elephant's own SDK, include the actual tool invocation/witness, source-linked Wiki claim, command meaning, machine visual representation, human/spatial depiction and resulting tested discrepancy. When user-customizable visual style changes, document whether command digest, semantic-edit chain, explicit effects, authority and material information visibility are preserved. See [core visual language](CORE_VISUAL_LANGUAGE.md) and [self-dogfood](SDK_SELF_HOSTING_DOGFOOD.md).
 
 
