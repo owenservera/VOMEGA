@@ -34,3 +34,7 @@ The old root 01_MASTER_CHARTER.md, protocol/, operations/, tools/ecp/ and prompt
 - To inspect real releases, use [04_TURN_PUBLICATIONS](04_TURN_PUBLICATIONS/README.md). It currently contains a truthful migration-time verification status, not invented experiment results.
 
 The architecture inventory remains open. We prescribe only transferable output shape, safety/truth boundaries, real experimentation and continuous evidence publication—not the future system component list.
+
+## Source-first ZAI dogfooding (prepared 2026-10-11)
+
+[Elephant Dogfood ZAI](03_DEVELOPMENT_SYSTEMS/dogfood-zai/README.md) is a separate, **not-yet-launched** self-hosting track: real existing toolkits and capability packs become initial code; immutable evidence and complete turn portfolios feed subsequent experiments. The [seed registry](03_DEVELOPMENT_SYSTEMS/dogfood-zai/SEED_REGISTRY.json), [read-only inventory script](03_DEVELOPMENT_SYSTEMS/dogfood-zai/inventory.mjs), and [fresh-session prompt](03_DEVELOPMENT_SYSTEMS/dogfood-zai/STREAM_STARTER.md) are the entrypoints. The uploaded experimental archives remain indexed but not mirrored into Git; do not mark their source executable until supplied and verified. Existing general A/B/C, proposal-specific streams, and frozen E0/E1/E2 cohorts remain intact.
