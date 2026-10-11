@@ -1,5 +1,7 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **First interview decision:** Include *both* the simple TypeScript fixture and real available Elephant sources; reuse the [existing source feeder and custody contracts](FEEDER_REUSE.md). Read its availability checks before selecting real code. Do not invent another ingestion pipeline. When private artifacts cannot be supplied, use repository-available code or mark the real-source cohort unavailable. Maintain the plain-source control.
+
 **Feed this document unchanged to every independent dry-run agent.**
 **Run scope:** bounded first training/conditioning exercise. **Status:** owner-guided goals + open technical mechanisms.
 
