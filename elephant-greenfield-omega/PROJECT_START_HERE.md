@@ -1,6 +1,6 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
-> **Blank decision-process tracker:** [Labs · Deliberations · Owen Guidance](DECISION_PROCESS_TRACKER.md). New questions enter here; existing decisions are not reclassified or recopied.
+> **Decision batches and greenfield master TODO:** [Decision tracker](DECISION_PROCESS_TRACKER.md) · [Batch 02 owner approvals](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) · [Master TODO](MASTER_TODO.md). Old product/Ratchet documents are historical reference **for this greenfield** under REV-007; specific earlier source/evidence remains preserved. Rule 1 is to be embedded into Elephant development under REV-012, implementation details pending.
 
 
 > **One active development corpus:** [Canonical Development Corpus](CANONICAL_DEVELOPMENT_CORPUS.md), including current `.project` vs Elephant authority, scope-aware latest-owner precedence, 2026-10-11 `.archive` review chunks and active-versus-reference boundaries. The old five-model launch documents were archived; don't use old path references as current prompts.
