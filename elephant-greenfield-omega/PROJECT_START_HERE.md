@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Owner's universal SDK requirement:** [Everything that is code, tooling, runtime, development or Elephant operating protocol eventually must be understood and governed through the common Machine↔Human command/Wiki/3D visual system](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/UNIVERSAL_SEMANTIC_GOVERNANCE.md), with staged independently evidenced U0–U5 gates and explicit bootstrap/recovery. [Recover and preserve ALL earlier Elephant intelligence](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ELEPHANT_INTELLIGENCE_PRESERVATION.md)—competing architectures, executable runners, simulated and live evidence, failures and research.
+
+
 > **Adaptive Elephant Swarm (prepared experiment):** [Elastic independent streams](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ADAPTIVE_SWARM.md), [launch prompt](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/adaptive-swarm/STREAM_STARTER.md) and [launch manifest](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/adaptive-swarm/launch-manifest.json). Focus: self-articulation/self-organization and evidence-driven gaps from the frozen source to owner-updated MVP v0.5; not launched or certified.
 
 
