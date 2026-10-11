@@ -1,5 +1,8 @@
 # Legacy Intelligence Alignment Map — Expected Discoveries, Not Prescribed Implementations
 
+> **PHASE 0 TARGET CLARIFICATION:** The principal early purpose is **SDK + Elephant operating protocol self-understanding**, using the full development toolchain as a self-test corpus ([SDK self-hosting](SDK_SELF_HOSTING_DOGFOOD.md)). Core [visual-language machine↔human↔3D parity and safe customization](CORE_VISUAL_LANGUAGE.md) are essential in that end-to-end loop, not a deferred visual polish phase. This does not prescribe the legacy solution architecture.
+
+
 **Status:** OWNER-DIRECTED EVALUATION LENS / EXPECTATIONS, NOT A FIXED ARCHITECTURE, MANDATORY MODULE SET OR IMPLEMENTED GYM FEATURE. **Date:** 2026-10-11.
 
 ## Owner's intent
