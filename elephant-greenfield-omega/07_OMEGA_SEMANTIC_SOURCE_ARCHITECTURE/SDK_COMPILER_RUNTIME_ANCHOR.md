@@ -1,93 +1,108 @@
-# ⚓ Ω Semantic SDK → Compiler → Runtime: development anchor
+# ⚓ Ω Semantic SDK, Compiler & Runtime — ONE Machine ↔ Human learning effort
 
-**Date:** 2026-10-11  
-**Status:** OWNER-DIRECTED ORDER OF WORK / scoped research anchor; specific implementation, DSL, Wasm toolchain and Ω product architecture **NOT FROZEN**.  
-**Scope:** the Semantic SDK R&D and its LLM-native automated development laboratory. Do **not** promote this file into Universal Elephant DNA or overwrite the existing MVP north star, frozen fixture, source custody or other active Elephant workstreams.
+**Date:** 2026-10-11 · **Revision:** owner correction / Rule 1 consolidation.  
+**Authority:** [RULE 1 — Machine ↔ Human is the semantic learning engine](RULE_1_MACHINE_HUMAN_COEVOLUTION.md). This document replaces the previous **sequential** “first finish SDK / then languages” ordering. Historical earlier revision remains in Git history.  
+**Scope:** Semantic SDK, compiler, runtime and LLM-native development-automation laboratory. Specific implementations, runtime, DSL, Ω MVP architecture and five-computer briefs remain **NOT FROZEN**.
 
-## 0. The ordering matters more than the implementation fashion
+## One effort, one learning signal
 
-**First nail down the semantic SDK, its contract compiler and its runtime. THEN optimize the internal language and its projections: intent, Wiki, UI/Plain Reading, self-knowledge, agent-native interchange, explanation, context/memory, visual signals, and further signal protocols.**
+**There are not three stages of the project.** The SDK/semantic compiler/runtime, the Human/Machine representations (Wiki, UI, intent, self-knowledge, agent-native encodings), and the experimentation engine are **parts of a single co-evolving learning loop**.
 
-This is not a claim that language experiments cannot be researched in parallel. Agents may design hundreds of candidate encodings early; **they cannot define the foundational runtime semantics by accident**. Competing language/protocol variants must conform to a stable, small, versioned semantic kernel contract to be fairly compared.
+> The **only source of semantic improvement signals** is what becomes observable when the machine's structured understanding is projected into comprehensible Human and machine-readable representations and compared with intended meaning, underlying source, other agents and real observed behavior. The experiment runner is the automation of that exact discrepancy → proposed fix → re-evaluation circuit.
+
+Human ↔ Machine does not mean identical JSON and HTML bytes. It means one content-addressed canonical meaning/publication and two faithful representations, with discrepancies and uncertainty explicitly observed. Source-linked Wiki, readably rendered intent, live UI, AI-native communication and self-knowledge are **sensors**, not post-release cosmetics.
+
+This includes two forms of observation: (a) Machine and Human projections disagree (omitted consequence, stale Wiki, wrong explanation); (b) both projections faithfully communicate the *wrong* interpretation relative to the person's expressed intention. The second requires separate ground-truth provenance; mere projection parity is not natural-language correctness.
+
+## One continuous architecture
 
 ```text
-              ANCHOR PHASE (prove the engine, not the presentation)
-    typed declarations → compiler/checker → versioned semantic IR
-                                               │
-                                               ▼
-                                  deterministic runtime
-                              interpret / render / verify / freeze
-                              canonical semantic identity + evidence
-                                               │
-                            independently reproduced conformance gate
-                                               │
-                                               ▼
-                      stable minimal testable contract/ABI
-                                               │
-                  ┌────────────────────────────┼──────────────────────────┐
-                  ▼                            ▼                          ▼
-          LANGUAGE EXPERIMENTS           AUTOMATION LAB              OBSERVABILITY
-    intent/wiki/UI/agent-native/etc.   batch variants + referee   traces+metrics+packs
-                  │                            │                          │
-                  └────────────────────────────┴──────────────────────────┘
-                                               │
-                                     measured promotion only
+human input / agent purpose / source-derived fact
+                        │
+                        ▼
+               semantic SDK + compiler
+          typed declarations → checked IR
+                        │
+                        ▼
+              deterministic runtime
+       interpretation · alternatives · why trace
+                        │
+                        ▼
+             ONE canonical publication
+                        │
+         ┌──────────────┴─────────────────┐
+         ▼                                ▼
+  Machine representation          Human representation
+  raw structured semantics        Plain Reading · Wiki · UI
+  source/proof/agent signals       explanation · self-knowledge
+         │                                │
+         └──────────────┬─────────────────┘
+                        ▼
+          observed discrepancy / learning signal
+        (human expectation, source contradiction,
+         cross-agent loss, stale fact, UI confusion)
+                        │
+                        ▼
+             autonomous experiment loop
+      design variant → compile → replay M/H → compare
+        independent evidence and safety gates
+                        │
+                 accept / reject / hold
+                        │
+                        └──────▶ SDK / compiler / runtime
+                                        ↑
+                                new meaning publication
 ```
 
-The **engine** must be trustworthy enough to compare language variants before optimizing the language. The compiler, renderer and runtime belong in the foundational SDK; the particular human wording, Wiki presentation and signal alphabets are revisioned experimental projections.
+The loop can start with **one tiny semantic capability** and grow; it does not wait for a supposedly complete SDK. Every semantic capability the compiler can process should be explainable through the same canonical Machine/Human interface from its first implementation.
 
-## 1. Anchor deliverable: smallest useful semantic SDK
+## Smallest integrated unit of work
 
-The minimum SDK is a library/ABI with explicit, replaceable stages:
+For a specific typed input and pinned source:
 
-1. **Contract source and parser:** revisioned declarations for capability IDs, typed fields, account/provider/model/session distinctions, consequences, rendering templates, recognition rules, provenance and permitted environment assumptions. Unknown declaration features fail compilation rather than becoming implicit code defaults.
-2. **Compiler:** deterministic compilation to typed IR, stable concept/field IDs, recognition grammar/decision table, deterministic Plain Reading templates, a source-reference map and explicit proof obligations. Compiler diagnostic failures have machine-readable codes and source spans.
-3. **Runtime:** consume a *compiled* contract and an environment snapshot; `interpret(input, revision, contract)` returns candidates, exact payload spans, status, missing fields, alternative interpretations, consequences and derivation trace. Runtime does not load a model, choose permissions or call providers.
-4. **Renderer / inverse verifier:** render a declared meaning as a complete readable Plain Reading, then independently check parsing, identity, consequence coverage and non-collision within a stated scope. A verified narrow domain is valid; claims of unrestricted natural-language correctness are not.
-5. **Canonical identity and publication:** versioned canonical encoding for `{capability,args}` and a separately revision-bound semantic publication containing status, input, rendered reading, trace and source basis. Machine/Human views are *projections of one immutable publication*, never two conflicting sources of truth.
-6. **Safety boundary:** a semantic digest is identity, not permission. Ambiguous READY/unknown/partial interpretations cannot cause effects. A later independent mock approval gate checks exact display, consent, source/environment/account/session/policy revisions and one-use authorization at dispatch.
-7. **Test interface:** run the identical contract/interpret/render/verify implementation in headless batch and interactive mode; export witnesses, independent comparison data, fixture/source/compiler revision and status.
+1. Compile or load the candidate typed semantic contract.
+2. Produce actual machine meaning, ambiguity/status, source/derivation and complete consequence.
+3. Render a Human Plain Reading and a source-grounded Wiki fragment from **that meaning**.
+4. Make Human or simulated-agent expectations explicit; compare intended, machine and rendered understandings; record the mismatch and who asserted it.
+5. Feed that **one discrepancy record** into the automated experiment engine, which proposes fixes to whichever component is actually responsible—grammar, compiler, runtime, rendering/Wiki/UI or agent-native encoding.
+6. Re-run both Machine **and** Human paths on the same corpus for each candidate. Include positive and negative controls, source lineage, independent/referee checks, and memory/agent information-loss tests where relevant.
+7. Publish the accepted/rejected delta with full evidence, immutable old publication, new contract/version if applicable and reversible rollback.
 
-Minimal Wiki/why source anchors can be included in this foundational contract to prove traceability. **Do not conflate providing truthful anchors with optimizing the Wiki language or its UI.**
+A short pure-semantic regression from a fuzzer becomes a candidate case **inside this shared difference/representation loop**, not a separate objective or a second competing automation track.
 
-### Anchor gate — do not call it nailed until
+## What must exist together in the initial slice
 
-- An independent evaluator can clean-clone, compile the finite fixture, exercise Run A-derived public vectors, and reproduce raw witnesses (39 corpus entries, 140 READY and 417 state cohort are historical baselines to **verify**, not acceptance proof by themselves).
-- A distinct referee/oracle catches deliberately changed command target, omitted consequence, lost payload, wrong prompt boundary, forgotten alternatives, incorrect canonical digest, stale source or forged reading.
-- The runtime **blocks effects**, including a READY result with known competing readings; positive valid controls work, so “always reject” cannot pass.
-- A repeatable headless, no-browser path validates lexical parsing, typed AST/IR, compiler obligations, rendering and canonical Machine/Human record parity.
-- Compiler errors identify unrepresentable declarations. Adding a capability and changing a consequence trigger the correct contract/version, reading/proof invalidation and source impact without manually editing an unrelated wiki.
-- API/ABI and source/evidence semantics are versioned with compatibility and rollback tests. Browser-host details and Wasm implementation strategy remain replaceable.
-- An independent team can execute the pinned fixture+candidate and explain which metrics are MEASURED versus NOT_RUN/UNKNOWN. Historical Run A's author-generated corpora are not a blind natural-language benchmark.
+| Element | Minimum first-loop responsibility | Maturity gate |
+| --- | --- | --- |
+| Contract compiler / SDK | Typed capability/args/consequence + versioned source and grammar identity | Independent reproducibility and mutation tests |
+| Deterministic runtime | Interpret input, preserve spans, surface alternatives, render/verify | No silently lost payload, wrong READY effect or identity drift |
+| One canonical publication | Freeze exact input/status/meaning/source/reading/Wiki reference | Human and Machine see same publication ID, no mode re-evaluation |
+| Machine projection | Raw structured view for agents, oracles and comparators | Canonical data integrity and reconstruction |
+| Human projection | Live understandable reading, capability/source Wiki, visible why/alternatives | Traceable facts, no false certainty; user truth provenance |
+| Discrepancy capture | Human correction or explicitly labelled simulated expectation, screenshot/trace/source IDs when appropriate | Proposed claim, not automatically certified ground truth |
+| Experiment factory | Generate competing compiler/rule/presentation revisions, replay both views headlessly or interactively | Independent controls, preserved negative results and source versions |
+| Safety gate | Separate publication from permission; reject unresolved ambiguity/staleness and replay | No unauthorized mock effect; valid positive controls execute in mock only |
 
-**Gate does not require:** Chromium, Chrome, Playwright, web deployment, working real provider integrations, full human UI, production-grade Wiki, fully evolved internal language, A2A transport, or speculative million-case throughput. These are optional downstream trials and cannot block the correctness-first SDK foundation.
+Do not force a broad UI framework to achieve the small Human view; the portable Wasm final-stage publisher remains a candidate implementation. Do not rewrite proven historical Python reference. Test compiler and data structures headlessly; use browser checks when relevant to live typing, display fidelity or accessibility. The external agent's reported rapid-typing queue speedup is a reason to keep a genuine browser signal available, not a reason to require browser setup for pure compiler tests.
 
-## 2. Second order: aggressively optimize signal protocols / internal language
+## What "learning" means, and what tests do
 
-Once the narrow anchor contract holds, iterate over **families of signal protocols**, not merely cosmetic English rewrites. Candidate axes include intent recognition grammar and canonical intermediate representations; explanation/why; readable Plain Reading; Wiki source-linking; UI live meaning and correction affordances; agent-native capsules and exchanges; self-knowledge and code lineage; ambiguity and negative intent; symbolic/visual signal vocabulary; progressive disclosure/compression; context and staleness signals.
+**Learning direction** comes from discrepancies exposed in the Machine↔Human loop. Different agents, source harvesters, simulated humans or end users may supply hypotheses or expected outcomes, but each is recorded with provenance (USER_PROPOSED, AGENT_SIMULATED, SOURCE_DECLARED, BEHAVIOR_OBSERVED, INDEPENDENTLY_ADJUDICATED). A generated test's own expected answer is not automatically true.
 
-Each experiment uses a **shared meaning contract** and exports `candidate_semantics, reading, wiki_facts, source_revision, statuses, traces, costs, negative_controls`. It can alter an internal language scheme if it versions its migration and proves equivalent meaning on preserved cohorts, rather than silently replacing the SDK foundation.
+**Regression and safety tests** preserve historical behavior and invalidate unsafe/faulty alternatives. They are critical referees, not a separate invention pipeline. Passing old golden files is neither sufficient nor necessarily required for a versioned deliberate semantic expansion; migration must be explicit and reviewed.
 
-Evaluate semantic correctness, composability, source/proof fidelity, human comprehension, model efficiency and end-to-end verified engineering velocity. **The fastest per-token or per-parse encoding is not necessarily the fastest development loop.**
+The objective is **correct semantic improvements per full loop wall time**, with correctness, comprehensibility, Wiki/source truth, cross-agent reconstruction and safety gating. Do not optimize isolated parser time at the cost of a slower or untrustworthy feedback loop.
 
-## 3. Three nested feedback loops
+## No premature technology or stage restrictions
 
-- **Inner deterministic loop:** per keystroke or batch item, compile-once/interpret/render/trace from the *currently accepted* contract, no LLM on each key and no UI renderer required for batch. Enter freezes a diagnostic/ready publication, not an action.
-- **Middle TDD experiment loop:** red failing test → one semantic/rule/reading/Wiki hypothesis → candidate compile → public and independently held-out positive/negative/mutation tests → scorecard + explicit failures → measured acceptance/rollback into a *lab* contract revision.
-- **Outer Elephant development loop:** agents source-ground proposals and alternative protocols, comparison tracks run fairly, independent referee judges, all-maturity capability packs (including failures/unchanged) are published per `01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md`. Product/API law is not silently advanced by self-reported benchmark wins.
+- The upstream Elephant lab may use Python, Node, TS, LLMs, browsers, scripts, compilers, indexers and multiple agents when they help.
+- The *candidate final-stage* kit may target a portable TS-family-authored Wasm kernel and static HTML/CSS with a minimal audited DOM bridge; no Node/Python **shipped runtime**. This is a candidate, not a required product implementation.
+- **Chrome/Chromium/Playwright are neither prerequisites nor forbidden tools.** Their real UI test findings can be important; browser tests are chosen to answer questions that need a browser.
+- Keep the Phase 0 mock reference and former benchmark evidence intact; do not claim an unbuilt Wasm module, end-to-end autonomous tuning loop, visual parity benchmark win or final five-computer launch.
+- Frozen benchmark fixtures remain historical controls. Universal Elephant DNA and wider Ω MVP architecture remain separate.
 
-See [FAST_TDD_NO_BROWSER_LOOP.md](phase0/devtools/FAST_TDD_NO_BROWSER_LOOP.md) and [SIGNAL_PROTOCOL_EXPERIMENTS.md](phase0/devtools/SIGNAL_PROTOCOL_EXPERIMENTS.md).
+## Immediate acceptance experiment
 
-## 4. Wasm and the monolingual TS direction
+One typed intent → canonical dual representation → discrepancy (actual human correction or labelled simulation) → autonomous candidate fix → recompiled SDK/runtime → same input and Wiki reprojected → independent controls and measured end-to-end cost → new version or recorded failed candidate. **That is the smallest closed learning loop** and the proper target for accelerated R&D.
 
-Owner preference for the *final-stage lab publisher*: compact, portable WebAssembly semantic computation with a TypeScript-family authored source wherever feasible, no Python/Node **runtime**, no third-party browser UI framework, and only a minimal DOM bridge where a browser UI exists. **This is a candidate realization, not a constraint on the upstream experiments or the SDK's semantic ABI.** Standard TypeScript emits JavaScript; a TS-like Wasm compiler (e.g. AssemblyScript) is one experimental candidate and must be checked against actual semantic and Unicode behavior.
-
-Python Phase 0 remains a historical independent comparator, not a forward production-language commitment. Chrome/Chromium/Playwright are optional *later* end-to-end checks; requiring them now to validate core semantics is premature.
-
-## 5. Change-control / truth
-
-**Frozen:** historical fixture and original source custody, independently identified source SHA/contract IDs, effect safety law, output provenance/evidence, complete per-turn pack publication.  
-**Versioned/experimental:** grammar syntax, compiler strategy, text encoding, Wasm vs other runtime, Wiki language, signal protocols, UI layout, agent exchange format, vector/index stores.  
-**NOT asserted:** production capability, human comprehension superiority, best signal alphabet, best toolchain, speed gains not measured, final five-computer mission assignments.
-
-This anchor replaces *priority ordering*, not historical architecture documents, active implementations, other-author experiments or the wider Ω product's architecture choices.
+Related research designs: [headless and browser tests chosen by signal](phase0/devtools/FAST_TDD_NO_BROWSER_LOOP.md), [signal-protocol experiment families](phase0/devtools/SIGNAL_PROTOCOL_EXPERIMENTS.md), [portable Wasm publisher proposal](phase0/devtools/proposals/wasm-semantic-publisher/README.md). All actual implementations must publish complete all-maturity capability packs per the standing Elephant contract.
