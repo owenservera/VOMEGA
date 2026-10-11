@@ -1,5 +1,10 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+
+## Semantic SDK development tooling (2026-10-11)
+
+[Live Lab · Experiment Runner · Change Lab](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/devtools/README.md) is available in the Phase 0 SDK track as a mock-only integrated first version. Use it to inspect live interpretations, capture proposed regressions and trace declared source→wiki/test impacts. The [PRD](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/devtools/PRD_AND_DESIGN.md) defines independent live-interpretation and wiki-coherence measurements. It neither replaces the existing 00/01/04 publication law nor freezes the five Z.ai computer assignments.
+
 **Scope: Elephant Lab only.** This guide does not govern the larger VOMEGA project. **Organizational revision 2026-10-11.** We are separating shared research context from what we must deliver, from independent architecture authorship, from real independent developer execution. Historical files are left intact to avoid interrupting the active general Z.ai Round 1.
 
 ## Fast path — minimal agent reading
