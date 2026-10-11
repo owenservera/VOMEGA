@@ -1,0 +1,141 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.governance.universal",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "governance",
+  "title": "Universal code, tools and Elephant settings command governance",
+  "authority": "owner_direction",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/UNIVERSAL_SEMANTIC_GOVERNANCE.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Every piece of code and tool eventually becomes inspectable, safely configurable and independently testable through shared Human↔Machine semantic control, with staged proof gates.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "target_domain",
+        "meaning": "Actual source/tool/protocol/configuration and observed authority basis"
+      },
+      {
+        "id": "command_publication",
+        "meaning": "Versioned semantic proposal from Human or Elephant"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "U_stage",
+        "meaning": "Truthful U0–U5 capability-specific achievement"
+      },
+      {
+        "id": "change_receipt",
+        "meaning": "Authorized effect and independent witness or NOT_RUN"
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "DESIGN_ONLY",
+    "preconditions": [
+      "Freeze source and owner/agent context epochs",
+      "Permission remains held by existing host/owner authority",
+      "Independent witness and actual rollback before advancing stage"
+    ],
+    "forbidden": [
+      "Confuse prose with authorization",
+      "Declare a tool U4 without detecting direct bypass",
+      "Self-certify U5 without an external escape and referee"
+    ]
+  },
+  "phases": [
+    {
+      "id": "U0_indexed",
+      "action": "U0_indexed",
+      "completion": "INDEPENDENT_WITNESS_OR_NOT_RUN"
+    },
+    {
+      "id": "U1_explain",
+      "action": "U1_explain",
+      "completion": "INDEPENDENT_WITNESS_OR_NOT_RUN"
+    },
+    {
+      "id": "U2_propose",
+      "action": "U2_propose",
+      "completion": "INDEPENDENT_WITNESS_OR_NOT_RUN"
+    },
+    {
+      "id": "U3_test",
+      "action": "U3_test",
+      "completion": "INDEPENDENT_WITNESS_OR_NOT_RUN"
+    },
+    {
+      "id": "U4_interface_required",
+      "action": "U4_interface_required",
+      "completion": "INDEPENDENT_WITNESS_OR_NOT_RUN"
+    },
+    {
+      "id": "U5_recursive_selfhost",
+      "action": "U5_recursive_selfhost",
+      "completion": "INDEPENDENT_WITNESS_OR_NOT_RUN"
+    }
+  ],
+  "gates": [
+    {
+      "id": "AUTHORITY",
+      "check": "No generated intent/visual glyph creates effects",
+      "when_unknown": "BLOCK",
+      "blocking": true
+    },
+    {
+      "id": "PROVENANCE",
+      "check": "Source/Wiki/tool receipt source epochs align",
+      "when_unknown": "UNKNOWN",
+      "blocking": true
+    },
+    {
+      "id": "BYPASS",
+      "check": "At U4 supported non-interface normal writes fail or produce an authorized exception",
+      "when_unknown": "BLOCK",
+      "blocking": true
+    },
+    {
+      "id": "RECOVERY",
+      "check": "Emergency bootstrap and recovery remain independently gated and recorded",
+      "when_unknown": "BLOCK",
+      "blocking": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "coverage",
+      "meaning": "Coverage gaps enumerated for all code/tool domains"
+    }
+  ],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "Owner-directed staged governance law; no global enforcement implemented"
+    ],
+    "limitations": [
+      "This schema is an index and not a host permission engine"
+    ]
+  },
+  "modules": [
+    "epg.semantic.selfhosting",
+    "epg.publication.allturn"
+  ],
+  "controls": [
+    "Ordinary external Git/host permission checks",
+    "Independent verifier"
+  ],
+  "metrics": [
+    {
+      "id": "domains_u4_verified",
+      "unit": "count",
+      "evidence_source": "REFEREE",
+      "missing": "UNKNOWN"
+    }
+  ]
+}
