@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **GOVERNING LAUNCH CONTRACT:** Read [LAUNCH_POLICY.md](LAUNCH_POLICY.md) with this seed. The owner approved four rules: reuse the existing feeder, reuse replaceable automation, expose one Machine ↔ Human learning signal per experiment, and permit broad protocol/toolkit redesign inside truth, safety, evidence and independent-review boundaries. Shared canon is changed only after review.
+
+
 > **Third interview decision:** Each dry run must expose at least one inspectable [Machine ↔ Human learning signal](MACHINE_HUMAN_SIGNAL.md). Show source/task, machine interpretation, human-readable meaning, comparison and uncertainty, plus next experimental consequence. Simulated expectations are not verified human evidence. Use any suitable method; don't freeze the transport, protocol or UI.
 
 
