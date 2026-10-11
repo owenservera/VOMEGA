@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Decision 3 acceptance:** Each run note requires a Machine ↔ Human Signal section with source/task, machine view, ordinary-language human view, observed agreement/discrepancy/unknown, witness and one learning consequence. See [signal rule](MACHINE_HUMAN_SIGNAL.md). A purely speculative proposal must say NOT_RUN rather than claiming an observed discrepancy.
+
+
 > **Decision 2 comparison:** Record whether an existing tool was reused, replayed, adapted, replaced or unavailable. Name its version, proof limits, and the measurable reason to change it. See [automation reuse](AUTOMATION_REUSE.md).
 
 
