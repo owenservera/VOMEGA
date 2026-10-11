@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **Discovery boundary:** The [legacy alignment map](LEGACY_ALIGNMENT_MAP.md) is a *reviewer reference for eventual capabilities*, not an extra fixed implementation assignment. Independent discovery arms can remain blind to its specific historical solutions; reuse/challenge arms may inspect them intentionally and must disclose this. The first four Gym decisions remain authoritative.
+
+
 > **SYMBOLIC INPUT CANDIDATE:** Review the [source-audited 17-family symbolic language](SYMBOLIC_LANGUAGE_INTAKE.md) before reinventing command notation. The repository already includes the TS lexer, frames, IR and pure interpreter. Study it as a reusable comparator; keep meanings, source version and gaps explicit. Human natural language, symbol notation, and spatial semantic input are candidate views of the same Rule 1 publication—not independent authorities. No symbol may bypass consent.
 
 
