@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **⚓ Governing Rule 1:** [Machine ↔ Human is the ONE semantic learning loop](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md). SDK/compiler/runtime, Wiki/UI/intent/self-knowledge, AI-native representations and automated experiments are one co-evolving effort. The previous sequential-plan and browser-ban instructions are superseded. Existing browser evidence remains valuable; the runtime technology is open.
+
+
 > **New experimental design (2026-10-11; NOT_FROZEN):** [TS-family / WebAssembly semantic publishing kit](./07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/devtools/proposals/wasm-semantic-publisher/README.md). This is a deliberating *final-stage* component of the LLM-native automation loop: live typed intent, a source-derived Human Wiki, a canonical Machine publication, and high-volume experiment replay. No changes to existing Python Phase 0 tools, full Ω MVP architecture or active agent assignments are implied.
 
 
