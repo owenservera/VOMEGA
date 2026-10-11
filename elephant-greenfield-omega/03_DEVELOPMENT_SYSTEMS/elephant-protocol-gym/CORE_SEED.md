@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **Second interview decision:** Discover and reuse useful existing development automation through [AUTOMATION_REUSE.md](AUTOMATION_REUSE.md). Replay suitable current tools as replaceable controls before duplicating them; agents remain free to improve or replace components when a falsifiable experiment supports it. This is not a mandate to use a Python backend, browser, Wasm or fixed UI.
+
+
 > **First interview decision:** Include *both* the simple TypeScript fixture and real available Elephant sources; reuse the [existing source feeder and custody contracts](FEEDER_REUSE.md). Read its availability checks before selecting real code. Do not invent another ingestion pipeline. When private artifacts cannot be supplied, use repository-available code or mark the real-source cohort unavailable. Maintain the plain-source control.
 
 **Feed this document unchanged to every independent dry-run agent.**
