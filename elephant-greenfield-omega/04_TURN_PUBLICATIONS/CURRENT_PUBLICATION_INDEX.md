@@ -13,3 +13,14 @@
 | Other proposal-specific labs | Waiting for individual authored proposals | NOT CREATED |
 
 When actual controllers connect, publish their authentic session IDs, round/turn manifest and ALL pack-version references as new entries. This file must not invent missing history. Old turns with insufficient source evidence remain HISTORICAL_NOT_AUDITED, not retroactively certified.
+
+
+## 2026-10-11 — user-submitted experimental workspace archives ingested
+
+This supersedes the **NOT VERIFIED HERE** position only for the fact that original archive content has now been **inspected**; it does **not** certify independent tests, live agent parallelism or tool portability. The ZAI semantic factory includes one completed self-reported turn; the Claude proposal-specific ECP lab includes three portfolios for **Round 1 turns 1–3**. All resulting findings are AUTHOR_REPORTED and are catalogued without requiring ten rounds.
+
+- [Evidence-tiered research assimilation](2026-10-11-INGESTED-RESULTS.md)
+- [Artifact/toolkit path catalog](ARTIFACT-CATALOG.md)
+- [Stopping and ingestion rule](STOPPING-AND-ASSIMILATION-RULE.md)
+
+**Artifact hosting limit:** The original uploaded ZIP/TAR bundles are not yet mirrored in repository storage. Their full contents should not be misrepresented as version-controlled source. This index is navigational research intelligence; source bundle publication remains a separate custody/sanitization step.
