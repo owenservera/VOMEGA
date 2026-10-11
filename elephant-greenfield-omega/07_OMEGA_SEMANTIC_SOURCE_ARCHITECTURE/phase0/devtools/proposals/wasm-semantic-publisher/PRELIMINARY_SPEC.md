@@ -1,5 +1,8 @@
 # Preliminary specification — Ω WebAssembly Semantic Publishing Kit
 
+> **NON-NORMATIVE HISTORICAL PROPOSAL (clarified 2026-10-11):** All Wasm-only hot-path, binary and no-Node/no-Python constraints described below are **candidate booster design choices, not shared runtime requirements**. Reuse the live-parity/wiki/publication experiments independent of implementation. [Current initial-state design](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md) · [booster candidate](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md).
+
+
 > **Rule 1 precedence:** [ONE Machine ↔ Human learning loop](../../../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). This Wasm/TS kit is a proposed realization *inside* a co-evolving SDK/compiler/runtime + representations loop, not a separate late phase. Observed human/machine/Wiki/intended-meaning discrepancies directly generate versioned SDK/compiler/runtime candidate experiments.
 
 
