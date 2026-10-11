@@ -61,5 +61,10 @@
     "No frozen MVP architecture",
     "No independent comprehensive human study",
     "No final five Z.ai computer prompts"
-  ]
+  ],
+  "governing_rule": "RULE_1_MACHINE_HUMAN_COEVOLUTION.md",
+  "learning_architecture": "SINGLE_COEVOLVING_MACHINE_HUMAN_FEEDBACK_LOOP",
+  "semantic_improvement_signal": "Only observed/explicitly simulated Machine-Human representation versus intention/source/behavior discrepancies; independent tests validate proposed changes.",
+  "experiment_role": "Automated replay and mutation of the same dual-view SDK/compiler/runtime improvement loop, not a separate downstream project phase.",
+  "status_note": "Proposal implementation remains NOT_STARTED/NOT_FROZEN. Wasm realization is optional; the co-evolving meaning loop is the governing requirement."
 }
