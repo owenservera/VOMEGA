@@ -10,6 +10,12 @@
 4. [03_DEVELOPMENT_SYSTEMS](03_DEVELOPMENT_SYSTEMS/README.md) — architecture-agnostic [general Z.ai A/B/C](03_DEVELOPMENT_SYSTEMS/general-zai-lab/README.md), **plus one fresh independent full Z.ai agent session for each unique submitted architecture proposal**, starting with [our O1 prompt](03_DEVELOPMENT_SYSTEMS/proposal-specific/ours-zai/BOOTSTRAP_PROMPT.md).
 5. [04_TURN_PUBLICATIONS](04_TURN_PUBLICATIONS/README.md) — evidence-addressable snapshots of every track/proposal lab's ALL-STATE pack inventory after each bounded development turn, plus independent benchmark and composition reports.
 
+## Cross-cutting Elephant DNA seed (research, not a new baseline law)
+
+[05_UNIVERSAL_ELEPHANT_DNA](05_UNIVERSAL_ELEPHANT_DNA/README.md) adds a versioned, challengeable **universal cognitive genome**: 20 candidate inherited competencies in five families, six initial fitness probes, introspection honesty, Round 0 evidence limits and a Z.ai research brief. It distinguishes genes (observable competencies) from domain-specific phenotypes (such as Product or Harvest Elephants) and replaceable realizations (tools, buses, context stores, protocols). It is **not** a sixth competing architecture proposal, production component inventory, or change to the frozen 00 baseline. Existing experiments remain on their original cohorts; new trials can opt in with an explicit seed SHA.
+
+The [Semantic Factory](03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/README.md) is the first demanding *use case*, not the definition of universal Elephant DNA.
+
 ## Critical distinction
 
 **Architecture authors** supply different designs; **developer sessions** experimentally build, challenge and evolve one design. The general Z.ai lab is a separate unrestricted inquiry with resident-first A, rebuild-first B and one-round-behind ecosystem C. Each dedicated Z.ai lab is separately started for one author proposal and runs its own genuine four-plus context-isolated experiments. No author folder or Z.ai bootstrap prompt claims a live session exists.

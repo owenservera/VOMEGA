@@ -6,6 +6,10 @@ This package extends the previously prepared v1 source harvest charter into a fu
 
 **Key design choices:** unified Semantic Product Elephant Group (library + NL/symbolic compiler + visual language + Reflection/auto-Wiki), Harvest Elephants directed by the Product Group and by a systematic archival intake obligation, narrowly scoped coding workers receiving all AI task instructions through the Product Elephant gateway, independent evaluator and integrator, genuine competitive experiments, full per-turn pack release, and explicit freedom to invent/revise tools and protocols. Number/placement of Elephant sessions, topology, storage and tooling are experimental choices.
 
+## Universal genome relationship
+
+This permanent use case now cross-references [Universal Elephant DNA v0.1](../../05_UNIVERSAL_ELEPHANT_DNA/README.md). The DNA seed defines candidate inherited competencies (self-model, calibrated resource introspection, source/knowledge basis, cognitive continuity, inter-Elephant exchange, truth and evidence-driven method improvement); this factory exercises them through **Product**, **Harvest** and **narrow coding** roles. Those roles and its seven-round MVP remain phenotype/workload-specific, **not** universal laws. Before any claimed inherited trait is promoted, challenge it against other domains, E0/E1/E2 controls and [Round 0 fitness evidence](../../05_UNIVERSAL_ELEPHANT_DNA/03_FITNESS_AND_ROUND0_EVIDENCE.md).
+
 ## Read order
 
 1. `01_CHARTER_AND_TOPOLOGY.md` — v1 permanent use case and C0 source-reading benchmark.

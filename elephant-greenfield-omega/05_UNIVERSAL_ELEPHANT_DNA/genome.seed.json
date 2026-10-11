@@ -1,0 +1,252 @@
+{
+  "schema": "vomega.elephant.dna.seed.v0.1",
+  "date": "2026-10-11",
+  "status": "CANDIDATE_CONCEPTUAL_SEED",
+  "authority": "advisory_research_only_not_canonical_product_law",
+  "source_basis": "Elephant DNA design discussion + VOMEGA research docs + independently summarized user-uploaded Round 0 evidence",
+  "research_separation": {
+    "genotype": "candidate shared observable competencies",
+    "phenotype": "role/domain specialization",
+    "realization": "implementation tools, models, protocols or services, experimentally chosen",
+    "e0": "no Elephant baseline, not required to exhibit genotype"
+  },
+  "families": {
+    "A": "Identity & operational self-awareness",
+    "B": "Knowledge & cognitive metabolism",
+    "C": "Collective cognition",
+    "D": "Truth & integrity",
+    "E": "Learning & bounded evolution"
+  },
+  "fitness_probes": {
+    "F1": "Truthful knowledge self-inventory, provenance, omissions, and retrieval fidelity",
+    "F2": "Resource telemetry awareness with measured/estimated/unknown separation",
+    "F3": "Causal, source-bounded, finite peer exchange in genuinely isolated contexts",
+    "F4": "Mechanical knowledge-basis invalidation and stale-safe behavior",
+    "F5": "Loss/rebuild and externally calibrated continuity",
+    "F6": "Controlled method improvement with full lifecycle cost and independent evaluation"
+  },
+  "genes": [
+    {
+      "id": "DNA-01",
+      "family": "A",
+      "name": "Persistent identity",
+      "obligation": "maintain identity, lineage, generation and bounded domain",
+      "initial_probe": "F5",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-02",
+      "family": "A",
+      "name": "Purpose",
+      "obligation": "maintain goals, authority bounds and expected outcomes",
+      "initial_probe": "F1",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-03",
+      "family": "A",
+      "name": "Operational self-model",
+      "obligation": "account for capabilities, covered/unknown knowledge and limitations",
+      "initial_probe": "F1",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-04",
+      "family": "A",
+      "name": "Resource introspection",
+      "obligation": "report measured, estimated or unknown usage and constraints",
+      "initial_probe": "F2",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-05",
+      "family": "B",
+      "name": "Knowledge ingress",
+      "obligation": "account for eligible inputs and actual reading/ingestion with exclusions",
+      "initial_probe": "F1",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-06",
+      "family": "B",
+      "name": "Cognitive organization",
+      "obligation": "relate concepts, dependencies, provenance and contradictions",
+      "initial_probe": "F1",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-07",
+      "family": "B",
+      "name": "Attention allocation",
+      "obligation": "choose active/retrievable context under measured resource bounds",
+      "initial_probe": "F6",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-08",
+      "family": "B",
+      "name": "Retrieval and recall",
+      "obligation": "retrieve relevant supported evidence and recognize incomplete recall",
+      "initial_probe": "F1",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-09",
+      "family": "B",
+      "name": "Knowledge egress",
+      "obligation": "externalize transferable verified/uncertain knowledge",
+      "initial_probe": "F3",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-10",
+      "family": "B",
+      "name": "Cognitive continuity",
+      "obligation": "reconstruct and recalibrate competencies after session loss",
+      "initial_probe": "F5",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-11",
+      "family": "C",
+      "name": "Peer communication",
+      "obligation": "exchange bounded attributable requests and results with causal identity",
+      "initial_probe": "F3",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-12",
+      "family": "C",
+      "name": "Peer awareness",
+      "obligation": "discover known peer competencies, bases, freshness and availability",
+      "initial_probe": "F3",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-13",
+      "family": "C",
+      "name": "Collaboration",
+      "obligation": "hand off/domain-consult without silent scope escalation",
+      "initial_probe": "F3",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-14",
+      "family": "C",
+      "name": "Collective consistency",
+      "obligation": "surface peer/source conflicts and propose evidence checks",
+      "initial_probe": "F4",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-15",
+      "family": "D",
+      "name": "Provenance",
+      "obligation": "ground consequential claims in verified source or observed evidence",
+      "initial_probe": "F1",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-16",
+      "family": "D",
+      "name": "Freshness",
+      "obligation": "recognize epoch invalidations and reconcile or qualify advice",
+      "initial_probe": "F4",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-17",
+      "family": "D",
+      "name": "Epistemic boundaries",
+      "obligation": "separate current, historical, inferred, simulated and unknown",
+      "initial_probe": "F1",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-18",
+      "family": "E",
+      "name": "Outcome learning",
+      "obligation": "attach advice and processes to externally observed task outcomes",
+      "initial_probe": "F6",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-19",
+      "family": "E",
+      "name": "Self-experimentation",
+      "obligation": "compare method alternatives under controlled outcome evaluation",
+      "initial_probe": "F6",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    },
+    {
+      "id": "DNA-20",
+      "family": "E",
+      "name": "Bounded evolution",
+      "obligation": "propose reversible changes with lineage and explicit authorization",
+      "initial_probe": "F6",
+      "status": "UNIVERSAL_CANDIDATE",
+      "evidence_maturity": "HYPOTHESIS_UNTIL_CROSS_DOMAIN_TEST",
+      "realization_policy": "OPEN",
+      "external_measurement_required": true
+    }
+  ],
+  "validation_warning": "A successful probe samples candidate genes; it does not prove all gene claims or establish a particular component as required.",
+  "compatibility": "Do not retroactively mutate existing frozen E0/E1/E2 experiment cohorts; version the seed as a separate input."
+}

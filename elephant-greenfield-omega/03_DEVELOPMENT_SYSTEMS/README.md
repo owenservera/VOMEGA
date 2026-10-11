@@ -12,6 +12,10 @@
 
 [O1 / ours Z.ai](proposal-specific/ours-zai/BOOTSTRAP_PROMPT.md) is the first explicitly designed instance. Claude and future authors get **new independent sessions and workspaces** only after their actual proposals are submitted. No two unique proposals should share one model context or tool worktree just to save setup time; share audited static utilities and released evidence only when explicitly justified.
 
+## Universal DNA research is cross-track, not a replacement developer system
+
+The candidate [Elephant genome seed](../05_UNIVERSAL_ELEPHANT_DNA/README.md) is available to all new architecture studies as **optional explicitly versioned research context**. Its 20 proposed genes and six phenotype tests are challengeable; they are not imposed retroactively on active general, O1 or Claude rounds. The [Semantic Factory](semantic-factory-zai/README.md) is one permanent workload to pressure-test that DNA alongside unrelated domains.
+
 ## All paths inherit the same hard requirements
 - Actual context-segregated subagents, distinct IDs and permissions, real workspace isolation, genuine model/tool calls and meaningful experimental fan-out.
 - Four real isolated experiment arms minimum per bounded development round; the unrestricted general lab retains A1/A2/B1/B2 and C1/C2 six-arm rule. Dedicated proposal labs start with two internal competing refiners x two child arms and may introduce a lagged ecosystem challenger when justified; they do not **pretend** to have the general lab's A/B/C teams.
