@@ -1,5 +1,8 @@
 # Phase 0 North Star — The Semantic SDK Builds, Explains and Tests Itself
 
+> **UNIVERSAL SCOPE CLARIFICATION:** Not merely SDK tooling or Elephant settings: **everything that is code or operates/develops code in VOMEGA** is eventually represented and, when safely writable, governed through the [same Machine↔Human command interface](UNIVERSAL_SEMANTIC_GOVERNANCE.md). No hidden alternate self-configuration path after per-domain U4 graduation; U0–U3 allow independently witnessed bootstrapping. [Historical Elephant intelligence](ELEPHANT_INTELLIGENCE_PRESERVATION.md) is required knowledge coverage.
+
+
 > **Parallel self-organization test:** [ADAPTIVE_SWARM.md](ADAPTIVE_SWARM.md) prepares independent streams that use this SDK/Elephant system as the real corpus and ask how they should organize themselves to reach owner-updated MVP v0.5. Only real witnessed local tool/coding/protocol experiments qualify as implemented progress; a group design alone does not.
 
 
