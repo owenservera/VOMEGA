@@ -1,0 +1,99 @@
+{
+  "schema": "vomega-elephant-adaptive-swarm/launch-plan-0.1",
+  "state": "PREPARED_NOT_LAUNCHED",
+  "created": "2026-10-11",
+  "owner_goal": "Elastic independent Elephant self-organization and test-led gap closure from frozen baseline to updated MVP v0.5; SDK and Elephant system dogfood first",
+  "repository": "https://github.com/owenservera/VOMEGA",
+  "pinned_at_start_required": true,
+  "baseline": {
+    "frozen_simulation_control": "elephant-greenfield-omega/00_CORE_BASELINE/02_GREENFIELD_OMEGA_SEED.md",
+    "mutable_product_north_star": "mvp/NORTH-STAR.md",
+    "owner_overlay": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ADAPTIVE_SWARM.md",
+    "semantic_sdk_dogfood": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SDK_SELF_HOSTING_DOGFOOD.md",
+    "visual_language": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/CORE_VISUAL_LANGUAGE.md",
+    "gym_law": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/LAUNCH_POLICY.md",
+    "elephant_dna": "elephant-greenfield-omega/05_UNIVERSAL_ELEPHANT_DNA/README.md",
+    "all_maturity_publish": "elephant-greenfield-omega/01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md"
+  },
+  "launch": {
+    "initial_streams": 6,
+    "elastic_stream_count": true,
+    "recursive_automatic_spawn": false,
+    "authority_for_new_compute_and_external_effects": "REQUIRES_AUTHORIZED_HOST_BUDGET_AND_SCOPE",
+    "source_environment": "INDEPENDENT_SANDBOXED_WORKTREES_OR_EQUIVALENT",
+    "long_lived_owned_branches": false,
+    "isolate_first_round_hypotheses": true,
+    "independent_referee_required_for_promotion": true,
+    "live_provider_actions_allowed": false
+  },
+  "streams": [
+    {
+      "id": "S1",
+      "name": "self-model-and-self-organization",
+      "hypothesis": "Elephant introspection and role allocation can be empirically grounded",
+      "first_falsifier": "withheld context or unavailable telemetry must not be reported as known"
+    },
+    {
+      "id": "S2",
+      "name": "command-wiki-semantic-sdk",
+      "hypothesis": "One source-pinned SDK command can explain its own real tool",
+      "first_falsifier": "Wiki claim inconsistent with underlying source or tool witness"
+    },
+    {
+      "id": "S3",
+      "name": "automated-experimental-learning",
+      "hypothesis": "Reusable tooling shortens independently verified correction cycle",
+      "first_falsifier": "end-to-end wall time/regressions worse than existing baseline"
+    },
+    {
+      "id": "S4",
+      "name": "human-machine-spatial-parity",
+      "hypothesis": "Custom visual language preserves canonical meaning and safe actions",
+      "first_falsifier": "visual re-theme hides consequence or alters semantic command digest"
+    },
+    {
+      "id": "S5",
+      "name": "context-handoff-communication",
+      "hypothesis": "Verifiable handoff is reconstructable by an independent Elephant",
+      "first_falsifier": "lost/altered assumption undetected"
+    },
+    {
+      "id": "S6",
+      "name": "mvp-feasibility-wildcard",
+      "hypothesis": "Smallest demonstrated useful MVP path can be independently justified",
+      "first_falsifier": "claimed progress depends on simulated/live evidence confusion"
+    }
+  ],
+  "adaptive_protocol": {
+    "self_reorganization_actions": [
+      "KEEP",
+      "SPLIT",
+      "MERGE",
+      "REASSIGN",
+      "RETIRE",
+      "ADD",
+      "REPLACE"
+    ],
+    "propose_test_referee_then_promote": true,
+    "owner_canon_and_product_intent_changes": "OWNER_REVIEW_REQUIRED",
+    "blind_discovery_vs_seeded_reuse": "REPORT_SEPARATELY",
+    "no_progress": "PUBLISH_HEARTBEAT_AND_PARK_OR_REDIRECT",
+    "reviewer_map": "COMPARE_AGAINST_LEGACY_ALIGNMENT_POST_RUN_ONLY",
+    "no_evidence": "NOT_RUN_OR_UNKNOWN_NOT_PASS"
+  },
+  "acceptance": {
+    "phase0": [
+      "source_grounded_command_to_wiki_self_knowledge",
+      "observed_bounded_tool_execution",
+      "machine_human_spatial_visual_parity_case",
+      "own_protocol_test_and_revision_witness",
+      "fresh_session_reconstructability",
+      "comparison_against_simpler_agent_control"
+    ],
+    "mvp": "USE_PINNED_mvp/NORTH-STAR.md_PLUS_OWNER_OVERLAY_AND_EXACT_SOURCE_EPOCH"
+  },
+  "output_contract": "EACH_TOP_LEVEL_TURN_AND_EACH_ROUND_PUBLISH_ALL_MATURITY_PACKS",
+  "actual_runs": [],
+  "actual_stream_assignments": [],
+  "observed_results": "NOT_RUN"
+}
