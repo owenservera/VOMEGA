@@ -1,5 +1,8 @@
 # Ω Foundational Semantic SDK — R&D intake
 
+> **EVERGREEN DESIGN SOURCE OF RECORD:** [Living Semantic Design Record](design-record/README.md) — current shared narrative, source→meaning walkthrough, learning loop, Elephant integration, protected principles, decisions still open, editing instructions and glossary. Begin here for the present design; the dated master blueprint and experiments remain important detailed references, not independent approvals.
+
+
 > **CURRENT EXPERIMENTAL HOW — SOURCE-FIRST SEMANTIC SATURATION:** [Over-verbalize → verify → compress → reconstruct](SOURCE_FIRST_SEMANTIC_SATURATION_LAB_2026-10-11.md). Begin with ordinary executable TypeScript, saturate it with explicit source-grounded meaning, and run competing evidence-checked compression/context experiments. This is the practical method within Rule 1, not a replacement for the master blueprint or earlier findings.
 
 **Consolidated build-grade vision (2026-10-11):** [Ω Universal Semantic System Master Blueprint](./MASTER_UNIVERSAL_SEMANTIC_SYSTEM_BLUEPRINT_2026-10-11.md) — source-native self-describing kernel, compiler/IR, rebuildable indexes, runtime, Elephant integration, experiments and open decisions. This is a blueprint, not proof of production implementation.
