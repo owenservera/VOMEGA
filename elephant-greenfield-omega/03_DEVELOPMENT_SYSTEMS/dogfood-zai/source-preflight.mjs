@@ -11,6 +11,7 @@ const args=process.argv.slice(2);
 const value=name=>{const i=args.indexOf(name);if(i<0)return null;if(!args[i+1]||args[i+1].startsWith('--'))throw Error(name+' requires a value');return args[i+1]};
 const root=path.resolve(value('--seed-root')??path.join(here,'source'));
 const output=value('--out');
+const expectedManifest=value('--expected-manifest-sha256');
 const runTests=args.includes('--run-tests');
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const fail=(reason)=>({status:'FAIL',reason});
@@ -21,6 +22,8 @@ function inspect(root){
   let manifest;
   try {manifest=JSON.parse(fs.readFileSync(m,'utf8'));}catch(e){report.problems.push('manifest malformed');return report}
   if(!Array.isArray(manifest.files)||manifest.count!==manifest.files.length||manifest.files.length>2000){report.problems.push('manifest count invalid');return report}
+  const actualManifestSha=sha(fs.readFileSync(m));
+  if(expectedManifest && (!/^[a-f0-9]{64}$/i.test(expectedManifest)||expectedManifest.toLowerCase()!==actualManifestSha)) report.problems.push('manifest pin mismatch');
   const expected=new Set(['ARTIFACT-MANIFEST.json']);
   for(const item of manifest.files){
     const name=item.path;
