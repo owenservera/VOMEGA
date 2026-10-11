@@ -1,5 +1,8 @@
 # Automation Reuse — Decision 2
 
+> **SDK DOGFOOD INTEGRATION:** Instead of treating the existing tools as an unrelated platform, progressively expose source intake, reflection/wiki, compiler, tests, mutation/replay and all-maturity publication through the [Semantic SDK's own command→Wiki→test interface](SDK_SELF_HOSTING_DOGFOOD.md). Include [machine-readable visual projections and user-style mutation parity](CORE_VISUAL_LANGUAGE.md) as direct experiment targets; tools remain replaceable adapters.
+
+
 > **Additional existing reusable automation/control:** [Ω's pure TypeScript NLCL and 17 symbolic command families](SYMBOLIC_LANGUAGE_INTAKE.md) supply a source-first lex/parse/ground/project experimental control. This is not a new mandatory parser, and no tests of its full current integration are claimed.
 
 
