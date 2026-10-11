@@ -1,0 +1,120 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.research.abc",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "experiment",
+  "title": "General Z.ai A/B/C Elephant research architecture",
+  "authority": "research_only",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/BOOTSTRAP-ZAI-EXPERIMENT-LAB/01_PRIMARY_BOOTSTRAP_PROMPT.md",
+      "role": "historical",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/general-zai-lab/README.md",
+      "role": "historical",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Compete resident-context-first, deterministic rebuild-first and delayed toolkit challenger tracks with independent child fan-out and separate referee, distinguishing E0/E1/E2 cognition levels.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "frozen_seed",
+        "meaning": "Common Greenfield Ω source and product contract",
+        "required": false
+      },
+      {
+        "id": "architecture_hypotheses",
+        "meaning": "A resident, B rebuild, C challenger",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "master_a",
+        "meaning": "Candidate implementation and pack",
+        "required": false
+      },
+      {
+        "id": "master_b",
+        "meaning": "Independent candidate implementation and pack",
+        "required": false
+      },
+      {
+        "id": "referee_result",
+        "meaning": "Separate judge evidence",
+        "required": false
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "NEEDS_CENSUS",
+    "preconditions": [
+      "Four actually separate child executions for stated minimum round",
+      "Tracked model/context identity, source, budgets and proof",
+      "E0/E1/E2 counts represent real Elephants, not arms"
+    ],
+    "forbidden": [
+      "Convert running active session on documentation migration",
+      "Replace A/B/C with Claude A/B without explicit comparator"
+    ]
+  },
+  "phases": [
+    {
+      "id": "census",
+      "action": "census",
+      "completion": "CENSUS"
+    },
+    {
+      "id": "fanout",
+      "action": "fanout",
+      "completion": "FANOUT"
+    },
+    {
+      "id": "seal",
+      "action": "seal",
+      "completion": "SEAL"
+    },
+    {
+      "id": "referee",
+      "action": "referee",
+      "completion": "REFEREE"
+    },
+    {
+      "id": "master_a_assimilate",
+      "action": "master_a_assimilate",
+      "completion": "MASTER_A_ASSIMILATE"
+    },
+    {
+      "id": "master_b_assimilate",
+      "action": "master_b_assimilate",
+      "completion": "MASTER_B_ASSIMILATE"
+    },
+    {
+      "id": "publish",
+      "action": "publish",
+      "completion": "PUBLISH"
+    }
+  ],
+  "gates": [],
+  "outputs": [],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "General lab research system and live-session instructions exist"
+    ],
+    "limitations": [
+      "Host actual independent agent runs not established by this schema card"
+    ]
+  },
+  "modules": [],
+  "metrics": [],
+  "controls": [
+    "E0",
+    "E1",
+    "E2"
+  ]
+}
