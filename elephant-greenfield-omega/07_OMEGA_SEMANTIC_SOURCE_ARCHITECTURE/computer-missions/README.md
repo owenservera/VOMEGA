@@ -1,5 +1,8 @@
 # Five autonomous computers — benchmark-driven Semantic SDK acceleration
 
+> **⚓ Rule 1 governance update, 2026-10-11:** [Machine ↔ Human is the sole semantic learning loop](../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). The five computer missions below are PROVISIONAL historical design drafts, not independent/ordered workstreams or finalized launch instructions. Any future split must feed the same canonical Machine/Human discrepancy → SDK/compiler/runtime improvement circuit; no five-session plan should be launched from these unreviewed prompts.
+
+
 **Launch model:** exactly five user-sent master prompts. Each COMPUTER clones VOMEGA, receives the same operator-provided `07_OMEGA_full.zip` seed, can independently spawn its own bounded sub-agents, and delivers a fully runnable/gradable candidate after a substantial autonomous run. No forced 21/23/28 simultaneous sessions. Keep one reviewed main; short-lived worktrees only.
 
 ## Five launch links
