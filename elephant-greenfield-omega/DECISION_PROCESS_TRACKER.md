@@ -4,7 +4,7 @@
 
 This is a **blank operational decision-intake tracker**, not a retroactive list of decisions, a second product PM, or a new executive authority. Existing owner decisions remain effective in their original sources (e.g. `.project/DECISIONS.md` and [Rule 1](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md)); **none was automatically imported or rewritten as a new decision**. Its purpose is to surface what deserves deliberation, what can be tested, and where explicit Owen guidance is needed.
 
-**Reviewed Batch 01 and 02 (2026-10-11):** 12 adjudications presented; 10 explicit AGREE (four from Batch 01, six from Batch 02), two UNANSWERED with original owner comments (Batch 01). Three Batch 01 follow-ups were clarified through Batch 02: two now have explicit owner scope/authority decisions and one has approved intent but pending integration details. **No laboratory result or executable implementation is implied.** [Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) · [Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) · [Master TODO](MASTER_TODO.md).
+**Reviewed Batches 01–03 (2026-10-11):** 18 adjudications presented: 16 agreements (10 submitted explicitly in Batches 01–02, six selected visibly in screenshots for Batch 03) and two UNANSWERED with original owner comments (Batch 01). Batch 03 comments are partially cropped; their visible language is preserved with uncertainty, not silently completed. **No laboratory result, code implementation or archive migration is implied.** [Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) · [Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) · [Batch 03 screenshot receipt](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) · [Master TODO](MASTER_TODO.md).
 
 ## Decision process / paths
 
@@ -59,12 +59,19 @@ reviewer_notes: null
 | DECQ-0003 | Internalize Elephant experiments and Rule 1 SDK loop | LAB, DELIBERATION | OWNER_DIRECTION_RECORDED / IMPLEMENTATION_UNRESOLVED | [REV-009 & REV-012 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | Both AGREE: core Elephant dev integration and SDK embedding. | [TODO-001](MASTER_TODO.md) and [TODO-004](MASTER_TODO.md), retain independent controls |
 | DECQ-0004 | Meaning of unfinished "we first" after SDK embedding | OWEN_GUIDANCE | NEEDS_OWEN | [REV-012 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | Verbatim phrase "Embedded into the elephants system, we first" is incomplete. | Ask a narrow clarification in a subsequent interview without prescribing a stage |
 
+| DECQ-0005 | TypeScript default and threshold for alternate runtimes | LAB, DELIBERATION | OWNER_DIRECTION_RECORDED / TEST_PENDING | [REV-013 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Visible Agree + `TS is our mono unless ... significantly boost dev` | [TODO-007](MASTER_TODO.md) |
+| DECQ-0006 | Whether browser testing is currently out of scope or just not to be discussed | OWEN_GUIDANCE | NEEDS_CLARIFICATION | [REV-014 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Visible Agree plus ambiguous `No mention rowser that is stage now +100` | [TODO-008](MASTER_TODO.md) |
+| DECQ-0007 | Multi-stream capability/evidence intake, incremental standardization | LAB, DELIBERATION | OWNER_DIRECTION_PARTIAL / DESIGN_OPEN | [REV-015/016 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Both Agree; comments obscured or truncated | [TODO-009](MASTER_TODO.md), [TODO-010](MASTER_TODO.md) |
+| DECQ-0008 | Use conceptual Elephant DNA with unspecified Claude reference | DELIBERATION | NEEDS_CLARIFICATION | [REV-017 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Agree; visible text `with mments the Claude` ambiguous | [TODO-011](MASTER_TODO.md) |
+| DECQ-0009 | Semantic SDK as Wiki compiler embedded in Elephant | LAB, DELIBERATION, OWEN_GUIDANCE | OWNER_DIRECTION_RECORDED / DESIGN_OPEN | [REV-018 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Agree; `I would reframe, the semantic sdk concept is the wiki compiler (Todo:` cropped | [TODO-012](MASTER_TODO.md), [TODO-001](MASTER_TODO.md) |
+
 ## Reviewed batches (owner responses, not inferred history)
 
 | Batch | Status | Reviewed cards | Decision dispositions | Cursor |
 | --- | --- | --- | --- | --- |
 | [2026-10-11 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | SUBMITTED | REV-001 to REV-006 | REV-001/002/003 AGREED; REV-006 AGREED_WITH_QUALIFICATION; REV-004/005 UNANSWERED_WITH_GUIDANCE | Batch 02 |
-| [2026-10-11 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | SUBMITTED | REV-007 to REV-012 | Six AGREE; REV-007,009,012 include binding qualifications as recorded; no migration authorized | **Batch 03: earlier 2026-10-11 semantic/Elephant decisions** |
+| [2026-10-11 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | SUBMITTED | REV-007 to REV-012 | Six AGREE; REV-007,009,012 include binding qualifications; no migration authorized | Batch 03 |
+| [2026-10-11 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | SCREENSHOT_REVIEW_EVIDENCE | REV-013 to REV-018 | Six visibly selected AGREE; cropped/ambiguous comments separately flagged; original form payload unavailable | **Batch 04: earlier Elephant experiment/design decisions** |
 
 The tracker started blank and is populated only from submitted user adjudications. Original historical decisions remain sourced in their original locations. **Later owner-confirmed greenfield precedence overrides the earlier assistant's characterization of product/Ratchet as coequal greenfield authority; old documents have not yet been rewritten or archived under that correction.**
 
