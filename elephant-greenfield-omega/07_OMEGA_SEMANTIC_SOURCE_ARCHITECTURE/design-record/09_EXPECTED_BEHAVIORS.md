@@ -1,5 +1,7 @@
 # Ten Core Expected Behaviors — The Capability Contract
 
+> **Research inventory only:** E01–E10 are proposed behavioral vectors, not a ten-method API or required initial implementation. Use the [Elephant Protocol Gym](../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/README.md) to discover how they should be tested and refined.
+
 **Role:** evergreen expectation register and guiding design canon candidate.
 **Scope:** Ω Semantic SDK + WikiCore + Self-Runtime + Elephant co-learning.
 **Status:** OWNER_DIRECTION for formalizing expectations; the ten formulations are PROVISIONAL_SYNTHESIS FOR INTERVIEW, not individually owner-ratified.
