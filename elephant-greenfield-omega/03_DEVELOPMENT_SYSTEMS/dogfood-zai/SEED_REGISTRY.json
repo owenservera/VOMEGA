@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.1.0",
+  "status": "CANDIDATE_SEEDS_NOT_AUDITED",
+  "purpose": "Source-first ZAI self-hosting experimental cohort; paths are not proof of execution.",
+  "entries": [
+    {
+      "id": "ecp-o1-mock",
+      "path": "elephant-greenfield-omega/tools/ecp/ecp.mjs",
+      "kind": "executable",
+      "test": "node --test elephant-greenfield-omega/tools/ecp/ecp.test.mjs",
+      "evidence": "MOCK_SIMULATION",
+      "role": "control/toolkit seed"
+    },
+    {
+      "id": "dna-fitness-scorer",
+      "path": "elephant-greenfield-omega/05_UNIVERSAL_ELEPHANT_DNA/validation/harness.mjs",
+      "kind": "executable",
+      "test": "node elephant-greenfield-omega/05_UNIVERSAL_ELEPHANT_DNA/validation/harness.mjs --self-test",
+      "evidence": "SYNTHETIC_FIXTURES",
+      "role": "honesty probe and evaluator seed"
+    },
+    {
+      "id": "semantic-factory",
+      "path": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/semantic-factory-zai",
+      "kind": "mixed",
+      "evidence": "DESIGN_WITH_EXAMPLES",
+      "role": "semantic harvest contracts and examples; inspect exact runnable contents"
+    },
+    {
+      "id": "claude-ecp",
+      "path": "elephant-greenfield-omega/02_ARCHITECTURE_PROPOSALS/claude",
+      "kind": "mixed",
+      "evidence": "IMPORTED_SIMULATED_COMPONENTS",
+      "role": "alternative capsule-first toolkit candidate; inspect actual code"
+    },
+    {
+      "id": "ingested-catalog",
+      "path": "elephant-greenfield-omega/04_TURN_PUBLICATIONS/ARTIFACT-CATALOG.md",
+      "kind": "catalog",
+      "evidence": "CATALOG_ONLY",
+      "role": "resolve toolkit custody and availability"
+    },
+    {
+      "id": "zai-semantic-round1-archive",
+      "path": null,
+      "kind": "unavailable_external_bundle",
+      "evidence": "AUTHOR_REPORTED_AND_INSPECTED_ARCHIVE_NOT_MIRRORED",
+      "role": "requires original ZIP/TAR ingestion, provenance, sanitization and exact hash"
+    },
+    {
+      "id": "claude-round1-archive",
+      "path": null,
+      "kind": "unavailable_external_bundle",
+      "evidence": "AUTHOR_REPORTED_AND_INSPECTED_ARCHIVE_NOT_MIRRORED",
+      "role": "requires original ZIP/TAR ingestion, provenance, sanitization and exact hash"
+    }
+  ],
+  "rules": {
+    "absence": "Do not fabricate or treat documentation as code",
+    "promotion": "hash + license + sanitize + runtime replay + manifest",
+    "publication": "Complete portfolio after every top-level turn regardless of maturity",
+    "cohort": "freeze commit hash and all input hashes before comparable trials"
+  }
+}
