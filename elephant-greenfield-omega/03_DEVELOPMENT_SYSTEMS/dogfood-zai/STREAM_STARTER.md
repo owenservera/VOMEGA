@@ -22,3 +22,9 @@ Then freeze a cohort (Git SHA + seed hashes), select the smallest runnable asset
 No provider credentials or account/config changes. No autonomous deployment or consequential live provider interactions. Do not claim successful integration without real tests. Keep D0 source unchanged.
 
 **Your first turn deliverable:** an observed seed inventory, recorded baseline attempts/results, an experiment plan focused on one real reusable tool, and the complete all-maturity portfolio publication. Do not commit a fabricated execution result or declare a model session launched because this prompt exists.
+
+## SECOND-PASS ADDENDUM: REAL PRIVATE SEED CODE NOW RECOVERED
+
+Prior statement 'ZIP/TAR not mirrored in Git' **remains accurate** but does not mean the code is irretrievable. The owner's archived source has been recovered and bundled in a private **`Elephant_Dogfood_Source_Seed_v2_2026-10-11.zip`** (SHA-256 `a917fa57c24c84150fa61d8ab493f54d495306cd9350026bdfb3820b1cfaa62a`). Do not proceed with a source-first run until this actual portable ZIP or an equivalently hash-verified mirror is attached/mounted. It contains `dogfood-zai/source/` (191 files), `SOURCE_INDEX.json`, `DOGFOOD_FIRST_TURN.md`, a tested source checker and D0 simulation fixtures.
+
+After extracting, verify pinned manifest SHA-256 `ab1439f91faec30d4e10c949fdc83052926e68a5871a884dbae4f079457e6030` using `node dogfood-zai/source-preflight.mjs --expected-manifest-sha256 ab1439f91faec30d4e10c949fdc83052926e68a5871a884dbae4f079457e6030 --run-tests`. Read [actual source replay instructions](SOURCE_CUSTODY_AND_REPLAY.md). The local independent baseline was 32/32 mock kernel tests on Node.js 22, **not** a built ZAI app or authenticated live Elephant. Never include provider-connected adapter probes in automatic preflight. Source file index and source content are in the handoff ZIP, not GitHub. Preserve full all-state per-turn pack publication even if nothing matures.
