@@ -1,5 +1,7 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Owner-directed development method (2026-10-11):** [Source-First Semantic Saturation & Compression Lab](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/SOURCE_FIRST_SEMANTIC_SATURATION_LAB_2026-10-11.md). A tiny conventional TypeScript fixture becomes maximally self-describing; independent models test semantic compression, wiki reconstruction, cross-file cognition and Elephant context economics. Preserves existing Rule 1, master blueprint and evidence boundaries; implementation details remain open.
+
 **Consolidated build-grade vision (2026-10-11):** [Ω Universal Semantic System Master Blueprint](./07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/MASTER_UNIVERSAL_SEMANTIC_SYSTEM_BLUEPRINT_2026-10-11.md) — source-native self-describing kernel, compiler/IR, rebuildable indexes, runtime, Elephant integration, experiments and open decisions. This is a blueprint, not proof of production implementation.
 
 
