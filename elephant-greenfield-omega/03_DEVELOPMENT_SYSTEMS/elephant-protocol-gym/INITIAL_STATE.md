@@ -1,5 +1,8 @@
 # Elephant Gym Initial State — Infinite 3D Canvas, Shared Execution Manifold, Full Parity
 
+> **Legacy symbolic command dimension:** Preserve the [17-family historical symbol vocabulary and source implementations](SYMBOLIC_LANGUAGE_INTAKE.md) as source-grounded *candidate visual/lexical input* for the 3D execution manifold. Human language, glyphs, machine semantics and spatial affordances must not express inconsistent action targets, effects, freshness or authority. Operator composition and SVG representation remain experiments, not already-proven full parity.
+
+
 **Status:** OWNER-DIRECTED DESIGN; IMPLEMENTATION NOT VERIFIED. The four [approved Gym rules](LAUNCH_POLICY.md) remain controlling. This is an evergreen synthesis of **existing research**, not a new semantic API.
 
 ## The substrate is an infinite 3D canvas
