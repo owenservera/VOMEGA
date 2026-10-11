@@ -1,5 +1,8 @@
 # Owner proposal, assistant considerations, and decisions still open
 
+> **CURRENT PRECEDENCE NOTE (2026-10-11):** Section A records an earlier owner proposal faithfully. The earlier **Wasm runtime target/no-Node/no-Python requirement has been superseded**: Wasm is a potential [booster kit](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md), not a mandatory realization. The owner's intent to preserve **full human/machine semantic parity, live publishing and the common 3D execution manifold** continues; see [initial state](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md). The historical bullets below remain unchanged for provenance.
+
+
 **Disposition:** proposal recorded for deliberation, not a product architecture ratification. Applies solely to the final-stage semantic publishing kit inside the dev automation loop.
 
 ## A. Owner's proposal — recorded intent
