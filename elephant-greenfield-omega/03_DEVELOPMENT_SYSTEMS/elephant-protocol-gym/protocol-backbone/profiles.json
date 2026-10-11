@@ -1,0 +1,82 @@
+{
+  "schema": "epg.composition/0.1",
+  "state": "PROPOSED_NOT_EXECUTABLE",
+  "profiles": [
+    {
+      "id": "exploratory-five",
+      "question": "Can five specialized bounded Gyms discover and compose a usable SDK B1?",
+      "protocols": [
+        "epg.r0.five",
+        "epg.semantic.selfhosting",
+        "epg.visual.parity",
+        "epg.publication.allturn",
+        "epg.research.library",
+        "epg.governance.universal"
+      ],
+      "runner_options": [
+        "epg.runner.claude-v02"
+      ],
+      "economy_options": [
+        "epg.economy.timecredit"
+      ],
+      "candidate_task": "SDK-FAIL-01",
+      "readiness": "BLOCKED",
+      "blockers": [
+        "Runnable failing SDK test absent",
+        "No frozen acceptance/oracle",
+        "Actual independent five-agent executor not censused"
+      ],
+      "valid_inference": "Exploratory B1 feasibility; NOT causally proven swarm performance"
+    },
+    {
+      "id": "calibration-time-credit",
+      "question": "Can E0 calibrate a fixed runnable frozen benchmark and full time economics?",
+      "protocols": [
+        "epg.economy.timecredit",
+        "epg.runner.claude-v02",
+        "epg.publication.allturn"
+      ],
+      "task": "C1",
+      "classes": [
+        "E0"
+      ],
+      "n_per_class": 3,
+      "readiness": "NEEDS_CENSUS_AND_OPERATOR_FREEZE",
+      "valid_inference": "Task calibration and accounting checks, not SDK B1 proof"
+    },
+    {
+      "id": "causal-elephant-cost",
+      "question": "Does protocol and/or preloaded verified Elephant intelligence improve accepted results per time?",
+      "protocols": [
+        "epg.economy.timecredit",
+        "epg.runner.claude-v02",
+        "epg.research.library",
+        "epg.publication.allturn"
+      ],
+      "tasks": [
+        "C1",
+        "C3"
+      ],
+      "classes": [
+        "E0",
+        "PROTO",
+        "SEEDED"
+      ],
+      "n_per_class": 3,
+      "randomization": "blocked_seeded",
+      "readiness": "NEEDS_CALIBRATION_AND_OWNER_APPROVAL",
+      "valid_inference": "Exploratory N=3/class/task; claims require replication and independent scoring"
+    },
+    {
+      "id": "open-zai-abc",
+      "question": "Does resident/rebuilt/toolkit cognition improve E0/E1/E2 on a frozen target?",
+      "protocols": [
+        "epg.research.abc",
+        "epg.publication.allturn",
+        "epg.research.library"
+      ],
+      "readiness": "NEEDS_HOST_CENSUS",
+      "valid_inference": "Separate historical A/B/C architecture hypotheses, not a variant of Claude's two-track program"
+    }
+  ]
+}
