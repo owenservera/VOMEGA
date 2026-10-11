@@ -1,5 +1,8 @@
 # Ω Semantic SDK · Phase 0 integration lab
 
+> **⚓ RULE 1 — ONE LOOP:** [Machine ↔ Human co-evolution](../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). Readable UI/Wiki/intent and machine representations continuously generate learning signals for the SDK/compiler/runtime. Experiment automation is this SAME loop. Previous stage sequencing and browser ban are superseded; current Phase 0 remains a testable reference baseline.
+
+
 > **OPEN DESIGN (not implemented):** [Wasm final-stage Semantic Publisher Lab proposal](devtools/proposals/wasm-semantic-publisher/README.md). A dev-automation accelerator with one semantic publication projected to Machine/Human, rapid language/compiler variation testing and live source-linked Wiki; it does **not** replace the Python mock reference or the deployed v0.1.1 three-tool prototype.
 
 
