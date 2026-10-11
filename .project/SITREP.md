@@ -1,5 +1,8 @@
 # VOMEGA SITREP — current state
 
+> **2026-10-11 documentation consolidation:** [One Canonical Development Corpus](../elephant-greenfield-omega/CANONICAL_DEVELOPMENT_CORPUS.md) governs the navigation/archival disposition of `.project/` and Elephant documents. This 2026-10-06 SITREP remains a source of product operating context; current root AGENTS / Ratchet remain product authority. [Retired stub review chunk](.archive/2026-10-11/REVIEW_CHUNK_MANIFEST.md). Do not treat a research archiving operation as an update to executable D1 state or local claims.
+
+
 Date: 2026-10-06. This file is current state only; previous long SITREP/history is preserved in the archive.
 
 ## Mission
