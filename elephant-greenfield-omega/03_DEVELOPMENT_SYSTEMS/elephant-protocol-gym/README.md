@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **LEGACY ALIGNMENT, NOT A BUILD CHECKLIST:** [Ten expected capability classes](LEGACY_ALIGNMENT_MAP.md) from today's source inventory are used to assess *what the experiments independently discover*, not mandate ten modules or teams. Run blind-discovery and seeded-reuse comparisons separately; record unexpected new classes too.
+
+
 > **RECOVERED SYMBOLIC INTELLIGENCE:** [17 historic command-symbol families and existing deterministic TypeScript implementation](SYMBOLIC_LANGUAGE_INTAKE.md) are **source-inspected experimental inputs**, not a proven full grammar or mandated SDK language. Preserve existing symbolic/NL/3D parity research, Unicode/operator ambiguity and independent consent boundaries.
 
 
