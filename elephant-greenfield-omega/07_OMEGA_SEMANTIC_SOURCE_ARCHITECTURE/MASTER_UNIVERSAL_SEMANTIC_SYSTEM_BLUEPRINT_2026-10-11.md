@@ -1,3 +1,5 @@
+> **Evergreen current-design navigation (added 2026-10-11):** [Living Semantic Design Record](design-record/README.md) contains the editable present-tense shared design, explicitly scoped agreement states, first-file source-to-meaning walkthrough, feedback lab, Elephant implications, decision board, and change protocol. This long-form blueprint is retained as detailed research context, including open proposals; read the evergreen record first for the latest design synthesis. Neither document is evidence of an implemented or owner-approved technical choice without its linked receipt.
+
 ---
 title: "Ω Universal Semantic System — Master Vision, Architecture & Build Blueprint"
 subtitle: "A source-native, self-describing semantic protocol, compiler, knowledge fabric, governed runtime and autonomous evolution laboratory"
