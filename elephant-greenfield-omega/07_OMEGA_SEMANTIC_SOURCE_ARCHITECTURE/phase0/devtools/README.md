@@ -1,5 +1,8 @@
 # Ω Development Tools · Live Lab + Experiment Runner + Change Lab
 
+> **⚓ RULE 1:** [Machine ↔ Human feedback](../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md) drives **one co-evolving SDK/compiler/runtime learning circuit**. Live Lab, Experiment Runner and Change Lab are coupled instruments, not separate downstream tasks. [Corrected test policy](FAST_TDD_NO_BROWSER_LOOP.md): browser evidence is welcome when needed. The existing Python v0.1.1 implementation is a comparison baseline.
+
+
 > **Proposed next experiment; NOT_FROZEN and NOT IMPLEMENTED:** [Zero-runtime-dependency TS-family/Wasm final-stage publisher](proposals/wasm-semantic-publisher/README.md), [technical spec](proposals/wasm-semantic-publisher/PRELIMINARY_SPEC.md), [near-instant lab wiring](proposals/wasm-semantic-publisher/AUTOMATION_LOOP_WIRING.md) and [separate live/Wiki/parity/velocity benchmarks](proposals/wasm-semantic-publisher/BENCHMARKS_AND_EXPERIMENTS.md). Current devtools remain Python-backed and experimental; this is a sibling research candidate, not a runtime migration.
 
 
