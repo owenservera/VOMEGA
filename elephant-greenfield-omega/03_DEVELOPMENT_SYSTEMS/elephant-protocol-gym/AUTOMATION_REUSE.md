@@ -1,5 +1,8 @@
 # Automation Reuse — Decision 2
 
+> **Additional existing reusable automation/control:** [Ω's pure TypeScript NLCL and 17 symbolic command families](SYMBOLIC_LANGUAGE_INTAKE.md) supply a source-first lex/parse/ground/project experimental control. This is not a new mandatory parser, and no tests of its full current integration are claimed.
+
+
 **Status: OWNER-DIRECTED; 2026-10-11.** Reuse everything useful from the existing VOMEGA development automation toolkit, keep tools replaceable, and let experiments improve or replace them when justified. This is an integration rule, not a mandate to use every tool or a declaration that the toolkit is production-ready.
 
 ## Why
