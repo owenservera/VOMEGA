@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **PRIMARY PHASE 0 DOGFOOD:** The [Semantic SDK must expose its own development toolchain and the Elephant's operating protocols](SDK_SELF_HOSTING_DOGFOOD.md) through command → source-grounded Wiki → bounded test → evidence → revised interpretation. The [core visual intelligence language](CORE_VISUAL_LANGUAGE.md) is part of this learning path: high-density human↔machine↔3D parity and user-customizable visual encodings must be tested without breaking machine command chains. [Starter falsifiers](corpus/self-hosting-cases.json).
+
+
 > **LEGACY ALIGNMENT, NOT A BUILD CHECKLIST:** [Ten expected capability classes](LEGACY_ALIGNMENT_MAP.md) from today's source inventory are used to assess *what the experiments independently discover*, not mandate ten modules or teams. Run blind-discovery and seeded-reuse comparisons separately; record unexpected new classes too.
 
 
