@@ -73,3 +73,7 @@ A track only graduates when it demonstrates meaningful Ω/ECP value under indepe
 
 ## Benchmark consequence
 Keep **pack-level evaluations** (does claimed bounded functionality work, costs and interoperability) separate from **system-level comparisons** (does an assembly or track reference deliver accepted software faster/better?). C operates benchmarks; independent Truth signs. Do not add pack scores to assert system throughput: integration and overlap can change the outcome completely.
+
+## Normative clarification (2026-10-11): every pack EVERY turn irrespective of maturity
+
+The earlier language concerning newly released or qualified packs is **not** a publication gate. Every operating A/B/C track and independently launched proposal-specific development session MUST publish its ENTIRE existing pack portfolio at the end of EACH top-level development turn, including DISCOVERED, EXPERIMENTAL, BLOCKED, FAILED, PAUSED, VERIFIED, PORTABLE, COMPOSED, REJECTED, RETIRED and UNCHANGED items. Pack content, even drafts, partial implementations and failing test results, must be retrievable and versioned. Unchanged packs may reuse verified immutable content-addressed references. Publication alone makes **no** claim of verification. A controller with zero current packs still publishes its truthful zero-pack inventory. See ../01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md; that contract governs any conflicting older wording about maturity, pack counts or round-only release.
