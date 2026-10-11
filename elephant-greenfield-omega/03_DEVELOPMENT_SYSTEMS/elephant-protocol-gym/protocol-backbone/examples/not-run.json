@@ -1,0 +1,66 @@
+{
+  "schema": "epg.run/0.1",
+  "run_id": "R0-PREVIEW-NOT-LAUNCHED",
+  "protocol_id": "epg.r0.five",
+  "protocol_version": "0.1.0",
+  "status": "NOT_RUN",
+  "basis": {
+    "git_sha": null,
+    "protocol_sha256": null,
+    "requirement_epoch": "PROPOSED_NOT_FROZEN",
+    "fixture_sha256": null,
+    "executor_census_ref": null
+  },
+  "claims": [
+    {
+      "statement": "No five independent agent runs or real SDK benchmark have been conducted for this protocol package.",
+      "evidence_class": "DESIGN",
+      "witness_refs": []
+    }
+  ],
+  "events": [],
+  "artifacts": [],
+  "metrics": {
+    "elapsed_wall_seconds": {
+      "value": null,
+      "status": "UNKNOWN",
+      "unit": "seconds"
+    },
+    "worker_effort_seconds": {
+      "value": null,
+      "status": "UNKNOWN",
+      "unit": "seconds"
+    },
+    "referee_seconds": {
+      "value": null,
+      "status": "UNKNOWN",
+      "unit": "seconds"
+    },
+    "spend_tc": {
+      "value": null,
+      "status": "UNKNOWN",
+      "unit": "TC"
+    }
+  },
+  "publication": {
+    "status": "NOT_STARTED",
+    "all_maturity_pack_index": null,
+    "reason": "This file is a design example, not a turn publication"
+  },
+  "gate_results": [
+    {
+      "id": "R0_RUNNABLE",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "R0_B1",
+      "status": "NOT_RUN"
+    }
+  ],
+  "extensions": {
+    "epg.time_credit": {
+      "enabled": false,
+      "reason": "Not approved and no run ledger"
+    }
+  }
+}
