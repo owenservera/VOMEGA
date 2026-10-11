@@ -1,5 +1,8 @@
 # Phase 0 North Star — The Semantic SDK Builds, Explains and Tests Itself
 
+> **CORE VISUAL INTELLIGENCE REQUIREMENT:** The SDK self-dogfood loop must incorporate the [machine-readable, high-density human/3D visual language](CORE_VISUAL_LANGUAGE.md) as an instrument for observing the Elephant's own protocols. The *only authorized learning/promotion path* is the shared Rule 1 Machine ↔ Human feedback, independently tested; model-proposed edits are hypotheses. User-reprogrammable icons/colors/layout/spatial arrangements must not silently mutate the machine command chain, hide material consequences or grant authority. See [self-hosting case corpus](corpus/self-hosting-cases.json), especially DG-05–DG-08 and DG-10.
+
+
 **Status:** OWNER-DIRECTED PRIMARY PHASE 0 OBJECTIVE, **NOT AN IMPLEMENTATION CLAIM**. Date 2026-10-11. This document refines—not replaces—the [four approved Gym launch rules](LAUNCH_POLICY.md), [initial infinite-3D human–machine parity manifold](INITIAL_STATE.md) and the existing [source-first Elephant dogfood track](../dogfood-zai/README.md).
 
 ## The owner directive
