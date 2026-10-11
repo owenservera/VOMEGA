@@ -1,4 +1,6 @@
 # Elephant Protocol Gym (EPG)
+
+> **OWNER DECISION 1 — FEEDER REUSE:** [Use the existing source feeder/custody chain](FEEDER_REUSE.md). The controlled TypeScript fixture and verified available real Elephant code are both first-class inputs; do not recreate ingestion, and do not claim private sources are remotely accessible.
 ## Semantic protocol-conditioning runs — lightweight launch pack
 
 **Status:** PREPARED, NOT RUN. **Scope:** the Elephant Lab's self-hosting semantic SDK/toolkit exploration. **Last revised:** 2026-10-11. This is a lightweight research track, not a replacement for existing Z.ai/Claude/Dogfood sessions or an approved architecture.
