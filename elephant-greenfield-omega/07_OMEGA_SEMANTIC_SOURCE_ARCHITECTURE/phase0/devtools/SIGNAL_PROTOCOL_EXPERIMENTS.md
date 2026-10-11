@@ -1,8 +1,8 @@
 # Experimental internal languages & signal protocols — research map
 
 **2026-10-11 | STATUS: EXPLORATION DESIGN; nothing here is ratified Ω language syntax or an implemented compiler feature.**  
-**Anchor first:** [Semantic SDK → Compiler → Runtime](../../SDK_COMPILER_RUNTIME_ANCHOR.md).  
-**Method first:** [headless test-driven loop](FAST_TDD_NO_BROWSER_LOOP.md).  
+**Rule 1:** [Machine ↔ Human co-evolution is the only semantic learning loop](../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). The SDK/compiler/runtime and Human/Machine representations are developed **together**, not in sequential stages.  
+**Method:** [test-driven loop with browser checks when they provide a signal](FAST_TDD_NO_BROWSER_LOOP.md).  
 **Interop candidate:** [WebAssembly final-stage publisher](proposals/wasm-semantic-publisher/README.md) is one replaceable realization; not a mandatory protocol or whole-system design.
 
 ## Why “many, many signal protocols” is a useful lab concept
@@ -13,13 +13,13 @@ Treat a **signal protocol** as a versioned encoding or interaction rule for **a 
 
 To be comparable, a candidate must declare: `what it denotes`, `what it cannot denote`, `how it is read/rendered`, `its source and revision basis`, `which invariants are retained`, `how ambiguity/unknown is signalled`, and `how to independently check the round-trip`. **No encoding can grant execution authority merely by being expressive.**
 
-## Core invariant: one semantic meaning, experimental representations
+## Core invariant: one published meaning per revision, with representations that generate learning signals
 
 ```text
 NATURAL INPUT / SOURCE FACT / AGENT SIGNAL
                 │
                 ▼
-       compiled typed semantic IR       ◀── stable, versioned SDK anchor
+       compiled typed semantic IR       ◀── versioned, co-evolving SDK anchor
                 │
        ┌────────┴──────────────────────────────────────────────────┐
        ▼                   ▼                ▼             ▼       ▼
@@ -31,7 +31,8 @@ NATURAL INPUT / SOURCE FACT / AGENT SIGNAL
                          test denotation and loss
                                    │
                                    ▼
-               accept / reject / defer / experimental only
+       FEEDBACK CASE → fix grammar/compiler/runtime AND/OR projection
+                  → replay all representations → accept/reject
 ```
 
 Human/Machine can **publish precisely one canonical record**, but their *presentation bytes* differ. The fact/provenance/effect set and publication identity must be invariant across projections. A renderer must never create a new semantic fact by embellishment.
@@ -77,19 +78,17 @@ publication_content_hash, rollback_to, approval_status
 
 The [sample manifest](SIGNAL_PROTOCOL_CANDIDATE_V0.json) is illustrative: no scores are measured and no syntax is frozen. For candidate languages that are intentionally lossy (e.g. tiny visual badge), report *exactly which facts are omitted*, and prevent that lossy projection from becoming the sole executable meaning or canonical publication.
 
-## Fast experiment scheduling without changing foundational semantics
+## Continuous loop: protocol experiments ARE SDK/compiler learning
 
-**Phase A — establish anchor:** prove compiler/runtime contracts; preserve source/fixture identity and independent scorer. Protocol ideation can proceed in isolated scratch repositories but produces design-only packs.
+The previous “Phase A establish SDK, Phase B vary representations, Phase C combine” formulation is **superseded**. The representations supply the only semantic learning signals that warrant changing the compiler and runtime. There is no independent phase of optimizing Wiki/intent/AI-native language after a finished core.
 
-**Phase B — rapid protocol sweeps:** start with inexpensive bounded mutations of a *single surface* (reading template, candidate choice layout, Wiki fact projection, explanation encoding). Generate many variants upstream, compile once per candidate or load delta images, run all candidates over **the same** accepted SDK kernel and corpus. Collect compact counters, failed witnesses and reconstruction hashes; **do not launch Chrome or render HTML for each variant**.
+**For every iteration:** (1) present current machine meaning and Human Plain Reading/Wiki/self-knowledge/agent representation; (2) observe discrepancy versus intended meaning, source evidence, communication or comprehension; (3) create a provenance-labelled feedback case; (4) generate candidate compiler, parser, runtime **and/or** representation changes; (5) replay the exact Machine/Human view contract with public and held-out tests; (6) independently validate safety and truth; (7) accept a new experimental version or publish a rejected counterexample. Return immediately to observation.
 
-**Phase C — high-signal combinations:** test promising pairings (e.g. SP02 grammar resolver × SP10 ambiguity signal × SP03 reading), keeping matched cohorts and independent hidden cases. Avoid selecting apparent winners only from public generated templates.
+**Fast protocol sweeps:** agents may synthesize many variants of a reading, resolver, semantic IR, source/wiki mapping, AI-native capsule or negative-intent signal from the same feedback case. Replay without DOM where possible, but the headless Human projection **must express the same fact set** that the human interface would render. Use real-browser/human checks where the observed discrepancy is about timing, layout, choice clarity, accessibility or comprehension.
 
-**Phase D — human/agent fidelity:** only then add participating humans, agent-to-agent relays, UI comprehension, wiki navigation and codebase task efficacy. Independently judge end-to-end corrections, true token cost and source freshness, rather than assuming shorter encodings are better.
+**Cross-family experiments:** SP02 grammar resolver × SP10 ambiguity reporting × SP03 reading are a **single candidate hypothesis** if together they close the observed discrepancy. Compare alternatives using the same cohort. Compiler and runtime contracts themselves may change through explicit revisioned migrations when representational feedback proves the old model insufficient; never quietly mutate old frozen source or reinterpret an old publication.
 
-**Phase E — lab promotion:** passing a benchmark allows an *experimental cohort version*, not an unreviewed production protocol. Preserve losers, counterexamples and rollback; update dependent Wiki facts and test maps in one traceable change.
-
-Useful selection algorithms include budgeted tournament, successive halving, targeted adversarial mining and Pareto tracking, **but** the method itself should be compared and all candidates scored on the same required safety metrics. Do not use search to alter frozen expected outputs post-hoc.
+**Review and activation:** independent negative and positive controls guard accepted changes; they do not generate an unrelated roadmap. Every turn publishes the full all-state pack set including rejected and blocked candidate experiments. Promotion is to a versioned *lab cohort*, not automatically to production/Universal DNA.
 
 ## Two customer benchmarks plus two engineering benchmarks
 
