@@ -1,5 +1,7 @@
 # 03 — Actual Independent Development Systems
 
+[Elephant Protocol Gym](elephant-protocol-gym/README.md) is a prepared four-arm semantic protocol conditioning experiment. It has not been launched, and does not change existing sessions or prescribe technical architecture.
+
 **This is not a folder of architecture authors.** These are the real agentic execution environments that design, test, code, dogfood, benchmark and emit versioned capability-pack portfolios. A design proposal is a seed; a development system is the running or independently launchable research/build agent and its isolated state.
 
 ## Two fundamentally distinct execution paths
