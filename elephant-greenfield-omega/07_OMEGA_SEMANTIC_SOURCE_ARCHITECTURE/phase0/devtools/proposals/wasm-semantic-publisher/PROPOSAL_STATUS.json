@@ -5,7 +5,7 @@
   "date": "2026-10-11",
   "scope": "LLM-native automation laboratory last-stage candidate, not full Omega MVP",
   "maturity": "DISCOVERED_DESIGN",
-  "review_status": "DELIBERATING_NOT_FROZEN",
+  "review_status": "OPTIONAL_DEVELOPMENT_BOOSTER_NOT_REQUIRED",
   "implementation": "NOT_STARTED",
   "claims": [
     {
@@ -66,5 +66,19 @@
   "learning_architecture": "SINGLE_COEVOLVING_MACHINE_HUMAN_FEEDBACK_LOOP",
   "semantic_improvement_signal": "Only observed/explicitly simulated Machine-Human representation versus intention/source/behavior discrepancies; independent tests validate proposed changes.",
   "experiment_role": "Automated replay and mutation of the same dual-view SDK/compiler/runtime improvement loop, not a separate downstream project phase.",
-  "status_note": "Proposal implementation remains NOT_STARTED/NOT_FROZEN. Wasm realization is optional; the co-evolving meaning loop is the governing requirement."
+  "status_note": "Historical Wasm proposal retained as optional tool-development booster; parity/Rule 1 and owner-directed 3D spatial substrate are independent shared targets. Wasm implementation NOT_STARTED.",
+  "canonical_runtime_requirement": false,
+  "booster_candidate": true,
+  "owner_clarification_2026_10_11": {
+    "decision": "WebAssembly is not a shared semantic SDK/Gym requirement; optional experimental development booster only",
+    "invariants": [
+      "One versioned canonical semantic publication",
+      "Full parity among Machine, Human/Wiki and spatial representations",
+      "Real-time shared human-machine execution/meaning manifold",
+      "Effect authorization distinct from Enter-to-publish"
+    ],
+    "shared_spatial_substrate": "Effectively infinite 3D canvas; initial floating text box",
+    "reference": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md",
+    "booster": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md"
+  }
 }
