@@ -1,0 +1,45 @@
+# Elephant Protocol Gym (EPG)
+## Semantic protocol-conditioning runs — lightweight launch pack
+
+**Status:** PREPARED, NOT RUN. **Scope:** the Elephant Lab's self-hosting semantic SDK/toolkit exploration. **Last revised:** 2026-10-11. This is a lightweight research track, not a replacement for existing Z.ai/Claude/Dogfood sessions or an approved architecture.
+
+### What this is, in plain language
+
+Imagine giving several independent expert agents the same small program, the same shared purpose and the same truth rules, but different questions. One explores what makes code self-describing. One explores how to connect a compiler and its human-facing output. One explores the minimal WikiCore/self-runtime verbs. Another uses the emerging knowledge to improve Elephant context and development tools. After one bounded run we collect what was built, discovered, rejected and left uncertain, and then update the next seed. We repeat.
+
+**This is "post-training" only by analogy.** It is protocol/toolkit conditioning and **self-hosted iterative development**: prompts, shared rules, skill/capability packs, source knowledge, tests, compilation, indexing and context allocation are modified and re-evaluated. The underlying LLM weights are not being trained unless a separate real model-training setup is explicitly provided and verified.
+
+The Gym exists to discover rather than pre-specify its optimal system. A successful first dry run may produce no production SDK; it must produce at least one independently inspectable insight or experiment with a truthful failure report.
+
+### Two principles that must not be mixed up
+
+1. **Owner-directed expectations:** the system should understand ordinary source, explain itself, generate human-readable wiki, navigate dependencies, identify stale claims, carry faithful meaning between representations, interpret intent with uncertainty, distinguish capability from availability/permission, improve itself through tests and transfer knowledge among Elephants. These are provisional groups for experiments, not ten mandated classes or endpoints. [Candidate ten-behavior inventory](../../07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/09_EXPECTED_BEHAVIORS.md).
+2. **Method discovery:** what WikiCore means, what functions/verbs are valuable, whether semantic comments or generated sidecars win, where compilation boundaries belong, how much runtime introspection is useful, and how Elephant memory should be packaged **remain to be learned**. Do not impose the long [candidate WikiCore inventory](../../07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/10_WIKICORE_METHODS.md) as an API mandate.
+
+### Minimal pack contents
+
+- [CORE_SEED.md](CORE_SEED.md): shared WHY, invariants, task method, knowledge boundaries and reading links — **all four agents receive exactly this same seed**.
+- [fixture/001-semantic-basics.ts](fixture/001-semantic-basics.ts): tiny ordinary executable TypeScript used as the common starting observation.
+- [RUN_A_SOURCE_MEANING.md](RUN_A_SOURCE_MEANING.md): uncover source-description assumptions, annotation and first-file experiments.
+- [RUN_B_COMPILER_BOUNDARY.md](RUN_B_COMPILER_BOUNDARY.md): explore what/how to compile machine and human outputs, frontend/backend boundary and minimal integration.
+- [RUN_C_WIKICORE_SELF_RUNTIME.md](RUN_C_WIKICORE_SELF_RUNTIME.md): discover verbs/protocol and self-knowledge/self-runtime behavior.
+- [RUN_D_ELEPHANT_TOOLKIT.md](RUN_D_ELEPHANT_TOOLKIT.md): improve the Elephant itself: context, handoffs, replay and automation.
+- [REVIEW.md](REVIEW.md): one lightweight comparison and next-run seed revision method.
+
+### How to launch
+
+Start **four genuinely independent sessions/workspaces** if resources allow (or three, omitting D). For each session, provide only [CORE_SEED.md](CORE_SEED.md), the same fixture, and its ONE assigned RUN file. Give the agent read-only access to the linked design context if possible; do not preload the other arms' prompts/results. Copy each prompt as-is. Limit the first run to **one bounded exploratory pass** and at most one self-correction pass. No initial claim of production-readiness, no forced use of a specific compiler/backend/UI, and no requirement to build an Electron/Tauri/browser application.
+
+Each run reports one or two hypotheses, one small *actual* test if feasible, observed outputs with source, and a brief next-step recommendation. A no-code run is valid if it identifies a specific falsifiable design fork and does not misreport evidence. Prefer reusing real repository assets to rebuilding them from memory. If the needed source is missing, say so.
+
+Keep experiments local or in disposable worktrees; do not let competing agents edit the shared main branch. Review and integrate only after comparing. Existing Elephant **end-of-turn all-maturity capability-pack publication law** still governs actual top-level development turns; a dry-run note is a preliminary packet, not a substitute for that publication or an invented release.
+
+### What success looks like in the first round
+
+We should have **four genuinely different answers** (including failures): what minimum meaning a source needs, how to compile and project it, what methods are worth formalizing, and what tooling/context experiments might accelerate the Elephant. The answers must connect to the same testable expected behavior but may propose incompatible architectures. Do not vote by model count; choose the next cheapest tests and preserve strong minority hypotheses.
+
+### Authority and preserved work
+
+The [Living Semantic Design Record](../../07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/design-record/README.md) is the editable current design narrative. The [Rule 1 Machine ↔ Human loop](../../07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md) remains foundational. [Universal Elephant DNA](../../05_UNIVERSAL_ELEPHANT_DNA/README.md) remains candidate cognitive research, not a frozen orchestration stack. [Canonical development corpus](../../CANONICAL_DEVELOPMENT_CORPUS.md) and [decision tracker](../../DECISION_PROCESS_TRACKER.md) determine authority; [01 expected outputs](../../01_EXPECTED_OUTPUTS/README.md) determines publication requirements. Earlier detailed specifications, lab results and proposals are **preserved** and may inspire hypotheses; this Gym intentionally avoids adopting their detailed candidate mechanism lists as law.
+
+**Do not describe a prepared prompt as an agent that has actually run.** Record model/version, source SHA, test evidence and maturity honestly.
