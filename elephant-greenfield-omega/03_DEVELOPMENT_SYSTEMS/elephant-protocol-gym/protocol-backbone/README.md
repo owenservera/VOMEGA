@@ -13,7 +13,9 @@ This backbone is an **index + contract normalization**, not an attempt to conver
 - `schemas/protocol.schema.json` — normalized **Protocol Card**: identity, original sources, scope/authority, typed input/output slots, environment capability dependencies, phase transition conditions, evaluation gates, metrics, hypotheses, alternatives, governance status and named extension modules.
 - `schemas/run.schema.json` — immutable **Run Receipt** separate from proposed protocol; source/requirements/test epoch, host-proven events, artifact hashes, evidence types, measured/unknown costs and actual published pack status.
 - `schemas/registry.schema.json` and `registry.json` — source/proposal provenance and links to concrete card files; original research is not removed by an integration experiment.
-- `protocols/*.json` — eight **candidate** normalized protocol cards, including the new Claude attached Time-Credit proposal, Claude v0.2 executor, general Z.ai A/B/C, R0 five Gyms, all-turn publication, source/knowledge/visual/self-governance contracts.
+- `protocols/*.json` — nine **candidate** normalized protocol cards, including the new Claude attached Time-Credit proposal, Claude v0.2 executor, general Z.ai A/B/C, R0 five Gyms, all-turn publication, source/knowledge/visual/self-governance contracts.
+- `crosswalk.json` — **19 source-section mappings** of Claude's ZIP and earlier Elephant systems, preserving required details not yet normalized and explicitly identifying unresolved fidelity gaps.
+- `profiles.json` — four composable **experiment profiles**: five-Gym exploratory pilot, Time Credit calibration, E0/PROTO/SEEDED causal pilot, and earlier Z.ai A/B/C research; profile composition never authorizes execution.
 - `examples/not-run.json` — intentionally truthful example; no fake benchmark clock, published pack or SDK success.
 - `tools/validate.mjs` + `tools/validate.test.mjs` — dependency-free **structural and cross-reference** checks, not a full JSON-Schema, executable gate or security auditor.
 
@@ -68,7 +70,7 @@ Crucial distinction: Time Credits are a proposed **optional accounting/incentive
 
 ## Mapping and coverage contract
 
-`registry.assets` is a *starter source crosswalk*, not a claim of exhaustively recovering every old artifact or all private workspaces. Each entry has classification, original source URI, mapped normalized protocol IDs and an explicit qualification. When expanding:
+`registry.assets` and `crosswalk.json` are a *starter source crosswalk*, not a claim of exhaustively recovering every old artifact or all private workspaces. Each entry has classification, original source URI, mapped normalized protocol IDs and an explicit qualification. When expanding:
 1. Pin original immutable blob/ZIP or Git commit SHA; preserve unrestricted raw original in its correct authorized storage.
 2. Add an asset entry; do not silently erase duplicate or rejected past designs.
 3. Reference an existing protocol card or create a new card if its **observable behavior, authority, evaluation or timing rules materially differ**.
