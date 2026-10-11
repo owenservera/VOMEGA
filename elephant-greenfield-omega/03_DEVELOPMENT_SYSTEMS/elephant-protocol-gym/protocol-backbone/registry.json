@@ -41,6 +41,11 @@
       "id": "epg.research.library",
       "path": "protocols/intelligence-preservation.json",
       "status": "DESIGN"
+    },
+    {
+      "id": "epg.governance.universal",
+      "path": "protocols/universal-governance.json",
+      "status": "DESIGN"
     }
   ],
   "assets": [
@@ -214,6 +219,16 @@
         "epg.semantic.selfhosting"
       ],
       "notes": "Research reference, not governing architecture"
+    },
+    {
+      "id": "universal-u0-u5",
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/UNIVERSAL_SEMANTIC_GOVERNANCE.md",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.governance.universal",
+        "epg.semantic.selfhosting"
+      ],
+      "notes": "Owner directive covering all code/tools, staged proof not automatically conferred"
     }
   ]
 }
