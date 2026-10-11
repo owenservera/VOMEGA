@@ -1,0 +1,116 @@
+# ΩSL-mini v0 — Run A (grammar-first) declarations for omega-core-fixture-v1
+# One source of truth per capability.
+#   say  = what Ω shows. Rendered AND parsed back (the same template, both directions).
+#   hear = what a person may type. Recognized AND used to generate test utterances.
+# Template syntax. hear: words, {slot}, [optional|alternatives], (choice|choice), punctuation : , ?
+#                  say:  exact text, {slot}, [optional segment shown only when its slots are set]
+
+fixture omega-core-fixture-v1 16e242c5f56cc1015d51279320d6015de9e871a8ab88b1cc2de1c3f633ec4b7f
+
+politeness "please" "can you" "could you" "would you" "hey"
+
+lex leaves "Your words will leave this computer."
+lex unknown "I do not know how to do that yet. Nothing will happen."
+
+entity account
+  say main                 "your {label} account on {provider}"
+  say scope-provider       "your {provider} account"
+  say scope-label          "your {label} account"
+  say scope-any            "one of your accounts"
+  say option               "{label} on {provider}"
+  say option-same-provider "{label}"
+  say option-same-label    "{provider}"
+  hear "[my|the|your] {provider} {label} [account]"
+  hear "[my|the|your] {label} {provider} [account]"
+  hear "[my|the|your] {provider} [account]"
+  hear "(my|the|your) {label} account"
+  hear "your {label} account on {provider}"
+
+capability cap:prompt.send @1
+  param account ref:account required
+  param model ref:model optional
+  param prompt text required
+  consequence leaves-this-computer
+  say READY        "Send “{prompt}” to {account}[, using {model}]. {leaves}"
+  say NEEDS_CHOICE "Send[ “{prompt}”] to {scope}[, using {model}]. Which one: {options}?"
+  say NEEDS_INFO   "Send words to {account}[, using {model}]. What should they say?"
+  say INVALID:model-provider-mismatch "{model} works only with {model_provider}, not with {target}. Nothing will be sent."
+  say INVALID:unknown-account "You have no {known_label} account on {provider}, so nothing will be sent."
+  hear "(ask|tell) {account} [(using|with) {model}] to {prompt}"
+  hear "ask {account} [(using|with) {model}]: {prompt}"
+  hear "tell {account} {prompt}"
+  hear "use {account} for {_}: {prompt}"
+  hear "send {prompt} to {account} [(using|with) {model}]"
+  hear "(ask|tell) to {prompt}"
+  hear "(ask|tell) {account} [(using|with) {model}]"
+
+capability cap:prompt.fanout @1
+  param accounts set:ref:account required
+  param prompt text required
+  consequence leaves-this-computer
+  say READY        "Send “{prompt}” to {count} accounts: {accounts}. {leaves}"
+  say NEEDS_CHOICE "Send[ “{prompt}”] to {count} accounts: {items}. For {scope}, which one: {options}?"
+  say NEEDS_INFO   "Send words to {count} accounts: {accounts}. What should they say?"
+  say INVALID:duplicate-target "You named {account} twice, so nothing will be sent."
+  say INVALID:unknown-account "You have no {known_label} account on {provider}, so nothing will be sent to any account."
+  hear "(ask|tell) {accounts} to {prompt}"
+  hear "ask {accounts}: {prompt}"
+  hear "tell {accounts} {prompt}"
+  hear "send {prompt} to {accounts}"
+  hear "(ask|tell) {accounts}"
+
+capability cap:account.register @1
+  param provider ref:provider required
+  param label text required
+  consequence stays-here
+  say READY      "Add a {provider} account called “{label}” to this computer."
+  say NEEDS_INFO "Add a {provider} account to this computer. What should it be called?"
+  say INVALID:unknown-provider "There is no service called “{word}” here, so nothing will be added."
+  hear "(add|register) (my|a|an) {provider} account (called|named) {label}"
+  hear "(add|register) (my|a|an) {provider} account and call it {label}"
+  hear "(add|register) (my|a|an) {provider} account"
+
+capability cap:browser.show @1
+  param account ref:account required
+  consequence stays-here
+  say READY        "Show the browser for {account}."
+  say NEEDS_CHOICE "Show the browser for {scope}. Which one: {options}?"
+  say INVALID:unknown-account "You have no {known_label} account on {provider}, so no browser will be shown."
+  hear "show {account} [browser]"
+  hear "show [my|the] browser"
+
+capability cap:browser.hide @1
+  param account ref:account required
+  consequence stays-here
+  say READY        "Hide the browser for {account}."
+  say NEEDS_CHOICE "Hide the browser for {scope}. Which one: {options}?"
+  say INVALID:unknown-account "You have no {known_label} account on {provider}, so no browser will be hidden."
+  hear "hide {account} [browser]"
+  hear "hide [my|the] browser"
+
+capability cap:accounts.list @1
+  consequence stays-here
+  say READY "Show the accounts you have added."
+  hear "what accounts do i have [?]"
+  hear "(list|show) [all] [my|the] accounts"
+
+# Resolution rules. Non-recursive: evaluated once, in this order, per slot. Text is the plain "why".
+rules
+  R-READ           "The text is exactly one of Ω's own readings, so it means what that reading says."
+  R-TEMPLATE       "The text matches a declared way of asking for this action."
+  R-PARSE-SPECIFIC "The words could be split more than one way. Ω used the split that names the most exact account, and the reading shows it."
+  R-POLITE         "Polite words at the start are skipped."
+  R-QUOTE          "One pair of quotes around the whole message is removed. Nothing inside is changed."
+  R-PROV-KNOWN     "The service named is one Ω knows."
+  R-PROV-UNKNOWN   "The service named is not one Ω knows, so nothing runs."
+  R-ACC-NAMED      "The text names both the service and the account, so that account is used."
+  R-ACC-DEFAULT    "A standing default picks the account."
+  R-ACC-SINGLE     "Only one account fits, so that one is used."
+  R-ACC-ASK        "More than one account fits, so Ω asks which one."
+  R-ACC-NONE       "No account fits what was named, so nothing runs."
+  R-MODEL-OK       "The model belongs to the same service as the account."
+  R-MODEL-MISMATCH "The model belongs to a different service, so nothing runs."
+  R-FAN-DISTINCT   "The same account was named twice, so nothing runs."
+  R-NEED-INFO      "Something needed is missing, so Ω asks for it."
+  R-READY          "Everything needed is known and allowed."
+  R-NO-MATCH       "No declared action matches, so nothing runs."

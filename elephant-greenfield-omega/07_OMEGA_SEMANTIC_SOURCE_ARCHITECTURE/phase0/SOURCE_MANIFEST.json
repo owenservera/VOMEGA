@@ -1,0 +1,285 @@
+{
+  "archive": "07_OMEGA_full.zip",
+  "archive_sha256": "b8ec9a5f99e8b2db2932e8760712af0a302cce2fe62a119b28edaf52c9835d87",
+  "entries": [
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/15_CONTRACT_COMPILER_AND_WIKI_AS_PRODUCT.md",
+      "bytes": 8207,
+      "sha256": "04ba9e11476ef46e9f2a1270f425ccba1f5ffbf3e2d7ecf4798e6a3e7d05e073"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RUN_B_CONTEXT_PACK.md",
+      "bytes": 31300,
+      "sha256": "87cea4390f7a59abf58ef78d11ddbfb8d8e50150b45eb30a9e9f024d7fde376b"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/R1_RESEARCH_DOSSIER.md",
+      "bytes": 25779,
+      "sha256": "0cbabaea9f76b15999adc0f3b4eed13a0e2c2da5342831e54b060b2e6c90b96d"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/05_CONCEPT_ATLAS_AND_INTERNATIONAL_INDEX.md",
+      "bytes": 2047,
+      "sha256": "69f2337faae6e44c013becdcc4b426d00a1acb8f545ed4a0900804e6c8b325ac"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/BUILD_BRIEF.md",
+      "bytes": 17167,
+      "sha256": "3b11de75c0aa77825bf02a1250843756b328f0dc88855623cf12eb8edf145837"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/08_AUTO_WIKI_AND_REFLECTION.md",
+      "bytes": 1884,
+      "sha256": "6937e5c4c9c4cd68af2b7eb198ba2206e1132e6f83359b4a37721dfeb9f55c48"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/07_INTERPRETATION_PIPELINE.md",
+      "bytes": 2257,
+      "sha256": "4c055b82b3040d12200c9a9afc6c613930e6ca8a0e5093edc1f9e182b1e58230"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/02_USER_EXPERIENCE_GOALS.md",
+      "bytes": 3022,
+      "sha256": "8757212dd2446616992b699fea5ae49b1c5c5c302a912d4f7f133bc31bc90c81"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/OMEGA_CONTEXT_PACK_v2.md",
+      "bytes": 51309,
+      "sha256": "23d188f12430bc66f5ef6d2b19178503881fa47963b8dda200a614b48cea6fef"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/seed-code/README.md",
+      "bytes": 1838,
+      "sha256": "806867f72f989317d368c4188d50c86bd5352e079e9aa38a98b4584886ae9919"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/12_DELIVERABLES_AND_ROADMAP.md",
+      "bytes": 2313,
+      "sha256": "b6cf311fdca846892fdb6b12e4979fba4a202ee2182146d6131bb782a4d3b974"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/13_LLM_NATIVE_CODEBASE_AND_AGENT_PROTOCOLS.md",
+      "bytes": 7500,
+      "sha256": "d12471a6aaa628acca0dc3284896762b23d02869e840cd78652a6af4bbae7673"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/10_ENFORCEMENT_AND_ENDORSEMENT.md",
+      "bytes": 2242,
+      "sha256": "21fe1a437c85960003d3ab2b6f73e4efcd7dceda651949dc632ac4549f46c432"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/09_DESIGN_PROTOCOLS.md",
+      "bytes": 1940,
+      "sha256": "80dbe03707906af5825d1707329a360e997d572d06d06b13547f1bf84f247b6a"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/01_VISION_AND_PRINCIPLES.md",
+      "bytes": 3170,
+      "sha256": "6b984082fab64e1fe597d8544ee539e0e6dd105547a86bdce44b12648e750b24"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/RUN_A_REPORT.md",
+      "bytes": 30214,
+      "sha256": "5ff73d47f8c808d9c37ff29a81ed1de956471ffe03c0f8c89fd720e26ee200d8"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/cross_runB.py",
+      "bytes": 3497,
+      "sha256": "1b0e1d357b17e251f539c1d963b7a0e31872b59241defb1a2505596b07a8375c"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/cross.py",
+      "bytes": 1076,
+      "sha256": "5f1b54f41f636592ab76564b192e305d6b0ea1726236038d0ce159c1a6ba4fa4"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/make_report.py",
+      "bytes": 14674,
+      "sha256": "32c1d1b907184c87f56b00907f774b2ca5e0235ec870469edc32248f0b10f27d"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/engine.py",
+      "bytes": 27606,
+      "sha256": "8981568c24613e0c4c0ac4f1e54f51b6c51244c7e69b326ab8652a22cf57bff2"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/proofs.py",
+      "bytes": 15099,
+      "sha256": "428f1832a2fecf5f1c639e596ec1722ee2d914960cacf8873ed349636cf1b449"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_V7-will-compact.json",
+      "bytes": 32578,
+      "sha256": "5605b0763dafcabb176e69c3f1123e7fdc3a3f2dfc218b58e3a6461f2b99acc4"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_V2-short.json",
+      "bytes": 32435,
+      "sha256": "a6b0d8f8dc7904ead86db7f0270492672ad4df4c301717302fcfa683dcbb58a0"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_V5-will.json",
+      "bytes": 32862,
+      "sha256": "f15d61b081fc6ed700234795669152fe4388014a034ba47b6aaaf40f232d775d"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_V6-best.json",
+      "bytes": 32338,
+      "sha256": "20b8567a4d27988172faebe1c644d30f3f19207dca743bde7367611e8bc1cd73"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_V0-pack.json",
+      "bytes": 32536,
+      "sha256": "d6a6fa424c1a98fe7b2891c4b94b7b86651dc91f07ae424d4786ce9c9390a926"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_V4-control.json",
+      "bytes": 32692,
+      "sha256": "8212a74f4f967d6e2db9e3d143a7c3f6b52699fe6c22594175abc1a4509afcc2"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_base.json",
+      "bytes": 32367,
+      "sha256": "8dcbb86ea9b7d2ee9d7fa6a57a81efd19eee4a8d6bf556624eb0bd23256bf384"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/results/r_V3-compact.json",
+      "bytes": 32267,
+      "sha256": "172486358ffda6ac75e28a8d9635e57f570b4372641bc71ea703a7cabe2f1c5b"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/table.py",
+      "bytes": 1043,
+      "sha256": "a943a449cbf003ff676e952f6cde615472698a076b2860e70dce42a8fba3c44b"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/fixture.json",
+      "bytes": 10747,
+      "sha256": "ee7415cf9c58e4b5411f6ec132faee6a68543520df85b5e9dff13c2eef88250e"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/osl.py",
+      "bytes": 9224,
+      "sha256": "39eb3b40ca857e95253c982879af0495867d316110acc6f4faa4ee77ed8c7e75"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/omega.osl",
+      "bytes": 6253,
+      "sha256": "b4920bbb1ca272deb8e24305ef1785ff878c895ececf184879f258443f8fc402"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runA/variants.osl",
+      "bytes": 3119,
+      "sha256": "f04a369476fd9e35c00b6dce016a4c50e1f55de02278d3b3af92a010cb0e1fe5"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runB_executed/raw.md",
+      "bytes": 17522,
+      "sha256": "b1cf68764d55167ab738fe11c4bee60804811b3b5f14245f878f69c7ba6af65b"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/runB_executed/run.py",
+      "bytes": 42381,
+      "sha256": "37e3cd27ef07051c656aabf8e18f7c7d78f2d8ea14b38677dd08307dfe70f04a"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/03_SYSTEM_ARCHITECTURE.md",
+      "bytes": 3410,
+      "sha256": "4d21cdc54fdfc7264d1e23c7754d788c6a55d816f8c257cb56bc4606885ac242"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/06_PLAIN_READING_ENGINE.md",
+      "bytes": 2792,
+      "sha256": "05a1456c1b4f62e953fecefcefba191bf0d3126a875733d4ff03925b48f76b81"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/R2_PRIOR_ART_SWEEP_qwen.md",
+      "bytes": 58664,
+      "sha256": "96c9c57acd83f3c9ecd79146f1a37315d7396a7edc2bfc7f1620193ca6b41482"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/benchmarks/B1_COMMAND_FIDELITY.md",
+      "bytes": 3652,
+      "sha256": "db7d664513981318004fb2f667bab82c30342d2c34095dbc42c247d78327d8c4"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/benchmarks/B3_HANDOFF_FIDELITY.md",
+      "bytes": 3073,
+      "sha256": "1278fa6e9afefce3ab4ba9f922ec493838a392b156ca54637126d728280b282d"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/benchmarks/B4_CHANGE_VELOCITY.md",
+      "bytes": 3039,
+      "sha256": "0dc5fb9da30d5269871ff7f5c7215e8e36fffad4817c32867a1196b23bac59c3"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/benchmarks/B2_AGENT_CONTEXT.md",
+      "bytes": 3341,
+      "sha256": "b9d4c140837f003f2a60acea2229df4b4ad167bb674214c8083f0578af111967"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/benchmarks/00_MASTER_SESSION_INTEGRATION.md",
+      "bytes": 9740,
+      "sha256": "d5018e9ef3cb5e702f01d3de8c85e387f7bb4c6d12b2e46a5b2a90dab7f6a2d6"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/00_INDEX.md",
+      "bytes": 18129,
+      "sha256": "1f3ab732ebb9060c1a46ead9781a63d92c36eed312febcbfd278d71206d4c95f"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/04_OMEGA_SEMANTIC_LANGUAGE_SPEC.md",
+      "bytes": 3829,
+      "sha256": "a4fd91e15ef505b2a355166b75e5cf2d07a2a712408b08783aeaa30301b2734e"
+    },
+    {
+      "path": "07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/11_ELEPHANT_LAB_DEVELOPMENT_SYSTEM.md",
+      "bytes": 16349,
+      "sha256": "baf97037c6d55b500954eb7cab809ced012a449e2f6d79ab54408cb07295291d"
+    },
+    {
+      "path": "patch/0006-07-Run-A-grammar-first-Plain-Reading-core-SL-mini-tw.patch",
+      "bytes": 404227,
+      "sha256": "e3ab8150d9f17558bce31bbf5a7bdef810f8330d52284439c124a52029a67ea3"
+    },
+    {
+      "path": "patch/0002-docs-elephant-07-revision-r1-r2-research-dossier-LLM.patch",
+      "bytes": 70354,
+      "sha256": "4237a411a874653cecafd33dca4a514bb53ffc3e783a4c1f313b3fbc8138028e"
+    },
+    {
+      "path": "patch/0003-docs-elephant-07-r3-Elephant-Lab-roadmap-scaffold-A2.patch",
+      "bytes": 43396,
+      "sha256": "4011c4eadf2bd46df4ece74b38c8cbb8ab29e0c6cc821ececcc8ad0a4e789a7e"
+    },
+    {
+      "path": "patch/0008-07-benchmarks-Stage-1-scaffold-master-session-integr.patch",
+      "bytes": 26698,
+      "sha256": "3e4bfdfcd582817ba6739af3a0ff1f4e885c8fbf96f26cf2b5c193b44b4686a3"
+    },
+    {
+      "path": "patch/0007-07-context-pack-v2-prior-art-verdicts-Run-A-B-measur.patch",
+      "bytes": 179011,
+      "sha256": "49c34b6cd361b857e8de0459c8226f9bd0ff474247936d0b1e553bfa06af60a5"
+    },
+    {
+      "path": "patch/0004-docs-elephant-scaffold-standalone-BUILD_BRIEF-Stage-.patch",
+      "bytes": 19247,
+      "sha256": "fd86253cb02759e57ca9e85c1eb80b9213511b69417f7871ee0764dcf2fa3018"
+    },
+    {
+      "path": "patch/0001-docs-elephant-scaffold-07-Semantic-Source-Architectu.patch",
+      "bytes": 53074,
+      "sha256": "71905cf45deb9b423ad147759078c04185a14ea954018aa45798f965c87846ae"
+    },
+    {
+      "path": "patch/0005-07-add-RUN_B_CONTEXT_PACK-single-file-Qwen-Run-B-bri.patch",
+      "bytes": 32546,
+      "sha256": "35bdb7a0908d29605516becfa9fa98fdef448dc7e4442716937ee91f84810c8b"
+    }
+  ],
+  "base_commit": "f4c28742a107d52d007c5deeac6a0345e9da3770",
+  "fixture_id": "omega-core-fixture-v1",
+  "fixture_canonical_sha256": "16e242c5f56cc1015d51279320d6015de9e871a8ab88b1cc2de1c3f633ec4b7f",
+  "custody": "Original archive retained in operator Library; no patch applied. Public vendor files are byte-identical selected source. No credentials found in selected files. Fixture identities synthetic. No upstream license supplied: provenance preserved, no new license asserted."
+}

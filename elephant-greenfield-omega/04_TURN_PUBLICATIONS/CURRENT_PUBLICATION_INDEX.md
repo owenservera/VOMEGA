@@ -1,5 +1,9 @@
 # Verified Publication Status at Organizational Migration
 
+## Work semantic Phase 0 — executable local evidence
+
+[2026-10-11 Work Phase 0 publication](2026-10-11-WORK-SEMANTIC-PHASE0.md) records a new independent integration-lab turn, with full content-hashed portfolio, reproduced A/B sources, 70,101 generated comparisons, independent finite oracle, 25 passing gate/HTTP tests and a clean-directory replay. Mock-only; browser visual/Windows/isolated candidate execution and sealed holdouts remain unverified. No Z.ai streams were started. Earlier migration entries below retain their historical scope.
+
 **2026-10-11. This registry is a documentation baseline, NOT live execution proof.** We have not verified remote execution reports for the current Z.ai lab in this repository session. Existing simulation/mock files do not prove real Elephant context persistence or multiagent parallelism.
 
 | Source | This repo's verified information | Authentic per-turn pack releases |

@@ -1,0 +1,493 @@
+# Run B T1 raw output
+
+fixture_hash=16e242c5f56cc1015d51279320d6015de9e871a8ab88b1cc2de1c3f633ec4b7f
+os=Linux-6.18.44-x86_64-with-glibc2.39
+python=3.12.14
+cpu=x86_64
+enumerated_ready_commands=140
+
+## Iteration 0
+| Metric | Value |
+| --- | --- |
+| M1_corpus_accuracy | 1.000000 |
+| M2_roundtrip_pass | 1.000000 |
+| M3_injectivity_collisions | 0 |
+| M3_partial_collisions | 0 |
+| M4_completeness_violations | 0 |
+| M5a_mean_grade | 4.290745 |
+| M5b_max_grade | 8.180000 |
+| M5c_mean_words | 17.700000 |
+| M6_latency_median_us | 9.314500 |
+| M6_latency_p95_us | 22.634000 |
+| M7_declaration_lines | 162 |
+| hard_pass | True |
+
+## Iteration 1
+front_size=1 no_improve=1
+
+## Iteration 2
+front_size=2 no_improve=0
+
+## Iteration 3
+front_size=2 no_improve=1
+
+## Iteration 4
+front_size=2 no_improve=2
+
+## Iteration 5
+front_size=2 no_improve=3
+
+## Iteration 6
+front_size=2 no_improve=4
+
+## Iteration 7
+front_size=2 no_improve=0
+
+## Iteration 8
+front_size=2 no_improve=0
+
+## Iteration 9
+front_size=2 no_improve=1
+
+## Iteration 10
+front_size=3 no_improve=0
+
+## Iteration 11
+front_size=3 no_improve=1
+
+## Iteration 12
+front_size=3 no_improve=2
+
+## Iteration 13
+front_size=3 no_improve=3
+
+## Iteration 14
+front_size=3 no_improve=4
+
+## Iteration 15
+front_size=3 no_improve=0
+
+## Iteration 16
+front_size=3 no_improve=1
+
+## Iteration 17
+front_size=3 no_improve=2
+
+## Iteration 18
+front_size=3 no_improve=3
+
+## Iteration 19
+front_size=3 no_improve=4
+
+## Iteration 20
+front_size=3 no_improve=5
+
+## Full iteration log
+| iteration | variant_id | hard_pass | M1 | M5a | M7 | kept | reason |
+| ---: | ---: | --- | ---: | ---: | ---: | --- | --- |
+| 1 | 1 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 1 | 2 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 1 | 3 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 1 | 4 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 1 | 5 | True | 1.000000 | 4.480387 | 162 | False | dominated |
+| 1 | 6 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 1 | 7 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 1 | 8 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 2 | 9 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 2 | 10 | True | 1.000000 | 4.337570 | 162 | False | dominated |
+| 2 | 11 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 2 | 12 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 2 | 13 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 2 | 14 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 2 | 15 | True | 1.000000 | 4.290745 | 163 | False | dominated |
+| 2 | 16 | True | 1.000000 | 4.305030 | 162 | True | kept |
+| 3 | 17 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 3 | 18 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 3 | 19 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 3 | 20 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 3 | 21 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 3 | 22 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 3 | 23 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 3 | 24 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 4 | 25 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 4 | 26 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 4 | 27 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 4 | 28 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 4 | 29 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 4 | 30 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 4 | 31 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 4 | 32 | True | 1.000000 | 4.305030 | 163 | False | dominated |
+| 5 | 33 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 5 | 34 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 5 | 35 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 5 | 36 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 5 | 37 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 5 | 38 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 5 | 39 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 5 | 40 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 6 | 41 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 6 | 42 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 6 | 43 | True | 1.000000 | 4.337570 | 162 | False | dominated |
+| 6 | 44 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 6 | 45 | True | 1.000000 | 4.337570 | 162 | False | dominated |
+| 6 | 46 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 6 | 47 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 6 | 48 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 7 | 49 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 7 | 50 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 7 | 51 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 7 | 52 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 7 | 53 | True | 1.000000 | 4.337570 | 162 | False | dominated |
+| 7 | 54 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 7 | 55 | True | 1.000000 | 4.150268 | 162 | True | kept |
+| 7 | 56 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 8 | 57 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 8 | 58 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 8 | 59 | True | 1.000000 | 4.164554 | 162 | True | kept |
+| 8 | 60 | True | 1.000000 | 4.170006 | 162 | False | dominated |
+| 8 | 61 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 8 | 62 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 8 | 63 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 8 | 64 | True | 1.000000 | 4.339911 | 162 | False | dominated |
+| 9 | 65 | True | 1.000000 | 4.197094 | 162 | False | dominated |
+| 9 | 66 | True | 1.000000 | 4.394424 | 162 | False | dominated |
+| 9 | 67 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 9 | 68 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 9 | 69 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 9 | 70 | True | 1.000000 | 4.394424 | 162 | False | dominated |
+| 9 | 71 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 9 | 72 | True | 1.000000 | 5.242390 | 162 | False | dominated |
+| 10 | 73 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 10 | 74 | True | 1.000000 | 4.184292 | 162 | True | kept |
+| 10 | 75 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 10 | 76 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 10 | 77 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 10 | 78 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 10 | 79 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 10 | 80 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 11 | 81 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 11 | 82 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 11 | 83 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 11 | 84 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 11 | 85 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 11 | 86 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 11 | 87 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 11 | 88 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 12 | 89 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 12 | 90 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 12 | 91 | True | 1.000000 | 4.324768 | 162 | False | dominated |
+| 12 | 92 | True | 1.000000 | 4.290745 | 162 | False | dominated |
+| 12 | 93 | True | 1.000000 | 4.394424 | 162 | False | dominated |
+| 12 | 94 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 12 | 95 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 12 | 96 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 13 | 97 | True | 1.000000 | 4.197094 | 162 | False | dominated |
+| 13 | 98 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 13 | 99 | True | 1.000000 | 4.324768 | 162 | False | dominated |
+| 13 | 100 | True | 1.000000 | 5.228104 | 162 | False | dominated |
+| 13 | 101 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 13 | 102 | True | 1.000000 | 4.324768 | 162 | False | dominated |
+| 13 | 103 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 13 | 104 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 14 | 105 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 14 | 106 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 14 | 107 | True | 1.000000 | 4.723210 | 162 | False | dominated |
+| 14 | 108 | True | 1.000000 | 4.380139 | 162 | False | dominated |
+| 14 | 109 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 14 | 110 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 14 | 111 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 14 | 112 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 15 | 113 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 15 | 114 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 15 | 115 | True | 1.000000 | 4.723210 | 162 | False | dominated |
+| 15 | 116 | True | 1.000000 | 4.150268 | 161 | True | kept |
+| 15 | 117 | True | 1.000000 | 4.217233 | 162 | False | dominated |
+| 15 | 118 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 15 | 119 | True | 1.000000 | 4.150268 | 162 | False | dominated |
+| 15 | 120 | True | 1.000000 | 4.217233 | 162 | False | dominated |
+| 16 | 121 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 16 | 122 | True | 1.000000 | 4.723210 | 162 | False | dominated |
+| 16 | 123 | True | 1.000000 | 4.150268 | 161 | False | dominated |
+| 16 | 124 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 16 | 125 | True | 1.000000 | 4.723210 | 162 | False | dominated |
+| 16 | 126 | True | 1.000000 | 4.197094 | 161 | False | dominated |
+| 16 | 127 | True | 1.000000 | 4.217233 | 162 | False | dominated |
+| 16 | 128 | True | 1.000000 | 4.324768 | 162 | False | dominated |
+| 17 | 129 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 17 | 130 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 17 | 131 | True | 1.000000 | 4.197094 | 161 | False | dominated |
+| 17 | 132 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 17 | 133 | True | 1.000000 | 4.236971 | 162 | False | dominated |
+| 17 | 134 | True | 1.000000 | 4.150268 | 161 | False | dominated |
+| 17 | 135 | True | 1.000000 | 4.394424 | 162 | False | dominated |
+| 17 | 136 | True | 1.000000 | 4.236971 | 162 | False | dominated |
+| 18 | 137 | True | 1.000000 | 4.217233 | 162 | False | dominated |
+| 18 | 138 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 18 | 139 | True | 1.000000 | 4.150268 | 161 | False | dominated |
+| 18 | 140 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 18 | 141 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 18 | 142 | True | 1.000000 | 4.150268 | 161 | False | dominated |
+| 18 | 143 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 18 | 144 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 19 | 145 | True | 1.000000 | 4.703472 | 162 | False | dominated |
+| 19 | 146 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 19 | 147 | True | 1.000000 | 4.689186 | 161 | False | dominated |
+| 19 | 148 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 19 | 149 | True | 1.000000 | 4.723210 | 162 | False | dominated |
+| 19 | 150 | True | 1.000000 | 4.150268 | 161 | False | dominated |
+| 19 | 151 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 19 | 152 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 20 | 153 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 20 | 154 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 20 | 155 | True | 1.000000 | 4.150268 | 161 | False | dominated |
+| 20 | 156 | True | 1.000000 | 4.164554 | 162 | False | dominated |
+| 20 | 157 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+| 20 | 158 | True | 1.000000 | 4.150268 | 161 | False | dominated |
+| 20 | 159 | True | 1.000000 | 4.305030 | 162 | False | dominated |
+| 20 | 160 | True | 1.000000 | 4.184292 | 162 | False | dominated |
+
+## Best 3 variants
+### Best 1
+| Metric | Value |
+| --- | --- |
+| M1_corpus_accuracy | 1.000000 |
+| M2_roundtrip_pass | 1.000000 |
+| M3_injectivity_collisions | 0 |
+| M3_partial_collisions | 0 |
+| M4_completeness_violations | 0 |
+| M5a_mean_grade | 4.150268 |
+| M5b_max_grade | 8.180000 |
+| M5c_mean_words | 17.700000 |
+| M6_latency_median_us | 9.019000 |
+| M6_latency_p95_us | 16.475000 |
+| M7_declaration_lines | 161 |
+| hard_pass | True |
+```json
+{
+  "id": 116,
+  "synonyms": {
+    "ask_verbs": [
+      "ask",
+      "tell"
+    ],
+    "hide_verbs": [
+      "hide",
+      "conceal"
+    ],
+    "list_regex": [
+      "^what accounts do i have$",
+      "^list my accounts$"
+    ],
+    "politeness": [
+      "please",
+      "can you",
+      "could you",
+      "would you"
+    ],
+    "register_verbs": [
+      "add",
+      "register",
+      "create"
+    ],
+    "send_verbs": [
+      "send",
+      "forward"
+    ],
+    "show_verbs": [
+      "show",
+      "display"
+    ],
+    "use_verbs": [
+      "use"
+    ]
+  },
+  "wording": {
+    "account_on": "account on",
+    "account_word": "account",
+    "accounts_word": "accounts",
+    "browser_phrase": "the browser for your",
+    "fanout_to": "to",
+    "hide_verb": "Hide",
+    "info_label": "What should it be called?",
+    "info_prompt": "What should I send?",
+    "leave": "Your words will leave this computer.",
+    "list_reading": "Show the accounts you have added.",
+    "model_prefix": ", with",
+    "option_comma": ", ",
+    "option_or": "or",
+    "question": "Which one",
+    "register_to": "to this computer",
+    "register_verb": "Add",
+    "send_verb": "Send",
+    "show_verb": "Show",
+    "to_phrase": "to your",
+    "words_phrase": "the words",
+    "your_word": "your"
+  }
+}
+```
+
+### Best 2
+| Metric | Value |
+| --- | --- |
+| M1_corpus_accuracy | 1.000000 |
+| M2_roundtrip_pass | 1.000000 |
+| M3_injectivity_collisions | 0 |
+| M3_partial_collisions | 0 |
+| M4_completeness_violations | 0 |
+| M5a_mean_grade | 4.164554 |
+| M5b_max_grade | 8.180000 |
+| M5c_mean_words | 17.628571 |
+| M6_latency_median_us | 9.193500 |
+| M6_latency_p95_us | 18.198000 |
+| M7_declaration_lines | 162 |
+| hard_pass | True |
+```json
+{
+  "id": 59,
+  "synonyms": {
+    "ask_verbs": [
+      "ask",
+      "tell",
+      "request"
+    ],
+    "hide_verbs": [
+      "hide",
+      "conceal"
+    ],
+    "list_regex": [
+      "^what accounts do i have$",
+      "^list my accounts$"
+    ],
+    "politeness": [
+      "please",
+      "can you",
+      "could you",
+      "would you"
+    ],
+    "register_verbs": [
+      "add",
+      "register",
+      "create"
+    ],
+    "send_verbs": [
+      "send",
+      "forward"
+    ],
+    "show_verbs": [
+      "show",
+      "display"
+    ],
+    "use_verbs": [
+      "use"
+    ]
+  },
+  "wording": {
+    "account_on": "account on",
+    "account_word": "account",
+    "accounts_word": "accounts",
+    "browser_phrase": "browser for your",
+    "fanout_to": "to",
+    "hide_verb": "Hide",
+    "info_label": "What should it be called?",
+    "info_prompt": "What should I send?",
+    "leave": "Your words will leave this computer.",
+    "list_reading": "Show the accounts you have added.",
+    "model_prefix": " with",
+    "option_comma": ", ",
+    "option_or": "or",
+    "question": "Which one",
+    "register_to": "to this computer",
+    "register_verb": "Add",
+    "send_verb": "Send",
+    "show_verb": "Show",
+    "to_phrase": "to your",
+    "words_phrase": "the words",
+    "your_word": "your"
+  }
+}
+```
+
+### Best 3
+| Metric | Value |
+| --- | --- |
+| M1_corpus_accuracy | 1.000000 |
+| M2_roundtrip_pass | 1.000000 |
+| M3_injectivity_collisions | 0 |
+| M3_partial_collisions | 0 |
+| M4_completeness_violations | 0 |
+| M5a_mean_grade | 4.184292 |
+| M5b_max_grade | 8.180000 |
+| M5c_mean_words | 17.607143 |
+| M6_latency_median_us | 8.993500 |
+| M6_latency_p95_us | 16.104000 |
+| M7_declaration_lines | 162 |
+| hard_pass | True |
+```json
+{
+  "id": 74,
+  "synonyms": {
+    "ask_verbs": [
+      "ask",
+      "tell",
+      "request"
+    ],
+    "hide_verbs": [
+      "hide",
+      "conceal"
+    ],
+    "list_regex": [
+      "^what accounts do i have$",
+      "^list my accounts$"
+    ],
+    "politeness": [
+      "please",
+      "can you",
+      "could you",
+      "would you"
+    ],
+    "register_verbs": [
+      "add",
+      "register",
+      "create"
+    ],
+    "send_verbs": [
+      "send",
+      "forward"
+    ],
+    "show_verbs": [
+      "show",
+      "display"
+    ],
+    "use_verbs": [
+      "use"
+    ]
+  },
+  "wording": {
+    "account_on": "account on",
+    "account_word": "account",
+    "accounts_word": "accounts",
+    "browser_phrase": "browser for your",
+    "fanout_to": "to",
+    "hide_verb": "Hide",
+    "info_label": "What should it be called?",
+    "info_prompt": "What should I send?",
+    "leave": "Your words will leave this computer.",
+    "list_reading": "Show added accounts.",
+    "model_prefix": " with",
+    "option_comma": ", ",
+    "option_or": "or",
+    "question": "Which one",
+    "register_to": "to this computer",
+    "register_verb": "Add",
+    "send_verb": "Send",
+    "show_verb": "Show",
+    "to_phrase": "to your",
+    "words_phrase": "the words",
+    "your_word": "your"
+  }
+}
+```
+
+## Counterexamples (unique, first 200)
+- none

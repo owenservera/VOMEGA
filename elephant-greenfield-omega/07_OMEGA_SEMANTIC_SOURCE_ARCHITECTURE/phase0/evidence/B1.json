@@ -1,0 +1,6 @@
+{
+  "benchmark": "B1",
+  "status": "NOT_RUN",
+  "reason": "Requires independently labelled blind corpus and external arms; no provider calls authorized.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}

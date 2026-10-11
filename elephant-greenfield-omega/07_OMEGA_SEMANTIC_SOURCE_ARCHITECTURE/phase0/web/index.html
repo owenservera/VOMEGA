@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ω · Semantic lab</title><link rel="stylesheet" href="/style.css"></head>
+<body><header><b>Ω</b><span>SEMANTIC LAB <small>PHASE 0</small></span><button id="lab-toggle" aria-expanded="false">Evidence</button></header>
+<aside id="lab" hidden><h2>Local evidence</h2><pre id="metrics"></pre></aside>
+<main><section class="command" aria-label="Command box"><div class="eyebrow">YOUR WORDS → A VISIBLE ACTION</div><label for="input">What would you like to do?</label><textarea id="input" rows="2" maxlength="2048" placeholder="ask claude work to explain this error"></textarea>
+<div class="examples"><button data-text="ask claude work to explain this error">Send a prompt</button><button data-text="ask claude to explain this error">Choose an account</button><button data-text="list my accounts">List accounts</button></div>
+<div id="status" role="status">Ready for your words</div><p id="reading"></p><div id="choices"></div><button id="confirm" disabled>Confirm mock action</button><p class="note">Mock only · No provider is contacted. The reading describes the intended operation; this lab records a simulated receipt.</p><pre id="receipt" aria-live="polite"></pre><details><summary>Why this interpretation?</summary><pre id="trace"></pre></details></section></main><script type="module" src="/app.js"></script></body></html>

@@ -1,5 +1,9 @@
 # Ω Foundational Semantic SDK — R&D intake
 
+## Executed Phase 0 integration lab
+
+The [runnable Phase 0 lab](phase0/README.md) now contains selected hash-verified original source, actual A/B replay, 70,101 generated comparison rows, an independent finite checker, mock execution gate and local web UI, data-only candidate evaluation, and an [evidence-driven opportunity map](phase0/PHASE0_OPPORTUNITY_MAP.md). This is experimental mock evidence, not production SDK or B1–B4 competition proof. Browser visual validation, Windows execution, isolated candidate execution and sealed holdouts remain unverified/blocked. The five prompts remain **NOT_FROZEN**. The historical intake below describes the earlier staging state; complete archive custody still remains with the operator.
+
 **Status:** research intake / staging index; not a production SDK. **Date:** 2026-10-11.
 
 This Elephant Lab R&D track studies the semantic contract and compiler foundation for Ω. It is distinct from 00_CORE_BASELINE (frozen experiments), 01_EXPECTED_OUTPUTS (publication contract), 02_ARCHITECTURE_PROPOSALS (independent designs), 03_DEVELOPMENT_SYSTEMS (running labs), 04_TURN_PUBLICATIONS (independently retrievable releases), and 05_UNIVERSAL_ELEPHANT_DNA (candidate cognitive traits).

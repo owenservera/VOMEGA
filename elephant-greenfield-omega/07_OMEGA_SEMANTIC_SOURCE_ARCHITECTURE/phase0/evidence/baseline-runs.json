@@ -1,0 +1,22 @@
+[
+  {
+    "name": "runA",
+    "command": "python vendor/runA/proofs.py",
+    "exit_code": 0,
+    "elapsed_seconds": 13.72299018700005,
+    "classification": "MEASURED",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "scratch_modification": null
+  },
+  {
+    "name": "runB",
+    "command": "python .replay/runB/run.py",
+    "exit_code": 0,
+    "elapsed_seconds": 3.201192679000087,
+    "classification": "MEASURED",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "scratch_modification": "copy vendor/runA/fixture.json to .replay/runB/omega_core_fixture_v1.json"
+  }
+]

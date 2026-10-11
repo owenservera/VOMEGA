@@ -1,0 +1,240 @@
+{
+  "schema": "omega-phase0-opportunities/1",
+  "status": "NOT_FROZEN",
+  "basis": "Measured Phase 0 source replay, public comparison and local gate/HTTP tests; no sealed evaluation or production proof",
+  "recommended_allocation": [
+    "C2",
+    "C1",
+    "C3",
+    "C4",
+    "C5"
+  ],
+  "ranking_method": "Qualitative priority: safety first, portability next, then falsifiable acceleration and UX/context value. Not a measured ROI ranking.",
+  "missions": [
+    {
+      "rank": 1,
+      "id": "C2",
+      "mission": "Independent ambiguity, authorization and candidate referee",
+      "gap": "758 wrong-but-READY Run A extra cases; original diagnostic flag does not block execution. Candidate code execution remains blocked.",
+      "evidence": [
+        "evidence/cross-comparison.json",
+        "goldens/false-ready-regressions.jsonl.gz",
+        "tests/test_gate.py",
+        "evaluator.py"
+      ],
+      "value": "Prevent semantic uncertainty or transport metadata from authorizing effects; make other computers safely comparable.",
+      "independence": "Start now from frozen raw sources and public vectors; separate evaluator custody from candidate builders.",
+      "competition": "Ambitious alternative: a small state-machine/model-checking referee plus disposable OS sandbox instead of another parser-focused red team. Compare with adversarial property tests.",
+      "experiment": "Implement isolated data/command intake and model the preview→permit→receipt state transitions; attempt corruption, timeout, concurrent replay and reject-everything candidates.",
+      "acceptance": "Zero unauthorized receipts across at least 100 preregistered mutation schedules; every seeded fault caught; valid controls execute exactly once; untrusted runner cannot read a mounted secret sentinel or use network.",
+      "negative_controls": [
+        "Permit = semantic digest",
+        "Removed dispatch snapshot check",
+        "Always reject candidate",
+        "Candidate tries network/host-file read"
+      ],
+      "effort": {
+        "class": "ESTIMATED",
+        "range_engineer_days": [
+          3,
+          6
+        ],
+        "method": "One isolated runner + state model + roughly six fault strata; excludes third-party security audit"
+      },
+      "risk": "False confidence from public tests; sandbox escape or holdout leakage.",
+      "friction": "Medium: requires OS isolation capability and agreed wire contract.",
+      "usable": [
+        "runtime.Lab",
+        "evaluator.evaluate",
+        "oracle.check",
+        "goldens/manifest.json"
+      ],
+      "unknowns": [
+        "Available sandbox substrates on five computers",
+        "Who controls sealed evaluator custody"
+      ],
+      "reallocate_if": "If isolated execution cannot be deployed, keep grading data-only and prioritize an external referee environment."
+    },
+    {
+      "rank": 2,
+      "id": "C1",
+      "mission": "Portable semantic compiler with independent differential proof",
+      "gap": "Working core is Python; TypeScript only covers the browser. Partial provenance and grammar evolution remain unproved.",
+      "evidence": [
+        "vendor/runA/engine.py",
+        "goldens/public.jsonl",
+        "goldens/reachable.jsonl",
+        "canonical-check.mjs"
+      ],
+      "value": "An SDK usable in the Windows/browser stack with source-bound deterministic readings and reproducible semantics.",
+      "independence": "Can begin from frozen goldens immediately; never wait for C2 to invent the whole runtime.",
+      "competition": "Ambitious alternative: generate a language-neutral IR and parser tables from declarations, emitting TS or WASM, versus hand-porting the Python interpreter.",
+      "experiment": "Port six capabilities behind interpret/render/parseReading; compare byte-exact results and digests against the fixture and all reachable states; measure registry and input-length growth.",
+      "acceptance": "179 public vectors and 417 state readings match, all 70,101 generated rows receive separately reported fidelity/ambiguity results, no additional unflagged false READY, Unicode rejection agrees across runtimes. Preserve all known failures instead of training them away silently.",
+      "negative_controls": [
+        "Reordered set changes digest",
+        "Dropped consequence",
+        "UTF-16/UTF-8 hash mismatch",
+        "Default account injected silently"
+      ],
+      "effort": {
+        "class": "ESTIMATED",
+        "range_engineer_days": [
+          4,
+          8
+        ],
+        "method": "Compiler/recognizer port + renderer inverse + cross-runtime fixtures, not full production SDK"
+      },
+      "risk": "Replicating original parser bugs; claiming stronger grammar coverage than observed.",
+      "friction": "Medium: explicit adapter schemas and canonical encoding are available; existing internal state shapes need normalization.",
+      "usable": [
+        "INTERFACE_V1.md",
+        "goldens/manifest.json",
+        "checker.py",
+        "canonical-check.mjs"
+      ],
+      "unknowns": [
+        "Best grammar compilation strategy",
+        "Whether full source spans can be retained economically"
+      ],
+      "reallocate_if": "If table-driven generation materially reduces mutation cost with equivalent safety, prioritize IR over a line-for-line port."
+    },
+    {
+      "rank": 3,
+      "id": "C3",
+      "mission": "Declaration evolution and a credible B4 conventional twin",
+      "gap": "Six-capability independent checker is hard-coded; no proof declarations make correct changes cheaper. compileHelp is absent.",
+      "evidence": [
+        "oracle.py",
+        "vendor/runA/omega.osl",
+        "vendor/benchmarks/B4_CHANGE_VELOCITY.md",
+        "interface.json"
+      ],
+      "value": "Test the central development acceleration claim before expanding the semantic platform.",
+      "independence": "Use current Python twin now; future TS twin equivalence is a comparison gate, not a prerequisite to drafting blinded tasks.",
+      "competition": "Ambitious alternative: typed TS capability objects with generated reflection and property tests instead of a bespoke DSL. Include source-to-capsule compilation as an optional third arm.",
+      "experiment": "Build a conventional behavior-equivalent twin independently, then run preregistered changes: add capability, rename entity, change consequence, fix bug, update model compatibility.",
+      "acceptance": "Twins pass the same frozen behavior suite before comparison; at least five repeats per task per arm with matched model/budget; zero escaped authorization regressions; report tokens only with real counters and report a loss honestly.",
+      "negative_controls": [
+        "Changed declaration with stale wiki",
+        "Cosmetic-only easy task bank",
+        "Compiler cost excluded",
+        "Underpowered conventional twin"
+      ],
+      "effort": {
+        "class": "ESTIMATED",
+        "range_engineer_days": [
+          5,
+          10
+        ],
+        "method": "Two implementations, five task categories, instrumentation and repeated trials; dependent on model access"
+      },
+      "risk": "Biased tasks and unequal implementation quality manufacture acceleration.",
+      "friction": "High: evaluator extensions must be independent, and new declarations must not silently change the frozen fixture.",
+      "usable": [
+        "vendor/runA",
+        "checker.py",
+        "candidate manifest shape",
+        "SOURCE_MANIFEST.json"
+      ],
+      "unknowns": [
+        "Real token counters in Z.ai sessions",
+        "Independent twin quality and reviewer availability"
+      ],
+      "reallocate_if": "If conventional typed declarations win, retain source-grounded contracts but drop the custom DSL as a requirement."
+    },
+    {
+      "rank": 4,
+      "id": "C4",
+      "mission": "Ambiguity-first command UI and human comprehension",
+      "gap": "Loopback flow passes; browser rendering, Windows runtime, accessibility and human understanding are unverified. Many generated inputs are flagged ambiguous.",
+      "evidence": [
+        "web/app.ts",
+        "server.py",
+        "tests/test_http.py",
+        "evidence/cross-comparison.json"
+      ],
+      "value": "Make account selection, exact payload and consequences understandable with minimal correction steps.",
+      "independence": "Use current bridge and mock snapshot; no real provider or finalized core port required.",
+      "competition": "Ambitious alternative: structured editable sentence chips plus live alternative-meaning previews, compared with free text and a single confirmation card.",
+      "experiment": "Run browser automation and Windows installation first; then compare text-card versus structured choice UX on account/payload-boundary cases with consenting human participants.",
+      "acceptance": "All dispatch-blocking tests remain green; keyboard-only completion and narrow viewport pass; no confirmation survives edits; preregister human error/correction measures and report denominator and uncertainty. No comprehension claim without people.",
+      "negative_controls": [
+        "Ambiguity shown as warning with active confirm",
+        "Hidden consequence behind disclosure",
+        "Default target preselected",
+        "Stale preview after fast typing"
+      ],
+      "effort": {
+        "class": "ESTIMATED",
+        "range_engineer_days": [
+          3,
+          7
+        ],
+        "method": "Two UI variants + browser/Windows checks + small participant study; recruitment excluded"
+      },
+      "risk": "Decorative UI masks incomplete semantics; opaque alternatives overwhelm users.",
+      "friction": "Low to medium: existing local endpoints work; choice flow supports only complete single-account partials.",
+      "usable": [
+        "web",
+        "server.py",
+        "runtime.Lab.choose",
+        "run.ps1",
+        "setup.ps1"
+      ],
+      "unknowns": [
+        "Participant recruitment",
+        "Windows Python/browser availability",
+        "Which choice presentation users understand"
+      ],
+      "reallocate_if": "If structured editing reduces errors substantially, favor it over expanding unrestricted parsing."
+    },
+    {
+      "rank": 5,
+      "id": "C5",
+      "mission": "Source-fresh context and lossless handoff economics",
+      "gap": "No B2/B3 execution, no generated help/capsules, no measured relay overhead or token savings. Transport must not carry authority.",
+      "evidence": [
+        "INTERFACE_V1.md",
+        "vendor/benchmarks/B2_AGENT_CONTEXT.md",
+        "vendor/benchmarks/B3_HANDOFF_FIDELITY.md",
+        "evidence/B2.json",
+        "evidence/B3.json"
+      ],
+      "value": "Let later agents consume the source faithfully and cheaply while keeping current-state execution checks local.",
+      "independence": "Starts from current source hashes and public vectors; use local synthetic relays until external experiments are separately authorized.",
+      "competition": "Ambitious alternative: a content-addressed source graph queried by grep/code mode with a simple JSON envelope, versus compiled capsules plus A2A extension. Do not assume A2A is necessary.",
+      "experiment": "Answer a blinded mixed source question bank before/after mutations using grep, whole-file, vector and capsule arms; separately pass identical commands through native JSON versus typed envelope hops with injected faults.",
+      "acceptance": "Zero stale answers on declared source-mutation safety subset, 100% detection of seeded digest/basis faults, valid control acceptance, true token/wall-time/build-refresh costs; no authority accepted from envelope alone. B2/B3 wins require matched full arms.",
+      "negative_controls": [
+        "Old capsule hash with new code",
+        "Valid digest and absent permit",
+        "Relay drops consequence",
+        "Grep baseline denied useful files"
+      ],
+      "effort": {
+        "class": "ESTIMATED",
+        "range_engineer_days": [
+          4,
+          9
+        ],
+        "method": "Four retrieval arms, mutation questions, two relay transports and counters; embedding/model provisioning excluded"
+      },
+      "risk": "Combining context and relay work grows scope; token measurement may be unavailable.",
+      "friction": "Medium: identities exist but source-grounded help is absent; split into two bounded experiments inside the one computer.",
+      "usable": [
+        "source_hash()",
+        "oracle.digest",
+        "goldens/public.jsonl",
+        "evaluator.py"
+      ],
+      "unknowns": [
+        "Offline embedding availability",
+        "Meaning-preserving relay metrics with real models",
+        "Real context/token witnesses"
+      ],
+      "reallocate_if": "If context retrieval dominates the bottleneck, defer A2A and use simple envelopes until a transport advantage is measured."
+    }
+  ],
+  "owner_review_required_before_final_prompts": true
+}

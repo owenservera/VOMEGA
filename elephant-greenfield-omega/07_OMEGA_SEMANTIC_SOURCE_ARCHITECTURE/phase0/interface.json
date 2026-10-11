@@ -1,0 +1,31 @@
+{
+  "schema": "omega-phase0-interface/1",
+  "status": "LAB_LOCAL_EXPERIMENTAL",
+  "runtime": "Python original reference; TypeScript browser client",
+  "endpoints": {
+    "compile": "ORIGINAL_PYTHON_Omega_CONSTRUCTOR",
+    "interpret": "IMPLEMENTED",
+    "render": "ORIGINAL_PYTHON",
+    "parseReading": "ORIGINAL_PYTHON",
+    "createPreview": "IMPLEMENTED_INTERNAL",
+    "choose": "PARTIAL_SINGLE_ACCOUNT_AND_EXPLICIT_READINGS",
+    "authorize": "IMPLEMENTED_MOCK_ONLY",
+    "dispatchMock": "IMPLEMENTED",
+    "compileHelp": "NOT_IMPLEMENTED"
+  },
+  "limits": {
+    "input_characters": 2048,
+    "preview_ttl_seconds": 60,
+    "permit_ttl_seconds": 15,
+    "provider_effects": "NONE",
+    "canonical_profile": "INTERFACE_V1.md"
+  },
+  "candidate_manifest_schema": "omega-intake/1",
+  "verdicts": [
+    "PASS",
+    "FAIL",
+    "BLOCKED",
+    "UNKNOWN"
+  ],
+  "candidate_execution": "BLOCKED_NO_ISOLATED_RUNNER"
+}

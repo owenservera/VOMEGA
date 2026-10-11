@@ -1,0 +1,6 @@
+{
+  "benchmark": "B2",
+  "status": "NOT_RUN",
+  "reason": "Requires tuned grep, code-mode, vector and capsule arms plus observed token accounting.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}

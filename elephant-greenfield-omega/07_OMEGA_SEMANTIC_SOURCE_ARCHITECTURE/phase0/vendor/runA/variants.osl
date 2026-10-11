@@ -1,0 +1,44 @@
+# Run A wording variants. Each overrides `say` lines of omega.osl; everything else is shared.
+# say <capability|entity|lex> <key> "template"
+
+variant V0-pack "Starting templates from the pack, verbatim (straight quotes, 'Send the words')"
+  say cap:prompt.send READY "Send the words \"{prompt}\" to {account}[, using {model}]. {leaves}"
+  say cap:prompt.fanout READY "Send the words \"{prompt}\" to {count} accounts: {accounts}. {leaves}"
+  say cap:account.register READY "Add a {provider} account called \"{label}\" to this computer."
+
+variant V2-short "Register reading split into two short sentences"
+  say cap:account.register READY "Add a new {provider} account. Its name is “{label}”."
+
+variant V3-compact "Account named as 'your Claude Work account'"
+  say account main "your {provider} {label} account"
+
+variant V4-control "Negative control: drops the leaves-this-computer sentence (must be rejected)"
+  say lex leaves "Your words go out."
+
+variant V5-will "System voice: 'I will send'"
+  say cap:prompt.send READY "I will send “{prompt}” to {account}[, using {model}]. {leaves}"
+  say cap:prompt.fanout READY "I will send “{prompt}” to {count} accounts: {accounts}. {leaves}"
+  say cap:account.register READY "I will add a new {provider} account. Its name will be “{label}”."
+  say cap:browser.show READY "I will show the browser for {account}."
+  say cap:browser.hide READY "I will hide the browser for {account}."
+  say cap:accounts.list READY "I will show the accounts you have added."
+  say cap:prompt.send NEEDS_CHOICE "I will send[ “{prompt}”] to {scope}[, using {model}]. Which one: {options}?"
+  say cap:prompt.send NEEDS_INFO "I will send words to {account}[, using {model}]. What should they say?"
+  say cap:prompt.fanout NEEDS_CHOICE "I will send[ “{prompt}”] to {count} accounts: {items}. For {scope}, which one: {options}?"
+  say cap:prompt.fanout NEEDS_INFO "I will send words to {count} accounts: {accounts}. What should they say?"
+  say cap:account.register NEEDS_INFO "I will add a new {provider} account. What should its name be?"
+  say cap:browser.show NEEDS_CHOICE "I will show the browser for {scope}. Which one: {options}?"
+  say cap:browser.hide NEEDS_CHOICE "I will hide the browser for {scope}. Which one: {options}?"
+
+variant V6-best "V2 register + V3 compact account naming"
+  say cap:account.register READY "Add a new {provider} account. Its name is “{label}”."
+  say account main "your {provider} {label} account"
+
+variant V7-will-compact "V5 system voice + V3 compact account naming"
+  say cap:prompt.send READY "I will send “{prompt}” to {account}[, using {model}]. {leaves}"
+  say cap:prompt.fanout READY "I will send “{prompt}” to {count} accounts: {accounts}. {leaves}"
+  say cap:account.register READY "I will add a new {provider} account. Its name will be “{label}”."
+  say cap:browser.show READY "I will show the browser for {account}."
+  say cap:browser.hide READY "I will hide the browser for {account}."
+  say cap:accounts.list READY "I will show the accounts you have added."
+  say account main "your {provider} {label} account"

@@ -1,0 +1,33 @@
+test_all_observed_runA_false_ready_regressions_block (test_gate.GateTests.test_all_observed_runA_false_ready_regressions_block) ... /workspace/scratch/a67df628d3cf/VOMEGA/elephant-greenfield-omega/07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/vendor/runA/engine.py:52: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/scratch/a67df628d3cf/VOMEGA/elephant-greenfield-omega/07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/vendor/runA/fixture.json' mode='r' encoding='utf-8'>
+  fx = self.fx = json.load(open(fixture_path, encoding='utf-8'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_ambiguous_ready_does_not_get_preview (test_gate.GateTests.test_ambiguous_ready_does_not_get_preview) ... ok
+test_bad_choice (test_gate.GateTests.test_bad_choice) ... ok
+test_concurrent_permit_consumption (test_gate.GateTests.test_concurrent_permit_consumption) ... ok
+test_consent_and_reauthorization (test_gate.GateTests.test_consent_and_reauthorization) ... ok
+test_consequence_removed (test_gate.GateTests.test_consequence_removed) ... ok
+test_each_display_field_is_bound (test_gate.GateTests.test_each_display_field_is_bound) ... ok
+test_expired_permit (test_gate.GateTests.test_expired_permit) ... ok
+test_expired_preview (test_gate.GateTests.test_expired_preview) ... ok
+test_forged_and_wrong_session_permits (test_gate.GateTests.test_forged_and_wrong_session_permits) ... ok
+test_input_changed_after_authorization (test_gate.GateTests.test_input_changed_after_authorization) ... ok
+test_invalid_edit_cannot_reuse_previous_choices (test_gate.GateTests.test_invalid_edit_cannot_reuse_previous_choices) ... ok
+test_new_display_same_text_invalidates (test_gate.GateTests.test_new_display_same_text_invalidates) ... ok
+test_oracle_mutations (test_gate.GateTests.test_oracle_mutations) ... ok
+test_partial_choice (test_gate.GateTests.test_partial_choice) ... ok
+test_partial_without_payload_never_executes (test_gate.GateTests.test_partial_without_payload_never_executes) ... ok
+test_snapshot_mutations_at_dispatch (test_gate.GateTests.test_snapshot_mutations_at_dispatch) ... ok
+test_source_changed (test_gate.GateTests.test_source_changed) ... ok
+test_stale_revision (test_gate.GateTests.test_stale_revision) ... ok
+test_success_then_replay (test_gate.GateTests.test_success_then_replay) ... ok
+test_unicode_rejected_and_old_permit_invalidated (test_gate.GateTests.test_unicode_rejected_and_old_permit_invalidated) ... ok
+test_unknown_and_config_readonly (test_gate.GateTests.test_unknown_and_config_readonly) ... ok
+test_cross_origin_blocked (test_http.HTTPTests.test_cross_origin_blocked) ... ok
+test_page_and_assets (test_http.HTTPTests.test_page_and_assets) ... ok
+test_real_flow_and_stale_dispatch (test_http.HTTPTests.test_real_flow_and_stale_dispatch) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 1.357s
+
+OK

@@ -1,0 +1,15 @@
+{
+  "id": "phase0-public-v1",
+  "fixture_id": "omega-core-fixture-v1",
+  "fixture_hash": "16e242c5f56cc1015d51279320d6015de9e871a8ab88b1cc2de1c3f633ec4b7f",
+  "source_hash": "ac0525b46a42fe8f37e3594db2742881029f0d112a428cbca67485b325867ac1",
+  "files": {
+    "generated.jsonl.gz": "f0804c77079137d285adf44bef1732ce4975f0fadbfbfd56855adaf5bc1142d3",
+    "reachable.jsonl": "8fe63591cf88bb8e3bf8edf3c560003b6b3711659e1f66607003f01b384f5651",
+    "false-ready-regressions.jsonl.gz": "855a053315250fa135b1bb32a37fe944ae10036c90a610b06a5f6cb68281fa8c",
+    "public.jsonl": "bfda7815c18641f682df8368ae106585627da25f75f3963d0734e7b921f46fa0"
+  },
+  "generated_count": 70101,
+  "provenance": "Run A base; original command enumeration and hear grammar; non-READY readings are source-derived only",
+  "private_holdouts": "NOT_RUN; no sealed inputs exist in this public package"
+}

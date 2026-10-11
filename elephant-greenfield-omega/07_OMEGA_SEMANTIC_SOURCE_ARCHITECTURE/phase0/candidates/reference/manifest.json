@@ -1,0 +1,31 @@
+{
+  "schema": "omega-intake/1",
+  "source_hash": "66420daf6897960a9aecdc307b2738a7e2abe8f5461ac81974c06df11c5ea5f9",
+  "implementation_source_hash": "ac0525b46a42fe8f37e3594db2742881029f0d112a428cbca67485b325867ac1",
+  "files": {
+    "scorecard.json": "0164724d3e9eb32ae8f0237f6e5ba12622f5a6afb17f8a5c29efd134ed5e1092",
+    "tests.json": "111310ed61b7e194d25ef8909994b8d04548640c1b9c17408544c7f9b4bbd962",
+    "README.md": "006c8afa52fd8250de1bd16c53fcc4207084e09ebe11deb79aa6d7bbec6d1880",
+    "responses.jsonl": "676a9aeed3f215f35e8a09b6c05b52c9cc21ffbc8286e04f0a2cbb54685a3247",
+    "run.ps1": "f6cf7f306b971b494c895b2fee04eb4e4d13469ef84ea9e109ccef38f4c013d3",
+    "capability-pack.json": "3627543f9eeb1b0f4fb4fb952d94016318de03f474fa4e809706e602779426e4"
+  },
+  "endpoints": [
+    "interpret",
+    "render"
+  ],
+  "tests": [
+    "tests.json"
+  ],
+  "capability_packs": [
+    "capability-pack.json"
+  ],
+  "limitations": [
+    "Data-only evaluation; no isolated live runner",
+    "Public vectors only"
+  ],
+  "run_commands": [
+    "python lab.py candidate"
+  ],
+  "scorecard": "scorecard.json"
+}

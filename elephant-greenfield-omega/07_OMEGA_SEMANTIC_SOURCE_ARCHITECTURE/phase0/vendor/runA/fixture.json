@@ -1,0 +1,86 @@
+{
+  "fixture_id": "omega-core-fixture-v1",
+  "providers": [
+    {"id": "provider:chatgpt", "name": "ChatGPT", "aliases": ["chatgpt", "chat gpt"]},
+    {"id": "provider:claude", "name": "Claude", "aliases": ["claude"]},
+    {"id": "provider:gemini", "name": "Gemini", "aliases": ["gemini"]}
+  ],
+  "accounts": [
+    {"id": "account:chatgpt-personal", "provider": "provider:chatgpt", "label": "Personal"},
+    {"id": "account:chatgpt-work", "provider": "provider:chatgpt", "label": "Work"},
+    {"id": "account:claude-work", "provider": "provider:claude", "label": "Work"},
+    {"id": "account:claude-personal", "provider": "provider:claude", "label": "Personal"},
+    {"id": "account:gemini-personal", "provider": "provider:gemini", "label": "Personal"}
+  ],
+  "models": [
+    {"id": "model:chatgpt/model-a", "provider": "provider:chatgpt", "name": "Model A"},
+    {"id": "model:claude/model-b", "provider": "provider:claude", "name": "Model B"},
+    {"id": "model:gemini/model-c", "provider": "provider:gemini", "name": "Model C"}
+  ],
+  "defaults": {},
+  "capabilities": [
+    {"id": "cap:prompt.send", "params": [
+        {"name": "account", "type": "ref:account", "required": true},
+        {"name": "model", "type": "ref:model", "required": false, "constraint": "model.provider == account.provider"},
+        {"name": "prompt", "type": "text", "required": true}],
+     "consequence": {"leaves_this_computer": true, "carries": "prompt", "to": "provider"}},
+    {"id": "cap:prompt.fanout", "params": [
+        {"name": "accounts", "type": "set:ref:account", "required": true, "constraint": "size >= 2, distinct"},
+        {"name": "prompt", "type": "text", "required": true}],
+     "consequence": {"leaves_this_computer": true, "carries": "prompt", "to": "each provider"}},
+    {"id": "cap:account.register", "params": [
+        {"name": "provider", "type": "ref:provider", "required": true},
+        {"name": "label", "type": "text", "required": true}],
+     "consequence": {"leaves_this_computer": false}},
+    {"id": "cap:browser.show", "params": [{"name": "account", "type": "ref:account", "required": true}],
+     "consequence": {"leaves_this_computer": false}},
+    {"id": "cap:browser.hide", "params": [{"name": "account", "type": "ref:account", "required": true}],
+     "consequence": {"leaves_this_computer": false}},
+    {"id": "cap:accounts.list", "params": [], "consequence": {"leaves_this_computer": false}}
+  ],
+  "enumeration": {
+    "prompts": ["explain this error", "use work instead", "send this to gemini", "He said \"hi\"", "what is a monad?", "ask claude personal to stop"],
+    "labels": ["School", "Work", "Home"]
+  },
+  "corpus": [
+    {"n": 1, "text": "ask claude work to explain this error", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-work", "prompt": "explain this error"}}},
+    {"n": 2, "text": "ask my work claude to explain this error", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-work", "prompt": "explain this error"}}},
+    {"n": 3, "text": "ask claude to explain this error", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:prompt.send", "args": {"prompt": "explain this error"}, "open": "account", "candidates": ["account:claude-personal", "account:claude-work"]}},
+    {"n": 4, "text": "ask gemini to summarize this page", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:gemini-personal", "prompt": "summarize this page"}}},
+    {"n": 5, "text": "send hello to chatgpt personal", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:chatgpt-personal", "prompt": "hello"}}},
+    {"n": 6, "text": "send hello to chatgpt", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:prompt.send", "args": {"prompt": "hello"}, "open": "account", "candidates": ["account:chatgpt-personal", "account:chatgpt-work"]}},
+    {"n": 7, "text": "ask my personal claude: what is a monad", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-personal", "prompt": "what is a monad"}}},
+    {"n": 8, "text": "use gemini for this question: why is the sky blue", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:gemini-personal", "prompt": "why is the sky blue"}}},
+    {"n": 9, "text": "send \"use work instead\" to claude personal", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-personal", "prompt": "use work instead"}}},
+    {"n": 10, "text": "ask claude work to explain \"send this to gemini\"", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-work", "prompt": "explain \"send this to gemini\""}}},
+    {"n": 11, "text": "ask claude work using model b to review my plan", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-work", "model": "model:claude/model-b", "prompt": "review my plan"}}},
+    {"n": 12, "text": "ask claude work using model a to review my plan", "expect": {"status": "INVALID", "capability": "cap:prompt.send", "reason": "model-provider-mismatch"}},
+    {"n": 13, "text": "ask gemini with model c to translate good morning", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:gemini-personal", "model": "model:gemini/model-c", "prompt": "translate good morning"}}},
+    {"n": 14, "text": "ask chatgpt work and claude work to suggest three names", "expect": {"status": "READY", "capability": "cap:prompt.fanout", "args": {"accounts": ["account:chatgpt-work", "account:claude-work"], "prompt": "suggest three names"}}},
+    {"n": 15, "text": "ask chatgpt and gemini to suggest three names", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:prompt.fanout", "args": {"prompt": "suggest three names"}, "open": "accounts[chatgpt]", "candidates": ["account:chatgpt-personal", "account:chatgpt-work"]}},
+    {"n": 16, "text": "send ideas please to claude personal and gemini", "expect": {"status": "READY", "capability": "cap:prompt.fanout", "args": {"accounts": ["account:claude-personal", "account:gemini-personal"], "prompt": "ideas please"}}},
+    {"n": 17, "text": "ask claude work and claude work to say hi", "expect": {"status": "INVALID", "capability": "cap:prompt.fanout", "reason": "duplicate-target"}},
+    {"n": 18, "text": "add my claude account and call it school", "expect": {"status": "READY", "capability": "cap:account.register", "args": {"provider": "provider:claude", "label": "school"}}},
+    {"n": 19, "text": "register a gemini account called work", "expect": {"status": "READY", "capability": "cap:account.register", "args": {"provider": "provider:gemini", "label": "work"}}},
+    {"n": 20, "text": "add a chatgpt account", "expect": {"status": "NEEDS_INFO", "capability": "cap:account.register", "args": {"provider": "provider:chatgpt"}, "open": "label"}},
+    {"n": 21, "text": "add my perplexity account", "expect": {"status": "INVALID", "capability": "cap:account.register", "reason": "unknown-provider"}},
+    {"n": 22, "text": "show my claude work browser", "expect": {"status": "READY", "capability": "cap:browser.show", "args": {"account": "account:claude-work"}}},
+    {"n": 23, "text": "show the gemini browser", "expect": {"status": "READY", "capability": "cap:browser.show", "args": {"account": "account:gemini-personal"}}},
+    {"n": 24, "text": "hide claude", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:browser.hide", "args": {}, "open": "account", "candidates": ["account:claude-personal", "account:claude-work"]}},
+    {"n": 25, "text": "hide the chatgpt personal browser", "expect": {"status": "READY", "capability": "cap:browser.hide", "args": {"account": "account:chatgpt-personal"}}},
+    {"n": 26, "text": "what accounts do I have", "expect": {"status": "READY", "capability": "cap:accounts.list", "args": {}}},
+    {"n": 27, "text": "list my accounts", "expect": {"status": "READY", "capability": "cap:accounts.list", "args": {}}},
+    {"n": 28, "text": "ask claude work", "expect": {"status": "NEEDS_INFO", "capability": "cap:prompt.send", "args": {"account": "account:claude-work"}, "open": "prompt"}},
+    {"n": 29, "text": "ask to explain this error", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:prompt.send", "args": {"prompt": "explain this error"}, "open": "account", "candidates": ["account:chatgpt-personal", "account:chatgpt-work", "account:claude-personal", "account:claude-work", "account:gemini-personal"]}},
+    {"n": 30, "text": "make me a sandwich", "expect": {"status": "UNKNOWN"}},
+    {"n": 31, "text": "delete all my files", "expect": {"status": "UNKNOWN"}},
+    {"n": 32, "text": "ask gemini to compare claude and chatgpt", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:gemini-personal", "prompt": "compare claude and chatgpt"}}},
+    {"n": 33, "text": "ask claude personal to explain this error and ask gemini to check it", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-personal", "prompt": "explain this error and ask gemini to check it"}}, "note": "convention-dependent: payload after 'to' is consumed whole; a negative-intent candidate"},
+    {"n": 34, "text": "tell claude work thanks", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-work", "prompt": "thanks"}}},
+    {"n": 35, "text": "ask the work account to review this", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:prompt.send", "args": {"prompt": "review this"}, "open": "account", "candidates": ["account:chatgpt-work", "account:claude-work"]}},
+    {"n": 36, "text": "ask my personal account to review this", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:prompt.send", "args": {"prompt": "review this"}, "open": "account", "candidates": ["account:chatgpt-personal", "account:claude-personal", "account:gemini-personal"]}},
+    {"n": 37, "text": "send review this to gemini using model b", "expect": {"status": "INVALID", "capability": "cap:prompt.send", "reason": "model-provider-mismatch"}},
+    {"n": 38, "text": "show browser", "expect": {"status": "NEEDS_CHOICE", "capability": "cap:browser.show", "args": {}, "open": "account", "candidates": ["account:chatgpt-personal", "account:chatgpt-work", "account:claude-personal", "account:claude-work", "account:gemini-personal"]}},
+    {"n": 39, "text": "ask claude work to say \"hi\" to gemini", "expect": {"status": "READY", "capability": "cap:prompt.send", "args": {"account": "account:claude-work", "prompt": "say \"hi\" to gemini"}}}
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "omega-scorecard/1",
+  "classification": "MEASURED",
+  "verdict": "FAIL",
+  "disposition": "ADAPT",
+  "scope": "public finite response conformance; candidate source is NOT executed",
+  "execution": "BLOCKED_NO_ISOLATED_RUNNER",
+  "holdouts": "NOT_RUN",
+  "witnesses": [
+    {
+      "id": "ready-000",
+      "errors": [
+        "READING_MISMATCH",
+        "READING_OR_CONSEQUENCE_MISMATCH"
+      ],
+      "got": {
+        "id": "ready-000",
+        "reading": "Send “explain this error” to your Personal account on ChatGPT. ",
+        "semantic_digest": "ac8221fd663ee0dc67cddbb9ac7669ec23aaba321684fdb2552609b739cb7c81",
+        "state": {
+          "args": {
+            "account": "account:chatgpt-personal",
+            "prompt": "explain this error"
+          },
+          "capability": "cap:prompt.send",
+          "status": "READY"
+        }
+      },
+      "expected": {
+        "derivation": {
+          "capability": "cap:prompt.send",
+          "declaration": "vendor/runA/omega.osl"
+        },
+        "expected": {
+          "args": {
+            "account": "account:chatgpt-personal",
+            "prompt": "explain this error"
+          },
+          "capability": "cap:prompt.send",
+          "status": "READY"
+        },
+        "id": "ready-000",
+        "kind": "ready",
+        "reading": "Send “explain this error” to your Personal account on ChatGPT. Your words will leave this computer.",
+        "semantic_digest": "ac8221fd663ee0dc67cddbb9ac7669ec23aaba321684fdb2552609b739cb7c81"
+      }
+    }
+  ],
+  "passed": 178,
+  "total": 179,
+  "source_hash": "f3100cd5462a4e7c03f156acbd8279289a4ee622754b6d3fafa92831b2761384"
+}

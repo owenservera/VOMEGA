@@ -1,0 +1,10 @@
+{
+  "id": "runA-reference-response-bundle",
+  "maturity": "EXPERIMENTAL",
+  "source_hash": "ac0525b46a42fe8f37e3594db2742881029f0d112a428cbca67485b325867ac1",
+  "runtime": "Python",
+  "limitations": [
+    "No TypeScript semantic core",
+    "No private holdout certification"
+  ]
+}

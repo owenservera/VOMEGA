@@ -1,0 +1,6 @@
+{
+  "benchmark": "B4",
+  "status": "NOT_RUN",
+  "reason": "Requires an independently built TS twin, randomized tasks, equal budgets and token witnesses.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}

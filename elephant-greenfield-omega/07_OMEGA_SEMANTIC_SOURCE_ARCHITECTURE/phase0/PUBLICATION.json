@@ -1,0 +1,289 @@
+{
+  "schema": "omega-all-state-publication/1",
+  "publisher": "ChatGPT Work",
+  "session": "work-semantic-phase0",
+  "track": "independent-integration-lab",
+  "turn": "2026-10-11-phase0-1",
+  "previous_publication": null,
+  "source_parent_sha": "f4c28742a107d52d007c5deeac6a0345e9da3770",
+  "timestamp": "2026-10-11T12:27:11.491125+00:00",
+  "archive_sha256": "b8ec9a5f99e8b2db2932e8760712af0a302cce2fe62a119b28edaf52c9835d87",
+  "child_executions": "NONE",
+  "packs": [
+    {
+      "id": "source-replay",
+      "version": "phase0.1",
+      "content_hash": "02afeeab01def2ed3da4b8b425c5e84b3fd0828d161b5c68404095fa45d0a2f5",
+      "maturity": "EXPERIMENTAL",
+      "operational_status": "LOCALLY_REPLAYED",
+      "purpose": "Exact archive custody and A/B baseline reproduction",
+      "delta": "ADDED",
+      "lineage": "operator Work Phase 0 / raw A and B archive",
+      "files": {
+        "vendor/runA/osl.py": "39eb3b40ca857e95253c982879af0495867d316110acc6f4faa4ee77ed8c7e75",
+        "vendor/runA/fixture.json": "ee7415cf9c58e4b5411f6ec132faee6a68543520df85b5e9dff13c2eef88250e",
+        "vendor/runA/proofs.py": "428f1832a2fecf5f1c639e596ec1722ee2d914960cacf8873ed349636cf1b449",
+        "vendor/runA/variants.osl": "f04a369476fd9e35c00b6dce016a4c50e1f55de02278d3b3af92a010cb0e1fe5",
+        "vendor/runA/engine.py": "8981568c24613e0c4c0ac4f1e54f51b6c51244c7e69b326ab8652a22cf57bff2",
+        "vendor/runA/omega.osl": "b4920bbb1ca272deb8e24305ef1785ff878c895ececf184879f258443f8fc402",
+        "vendor/benchmarks/B4_CHANGE_VELOCITY.md": "0dc5fb9da30d5269871ff7f5c7215e8e36fffad4817c32867a1196b23bac59c3",
+        "vendor/benchmarks/00_MASTER_SESSION_INTEGRATION.md": "d5018e9ef3cb5e702f01d3de8c85e387f7bb4c6d12b2e46a5b2a90dab7f6a2d6",
+        "vendor/benchmarks/B1_COMMAND_FIDELITY.md": "db7d664513981318004fb2f667bab82c30342d2c34095dbc42c247d78327d8c4",
+        "vendor/benchmarks/B3_HANDOFF_FIDELITY.md": "1278fa6e9afefce3ab4ba9f922ec493838a392b156ca54637126d728280b282d",
+        "vendor/benchmarks/B2_AGENT_CONTEXT.md": "b9d4c140837f003f2a60acea2229df4b4ad167bb674214c8083f0578af111967",
+        "vendor/runB/run.py": "37e3cd27ef07051c656aabf8e18f7c7d78f2d8ea14b38677dd08307dfe70f04a",
+        "SOURCE_MANIFEST.json": "e349c4bede0fe0a801448800638de0e117a7df3d57417ed44775158ad51b2cbe",
+        "lab.py": "05237d6358e02b94a2dce3063d0fa47c340137f9b84e6a24f97735aaa83f783f",
+        "evidence/baseline-runs.json": "8b670dcda51562c90f6dd3c63cc16f199deca55fe7bc5cfc81d689a9f5f5728d",
+        "evidence/runA.stdout": "abb08b3eb169b3867d949bf56f9dbd6c1570f5164c9915b90a66810fbcd2a78b",
+        "evidence/runB.stdout": "377531bc796bc0dec7fd4e1d0b187097fa0362d1532188bcc50d9b8190a942de"
+      },
+      "limitations": [
+        "No upstream license supplied; no original patch blindly applied"
+      ],
+      "tests": "python lab.py verify; see evidence/",
+      "costs": {
+        "runtime": "MEASURED in baseline-runs and cross-comparison",
+        "tokens": "UNKNOWN",
+        "monetary": "UNKNOWN"
+      },
+      "dependencies": [
+        "Python 3.10+ standard library"
+      ],
+      "certification": "PENDING_INDEPENDENT_EXTERNAL_REVIEW"
+    },
+    {
+      "id": "conformance-oracle",
+      "version": "phase0.1",
+      "content_hash": "1bb72aa68ab9930db97997746a6f3ebadd27f556681908edfdd3851bb0e1259b",
+      "maturity": "EXPERIMENTAL",
+      "operational_status": "LOCALLY_TESTED",
+      "purpose": "Six-capability independent READY checker and full public source-derived comparison",
+      "delta": "ADDED",
+      "lineage": "operator Work Phase 0 / raw A and B archive",
+      "files": {
+        "oracle.py": "3a39ba37a24e0e805bfb8368e92b2ad5b674650e7b027b8c20014de14e42dd39",
+        "checker.py": "3274e43df6ddd956316692be9fff9477b33b00929325450e16e901fb3120eb86",
+        "canonical-check.mjs": "30fc81fffcafbfbc6d8196dc5e0d28266aefb2b821f1cc2ea51b32db1490e11d",
+        "goldens/manifest.json": "72a5947379e5571ff2e47c1b2887f945ab368f385011488915156984a97cd7da",
+        "goldens/generated.jsonl.gz": "f0804c77079137d285adf44bef1732ce4975f0fadbfbfd56855adaf5bc1142d3",
+        "goldens/reachable.jsonl": "8fe63591cf88bb8e3bf8edf3c560003b6b3711659e1f66607003f01b384f5651",
+        "goldens/false-ready-regressions.jsonl.gz": "855a053315250fa135b1bb32a37fe944ae10036c90a610b06a5f6cb68281fa8c",
+        "goldens/public.jsonl": "bfda7815c18641f682df8368ae106585627da25f75f3963d0734e7b921f46fa0",
+        "evidence/independent-checker.json": "aba38d7128880d57afc0a16d89cda70791d45cda9750cdba0e35cf41c0a2795e",
+        "evidence/cross-comparison.json": "208b0435a2ea309551b73a2f8f2b0bc5871ef94eeea8785949a6d83dd0f79c4f",
+        "evidence/node-canonical.json": "b930a52e104d8b0d29ed4ce65b35d0c1ee51143835843b1c96c7e3d4d0920020"
+      },
+      "limitations": [
+        "Non-READY readings source-derived; no sealed evaluation",
+        "Generated cohort is biased toward A grammar"
+      ],
+      "tests": "python lab.py verify; see evidence/",
+      "costs": {
+        "runtime": "MEASURED in baseline-runs and cross-comparison",
+        "tokens": "UNKNOWN",
+        "monetary": "UNKNOWN"
+      },
+      "dependencies": [
+        "Python 3.10+ standard library"
+      ],
+      "certification": "PENDING_INDEPENDENT_EXTERNAL_REVIEW"
+    },
+    {
+      "id": "mock-command-flow",
+      "version": "phase0.1",
+      "content_hash": "373d7731bce2dcbb98d85ed62571edafb87ee84c63797460a0c5775f3c358cd6",
+      "maturity": "EXPERIMENTAL",
+      "operational_status": "LOCALLY_TESTED_BROWSER_UNVERIFIED",
+      "purpose": "Input→reading→choice→consent→validated mock dispatch→receipt",
+      "delta": "ADDED",
+      "lineage": "operator Work Phase 0 / raw A and B archive",
+      "files": {
+        "runtime.py": "7379edda69eab6142353a794a0fc9fa4da5e8b18b0cc921ec8a5c5b873738434",
+        "server.py": "8277c128f1452973fa21190558645584989d7b3abd8a93c857eb661abb738b52",
+        "web/index.html": "a11414a63d4bac7fddc68c3c08990cdf27dc2939f75f30bba8a5f87f1d739b73",
+        "web/style.css": "07b95c365f443932a296bcd6409016b4b38b5e8f429d3a6830c75f031343d0ac",
+        "web/app.ts": "8d35df6cc4f400a1dbeb16976546112407041e25f82e34db98032df3fe7b0625",
+        "web/app.js": "095d23435827335b8b52d68cc3f18c31e52854d1fd525561e571be384e7085ac",
+        "tests/test_http.py": "53ac4572ea02a457364519b5c042d5f22063f7b8cabe20ef843c0fff5c41a4ed",
+        "tests/test_gate.py": "d052690ffb660b1777e2aae882247e2accf6f99ed18d163863f48abadc9964c9",
+        "run.ps1": "7c1be9f274d7401cec7cbf185f716253681a3f332f3150bee885f167b416b79a",
+        "setup.ps1": "8fc30f960d2a5d190dcdec794f6c9faa3e8a187e5042c0047f31a33698494364",
+        "build-web.mjs": "8253346b9709c1a1b69c1f37322aa5de951aa09918b64cf97ea63580c1942f2b",
+        "evidence/gate-tests.log": "f3c854b0b3822e454529ce2f2d021ec150ee308d1fe2d02d34715a7e1527c34b",
+        "evidence/browser-validation.json": "0fc5b296d359321b3d32d793f60526c121422a5471d22146fb57c38f87fd6615"
+      },
+      "limitations": [
+        "No real providers; read-only account configuration",
+        "Browser visuals and Windows execution untested; memory-only permits"
+      ],
+      "tests": "python lab.py verify; see evidence/",
+      "costs": {
+        "runtime": "MEASURED in baseline-runs and cross-comparison",
+        "tokens": "UNKNOWN",
+        "monetary": "UNKNOWN"
+      },
+      "dependencies": [
+        "Python 3.10+ standard library"
+      ],
+      "certification": "PENDING_INDEPENDENT_EXTERNAL_REVIEW"
+    },
+    {
+      "id": "candidate-intake",
+      "version": "phase0.1",
+      "content_hash": "1d5059c706c8b35b6290e7444b2526b2efc983b5b94cac38bc9ccc61ef8d1915",
+      "maturity": "EXPERIMENTAL",
+      "operational_status": "DATA_ONLY_EXECUTION_BLOCKED",
+      "purpose": "Hash validation and independent finite response scoring; corrupted candidate fails",
+      "delta": "ADDED",
+      "lineage": "operator Work Phase 0 / raw A and B archive",
+      "files": {
+        "evaluator.py": "ea8c5a71167e3f2fd6c613710b09561cd68f55bdb386f46570b7bb7847f2562b",
+        "candidates/reference/scorecard.json": "0164724d3e9eb32ae8f0237f6e5ba12622f5a6afb17f8a5c29efd134ed5e1092",
+        "candidates/reference/tests.json": "111310ed61b7e194d25ef8909994b8d04548640c1b9c17408544c7f9b4bbd962",
+        "candidates/reference/README.md": "006c8afa52fd8250de1bd16c53fcc4207084e09ebe11deb79aa6d7bbec6d1880",
+        "candidates/reference/responses.jsonl": "676a9aeed3f215f35e8a09b6c05b52c9cc21ffbc8286e04f0a2cbb54685a3247",
+        "candidates/reference/manifest.json": "c2c31f95fa709d2383b1d555620f1d5477119047a81b2d606f644d80f1f0cd2b",
+        "candidates/reference/run.ps1": "f6cf7f306b971b494c895b2fee04eb4e4d13469ef84ea9e109ccef38f4c013d3",
+        "candidates/reference/capability-pack.json": "3627543f9eeb1b0f4fb4fb952d94016318de03f474fa4e809706e602779426e4",
+        "evidence/candidate-reference.json": "0fcf147652f0a35298739e4b2b3dbc019f962e9083eb8405c99bd2fcb37dbdca",
+        "evidence/candidate-mutated.json": "72f69a0d4791b791fd510a624cebe523afdab089a941cde6186bd9524230379f"
+      },
+      "limitations": [
+        "Arbitrary candidate execution blocked without isolated runner",
+        "Public response matching is not independent code execution certification"
+      ],
+      "tests": "python lab.py verify; see evidence/",
+      "costs": {
+        "runtime": "MEASURED in baseline-runs and cross-comparison",
+        "tokens": "UNKNOWN",
+        "monetary": "UNKNOWN"
+      },
+      "dependencies": [
+        "Python 3.10+ standard library"
+      ],
+      "certification": "PENDING_INDEPENDENT_EXTERNAL_REVIEW"
+    },
+    {
+      "id": "benchmark-and-opportunity-map",
+      "version": "phase0.1",
+      "content_hash": "7fec0b15e28ee6f30c695ac12fd9a5f4f9e9a013468a8768be1cf8efb59993a6",
+      "maturity": "EXPERIMENTAL",
+      "operational_status": "DESIGN_NOT_FROZEN",
+      "purpose": "B1–B4 entrypoints report NOT_RUN; five ranked experiments and alternatives",
+      "delta": "ADDED",
+      "lineage": "operator Work Phase 0 / raw A and B archive",
+      "files": {
+        "PHASE0_OPPORTUNITY_MAP.md": "391e037bac325c90e744112283e1d21010a72c447877bcbc63131a925a11ca39",
+        "PHASE0_OPPORTUNITY_MAP.json": "0897d09c91aafa74804f334a1ad203ecef09a811fbad1567fb3afd39a2407420",
+        "HOLDOUT_PROTOCOL.md": "7ffa4d74ea8b39aec94d77dce3bcd9060e92798d92f3753f570780f796b653f3",
+        "interface.json": "40007dd73342ece5fda55f4c0ea9e02f6d7c77366f1984eb7ca6b02d32f2ac9d",
+        "INTERFACE_V1.md": "b8d2b1dd3f9bc87c0c4d9b6c952e7e64b433c5b320afa5137f2d4afd90fec0f0",
+        "DECISIONS.md": "55d9c87d49ca1e3c096006f18c2293cc60f0834deec80724959ab18bd6ce3f47",
+        "evidence/B1.json": "495114c3f7fb8485e4ccdbea87e56904e80d5ada9cd2df31848e40e3eb47b0c0",
+        "evidence/B2.json": "fadad8090258783a7b635a57d416fbf25158781b6dde8eead7d9a2a79b012abc",
+        "evidence/B3.json": "63c1372bd671d87c075607803db205930753735565383dbcc8a7879b4645efb0",
+        "evidence/B4.json": "c0c9bced3de913ee73778bdc3a0838e2813670a05d7e46189599bee7d2ea640f"
+      },
+      "limitations": [
+        "No competition claims; prompts not finalized",
+        "Unknown token/cost and human comprehension"
+      ],
+      "tests": "python lab.py verify; see evidence/",
+      "costs": {
+        "runtime": "MEASURED in baseline-runs and cross-comparison",
+        "tokens": "UNKNOWN",
+        "monetary": "UNKNOWN"
+      },
+      "dependencies": [
+        "Python 3.10+ standard library"
+      ],
+      "certification": "PENDING_INDEPENDENT_EXTERNAL_REVIEW"
+    }
+  ],
+  "files": {
+    "PHASE0_OPPORTUNITY_MAP.json": "0897d09c91aafa74804f334a1ad203ecef09a811fbad1567fb3afd39a2407420",
+    "interface.json": "40007dd73342ece5fda55f4c0ea9e02f6d7c77366f1984eb7ca6b02d32f2ac9d",
+    "oracle.py": "3a39ba37a24e0e805bfb8368e92b2ad5b674650e7b027b8c20014de14e42dd39",
+    "README.md": "5cb9d9b036d8ffef5460d0fada189047b602b8727a20d2bf85646428b9e531d6",
+    "INTERFACE_V1.md": "b8d2b1dd3f9bc87c0c4d9b6c952e7e64b433c5b320afa5137f2d4afd90fec0f0",
+    "build-web.mjs": "8253346b9709c1a1b69c1f37322aa5de951aa09918b64cf97ea63580c1942f2b",
+    "HOLDOUT_PROTOCOL.md": "7ffa4d74ea8b39aec94d77dce3bcd9060e92798d92f3753f570780f796b653f3",
+    "run.ps1": "7c1be9f274d7401cec7cbf185f716253681a3f332f3150bee885f167b416b79a",
+    "SOURCE_MANIFEST.json": "e349c4bede0fe0a801448800638de0e117a7df3d57417ed44775158ad51b2cbe",
+    "evaluator.py": "ea8c5a71167e3f2fd6c613710b09561cd68f55bdb386f46570b7bb7847f2562b",
+    "runtime.py": "7379edda69eab6142353a794a0fc9fa4da5e8b18b0cc921ec8a5c5b873738434",
+    "DECISIONS.md": "55d9c87d49ca1e3c096006f18c2293cc60f0834deec80724959ab18bd6ce3f47",
+    "checker.py": "3274e43df6ddd956316692be9fff9477b33b00929325450e16e901fb3120eb86",
+    "canonical-check.mjs": "30fc81fffcafbfbc6d8196dc5e0d28266aefb2b821f1cc2ea51b32db1490e11d",
+    "PHASE0_OPPORTUNITY_MAP.md": "391e037bac325c90e744112283e1d21010a72c447877bcbc63131a925a11ca39",
+    "setup.ps1": "8fc30f960d2a5d190dcdec794f6c9faa3e8a187e5042c0047f31a33698494364",
+    ".gitignore": "334649b38a1abbde2646954d84527fdb9032c8f2ad747fc4def6b2f0da3d0e76",
+    "lab.py": "05237d6358e02b94a2dce3063d0fa47c340137f9b84e6a24f97735aaa83f783f",
+    "server.py": "8277c128f1452973fa21190558645584989d7b3abd8a93c857eb661abb738b52",
+    "web/index.html": "a11414a63d4bac7fddc68c3c08990cdf27dc2939f75f30bba8a5f87f1d739b73",
+    "web/style.css": "07b95c365f443932a296bcd6409016b4b38b5e8f429d3a6830c75f031343d0ac",
+    "web/app.ts": "8d35df6cc4f400a1dbeb16976546112407041e25f82e34db98032df3fe7b0625",
+    "web/app.js": "095d23435827335b8b52d68cc3f18c31e52854d1fd525561e571be384e7085ac",
+    "tests/test_http.py": "53ac4572ea02a457364519b5c042d5f22063f7b8cabe20ef843c0fff5c41a4ed",
+    "tests/test_gate.py": "d052690ffb660b1777e2aae882247e2accf6f99ed18d163863f48abadc9964c9",
+    "evidence/summary.json": "df24fc97a9afa605a3f68135613efda8c2cb9dd8294e077c9a0972289300c4b5",
+    "evidence/node-canonical.json": "b930a52e104d8b0d29ed4ce65b35d0c1ee51143835843b1c96c7e3d4d0920020",
+    "evidence/clean-handoff.json": "c0f543f649ad657bda8df8f052589eb442ec1afae877b5d9be973ea392766b08",
+    "evidence/runB.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/independent-checker.json": "aba38d7128880d57afc0a16d89cda70791d45cda9750cdba0e35cf41c0a2795e",
+    "evidence/B4.json": "c0c9bced3de913ee73778bdc3a0838e2813670a05d7e46189599bee7d2ea640f",
+    "evidence/runB.stdout": "377531bc796bc0dec7fd4e1d0b187097fa0362d1532188bcc50d9b8190a942de",
+    "evidence/candidate-mutated.json": "72f69a0d4791b791fd510a624cebe523afdab089a941cde6186bd9524230379f",
+    "evidence/candidate-reference.json": "0fcf147652f0a35298739e4b2b3dbc019f962e9083eb8405c99bd2fcb37dbdca",
+    "evidence/clean-handoff.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/B3.json": "63c1372bd671d87c075607803db205930753735565383dbcc8a7879b4645efb0",
+    "evidence/gate-tests.log": "f3c854b0b3822e454529ce2f2d021ec150ee308d1fe2d02d34715a7e1527c34b",
+    "evidence/runA.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/browser-validation.json": "0fc5b296d359321b3d32d793f60526c121422a5471d22146fb57c38f87fd6615",
+    "evidence/B1.json": "495114c3f7fb8485e4ccdbea87e56904e80d5ada9cd2df31848e40e3eb47b0c0",
+    "evidence/baseline-runs.json": "8b670dcda51562c90f6dd3c63cc16f199deca55fe7bc5cfc81d689a9f5f5728d",
+    "evidence/clean-handoff.stdout": "67ee791bd453a18bee0593cffa23789e55a8bb4dc2df7b84ffbd8ff4dd721357",
+    "evidence/B2.json": "fadad8090258783a7b635a57d416fbf25158781b6dde8eead7d9a2a79b012abc",
+    "evidence/runA.stdout": "abb08b3eb169b3867d949bf56f9dbd6c1570f5164c9915b90a66810fbcd2a78b",
+    "evidence/cross-comparison.json": "208b0435a2ea309551b73a2f8f2b0bc5871ef94eeea8785949a6d83dd0f79c4f",
+    "goldens/manifest.json": "72a5947379e5571ff2e47c1b2887f945ab368f385011488915156984a97cd7da",
+    "goldens/generated.jsonl.gz": "f0804c77079137d285adf44bef1732ce4975f0fadbfbfd56855adaf5bc1142d3",
+    "goldens/reachable.jsonl": "8fe63591cf88bb8e3bf8edf3c560003b6b3711659e1f66607003f01b384f5651",
+    "goldens/false-ready-regressions.jsonl.gz": "855a053315250fa135b1bb32a37fe944ae10036c90a610b06a5f6cb68281fa8c",
+    "goldens/public.jsonl": "bfda7815c18641f682df8368ae106585627da25f75f3963d0734e7b921f46fa0",
+    "vendor/runA/osl.py": "39eb3b40ca857e95253c982879af0495867d316110acc6f4faa4ee77ed8c7e75",
+    "vendor/runA/fixture.json": "ee7415cf9c58e4b5411f6ec132faee6a68543520df85b5e9dff13c2eef88250e",
+    "vendor/runA/proofs.py": "428f1832a2fecf5f1c639e596ec1722ee2d914960cacf8873ed349636cf1b449",
+    "vendor/runA/variants.osl": "f04a369476fd9e35c00b6dce016a4c50e1f55de02278d3b3af92a010cb0e1fe5",
+    "vendor/runA/engine.py": "8981568c24613e0c4c0ac4f1e54f51b6c51244c7e69b326ab8652a22cf57bff2",
+    "vendor/runA/omega.osl": "b4920bbb1ca272deb8e24305ef1785ff878c895ececf184879f258443f8fc402",
+    "vendor/benchmarks/B4_CHANGE_VELOCITY.md": "0dc5fb9da30d5269871ff7f5c7215e8e36fffad4817c32867a1196b23bac59c3",
+    "vendor/benchmarks/00_MASTER_SESSION_INTEGRATION.md": "d5018e9ef3cb5e702f01d3de8c85e387f7bb4c6d12b2e46a5b2a90dab7f6a2d6",
+    "vendor/benchmarks/B1_COMMAND_FIDELITY.md": "db7d664513981318004fb2f667bab82c30342d2c34095dbc42c247d78327d8c4",
+    "vendor/benchmarks/B3_HANDOFF_FIDELITY.md": "1278fa6e9afefce3ab4ba9f922ec493838a392b156ca54637126d728280b282d",
+    "vendor/benchmarks/B2_AGENT_CONTEXT.md": "b9d4c140837f003f2a60acea2229df4b4ad167bb674214c8083f0578af111967",
+    "vendor/runB/run.py": "37e3cd27ef07051c656aabf8e18f7c7d78f2d8ea14b38677dd08307dfe70f04a",
+    "candidates/reference/scorecard.json": "0164724d3e9eb32ae8f0237f6e5ba12622f5a6afb17f8a5c29efd134ed5e1092",
+    "candidates/reference/tests.json": "111310ed61b7e194d25ef8909994b8d04548640c1b9c17408544c7f9b4bbd962",
+    "candidates/reference/README.md": "006c8afa52fd8250de1bd16c53fcc4207084e09ebe11deb79aa6d7bbec6d1880",
+    "candidates/reference/responses.jsonl": "676a9aeed3f215f35e8a09b6c05b52c9cc21ffbc8286e04f0a2cbb54685a3247",
+    "candidates/reference/manifest.json": "c2c31f95fa709d2383b1d555620f1d5477119047a81b2d606f644d80f1f0cd2b",
+    "candidates/reference/run.ps1": "f6cf7f306b971b494c895b2fee04eb4e4d13469ef84ea9e109ccef38f4c013d3",
+    "candidates/reference/capability-pack.json": "3627543f9eeb1b0f4fb4fb952d94016318de03f474fa4e809706e602779426e4"
+  },
+  "audience": "Public sanitized selected source and synthetic evidence; raw archive remains operator-held",
+  "reconstruct": "Retrieve phase0 directory at containing Git commit; python lab.py verify",
+  "publication_rule": "Containing Git commit is identity; publication complete only after remote retrieval and hash verification",
+  "remaining_gates": [
+    "Browser visual validation",
+    "Windows execution",
+    "Sealed independent holdouts",
+    "Untrusted candidate sandbox",
+    "TS semantic port",
+    "B1–B4 competition",
+    "Human comprehension"
+  ],
+  "operator_summary": "README.md",
+  "allocation": "PHASE0_OPPORTUNITY_MAP.md; NOT_FROZEN"
+}

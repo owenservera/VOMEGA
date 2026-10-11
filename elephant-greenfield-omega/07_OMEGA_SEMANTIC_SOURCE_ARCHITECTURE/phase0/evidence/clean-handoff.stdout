@@ -1,0 +1,78 @@
+{
+  "classification": "MEASURED",
+  "command": "python checker.py",
+  "verified_READY_rows": 163,
+  "rejected_reading_mutations": 163,
+  "manifest_files_checked": 4,
+  "scope": "six fixture capabilities; partial renderings are source-derived, not independently proved"
+}
+{
+  "benchmark": "B1",
+  "status": "NOT_RUN",
+  "reason": "Requires independently labelled blind corpus and external arms; no provider calls authorized.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}
+{
+  "benchmark": "B2",
+  "status": "NOT_RUN",
+  "reason": "Requires tuned grep, code-mode, vector and capsule arms plus observed token accounting.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}
+{
+  "benchmark": "B3",
+  "status": "NOT_RUN",
+  "reason": "Requires matched transport/relay arms and independent fault schedule.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}
+{
+  "benchmark": "B4",
+  "status": "NOT_RUN",
+  "reason": "Requires an independently built TS twin, randomized tasks, equal budgets and token witnesses.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}
+{
+  "status": "EXPERIMENTAL_MOCK_ONLY",
+  "classification": "MEASURED",
+  "source_hash": "ac0525b46a42fe8f37e3594db2742881029f0d112a428cbca67485b325867ac1",
+  "source_freshness": "CURRENT",
+  "fixture_id": "omega-core-fixture-v1",
+  "suite_command": "python lab.py verify",
+  "gate_log": "evidence/gate-tests.log",
+  "tests_passed": 25,
+  "public_vectors": 179,
+  "candidate_passed": 179,
+  "generated": {
+    "frozen": {
+      "items": 20556,
+      "A_wrong": 0,
+      "A_wrong_READY": 0,
+      "A_ambiguous": 6516,
+      "A_unflagged_wrong_READY": 0,
+      "B_wrong": 3007,
+      "B_wrong_READY": 2440,
+      "elapsed_seconds": 5.375484487999984
+    },
+    "extra": {
+      "items": 49545,
+      "A_wrong": 803,
+      "A_wrong_READY": 758,
+      "A_ambiguous": 16426,
+      "A_unflagged_wrong_READY": 0,
+      "B_wrong": 12137,
+      "B_wrong_READY": 10757,
+      "elapsed_seconds": 12.10901435300002
+    }
+  },
+  "false_READY_definition": "parser READY with wrong generated command, not effect count",
+  "latest_known_failure": "Run A hostile generated misparse; diagnostic ambiguity blocks new runtime pending explicit choice",
+  "effect_negative_tests": "evidence/gate-tests.log; zero receipts asserted on each rejected call",
+  "heldout_coverage": "UNKNOWN / NOT_RUN",
+  "B1": "NOT_RUN as competition; source comparison only",
+  "B2": "NOT_RUN",
+  "B3": "NOT_RUN",
+  "B4": "NOT_RUN",
+  "Windows_execution": "NOT_RUN",
+  "browser_visual_validation": "BLOCKED: Playwright browser unavailable; download returned invalid archive",
+  "human_comprehension": "NOT_RUN",
+  "tokens_and_cost": "UNKNOWN"
+}

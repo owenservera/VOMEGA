@@ -1,0 +1,6 @@
+{
+  "benchmark": "B3",
+  "status": "NOT_RUN",
+  "reason": "Requires matched transport/relay arms and independent fault schedule.",
+  "available": "goldens, independent finite checker, mock execution gate, source comparisons"
+}

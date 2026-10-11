@@ -1,0 +1,8 @@
+{
+  "classification": "MEASURED",
+  "command": "python checker.py",
+  "verified_READY_rows": 163,
+  "rejected_reading_mutations": 163,
+  "manifest_files_checked": 4,
+  "scope": "six fixture capabilities; partial renderings are source-derived, not independently proved"
+}

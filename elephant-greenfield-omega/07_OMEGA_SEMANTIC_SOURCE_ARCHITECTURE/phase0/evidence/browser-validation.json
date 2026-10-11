@@ -1,0 +1,8 @@
+{
+  "status": "BLOCKED",
+  "attempted": "Playwright Chromium launch and standard browser install",
+  "observed": "No preinstalled executable; browser install returned invalid/truncated archive on all tool-managed retries",
+  "browser_flow": "NOT_RUN",
+  "visual_QA": "NOT_RUN",
+  "replacement_evidence": "Real HTTP flow and asset tests only; not equivalent to browser testing"
+}

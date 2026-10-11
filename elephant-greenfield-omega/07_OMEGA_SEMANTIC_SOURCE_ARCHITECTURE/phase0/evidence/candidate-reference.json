@@ -1,0 +1,13 @@
+{
+  "schema": "omega-scorecard/1",
+  "classification": "MEASURED",
+  "verdict": "PASS",
+  "disposition": "ACCEPT",
+  "scope": "public finite response conformance; candidate source is NOT executed",
+  "execution": "BLOCKED_NO_ISOLATED_RUNNER",
+  "holdouts": "NOT_RUN",
+  "witnesses": [],
+  "passed": 179,
+  "total": 179,
+  "source_hash": "66420daf6897960a9aecdc307b2738a7e2abe8f5461ac81974c06df11c5ea5f9"
+}
