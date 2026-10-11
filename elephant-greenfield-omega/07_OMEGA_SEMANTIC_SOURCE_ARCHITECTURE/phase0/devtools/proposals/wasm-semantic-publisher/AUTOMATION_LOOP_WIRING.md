@@ -1,5 +1,8 @@
 # Automation Lab Wiring — from a typed correction to a tested semantic-compiler improvement
 
+> **INTERPRETATION UPDATE:** This is a useful *optional Wasm acceleration path*, not the required Gym automation/runtime loop. Keep the Machine ↔ Human revision/parity/test method; replace Wasm-specific assumptions with alternative TS/JS and existing reference baselines in neutral trials. [Owner clarification](../../../../03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/WASM_BOOSTER.md).
+
+
 > **Rule 1 precedence:** [Machine ↔ Human correspondence drives the semantic learning loop](../../../../RULE_1_MACHINE_HUMAN_COEVOLUTION.md). All candidate changes in this factory should trace to an observed or clearly simulated intent/source/representation discrepancy and replay through the shared Machine/Human core; this is ONE continuously evolving effort.
 
 
