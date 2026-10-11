@@ -1,7 +1,7 @@
 # PM Evolution Rules
 
 Status: **OPERATING DESIGN (revised 2026-10-06 under the owner correction)**.
-Authority: [PM-CORRECTION-FIRST-FIVE-ONLY.md](PM-CORRECTION-FIRST-FIVE-ONLY.md) is definitive.
+Decision provenance: [2026-10-06 five-program owner correction](../archive/2026-10-06/pm-bootstrap/PM-CORRECTION-FIRST-FIVE-ONLY.md) is retained as historical authority; the currently applicable operating rules are this document, the PM data/scope/build-plan, and current owner decisions. The obsolete active-path redirect was moved into the [2026-10-11 review archive](../.archive/2026-10-11/REVIEW_CHUNK_MANIFEST.md).
 
 Superseded: the earlier version of this document governed a 67-program map and included a
 "Portfolio ranking" section. That section is removed. Ranking programs, scoring them, choosing the
