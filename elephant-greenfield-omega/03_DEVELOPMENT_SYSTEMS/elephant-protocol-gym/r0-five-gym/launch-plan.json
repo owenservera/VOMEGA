@@ -1,0 +1,105 @@
+{
+  "schema": "epg-r0-five-gym/launch-proposal-0.1",
+  "status": "PROPOSED_FOR_SECOND_OPINION_NOT_APPROVED_NOT_LAUNCHED",
+  "date": "2026-10-11",
+  "repository": "https://github.com/owenservera/VOMEGA",
+  "proposal": "../PROPOSAL_R0_FIVE_GYM_TIMED_FANOUT_TO_B1_2026-10-11.md",
+  "prior_six_stream_plan": "../adaptive-swarm/launch-manifest.json",
+  "supersedes_prior_plan": false,
+  "common": {
+    "task": "Explain why the last SDK test failed; show actual source/test evidence; suggest correction; safely test candidate.",
+    "source_basis": "PIN_AT_LAUNCH",
+    "owner_requirement_epoch": "PIN_AT_LAUNCH",
+    "controlled_fixture": "../fixture/001-semantic-basics.ts",
+    "real_elephant_source": "CHOOSE_AVAILABLE_AND_PIN_BEFORE_LAUNCH",
+    "test_hashes": "FROZEN_BY_INDEPENDENT_CONTROLLER_PRE_LAUNCH",
+    "execution_permissions": "AUTHORIZED_BOUNDED_LOCAL_ONLY",
+    "evidence": "MEASURED_vs_SELF_REPORTED_vs_SIMULATED_vs_UNKNOWN",
+    "turns_per_arm": 1
+  },
+  "arms": [
+    {
+      "id": "G1",
+      "brief": "G1_SEMANTIC_KERNEL.md",
+      "focus": "TypeScript semantic command meaning and effect boundary"
+    },
+    {
+      "id": "G2",
+      "brief": "G2_SOURCE_WIKI.md",
+      "focus": "Source-grounded Wiki and freshness"
+    },
+    {
+      "id": "G3",
+      "brief": "G3_EXPERIMENT_EXECUTOR.md",
+      "focus": "Safe actual tool execution and timed receipts"
+    },
+    {
+      "id": "G4",
+      "brief": "G4_VISUAL_INTELLIGENCE.md",
+      "focus": "Machine-readable visual assertions and UI parity"
+    },
+    {
+      "id": "G5",
+      "brief": "G5_ELEPHANT_ORGANIZATION.md",
+      "focus": "Truthful self-model and reversible organization protocol"
+    }
+  ],
+  "control": {
+    "id": "E0",
+    "description": "Independent ordinary agent/direct-tool self-hosting task, same source and time budget",
+    "required_for_claimed_gain": true,
+    "causal_claims_with_one_heterogeneous_cohort": false
+  },
+  "timeline": {
+    "proposed_arm_wall_cap_minutes": 60,
+    "proposed_nominal_arm_active_minutes_range": [
+      30,
+      45
+    ],
+    "frozen_prior_to_start": true,
+    "integration_and_evaluation_billed_separately": true,
+    "clock_source": "HOST_OBSERVED_WHERE_AVAILABLE",
+    "unknown_if_unobservable": true
+  },
+  "execution": {
+    "five_independent_contexts_required_for_real_fanout": true,
+    "verify_isolation_nonce_and_overlap": true,
+    "separate_sandboxes": true,
+    "write_to_shared_main_during_arms": false,
+    "recursive_spawning": false,
+    "private_provider_actions": false,
+    "unapproved_compute": false,
+    "unavailable_executor_status": "PROCESS_REHEARSAL_OR_NOT_STARTED"
+  },
+  "states": [
+    "PREPARED",
+    "FROZEN",
+    "RUNNING",
+    "SEALED",
+    "EVALUATED",
+    "B1_CANDIDATE",
+    "B1_NOT_READY",
+    "B1_BLOCKED",
+    "CLOSED"
+  ],
+  "acceptance_ids": [
+    "R0-C1",
+    "R0-C2",
+    "R0-C3",
+    "R0-C4",
+    "R0-C5",
+    "R0-C6",
+    "R0-C7",
+    "R0-C8"
+  ],
+  "publication": "EACH_ARM_PUBLISHES_ALL_MATURITY_PACKS_EVERY_TOP_LEVEL_TURN",
+  "evidence_retention": "ALL_ARMS_E0_NEGATIVES_FAILED_AND_REJECTED_RETAINED",
+  "result": {
+    "status": "NOT_RUN",
+    "arms_launched": 0,
+    "E0_launched": false,
+    "B1": "NOT_STARTED",
+    "test_results": "UNKNOWN",
+    "timing_results": "UNKNOWN"
+  }
+}
