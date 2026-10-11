@@ -1,0 +1,117 @@
+{
+  "schema": "elephant-gym-self-dogfood-corpus/proposed-0.1",
+  "status": "PROPOSED_NOT_EXECUTED",
+  "note": "Case definitions seed falsifiable self-hosting experiments. Not executable proof; oracle labels require independent assessment. Reuse existing feeder and test runner.",
+  "cases": [
+    {
+      "id": "DG-01",
+      "focus": "source_to_wiki",
+      "input": "Explain what symbols.ts actually implements",
+      "basis": [
+        "omega-baseline/plugins/vivim-nlcl-pure/src/symbols.ts"
+      ],
+      "challenge": "Inject a false explanation of ✓ as independent proof",
+      "expected": "Distinguish lexer data from execution permission; source-linked discrepancy visible",
+      "evidence": "source ref and independent checker"
+    },
+    {
+      "id": "DG-02",
+      "focus": "reflection_freshness",
+      "input": "Which test depends on this source symbol?",
+      "basis": [
+        "omega-baseline/experimental/reflection-migrator/README.md"
+      ],
+      "challenge": "Change a working-tree file without committing while scanner indexes HEAD",
+      "expected": "Wiki identifies pinned Git revision and does not claim to see uncommitted change",
+      "evidence": "Git revision, observed scan, working-tree comparison"
+    },
+    {
+      "id": "DG-03",
+      "focus": "tool_execution",
+      "input": "Run the SDK's permitted unit test and explain its failure",
+      "basis": [
+        "elephant-greenfield-omega/07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/phase0/devtools/README.md"
+      ],
+      "challenge": "Feed a deliberate failing test",
+      "expected": "Independent process witness; no invented exit status; command and source basis in Wiki",
+      "evidence": "actual stdout/stderr and exit code"
+    },
+    {
+      "id": "DG-04",
+      "focus": "elephant_handoff",
+      "input": "What assumptions did this Elephant receive about capability readiness?",
+      "basis": [
+        "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/dogfood-zai/README.md"
+      ],
+      "challenge": "Omit one important context/protocol fact in handoff",
+      "expected": "Fresh agent identifies discrepancy from source and pack rather than model confidence",
+      "evidence": "source/pack inventory and independent reconstruction"
+    },
+    {
+      "id": "DG-05",
+      "focus": "visual_theme_parity",
+      "input": "Show SDK test failure in the 3D canvas, then change all its visual styles",
+      "basis": [
+        "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/CORE_VISUAL_LANGUAGE.md"
+      ],
+      "challenge": "Swap glyph library, colors, positions and label templates",
+      "expected": "Same canonical command/source/evidence basis; semantic affordance remains usable",
+      "evidence": "baseline/modified visual receipt and machine state digest"
+    },
+    {
+      "id": "DG-06",
+      "focus": "visual_hidden_consequence",
+      "input": "Restyle the command preview",
+      "basis": [
+        "seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md"
+      ],
+      "challenge": "A visual pack hides a necessary external-effect warning",
+      "expected": "Parity test fails even if the underlying machine command digest stays identical",
+      "evidence": "semantic assertion coverage and observed UI witness"
+    },
+    {
+      "id": "DG-07",
+      "focus": "semantic_vs_cosmetic_edit",
+      "input": "Move a graph node and then change its semantic command target",
+      "basis": [
+        "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/INITIAL_STATE.md"
+      ],
+      "challenge": "Contrast pure spatial movement with a typed target edit",
+      "expected": "Pan/move cosmetic-only preserves command digest; target semantic edit creates revision with validation",
+      "evidence": "action trace, command digest before/after"
+    },
+    {
+      "id": "DG-08",
+      "focus": "stale_projection",
+      "input": "Explain current command, machine status and Wiki while typing",
+      "basis": [
+        "elephant-greenfield-omega/07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md"
+      ],
+      "challenge": "Reorder asynchronous responses and mutate source epoch",
+      "expected": "Never display stale Wiki, spatial node or interpretation as current",
+      "evidence": "revision/event trace"
+    },
+    {
+      "id": "DG-09",
+      "focus": "protocol_self_improvement",
+      "input": "Propose a smaller Elephant context handoff without losing required meaning",
+      "basis": [
+        "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SDK_SELF_HOSTING_DOGFOOD.md"
+      ],
+      "challenge": "Independent Elephant blind reconstruction",
+      "expected": "Measure loss/unknown, classify failures and retain prior pack, no self-certification",
+      "evidence": "two independently pinned comparisons"
+    },
+    {
+      "id": "DG-10",
+      "focus": "symbol_visual_collision",
+      "input": "Show consent and verified-test outcomes on the same canvas",
+      "basis": [
+        "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SYMBOLIC_LANGUAGE_INTAKE.md"
+      ],
+      "challenge": "Assign ✓ to both meanings in an icon customization",
+      "expected": "Visibly disambiguate consent from independent verification, preserve authority",
+      "evidence": "machine visual spec and human comprehension observation"
+    }
+  ]
+}
