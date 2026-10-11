@@ -1,5 +1,8 @@
 # Canonical Elephant Protocol Gym Launch Policy
 
+> **PRIMARY EXPERIMENTAL PRODUCT & VISUAL INVARIANT (2026-10-11):** The [SDK-embedded dev-tool/self-dogfooding loop](SDK_SELF_HOSTING_DOGFOOD.md) is the first tangible instrument for learning how the Elephant operating protocol works. Its [core visual language](CORE_VISUAL_LANGUAGE.md) must support high-density human intelligence, a machine-readable visual counterpart, full parity with shared meaning/evidence, and user-programmable visual styles whose changes cannot silently mutate semantic command chains or bypass safety. Implementation details remain experimental, subject to D1–D4.
+
+
 > **Research seed clarification (nonbinding implementation):** [VIVIM/Ω's 17 TypeScript command-symbol families](SYMBOLIC_LANGUAGE_INTAKE.md) are available as existing source and hypotheses under Decisions 1–4. Reuse and benchmark rather than reinvent; neither symbolic syntax nor legacy status/permission semantics becomes a new canon requirement without independent tests and owner review.
 
 
