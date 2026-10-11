@@ -8,3 +8,5 @@
 - **NOT_RUN:** actual Phase 0 gate / HTTP integration in this execution environment; browser visual interaction, screen reader evaluation, Windows PowerShell execution, human comprehension panel, and independently measured acceleration vs baseline.
 - **Source safety:** no production API keys or provider calls. Candidate evaluator accepts data-only responses.
 - **Publication:** file hashes and actual Git references must be filled only after publication and remote reread. A local ZIP is not equivalent to GitHub push.
+
+- **Integrated HTTP acceptance added:** `tests/test_http_integration.py` exercises real `runtime.Lab` mock confirmation, single-use rejection, ambiguous-block, wiki, impact, case comparison, CSRF and asset availability. It is expected to **SKIP** when the complete Phase 0 `runtime.py` is absent (as in the local standalone source snapshot); it has not yet been run against the complete GitHub clone.
