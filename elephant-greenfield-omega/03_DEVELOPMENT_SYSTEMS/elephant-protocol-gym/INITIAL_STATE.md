@@ -1,5 +1,8 @@
 # Elephant Gym Initial State — Infinite 3D Canvas, Shared Execution Manifold, Full Parity
 
+> **CORE VISUAL LANGUAGE ADDENDUM:** The shared 3D manifold must carry a [high-density, reprogrammable visual intelligence language](CORE_VISUAL_LANGUAGE.md). Its **machine-readable visual projection** and actual user-visible objects must be checked against the same versioned semantic command/evidence reality. Changing palette, glyph, geometry or visual library must not silently alter command identity, validated interaction chains, permission or factual meaning; readability and visible safety warnings must also survive.
+
+
 > **Legacy symbolic command dimension:** Preserve the [17-family historical symbol vocabulary and source implementations](SYMBOLIC_LANGUAGE_INTAKE.md) as source-grounded *candidate visual/lexical input* for the 3D execution manifold. Human language, glyphs, machine semantics and spatial affordances must not express inconsistent action targets, effects, freshness or authority. Operator composition and SVG representation remain experiments, not already-proven full parity.
 
 
