@@ -1,5 +1,8 @@
 # Ω Development Tools · Live Lab + Experiment Runner + Change Lab
 
+> **Proposed next experiment; NOT_FROZEN and NOT IMPLEMENTED:** [Zero-runtime-dependency TS-family/Wasm final-stage publisher](proposals/wasm-semantic-publisher/README.md), [technical spec](proposals/wasm-semantic-publisher/PRELIMINARY_SPEC.md), [near-instant lab wiring](proposals/wasm-semantic-publisher/AUTOMATION_LOOP_WIRING.md) and [separate live/Wiki/parity/velocity benchmarks](proposals/wasm-semantic-publisher/BENCHMARKS_AND_EXPERIMENTS.md). Current devtools remain Python-backed and experimental; this is a sibling research candidate, not a runtime migration.
+
+
 An **additive**, local-only, standard-library Python 3.10+ extension to the existing [Phase 0 lab](../README.md). Reuses its original semantic interpreter, source hashes, one-use mock authorization and provider-account snapshot validation. No real provider calls and no arbitrary candidate code execution.
 
 ## Start
