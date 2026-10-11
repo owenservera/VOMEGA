@@ -1,5 +1,7 @@
 # Elephant Protocol Gym (EPG)
 
+> **COMPACT MACHINE-READABLE PROTOCOL BACKBONE (CANDIDATE):** [Protocol schemas, registry, experiment profiles and provenance crosswalk](protocol-backbone/README.md) now normalize the existing R0 five-Gym proposal, Claude's uploaded Time Credit Economy and earlier Z.ai/Claude runners without replacing their full source/implementation. Includes nine cards, four composition profiles and nineteen source mappings. Claude's included credit suite passed 26 synthetic tests locally; no real Elephant round launched and SDK-FAIL-01 is still deferred/not runnable. Source and owner rules remain authoritative.
+
 > **FOR SECOND OPINION — NEW R0 FIVE-GYM PILOT PROPOSAL:** [Full timed, one-turn independent fan-out and B1 assembly design](PROPOSAL_R0_FIVE_GYM_TIMED_FANOUT_TO_B1_2026-10-11.md) · [five independent briefs and review packet](r0-five-gym/README.md). This is a proposal, **not** approved launch or a change to the previously prepared six-stream Adaptive Swarm. Full E0/evaluator/integrator costs and all-maturity publications are included.
 
 
