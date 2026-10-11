@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vomega.local/schemas/epg-registry-0.1.schema.json",
+  "title": "EPG protocol registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "version",
+    "protocols",
+    "assets"
+  ],
+  "properties": {
+    "schema": {
+      "const": "epg.registry/0.1"
+    },
+    "version": {
+      "type": "string"
+    },
+    "protocols": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "path",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "DESIGN",
+              "SOURCE_INSPECTED",
+              "LOCAL_MECHANICS_TESTED",
+              "RUN_NOT_STARTED"
+            ]
+          }
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "uri",
+          "classification",
+          "mapped_to"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          },
+          "classification": {
+            "enum": [
+              "SOURCE_INSPECTED",
+              "DESIGN",
+              "AUTHOR_REPORTED",
+              "LOCAL_MECHANICS_TESTED",
+              "HISTORICAL_UNVERIFIED",
+              "UNAVAILABLE"
+            ]
+          },
+          "mapped_to": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
