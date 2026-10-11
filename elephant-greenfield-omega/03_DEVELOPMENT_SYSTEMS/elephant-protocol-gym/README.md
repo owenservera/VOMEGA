@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **OWNER-DIRECTED INITIAL EXPERIENCE:** The [effectively infinite 3D canvas, shared real-time human–machine execution manifold and full-parity target](INITIAL_STATE.md) are inherited from the existing MVP/Rule 1 research. [WebAssembly is an optional development booster](WASM_BOOSTER.md), not a required SDK or canvas runtime.
+
+
 > **CANONICAL OWNER-APPROVED GYM LAUNCH POLICY:** [Decisions 1–4](LAUNCH_POLICY.md) — existing feeder + real/source fixture, reusable/replaceable automation, Machine ↔ Human feedback for every run, maximal exploratory freedom subject to truth/safety/evidence and reviewed canon updates. This short policy governs the Gym; detailed decision files are supporting explanations.
 
 
