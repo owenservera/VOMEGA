@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **SELF-HOSTING/VISUAL WITNESS:** In a run concerning the Elephant's own SDK, include the actual tool invocation/witness, source-linked Wiki claim, command meaning, machine visual representation, human/spatial depiction and resulting tested discrepancy. When user-customizable visual style changes, document whether command digest, semantic-edit chain, explicit effects, authority and material information visibility are preserved. See [core visual language](CORE_VISUAL_LANGUAGE.md) and [self-dogfood](SDK_SELF_HOSTING_DOGFOOD.md).
+
+
 > **Alignment review after independent trials:** Compare emergent findings with the [ten historical capability classes](LEGACY_ALIGNMENT_MAP.md), using evidence labels rather than completion percentages. Mark which results were **blind discoveries** versus **legacy-seeded reuse**, and record useful novel capabilities not in the map. Do not grade an agent on reproducing old implementation details.
 
 
