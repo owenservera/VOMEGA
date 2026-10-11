@@ -42,3 +42,9 @@ Each run must distinguish MOCK/SYNTHETIC, AUTHOR_REPORTED and INDEPENDENTLY_REPR
 4. A fresh independent agent can reconstruct and inspect *all* packs from the per-turn release, including failures.
 
 **Run locally:** `node elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/dogfood-zai/inventory.mjs`.
+
+## Second-pass source recovery (2026-10-11)
+
+[**Real source custody + replay**](SOURCE_CUSTODY_AND_REPLAY.md) and [**audit decisions**](DOGFOOD_PASS2_DECISIONS.md) supersede the initial assumption that the ZIP/TAR were inaccessible. The owner-library originals and a **191-file verified curated export** were recovered. A private portable handoff (`Elephant_Dogfood_Source_Seed_v2_2026-10-11.zip`, SHA-256 `a917fa57c24c84150fa61d8ab493f54d495306cd9350026bdfb3820b1cfaa62a`) now packages real source, an 11-family index, executable preflight and a first-turn prompt. It is not hosted in this public GitHub tree; deliver the actual ZIP to ZAI sessions separately.
+
+**Preflight:** after extracting the handoff, run `node dogfood-zai/source-preflight.mjs --expected-manifest-sha256 ab1439f91faec30d4e10c949fdc83052926e68a5871a884dbae4f079457e6030 --run-tests`. The same [checker](source-preflight.mjs) and [five synthetic tests](source-preflight.test.mjs) live in this repo. Local proof: 191/191 curated source hashes match, 32/32 Claude **mock** kernel tests pass; ZAI's partial Next app has not been built. This is a measured D0 bootstrap, not live Elephant execution or a genuine new turn publication.
