@@ -1,0 +1,107 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.publication.allturn",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "publication",
+  "title": "All-maturity every-turn pack publication",
+  "authority": "owner_direction",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Every top-level Elephant development turn and research round exports full versioned capability inventory regardless of maturity, failures or no-work outcomes.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "capability_catalog",
+        "meaning": "Complete current owned pack catalog",
+        "required": false
+      },
+      {
+        "id": "source_epochs",
+        "meaning": "Commit, dependencies, predecessor published snapshot",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "immutable_manifest",
+        "meaning": "Full published portfolio, status, proof and lineage",
+        "required": false
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "NEEDS_CENSUS",
+    "preconditions": [
+      "Durable export and hash verification"
+    ],
+    "forbidden": [
+      "Drop failed, unchanged or rejected packs",
+      "Publish only mature capabilities",
+      "Declare turn published if manifest unreachable"
+    ]
+  },
+  "phases": [
+    {
+      "id": "collect",
+      "action": "collect",
+      "completion": "COLLECT"
+    },
+    {
+      "id": "export",
+      "action": "export",
+      "completion": "EXPORT"
+    },
+    {
+      "id": "verify",
+      "action": "verify",
+      "completion": "VERIFY"
+    },
+    {
+      "id": "publish_or_block",
+      "action": "publish_or_block",
+      "completion": "PUBLISH_OR_BLOCK"
+    }
+  ],
+  "gates": [
+    {
+      "id": "ALL_PACKS",
+      "check": "All states enumerated and versioned",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "RETRIEVABLE",
+      "check": "Outside agent can fetch material",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "BLOCK_ON_FAILURE",
+      "check": "Unpublished turn not counted as published",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    }
+  ],
+  "outputs": [],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "Explicit normative owner requirement"
+    ],
+    "limitations": [
+      "Actual multi-Gym turn export infrastructure not universally verified"
+    ]
+  },
+  "modules": [],
+  "metrics": [],
+  "controls": []
+}
