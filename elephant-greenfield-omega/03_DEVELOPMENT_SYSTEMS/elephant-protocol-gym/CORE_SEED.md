@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **ADAPTIVE PARALLEL EXPERIMENT (OPTIONAL LAUNCH ARM):** See [ADAPTIVE_SWARM.md](ADAPTIVE_SWARM.md) for independent, elastically scalable Elephant sessions doing evidence-backed requirement gap discovery, self-organization and SDK/Elephant protocol dogfooding toward updated MVP v0.5. Frozen simulated baseline remains distinct from current owner requirements; self-model claims need telemetry, self-reorganization needs falsifiable trials and source/wiki/visual learning signals, and canon edits need review. Independent Run A–D prompts remain intact.
+
+
 > **OWNER PHASE 0 FOCUS:** The Semantic SDK and Elephant operating protocols form the initial self-hosting corpus and testing system, not just a toy command parser. Expose available build/source/index/test/replay/knowledge/pack tools via one accountable semantic command↔Wiki loop. **The core visual language is an essential machine-readable, human-comprehensible intelligence instrument** with high-density signals, full spatial parity and safe user-reprogramming of themes/glyphs/geometry (without command-chain changes). See [SDK dogfood](SDK_SELF_HOSTING_DOGFOOD.md), [visual contract](CORE_VISUAL_LANGUAGE.md), [starter test corpus](corpus/self-hosting-cases.json). These are outcomes and falsifiers, not fixed internal APIs.
 
 
