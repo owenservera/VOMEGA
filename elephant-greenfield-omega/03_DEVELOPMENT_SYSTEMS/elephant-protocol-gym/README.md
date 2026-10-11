@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **UNIVERSAL SDK RULE (owner requirement):** [Everything that is code, tooling, runtime and Elephant operating protocol ultimately comes under one Machine ↔ Human command/wiki/visual governance circuit](UNIVERSAL_SEMANTIC_GOVERNANCE.md). Staged U0–U5 gates require demonstrated read/propose/test/effect/replay/parity before declaring a domain interface-only; bootstrap and authorized recovery remain explicit. [All prior Elephant intelligence remains discoverable and testable](ELEPHANT_INTELLIGENCE_PRESERVATION.md).
+
+
 > **NEW INDEPENDENT EXPERIMENT — ADAPTIVE SWARM:** [Elastic parallel Elephant self-organization and MVP v0.5 gap learning](ADAPTIVE_SWARM.md); [copyable per-stream prompt](adaptive-swarm/STREAM_STARTER.md) and [machine-readable launch manifest](adaptive-swarm/launch-manifest.json). Test how Elephants actually introspect, explain, reorganize and improve their SDK/protocols, while tracking the frozen baseline against the evolving owner-approved MVP target. **PREPARED, NOT LAUNCHED**; parallelism and topology are experiment variables.
 
 
