@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vomega.local/schemas/epg-run-0.1.schema.json",
+  "title": "EPG immutable run receipt (candidate shape)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "run_id",
+    "protocol_id",
+    "protocol_version",
+    "status",
+    "basis",
+    "claims",
+    "events",
+    "artifacts",
+    "metrics",
+    "publication"
+  ],
+  "properties": {
+    "schema": {
+      "const": "epg.run/0.1"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "protocol_version": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "NOT_RUN",
+        "BLOCKED",
+        "RUNNING",
+        "SEALED",
+        "EVALUATED",
+        "CLOSED",
+        "UNKNOWN_TERMINAL"
+      ]
+    },
+    "basis": {
+      "type": "object",
+      "required": [
+        "git_sha",
+        "protocol_sha256",
+        "requirement_epoch",
+        "fixture_sha256"
+      ],
+      "properties": {
+        "git_sha": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "protocol_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requirement_epoch": {
+          "type": "string"
+        },
+        "fixture_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "executor_census_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "statement",
+          "evidence_class"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string"
+          },
+          "evidence_class": {
+            "enum": [
+              "DESIGN",
+              "SIMULATED",
+              "AUTHOR_REPORTED",
+              "LIVE_RUN",
+              "MEASURED",
+              "UNKNOWN"
+            ]
+          },
+          "witness_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "time",
+          "time_source"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "time": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "time_source": {
+            "enum": [
+              "HOST",
+              "PROVIDER",
+              "SELF_REPORT",
+              "UNKNOWN"
+            ]
+          },
+          "actor": {
+            "type": "string"
+          },
+          "parent": {
+            "type": "string"
+          },
+          "evidence_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "uri",
+          "state"
+        ],
+        "properties": {
+          "uri": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "state": {
+            "enum": [
+              "SOURCE",
+              "RUN_OUTPUT",
+              "PROPOSED",
+              "NOT_AVAILABLE"
+            ]
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "value",
+          "status",
+          "unit"
+        ],
+        "properties": {
+          "value": {
+            "type": [
+              "number",
+              "string",
+              "boolean",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "MEASURED",
+              "ESTIMATED",
+              "UNKNOWN",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "witness_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "required": [
+        "status",
+        "all_maturity_pack_index"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_STARTED",
+            "PUBLISHED",
+            "BLOCKED",
+            "UNPUBLISHED"
+          ]
+        },
+        "all_maturity_pack_index": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "gate_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "NOT_RUN",
+              "UNKNOWN",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "witness_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  }
+}
