@@ -1,5 +1,8 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Alignment review after independent trials:** Compare emergent findings with the [ten historical capability classes](LEGACY_ALIGNMENT_MAP.md), using evidence labels rather than completion percentages. Mark which results were **blind discoveries** versus **legacy-seeded reuse**, and record useful novel capabilities not in the map. Do not grade an agent on reproducing old implementation details.
+
+
 > **Symbolic language experiments:** When a run uses legacy command glyphs, name the exact TS implementation and pinned source; distinguish lexical recognition, frame/grounded interpretation, canonical publication, Human/Wiki/3D projection and authorized execution. Report any meaning collisions, Unicode aliases and safety differences. See [symbol intake](SYMBOLIC_LANGUAGE_INTAKE.md).
 
 
