@@ -1,5 +1,8 @@
 # Ω Foundational Semantic SDK — R&D intake
 
+> **Research proposal — deliberating, not implemented:** [portable TypeScript-family / WebAssembly semantic publisher](phase0/devtools/proposals/wasm-semantic-publisher/README.md). Defines an experimental final-stage kit (live Plain Reading + Wiki + one canonical Machine/Human publication), agentic tuning loop and falsifiable benchmarks; upstream Elephant tools remain unrestricted. This is **not** an SDK architecture freeze.
+
+
 
 ## Development acceleration loop (v0.1.1)
 
