@@ -1,5 +1,10 @@
 # Ω Semantic SDK · Phase 0 integration lab
 
+
+## Three-tool development loop — installed v0.1.1
+
+[Ω Live Lab · Experiment Runner · Change Lab](devtools/README.md) is an additive Phase 0 extension with complete [PRD / benchmark definitions](devtools/PRD_AND_DESIGN.md), [implementation and local test evidence](devtools/EVIDENCE.md), and [source/tests](devtools/). Start from this directory with `python -m devtools.app --port 8770` or `./devtools/run.ps1` on Windows, then open http://127.0.0.1:8770. This is local MOCK-ONLY; the existing interpreter/approval gate remains authoritative. Eight unit tests passed with the original Run A engine through a test adapter, and a local HTTP smoke used that adapter; fully integrated Phase 0 HTTP/visual/Windows execution has not been independently rerun. Five Z.ai prompts are still provisional.
+
 **EXPERIMENTAL / MOCK ONLY.** A runnable local slice built from the exact operator archive. No real provider integration, prompt submission or account configuration changes. Five-computer prompts remain **NOT_FROZEN**.
 
 ## Start
