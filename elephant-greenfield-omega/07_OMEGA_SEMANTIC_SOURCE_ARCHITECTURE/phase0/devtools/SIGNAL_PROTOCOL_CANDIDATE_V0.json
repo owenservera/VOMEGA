@@ -1,0 +1,98 @@
+{
+  "schema": "omega-signal-protocol-candidate/PROPOSED-0.1",
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED",
+  "id": "sp02-target-payload-boundary-candidate",
+  "version": "proposal-0",
+  "family": "SP02",
+  "scope": "experimental_semantic_sdk_language_projection",
+  "parent_protocol_id": null,
+  "hypothesis": "Preserving explicit alternative target/payload segmentations will reduce unsafe silent misparses while retaining positive valid command coverage.",
+  "target_consumers": [
+    "semantic_compiler",
+    "wasm_candidate_runtime",
+    "human_plain_reading"
+  ],
+  "semantic_anchor": {
+    "compiler_api": "SDK_COMPILER_RUNTIME_ANCHOR.md#1-anchor-deliverable-smallest-useful-semantic-sdk",
+    "fixture_id": "omega-core-fixture-v1",
+    "fixture_sha256": "16e242c5f56cc1015d51279320d6015de9e871a8ab88b1cc2de1c3f633ec4b7f",
+    "runtime_abi_version": "UNKNOWN_NOT_RATIFIED",
+    "contract_sha256": null
+  },
+  "input_contract": {
+    "canonical_type": "utf8-input-and-env-snapshot",
+    "example": "tell chatgpt personal account balance please",
+    "provenance": "existing Run A ambiguous boundary example",
+    "account_provider_model_session_distinct": true
+  },
+  "output_contract": {
+    "required": [
+      "status",
+      "alternatives",
+      "args",
+      "plain_reading",
+      "source_refs",
+      "wiki_fact_ids",
+      "proof_status"
+    ],
+    "dropped_semantics_allowed": false,
+    "execution_authority": false,
+    "human_machine_canonical_record_parity": true
+  },
+  "negative_controls": [
+    "swap target account",
+    "remove prompt prefix",
+    "drop ambiguous alternative",
+    "always reject",
+    "omit consequence",
+    "stale source revision"
+  ],
+  "public_fixtures": [
+    "phase0/goldens/public.jsonl"
+  ],
+  "heldout_manifest_hash": null,
+  "proposed_comparators": [
+    "runA-reference",
+    "conservative-boundary",
+    "generated-parser-candidate"
+  ],
+  "measurements": {
+    "status": "NOT_RUN",
+    "false_ready_rate": {
+      "value": null,
+      "classification": "UNKNOWN"
+    },
+    "coverage": {
+      "value": null,
+      "classification": "UNKNOWN"
+    },
+    "build_seconds": {
+      "value": null,
+      "classification": "UNKNOWN"
+    },
+    "replay_seconds": {
+      "value": null,
+      "classification": "UNKNOWN"
+    },
+    "false_execution_count": {
+      "value": null,
+      "classification": "UNKNOWN"
+    },
+    "wiki_coherence": {
+      "value": null,
+      "classification": "UNKNOWN"
+    },
+    "human_comprehension": {
+      "value": null,
+      "classification": "UNKNOWN"
+    }
+  },
+  "lifecycle": {
+    "maturity": "DISCOVERED",
+    "promotion": "NOT_APPROVED",
+    "artifacts": [],
+    "runtime_module_sha256": null,
+    "rollback_to": null,
+    "all_state_pack_publication": "REQUIRED_AT_CONTROLLER_TURN_CLOSE"
+  }
+}
