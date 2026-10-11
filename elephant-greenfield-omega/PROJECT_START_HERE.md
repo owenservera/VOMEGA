@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Blank decision-process tracker:** [Labs · Deliberations · Owen Guidance](DECISION_PROCESS_TRACKER.md). New questions enter here; existing decisions are not reclassified or recopied.
+
+
 > **One active development corpus:** [Canonical Development Corpus](CANONICAL_DEVELOPMENT_CORPUS.md), including current `.project` vs Elephant authority, scope-aware latest-owner precedence, 2026-10-11 `.archive` review chunks and active-versus-reference boundaries. The old five-model launch documents were archived; don't use old path references as current prompts.
 
 
