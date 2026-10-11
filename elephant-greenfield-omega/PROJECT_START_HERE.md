@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **Adaptive Elephant Swarm (prepared experiment):** [Elastic independent streams](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ADAPTIVE_SWARM.md), [launch prompt](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/adaptive-swarm/STREAM_STARTER.md) and [launch manifest](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/adaptive-swarm/launch-manifest.json). Focus: self-articulation/self-organization and evidence-driven gaps from the frozen source to owner-updated MVP v0.5; not launched or certified.
+
+
 > **Phase 0 Gym emphasis:** [SDK tools and Elephant protocol self-dogfood](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SDK_SELF_HOSTING_DOGFOOD.md) with [high-density, user-reprogrammable Machine↔Human↔3D visual intelligence](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/CORE_VISUAL_LANGUAGE.md). Meaning/command/action chains must remain coherent under visual changes; all new experiments retain existing evidence and safety gates.
 
 
