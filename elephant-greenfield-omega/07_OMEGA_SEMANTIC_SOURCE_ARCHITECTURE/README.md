@@ -1,5 +1,10 @@
 # Ω Foundational Semantic SDK — R&D intake
 
+
+## Development acceleration loop (v0.1.1)
+
+The integrated [Live Lab, Experiment Runner and Change Lab](phase0/devtools/README.md) now lives under [Phase 0](phase0/README.md). It provides source-linked live interpretation, a generated structural capability wiki, human-proposed regression cases, data-only candidate comparisons and non-destructive impact previews. [Read PRD / two independent benchmarks](phase0/devtools/PRD_AND_DESIGN.md). This is a mock-only developer prototype, not a full SDK compiler or an independently validated production UI.
+
 ## Executed Phase 0 integration lab
 
 The [runnable Phase 0 lab](phase0/README.md) now contains selected hash-verified original source, actual A/B replay, 70,101 generated comparison rows, an independent finite checker, mock execution gate and local web UI, data-only candidate evaluation, and an [evidence-driven opportunity map](phase0/PHASE0_OPPORTUNITY_MAP.md). This is experimental mock evidence, not production SDK or B1–B4 competition proof. Browser visual validation, Windows execution, isolated candidate execution and sealed holdouts remain unverified/blocked. The five prompts remain **NOT_FROZEN**. The historical intake below describes the earlier staging state; complete archive custody still remains with the operator.
