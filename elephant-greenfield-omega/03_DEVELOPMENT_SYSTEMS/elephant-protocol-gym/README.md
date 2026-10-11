@@ -1,5 +1,8 @@
 # Elephant Protocol Gym (EPG)
 
+> **OWNER DECISION 3 — LEARNING SIGNAL:** [Every run exposes a Machine ↔ Human comparison](MACHINE_HUMAN_SIGNAL.md), including source/intent basis, machine interpretation, readable human meaning, evidence and what the comparison teaches. Implementation is open; this is not a requirement for a particular UI or framework.
+
+
 > **OWNER DECISION 2 — AUTOMATION REUSE:** [Use and challenge existing developer tools](AUTOMATION_REUSE.md). All four arms can reuse the Phase 0 Live/Experiment/Change tooling and other proven assets as replaceable baselines; replacement and improvement are evidence-led, never blocked by toolkit loyalty.
 
 
