@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **Third interview decision:** Each dry run must expose at least one inspectable [Machine ↔ Human learning signal](MACHINE_HUMAN_SIGNAL.md). Show source/task, machine interpretation, human-readable meaning, comparison and uncertainty, plus next experimental consequence. Simulated expectations are not verified human evidence. Use any suitable method; don't freeze the transport, protocol or UI.
+
+
 > **Second interview decision:** Discover and reuse useful existing development automation through [AUTOMATION_REUSE.md](AUTOMATION_REUSE.md). Replay suitable current tools as replaceable controls before duplicating them; agents remain free to improve or replace components when a falsifiable experiment supports it. This is not a mandate to use a Python backend, browser, Wasm or fixed UI.
 
 
