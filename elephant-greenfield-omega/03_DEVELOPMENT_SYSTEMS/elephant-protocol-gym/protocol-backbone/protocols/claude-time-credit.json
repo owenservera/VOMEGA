@@ -11,7 +11,8 @@
       "uri": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip",
       "role": "artifact",
       "evidence": "LOCAL_REPRODUCED",
-      "note": "SHA-256 04b474308dc86493482639088f4e1bc8b58a7bdc4cab25fffc17304dcb1fd30f; uploaded by user; 26 synthetic unit tests passed locally"
+      "note": "SHA-256 04b474308dc86493482639088f4e1bc8b58a7bdc4cab25fffc17304dcb1fd30f; uploaded by user; 26 synthetic unit tests passed locally",
+      "sha256": "04b474308dc86493482639088f4e1bc8b58a7bdc4cab25fffc17304dcb1fd30f"
     },
     {
       "uri": "EPG-TIME-CREDIT-GYM-PACK/config/rate-card.json",
