@@ -4,7 +4,7 @@
 
 This is a **blank operational decision-intake tracker**, not a retroactive list of decisions, a second product PM, or a new executive authority. Existing owner decisions remain effective in their original sources (e.g. `.project/DECISIONS.md` and [Rule 1](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md)); **none was automatically imported or rewritten as a new decision**. Its purpose is to surface what deserves deliberation, what can be tested, and where explicit Owen guidance is needed.
 
-**Reviewed Batch 01 (2026-10-11):** 6 adjudications presented; 4 AGREE responses (including one qualified), 2 UNANSWERED with substantive owner comments; 3 open follow-up items, 0 lab decisions. The batch source and exact comments are in [Batch 01 receipt](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md). No assistant proposal is considered ratified without the submitted user response.
+**Reviewed Batch 01 and 02 (2026-10-11):** 12 adjudications presented; 10 explicit AGREE (four from Batch 01, six from Batch 02), two UNANSWERED with original owner comments (Batch 01). Three Batch 01 follow-ups were clarified through Batch 02: two now have explicit owner scope/authority decisions and one has approved intent but pending integration details. **No laboratory result or executable implementation is implied.** [Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) · [Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) · [Master TODO](MASTER_TODO.md).
 
 ## Decision process / paths
 
@@ -54,17 +54,19 @@ reviewer_notes: null
 
 | ID | Question | Path | Status | Evidence/source | Owen guidance | Next action |
 | --- | --- | --- | --- | --- | --- | --- |
-| DECQ-0001 | Outer cleanup scope: MVP and other obvious candidate roots | OWEN_GUIDANCE, DOCUMENTARY_RECONCILIATION | NEEDS_DELIBERATION | [REV-004 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | `UNANSWERED` + exact comment `Yes plus MVP or other obvious candidate` | Specify inclusion and safe source/code boundary |
-| DECQ-0002 | Reclassify product/Ratchet as historical for this greenfield | OWEN_GUIDANCE, DOCUMENTARY_RECONCILIATION | NEEDS_DELIBERATION | [REV-005 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | `UNANSWERED` + exact comment `Product and ratchet are historical only this greenfieldis` | Resolve canonical hierarchy; check actual consumers before moves |
-| DECQ-0003 | Internalize active Elephant labs into core dev learning process | LAB, DELIBERATION, OWEN_GUIDANCE | NEEDS_DELIBERATION | [REV-006 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | `AGREE` qualified; full comment preserved in batch | Distinguish common feedback/evidence intake vs shared runtime orchestration |
+| DECQ-0001 | Include `mvp/` and clearly relevant external development docs | DOCUMENTARY_RECONCILIATION | OWNER_DECISION_RECORDED / IMPLEMENTATION_NOT_STARTED | [REV-008 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | Explicit AGREE expands review scope. | Inventory candidates and consumer/commit lineage; no unreviewed code moves |
+| DECQ-0002 | Product/Ratchet authority within greenfield | DOCUMENTARY_RECONCILIATION | OWNER_DECISION_RECORDED / DOC_CONFLICT_NOT_YET_RECONCILED | [REV-007 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | Explicit AGREE: historical/reference for greenfield. Use commit dates and commits as key signals. | Correct older corpus authority language in a scoped, evidence-preserving follow-up |
+| DECQ-0003 | Internalize Elephant experiments and Rule 1 SDK loop | LAB, DELIBERATION | OWNER_DIRECTION_RECORDED / IMPLEMENTATION_UNRESOLVED | [REV-009 & REV-012 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | Both AGREE: core Elephant dev integration and SDK embedding. | [TODO-001](MASTER_TODO.md) and [TODO-004](MASTER_TODO.md), retain independent controls |
+| DECQ-0004 | Meaning of unfinished "we first" after SDK embedding | OWEN_GUIDANCE | NEEDS_OWEN | [REV-012 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | Verbatim phrase "Embedded into the elephants system, we first" is incomplete. | Ask a narrow clarification in a subsequent interview without prescribing a stage |
 
 ## Reviewed batches (owner responses, not inferred history)
 
 | Batch | Status | Reviewed cards | Decision dispositions | Cursor |
 | --- | --- | --- | --- | --- |
-| [2026-10-11 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | SUBMITTED | REV-001 to REV-006 | REV-001/002/003 AGREED; REV-006 AGREED_WITH_QUALIFICATION; REV-004/005 UNANSWERED_WITH_GUIDANCE, not approved | Batch 02, older 2026-10-11 decisions |
+| [2026-10-11 Batch 01](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_01.md) | SUBMITTED | REV-001 to REV-006 | REV-001/002/003 AGREED; REV-006 AGREED_WITH_QUALIFICATION; REV-004/005 UNANSWERED_WITH_GUIDANCE | Batch 02 |
+| [2026-10-11 Batch 02](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_02.md) | SUBMITTED | REV-007 to REV-012 | Six AGREE; REV-007,009,012 include binding qualifications as recorded; no migration authorized | **Batch 03: earlier 2026-10-11 semantic/Elephant decisions** |
 
-The tracker **began blank** and is now populated solely by the submitted Batch 01 feedback. Other historical owner decisions continue to apply in their primary source files; this ledger has not imported or ratified them automatically.
+The tracker started blank and is populated only from submitted user adjudications. Original historical decisions remain sourced in their original locations. **Later owner-confirmed greenfield precedence overrides the earlier assistant's characterization of product/Ratchet as coequal greenfield authority; old documents have not yet been rewritten or archived under that correction.**
 
 ## Operating actions
 
@@ -79,9 +81,9 @@ The tracker **began blank** and is now populated solely by the submitted Batch 0
 ## Boundaries and relationship to existing files
 
 - [Canonical Development Corpus](CANONICAL_DEVELOPMENT_CORPUS.md) governs active-versus-archive documentation and authority navigation.
-- [Product decisions](../.project/DECISIONS.md) remain existing source of owner-selected product choices and open owner boundaries. This tracker must not overwrite them.
+- [Historical product decisions](../.project/DECISIONS.md) remain original source evidence about prior product choices; this tracker must not overwrite them or silently treat them as newly approved greenfield rules.
 - [Proposal intake and revisions](02_ARCHITECTURE_PROPOSALS/PROPOSAL_INTAKE_AND_REVISION_RULES.md) continue tracking proposal versions and independent architecture experiments.
 - [Elephant DNA decision log](05_UNIVERSAL_ELEPHANT_DNA/decision_log.md) remains a scoped research classification ledger, not an imported owner-decision list.
-- [Ratchet operating procedure](../.project/ratchet/OPERATING.md) remains the D1 task/verification authority; this tracker cannot promote its gates.
+- [Historical Ratchet operating procedure](../.project/ratchet/OPERATING.md) remains reference/evidence for the old D1 implementation, **not governing authority for this greenfield** following REV-007. Do not change its historical gates or running consumers through this tracker.
 
-**No proposed decision has been accepted by creating this file.** Add future questions only when requested or actually surfaced by a scoped review, with origin and authority explicit.
+**Recorded approvals arose from the owner's submitted review batches, not from creating the tracker.** Every future item must include the explicit source and decision scope; proposed engineering approaches remain proposed.
