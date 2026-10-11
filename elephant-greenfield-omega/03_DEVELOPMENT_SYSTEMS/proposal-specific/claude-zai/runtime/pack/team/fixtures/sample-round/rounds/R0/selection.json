@@ -1,0 +1,65 @@
+{
+  "round": "R0",
+  "basis": "total",
+  "margin": 5,
+  "input_sha256": "1e3cac30a7c63828ef1961b417208db74cc8d917cfef5454d6c5d44b00116118",
+  "decisions": [
+    {
+      "track": "A",
+      "component": "C1",
+      "status": "SELECTED",
+      "winner": "R0-A1",
+      "carry": [],
+      "margin_used": 5,
+      "scores": [
+        {
+          "arm": "R0-A1",
+          "score": 90
+        },
+        {
+          "arm": "R0-A2",
+          "score": 70
+        }
+      ],
+      "disqualified": []
+    },
+    {
+      "track": "A",
+      "component": "C3",
+      "status": "SINGLE_ENTRANT",
+      "winner": "R0-A1",
+      "carry": [],
+      "margin_used": 5,
+      "scores": [
+        {
+          "arm": "R0-A1",
+          "score": 80
+        }
+      ],
+      "disqualified": []
+    },
+    {
+      "track": "B",
+      "component": "C1",
+      "status": "TIE_CARRY_BOTH",
+      "winner": null,
+      "carry": [
+        "R0-B1",
+        "R0-B2"
+      ],
+      "margin_used": 5,
+      "scores": [
+        {
+          "arm": "R0-B1",
+          "score": 75
+        },
+        {
+          "arm": "R0-B2",
+          "score": 73
+        }
+      ],
+      "disqualified": []
+    }
+  ],
+  "margin_source": "manifest"
+}

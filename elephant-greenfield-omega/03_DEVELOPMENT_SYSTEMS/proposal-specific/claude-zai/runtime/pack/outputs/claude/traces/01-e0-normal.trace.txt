@@ -1,0 +1,5 @@
+# Trace: 01-e0-normal  (arm=e0)  CLAIM LEVEL: SIMULATED — scripted adapters, real Git, real journal
+# E0: consult is answered by the kernel itself with FALLBACK_DIRECT_SOURCE; the worker reads source.
+#01 03:00:01 ARM_INIT             {"arm":"e0","main_sha":"0c86eeb"}
+#02 03:00:02 REQUEST_RECORDED     {"arm":"e0","id":"01-e0-normal-r1","key":"01-e0-normal-k1","kind":"REVIEW","from":"worker:w1"}
+#03 03:00:03 TERMINAL             {"key":"01-e0-normal-k1","request_id":"01-e0-normal-r1","result":{"status":"FALLBACK_DIRECT_SOURCE","topology":"e0","fallback":"E0_DIRECT_SOURCE","disagreements":0,"nodes":[]}}

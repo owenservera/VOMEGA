@@ -1,0 +1,3 @@
+SYNTHETIC raw output for R0-B1
+# pass 11
+# fail 0

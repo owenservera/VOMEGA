@@ -1,0 +1,18 @@
+{
+  "round": "R0",
+  "synthetic": true,
+  "items": [
+    {
+      "capability": "parallel_subagents",
+      "status": "unsupported",
+      "evidence": "census/parallel.txt",
+      "note": ""
+    },
+    {
+      "capability": "sqlite",
+      "status": "verified",
+      "evidence": "census/sqlite.txt",
+      "note": ""
+    }
+  ]
+}

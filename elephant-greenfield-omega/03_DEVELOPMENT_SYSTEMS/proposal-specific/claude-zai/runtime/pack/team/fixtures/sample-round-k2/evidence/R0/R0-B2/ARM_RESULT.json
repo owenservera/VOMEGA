@@ -1,0 +1,54 @@
+{
+  "round": "R0",
+  "arm": "R0-B2",
+  "track": "B",
+  "components_attempted": [
+    "C1"
+  ],
+  "commands_run": [
+    {
+      "cmd": "node --test tests",
+      "exit_code": 0,
+      "output_file": "out/test.txt"
+    }
+  ],
+  "files_changed": [
+    "product/src/c1/plan.mjs"
+  ],
+  "claims": [
+    {
+      "component": "C1",
+      "statement": "C1 acceptance suite ran with 11 passing tests",
+      "level": "LIVE_RUN",
+      "evidence": [
+        "out/test.txt"
+      ]
+    },
+    {
+      "component": "C1",
+      "statement": "Consults reduced rework by 40%",
+      "level": "LIVE_RUN",
+      "evidence": [
+        "out/consult-metrics.txt"
+      ]
+    }
+  ],
+  "limitations": [
+    "synthetic sample"
+  ],
+  "learnings": [
+    "sample learning"
+  ],
+  "cost": {
+    "wall_minutes": 33,
+    "tokens": "unknown"
+  },
+  "ecp_usage": {
+    "consults": 4,
+    "fallbacks": 0,
+    "stale_warnings": 0,
+    "findings_acted_on": 2,
+    "false_positives": 1,
+    "adapter": "SCRIPTED"
+  }
+}

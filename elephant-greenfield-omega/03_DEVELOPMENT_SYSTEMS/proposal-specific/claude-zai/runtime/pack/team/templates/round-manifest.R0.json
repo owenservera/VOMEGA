@@ -1,0 +1,32 @@
+{
+  "round": "R0",
+  "seed": "seed",
+  "controller": "controller",
+  "isolation_strength": "{{FROM census.mjs derive: isolation_strength}}",
+  "selection_basis": "{{FROM census.mjs derive: selection_basis}}",
+  "run_order": "{{FROM round.mjs order R0 R0-A1 R0-A2 R0-B1 R0-B2 — as a JSON array; omit the key only if derive says arms_execution=parallel}}",
+  "margin": 5,
+  "budget": { "arm_tool_calls": "{{state a number}}", "arm_minutes": "{{state a number or 'unknown'}}", "evaluator_tool_calls": "{{state a number}}", "reserve_for_close": "enough to run round.mjs check and write the closure report" },
+  "oracle": {
+    "mode": "SEALED_KEY_WITHHELD",
+    "sealed": [ { "component": "C1", "path": "pack/team/oracle/C1.oracle.sealed", "sha256": "218bcbdab5ca78408ed7dc38233fa9c87f684a641fa2db5e52c6b5af0183cb8a", "key_fingerprint": "f69a4b694110a343" } ],
+    "note": "The key is given by the human only after GATE ARMS_SEALED (turn B)."
+  },
+  "components": [
+    {
+      "id": "C1",
+      "title": "Command core + contract (pfm.plan/1)",
+      "contract": "pack/team/contracts/C1_COMMAND_CORE.md",
+      "acceptance": ["PFM_PRODUCT=<product> node --test pack/team/acceptance/C1.acceptance.test.mjs => 16/16 pass"],
+      "acceptance_files": [ { "path": "pack/team/acceptance/C1.acceptance.test.mjs", "sha256": "f754e43a4a55fdff4576a9504561d7140212474be476cea93fa72a212376500e" } ],
+      "hidden_oracle": true,
+      "paths": ["src/c1"]
+    }
+  ],
+  "arms": [
+    { "id": "R0-A1", "track": "A", "dir": "arms/R0-A1", "variant": "approach: declarative validation table (rules as data, one generic checker)", "components": ["C1"], "inherits_from": null, "adapter": "NONE" },
+    { "id": "R0-A2", "track": "A", "dir": "arms/R0-A2", "variant": "approach: imperative guard clauses in contract order", "components": ["C1"], "inherits_from": null, "adapter": "NONE" },
+    { "id": "R0-B1", "track": "B", "dir": "arms/R0-B1", "variant": "consult regime: plan-review (consult before editing); approach fixed: imperative guard clauses", "components": ["C1"], "inherits_from": null, "adapter": "{{FROM census.mjs derive: track_b_adapter}}", "consult_regime": "plan-review" },
+    { "id": "R0-B2", "track": "B", "dir": "arms/R0-B2", "variant": "consult regime: diff-review (consult after editing); approach fixed: imperative guard clauses", "components": ["C1"], "inherits_from": null, "adapter": "{{FROM census.mjs derive: track_b_adapter}}", "consult_regime": "diff-review" }
+  ]
+}

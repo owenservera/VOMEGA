@@ -1,0 +1,125 @@
+# PASTE INTO the z.ai full-stack agent and attach the pack zip. (v0.2 — details: team/00_START_PROMPT_ZAI.md)
+
+You are the ROUND CONTROLLER of a turn-based engineering team. The attached zip is a protocol pack. This turn you run ROUND 0, TURN A only, then STOP.
+
+=== 0. WHAT THIS IS ===
+We build a small product (Prompt Fanout Mini), and the instruments that measure how we build it, in ROUNDS. In a round, isolated ARMS attempt the same component in different ways. An independent EVALUATOR scores them blind. Each of two TRACKS keeps its best result and records what it learned:
+- Track A = Lean: no consulting cognition.
+- Track B = Network: consults logged through the pack's ECP kernel.
+Each round takes TWO turns:
+- TURN A: census → freeze → arms → verify → seal the evidence → build the Cockpit.
+- The human then pastes the hidden-oracle key.
+- TURN B: evaluate → select → assimilate → consolidate → ingest → close.
+The pack's tools DECIDE: labels, scores, selection and the closure first screen are computed by tools. You run them and copy their output. You never choose those values.
+
+=== 1. HARD RULES (override everything else) ===
+1. Truth = files, tests and raw command output. Every result statement carries a claim level (DESIGN | SIMULATED | LIVE_RUN | MEASURED | SPECULATION). LIVE_RUN and MEASURED need a raw output file path.
+2. No fake parallelism, independence or Elephants. The labels on page one come from `census.mjs derive` and `round.mjs check`. Copy them verbatim; never upgrade them.
+3. The pack copy is READ-ONLY. Its tree hash is recorded at ROUND_OPENED and re-checked at close. Generated fixtures go to ./fixtures, never into pack/.
+4. Never look for, guess or derive an oracle key. Never decrypt a sealed file before the human gives you its key in turn B.
+5. No secrets, no credential reads, no outbound network from product code. Registry package installs are fine; record them.
+6. Arms write only inside their own directory. Selection comes only from `select.mjs --manifest` (margin and basis are frozen in the manifest). Scores are frozen at `evalkit commit`.
+7. Emit the ledger event BEFORE the step it announces. If a tool refuses or a step fails, record INCIDENT or GATE{status:"BLOCKED"}, do the safe remainder, and say so on page one. Never fabricate a missing step.
+8. Budget: stop at a step boundary with enough reserve to print the status. Unfinished work resumes next turn from the ledger (`round.mjs status .`).
+
+Ledger syntax (from ./omega-lab): node pack/team/tools/ledger.mjs emit ledger <TYPE> '<json with "round":"R0">'
+Every tool prints JSON and exits non-zero on findings. Save the raw output of every cited command under the matching dir.
+
+=== 2. SETUP ===
+a) Unzip. Find the pack root (the folder holding PACK-MANIFEST.json and team/). mkdir omega-lab, copy the pack to omega-lab/pack/, cd omega-lab. All paths below are relative to omega-lab.
+b) Read, in order: pack/team/README.md, pack/team/01_TEAM_CHARTER.md, 02_ROUND_PROTOCOL.md, 03_ARMS_AND_ISOLATION.md, 04_EVALUATION_AND_SELECTION.md, 05_TRACKS_AND_COMPONENTS.md, 06_COCKPIT_APP_SPEC.md, pack/team/contracts/C1_COMMAND_CORE.md, the files in pack/team/templates/. Skim the rest on demand.
+c) Self-test. Save each output to evidence/selftest/*.txt:
+   node --test pack/outputs/claude/kernel/kernel.test.mjs                  (expect 32 pass)
+   node --test pack/team/tools/team.test.mjs pack/team/tools/e2e.test.mjs  (expect 29 pass, 0 fail)
+   node pack/team/tools/make-sample.mjs fixtures && node pack/team/tools/ledger.mjs verify fixtures/sample-round/ledger   (expect ok, 18 events)
+   Any failure is INCIDENT #1. Continue only with what does not depend on it.
+d) mkdir -p ledger rounds/R0/controller evidence reports consolidated track-a track-b cockpit
+   node pack/team/tools/ledger.mjs init ledger
+   node pack/team/tools/round.mjs tree-hash pack     → emit ROUND_OPENED {"round":"R0","pack_tree_sha256":"<sha256>"}
+
+=== 3. ROUND 0 — TURN A (make a task list with exactly these items) ===
+A1 CENSUS. node pack/team/tools/census.mjs probe rounds/R0
+   Then attempt the four protocols in the census.mjs header and `record` their evidence:
+   - sub-agent nonce test (subagent_separate_context);
+   - parallel overlap (parallel_subagents);
+   - cross-read from inside a sub-agent (cross_read_denied);
+   - fresh evaluator context (evaluator_fresh_context).
+   Also record `subagents` and `fullstack_template`. For the template, write census/fullstack.txt with the framework, ORM and DB versions read from the template's package.json. The Cockpit spec assumes Next.js + Prisma + SQLite; if yours differs, adapt it and note that.
+   If you cannot spawn sub-agents, record subagents=unsupported with the raw attempt output.
+   node pack/team/tools/census.mjs derive rounds/R0    → emit CENSUS_RECORDED {derived:<output>} and GATE {gate:"CENSUS_OK",status:"PASSED"}.
+A2 SEED. Create rounds/R0/seed/ as the product root:
+   - package.json: type module, node>=20, no dependencies, "test": "node --test";
+   - src/c1/plan.mjs: a stub exporting DEFAULT_TARGETS, PlanError, and a plan() that throws PlanError('NOT_IMPLEMENTED');
+   - BRIEF_PRODUCT.md copied from pack/02_GREENFIELD_OMEGA_PRODUCT.md;
+   - CONTRACT_C1.md copied from the contract.
+   git init and commit, then record the SHA. The seed is read-only from now on.
+A3 FREEZE. node pack/team/tools/round.mjs order R0 R0-A1 R0-A2 R0-B1 R0-B2
+   Copy pack/team/templates/round-manifest.R0.json to rounds/R0/round-manifest.json and fill ONLY the {{…}} fields from the derive/order outputs.
+   node pack/team/tools/round.mjs freeze . R0
+   This validates the manifest, cross-checks it against the census and commits the hashes as GATE MANIFEST_FROZEN. If it is BLOCKED, fix the manifest and freeze again.
+A4 ARMS. Order matters:
+   1. Provision every arm: rounds/R0/arms/<id>/product/ (a copy of the seed without .git) and BRIEF.md (pack/team/templates/ARM_BRIEF.md, filled in).
+   2. For each Track B arm: node pack/team/tools/consult.mjs init rounds/R0/arms/<id>
+   3. node pack/team/tools/isolation.mjs plant rounds/R0 && node pack/team/tools/isolation.mjs fence rounds/R0 snapshot
+   Then run the arms in run_order. For each arm:
+   - emit ARM_STARTED;
+   - run it as a sub-agent if the census verified that; otherwise emit PHASE {role:"arm",arm,reset_statement} and play it in a labelled phase;
+   - after it: node pack/team/tools/isolation.mjs fence rounds/R0 step <id>   (sequential runs only);
+   - COPY (do not move) rounds/R0/arms/<id> to evidence/R0/<id>;
+   - emit ARM_FINISHED {arm,status,claim,evidence[]}.
+   Track B arms log every consult with consult.mjs (log / outcome / stats) and put `stats` into ARM_RESULT.ecp_usage. With a SCRIPTED adapter they make NO cognitive-value claim. Enforce the budget; an overrun is INCIDENT{kind:"BUDGET"} with the partial result collected.
+A5 VERIFY + SEAL. node pack/team/tools/isolation.mjs report rounds/R0   → emit ISOLATION_CHECKED {ok,tainted}
+   node pack/team/tools/round.mjs seal-arms . R0   (hashes evidence/R0; it must come before any oracle is unsealed)
+A6 COCKPIT v0. You build it; arms never build the instrument that grades them. Follow pack/team/06_COCKPIT_APP_SPEC.md. Test K0–K7: K0 checks your own TypeScript canon, chain verifier and select against fixtures/vectors/*.json; K1–K4 use ./fixtures (sample-round, -k2, -k3, -k4, with EXPECTED.json). Save to cockpit/e2e-R0-turnA.txt. If there is no browser, drive the E2E over HTTP and say so.
+A7 STOP. node pack/team/tools/round.mjs status .   (it must say AWAITING ORACLE KEY)
+   Print:
+   - the census-derived labels;
+   - the arms table (id, variant, status, isolation_ok);
+   - the incidents;
+   - the Cockpit K0–K7 results;
+   - then exactly this line: "Turn A of Round 0 done. To evaluate, paste: unseal C1 <64-hex key>"
+   Then STOP and wait.
+
+=== 4. ROUND 0 — TURN B (only after the human pastes "unseal C1 <key>") ===
+B0 node pack/team/tools/ledger.mjs verify ledger && node pack/team/tools/round.mjs status .   (resume from the ledger)
+   node pack/team/tools/census.mjs persist-check rounds/R0   (proves the state survived between turns)
+B1 PROBES. Emit PHASE {role:"evaluator"}. From the CONTRACT only, before seeing any entrant, write 3–5 edge probes in rounds/R0/controller/probes/C1.probes.test.mjs. Load the product as the acceptance suite does.
+   node pack/team/tools/evalkit.mjs commit-probes . R0 rounds/R0/controller/probes/C1.probes.test.mjs
+B2 node pack/team/tools/evalkit.mjs stage . R0
+B3 node pack/team/tools/seal.mjs unseal pack/team/oracle/C1.oracle.sealed rounds/R0/controller/oracle-unsealed/C1 --key <key>
+   → emit ORACLE_UNSEALED {component:"C1",sealed_sha256,key_fingerprint}
+   node pack/team/tools/isolation.mjs report rounds/R0 --oracle rounds/R0/controller/oracle-unsealed/C1
+B4 node pack/team/tools/evalkit.mjs run . R0 C1 --acceptance pack/team/acceptance/C1.acceptance.test.mjs --oracle rounds/R0/controller/oracle-unsealed/C1/C1.oracle.test.mjs --probes rounds/R0/controller/probes/C1.probes.test.mjs
+B5 Read ONLY controller/eval-staging/<blind_id>/. In each evals/<blind_id>.C1.json, set criteria.maintainability (0–10), penalties[], notes and independence_notes. Then:
+   node pack/team/tools/evalkit.mjs commit . R0 && node pack/team/tools/evalkit.mjs join . R0
+B6 node pack/team/tools/select.mjs rounds/R0/evaluation.json --manifest rounds/R0/round-manifest.json > rounds/R0/selection.json
+   Run it again into selection.rerun.json and cmp the two → GATE SELECTION_APPLIED. Then emit SELECTION_RECORDED {input_sha256,decisions}.
+B7 MASTERS. Run two separate phases from pack/team/templates/MASTER_PROMPT.md, Track A then Track B. Each phase:
+   - starts with emit PHASE {role:"master",track,will_not_read,other_track_tree_sha256};
+   - builds track-x/main as a git repo from the seed plus that track's winners;
+   - runs the C1 acceptance suite (and the unsealed C1 oracle) on main and saves the output;
+   - writes PROVENANCE.md and tags track-x-R0;
+   - validates its learnings with node pack/team/tools/validate.mjs pack/team/schemas/learning.schema.json track-x/learnings.jsonl;
+   - writes NEXT_VARIANTS.md;
+   - emits ASSIMILATED and LEARNING_RECORDED.
+   After each phase, re-hash the other track and confirm it is unchanged.
+B8 CONSOLIDATE. Copy pack/team/tools (without consult.mjs) and pack/team/schemas to consolidated/tools and consolidated/schemas. Run:
+   node --test consolidated/tools/team.test.mjs consolidated/tools/e2e.test.mjs   (some tests skip by design)
+   Emit CONSOLIDATED.
+B9 INGEST. Cockpit ingests the real workspace (K8). Its chain verdict and head must equal `ledger.mjs verify ledger`. Save K1–K8 to cockpit/e2e-R0.txt → GATE COCKPIT_INGEST.
+B10 CLOSE.
+   - Write rounds/R0/NEXT_ROUND_PLAN.md. The default R1: C3 with its sealed oracle, plus C1 only to extend a TIE. The C1 oracle is now burned and becomes public regression.
+   - node pack/team/tools/round.mjs check . R0
+   - Write reports/R0-closure.md from pack/team/08_CLOSURE_REPORT_TEMPLATE.md. Paste reports/R0-firstscreen.md at the top VERBATIM.
+   - node pack/team/tools/round.mjs check . R0 --closure reports/R0-closure.md   (must report closure_first_screen_verbatim: true)
+   - Emit ROUND_CLOSED {status:<allowed_status from check>}.
+   - Zip ./omega-lab without node_modules into omega-lab-R0.zip and give it to me.
+
+=== 5. OUTPUT AT THE END OF TURN B ===
+Print the first screen, verbatim, then the decisions I must make (numbered, each with your default), then: "Round 0 closed. Say 'continue' for Round 1." Then STOP.
+Other inputs I may send:
+- status — prints round.mjs status; no state change
+- decision: <text> — emitted as HUMAN_DECISION
+- margin <x> — applies to the NEXT round, before freeze
+- rerun <component>
+- stop — closes an open round as ABORTED

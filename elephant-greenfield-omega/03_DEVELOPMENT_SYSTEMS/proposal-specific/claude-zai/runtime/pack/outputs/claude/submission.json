@@ -1,0 +1,151 @@
+{
+  "submission_version": "omega-elephants/submission-v0.1",
+  "author_role": "claude-architect",
+  "submitted_at": "2026-10-11T05:30:00+02:00",
+  "submitted_at_note": "approximate local time of completion; not machine-attested",
+  "source_basis": "design_only",
+  "design_id": "claude-ecp-0.2-capsule-first",
+  "recommended_topology": "e0-first",
+  "recommended_topology_note": "E0 baseline first, then E1-S (stateless capsule node) vs B (capsule bundle); E2 only if E1-S beats B in the pilot.",
+  "accepted_assumptions": [
+    "Git main + tests + runtime evidence are canonical; model output is advisory (A1)",
+    "Exactly 0/1/2 Elephants per arm (A4), counting quarantined nodes",
+    "Workers write code only in their own worktrees; Elephants never write",
+    "Model context is opaque; selective erasure cannot be proven",
+    "Provider/harness capabilities are unverified until probed locally"
+  ],
+  "rejected_assumptions": [
+    "A persistent long-lived session should be the default Elephant substrate",
+    "A selective FLUSH command can be offered",
+    "A wave-delta layer is needed in v0",
+    "An LLM or router node is needed to route consults",
+    "Elephant-to-Elephant calls (even hop 1) are needed in v0",
+    "Staleness can be a stored node state",
+    "E1 vs E0 alone can attribute gains to persistence",
+    "Prompt Fanout Mini is large enough to test the throughput premise"
+  ],
+  "core_components": [
+    "switchboard kernel (single writer per arm)",
+    "hash-chained fsync'd JSONL journal with lock and torn-tail recovery",
+    "commit-blob capsule builder with residency nonce and fail-closed secret scan",
+    "dual-stamp basis calculator (NONE/PERIPHERAL/CONTRACT/DIVERGED)",
+    "quote-verifying citation checker",
+    "subject-keyed disagreement records",
+    "patch escrow with temp-index apply check",
+    "fenced, fast-forward-only epoch guard with reviewer independence",
+    "transaction-canary isolation probe",
+    "file-queue worker CLI (design)"
+  ],
+  "protocol_changes": [
+    "ecp/0.1 -> ecp/0.2",
+    "model-facing kinds reduced to ASK, REVIEW, IMPACT, PROPOSE_PATCH",
+    "FLUSH, HELLO, ROUTE, DISAGREE removed as messages; admin ops become switchboard verbs",
+    "hop limit 0; from: elephant:* invalid",
+    "basis stamped at dispatch and arrival; stale_on_arrival",
+    "anchors carry literal quotes; citation classes VERIFIED/LOCATED/UNANCHORED/INVALID",
+    "artifacts passed by value so they can be policy-scanned",
+    "epoch_policy and accept_stale request fields",
+    "UNKNOWN_TERMINAL on recovery; LATE_RESULT for cost"
+  ],
+  "lifecycle_mechanism": "Capsule built from commit blobs -> boot (FORK if verified, else PREFIX; APPEND only for E1-P) -> calibrate (nonce + negative probe + regex-graded suite) -> READY | QUARANTINED. In-domain epoch -> blue/green rebuild + recalibrate before route flip. Flush is a no-op in FORK/PREFIX and equals rotation in APPEND. Switchboard restart -> UNKNOWN_TERMINAL for in-flight requests, nodes DETACHED until residency re-verified.",
+  "code_writing_policy": "Regime W by default (worker writes, Elephant advises). Regime P opt-in: Elephant diff is escrowed data, validated against allowlist and protected paths, apply-checked on a temporary index, applied only by the worker, reviewed by a non-author non-Elephant, integrated fast-forward under a fenced lease. Regime R excluded from v0.2.",
+  "known_unverified_provider_features": [
+    "headless JSON output per harness",
+    "session resume by id",
+    "session fork",
+    "tool-denial / read-only modes",
+    "remote cancellation",
+    "token usage reporting",
+    "context window size",
+    "prompt-cache discount factor",
+    "concurrent sessions per account"
+  ],
+  "security_boundaries": [
+    "capsules from committed blobs only; path denylist; symlink/binary exclusion; secret hit aborts build",
+    "request payload secret scan -> POLICY_DENIED, no bypass retry",
+    "artifacts rendered as quoted untrusted data",
+    "unknown response fields stripped and reported, never executed",
+    "read-only enforced by OS/harness, verified before admission",
+    "Elephants cannot originate requests or review commits"
+  ],
+  "tests_proposed": [
+    "F01-F31 simulated fault oracles (implemented)",
+    "F33 disk-full append, F35 Windows case-folded protected paths, F36 contract rename (open)",
+    "live drills F34, F38-F40, L1-L6",
+    "calibration parity after rebuild (|delta score| <= 0.1)",
+    "pilot B vs E1-S vs E1-P on T5/T7"
+  ],
+  "smallest_demonstrable_slice": "ecp capsule + ecp verify-citations + epoch guard: useful to E0 workers even if Elephants lose; library code already in kernel/capsule.mjs and kernel/kernel.mjs.",
+  "estimated_mechanism_costs": [
+    "S1 switchboard CLI: 1-2 days (estimate)",
+    "S4 first real adapter: 1-2 days (estimate)",
+    "full pilot S0-S7: 10-19 working days (estimate)",
+    "per-consult token cost in PREFIX: capsule*(1-d)+question+answer, d unknown until measured"
+  ],
+  "falsifiers": [
+    "B ~= E1-S -> delete Elephant runtime, keep capsule builder",
+    "R >= E1-S -> gain was compute",
+    "E1-P <= E1-S -> delete APPEND mode",
+    "E2-S <= E1-S on cross-domain recall -> delete E2",
+    "finding precision < 50% -> drop REVIEW kind",
+    "rebuild fails calibration parity -> not reconstructable",
+    "control-plane build time > pilot savings -> keep only the demonstrator"
+  ],
+  "invention_hypotheses": [
+    "IC-01 dual-stamp epoch validity",
+    "IC-02 commit-blob capsule with residency nonce",
+    "IC-03 transaction canary isolation probe",
+    "IC-04 quote-anchored findings and subject-keyed disagreement to falsifier",
+    "IC-05 fenced epoch guard coupled to cognition invalidation",
+    "IC-06 patch escrow with temp-index apply check",
+    "IC-07 generation-labelled answers across rotation",
+    "IC-08 contract-closure staleness",
+    "IC-09 degraded-topology labelling",
+    "IC-10 calibration-parity reconstruction",
+    "IC-11 context ROI router",
+    "IC-12 anchor-predicate note survival"
+  ],
+  "open_questions": [
+    "Which harness can pass read-only verification on the target Windows machine?",
+    "Is a context-pressure stage on a larger frozen codebase in scope?",
+    "Is regime P allowed in the first comparative wave?",
+    "Does the second E2 node use a different provider?",
+    "Who are the independent reviewers and graders?"
+  ],
+  "files_created": [
+    "outputs/claude/README.md",
+    "outputs/claude/ARCHITECTURE.md",
+    "outputs/claude/ECP_SPEC.md",
+    "outputs/claude/FLUSH_RECOVERY.md",
+    "outputs/claude/WRITING_AND_TRUTH.md",
+    "outputs/claude/FAULT_MATRIX.md",
+    "outputs/claude/TRADEOFFS.md",
+    "outputs/claude/EXPERIMENT.md",
+    "outputs/claude/INVENTION_CANDIDATES.md",
+    "outputs/claude/BUILD_SEQUENCE.md",
+    "outputs/claude/SELF_CRITIQUE.md",
+    "outputs/claude/submission.json",
+    "outputs/claude/package.json",
+    "outputs/claude/schemas/ecp-0.2-request.schema.json",
+    "outputs/claude/schemas/ecp-0.2-result.schema.json",
+    "outputs/claude/kernel/*.mjs (10 files) + README.md",
+    "outputs/claude/traces/*.trace.txt (6 files)"
+  ],
+  "commands_run": [
+    "node --test tools/ecp/ecp.test.mjs (pack v0.1 mock: 13 pass, 0 fail)",
+    "node --test outputs/claude/kernel/kernel.test.mjs",
+    "node outputs/claude/kernel/demo.mjs"
+  ],
+  "tests_run": [
+    "outputs/claude/kernel/kernel.test.mjs: 32 pass, 0 fail, repeated runs stable (Linux, Node v22.22.0, git 2.43.0) — SIMULATED_TEST"
+  ],
+  "limitations": [
+    "No live provider session opened; all model behaviour scripted",
+    "Not run on Windows",
+    "Byte budgets, not tokenizer counts",
+    "Heuristic secret scan only",
+    "File-queue CLI, real adapters, notes promotion and router are design only",
+    "Harness flags deliberately not specified (unverified)",
+    "Estimates are guesses, not measurements"
+  ]
+}

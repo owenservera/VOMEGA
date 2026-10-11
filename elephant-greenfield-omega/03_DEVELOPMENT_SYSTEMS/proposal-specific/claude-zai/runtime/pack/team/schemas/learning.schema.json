@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/team/learning",
+  "title": "Learning (promoted by a track master; one per line in <track>/learnings.jsonl)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "track", "round", "statement", "kind", "evidence", "applies_to", "status", "revisit_if"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^L-[AB]-\\d{3}$" },
+    "track": { "enum": ["A", "B"] }, "round": { "type": "string" },
+    "statement": { "type": "string", "maxLength": 400, "description": "One falsifiable sentence." },
+    "kind": { "enum": ["technique", "pitfall", "measurement", "decision", "tooling"] },
+    "evidence": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "Paths to raw outputs / eval files. A learning without evidence is not recorded." },
+    "applies_to": { "type": "array", "items": { "type": "string" }, "description": "Component ids or protocol sections." },
+    "status": { "enum": ["ACTIVE", "SUPERSEDED", "REFUTED"] },
+    "superseded_by": { "type": ["string", "null"] },
+    "revisit_if": { "type": "string", "description": "The observation that would make this learning wrong." }
+  }
+}

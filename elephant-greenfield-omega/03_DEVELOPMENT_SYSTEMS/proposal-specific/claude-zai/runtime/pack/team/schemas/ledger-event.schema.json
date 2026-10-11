@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/team/ledger-event",
+  "title": "Ledger event line (hash-chained; produced by team/tools/ledger.mjs via the ECP v0.2 journal)",
+  "type": "object",
+  "required": [
+    "seq",
+    "ts",
+    "type",
+    "prev",
+    "body",
+    "hash"
+  ],
+  "properties": {
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "enum": [
+        "ROUND_OPENED",
+        "CENSUS_RECORDED",
+        "GATE",
+        "ARM_STARTED",
+        "ARM_FINISHED",
+        "ISOLATION_CHECKED",
+        "EVAL_RECORDED",
+        "SELECTION_RECORDED",
+        "ASSIMILATED",
+        "CONSOLIDATED",
+        "LEARNING_RECORDED",
+        "INCIDENT",
+        "ROUND_CLOSED",
+        "HUMAN_DECISION",
+        "PHASE",
+        "ORACLE_UNSEALED",
+        "STALE_LOCK_BROKEN",
+        "TORN_TAIL_DISCARDED"
+      ]
+    },
+    "prev": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "round"
+      ],
+      "properties": {
+        "round": {
+          "type": "string",
+          "pattern": "^R\\d+$"
+        },
+        "claim": {
+          "enum": [
+            "DESIGN",
+            "SIMULATED",
+            "LIVE_RUN",
+            "MEASURED",
+            "SPECULATION"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Required (non-empty) when claim is LIVE_RUN or MEASURED."
+        },
+        "phase": {
+          "type": "string"
+        },
+        "gate": {
+          "enum": [
+            "CENSUS_OK",
+            "MANIFEST_FROZEN",
+            "ARMS_SEALED",
+            "PROBES_COMMITTED",
+            "ISOLATION_CLEAN",
+            "SELECTION_APPLIED",
+            "TRACK_MAIN_GREEN",
+            "COCKPIT_INGEST",
+            "LEDGER_VERIFIED"
+          ]
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

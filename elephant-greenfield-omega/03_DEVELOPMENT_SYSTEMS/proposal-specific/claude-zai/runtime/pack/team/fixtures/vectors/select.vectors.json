@@ -1,0 +1,727 @@
+{
+  "note": "select(evaluation, {margin, basis}) — compare `decisions` and `input_sha256` exactly. Sorting uses code-unit comparison, NOT localeCompare.",
+  "cases": [
+    {
+      "name": "clear winner",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 90,
+            "score_mechanical": 70,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R1-A2",
+            "component": "C1",
+            "score": 70,
+            "score_mechanical": 50,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total",
+      "expected": {
+        "round": "R1",
+        "basis": "total",
+        "margin": 5,
+        "input_sha256": "8ae4e3fcff37840f1edb9ee184b00de11220a8d555e22413576f98bd68968e59",
+        "decisions": [
+          {
+            "track": "A",
+            "component": "C1",
+            "status": "SELECTED",
+            "winner": "R1-A1",
+            "carry": [],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-A1",
+                "score": 90
+              },
+              {
+                "arm": "R1-A2",
+                "score": 70
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "tie within margin",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 80,
+            "score_mechanical": 60,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R1-A2",
+            "component": "C1",
+            "score": 78,
+            "score_mechanical": 58,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total",
+      "expected": {
+        "round": "R1",
+        "basis": "total",
+        "margin": 5,
+        "input_sha256": "b30cd3e403ad8776db5e8957d3c78f97fde980a3751a6e51afd1216c316b7a2b",
+        "decisions": [
+          {
+            "track": "A",
+            "component": "C1",
+            "status": "TIE_CARRY_BOTH",
+            "winner": null,
+            "carry": [
+              "R1-A1",
+              "R1-A2"
+            ],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-A1",
+                "score": 80
+              },
+              {
+                "arm": "R1-A2",
+                "score": 78
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "boundary inclusive",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 85,
+            "score_mechanical": 65,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R1-A2",
+            "component": "C1",
+            "score": 80,
+            "score_mechanical": 60,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total",
+      "expected": {
+        "round": "R1",
+        "basis": "total",
+        "margin": 5,
+        "input_sha256": "587e6e33acd44c8f58ec1ccfdadef4591dfa9774b4f6ac4d9447edccc0b72192",
+        "decisions": [
+          {
+            "track": "A",
+            "component": "C1",
+            "status": "SELECTED",
+            "winner": "R1-A1",
+            "carry": [],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-A1",
+                "score": 85
+              },
+              {
+                "arm": "R1-A2",
+                "score": 80
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "equal scores: arm id breaks order, still a tie",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "B",
+            "arm": "R1-B2",
+            "component": "C1",
+            "score": 77,
+            "score_mechanical": 57,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "B",
+            "arm": "R1-B1",
+            "component": "C1",
+            "score": 77,
+            "score_mechanical": 57,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total",
+      "expected": {
+        "round": "R1",
+        "basis": "total",
+        "margin": 5,
+        "input_sha256": "e85d8963435bd2934c993e8f8d89a40f6977964d2be5223b111efe9b556de6e0",
+        "decisions": [
+          {
+            "track": "B",
+            "component": "C1",
+            "status": "TIE_CARRY_BOTH",
+            "winner": null,
+            "carry": [
+              "R1-B1",
+              "R1-B2"
+            ],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-B1",
+                "score": 77
+              },
+              {
+                "arm": "R1-B2",
+                "score": 77
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "disqualifications",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "B",
+            "arm": "R1-B1",
+            "component": "C1",
+            "score": 60,
+            "score_mechanical": 40,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "B",
+            "arm": "R1-B2",
+            "component": "C1",
+            "score": 99,
+            "score_mechanical": 79,
+            "tests_passed": true,
+            "isolation_ok": false,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "B",
+            "arm": "R1-B1",
+            "component": "C2",
+            "score": 50,
+            "score_mechanical": 30,
+            "tests_passed": false,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "B",
+            "arm": "R1-B2",
+            "component": "C2",
+            "score": 55,
+            "score_mechanical": 35,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": []
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total",
+      "expected": {
+        "round": "R1",
+        "basis": "total",
+        "margin": 5,
+        "input_sha256": "aceca7494eecabd9e99045e7d3ce916efbd383d1de49b8b8cff3970443195cd4",
+        "decisions": [
+          {
+            "track": "B",
+            "component": "C1",
+            "status": "SINGLE_ENTRANT",
+            "winner": "R1-B1",
+            "carry": [],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-B1",
+                "score": 60
+              }
+            ],
+            "disqualified": [
+              {
+                "arm": "R1-B2",
+                "why": [
+                  "isolation_not_ok"
+                ]
+              }
+            ]
+          },
+          {
+            "track": "B",
+            "component": "C2",
+            "status": "NO_ELIGIBLE",
+            "winner": null,
+            "carry": [],
+            "margin_used": 5,
+            "scores": [],
+            "disqualified": [
+              {
+                "arm": "R1-B1",
+                "why": [
+                  "tests_not_passed"
+                ]
+              },
+              {
+                "arm": "R1-B2",
+                "why": [
+                  "no_evidence"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "three entrants, carry only those within margin",
+      "evaluation": {
+        "round": "R2",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R2-A1",
+            "component": "C2",
+            "score": 90,
+            "score_mechanical": 70,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R2-A2",
+            "component": "C2",
+            "score": 86,
+            "score_mechanical": 66,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R2-A3",
+            "component": "C2",
+            "score": 84,
+            "score_mechanical": 64,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total",
+      "expected": {
+        "round": "R2",
+        "basis": "total",
+        "margin": 5,
+        "input_sha256": "524bf20df8c4af728a0d626923e860cf6c4f3634bc0990e25333012fd804814d",
+        "decisions": [
+          {
+            "track": "A",
+            "component": "C2",
+            "status": "TIE_CARRY_BOTH",
+            "winner": null,
+            "carry": [
+              "R2-A1",
+              "R2-A2"
+            ],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R2-A1",
+                "score": 90
+              },
+              {
+                "arm": "R2-A2",
+                "score": 86
+              },
+              {
+                "arm": "R2-A3",
+                "score": 84
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "mechanical basis flips the outcome",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 90,
+            "score_mechanical": 60,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R1-A2",
+            "component": "C1",
+            "score": 80,
+            "score_mechanical": 70,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "mechanical",
+      "expected": {
+        "round": "R1",
+        "basis": "mechanical",
+        "margin": 5,
+        "input_sha256": "3f2b70b17a5835a703f95c64ecb73623a977e227be8a5839b0c87b3ac14664ad",
+        "decisions": [
+          {
+            "track": "A",
+            "component": "C1",
+            "status": "SELECTED",
+            "winner": "R1-A2",
+            "carry": [],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-A2",
+                "score": 70
+              },
+              {
+                "arm": "R1-A1",
+                "score": 60
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "never across tracks",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 90,
+            "score_mechanical": 70,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "B",
+            "arm": "R1-B1",
+            "component": "C1",
+            "score": 50,
+            "score_mechanical": 30,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total",
+      "expected": {
+        "round": "R1",
+        "basis": "total",
+        "margin": 5,
+        "input_sha256": "2149560d4b8e286af352b44fe6b128fc555a5edaa549f845252217a070060d21",
+        "decisions": [
+          {
+            "track": "A",
+            "component": "C1",
+            "status": "SINGLE_ENTRANT",
+            "winner": "R1-A1",
+            "carry": [],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-A1",
+                "score": 90
+              }
+            ],
+            "disqualified": []
+          },
+          {
+            "track": "B",
+            "component": "C1",
+            "status": "SINGLE_ENTRANT",
+            "winner": "R1-B1",
+            "carry": [],
+            "margin_used": 5,
+            "scores": [
+              {
+                "arm": "R1-B1",
+                "score": 50
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "margin zero",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 80,
+            "score_mechanical": 60,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R1-A2",
+            "component": "C1",
+            "score": 80,
+            "score_mechanical": 60,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 0,
+      "basis": "total",
+      "expected": {
+        "round": "R1",
+        "basis": "total",
+        "margin": 0,
+        "input_sha256": "98b9acfe4e6de91ff9ce4018bde88b3beb6ab61e9130d5047be7f38a2cf82f7f",
+        "decisions": [
+          {
+            "track": "A",
+            "component": "C1",
+            "status": "SELECTED",
+            "winner": "R1-A1",
+            "carry": [],
+            "margin_used": 0,
+            "scores": [
+              {
+                "arm": "R1-A1",
+                "score": 80
+              },
+              {
+                "arm": "R1-A2",
+                "score": 80
+              }
+            ],
+            "disqualified": []
+          }
+        ]
+      }
+    }
+  ],
+  "must_throw": [
+    {
+      "name": "NaN margin",
+      "evaluation": {
+        "round": "R1",
+        "results": []
+      },
+      "margin": null,
+      "basis": "total"
+    },
+    {
+      "name": "duplicate arm/component",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 90,
+            "score_mechanical": 70,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          },
+          {
+            "track": "A",
+            "arm": "R1-A1",
+            "component": "C1",
+            "score": 40,
+            "score_mechanical": 20,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total"
+    },
+    {
+      "name": "arm under wrong track",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R1-B1",
+            "component": "C1",
+            "score": 90,
+            "score_mechanical": 70,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total"
+    },
+    {
+      "name": "arm from another round",
+      "evaluation": {
+        "round": "R1",
+        "results": [
+          {
+            "track": "A",
+            "arm": "R0-A1",
+            "component": "C1",
+            "score": 90,
+            "score_mechanical": 70,
+            "tests_passed": true,
+            "isolation_ok": true,
+            "evidence": [
+              "e.json"
+            ]
+          }
+        ]
+      },
+      "margin": 5,
+      "basis": "total"
+    }
+  ]
+}

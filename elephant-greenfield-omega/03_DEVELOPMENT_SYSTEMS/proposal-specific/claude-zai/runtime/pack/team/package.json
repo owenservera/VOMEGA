@@ -1,0 +1,12 @@
+{
+  "name": "greenfield-omega-team-program",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Turn-based two-track team protocol tools (ledger, census, isolation, seal, evalkit, selection). Mechanics evidence only.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tools/team.test.mjs tools/e2e.test.mjs",
+    "sample": "node tools/make-sample.mjs"
+  }
+}

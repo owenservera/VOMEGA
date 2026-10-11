@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/team/contracts/c1-plan",
+  "title": "Prompt Fanout Mini plan (pfm.plan/1) — output of C1 plan()",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "command_id", "prompt", "dry_run", "targets", "steps", "fingerprint"],
+  "properties": {
+    "schema": { "const": "pfm.plan/1" },
+    "command_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$" },
+    "prompt": { "type": "string", "minLength": 1, "maxLength": 8000 },
+    "dry_run": { "type": "boolean" },
+    "targets": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{0,31}$" } },
+    "steps": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["seq", "target", "action", "idempotency_key"],
+        "properties": {
+          "seq": { "type": "integer", "minimum": 1 },
+          "target": { "type": "string" },
+          "action": { "enum": ["submit", "preview"] },
+          "idempotency_key": { "type": "string" }
+        }
+      }
+    },
+    "fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

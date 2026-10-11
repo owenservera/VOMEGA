@@ -1,0 +1,38 @@
+{
+  "round": "R0",
+  "arm": "R0-A2",
+  "track": "A",
+  "components_attempted": [
+    "C1"
+  ],
+  "commands_run": [
+    {
+      "cmd": "node --test tests",
+      "exit_code": 0,
+      "output_file": "out/test.txt"
+    }
+  ],
+  "files_changed": [
+    "product/src/c1/plan.mjs"
+  ],
+  "claims": [
+    {
+      "component": "C1",
+      "statement": "C1 acceptance suite ran with 11 passing tests",
+      "level": "LIVE_RUN",
+      "evidence": [
+        "out/test.txt"
+      ]
+    }
+  ],
+  "limitations": [
+    "synthetic sample"
+  ],
+  "learnings": [
+    "sample learning"
+  ],
+  "cost": {
+    "wall_minutes": 27,
+    "tokens": "unknown"
+  }
+}

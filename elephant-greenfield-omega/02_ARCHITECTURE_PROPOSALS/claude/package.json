@@ -1,0 +1,12 @@
+{
+  "name": "greenfield-omega-claude-architect-submission",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude first-pass architect submission: ECP v0.2 kernel (SIMULATED_TEST) and documentation set. Not a live AI integration.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test kernel/kernel.test.mjs",
+    "demo": "node kernel/demo.mjs"
+  }
+}

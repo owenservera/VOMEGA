@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/team/eval",
+  "title": "Per-entrant, per-component evaluation file (evals/<blind_id>.<component>.json). Mechanical fields are written by evalkit run; the evaluator adds maintainability, penalties and notes, then evalkit commit freezes the directory.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["round", "blind_id", "component", "acceptance", "oracle", "edge_probes", "loc_non_test", "criteria", "tests_passed", "penalties"],
+  "$defs": {
+    "suite": { "type": "object", "required": ["passed", "total", "output_file"],
+      "properties": { "passed": { "type": "integer", "minimum": 0 }, "total": { "type": "integer", "minimum": 0 }, "output_file": { "type": ["string", "null"] }, "note": { "type": "string" } } }
+  },
+  "properties": {
+    "round": { "type": "string", "pattern": "^R\\d+$" },
+    "blind_id": { "type": "string", "pattern": "^b-[0-9a-f]{8}$" },
+    "component": { "type": "string", "pattern": "^C\\d+$" },
+    "acceptance": { "$ref": "#/$defs/suite" },
+    "oracle": { "$ref": "#/$defs/suite" },
+    "edge_probes": { "$ref": "#/$defs/suite" },
+    "loc_non_test": { "type": "integer", "minimum": 0 },
+    "criteria": { "type": "object", "additionalProperties": false, "required": ["acceptance", "oracle", "edge", "maintainability"],
+      "properties": {
+        "acceptance": { "type": "integer", "minimum": 0, "maximum": 30 },
+        "oracle": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "edge": { "type": "integer", "minimum": 0, "maximum": 15 },
+        "maintainability": { "type": ["integer", "null"], "minimum": 0, "maximum": 10, "description": "Evaluator judgment: can a fresh reader state what the code does from tests and names alone, in <= 5 sentences, correctly?" } } },
+    "tests_passed": { "type": "boolean" },
+    "penalties": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["criterion", "reason"],
+      "properties": { "criterion": { "enum": ["acceptance", "oracle", "edge", "simplicity", "evidence", "maintainability"] }, "reason": { "type": "string", "minLength": 5 } } },
+      "description": "Anti-gaming: each listed criterion is zeroed at join. A penalty on 'acceptance' also sets tests_passed=false." },
+    "notes": { "type": "string" },
+    "independence_notes": { "type": "string", "description": "What the evaluator saw and ignored; any recognised authorship style." }
+  }
+}

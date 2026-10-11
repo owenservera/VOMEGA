@@ -1,0 +1,8 @@
+# Trace: 04-e2-node-crash  (arm=e2)  CLAIM LEVEL: SIMULATED — scripted adapters, real Git, real journal
+# E2 node B lost mid-request -> PARTIAL, topology_effective=e1, B contributes nothing.
+#01 03:00:01 ARM_INIT             {"arm":"e2","main_sha":"0c86eeb"}
+#02 03:00:02 NODE_REGISTERED      {"id":"elephant:contracts","domain":"contracts","mode":"FORK","status":"READY","generation":1,"incorporated_sha":"0c86eeb"}
+#03 03:00:03 NODE_REGISTERED      {"id":"elephant:execution-surface","domain":"execution-surface","mode":"FORK","status":"READY","generation":1,"incorporated_sha":"0c86eeb"}
+#04 03:00:04 REQUEST_RECORDED     {"arm":"e2","id":"04-e2-node-crash-r1","key":"04-e2-node-crash-k1","kind":"REVIEW","from":"worker:w1"}
+#05 03:00:06 DISPATCHED           {"request_id":"04-e2-node-crash-r1","nodes":[{"id":"elephant:contracts","generation":1,"incorporated_sha":"0c86eeb","pack_sha":"4f842d0","staleness":"NONE"},{"id":"elephant:execution-surface","generation":1,"incorporated_sha":"0c86eeb","pack_sha":"0620ae9","staleness":"NONE"}]}
+#06 03:00:07 TERMINAL             {"key":"04-e2-node-crash-k1","request_id":"04-e2-node-crash-r1","result":{"status":"PARTIAL","topology":"e1","fallback":"NONE","disagreements":0,"nodes":["elephant:contracts=COMPLETED@0c86eeb/NONE","elephant:execution-surface=MODEL_ERROR@0c86eeb/NONE"]}}

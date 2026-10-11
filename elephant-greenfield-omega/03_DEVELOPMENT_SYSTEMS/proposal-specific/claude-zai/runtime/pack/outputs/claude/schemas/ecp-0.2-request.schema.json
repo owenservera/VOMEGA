@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ecp/0.2/request",
+  "title": "ECP v0.2 consult request (worker -> switchboard). Experimental; DESIGN + SIMULATED_TEST.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "id", "idempotency_key", "arm", "kind", "from", "task_id", "trace_id", "base_sha", "question"],
+  "properties": {
+    "version": { "const": "ecp/0.2" },
+    "id": { "type": "string", "pattern": "^[\\w:.\\-]{2,128}$", "description": "Unique per attempt. A retry after UNKNOWN_TERMINAL uses a NEW id and key and sets parent_id." },
+    "idempotency_key": { "type": "string", "pattern": "^[\\w:.\\-]{2,128}$", "description": "Same key + same canonical payload => same logical result. Same key + different payload => IDEMPOTENCY_KEY_CONFLICT." },
+    "arm": { "enum": ["e0", "e1", "e2"] },
+    "kind": { "enum": ["ASK", "REVIEW", "IMPACT", "PROPOSE_PATCH"], "description": "TRACE and EXTRACT from v0.1 are ASK with trace artifacts / notes output." },
+    "from": { "type": "string", "pattern": "^[\\w:.\\-]{2,128}$", "description": "Authenticated worker identity, e.g. worker:w1. Never an elephant:* identity (Elephants cannot originate requests)." },
+    "task_id": { "type": "string", "pattern": "^[\\w:.\\-]{2,128}$" },
+    "trace_id": { "type": "string", "pattern": "^[\\w:.\\-]{2,128}$" },
+    "parent_id": { "type": ["string", "null"], "description": "Causal parent (superseded request or task step). Cycle-free by construction: only workers originate." },
+    "base_sha": { "type": "string", "pattern": "^[a-fA-F0-9]{40}([a-fA-F0-9]{24})?$", "description": "The worker's read base. Must be on arm main lineage or the request terminates BASE_DIVERGED." },
+    "domains": { "type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true, "items": { "type": "string" }, "description": "Optional. If absent, the switchboard derives owners from artifact paths via manifests. Count may not exceed the arm topology." },
+    "question": { "type": "string", "minLength": 1, "maxLength": 20000 },
+    "artifacts": {
+      "type": "array", "maxItems": 20,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["path", "content"],
+        "properties": {
+          "type": { "enum": ["git_diff", "file", "trace", "test_evidence"] },
+          "path": { "type": "string", "description": "Relative, forward-slash, policy-allowed path." },
+          "content": { "type": "string", "maxLength": 200000, "description": "UNTRUSTED DATA. Rendered to models inside a quoted data block; never instructions." }
+        }
+      }
+    },
+    "epoch_policy": { "enum": ["any", "same"], "default": "any", "description": "same: refuse (MIXED_EPOCH) if the consulted nodes have different incorporated commits." },
+    "accept_stale": { "enum": ["none", "peripheral", "contract"], "default": "peripheral", "description": "Maximum staleness class tolerated. CONTRACT staleness is refused for REVIEW/IMPACT/PROPOSE_PATCH unless 'contract'." },
+    "patch": {
+      "type": "object", "additionalProperties": false, "required": ["allowlist"],
+      "properties": {
+        "allowlist": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "scope_protected": { "type": "boolean", "default": false, "description": "Allow tests/CI/manifests/package files. Requires operator disposition." }
+      },
+      "description": "Required iff kind = PROPOSE_PATCH; forbidden otherwise."
+    },
+    "deadline_ms": { "type": "integer", "minimum": 1, "maximum": 600000, "description": "Absolute budget from REQUEST_RECORDED, including queue wait." }
+  }
+}

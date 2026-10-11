@@ -1,0 +1,65 @@
+{
+  "round": "R0",
+  "results": [
+    {
+      "track": "A",
+      "arm": "R0-A1",
+      "component": "C1",
+      "score": 90,
+      "score_mechanical": 68,
+      "tests_passed": true,
+      "isolation_ok": true,
+      "evidence": [
+        "evidence/R0/R0-A1/evals/C1.json"
+      ]
+    },
+    {
+      "track": "A",
+      "arm": "R0-A2",
+      "component": "C1",
+      "score": 70,
+      "score_mechanical": 66,
+      "tests_passed": true,
+      "isolation_ok": true,
+      "evidence": [
+        "evidence/R0/R0-A2/evals/C1.json"
+      ]
+    },
+    {
+      "track": "A",
+      "arm": "R0-A1",
+      "component": "C3",
+      "score": 80,
+      "score_mechanical": 60,
+      "tests_passed": true,
+      "isolation_ok": true,
+      "evidence": [
+        "evidence/R0/R0-A1/evals/C3.json"
+      ]
+    },
+    {
+      "track": "B",
+      "arm": "R0-B1",
+      "component": "C1",
+      "score": 75,
+      "score_mechanical": 61,
+      "tests_passed": true,
+      "isolation_ok": true,
+      "evidence": [
+        "evidence/R0/R0-B1/evals/C1.json"
+      ]
+    },
+    {
+      "track": "B",
+      "arm": "R0-B2",
+      "component": "C1",
+      "score": 73,
+      "score_mechanical": 50,
+      "tests_passed": true,
+      "isolation_ok": true,
+      "evidence": [
+        "evidence/R0/R0-B2/evals/C1.json"
+      ]
+    }
+  ]
+}

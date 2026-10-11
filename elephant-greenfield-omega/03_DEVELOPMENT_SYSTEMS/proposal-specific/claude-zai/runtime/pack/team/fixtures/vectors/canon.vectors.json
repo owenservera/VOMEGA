@@ -1,0 +1,85 @@
+{
+  "note": "canon(): keys sorted by UTF-16 code unit order (JS default sort) at every depth; undefined object members dropped; primitives via JSON.stringify. Inputs are JSON-parsed data, so Dates/undefined array elements never reach canon (the journal normalises bodies through JSON before hashing). sha256 is over the UTF-8 bytes of canon.",
+  "cases": [
+    {
+      "input_js": "null",
+      "canon": "null",
+      "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    {
+      "input_js": "true",
+      "canon": "true",
+      "sha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+    },
+    {
+      "input_js": "0",
+      "canon": "0",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "input_js": "0",
+      "canon": "0",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "input_js": "1.5",
+      "canon": "1.5",
+      "sha256": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+    },
+    {
+      "input_js": "1e+21",
+      "canon": "1e+21",
+      "sha256": "241c4643fa70b1dcde1205b71be4e3bebb17e9f880c8e1a33d0ead6c27271d3c"
+    },
+    {
+      "input_js": "\"plain\"",
+      "canon": "\"plain\"",
+      "sha256": "945603a8f587786b463c3f94fce115c0fae88fac2728cc96ddf5981cf7f61741"
+    },
+    {
+      "input_js": "\"ünïcødé ✓ 😀\"",
+      "canon": "\"ünïcødé ✓ 😀\"",
+      "sha256": "84197a735f60ecee0984a1e9b2bb6f2fe96929b9e6d5e7cdf1654a4cc379ae38"
+    },
+    {
+      "input_js": "\"quote \\\" backslash \\\\ newline \\n tab \\t\"",
+      "canon": "\"quote \\\" backslash \\\\ newline \\n tab \\t\"",
+      "sha256": "a464dfb92115d2771e1a95b649c03bc51de9f88b9a09d14512d246861ba27bd3"
+    },
+    {
+      "input_js": "\"  \"",
+      "canon": "\"  \"",
+      "sha256": "e3a0e2262ac7790f4df36b522a8fbdd4ee3370d568eb15dc25c5f1775f14ed6c"
+    },
+    {
+      "input_js": "[]",
+      "canon": "[]",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "input_js": "{}",
+      "canon": "{}",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "input_js": "{\"b\":1,\"a\":2}",
+      "canon": "{\"a\":2,\"b\":1}",
+      "sha256": "d3626ac30a87e6f7a6428233b3c68299976865fa5508e4267c5415c76af7a772"
+    },
+    {
+      "input_js": "{\"z\":{\"y\":[3,{\"d\":1,\"c\":null}]},\"a\":[]}",
+      "canon": "{\"a\":[],\"z\":{\"y\":[3,{\"c\":null,\"d\":1}]}}",
+      "sha256": "a34ee512dd213aa5d76f2d5ef5eb361d7e8aa46cc41fbc28df227b763d291441"
+    },
+    {
+      "input_js": "{\"undef\":\"__undefined__\",\"keep\":1}",
+      "canon": "{\"keep\":1}",
+      "sha256": "6675aa53127d6ad68fb4f47a8eeced07aebe9552f14b8d4795ca44de47eb56cd"
+    },
+    {
+      "input_js": "{\"9\":5,\"10\":4,\"é\":1,\"e\":2,\"E\":3}",
+      "canon": "{\"10\":4,\"9\":5,\"E\":3,\"e\":2,\"é\":1}",
+      "sha256": "ddeb4d82f29a3f35c23e76278c799ecab2b5dc5d23463f96587d7114fb0404ec"
+    }
+  ]
+}

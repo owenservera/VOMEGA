@@ -1,0 +1,8 @@
+# Trace: 03-e2-conflicting-reviews  (arm=e2)  CLAIM LEVEL: SIMULATED — scripted adapters, real Git, real journal
+# E2: two independent verdicts on one subject -> OPEN disagreement record (see TERMINAL disagreements=1). No consensus.
+#01 03:00:01 ARM_INIT             {"arm":"e2","main_sha":"0c86eeb"}
+#02 03:00:02 NODE_REGISTERED      {"id":"elephant:contracts","domain":"contracts","mode":"FORK","status":"READY","generation":1,"incorporated_sha":"0c86eeb"}
+#03 03:00:03 NODE_REGISTERED      {"id":"elephant:execution-surface","domain":"execution-surface","mode":"FORK","status":"READY","generation":1,"incorporated_sha":"0c86eeb"}
+#04 03:00:04 REQUEST_RECORDED     {"arm":"e2","id":"03-e2-conflicting-reviews-r1","key":"03-e2-conflicting-reviews-k1","kind":"REVIEW","from":"worker:w1"}
+#05 03:00:06 DISPATCHED           {"request_id":"03-e2-conflicting-reviews-r1","nodes":[{"id":"elephant:contracts","generation":1,"incorporated_sha":"0c86eeb","pack_sha":"4f842d0","staleness":"NONE"},{"id":"elephant:execution-surface","generation":1,"incorporated_sha":"0c86eeb","pack_sha":"0620ae9","staleness":"NONE"}]}
+#06 03:00:07 TERMINAL             {"key":"03-e2-conflicting-reviews-k1","request_id":"03-e2-conflicting-reviews-r1","result":{"status":"COMPLETED","topology":"e2","fallback":"NONE","disagreements":1,"nodes":["elephant:contracts=COMPLETED@0c86eeb/NONE","elephant:execution-surface=COMPLETED@0c86eeb/NONE"]}}

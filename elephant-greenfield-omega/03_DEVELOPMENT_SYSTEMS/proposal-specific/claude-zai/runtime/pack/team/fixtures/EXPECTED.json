@@ -1,0 +1,64 @@
+{
+  "sample-round": {
+    "K": "K1",
+    "events": 18,
+    "chain": {
+      "ok": true,
+      "head": "49906331909b8f4ba0ae26d2133bf51e406f3c157faeaf1c59498901f345d480"
+    },
+    "flagged_claims": [
+      {
+        "arm": "R0-B2",
+        "evidence": "out/consult-metrics.txt"
+      }
+    ],
+    "selections": {
+      "reproduced": 3,
+      "mismatched": 0
+    }
+  },
+  "sample-round-k2": {
+    "K": "K2",
+    "events": 18,
+    "chain": {
+      "ok": false,
+      "seq": 9,
+      "reason": "hash mismatch",
+      "head_before_break": "d111743298fe564ac8073f07344bc95aeb26bd2a909a289d5b279e9115091c20"
+    }
+  },
+  "sample-round-k3": {
+    "K": "K3",
+    "events": 18,
+    "chain": {
+      "ok": true,
+      "head": "49906331909b8f4ba0ae26d2133bf51e406f3c157faeaf1c59498901f345d480"
+    },
+    "flagged_claims": [
+      {
+        "arm": "R0-A1",
+        "evidence": "out/test.txt"
+      },
+      {
+        "arm": "R0-B2",
+        "evidence": "out/consult-metrics.txt"
+      }
+    ]
+  },
+  "sample-round-k4": {
+    "K": "K4",
+    "events": 18,
+    "chain": {
+      "ok": true,
+      "head": "49906331909b8f4ba0ae26d2133bf51e406f3c157faeaf1c59498901f345d480"
+    },
+    "selections": {
+      "reproduced": 2,
+      "mismatched": 1,
+      "mismatched_groups": [
+        "B·C1"
+      ]
+    }
+  },
+  "evidence_path_resolution": "claims[].evidence and commands_run[].output_file are resolved against evidence/R<n>/<arm>/ first, then the workspace root"
+}

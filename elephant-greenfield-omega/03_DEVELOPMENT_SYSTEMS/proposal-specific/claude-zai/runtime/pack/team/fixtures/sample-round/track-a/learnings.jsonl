@@ -1,0 +1,1 @@
+{"id":"L-A-001","track":"A","round":"R0","statement":"Declarative validation tables made the C1 error-precedence rule directly testable.","kind":"technique","evidence":["evidence/R0/R0-A1/evals/C1.json"],"applies_to":["C1"],"status":"ACTIVE","revisit_if":"an imperative variant passes the same oracle with fewer lines"}

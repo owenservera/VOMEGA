@@ -1,0 +1,10 @@
+# Trace: 05-epoch-change-in-flight  (arm=e1)  CLAIM LEVEL: SIMULATED — scripted adapters, real Git, real journal
+# A verified commit lands between DISPATCHED and the answer -> STALE_ADVISORY + STALE_ON_ARRIVAL.
+#01 03:00:01 ARM_INIT             {"arm":"e1","main_sha":"0c86eeb"}
+#02 03:00:02 NODE_REGISTERED      {"id":"elephant:command-execution","domain":"contracts","mode":"FORK","status":"READY","generation":1,"incorporated_sha":"0c86eeb"}
+#03 03:00:03 REQUEST_RECORDED     {"arm":"e1","id":"05-epoch-change-in-flight-r1","key":"05-epoch-change-in-flight-k1","kind":"REVIEW","from":"worker:w1"}
+#04 03:00:05 DISPATCHED           {"request_id":"05-epoch-change-in-flight-r1","nodes":[{"id":"elephant:command-execution","generation":1,"incorporated_sha":"0c86eeb","pack_sha":"4f842d0","staleness":"NONE"}]}
+#05 03:00:06 LEASE_GRANTED        {"token":1,"holder":"integrator:i1"}
+#06 03:00:07 COMMIT_ACCEPTED      {"sha":"8288b3d","parent":"0c86eeb","token":1,"worker":"worker:w1","reviewer":"reviewer:r1","patch_authors":[],"stale_nodes":[{"id":"elephant:command-execution","staleness":"PERIPHERAL"}]}
+#07 03:00:08 LEASE_RELEASED       {"token":1}
+#08 03:00:09 TERMINAL             {"key":"05-epoch-change-in-flight-k1","request_id":"05-epoch-change-in-flight-r1","result":{"status":"STALE_ADVISORY","topology":"e1","fallback":"NONE","disagreements":0,"nodes":["elephant:command-execution=STALE_ADVISORY@0c86eeb/NONE+STALE_ON_ARRIVAL"]}}

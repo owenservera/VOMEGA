@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/team/arm-result",
+  "title": "Arm result (written by the arm at the end of its turn; the evaluator treats it as a CLAIM, not evidence)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "round",
+    "arm",
+    "track",
+    "components_attempted",
+    "commands_run",
+    "files_changed",
+    "claims",
+    "limitations",
+    "learnings"
+  ],
+  "properties": {
+    "round": {
+      "type": "string"
+    },
+    "arm": {
+      "type": "string"
+    },
+    "track": {
+      "enum": [
+        "A",
+        "B"
+      ]
+    },
+    "components_attempted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "commands_run": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "cmd",
+          "exit_code",
+          "output_file"
+        ],
+        "properties": {
+          "cmd": {
+            "type": "string"
+          },
+          "exit_code": {
+            "type": "integer"
+          },
+          "output_file": {
+            "type": "string",
+            "description": "Path RELATIVE TO THE ARM DIRECTORY (e.g. out/c1-tests.txt). Raw captured output; a pasted summary is not acceptable."
+          }
+        }
+      }
+    },
+    "files_changed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Must equal WRITES.json."
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "component",
+          "statement",
+          "level",
+          "evidence"
+        ],
+        "properties": {
+          "component": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          },
+          "level": {
+            "enum": [
+              "DESIGN",
+              "SIMULATED",
+              "LIVE_RUN",
+              "MEASURED",
+              "SPECULATION"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Paths relative to the arm directory. Resolved by the Cockpit against evidence/R<n>/<arm>/ first, then the workspace root."
+          }
+        }
+      }
+    },
+    "ecp_usage": {
+      "type": "object",
+      "description": "Track B arms: consults made, fallbacks, stale warnings, findings acted on.",
+      "properties": {
+        "consults": {
+          "type": "integer"
+        },
+        "fallbacks": {
+          "type": "integer"
+        },
+        "stale_warnings": {
+          "type": "integer"
+        },
+        "findings_acted_on": {
+          "type": "integer"
+        },
+        "false_positives": {
+          "type": "integer"
+        },
+        "adapter": {
+          "enum": [
+            "SCRIPTED",
+            "SUB-AGENT",
+            "LIVE"
+          ]
+        },
+        "consult_log": {
+          "type": "string",
+          "description": "process/consults.jsonl (stripped from evaluator staging)"
+        }
+      }
+    },
+    "cost": {
+      "type": "object",
+      "properties": {
+        "wall_minutes": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "tokens": {
+          "type": [
+            "number",
+            "string"
+          ],
+          "description": "Number or the string 'unknown'."
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "learnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Candidate learnings; only the track master may promote them."
+    },
+    "open_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "run_position": {
+      "type": "integer",
+      "description": "1-based position of this arm in the round's run_order (sequential execution)."
+    }
+  }
+}

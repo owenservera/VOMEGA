@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/team/round-manifest",
+  "title": "Round manifest (controller-written, validated and committed by `round.mjs freeze` before any arm starts)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "round",
+    "seed",
+    "controller",
+    "arms",
+    "components",
+    "isolation_strength",
+    "margin",
+    "selection_basis",
+    "oracle"
+  ],
+  "properties": {
+    "round": {
+      "type": "string",
+      "pattern": "^R\\d+$"
+    },
+    "seed": {
+      "type": "string",
+      "description": "Relative dir of the read-only baseline for this round."
+    },
+    "controller": {
+      "type": "string",
+      "description": "Relative dir holding canaries, fence snapshot, evaluation inputs. Arms are told it exists only as 'off limits'."
+    },
+    "isolation_strength": {
+      "enum": [
+        "PROCESS_SEPARATED",
+        "SHARED_FS_HONOR_SYSTEM",
+        "SIMULATED"
+      ],
+      "description": "As proven by the capability census, never aspirational."
+    },
+    "margin": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 5
+    },
+    "frozen_at_ledger_seq": {
+      "type": "integer",
+      "description": "Optional. Seq of the ROUND_OPENED event this manifest belongs to. The binding commitment is the GATE MANIFEST_FROZEN body (manifest_sha256), not this field."
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "acceptance"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^C\\d+$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "acceptance": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            },
+            "description": "Human-readable acceptance statements; the executable form is acceptance_files."
+          },
+          "hidden_oracle": {
+            "type": "boolean",
+            "description": "True if the evaluator holds seeded-defect tests the arms never see."
+          },
+          "acceptance_files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Workspace-relative, e.g. pack/team/acceptance/C1.acceptance.test.mjs"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              }
+            },
+            "description": "Frozen test files the evaluator runs from THIS path (never the arm's copy). Hashes are committed at MANIFEST_FROZEN."
+          },
+          "contract": {
+            "type": "string",
+            "description": "Path of the component contract, e.g. pack/team/contracts/C1_COMMAND_CORE.md"
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Product-relative source paths counted for LOC/simplicity, e.g. [\"src/c1\"]. Default [\"src\"]."
+          }
+        }
+      }
+    },
+    "arms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "track",
+          "dir",
+          "variant"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^R\\d+-[AB]\\d+$"
+          },
+          "track": {
+            "enum": [
+              "A",
+              "B"
+            ]
+          },
+          "dir": {
+            "type": "string"
+          },
+          "variant": {
+            "type": "string",
+            "description": "What differs for this arm (approach, regime, session mode, library choice)."
+          },
+          "components": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "inherits_from": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Track-main commit/tag the arm starts from."
+          },
+          "adapter": {
+            "enum": [
+              "NONE",
+              "SCRIPTED",
+              "SUB-AGENT",
+              "LIVE"
+            ],
+            "description": "Track A: NONE. Track B: as derived by the census."
+          },
+          "consult_regime": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "selection_basis": {
+      "enum": [
+        "total",
+        "mechanical"
+      ],
+      "description": "Must equal the census-derived value: 'mechanical' when evaluator independence is DEGRADED."
+    },
+    "run_order": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Required for sequential execution: the counterbalanced order from `round.mjs order`."
+    },
+    "budget": {
+      "type": "object",
+      "description": "Per-arm and evaluator budgets as stated in the briefs (tool calls, minutes).",
+      "properties": {
+        "arm_tool_calls": {
+          "type": [
+            "integer",
+            "string"
+          ]
+        },
+        "arm_minutes": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "evaluator_tool_calls": {
+          "type": [
+            "integer",
+            "string"
+          ]
+        },
+        "reserve_for_close": {
+          "type": "string"
+        }
+      }
+    },
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "SEALED_KEY_WITHHELD",
+            "SEALED_KEY_IN_PROMPT",
+            "CONTROLLER_AUTHORED"
+          ],
+          "description": "SEALED_KEY_WITHHELD is the only mode in which the arms provably could not have read the oracle."
+        },
+        "sealed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "component",
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "component": {
+                "type": "string",
+                "pattern": "^C\\d+$"
+              },
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "key_fingerprint": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

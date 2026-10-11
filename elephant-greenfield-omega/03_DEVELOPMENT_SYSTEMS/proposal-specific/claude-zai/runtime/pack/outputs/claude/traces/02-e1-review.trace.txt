@@ -1,0 +1,7 @@
+# Trace: 02-e1-review  (arm=e1)  CLAIM LEVEL: SIMULATED — scripted adapters, real Git, real journal
+# E1: one calibrated node; basis stamped by wrapper; citation verified against blob.
+#01 03:00:01 ARM_INIT             {"arm":"e1","main_sha":"0c86eeb"}
+#02 03:00:02 NODE_REGISTERED      {"id":"elephant:command-execution","domain":"contracts","mode":"FORK","status":"READY","generation":1,"incorporated_sha":"0c86eeb"}
+#03 03:00:03 REQUEST_RECORDED     {"arm":"e1","id":"02-e1-review-r1","key":"02-e1-review-k1","kind":"REVIEW","from":"worker:w1"}
+#04 03:00:05 DISPATCHED           {"request_id":"02-e1-review-r1","nodes":[{"id":"elephant:command-execution","generation":1,"incorporated_sha":"0c86eeb","pack_sha":"4f842d0","staleness":"NONE"}]}
+#05 03:00:06 TERMINAL             {"key":"02-e1-review-k1","request_id":"02-e1-review-r1","result":{"status":"COMPLETED","topology":"e1","fallback":"NONE","disagreements":0,"nodes":["elephant:command-execution=COMPLETED@0c86eeb/NONE"]}}

@@ -1,0 +1,74 @@
+{
+  "round": "R0",
+  "seed": "seed",
+  "controller": "controller",
+  "isolation_strength": "SIMULATED",
+  "margin": 5,
+  "selection_basis": "total",
+  "frozen_at_ledger_seq": 1,
+  "oracle": {
+    "mode": "CONTROLLER_AUTHORED",
+    "note": "synthetic sample"
+  },
+  "components": [
+    {
+      "id": "C1",
+      "title": "Command core + contract",
+      "acceptance": [
+        "node --test tests/c1.test.mjs => all pass"
+      ],
+      "hidden_oracle": true
+    },
+    {
+      "id": "C3",
+      "title": "Event stream, journal, replay",
+      "acceptance": [
+        "node --test tests/c3.test.mjs => all pass"
+      ],
+      "hidden_oracle": true
+    }
+  ],
+  "arms": [
+    {
+      "id": "R0-A1",
+      "track": "A",
+      "dir": "arms/R0-A1",
+      "variant": "declarative-validation",
+      "components": [
+        "C1",
+        "C3"
+      ],
+      "inherits_from": null
+    },
+    {
+      "id": "R0-A2",
+      "track": "A",
+      "dir": "arms/R0-A2",
+      "variant": "imperative-guards",
+      "components": [
+        "C1"
+      ],
+      "inherits_from": null
+    },
+    {
+      "id": "R0-B1",
+      "track": "B",
+      "dir": "arms/R0-B1",
+      "variant": "plan-review consults",
+      "components": [
+        "C1"
+      ],
+      "inherits_from": null
+    },
+    {
+      "id": "R0-B2",
+      "track": "B",
+      "dir": "arms/R0-B2",
+      "variant": "diff-review consults",
+      "components": [
+        "C1"
+      ],
+      "inherits_from": null
+    }
+  ]
+}

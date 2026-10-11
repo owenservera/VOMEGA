@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ecp/0.2/result",
+  "title": "ECP v0.2 consult result (switchboard -> worker). Every field except findings[*].claim/check/subject/verdict/anchors is written by the switchboard, not the model.",
+  "type": "object",
+  "required": ["request_id", "status", "authority", "responses"],
+  "properties": {
+    "request_id": { "type": "string" },
+    "trace_id": { "type": "string" },
+    "authority": { "const": "advisory_unverified" },
+    "status": {
+      "enum": ["COMPLETED", "STALE_ADVISORY", "PARTIAL", "CITATION_INVALID",
+               "FALLBACK_DIRECT_SOURCE", "UNROUTABLE", "STALE_BASIS", "BASE_DIVERGED", "MIXED_EPOCH",
+               "POLICY_DENIED", "OVER_CAPACITY", "UNAVAILABLE", "QUARANTINED", "ROTATION_DUE",
+               "DEADLINE_EXCEEDED", "CANCELLED", "MODEL_ERROR", "RESPONSE_INVALID", "ERROR", "UNKNOWN_TERMINAL"]
+    },
+    "reason": { "type": "string" },
+    "topology_planned": { "enum": ["e0", "e1", "e2"] },
+    "topology_effective": { "enum": ["e0", "e1", "e2"], "description": "Number of nodes that actually produced usable advice." },
+    "degraded": { "type": "boolean" },
+    "fallback": { "enum": ["NONE", "E0_DIRECT_SOURCE"] },
+    "summary": {
+      "type": "object",
+      "properties": { "findings": { "type": "integer" }, "verified_citations": { "type": "integer" }, "invalid_citations": { "type": "integer" } }
+    },
+    "responses": {
+      "type": "array", "maxItems": 2,
+      "items": {
+        "type": "object", "required": ["node_id", "status"],
+        "properties": {
+          "node_id": { "type": "string" },
+          "status": { "type": "string" },
+          "generation": { "type": ["integer", "null"], "description": "Node generation that produced THIS answer (stable across mid-flight rotation)." },
+          "basis": {
+            "type": ["object", "null"],
+            "properties": {
+              "pack_sha": { "type": "string" }, "incorporated_sha": { "type": "string" },
+              "arm_main_at_dispatch": { "type": "string" }, "arm_main_at_arrival": { "type": "string" },
+              "staleness": { "enum": ["NONE", "PERIPHERAL", "CONTRACT", "DIVERGED"] },
+              "staleness_at_arrival": { "enum": ["NONE", "PERIPHERAL", "CONTRACT", "DIVERGED"] },
+              "stale_on_arrival": { "type": "boolean" },
+              "unincorporated_paths": { "type": "array", "items": { "type": "string" } },
+              "contract_paths": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "findings": {
+            "type": "array", "maxItems": 50,
+            "items": {
+              "type": "object", "required": ["id", "verdict", "citation"],
+              "properties": {
+                "id": { "type": "string" },
+                "subject": { "type": "string", "description": "Stable subject key, ideally a contract id from the contract registry (e.g. C-IDEMPOTENCY) or path#symbol." },
+                "verdict": { "enum": ["OK", "DEFECT", "RISK", "UNKNOWN"] },
+                "claim": { "type": "string" }, "check": { "type": "string", "description": "A reproducible check / falsifier the worker can run." },
+                "confidence": { "type": "string" },
+                "anchors": { "type": "array", "items": { "type": "object", "properties": { "path": { "type": "string" }, "start_line": { "type": "integer" }, "end_line": { "type": "integer" }, "quote": { "type": "string" } } } },
+                "citation": { "enum": ["VERIFIED", "LOCATED", "UNANCHORED", "INVALID"], "description": "Computed by the switchboard against blobs at basis.incorporated_sha." },
+                "anchor_checks": { "type": "array" }
+              }
+            }
+          },
+          "not_examined": { "type": "array", "items": { "type": "string" } },
+          "notes_candidates": { "type": "array", "description": "Always status CANDIDATE. Promotion is a separate, evidence-gated act." },
+          "patch": {
+            "type": ["object", "null"],
+            "properties": {
+              "escrow_id": { "type": "string" }, "status": { "enum": ["ESCROWED_UNVERIFIED", "REJECTED"] },
+              "violations": { "type": "array", "items": { "type": "string" } }, "files": { "type": "array", "items": { "type": "string" } },
+              "applies": { "type": "boolean" }, "author": { "type": "string" }, "base_sha": { "type": "string" }
+            }
+          },
+          "unrecognized_fields": { "type": "array", "items": { "type": "string" }, "description": "Fields the model emitted that the switchboard stripped (e.g. 'actions'). Never executed." },
+          "remote_stop": { "enum": ["confirmed", "attempted", "unsupported", "not_requested"] },
+          "cost": { "type": "object", "description": "wall_ms measured; token fields measured or the string 'unknown'." }
+        }
+      }
+    },
+    "disagreements": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["id", "subject", "positions", "status"],
+        "properties": {
+          "id": { "type": "string" }, "subject": { "type": "string" },
+          "positions": { "type": "array" }, "mixed_epoch": { "type": "boolean" },
+          "status": { "enum": ["OPEN", "RESOLVED_BY_TEST", "WITHDRAWN"] },
+          "proposed_falsifiers": { "type": "array", "items": { "type": "string" } },
+          "resolution_requires": { "type": "string" }
+        }
+      }
+    }
+  },
+  "not": { "required": ["consensus"] }
+}

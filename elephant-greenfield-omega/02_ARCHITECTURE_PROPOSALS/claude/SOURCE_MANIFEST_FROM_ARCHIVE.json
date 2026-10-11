@@ -1,0 +1,173 @@
+{
+  "submission": "claude-architect",
+  "edition": "2026-10-11-ecp-0.2",
+  "claim_level": "DESIGN_AND_SIMULATED_TEST",
+  "kernel_tests": 32,
+  "files": [
+    {
+      "path": "outputs/claude/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/claude/ARCHITECTURE.md",
+      "bytes": 23800,
+      "sha256": "1a014b393b11a6ea51182719a9a26ab1b556f32429368254ad10d8818147450f"
+    },
+    {
+      "path": "outputs/claude/BUILD_SEQUENCE.md",
+      "bytes": 7084,
+      "sha256": "33967bc504f432b36de47839bd2c9e164eb3fd8d5b6b0d27243a17647a97fb94"
+    },
+    {
+      "path": "outputs/claude/ECP_SPEC.md",
+      "bytes": 15307,
+      "sha256": "7836e9572b1c5a27685a2ba7ee20fe6fbdc9de4b4a3d24a80cd3b0c9644190c1"
+    },
+    {
+      "path": "outputs/claude/EXPERIMENT.md",
+      "bytes": 9192,
+      "sha256": "52c52d5d4c6300e509356b2c0818f316f320a2706d25bf6078cb1a4777c98da8"
+    },
+    {
+      "path": "outputs/claude/FAULT_MATRIX.md",
+      "bytes": 8729,
+      "sha256": "aa82d2b490e7e17e08a18a24e24234e8e26d7c862e92a70e15ed4a47295724e5"
+    },
+    {
+      "path": "outputs/claude/FLUSH_RECOVERY.md",
+      "bytes": 11100,
+      "sha256": "389212df5126a1f534a2f353301840bc94e3e9f08ff5026bc7a22dcecf45f546"
+    },
+    {
+      "path": "outputs/claude/INVENTION_CANDIDATES.md",
+      "bytes": 9381,
+      "sha256": "72349f135f9b4f1b69bba22ea39f1b9173cb3fa3fecb47a05daefc9ec95773e8"
+    },
+    {
+      "path": "outputs/claude/README.md",
+      "bytes": 3343,
+      "sha256": "ddb5a5e11316a60281969fbb05d64a4ff4e7087b8d876a74b2f47f8043649211"
+    },
+    {
+      "path": "outputs/claude/SELF_CRITIQUE.md",
+      "bytes": 7171,
+      "sha256": "b1984c0b7d8634483d4b4655cfa70b5ea2e5403131c705b514f994216db172f4"
+    },
+    {
+      "path": "outputs/claude/TRADEOFFS.md",
+      "bytes": 6778,
+      "sha256": "05b80d49a65d035b1dc6762a72d74b89a9e132027ca842c6e708aa8bf9fef64c"
+    },
+    {
+      "path": "outputs/claude/WRITING_AND_TRUTH.md",
+      "bytes": 7451,
+      "sha256": "1214bc0c47e8986138a32e7eb06d7e423838d6ddb0ec3f58c0c942438615b64c"
+    },
+    {
+      "path": "outputs/claude/kernel/README.md",
+      "bytes": 2961,
+      "sha256": "f2f70c893cdf1ae291c87a0db4ff7a1ac0fe720784f404e882b530feb9e3aa46"
+    },
+    {
+      "path": "outputs/claude/kernel/adapters.mjs",
+      "bytes": 1959,
+      "sha256": "305e2dde45202d9a0090ad4a9ced8c2cb4c21e3001d099fb2b4824141f1934ad"
+    },
+    {
+      "path": "outputs/claude/kernel/capsule.mjs",
+      "bytes": 6018,
+      "sha256": "ed0eba0313878fc0a8d64aead392a450366f6c1f1cb2dd1ac92b764f035afa1a"
+    },
+    {
+      "path": "outputs/claude/kernel/demo.mjs",
+      "bytes": 7186,
+      "sha256": "6d9216c6d1e200409b2b69bbd80badc87fcf15038788e5f4b622f6c7aa18dda5"
+    },
+    {
+      "path": "outputs/claude/kernel/escrow.mjs",
+      "bytes": 2406,
+      "sha256": "0c430899b09d4f255f116e02c817ba3a8b15941c09c81b3919cf391445cb242a"
+    },
+    {
+      "path": "outputs/claude/kernel/fixture.mjs",
+      "bytes": 3353,
+      "sha256": "462a3378c54e042647448a5e8be348f033ebb76d827d6b28db88c3bf675d076a"
+    },
+    {
+      "path": "outputs/claude/kernel/git.mjs",
+      "bytes": 2955,
+      "sha256": "1a3dbaa68908d80bd7b3abfd9463acb11d0152f5b2c3c38a109acdcca497ce61"
+    },
+    {
+      "path": "outputs/claude/kernel/journal.mjs",
+      "bytes": 3748,
+      "sha256": "cc353e21557401f536271578a0a0f427abce3f14f1ae1f218fe6baf945e0c3b3"
+    },
+    {
+      "path": "outputs/claude/kernel/kernel.mjs",
+      "bytes": 26544,
+      "sha256": "506631fa3ac4c1e80fd3d97cb12dc5b9a3ed178adf46c894c7a54b07023e55ef"
+    },
+    {
+      "path": "outputs/claude/kernel/kernel.test.mjs",
+      "bytes": 25293,
+      "sha256": "f979865b43cf26e7d4143c4462e5fb59b151f06da36f35db1fb7703dada7b96a"
+    },
+    {
+      "path": "outputs/claude/kernel/util.mjs",
+      "bytes": 2872,
+      "sha256": "ca9c6f4713a9e8e4b827a0fce196a1809b80a181358af847819a62ebc3b35822"
+    },
+    {
+      "path": "outputs/claude/package.json",
+      "bytes": 403,
+      "sha256": "5bb310da9fde6f8d901eb5ae406ae4e6aa697c6c226eb374278514b2896c4478"
+    },
+    {
+      "path": "outputs/claude/schemas/ecp-0.2-request.schema.json",
+      "bytes": 3667,
+      "sha256": "d932f91b04e297201c60d100035f09e8495659fd7a54967ee62081002eab341e"
+    },
+    {
+      "path": "outputs/claude/schemas/ecp-0.2-result.schema.json",
+      "bytes": 5502,
+      "sha256": "895cdd9188fc1224d31dbf416644527901a78d91702fe7225b3cf200dfd7bb56"
+    },
+    {
+      "path": "outputs/claude/submission.json",
+      "bytes": 7862,
+      "sha256": "79a3b20bb08f92a558f29a099e65a9b165a3cd8b06db78500da1807e3817042a"
+    },
+    {
+      "path": "outputs/claude/traces/01-e0-normal.trace.txt",
+      "bytes": 611,
+      "sha256": "e78bf931e1fae7148e64df754f09e3bd45b98d0cf95feb8e460cf84d7321bfcf"
+    },
+    {
+      "path": "outputs/claude/traces/02-e1-review.trace.txt",
+      "bytes": 984,
+      "sha256": "59c1d1fc6b75c8257a20484e93ca11c9f8b26ac5131ed03ebac5c2bbe31ac266"
+    },
+    {
+      "path": "outputs/claude/traces/03-e2-conflicting-reviews.trace.txt",
+      "bytes": 1419,
+      "sha256": "33ef78cb07df93094780eda80ffd4ff52893abf4efa6a8ac2289f5fa5813cace"
+    },
+    {
+      "path": "outputs/claude/traces/04-e2-node-crash.trace.txt",
+      "bytes": 1332,
+      "sha256": "17c8e2cdfc208e6ce261528885e3687b4a3f885b2d8d9190bd5942ceb851dccf"
+    },
+    {
+      "path": "outputs/claude/traces/05-epoch-change-in-flight.trace.txt",
+      "bytes": 1442,
+      "sha256": "0804f2e87a709f5f8ed147cc5ef2900ad1896f233ff3295ee61402faa276073e"
+    },
+    {
+      "path": "outputs/claude/traces/06-patch-proposal-accepted.trace.txt",
+      "bytes": 1655,
+      "sha256": "929c672de9434d68be389c218731d190eae712a32df6e627fb592e21887eaf03"
+    }
+  ]
+}
