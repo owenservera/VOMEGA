@@ -1,5 +1,7 @@
 # 03 — Actual Independent Development Systems
 
+**Elephant Protocol Gym governing policy:** [Owner-approved Decisions 1–4](elephant-protocol-gym/LAUNCH_POLICY.md). Its short shared launch contract supersedes any more prescriptive readings of the individual exploratory run descriptions; the track remains prepared, not launched.
+
 [Elephant Protocol Gym](elephant-protocol-gym/README.md) is a prepared four-arm semantic protocol conditioning experiment. It has not been launched, and does not change existing sessions or prescribe technical architecture.
 
 **This is not a folder of architecture authors.** These are the real agentic execution environments that design, test, code, dogfood, benchmark and emit versioned capability-pack portfolios. A design proposal is a seed; a development system is the running or independently launchable research/build agent and its isolated state.
