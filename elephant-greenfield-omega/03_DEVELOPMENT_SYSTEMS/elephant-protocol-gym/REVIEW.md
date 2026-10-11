@@ -1,5 +1,7 @@
 # Elephant Protocol Gym — One-page Run Review
 
+> **Decision 1 comparison:** Each run identifies whether it used the controlled fixture, a verified real-code cohort, or both; records feeder source/version/preflight evidence; and treats inaccessible private code as unavailable, not an invisible successful input. See [feeder reuse map](FEEDER_REUSE.md).
+
 **Status:** template and review procedure, not evidence of an executed Gym run.
 
 ## The compact RUN NOTE
