@@ -278,7 +278,7 @@ Ask Claude to return **one design decision memo** with: (a) architecture A/B/C w
 
 ## 10. Bibliographic evidence ledger
 
-All references below are primary specifications, official project docs, or first-party repository pages accessed or located on 2026-10-11. **Vendor assertions are descriptions of their own systems**, not independent measured validation of suitability for Ω. Exact version status must be pinned when used in implementation or norms. Entries [S01]–[S30] map to the machine-readable `SOURCES.json` in this package.
+All references below are primary specifications, official project docs, or first-party repository pages accessed or located on 2026-10-11. **Vendor assertions are descriptions of their own systems**, not independent measured validation of suitability for Ω. Exact version status must be pinned when used in implementation or norms. Entries [S01]–[S35] map to the machine-readable `SOURCES.json` in this package.
 
 - **[S01]** [MLIR dialects and extensible operations](https://mlir.llvm.org/getting_started/Glossary/) — official. Dialect namespaces, operations, types, attributes and multi-level IR; not knowledge provenance.
 - **[S02]** [MLIR dialect conversion](https://mlir.llvm.org/docs/DialectConversion/) — official. Conversion legality, patterns and type converter; no claim-level evidence contract.
