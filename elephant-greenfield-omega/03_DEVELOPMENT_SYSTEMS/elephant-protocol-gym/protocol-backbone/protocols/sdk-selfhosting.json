@@ -1,0 +1,192 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.semantic.selfhosting",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "semantic",
+  "title": "Universal SDK command→Wiki→test→evidence self-hosting",
+  "authority": "owner_direction",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/UNIVERSAL_SEMANTIC_GOVERNANCE.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SDK_SELF_HOSTING_DOGFOOD.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/CORE_VISUAL_LANGUAGE.md",
+      "role": "authority",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Progress every code and tool domain from indexed through actual command-governed self-hosting, with human/machine/spatial parity and independent tool witnesses.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "source",
+        "meaning": "Git/working-tree source and context epochs",
+        "required": false
+      },
+      {
+        "id": "human_or_elephant_command",
+        "meaning": "Natural/spatial input with revision",
+        "required": false
+      },
+      {
+        "id": "tool_capabilities",
+        "meaning": "Actual adapter permission and availability",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "semantic_publication",
+        "meaning": "Version-bound machine meaning, targets, effects, authority and uncertainty",
+        "required": false
+      },
+      {
+        "id": "wiki",
+        "meaning": "Source-grounded human plain reading",
+        "required": false
+      },
+      {
+        "id": "visual_assertions",
+        "meaning": "Typed meaning of visual signals",
+        "required": false
+      },
+      {
+        "id": "execution_receipt",
+        "meaning": "Actual test outcome or NOT_RUN",
+        "required": false
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "DESIGN_ONLY",
+    "preconditions": [
+      "Actual source pinned and tool capability probed",
+      "External permission and owner decisions remain independent"
+    ],
+    "forbidden": [
+      "Enter automatically authorizes effects",
+      "Declare U4 without independently witnessed bypass detection",
+      "Infer UI usability from typed visual spec"
+    ]
+  },
+  "phases": [
+    {
+      "id": "inspect",
+      "action": "inspect",
+      "completion": "INSPECT"
+    },
+    {
+      "id": "interpret",
+      "action": "interpret",
+      "completion": "INTERPRET"
+    },
+    {
+      "id": "publish",
+      "action": "publish",
+      "completion": "PUBLISH"
+    },
+    {
+      "id": "authorize",
+      "action": "authorize",
+      "completion": "AUTHORIZE"
+    },
+    {
+      "id": "execute",
+      "action": "execute",
+      "completion": "EXECUTE"
+    },
+    {
+      "id": "witness",
+      "action": "witness",
+      "completion": "WITNESS"
+    },
+    {
+      "id": "compare",
+      "action": "compare",
+      "completion": "COMPARE"
+    },
+    {
+      "id": "propose",
+      "action": "propose",
+      "completion": "PROPOSE"
+    },
+    {
+      "id": "test_revision",
+      "action": "test_revision",
+      "completion": "TEST_REVISION"
+    },
+    {
+      "id": "publish_pack",
+      "action": "publish_pack",
+      "completion": "PUBLISH_PACK"
+    }
+  ],
+  "gates": [
+    {
+      "id": "SOURCE_FRESH",
+      "check": "Source and editor/epoch discrepancy detected",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "EFFECT_BOUNDARY",
+      "check": "Publication never grants external effect",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "WIKI_TRUTH",
+      "check": "Wiki anchors match actual code",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "VISUAL_PARITY",
+      "check": "Machine visual claims, actual view and human disclosure agree",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "U4_BYPASS",
+      "check": "Once U4 enrolled, normal direct bypass fails",
+      "blocking": false,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "U0_U5_coverage",
+      "meaning": "Honest per-domain governance stages",
+      "required": false
+    }
+  ],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "Owner-directed requirement, not implemented coverage"
+    ],
+    "limitations": [
+      "No source-evidence-unified production SDK proven"
+    ]
+  },
+  "modules": [
+    "epg.visual.parity",
+    "epg.publication.allturn",
+    "epg.research.library"
+  ],
+  "metrics": [],
+  "controls": []
+}
