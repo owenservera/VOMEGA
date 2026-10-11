@@ -1,0 +1,294 @@
+{
+  "schema": "epg.crosswalk/0.1",
+  "status": "INITIAL_LOSS_AWARE_MAPPING",
+  "source_of_truth": "original files and executable tool evidence; normalized cards not a substitute",
+  "policy": {
+    "preserve_full_source": true,
+    "do_not_import_untrusted_private_attachment_into_public_git": true,
+    "approval_required_for_new_execution_rules": true,
+    "new_cohort_on_requirement_or_gate_change": true,
+    "unknown_coverage_means_not_mapped": true
+  },
+  "entries": [
+    {
+      "id": "claude/00_goal_and_economy",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/00_GOAL_AND_ECONOMY.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "purpose",
+        "metrics",
+        "extensions.epg.time_credit",
+        "gates"
+      ],
+      "unmapped_requirements": [
+        "incentive and anti-gaming nuance",
+        "par calibration formulas",
+        "economic criticism"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/01_gates",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/01_GATES.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "gates",
+        "conditions",
+        "extensions.epg.time_credit.gates_ref"
+      ],
+      "unmapped_requirements": [
+        "exact gate metric registry and ON_UNKNOWN semantics retained in source config"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/02_streams",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/02_GYM_STREAMS.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "controls",
+        "phases",
+        "conditions",
+        "variants"
+      ],
+      "unmapped_requirements": [
+        "calibration sample size and randomized blocks",
+        "class comparison against matched tasks"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/03_tasks",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/03_TASK_CARDS.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "conditions",
+        "interfaces",
+        "extensions.epg.time_credit.runnable_tasks",
+        "extensions.epg.time_credit.deferred_tasks"
+      ],
+      "unmapped_requirements": [
+        "exact C1 C3 SDK-FAIL-01 card bodies in source ZIP"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/04_ledger",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/04_LEDGER_PROTOCOL.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "interfaces.outputs",
+        "phases",
+        "provenance"
+      ],
+      "unmapped_requirements": [
+        "full ledger event ordering and hash-chain canonical serialization",
+        "in-memory versus host timing interpretation"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/05_prereg",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/05_PREREGISTRATION_AND_ANALYSIS.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "controls",
+        "metrics",
+        "gates",
+        "conditions"
+      ],
+      "unmapped_requirements": [
+        "min n of 3 exploratory only and two-task replication needed",
+        "statistical validity and exclusion handling"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/06_operator",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/06_OPERATOR_PLAYBOOK.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "phases",
+        "conditions.preconditions"
+      ],
+      "unmapped_requirements": [
+        "exact CLI launch/recovery commands belong to unchanged tool/docs"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/07_limits",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/07_OPEN_DECISIONS_AND_LIMITS.md",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "conditions.blockers",
+        "decisions",
+        "provenance.limitations"
+      ],
+      "unmapped_requirements": [
+        "owner decisions must be extracted one by one before candidate becomes executable"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/08_inspiration",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#docs/08_INSPIRATION_MAP.md",
+      "protocol": "epg.research.library",
+      "normalized_paths": [
+        "sources",
+        "provenance"
+      ],
+      "unmapped_requirements": [
+        "historical prior art relationships and original design lineage"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "claude/timecard",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#tasks/SDK-FAIL-01.card.json",
+      "protocol": "epg.r0.five",
+      "normalized_paths": [
+        "conditions.blockers",
+        "conditions.readiness"
+      ],
+      "unmapped_requirements": [
+        "task runnable:false; no actual failing SDK test, suite or oracle"
+      ],
+      "state": "EXACT_BLOCKER_INTEGRATED"
+    },
+    {
+      "id": "claude/timecredit-code",
+      "source": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#tools/credits.mjs",
+      "protocol": "epg.economy.timecredit",
+      "normalized_paths": [
+        "extensions.epg.time_credit.tool_ref",
+        "sources"
+      ],
+      "unmapped_requirements": [
+        "execution semantics, canonical ledger hashing, tests; never replace by JSON card"
+      ],
+      "state": "CODE_POINTER_ONLY"
+    },
+    {
+      "id": "old/claude-round",
+      "source": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/02_ROUND_PROTOCOL.md",
+      "protocol": "epg.runner.claude-v02",
+      "normalized_paths": [
+        "phases",
+        "gates",
+        "conditions"
+      ],
+      "unmapped_requirements": [
+        "exact two-turn unseal and guarded artifact transition state machine; implement via original tools"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "old/claude-isolation",
+      "source": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/03_ARMS_AND_ISOLATION.md",
+      "protocol": "epg.runner.claude-v02",
+      "normalized_paths": [
+        "conditions",
+        "gates"
+      ],
+      "unmapped_requirements": [
+        "canary, fence, cross-read, separation, audit limitations and source-specific mechanics"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "old/zai-abc",
+      "source": "elephant-greenfield-omega/BOOTSTRAP-ZAI-EXPERIMENT-LAB/01_PRIMARY_BOOTSTRAP_PROMPT.md",
+      "protocol": "epg.research.abc",
+      "normalized_paths": [
+        "controls",
+        "phases",
+        "conditions"
+      ],
+      "unmapped_requirements": [
+        "true child-agent independence and A/B/C parallel design distinctions"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "old/packs",
+      "source": "elephant-greenfield-omega/01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md",
+      "protocol": "epg.publication.allturn",
+      "normalized_paths": [
+        "conditions",
+        "phases",
+        "gates",
+        "interfaces"
+      ],
+      "unmapped_requirements": [
+        "full pack manifest semantics all maturities and inaccessible/failed export statuses"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "old/universal",
+      "source": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/UNIVERSAL_SEMANTIC_GOVERNANCE.md",
+      "protocol": "epg.governance.universal",
+      "normalized_paths": [
+        "phases",
+        "gates",
+        "interfaces",
+        "conditions"
+      ],
+      "unmapped_requirements": [
+        "proving U0–U5 requires independent domain-specific outcomes"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "old/semantic",
+      "source": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/SDK_SELF_HOSTING_DOGFOOD.md",
+      "protocol": "epg.semantic.selfhosting",
+      "normalized_paths": [
+        "phases",
+        "gates",
+        "interfaces"
+      ],
+      "unmapped_requirements": [
+        "complete owner acceptance cases and source/World meaning must remain"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "old/visual",
+      "source": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/CORE_VISUAL_LANGUAGE.md",
+      "protocol": "epg.visual.parity",
+      "normalized_paths": [
+        "gates",
+        "interfaces",
+        "conditions"
+      ],
+      "unmapped_requirements": [
+        "dense visual variables, actual spatial usability, symbolic collisions and evidence visibility"
+      ],
+      "state": "PARTIAL_MAPPING"
+    },
+    {
+      "id": "old/r0",
+      "source": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/PROPOSAL_R0_FIVE_GYM_TIMED_FANOUT_TO_B1_2026-10-11.md",
+      "protocol": "epg.r0.five",
+      "normalized_paths": [
+        "phases",
+        "controls",
+        "metrics",
+        "gates",
+        "variants"
+      ],
+      "unmapped_requirements": [
+        "B1 all-roles integration cannot be mechanically derived from five uncoordinated cards; shared missing neutral interface remains"
+      ],
+      "state": "PARTIAL_MAPPING"
+    }
+  ],
+  "quality_gates": [
+    "Independent round-trip reviewer can enumerate original preconditions, state transitions, unknown behaviors, failure paths and permissions from compact contract plus refs",
+    "All critical original test/oracle/holdout/ledger code refs are preserved",
+    "No originally mandatory rule omitted without explicit mapping gap",
+    "No proposal status accidentally upgraded to owner-approved or tested"
+  ]
+}
