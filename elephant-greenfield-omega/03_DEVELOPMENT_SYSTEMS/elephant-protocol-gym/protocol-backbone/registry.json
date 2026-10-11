@@ -1,0 +1,219 @@
+{
+  "schema": "epg.registry/0.1",
+  "version": "0.1.0-PROPOSED",
+  "protocols": [
+    {
+      "id": "epg.r0.five",
+      "path": "protocols/r0-five.json",
+      "status": "DESIGN"
+    },
+    {
+      "id": "epg.economy.timecredit",
+      "path": "protocols/claude-time-credit.json",
+      "status": "LOCAL_MECHANICS_TESTED"
+    },
+    {
+      "id": "epg.runner.claude-v02",
+      "path": "protocols/claude-v02-runner.json",
+      "status": "DESIGN"
+    },
+    {
+      "id": "epg.research.abc",
+      "path": "protocols/general-zai-abc.json",
+      "status": "DESIGN"
+    },
+    {
+      "id": "epg.semantic.selfhosting",
+      "path": "protocols/sdk-selfhosting.json",
+      "status": "DESIGN"
+    },
+    {
+      "id": "epg.visual.parity",
+      "path": "protocols/visual-parity.json",
+      "status": "DESIGN"
+    },
+    {
+      "id": "epg.publication.allturn",
+      "path": "protocols/all-turn-publication.json",
+      "status": "DESIGN"
+    },
+    {
+      "id": "epg.research.library",
+      "path": "protocols/intelligence-preservation.json",
+      "status": "DESIGN"
+    }
+  ],
+  "assets": [
+    {
+      "id": "claude-zip-2026-10-11",
+      "uri": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip",
+      "classification": "LOCAL_MECHANICS_TESTED",
+      "mapped_to": [
+        "epg.economy.timecredit"
+      ],
+      "notes": "ZIP SHA256 04b474308dc86493482639088f4e1bc8b58a7bdc4cab25fffc17304dcb1fd30f; 26 synthetic tests independently passed locally; no real agent rounds; includes C1/C3 runnable examples and SDK-FAIL-01 deferred"
+    },
+    {
+      "id": "claude-time-credit-gates",
+      "uri": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#config/gates.json",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.economy.timecredit"
+      ],
+      "notes": "T0-T6 gate policy; T4/T5/T6 disabled; not an owner-approved payment system"
+    },
+    {
+      "id": "claude-time-credit-rates",
+      "uri": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#config/rate-card.json",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.economy.timecredit"
+      ],
+      "notes": "TC, par/allowance, referee/human time; rates and penalties proposed"
+    },
+    {
+      "id": "claude-time-credit-runner",
+      "uri": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#tools/credits.mjs",
+      "classification": "LOCAL_MECHANICS_TESTED",
+      "mapped_to": [
+        "epg.economy.timecredit"
+      ],
+      "notes": "Source attached locally with 26 synthetic-ledger unit tests; preserve original code and semantics"
+    },
+    {
+      "id": "claude-time-credit-task-sdkfail",
+      "uri": "attachment://EPG-TIME-CREDIT-GYM-PACK.zip#tasks/SDK-FAIL-01.card.json",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.economy.timecredit",
+        "epg.r0.five"
+      ],
+      "notes": "Explicit runnable:false; missing actual failing test, frozen acceptance and oracle"
+    },
+    {
+      "id": "claude-v02-contracts",
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/team/README.md",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.runner.claude-v02",
+        "epg.economy.timecredit"
+      ],
+      "notes": "C1/C3 suites and sealed oracle format, census/isolation/ledger/evalkit/selection; repo tests not re-run in this design pass"
+    },
+    {
+      "id": "zai-abc",
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/general-zai-lab/README.md",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.research.abc"
+      ],
+      "notes": "Active sessions must not be silently restarted; multi-track comparison"
+    },
+    {
+      "id": "r0-five-proposal",
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/PROPOSAL_R0_FIVE_GYM_TIMED_FANOUT_TO_B1_2026-10-11.md",
+      "classification": "DESIGN",
+      "mapped_to": [
+        "epg.r0.five"
+      ],
+      "notes": "One-turn pilot; five heterogeneous arms + E0+ referee and B1 integrator; no measured run"
+    },
+    {
+      "id": "adaptive-swarm-six",
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/ADAPTIVE_SWARM.md",
+      "classification": "DESIGN",
+      "mapped_to": [
+        "epg.r0.five",
+        "epg.research.abc"
+      ],
+      "notes": "Earlier six-stream adaptive design is NOT superseded by five-Gym trial; separate cohort"
+    },
+    {
+      "id": "universal-dna",
+      "uri": "elephant-greenfield-omega/05_UNIVERSAL_ELEPHANT_DNA/genome.operational.json",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.semantic.selfhosting",
+        "epg.research.library"
+      ],
+      "notes": "20 candidate genome traits with proposed falsifiers, NOT all measured"
+    },
+    {
+      "id": "source-feed",
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/dogfood-zai/SOURCE_CUSTODY_AND_REPLAY.md",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.research.library",
+        "epg.semantic.selfhosting"
+      ],
+      "notes": "Existing source custody and reproducible preflight, no new harvesting system"
+    },
+    {
+      "id": "mp21",
+      "uri": "omega-baseline/experimental/reflection-migrator/README.md",
+      "classification": "AUTHOR_REPORTED",
+      "mapped_to": [
+        "epg.semantic.selfhosting",
+        "epg.research.library"
+      ],
+      "notes": "Historical reported 55 tests, HEAD Git snapshot only; not rerun"
+    },
+    {
+      "id": "nlcl",
+      "uri": "omega-baseline/plugins/vivim-nlcl-pure/src/interpret.ts",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.semantic.selfhosting"
+      ],
+      "notes": "17 symbolic families, existing known failures; not universal language"
+    },
+    {
+      "id": "semantic-mutation",
+      "uri": "seed-docs/AUTOMATED-SEMANTIC-EXPERIMENTS.md",
+      "classification": "DESIGN",
+      "mapped_to": [
+        "epg.semantic.selfhosting",
+        "epg.visual.parity"
+      ],
+      "notes": "Metamorphic scenarios and negative-intent testing; no single full runner asserted"
+    },
+    {
+      "id": "visual-symbolic",
+      "uri": "seed-docs/COMMAND-VISUAL-LANGUAGE-DESIGN.md",
+      "classification": "DESIGN",
+      "mapped_to": [
+        "epg.visual.parity"
+      ],
+      "notes": "Legacy visual semantics, user reprogrammability and disclosure"
+    },
+    {
+      "id": "mvp-v05",
+      "uri": "mvp/NORTH-STAR.md",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.r0.five",
+        "epg.semantic.selfhosting"
+      ],
+      "notes": "Authoritative evolving product destination; distinct from frozen Greenfield Ω benchmark"
+    },
+    {
+      "id": "allturn",
+      "uri": "elephant-greenfield-omega/01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.publication.allturn"
+      ],
+      "notes": "All packs all states each top-level turn and round, even no progress"
+    },
+    {
+      "id": "original-archaeology",
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/PROPOSAL_LEGACY_SEMANTIC_ARCHAEOLOGY_AND_REUSE_2026-10-11.md",
+      "classification": "SOURCE_INSPECTED",
+      "mapped_to": [
+        "epg.research.library",
+        "epg.semantic.selfhosting"
+      ],
+      "notes": "Research reference, not governing architecture"
+    }
+  ]
+}
