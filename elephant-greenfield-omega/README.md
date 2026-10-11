@@ -46,3 +46,9 @@
 ## Lineage
 
 Based on VOMEGA's original `ELEPHANT-CONTEXT-NETWORK.md` (archived October 6, 2026), `ELEPHANT-CONTEXT-NETWORK-PLAN.md`, Orca context notes and October 2026 MP-66 experiment direction. The present pack is a **new greenfield proposal**, not an adopted architecture of the existing VOMEGA repo. Historical pointers in `reference/SOURCES.md`.
+
+## PROJECT REORGANIZATION (2026-10-11): START HERE
+
+**[Open the canonical project guide](PROJECT_START_HERE.md).** Shared neutral core baseline, mandatory all-maturity every-turn capability-pack publication, independently authored architecture proposals, and development systems (the existing general Z.ai A/B/C lab plus a separate full Z.ai session for EACH genuinely submitted unique proposal) now have their own locations.
+
+This older v0.1 README and original protocol/mock harness remain as historical **O1 (ours) proposal material**, not as the universal prescribed architecture for Claude or others. Do not move active Round 1 worktrees or treat these new docs as evidence that a separate Z.ai session has already launched. See [full turn release contract](01_EXPECTED_OUTPUTS/02_EVERY_TURN_PUBLICATION_CONTRACT.md) and [turn publication index](04_TURN_PUBLICATIONS/CURRENT_PUBLICATION_INDEX.md).
