@@ -23,3 +23,10 @@
 **Safety/custody:** Archive extraction must exclude nested `.git`, `.env`, credentials, ephemeral `db/custom.db`, generated caches, personal session contents, and redundant cloned `vomega-source` snapshots from any public publication. The originals should be preserved intact in user-controlled restricted storage; public code or a sanitized bundle is a separate release operation.
 
 **Discovery invariant:** A round is not required for ingestion. A single complete turn with source, findings and receipts can be indexed and made reusable; never gate harvesting on completion of a ten-round program.
+
+## Sanitized portable export (prepared during intake)
+
+- Filename: `elephant-research-artifacts-2026-10-11.zip`
+- SHA-256: `ac59160805deb53cdafb39d504ccf9cb299dd4c07ebe0d1867103f8337596b5d`
+- 191 files: 56 ZAI semantic-factory source/docs and 135 Claude ECP source/portfolios/preregistrations/probes/evidence files; includes `ARTIFACT-MANIFEST.json` with per-file SHA-256 values.
+- The portable export was delivered with the conversation. **It is not yet hosted by GitHub; it cannot be retrieved from this index alone.** It is a curated subset, not the originals or a complete mirror of every file in the experimental workspaces.
