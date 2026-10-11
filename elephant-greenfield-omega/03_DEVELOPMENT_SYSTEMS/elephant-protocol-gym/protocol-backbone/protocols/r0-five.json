@@ -1,0 +1,235 @@
+{
+  "schema": "epg.protocol/0.1",
+  "id": "epg.r0.five",
+  "version": "0.1.0",
+  "state": "PROPOSED",
+  "kind": "experiment",
+  "title": "R0 five-Gym one-turn B1 feasibility",
+  "authority": "research_only",
+  "sources": [
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/PROPOSAL_R0_FIVE_GYM_TIMED_FANOUT_TO_B1_2026-10-11.md",
+      "role": "candidate",
+      "evidence": "SOURCE_INSPECTED"
+    },
+    {
+      "uri": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/r0-five-gym/launch-plan.json",
+      "role": "candidate",
+      "evidence": "SOURCE_INSPECTED"
+    }
+  ],
+  "purpose": "Five independently executed role-specialized one-turn experiments share an SDK failure benchmark and attempt a verified common B1 core, with separately measured E0.",
+  "interfaces": {
+    "inputs": [
+      {
+        "id": "source_sha",
+        "meaning": "Frozen Git source and all benchmark fixture hashes",
+        "required": true
+      },
+      {
+        "id": "task_card",
+        "meaning": "Runnable task with actual failing test and accepted held-out oracle",
+        "required": true
+      },
+      {
+        "id": "executor_census",
+        "meaning": "Host-verified isolation, time and tool capabilities",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "per_arm_packs",
+        "meaning": "Five complete turn-end packs",
+        "required": true
+      },
+      {
+        "id": "b1_result",
+        "meaning": "Verified B1 candidate or explicit not-ready report",
+        "required": true
+      }
+    ]
+  },
+  "conditions": {
+    "readiness": "BLOCKED",
+    "preconditions": [
+      "Pin runnable task, source, suite/oracle and approved compute before start",
+      "Prove distinct independent contexts and overlap to claim parallel execution",
+      "Separate controller, arms, referee and integrator"
+    ],
+    "forbidden": [
+      "Unapproved provider account actions",
+      "Unreviewed shared main writes",
+      "Self-scoring as independent proof"
+    ],
+    "blockers": [
+      "SDK test failure benchmark has no frozen failing test/oracle (Claude SDK-FAIL-01 task card is DEFERRED_NOT_RUNNABLE)",
+      "No five-way executor census or baseline scores recorded"
+    ]
+  },
+  "phases": [
+    {
+      "id": "freeze",
+      "action": "Pin source, executable task/oracle, source/scope/permissions",
+      "completion": "FROZEN"
+    },
+    {
+      "id": "census",
+      "action": "Actually test independent contexts and overlap",
+      "completion": "CENSUS_OBSERVED"
+    },
+    {
+      "id": "fanout",
+      "action": "Run five independent one-turn arms",
+      "completion": "ARM_FINISHED"
+    },
+    {
+      "id": "publish",
+      "action": "Export every maturity state",
+      "completion": "PORTFOLIOS_PUBLISHED"
+    },
+    {
+      "id": "seal",
+      "action": "Seal arm artifacts before holdout evaluation",
+      "completion": "ARMS_SEALED"
+    },
+    {
+      "id": "evaluate",
+      "action": "Re-run blinded acceptance, held-out negatives and proof",
+      "completion": "EVAL_COMMITTED"
+    },
+    {
+      "id": "integrate",
+      "action": "Compose passing compatible pieces, test as whole",
+      "completion": "B1_CANDIDATE_OR_NOT_READY"
+    }
+  ],
+  "gates": [
+    {
+      "id": "R0_SOURCE",
+      "check": "Same pinned exact source and fixture",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "R0_RUNNABLE",
+      "check": "Actual pre-registered test suite and holdout exist",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "R0_INDEPENDENCE",
+      "check": "Actual independent context or honestly downgraded",
+      "blocking": false,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "R0_PUBLISHED",
+      "check": "Five full packs present and retrievable",
+      "blocking": true,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    },
+    {
+      "id": "R0_B1",
+      "check": "Real integrated test executed and passes",
+      "blocking": false,
+      "when_unknown": "UNKNOWN",
+      "status": "PROPOSED"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "test_receipt",
+      "meaning": "Real process output and exit code",
+      "required": false
+    },
+    {
+      "id": "source_wiki_projection",
+      "meaning": "Bound source facts and human reading",
+      "required": false
+    },
+    {
+      "id": "visual_assertions",
+      "meaning": "Derived machine visual meanings",
+      "required": false
+    },
+    {
+      "id": "capability_catalog",
+      "meaning": "All maturity status pack versions",
+      "required": false
+    }
+  ],
+  "provenance": {
+    "mapping_status": "PARTIAL_MAPPING",
+    "claims": [
+      "R0 protocol proposed; no actual five streams launched"
+    ],
+    "limitations": [
+      "Heterogeneous five arms cannot causally establish speedup with one sample",
+      "SDK-FAIL-01 currently deferred, no invented pass"
+    ]
+  },
+  "modules": [
+    "epg.governance.universal",
+    "epg.publication.allturn",
+    "epg.visual.parity",
+    "epg.research.library",
+    "epg.runner.claude-v02"
+  ],
+  "metrics": [
+    {
+      "id": "elapsed_wall_seconds",
+      "unit": "s",
+      "evidence_source": "HOST",
+      "missing": "UNKNOWN"
+    },
+    {
+      "id": "worker_effort_seconds",
+      "unit": "s",
+      "evidence_source": "HOST",
+      "missing": "UNKNOWN"
+    },
+    {
+      "id": "integration_seconds",
+      "unit": "s",
+      "evidence_source": "HOST",
+      "missing": "UNKNOWN"
+    }
+  ],
+  "controls": [
+    "E0 matched plain agent",
+    "Source/fixture SHA",
+    "All tests independently rerun"
+  ],
+  "variants": [
+    {
+      "id": "G1",
+      "dimension": "G1 semantic TS",
+      "brief": "r0-five-gym/G1_*.md"
+    },
+    {
+      "id": "G2",
+      "dimension": "G2 Wiki/reflection",
+      "brief": "r0-five-gym/G2_*.md"
+    },
+    {
+      "id": "G3",
+      "dimension": "G3 executor",
+      "brief": "r0-five-gym/G3_*.md"
+    },
+    {
+      "id": "G4",
+      "dimension": "G4 visual parity",
+      "brief": "r0-five-gym/G4_*.md"
+    },
+    {
+      "id": "G5",
+      "dimension": "G5 self-organization",
+      "brief": "r0-five-gym/G5_*.md"
+    }
+  ]
+}
