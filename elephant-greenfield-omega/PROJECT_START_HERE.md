@@ -1,5 +1,8 @@
 # Elephant Greenfield Ω — Canonical Project Navigation
 
+> **One active development corpus:** [Canonical Development Corpus](CANONICAL_DEVELOPMENT_CORPUS.md), including current `.project` vs Elephant authority, scope-aware latest-owner precedence, 2026-10-11 `.archive` review chunks and active-versus-reference boundaries. The old five-model launch documents were archived; don't use old path references as current prompts.
+
+
 > **⚓ Governing Rule 1:** [Machine ↔ Human is the ONE semantic learning loop](07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE/RULE_1_MACHINE_HUMAN_COEVOLUTION.md). SDK/compiler/runtime, Wiki/UI/intent/self-knowledge, AI-native representations and automated experiments are one co-evolving effort. The previous sequential-plan and browser-ban instructions are superseded. Existing browser evidence remains valuable; the runtime technology is open.
 
 
