@@ -1,5 +1,8 @@
 # Shared Seed — Elephant Protocol Gym
 
+> **OWNER PHASE 0 FOCUS:** The Semantic SDK and Elephant operating protocols form the initial self-hosting corpus and testing system, not just a toy command parser. Expose available build/source/index/test/replay/knowledge/pack tools via one accountable semantic command↔Wiki loop. **The core visual language is an essential machine-readable, human-comprehensible intelligence instrument** with high-density signals, full spatial parity and safe user-reprogramming of themes/glyphs/geometry (without command-chain changes). See [SDK dogfood](SDK_SELF_HOSTING_DOGFOOD.md), [visual contract](CORE_VISUAL_LANGUAGE.md), [starter test corpus](corpus/self-hosting-cases.json). These are outcomes and falsifiers, not fixed internal APIs.
+
+
 > **Discovery boundary:** The [legacy alignment map](LEGACY_ALIGNMENT_MAP.md) is a *reviewer reference for eventual capabilities*, not an extra fixed implementation assignment. Independent discovery arms can remain blind to its specific historical solutions; reuse/challenge arms may inspect them intentionally and must disclose this. The first four Gym decisions remain authoritative.
 
 
