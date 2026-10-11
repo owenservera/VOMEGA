@@ -20,7 +20,7 @@ Use the historical [Greenfield Ω simulated Alpha/Beta/Gamma seed](../../00_CORE
 
 ### Mutable owner objective, append-only lineage
 
-Use the authoritative [MVP v0.5 North Star](../../../../mvp/NORTH-STAR.md) **plus an explicit, versioned requirement overlay for the Gym**. The North Star defines desired functionality; its [pinned research mirror](../../00_CORE_BASELINE/04_MVP_V0_5_PRODUCT_NORTH_STAR.md) remains a historical snapshot. Never silently update the mirror or rewrite old experiment scores.
+Use the authoritative [MVP v0.5 North Star](../../../mvp/NORTH-STAR.md) **plus an explicit, versioned requirement overlay for the Gym**. The North Star defines desired functionality; its [pinned research mirror](../../00_CORE_BASELINE/04_MVP_V0_5_PRODUCT_NORTH_STAR.md) remains a historical snapshot. Never silently update the mirror or rewrite old experiment scores.
 
 The **Gym overlay** adds/reprioritizes confirmed requirements from subsequent owner directions:
 - Semantic SDK is **TypeScript-first** and must expose the developer tool capabilities used to inspect/build/test/improve itself (tool adapters are replaceable, not all in one mandatory binary).
