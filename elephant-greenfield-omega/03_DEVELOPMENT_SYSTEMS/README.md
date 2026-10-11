@@ -26,3 +26,7 @@
 General A/B/C are **internal research strategies**, not architecture-authors or the external dedicated proposal labs. E0/E1/E2 are **actual Elephant count**, not running agent headcount. A live Claude model can be an author, worker or Elephant, depending on distinct demonstrated role; model branding alone establishes none.
 
 Publication/exchange is downstream of each lab's own release process, under ../04_TURN_PUBLICATIONS/. Cross-lab comparisons are independent and must record different budgets, versions and shared tools.
+
+## Imported Claude v0.2 development approach (2026-10-11)
+
+[Claude's dedicated Z.ai development system](proposal-specific/claude-zai/README.md) is now an actual imported **runnable process prototype** (not yet a live hosted session). Its original `team/` sources—including event/ledger tools, deterministic runner, sealed holdouts, synthetic fixtures and evaluation selection—are kept on this **development** side, separated from Claude's [ECP v0.2 architecture](../02_ARCHITECTURE_PROPOSALS/claude/README.md). Read the [full technical assessment](proposal-specific/claude-zai/ASSESSMENT_AND_MIGRATION.md) and [shared candidate evidence practices](SHARED_EVIDENCE_PRACTICES_FROM_CLAUDE.md) before adopting its methods in any other lab. The current general Z.ai Round 1 is untouched; no new hosted builder was launched by importing code.

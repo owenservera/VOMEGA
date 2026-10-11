@@ -8,8 +8,8 @@
 | General Z.ai B | Bootstrap and active-round instructions available | NOT VERIFIED HERE |
 | General Z.ai C | Lagged ecosystem challenger instructions available | NOT VERIFIED HERE |
 | Dedicated O1 Z.ai | Fresh independent launch prompt available | NOT STARTED HERE |
-| Claude-authored proposal | Placeholder and author prompt, no submitted design | NOT SUBMITTED |
-| Claude-specific Z.ai | Must follow actual Claude proposal submission | NOT CREATED |
+| Claude-authored proposal | ECP v0.2 capsule-first source now imported in 02_ARCHITECTURE_PROPOSALS/claude; simulated kernel verified locally | SUBMITTED / NOT LIVE-VALIDATED |
+| Claude-specific Z.ai | Separate v0.2 team program and development bootstrap imported; 29 synthetic process tests passed | SOURCE IMPORTED; LIVE SESSION NOT VERIFIED |
 | Other proposal-specific labs | Waiting for individual authored proposals | NOT CREATED |
 
 When actual controllers connect, publish their authentic session IDs, round/turn manifest and ALL pack-version references as new entries. This file must not invent missing history. Old turns with insufficient source evidence remain HISTORICAL_NOT_AUDITED, not retroactively certified.

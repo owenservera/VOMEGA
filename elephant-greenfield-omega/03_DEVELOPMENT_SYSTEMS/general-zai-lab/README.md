@@ -16,3 +16,7 @@ Read [the preserved master prompt](../../BOOTSTRAP-ZAI-EXPERIMENT-LAB/01_PRIMARY
 Do not alter original Round 1 manifests or running worktrees. At the next safe top-level controller checkpoint, transmit [the compatibility injection](LIVE_SESSION_PUBLICATION_INJECTION.md), request proof of actual integration, and start recording per-turn portfolio snapshots. Original snapshots before adoption that cannot be verified are marked HISTORICAL_NOT_AUDITED.
 
 The general lab may use mature external protocol/tool standards when actual benchmark economics warrant them, but no predeclared system components or final architecture may be forced by this organizational migration.
+
+## Candidate evidence practices from Claude's isolated approach
+
+The [Claude v0.2 assessment](../proposal-specific/claude-zai/ASSESSMENT_AND_MIGRATION.md) identifies verified local techniques worth testing here: hash-chained ledgers, preregistration/holdout custody, deterministic mechanical selection, derived child-isolation labels, independent cockpit conformance, crash recovery and explicit false-claim downgrade. The [shared evidence practices](../SHARED_EVIDENCE_PRACTICES_FROM_CLAUDE.md) are **candidate cross-lab quality requirements**, NOT permission to restart or replace active Round 1, replace general A/B/C with Claude's A/B-only runner, assume missing oracle keys, or impose Node/Next.js/Prisma stack. Validate adoption in a later independent lab experiment.

@@ -21,3 +21,7 @@ Every authoring development turn also emits a versioned design/capability invent
 Once a proposal meets minimum interpretability criteria, allocate a *separate full Z.ai development session* and bounded workspace via 03_DEVELOPMENT_SYSTEMS/proposal-specific. Its exact proposal version/hash becomes the **architectural anchor**. One controller/session per accepted unique proposal. Do not combine Claude, ours and others into the same interactive Z.ai thread. Cross-session exchanges occur only through released, referenced packs and independently verified benchmarks.
 
 **Do not conflate this author list with the general Z.ai lab's A/B/C strategy tracks or with E0/E1/E2 Elephant count.**
+
+## Real Claude v0.2 submission received (2026-10-11)
+
+The [Claude proposal](claude/README.md) is no longer a placeholder: the user's uploaded ECP v0.2 capsule-first design, source-message schemata, kernel and six mechanical traces are imported under Claude's author folder. Claude's Z.ai **team-management** source (round controller, scripts, oracles, fixtures, evaluators) is deliberately *not* housed here; it is isolated under [proposal-specific/claude-zai](../03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/README.md). The exact import and manifest mismatch are documented in that development system. No live Claude-specific Z.ai session or validated productivity speedup is claimed.

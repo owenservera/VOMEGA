@@ -34,3 +34,7 @@ Separate full Z.ai sessions are a research requirement. Different proposals do n
 
 ## Delivery and verification
 A proposal instance should eventually export a runnable/reference implementation of its architecture, reproducible context reset/source basis, independently verifiable useful Ω product behavior, complete portable pack portfolio and a calibrated claim for E0/E1/E2 speed vs cost. If the substrate cannot actually launch independent subagents, report blocked evidence and use a verified external runner or stop; never roleplay fan-out.
+
+## Claude now has a distinct submitted architecture and an importable development program
+
+[claude-zai](claude-zai/README.md) contains the actual v0.2 experiment-runner source and proposal-specific improvement notes, distinct from the author's [architecture folder](../../02_ARCHITECTURE_PROPOSALS/claude/README.md). To launch, create a **fresh full Z.ai session** using [Claude's standalone bootstrap](claude-zai/BOOTSTRAP_PROMPT.md), not the unrestricted general A/B/C environment. Its older `runtime/pack/team/` two-track and two-turn operator program is a tested *candidate method*, not binding core project policy. The new builder must still export every unfinished/rejected/mature capability pack every top-level turn. Actual live launch remains unverified.
