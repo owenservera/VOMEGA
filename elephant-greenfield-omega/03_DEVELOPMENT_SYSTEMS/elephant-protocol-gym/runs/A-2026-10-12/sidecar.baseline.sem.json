@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "ae26f1d941c3a38fa82fb12d99d9f12cb5a0b80d14426aae59bc0ae98e990e93",
+  "claims": [
+    {
+      "id": "claim.add.returns-sum",
+      "statement": "Returns the sum of a and b.",
+      "status": "DESCRIBED_NOT_WITNESSED",
+      "boundTo": "fixture/001-semantic-basics.ts"
+    }
+  ]
+}

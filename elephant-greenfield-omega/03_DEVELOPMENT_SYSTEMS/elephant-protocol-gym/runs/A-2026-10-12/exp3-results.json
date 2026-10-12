@@ -1,0 +1,45 @@
+{
+  "experiment": "EXP3 — placement comparison against a plain-source control",
+  "evidenceClass": "TESTED (staleness detection) / ANALYTIC (reader comprehension)",
+  "claimPlacedInEveryVariant": "Returns the sum of a and b.",
+  "correctionLog": "v1 extracted a comment that did not exist and compared null==null (vacuous true). v2 authors the claim explicitly and asserts the comment was found before trusting the comparison.",
+  "P0_plain_source_control": {
+    "description": "no meaning attached",
+    "canBeStale": false,
+    "reason": "nothing to be wrong about — and nothing that can ever become right",
+    "detectsMutation": false,
+    "detectsUnenforcedPrecondition": false
+  },
+  "P1_comment_in_source": {
+    "description": "meaning authored inside a doc comment in the source file",
+    "commentFound": true,
+    "commentBytes": 54,
+    "commentStillReads": "Returns the sum of a and b.",
+    "commentTextUnchangedAfterMutation": true,
+    "canSignalItsOwnStaleness": false,
+    "reason": "the comment is carried along by the very edit that falsifies it, and nothing inside it records the digest it was written against, so no checker can tell a reader the claim was authored for a different source",
+    "detectsMutation": false,
+    "detectsUnenforcedPrecondition": true,
+    "detectsUnenforcedPreconditionHow": "only because the author wrote the honesty note themselves — a property of this author, not a guarantee the placement provides",
+    "postMutationStatus": "the file still asserts \"Returns the sum of a and b\" while returning a product"
+  },
+  "P2_digest_bound_sidecar": {
+    "description": "generated metadata in a separate file, pinned to the source sha256",
+    "pinnedDigestBefore": "ae26f1d941c3a38fa82fb12d99d9f12cb5a0b80d14426aae59bc0ae98e990e93",
+    "pinnedDigestAfterSourceEdit": "93684197c6385ee8b382d2512c52b10dd9a4aff827bd3de5a9e10ba446cf25c8",
+    "detectsMutation": true,
+    "detectsMutationHow": "the pinned digest no longer matches the file on disk, so the sidecar is provably stale and a checker can refuse to serve it — no execution required",
+    "detectsUnenforcedPrecondition": false,
+    "detectsUnenforcedPreconditionHow": "a digest proves WHICH source a claim was written against, never whether the claim is true of that source. Binding is not verification.",
+    "cost": "a second artifact that can drift from the source and needs its own lifecycle"
+  },
+  "headline": {
+    "finding": "Placement determines what failure is DETECTABLE, not what is true. A comment can carry a self-deprecating honesty note but cannot signal its own staleness; a digest-bound sidecar can signal staleness but cannot make a false claim true; the plain control is never wrong and never right.",
+    "consequence": "No placement alone yields a truthful self-describing file. The smallest credible path needs the witness, not the placement: every claim needs an executed probe AND a source digest, because EXP3 shows digest binding is not verification and EXP2 shows type-level descriptions are blind to body changes."
+  },
+  "sourceSha256": {
+    "originalFixture": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+    "commentedVariant": "ae26f1d941c3a38fa82fb12d99d9f12cb5a0b80d14426aae59bc0ae98e990e93",
+    "commentedMutated": "93684197c6385ee8b382d2512c52b10dd9a4aff827bd3de5a9e10ba446cf25c8"
+  }
+}

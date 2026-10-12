@@ -1,0 +1,112 @@
+{
+ "retryBudget": [
+  {
+   "in": 5,
+   "out": 3
+  },
+  {
+   "in": 1,
+   "out": 1
+  },
+  {
+   "in": 0,
+   "out": 0
+  },
+  {
+   "in": -5,
+   "out": -5
+  }
+ ],
+ "summarizeBuckets": [
+  {
+   "in": [],
+   "out": []
+  },
+  {
+   "in": [
+    1
+   ],
+   "out": [
+    "positive"
+   ]
+  },
+  {
+   "in": [
+    -1,
+    0,
+    1
+   ],
+   "out": [
+    "negative",
+    "zero",
+    "positive"
+   ]
+  },
+  {
+   "in": [
+    1,
+    -1
+   ],
+   "out": [
+    "positive",
+    "negative"
+   ]
+  }
+ ],
+ "mean": [
+  {
+   "in": [
+    1,
+    2,
+    3
+   ],
+   "out": 2
+  },
+  {
+   "in": [],
+   "out": null
+  },
+  {
+   "in": [
+    7,
+    7
+   ],
+   "out": 7
+  }
+ ],
+ "fastClassify_vs_classify": [
+  {
+   "v": "0",
+   "fixture": "zero",
+   "fast": "negative",
+   "agree": false
+  },
+  {
+   "v": "-0",
+   "fixture": "zero",
+   "fast": "negative",
+   "agree": false
+  },
+  {
+   "v": "NaN",
+   "fixture": "positive",
+   "fast": "positive",
+   "agree": true
+  },
+  {
+   "v": "1",
+   "fixture": "positive",
+   "fast": "positive",
+   "agree": true
+  }
+ ],
+ "repeat": {
+  "r_2_5": [
+   0,
+   1,
+   2
+  ],
+  "r_neg1": [],
+  "r_NaN": []
+ }
+}

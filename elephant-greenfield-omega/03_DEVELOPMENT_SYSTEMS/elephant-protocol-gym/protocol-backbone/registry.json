@@ -1,6 +1,86 @@
 {
-  "schema": "epg.registry/0.1",
-  "version": "0.1.0-PROPOSED",
+  "schema": "epg.registry/0.2",
+  "version": "0.2.0-PROPOSED",
+  "runs": [
+    {
+      "id": "A-2026-10-12",
+      "dir": "runs/A-2026-10-12",
+      "receipt": "runs/A-2026-10-12/run.json",
+      "status": "EVALUATED",
+      "round": "R0_ARM",
+      "role": "Arm A — Source first, meaning second",
+      "protocol_ids": ["epg.research.library"],
+      "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+      "independence": "BLIND_DISCOVERY",
+      "entry_points": ["node verify-run-note.mjs"],
+      "notes": "Five executed experiments. Self-verifies every run-note claim from execution."
+    },
+    {
+      "id": "B-2026-10-12-compiler-boundary",
+      "dir": "runs/B-2026-10-12-compiler-boundary",
+      "receipt": "runs/B-2026-10-12-compiler-boundary/run.json",
+      "status": "EVALUATED",
+      "round": "R0_ARM",
+      "role": "Arm B — Semantic compiler and human/machine boundary",
+      "protocol_ids": ["epg.semantic.selfhosting"],
+      "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+      "independence": "PARTIAL_CONTAMINATION",
+      "entry_points": ["node run-b-experiment.mjs"],
+      "notes": "Produced the round's cleanest negative result: a digest binds which publication a view claims, not that the view still renders it. Compiler/boundary findings are blind discoveries; symbol-related material was LEGACY-SEEDED (self-disclosed). SHA256SUMS.txt lists itself, so `sha256sum -c` always reports one FAILED line; all 8 real artifacts verify."
+    },
+    {
+      "id": "C-2026-10-12",
+      "dir": "runs/C-2026-10-12",
+      "receipt": "runs/C-2026-10-12/run.json",
+      "status": "EVALUATED",
+      "round": "R0_ARM",
+      "role": "Arm C — WikiCore verbs and self-runtime",
+      "protocol_ids": ["epg.semantic.selfhosting"],
+      "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+      "independence": "BLIND_DISCOVERY",
+      "entry_points": ["node probe/verify-acceptance.mjs"],
+      "notes": "Two competing method vocabularies tied on three of four criteria; neither frozen. Saw arm A's directory and did not open it."
+    },
+    {
+      "id": "D-2026-10-12-elephant-toolkit",
+      "dir": "runs/D-2026-10-12-elephant-toolkit",
+      "receipt": "runs/D-2026-10-12-elephant-toolkit/run.json",
+      "status": "EVALUATED",
+      "round": "R0_ARM",
+      "role": "Arm D — Elephant self-optimization and automation toolkit",
+      "protocol_ids": ["epg.runner.claude-v02"],
+      "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+      "independence": "PARTIAL_CONTAMINATION",
+      "entry_points": ["node oracle.mjs --check", "node booster/witness-check.mjs --selftest"],
+      "notes": "Headline hypothesis FAILED (capsule did not beat baseline at 4/4 vs 4/4, 0/4 laundering). Self-disclosed an independence violation (a stray head -60 of arm B's note); its four cold readers were sealed and unaffected. Wrote three programs where one booster was permitted, and said so."
+    },
+    {
+      "id": "REVIEWER-R1-2026-10-12",
+      "dir": "runs/REVIEWER-R1-2026-10-12",
+      "receipt": "runs/REVIEWER-R1-2026-10-12/run.json",
+      "status": "EVALUATED",
+      "round": "R1_REVIEWER",
+      "role": "Round 1 reviewer — adjudication of the four arms",
+      "protocol_ids": ["epg.publication.allturn"],
+      "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+      "independence": "ADJUDICATION",
+      "entry_points": ["node reviewer-witness.mjs --check", "node negative-control.mjs", "node dts-mutation-check.mjs"],
+      "notes": "Re-derived the arms' claims with fresh code (6/6 predicates, 3/3 mutants flip, W7 verified). Nothing promoted to canon. Its REAL_SOURCE_UNAVAILABLE conclusion was later proved wrong by MASTER-EXEC; the original note is preserved unmodified."
+    },
+    {
+      "id": "MASTER-EXEC-2026-10-12",
+      "dir": "runs/MASTER-EXEC-2026-10-12",
+      "receipt": "runs/MASTER-EXEC-2026-10-12/run.json",
+      "status": "EVALUATED",
+      "round": "PASS",
+      "role": "Execution pass over the assembled master — custody, Decision 1, Decision 2, section 18",
+      "protocol_ids": ["epg.research.library"],
+      "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+      "independence": "PROCESS_REHEARSAL",
+      "entry_points": ["bash reproduce.sh"],
+      "notes": "Not an arm. 26/26 sections custody-verified with 6/6 discriminating controls; proved the R1 real-source cohort is in-repo and pinned (12/12), overturning the reviewer's blocker; found the assembler's prepended-banner custody defect. Refused to edit the master's false status header, treating that as an owner-facing act."
+    }
+  ],
   "protocols": [
     {
       "id": "epg.r0.five",

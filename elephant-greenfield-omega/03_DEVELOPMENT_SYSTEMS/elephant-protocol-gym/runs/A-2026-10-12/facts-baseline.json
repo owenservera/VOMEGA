@@ -1,0 +1,132 @@
+{
+  "evidenceClass": "CODE_DERIVED",
+  "tool": "typescript@6.0.3 compiler API (typeChecker)",
+  "source": "baseline.ts",
+  "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+  "bytes": 1001,
+  "exports": [
+    {
+      "kind": "const",
+      "name": "MAX_RETRIES",
+      "exported": true,
+      "inferredType": "3",
+      "literalValue": "3"
+    },
+    {
+      "kind": "function",
+      "name": "add",
+      "exported": true,
+      "params": [
+        {
+          "name": "a",
+          "declaredType": "number",
+          "optional": false,
+          "hasDefault": false,
+          "note": "type constraint is compile-time only"
+        },
+        {
+          "name": "b",
+          "declaredType": "number",
+          "optional": false,
+          "hasDefault": false,
+          "note": "type constraint is compile-time only"
+        }
+      ],
+      "declaredReturnType": "number",
+      "returnTypeIsUnionOfStringLiterals": false,
+      "observedEffects": [],
+      "bodyLineCount": 1
+    },
+    {
+      "kind": "function",
+      "name": "repeat",
+      "exported": true,
+      "params": [
+        {
+          "name": "count",
+          "declaredType": "number",
+          "optional": false,
+          "hasDefault": false,
+          "note": "type constraint is compile-time only"
+        },
+        {
+          "name": "emit",
+          "declaredType": "(value: number) => void",
+          "optional": false,
+          "hasDefault": false,
+          "note": "type constraint is compile-time only"
+        }
+      ],
+      "declaredReturnType": "void",
+      "returnTypeIsUnionOfStringLiterals": false,
+      "observedEffects": [
+        "calls-injected-callback"
+      ],
+      "bodyLineCount": 1
+    },
+    {
+      "kind": "function",
+      "name": "classify",
+      "exported": true,
+      "params": [
+        {
+          "name": "value",
+          "declaredType": "number",
+          "optional": false,
+          "hasDefault": false,
+          "note": "type constraint is compile-time only"
+        }
+      ],
+      "declaredReturnType": "\"negative\" | \"zero\" | \"positive\"",
+      "returnTypeIsUnionOfStringLiterals": true,
+      "observedEffects": [],
+      "bodyLineCount": 3
+    },
+    {
+      "kind": "function",
+      "name": "accumulate",
+      "exported": true,
+      "params": [
+        {
+          "name": "values",
+          "declaredType": "number[]",
+          "optional": false,
+          "hasDefault": false,
+          "note": "type constraint is compile-time only"
+        }
+      ],
+      "declaredReturnType": "number",
+      "returnTypeIsUnionOfStringLiterals": false,
+      "observedEffects": [
+        "calls:add"
+      ],
+      "bodyLineCount": 3
+    }
+  ],
+  "topLevelStatements": [],
+  "authorAssertions": [
+    {
+      "attachedTo": "<file-level>",
+      "kind": "jsdoc-block",
+      "line": 1,
+      "text": "/**\r\n * Elephant Protocol Gym — tiny conventional TypeScript fixture.\r\n *\r\n * Intentional research note: the claimed contract on repeat is NOT enforced.\r\n * This discrepancy exists so agents can discover how to distinguish\r\n * author's meaning from mechanically established or tested behavior.\r\n *\r\n * No semantic annotation syntax is prescribed.\r\n */",
+      "evidenceClass": "AUTHOR_ASSERTION",
+      "enforceableByCompiler": false
+    },
+    {
+      "attachedTo": "repeat",
+      "kind": "jsdoc-block",
+      "line": 17,
+      "text": "/** Declared expectation: count is a nonnegative safe integer. Not enforced. */",
+      "evidenceClass": "AUTHOR_ASSERTION",
+      "enforceableByCompiler": false
+    }
+  ],
+  "compilerCannotEstablish": [
+    "That repeat() enforces its documented \"nonnegative safe integer\" precondition.",
+    "That any exported function is total, pure, or side-effect free in the presence of a hostile caller.",
+    "That classify() is exhaustive over all inputs, including NaN and +/-Infinity.",
+    "That accumulate() has any documented contract at all (it carries no doc comment).",
+    "The intent, business purpose or correctness of any declaration."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "machine-human-signal/1",
+  "run": "B",
+  "outcome": "OBSERVED_DISCREPANCY",
+  "subject": {
+    "source": "fixture/001-semantic-basics.ts",
+    "pinned_commit": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+    "task": "Publish one pinned semantic fact and project it into machine + human views."
+  },
+  "machine_reading": {
+    "publication_id": "pub_571ac017d0a9e864",
+    "digest": "571ac017d0a9e86436aed7d3bc2877798824f40b8fc8a5f40c97db5d3cc20d33",
+    "fact_count": 5,
+    "evidence_mix": {
+      "OBSERVED": 4,
+      "DERIVED": 1
+    },
+    "claims": "Static intake produced 1 DECLARED fact (fn.repeat) and 4 DERIVED facts. A separate execution witness is required before any contract can be called verified."
+  },
+  "human_reading": {
+    "account": "The author wrote \"count is a nonnegative safe integer\" above repeat(). Running the code shows the function accepts -1 and 2.5 without complaint, and 2.5 emits three values. The comment describes an intention, not a guarantee."
+  },
+  "comparison": {
+    "agreement": "Both views agree on identity, signature, source lines and publication digest.",
+    "discrepancy": "The DECLARED precondition is contradicted by OBSERVED behavior.",
+    "evidence_class": "OBSERVED_DISCREPANCY",
+    "independence_note": "The witness is this process executing the fixture. It is a first-party observation, NOT independent referee proof and NOT a general correctness claim."
+  },
+  "feedback": {
+    "teaches": "A semantic publication must carry an evidence class per fact, or a human wiki will inevitably render an unenforced doc comment as a guarantee.",
+    "challenges": "The assumption that static compilation alone can produce an accurate human view.",
+    "smallest_next_test": "Replay this exact comparison with a second, independent implementation of the intake step and check whether both derive the same DECLARED set."
+  },
+  "falsifiers_run": {
+    "whole_file_sha_detects_mutation": true,
+    "per_fact_slicing_localises_mutation": true,
+    "digest_changes_on_republish": true,
+    "hand_drift_detected_by_digest": false,
+    "hand_drift_detected_by_regeneration": true,
+    "forged_digest_detected": true
+  }
+}

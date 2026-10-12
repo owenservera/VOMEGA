@@ -101,13 +101,47 @@
               "UNKNOWN"
             ]
           },
+          "witness_provenance": {
+            "description": "HOW this claim was witnessed, not merely how strong it is. Round 0's central limitation was that 'executed:true' was self-asserted in an artifact a reviewer could not falsify without re-running the work. SELF_WITNESSED = the claiming run executed it; CAPSULE_ATTRIBUTED = inherited from a handoff and not re-verified by this run; INDEPENDENTLY_REPRODUCED = re-derived by a different actor from source or execution. REQUIRED whenever evidence_class is not DESIGN.",
+            "enum": [
+              "NONE",
+              "SELF_WITNESSED",
+              "CAPSULE_ATTRIBUTED",
+              "INDEPENDENTLY_REPRODUCED"
+            ]
+          },
           "witness_refs": {
             "type": "array",
             "items": {
               "type": "string"
             }
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "evidence_class": {
+                  "enum": [
+                    "SIMULATED",
+                    "AUTHOR_REPORTED",
+                    "LIVE_RUN",
+                    "MEASURED",
+                    "UNKNOWN"
+                  ]
+                }
+              },
+              "required": [
+                "evidence_class"
+              ]
+            },
+            "then": {
+              "required": [
+                "witness_provenance"
+              ]
+            }
+          }
+        ]
       }
     },
     "events": {

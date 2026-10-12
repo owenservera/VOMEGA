@@ -1,0 +1,4 @@
+contract-violation-probe.ts(5,7): error TS2322: Type 'void' is not assignable to type 'number[]'.
+contract-violation-probe.ts(5,24): error TS2554: Expected 2 arguments, but got 1.
+contract-violation-probe.ts(6,7): error TS2322: Type 'void' is not assignable to type 'string'.
+contract-violation-probe.ts(6,22): error TS2554: Expected 2 arguments, but got 1.

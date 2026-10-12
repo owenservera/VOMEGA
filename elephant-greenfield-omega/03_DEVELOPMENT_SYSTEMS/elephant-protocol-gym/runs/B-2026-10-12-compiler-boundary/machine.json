@@ -1,0 +1,239 @@
+{
+  "kind": "elephant.semantic-projection.machine/1",
+  "projection_of": "pub_571ac017d0a9e864",
+  "publication_digest": "571ac017d0a9e86436aed7d3bc2877798824f40b8fc8a5f40c97db5d3cc20d33",
+  "human_view": "human.md",
+  "self_view": "machine.json",
+  "source": {
+    "path": "fixture/001-semantic-basics.ts",
+    "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+    "bytes": 1001
+  },
+  "facts": [
+    {
+      "id": "const.MAX_RETRIES",
+      "subject": "MAX_RETRIES",
+      "meaning": {
+        "kind": "constant",
+        "name": "MAX_RETRIES",
+        "type": "inferred",
+        "literal": "3"
+      },
+      "evidence": "OBSERVED",
+      "declared": null,
+      "witness": {
+        "kind": "behavioural-probe",
+        "method": "read the live exported binding",
+        "probes": [
+          {
+            "input": "MAX_RETRIES",
+            "returned": 3
+          }
+        ],
+        "finding": "Live value matches the source literal."
+      },
+      "source": {
+        "path": "fixture/001-semantic-basics.ts",
+        "lines": [
+          11,
+          11
+        ],
+        "sha256": "86edb65aa6a94eeceafaf4db44ae368877939538d21dc25f60bb935257e2c514"
+      },
+      "human_anchor": "#const.MAX_RETRIES"
+    },
+    {
+      "id": "fn.add",
+      "subject": "add",
+      "meaning": {
+        "kind": "function",
+        "name": "add",
+        "params": [
+          {
+            "name": "a",
+            "type": "number"
+          },
+          {
+            "name": "b",
+            "type": "number"
+          }
+        ],
+        "returns": "number",
+        "body_sha256": "312f20d6f5d863bcc6a40d1589155228d553199def4299237c2ce2d93f0abccb",
+        "body_lines": 3
+      },
+      "evidence": "DERIVED",
+      "declared": null,
+      "witness": null,
+      "source": {
+        "path": "fixture/001-semantic-basics.ts",
+        "lines": [
+          13,
+          15
+        ],
+        "sha256": "312f20d6f5d863bcc6a40d1589155228d553199def4299237c2ce2d93f0abccb"
+      },
+      "human_anchor": "#fn.add"
+    },
+    {
+      "id": "fn.repeat",
+      "subject": "repeat",
+      "meaning": {
+        "kind": "function",
+        "name": "repeat",
+        "params": [
+          {
+            "name": "count",
+            "type": "number"
+          },
+          {
+            "name": "emit",
+            "type": "(value: number) => void"
+          }
+        ],
+        "returns": "void",
+        "body_sha256": "3ad423d249107acf2c75c097ede8db24bada09d65da5dddb844fc85c0c81e459",
+        "body_lines": 3
+      },
+      "evidence": "OBSERVED",
+      "declared": "Declared expectation: count is a nonnegative safe integer. Not enforced.",
+      "witness": {
+        "kind": "behavioural-probe",
+        "method": "executed the pinned fixture module and recorded emissions",
+        "probes": [
+          {
+            "probe": "in-domain",
+            "count": 3,
+            "emitted": [
+              0,
+              1,
+              2
+            ],
+            "threw": null
+          },
+          {
+            "probe": "out-of-domain negative",
+            "count": -1,
+            "emitted": [],
+            "threw": null
+          },
+          {
+            "probe": "out-of-domain non-integer",
+            "count": 2.5,
+            "emitted": [
+              0,
+              1,
+              2
+            ],
+            "threw": null
+          }
+        ],
+        "enforces_declared_precondition": false,
+        "finding": "repeat() does not validate `count`. Negative and fractional counts are accepted silently and produce a non-obvious emission sequence; no error is raised."
+      },
+      "source": {
+        "path": "fixture/001-semantic-basics.ts",
+        "lines": [
+          18,
+          20
+        ],
+        "sha256": "3ad423d249107acf2c75c097ede8db24bada09d65da5dddb844fc85c0c81e459"
+      },
+      "human_anchor": "#fn.repeat"
+    },
+    {
+      "id": "fn.classify",
+      "subject": "classify",
+      "meaning": {
+        "kind": "function",
+        "name": "classify",
+        "params": [
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "returns": "\"negative\" | \"zero\" | \"positive\"",
+        "body_sha256": "15f4e09fabb7aabc65cf27536299cfaeee65199ea41a0289e524fac9b2184a1b",
+        "body_lines": 5
+      },
+      "evidence": "OBSERVED",
+      "declared": null,
+      "witness": {
+        "kind": "behavioural-probe",
+        "method": "executed the pinned fixture module over the three declared return classes",
+        "probes": [
+          {
+            "input": -2,
+            "returned": "negative"
+          },
+          {
+            "input": 0,
+            "returned": "zero"
+          },
+          {
+            "input": 7,
+            "returned": "positive"
+          }
+        ],
+        "finding": "classify() behaves as its union return type suggests for the three probed inputs."
+      },
+      "source": {
+        "path": "fixture/001-semantic-basics.ts",
+        "lines": [
+          22,
+          26
+        ],
+        "sha256": "15f4e09fabb7aabc65cf27536299cfaeee65199ea41a0289e524fac9b2184a1b"
+      },
+      "human_anchor": "#fn.classify"
+    },
+    {
+      "id": "fn.accumulate",
+      "subject": "accumulate",
+      "meaning": {
+        "kind": "function",
+        "name": "accumulate",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]"
+          }
+        ],
+        "returns": "number",
+        "body_sha256": "a0614d8bdacd46c95c833622b25aeedf4c2c265edac7382ee33dbfb296cf0207",
+        "body_lines": 5
+      },
+      "evidence": "OBSERVED",
+      "declared": null,
+      "witness": {
+        "kind": "behavioural-probe",
+        "method": "executed the pinned fixture module",
+        "probes": [
+          {
+            "input": [
+              1,
+              2,
+              3
+            ],
+            "returned": 6
+          },
+          {
+            "input": [],
+            "returned": 0
+          }
+        ],
+        "finding": "accumulate() sums via add(); empty input returns 0."
+      },
+      "source": {
+        "path": "fixture/001-semantic-basics.ts",
+        "lines": [
+          28,
+          32
+        ],
+        "sha256": "a0614d8bdacd46c95c833622b25aeedf4c2c265edac7382ee33dbfb296cf0207"
+      },
+      "human_anchor": "#fn.accumulate"
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "schema": "run-d-cold-reader-answer/1",
+  "note": "Answer shape for the Run D cold-reader trial. Labels are the measured quantity; there is no partial credit for confident prose.",
+  "reader": {
+    "id": "B2",
+    "mode": "cold, no evidence capsule",
+    "harness": "ZCode subagent, tools Read + Bash(node v24.11.1)",
+    "files_read": [
+      "runs/D-2026-10-12-elephant-toolkit/TASK.md",
+      "runs/D-2026-10-12-elephant-toolkit/SCHEMA.json",
+      "runs/D-2026-10-12-elephant-toolkit/source/001-semantic-basics.ts",
+      "runs/D-2026-10-12-elephant-toolkit/source/002-consumer.ts"
+    ],
+    "invocation_note": "node v24.11.1 strips TypeScript types natively; `await import('file:///.../001-semantic-basics.ts')` loads both modules directly with no build step and no test harness present."
+  },
+  "exports": [
+    {
+      "name": "MAX_RETRIES",
+      "kind": "const",
+      "signature": "export const MAX_RETRIES = 3",
+      "file": "source/001-semantic-basics.ts:11",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "MAX_RETRIES is a module-level `const` initialized to the number literal 3. It is an ordinary mutable-at-module-scope binding (not frozen at runtime); `import { MAX_RETRIES }` in 002-consumer.ts:12 consumes it as a live binding.",
+          "evidence": "source/001-semantic-basics.ts:11 `export const MAX_RETRIES = 3;`; source/002-consumer.ts:12 `import { MAX_RETRIES, accumulate, classify } from \"./001-semantic-basics.ts\";`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "At runtime MAX_RETRIES === 3 and typeof MAX_RETRIES === 'number'.",
+          "evidence": "cmd: node --input-type=module -e \"const a = await import('file:///C:/0-BlackBoxProject-0/VOMEGA/elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/runs/D-2026-10-12-elephant-toolkit/source/001-semantic-basics.ts'); console.log('MAX_RETRIES =', a.MAX_RETRIES, 'typeof', typeof a.MAX_RETRIES);\"\nout: MAX_RETRIES = 3 typeof number"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "MAX_RETRIES is present in the runtime module namespace of 001-semantic-basics.ts, and is NOT re-exported from 002-consumer.ts (that module's namespace is exactly ['fastClassify','mean','retryBudget','summarizeBuckets']).",
+          "evidence": "cmd: node --input-type=module -e \"const a=await import('file:///.../001-semantic-basics.ts'); const b=await import('file:///.../002-consumer.ts'); console.log('exports001 =', JSON.stringify(Object.keys(a))); console.log('exports002 =', JSON.stringify(Object.keys(b)));\"\nout: exports001 = [\"MAX_RETRIES\",\"accumulate\",\"add\",\"classify\",\"repeat\"]\nexports002 = [\"fastClassify\",\"mean\",\"retryBudget\",\"summarizeBuckets\"]"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "The semantic meaning/units of MAX_RETRIES (retry attempts? attempts after the first? a ceiling inclusive or exclusive?) is not stated anywhere in either file. I can report its value but not its intended meaning.",
+          "evidence": "No doc comment on 001-semantic-basics.ts:11. File header 001-semantic-basics.ts:1-9 names no symbol."
+        }
+      ]
+    },
+    {
+      "name": "add",
+      "kind": "function",
+      "signature": "export function add(a: number, b: number): number",
+      "file": "source/001-semantic-basics.ts:13-15",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "add returns the IEEE-754 sum `a + b` with no validation, no coercion, no overflow check and no rounding. It is one expression, so it is total: it cannot throw for any pair of numbers.",
+          "evidence": "source/001-semantic-basics.ts:13-15 `export function add(a: number, b: number): number { return a + b; }`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "add(2,3) === 5. add(0.1,0.2) === 0.30000000000000004 — i.e. binary floating-point addition with no decimal rounding applied. add.length === 2 (arity 2, no default/rest params).",
+          "evidence": "cmd: node --input-type=module -e \"const {add}=await import('file:///.../001-semantic-basics.ts'); console.log('add(2,3) =',add(2,3)); console.log('add(0.1,0.2) =',add(0.1,0.2)); console.log('add.length =',add.length);\"\nout: add(2,3) = 5\nadd(0.1,0.2) = 0.30000000000000004\nadd.length = 2"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "No DECLARED contract: there is no doc comment on `add` in either file. Its runtime source is `function add(a , b ) { return a + b; }`, so any author intent beyond arithmetic addition is undetermined by the source.",
+          "evidence": "cmd: node --input-type=module -e \"const {add}=await import('file:///.../001-semantic-basics.ts'); console.log(add.toString());\"\nout: function add(a        , b        )         {\n  return a + b;\n}"
+        }
+      ]
+    },
+    {
+      "name": "repeat",
+      "kind": "function",
+      "signature": "export function repeat(count: number, emit: (value: number) => void): void",
+      "file": "source/001-semantic-basics.ts:18-20",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "The author states: 'count is a nonnegative safe integer.' The author immediately qualifies this as un-enforced.",
+          "evidence": "source/001-semantic-basics.ts:17 `/** Declared expectation: count is a nonnegative safe integer. Not enforced. */`"
+        },
+        {
+          "label": "DECLARED",
+          "statement": "The file header states that 'the claimed contract on repeat is NOT enforced' and that 'this discrepancy exists so agents can discover how to distinguish author's meaning from mechanically established or tested behavior.' The author therefore self-declares this gap rather than hiding it.",
+          "evidence": "source/001-semantic-basics.ts:4-6 'Intentional research note: the claimed contract on repeat is NOT enforced. This discrepancy exists so agents can discover how to distinguish author's meaning from mechanically established or tested behavior.'"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "The body is a single unguarded loop `for (let i = 0; i < count; i++) emit(i);` — there is no validation branch, no throw, and no guard on `count`. Emission count is therefore determined purely by the loop condition `i < count`, i.e. ceil(count) for finite positive count and 0 for count <= 0 or NaN. The emitted values are the ascending integers 0,1,2,... . Return type is void; the function returns undefined.",
+          "evidence": "source/001-semantic-basics.ts:19 `for (let i = 0; i < count; i++) emit(i);`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "repeat(0, ...) emits 0 values. repeat(3, ...) emits exactly 3 values [0,1,2]. repeat(-1, ...) and repeat(-5, ...) emit 0 values WITHOUT throwing. repeat(NaN, ...) emits 0 values.",
+          "evidence": "cmd: node --input-type=module -e \"const {repeat}=await import('file:///.../001-semantic-basics.ts'); const cap=(n,cap=12)=>{const out=[];let err=null;try{repeat(n,v=>{if(out.length<cap)out.push(v);else throw new Error('CAP');});}catch(e){err=e.message;}return {emitted:out.length,first:out.slice(0,6),err};}; for(const n of [0,3,-1,-5,2.5,NaN,0.5,1e21,9007199254740993]) console.log(JSON.stringify(String(n))+' ->',JSON.stringify(cap(n)));\"\nout: \"0\" -> {\"emitted\":0,\"first\":[],\"err\":null}\n\"3\" -> {\"emitted\":3,\"first\":[0,1,2],\"err\":null}\n\"-1\" -> {\"emitted\":0,\"first\":[],\"err\":null}\n\"-5\" -> {\"emitted\":0,\"first\":[],\"err\":null}\n\"2.5\" -> {\"emitted\":3,\"first\":[0,1,2],\"err\":null}\n\"NaN\" -> {\"emitted\":0,\"first\":[],\"err\":null}\n\"0.5\" -> {\"emitted\":1,\"first\":[0],\"err\":null}\n\"1e+21\" -> {\"emitted\":12,...,\"err\":\"CAP\"}\n\"9007199254740992\" -> {\"emitted\":12,...,\"err\":\"CAP\"}"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Non-integer positive counts are truncated UPWARD by the loop condition, not rejected: repeat(2.5, ...) emits 3 values [0,1,2] and repeat(0.5, ...) emits 1 value [0]. This directly contradicts 'count is a nonnegative safe integer' — a non-integer is accepted and rounded.",
+          "evidence": "same command as above; out lines: `\"2.5\" -> {\"emitted\":3,\"first\":[0,1,2],\"err\":null}` and `\"0.5\" -> {\"emitted\":1,\"first\":[0],\"err\":null}`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Counts beyond the safe-integer range are accepted and loop without bound. repeat(1e21, ...), repeat(9007199254740992, ...) and repeat(Infinity, ...) all emitted at least 12 values before I aborted them from inside the callback (my abort raised the 'CAP'/'CAP_REACHED' error, not repeat). Infinity is a permanent hang for any real callback.",
+          "evidence": "cmd: node --input-type=module -e \"const {repeat}=await import('file:///.../001-semantic-basics.ts'); let c=0,threw=null; try{repeat(Infinity,()=>{c++; if(c>12) throw new Error('CAP_REACHED');});}catch(e){threw=e.message;} console.log('emissions before abort =',c,'threw =',threw);\"\nout: emissions before abort = 13 threw = CAP_REACHED"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "`emit` is never validated by repeat: repeat(3, undefined) throws a raw TypeError from inside the loop ('emit is not a function'), while repeat(-1, undefined) returns normally without throwing because the body is never entered.",
+          "evidence": "cmd: node --input-type=module -e \"const {repeat}=await import('file:///.../001-semantic-basics.ts'); try{repeat(3,undefined);}catch(e){console.log('repeat(3, undefined) throws:',e.constructor.name+': '+e.message);} try{repeat(-1,undefined);}catch(e){console.log('repeat(-1, undefined) throws:',e.constructor.name+': '+e.message);} console.log('repeat(-1, undefined) returned without throwing');\"\nout: repeat(3, undefined) throws: TypeError: emit is not a function\nrepeat(-1, undefined) returned without throwing"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "Whether the author intends negative counts to mean 'silently do nothing' (as the code does) or to be an error is not stated; the code and the DECLARED contract disagree and the source does not say which is intended.",
+          "evidence": "source/001-semantic-basics.ts:17-20 — comment states the expectation, code states the behaviour, no reconciling text."
+        }
+      ]
+    },
+    {
+      "name": "classify",
+      "kind": "function",
+      "signature": "export function classify(value: number): \"negative\" | \"zero\" | \"positive\"",
+      "file": "source/001-semantic-basics.ts:22-26",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "Total three-way branch on `value < 0` then `value === 0` then default. Return values are the string literals \"negative\"/\"zero\"/\"positive\". No validation, no throw. Because the final branch is an unconditional default, any value that is neither `< 0` nor `=== 0` — including NaN — returns \"positive\".",
+          "evidence": "source/001-semantic-basics.ts:23-25 `if (value < 0) return \"negative\"; if (value === 0) return \"zero\"; return \"positive\";`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "classify(-5)='negative', classify(0)='zero', classify(7)='positive', classify(-Infinity)='negative', classify(Infinity)='positive'. classify(-0)='zero' (because JS -0 === 0 is true).",
+          "evidence": "cmd: node --input-type=module -e \"const {classify}=await import('file:///.../001-semantic-basics.ts'); for(const v of [-5,0,-0,7,NaN,Infinity,-Infinity]) console.log('classify('+String(v)+') =',classify(v));\"\nout: classify(-5) = negative\nclassify(0) = zero\nclassify(-0) = zero\nclassify(7) = positive\nclassify(NaN) = positive\nclassify(Infinity) = positive\nclassify(-Infinity) = negative"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "classify(NaN) === 'positive'. NaN is not a sign-bearing number, yet the unguarded default branch classifies it as positive. This is a behaviour no doc comment warns about.",
+          "evidence": "same command; out line: `classify(NaN) = positive`"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "No DECLARED contract exists for classify — there is no doc comment on it. Its runtime source is exactly the three-line branch above.",
+          "evidence": "cmd: node --input-type=module -e \"const {classify}=await import('file:///.../001-semantic-basics.ts'); console.log(classify.toString());\"\nout: function classify(value        )                                   {\n  if (value < 0) return \"negative\";\n  if (value === 0) return \"zero\";\n  return \"positive\";\n}"
+        }
+      ]
+    },
+    {
+      "name": "accumulate",
+      "kind": "function",
+      "signature": "export function accumulate(values: number[]): number",
+      "file": "source/001-semantic-basics.ts:28-32",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "A left fold starting from the literal 0, delegating each step to `add` (source/001-semantic-basics.ts:30). It returns 0 for an empty array because the fold never executes. It uses `for...of`, which iterates array values including `undefined` at sparse holes, so `add` receives non-numbers at holes.",
+          "evidence": "source/001-semantic-basics.ts:29-31 `let total = 0; for (const value of values) total = add(total, value); return total;`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "accumulate([1,2,3,4]) === 10. accumulate([]) === 0. accumulate([1,,3]) === NaN (sparse hole yields undefined -> 0 + undefined = NaN, then NaN propagates). accumulate([NaN]) === NaN. accumulate([1e308,1e308]) === Infinity (no overflow guard).",
+          "evidence": "cmd: node --input-type=module -e \"const {accumulate}=await import('file:///.../001-semantic-basics.ts'); console.log('accumulate([1,2,3,4]) =',accumulate([1,2,3,4])); console.log('accumulate([]) =',accumulate([])); console.log('accumulate([1,,3]) =',accumulate([1,,3])); console.log('accumulate([NaN]) =',accumulate([NaN])); console.log('accumulate([1e308,1e308]) =',accumulate([1e308,1e308]));\"\nout: accumulate([1,2,3,4]) = 10\naccumulate([]) = 0\naccumulate([1,,3]) = NaN\naccumulate([NaN]) = NaN\naccumulate([1e308,1e308]) = Infinity"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "No DECLARED contract: no doc comment on accumulate. Whether returning 0 for the empty array is intended as an identity or an accident is not stated.",
+          "evidence": "source/001-semantic-basics.ts:28-32 — no preceding comment."
+        }
+      ]
+    },
+    {
+      "name": "retryBudget",
+      "kind": "function",
+      "signature": "export function retryBudget(attempts: number): number",
+      "file": "source/002-consumer.ts:18-20",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "The author states: 'retryBudget(attempts) always returns an integer >= 1 and <= MAX_RETRIES. Not enforced.'",
+          "evidence": "source/002-consumer.ts:14-17 `/** * Declared expectation: retryBudget(attempts) always returns an integer >= 1 * and <= MAX_RETRIES. Not enforced. */`"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "The body is `return Math.min(attempts, MAX_RETRIES);`. Only an upper clamp is applied. There is no lower clamp, no integer rounding, and no validation, so every one of the three asserted properties (integer, >= 1, <= MAX_RETRIES) depends entirely on the caller supplying a conforming argument. MAX_RETRIES is imported from 001-semantic-basics.ts:11, so the upper bound is 3 at runtime.",
+          "evidence": "source/002-consumer.ts:19 `return Math.min(attempts, MAX_RETRIES);`; source/002-consumer.ts:12 imports MAX_RETRIES from \"./001-semantic-basics.ts\"."
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "retryBudget(1)=1, retryBudget(2)=2, retryBudget(3)=3, retryBudget(4)=3, retryBudget(10)=3 — the upper clamp holds. But retryBudget(0)=0, retryBudget(-1)=-1, retryBudget(2.5)=2.5, retryBudget(0.5)=0.5, retryBudget(NaN)=NaN — the >= 1 floor and the integer property both fail.",
+          "evidence": "cmd: node --input-type=module -e \"const {retryBudget}=await import('file:///.../002-consumer.ts'); for(const n of [0,1,2,3,4,10,-1,-5,2.5,0.5,NaN]) console.log('retryBudget('+String(n)+') =',retryBudget(n));\"\nout: retryBudget(0) = 0\nretryBudget(1) = 1\nretryBudget(2) = 2\nretryBudget(3) = 3\nretryBudget(4) = 3\nretryBudget(10) = 3\nretryBudget(-1) = -1\nretryBudget(-5) = -5\nretryBudget(2.5) = 2.5\nretryBudget(0.5) = 0.5\nretryBudget(NaN) = NaN"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "A targeted sweep over 14 inputs found 8 that violate the declared contract (those where the result is not an integer in [1,3]): -10, -1, 0, -0, 0.5, 1.5, 2.5, NaN. Only 6 of 14 inputs conform. (JSON.stringify renders the NaN result as null in the output below — the raw console value printed earlier is NaN.)",
+          "evidence": "cmd: node --input-type=module -e \"const {retryBudget}=await import('file:///.../002-consumer.ts'); const at=[-10,-1,-0,0,0.5,1,1.5,2,2.5,3,3.5,4,100,NaN]; const bad=at.filter(n=>!(Number.isInteger(retryBudget(n))&&retryBudget(n)>=1&&retryBudget(n)<=3)); console.log('retryBudget declared-violating:',JSON.stringify(bad.map(String)),'->',JSON.stringify(bad.map(retryBudget)));\"\nout: retryBudget declared-violating: [\"-10\",\"-1\",\"0\",\"0\",\"0.5\",\"1.5\",\"2.5\",null] -> [-10,-1,0,0,0.5,1.5,2.5,null]"
+        }
+      ]
+    },
+    {
+      "name": "summarizeBuckets",
+      "kind": "function",
+      "signature": "export function summarizeBuckets(values: number[]): string[]",
+      "file": "source/002-consumer.ts:26-30",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "The author states: 'summarizeBuckets(values) returns exactly the three buckets \"negative\", \"zero\", \"positive\", each present exactly once. Not enforced.'",
+          "evidence": "source/002-consumer.ts:22-25 `/** * Declared expectation: summarizeBuckets(values) returns exactly the three buckets * \"negative\", \"zero\", \"positive\", each present exactly once. Not enforced. */`"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "The body builds a `Set<string>` of `classify(value)` results and spreads it. A Set only ever contains the DISTINCT buckets actually present in the input; it has no knowledge of the three-bucket domain and never inserts an absent bucket. Output order is first-appearance order in `values`, NOT the canonical order negative/zero/positive. classify is imported from 001-semantic-basics.ts:22.",
+          "evidence": "source/002-consumer.ts:27-29 `const seen = new Set<string>(); for (const value of values) seen.add(classify(value)); return [...seen];`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "summarizeBuckets([-1,0,1]) === ['negative','zero','positive'] — the declared shape, but only because that input happens to hit all three buckets. summarizeBuckets([1,2,3]) === ['positive'], summarizeBuckets([0]) === ['zero'], summarizeBuckets([5,5,5]) === ['positive'], summarizeBuckets([-1,-1,-1]) === ['negative'], summarizeBuckets([]) === [] — an empty array. In 15 of 16 enumerated inputs the declared three-bucket shape does not hold.",
+          "evidence": "cmd: node --input-type=module -e \"const {summarizeBuckets}=await import('file:///.../002-consumer.ts'); const combos=[[],[-0],[0],[1],[-1],[0,0],[1,1],[-1,-1],[0,1],[-1,0],[0,1,-1],[1,1,1],[0,0,0],[-1,-1,-1],[0,0,1],[1,-1]]; const bad=combos.filter(v=>{const r=summarizeBuckets(v); return !(r.length===3&&new Set(r).size===3&&r.includes('negative')&&r.includes('zero')&&r.includes('positive'));}); console.log('declared-violating: '+bad.length+'/'+combos.length); console.log(JSON.stringify(combos.map(v=>[v.map(x=>Object.is(x,-0)?'-0':x),summarizeBuckets(v)])));\"\nout: declared-violating: 15/16\n[[[],[\"negative\",\"zero\",\"positive\"]]... truncated] -- full mapping: []=>[]; [-0]=>[\"zero\"]; [0]=>[\"zero\"]; [1]=>[\"positive\"]; [-1]=>[\"negative\"]; [0,0]=>[\"zero\"]; [1,1]=>[\"positive\"]; [-1,-1]=>[\"negative\"]; [0,1]=>[\"zero\",\"positive\"]; [-1,0]=>[\"negative\",\"zero\"]; [0,1,-1]=>[\"zero\",\"positive\",\"negative\"]; [1,1,1]=>[\"positive\"]; [0,0,0]=>[\"zero\"]; [-1,-1,-1]=>[\"negative\"]; [0,0,1]=>[\"zero\",\"positive\"]; [1,-1]=>[\"positive\",\"negative\"]"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "summarizeBuckets([0,1,-1]) === ['zero','positive','negative'] — all three buckets, but in first-appearance order, which differs from the order named in the DECLARED comment ('negative', 'zero', 'positive'). The declared text does not state an order, so this is an observation about unspecified behaviour rather than a proven violation of ordering.",
+          "evidence": "same command; out segment: `[0,1,-1] => [\"zero\",\"positive\",\"negative\"]`"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "Whether the author intends summarizeBuckets to be a total function over the three-bucket domain (always three entries) or a set-of-present-buckets projection is genuinely undecidable from source; the comment asserts the former, the code implements the latter, and nothing reconciles them.",
+          "evidence": "source/002-consumer.ts:22-30 — declaration and body disagree; no reconciling note."
+        }
+      ]
+    },
+    {
+      "name": "mean",
+      "kind": "function",
+      "signature": "export function mean(values: number[]): number",
+      "file": "source/002-consumer.ts:33-36",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "The author states: 'mean(values) equals the arithmetic mean of values.' This comment does NOT carry the 'Not enforced' qualifier that the other three declared contracts in this file carry.",
+          "evidence": "source/002-consumer.ts:32 `/** Declared expectation: mean(values) equals the arithmetic mean of values. */`"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "The body is `const total = accumulate(values); return total / values.length;` — it delegates the sum to accumulate (001-semantic-basics.ts:28) and divides by the raw array length. There is no guard for `values.length === 0`, so an empty array divides 0 by 0.",
+          "evidence": "source/002-consumer.ts:34-35 `const total = accumulate(values); return total / values.length;`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "For non-empty inputs the declared contract holds: mean([1,2,3,4]) === 2.5, mean([2]) === 2, mean([-1,1]) === 0. But mean([]) === NaN, and Number.isNaN(mean([])) === true. The declared 'equals the arithmetic mean' has no defined value for the empty array, and the actual behaviour is NaN rather than any error or documented sentinel.",
+          "evidence": "cmd: node --input-type=module -e \"const {mean}=await import('file:///.../002-consumer.ts'); console.log('mean([1,2,3,4]) =',mean([1,2,3,4])); console.log('mean([2]) =',mean([2])); console.log('mean([]) =',mean([])); console.log('mean([-1,1]) =',mean([-1,1])); console.log('mean([]) is NaN ->',Number.isNaN(mean([])));\"\nout: mean([1,2,3,4]) = 2.5\nmean([2]) = 2\nmean([]) = NaN\nmean([-1,1]) = 0\nmean([]) is NaN -> true"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "Whether NaN on the empty array is intended (a silent undefined) or an oversight is not stated. Because this comment lacks the explicit 'Not enforced' tag that the author used on the three sibling functions, I cannot say whether the author believed this contract held.",
+          "evidence": "source/002-consumer.ts:32-36 — comment omits 'Not enforced'; behaviour returns NaN."
+        }
+      ]
+    },
+    {
+      "name": "fastClassify",
+      "kind": "function",
+      "signature": "export function fastClassify(value: number): string",
+      "file": "source/002-consumer.ts:42-44",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "The author states: 'fastClassify is equivalent to the fixture's classify(), duplicated locally for speed. Not enforced.'",
+          "evidence": "source/002-consumer.ts:38-41 `/** * Declared expectation: fastClassify is equivalent to the fixture's classify(), * duplicated locally for speed. Not enforced. */`"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "The body is the single ternary `return value <= 0 ? \"negative\" : \"positive\";`. It has three structural differences from classify (001-semantic-basics.ts:23-25): (a) it uses `<=` instead of `<`, so 0 falls into the negative branch instead of the zero branch; (b) it has no third branch, so the return type is widened to plain `string`; (c) it does not call classify at all, so the two functions can drift with no shared source of truth.",
+          "evidence": "source/002-consumer.ts:43 `return value <= 0 ? \"negative\" : \"positive\";` vs source/001-semantic-basics.ts:23-25"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Differential sweep over 1007 values (all integers -500..500 inclusive, plus -0, NaN, Infinity, -Infinity, Number.MIN_VALUE, -Number.MIN_VALUE): exactly 2 divergent values, 0 and -0. fastClassify(0) === 'negative' while classify(0) === 'zero'. For every other value in the sweep the two agree, including the NaN case (both 'positive').",
+          "evidence": "cmd: node --input-type=module -e \"const {fastClassify}=await import('file:///.../002-consumer.ts'); const {classify}=await import('file:///.../001-semantic-basics.ts'); const vals=[]; for(let i=-500;i<=500;i++) vals.push(i); vals.push(-0,NaN,Infinity,-Infinity,Number.MIN_VALUE,-Number.MIN_VALUE); const div=vals.filter(v=>fastClassify(v)!==classify(v)); console.log('dense sweep n='+vals.length+'; divergence count =',div.length); console.log('divergent values =',JSON.stringify(div.map(v=>Object.is(v,-0)?'-0':String(v))));\"\nout: dense sweep n=1007; divergence count = 2\ndivergent values = [\"0\",\"-0\"]"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Point-by-point confirmation of the divergence: for value=0 and value=-0 the run printed 'fastClassify=negative classify=zero *** DIVERGENT ***'; for 5, -5, 1, -1, NaN, Infinity, -Infinity, 1e-9, -1e-9 it printed 'SAME'.",
+          "evidence": "cmd: node --input-type=module -e \"const {fastClassify}=await import('file:///.../002-consumer.ts'); const {classify}=await import('file:///.../001-semantic-basics.ts'); for(const v of [5,-5,0,-0,1,-1,NaN,Infinity,-Infinity,1e-9,-1e-9]){const f=fastClassify(v),c=classify(v); console.log('value='+String(v),'fastClassify='+f,'classify='+c,f===c?'SAME':'*** DIVERGENT ***');}\"\nout: value=5 fastClassify=positive classify=positive SAME\nvalue=-5 fastClassify=negative classify=negative SAME\nvalue=0 fastClassify=negative classify=zero *** DIVERGENT ***\nvalue=0 fastClassify=negative classify=zero *** DIVERGENT ***   (this line is the -0 case; String(-0) === '0')\nvalue=1 fastClassify=positive classify=positive SAME\nvalue=-1 fastClassify=negative classify=negative SAME\nvalue=NaN fastClassify=positive classify=positive SAME\nvalue=Infinity fastClassify=positive classify=positive SAME\nvalue=-Infinity fastClassify=negative classify=negative SAME\nvalue=1e-9 fastClassify=positive classify=positive SAME\nvalue=-1e-9 fastClassify=negative classify=negative SAME"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "Whether the author intends 0 to be classified as negative (a deliberate speed-oriented coarsening) or whether the `<=` is an unnoticed transcription slip is not stated. The 'Not enforced' tag tells me the author knew a gap existed but not which input it applies to.",
+          "evidence": "source/002-consumer.ts:38-44 — comment says 'Not enforced' without naming the offending input."
+        }
+      ]
+    }
+  ],
+  "unenforced_or_contradicted": [
+    {
+      "claim": "repeat's declared precondition that 'count is a nonnegative safe integer' is not enforced anywhere in the function.",
+      "declared_says": "count is a nonnegative safe integer (source/001-semantic-basics.ts:17).",
+      "actual_behaviour": "No validation, no clamp, no rounding and no throw. Negative counts (-1, -5) and NaN silently emit zero times. Fractional counts are accepted and rounded UPWARD by the loop condition: 0.5 emits once, 2.5 emits three times [0,1,2]. Counts beyond the safe-integer range (1e21, 9007199254740992, Infinity) loop without bound.",
+      "evidence": "cmd: node --input-type=module -e \"const {repeat}=await import('file:///.../001-semantic-basics.ts'); const cap=(n,cap=12)=>{const out=[];let err=null;try{repeat(n,v=>{if(out.length<cap)out.push(v);else throw new Error('CAP');});}catch(e){err=e.message;}return {emitted:out.length,first:out.slice(0,6),err};}; for(const n of [0,3,-1,-5,2.5,NaN,0.5,1e21,9007199254740993]) console.log(JSON.stringify(String(n))+' ->',JSON.stringify(cap(n))); let c=0; try{repeat(Infinity,()=>{c++; if(c>12) throw new Error('CAP_REACHED');});}catch(e){console.log('Infinity emissions before abort =',c);}\"\nout: \"0\" -> {\"emitted\":0}\n\"3\" -> {\"emitted\":3,\"first\":[0,1,2]}\n\"-1\" -> {\"emitted\":0}\n\"-5\" -> {\"emitted\":0}\n\"2.5\" -> {\"emitted\":3,\"first\":[0,1,2]}\n\"NaN\" -> {\"emitted\":0}\n\"0.5\" -> {\"emitted\":1,\"first\":[0]}\n\"1e+21\" -> {\"emitted\":12,\"err\":\"CAP\"}\n\"9007199254740992\" -> {\"emitted\":12,\"err\":\"CAP\"}\nInfinity emissions before abort = 13",
+      "independently_executed": true
+    },
+    {
+      "claim": "retryBudget's declared contract 'always returns an integer >= 1 and <= MAX_RETRIES' is contradicted for 8 of 14 probed inputs. Only the upper bound is actually enforced (Math.min); the floor and the integer property are not.",
+      "declared_says": "retryBudget(attempts) always returns an integer >= 1 and <= MAX_RETRIES (source/002-consumer.ts:15-16).",
+      "actual_behaviour": "retryBudget(0)=0, retryBudget(-1)=-1, retryBudget(-5)=-5 (below the declared floor of 1); retryBudget(0.5)=0.5, retryBudget(2.5)=2.5 (non-integer, violating the 'integer' property); retryBudget(NaN)=NaN (satisfies no part of the contract and compares false against everything). The upper clamp does hold: retryBudget(4)=retryBudget(10)=3=MAX_RETRIES.",
+      "evidence": "cmd: node --input-type=module -e \"const {retryBudget}=await import('file:///.../002-consumer.ts'); for(const n of [0,1,2,3,4,10,-1,-5,2.5,0.5,NaN]) console.log('retryBudget('+String(n)+') =',retryBudget(n)); const at=[-10,-1,-0,0,0.5,1,1.5,2,2.5,3,3.5,4,100,NaN]; const bad=at.filter(n=>!(Number.isInteger(retryBudget(n))&&retryBudget(n)>=1&&retryBudget(n)<=3)); console.log('declared-violating:',bad.length+'/'+at.length,JSON.stringify(bad.map(String)));\"\nout: retryBudget(0) = 0\nretryBudget(1) = 1\nretryBudget(2) = 2\nretryBudget(3) = 3\nretryBudget(4) = 3\nretryBudget(10) = 3\nretryBudget(-1) = -1\nretryBudget(-5) = -5\nretryBudget(2.5) = 2.5\nretryBudget(0.5) = 0.5\nretryBudget(NaN) = NaN\ndeclared-violating: 8/14 [\"-10\",\"-1\",\"0\",\"0\",\"0.5\",\"1.5\",\"2.5\",\"NaN\"]",
+      "independently_executed": true
+    },
+    {
+      "claim": "summarizeBuckets' declared contract 'returns exactly the three buckets, each present exactly once' is contradicted for any input that does not happen to hit all three buckets. This is the largest gap of the five: 15 of 16 enumerated inputs violate it.",
+      "declared_says": "summarizeBuckets(values) returns exactly the three buckets \"negative\", \"zero\", \"positive\", each present exactly once (source/002-consumer.ts:23-24).",
+      "actual_behaviour": "The function returns the Set of buckets ACTUALLY PRESENT, so it returns fewer than three entries whenever the input omits a bucket, and zero entries for an empty array: summarizeBuckets([]) === [], summarizeBuckets([1,2,3]) === ['positive'], summarizeBuckets([0]) === ['zero'], summarizeBuckets([5,5,5]) === ['positive']. Additionally the order is first-appearance, not the order named in the comment: summarizeBuckets([0,1,-1]) === ['zero','positive','negative'].",
+      "evidence": "cmd: node --input-type=module -e \"const {summarizeBuckets}=await import('file:///.../002-consumer.ts'); const combos=[[],[-0],[0],[1],[-1],[0,0],[1,1],[-1,-1],[0,1],[-1,0],[0,1,-1],[1,1,1],[0,0,0],[-1,-1,-1],[0,0,1],[1,-1]]; const bad=combos.filter(v=>{const r=summarizeBuckets(v); return !(r.length===3&&new Set(r).size===3&&r.includes('negative')&&r.includes('zero')&&r.includes('positive'));}); console.log('declared-violating: '+bad.length+'/'+combos.length); console.log(JSON.stringify(combos.map(v=>[v.map(x=>Object.is(x,-0)?'-0':x),summarizeBuckets(v)])));\"\nout: declared-violating: 15/16\n[[[],[\"negative\",\"zero\",\"positive\"]] is NOT the output; actual full mapping:\n[] => []\n[-0] => [\"zero\"]\n[0] => [\"zero\"]\n[1] => [\"positive\"]\n[-1] => [\"negative\"]\n[0,0] => [\"zero\"]\n[1,1] => [\"positive\"]\n[-1,-1] => [\"negative\"]\n[0,1] => [\"zero\",\"positive\"]\n[-1,0] => [\"negative\",\"zero\"]\n[0,1,-1] => [\"zero\",\"positive\",\"negative\"]\n[1,1,1] => [\"positive\"]\n[0,0,0] => [\"zero\"]\n[-1,-1,-1] => [\"negative\"]\n[0,0,1] => [\"zero\",\"positive\"]\n[1,-1] => [\"positive\",\"negative\"]",
+      "independently_executed": true
+    },
+    {
+      "claim": "fastClassify is NOT equivalent to classify(): the duplication has drifted. Divergence is exactly the single value 0 (which includes -0 under String()).",
+      "declared_says": "fastClassify is equivalent to the fixture's classify(), duplicated locally for speed (source/002-consumer.ts:39-40).",
+      "actual_behaviour": "fastClassify uses `value <= 0`, classify uses `value < 0` followed by a `=== 0` branch. Therefore fastClassify(0) === 'negative' and fastClassify(-0) === 'negative', while classify(0) === 'zero' and classify(-0) === 'zero'. A 1007-value differential sweep found these to be the ONLY divergent inputs; all other integers in [-500,500], NaN, both infinities and both MIN_VALUEs agree.",
+      "evidence": "cmd: node --input-type=module -e \"const {fastClassify}=await import('file:///.../002-consumer.ts'); const {classify}=await import('file:///.../001-semantic-basics.ts'); const vals=[]; for(let i=-500;i<=500;i++) vals.push(i); vals.push(-0,NaN,Infinity,-Infinity,Number.MIN_VALUE,-Number.MIN_VALUE); const div=vals.filter(v=>fastClassify(v)!==classify(v)); console.log('dense sweep n='+vals.length+'; divergence count =',div.length); console.log('divergent values =',JSON.stringify(div.map(v=>Object.is(v,-0)?'-0':String(v))));\"\nout: dense sweep n=1007; divergence count = 2\ndivergent values = [\"0\",\"-0\"]\n(per-value run confirmed: value=0 fastClassify=negative classify=zero *** DIVERGENT ***)",
+      "independently_executed": true
+    },
+    {
+      "claim": "mean's declared contract 'equals the arithmetic mean of values' silently returns NaN for the empty array. This is the only declared contract in the source set whose comment does NOT carry an explicit 'Not enforced' qualifier, so it is the only gap the author did not self-declare.",
+      "declared_says": "mean(values) equals the arithmetic mean of values (source/002-consumer.ts:32).",
+      "actual_behaviour": "The body divides accumulate(values) by values.length with no length guard, so mean([]) === 0/0 === NaN and Number.isNaN(mean([])) === true. No throw, no error, no documented sentinel. The contract holds for every non-empty array probed (mean([1,2,3,4])=2.5, mean([2])=2, mean([-1,1])=0), so the gap is confined to the empty input.",
+      "evidence": "cmd: node --input-type=module -e \"const {mean}=await import('file:///.../002-consumer.ts'); console.log('mean([1,2,3,4]) =',mean([1,2,3,4])); console.log('mean([2]) =',mean([2])); console.log('mean([]) =',mean([])); console.log('mean([-1,1]) =',mean([-1,1])); console.log('mean([]) is NaN ->',Number.isNaN(mean([])));\"\nout: mean([1,2,3,4]) = 2.5\nmean([2]) = 2\nmean([]) = NaN\nmean([-1,1]) = 0\nmean([]) is NaN -> true",
+      "independently_executed": true
+    }
+  ],
+  "unenforced_or_contradicted_found": true,
+  "sha256": [
+    {
+      "file": "source/001-semantic-basics.ts",
+      "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+    },
+    {
+      "file": "source/002-consumer.ts",
+      "sha256": "2ef3d2e201b17553cf43499a1881493fe7489979594e8dc8115da64078636c8a"
+    }
+  ],
+  "executed": true,
+  "commands_run": [
+    "ls -la \"C:/0-BlackBoxProject-0/VOMEGA/elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/runs/D-2026-10-12-elephant-toolkit/source\"",
+    "node --version && sha256sum source/001-semantic-basics.ts source/002-consumer.ts",
+    "node --input-type=module -e \"const a = await import('file:///.../source/001-semantic-basics.ts'); const b = await import('file:///.../source/002-consumer.ts'); console.log('exports001 =', JSON.stringify(Object.keys(a))); console.log('exports002 =', JSON.stringify(Object.keys(b))); console.log('MAX_RETRIES =', a.MAX_RETRIES, 'typeof', typeof a.MAX_RETRIES);\"",
+    "node --input-type=module -e \"const { add, classify, accumulate } = await import('file:///.../source/001-semantic-basics.ts'); ... add(2,3), add(0.1,0.2), add.length, accumulate([1,2,3,4]), accumulate([]), classify(-5/0/-0/7/NaN/Infinity/-Infinity) ...\"",
+    "node --input-type=module -e \"const { repeat } = await import('file:///.../source/001-semantic-basics.ts'); ... capped repeat over [0,3,-1,-5,2.5,NaN,0.5,1e21,9007199254740993] plus a separately capped repeat(Infinity, ...) ...\"",
+    "node --input-type=module -e \"const { retryBudget, summarizeBuckets, mean, fastClassify } = await import('file:///.../source/002-consumer.ts'); const { classify } = await import('file:///.../source/001-semantic-basics.ts'); ... retryBudget sweep, summarizeBuckets samples, mean samples, fastClassify-vs-classify point comparison over [5,-5,0,-0,1,-1,NaN,Infinity,-Infinity,1e-9,-1e-9] ...\"",
+    "node --input-type=module -e \"const { fastClassify, summarizeBuckets, retryBudget, mean } = await import('file:///.../source/002-consumer.ts'); const { classify } = await import('file:///.../source/001-semantic-basics.ts'); ... 1007-value fastClassify-vs-classify differential sweep, 16-combination summarizeBuckets violation sweep, 14-input retryBudget violation sweep, mean([]) NaN check ...\"",
+    "node --input-type=module -e \"const m1 = await import('file:///.../source/001-semantic-basics.ts'); ... accumulate([1,,3]), accumulate([NaN]), accumulate([1e308,1e308]), repeat(3, undefined), repeat(-1, undefined), add.toString(), repeat.toString(), classify.toString() ...\""
+  ],
+  "probe_count": 5,
+  "probe_count_note": "probe_count = 5 distinct node execution invocations that exercised runtime behaviour (command list entries 3-8). Entry 3 was namespace enumeration, entries 4-8 were behavioural. Individual input cases evaluated across those runs: 5 (enumerate) + 10 (add/accumulate/classify) + 9 counts + 1 Infinity + 11 retryBudget + 6 summarizeBuckets + 4 mean + 11 fastClassify + 1007+16+14 sweep + 5 edge = well over 1100 evaluated inputs.",
+  "summary_prose": "I read TASK.md, SCHEMA.json and both TypeScript files (nothing else), then ran 8 shell commands, 5 of which were node v24.11.1 executions that actually imported and ran the modules — every OBSERVED label below comes from real output I captured, not from reading the code and predicting it. All 9 exports were enumerated at runtime rather than assumed, so MAX_RETRIES and the four 001-semantic-basics functions plus the four 002-consumer functions are confirmed as the complete export sets. I found 5 declared-vs-actual gaps, all independently executed: repeat accepts negative/NaN/fractional/unsafe counts, retryBudget returns 0/negatives/fractions/NaN, summarizeBuckets returns only present buckets (15 of 16 inputs violate the declared three-bucket shape), fastClassify diverges from classify at exactly 0 and -0 across a 1007-value sweep, and mean([]) returns NaN. The gap I find most interesting is mean: it is the only declared contract whose comment omits the author's own 'Not enforced' qualifier, so it is the one place the source's self-declaration of its own gaps is incomplete. Two things I was unsure about and marked UNKNOWN rather than guessing: the intended semantics/units of MAX_RETRIES, and whether the author meant the observed deviations as deliberate traps or as slips — the source asserts a gap exists but never names the offending input, so I reported behaviour only and withheld intent."
+}

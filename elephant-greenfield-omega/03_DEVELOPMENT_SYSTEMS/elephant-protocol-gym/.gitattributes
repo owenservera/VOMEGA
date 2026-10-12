@@ -1,0 +1,11 @@
+# Elephant Gym evidence must be byte-exact.
+#
+# Run receipts attest every artifact by sha256, and tools/registry.mjs re-hashes those
+# files to detect silent mutation. With core.autocrlf=true, git rewrites LF to CRLF on
+# checkout — which would change every hash and make a faithful checkout report 88
+# artifacts as tampered. `-text` disables conversion entirely, so the bytes git stores
+# are the bytes a receipt attests, on every machine and every clone.
+runs/** -text
+
+# Receipts and declarations are machine-read JSON; the same reasoning applies.
+runs/receipts/** -text

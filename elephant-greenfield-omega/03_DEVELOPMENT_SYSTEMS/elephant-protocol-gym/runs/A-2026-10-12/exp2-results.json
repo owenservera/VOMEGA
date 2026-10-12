@@ -1,0 +1,35 @@
+{
+  "experiment": "EXP2 — does a self-description survive a body-only semantic mutation?",
+  "evidenceClass": "TESTED",
+  "mutation": "return a + b;  ->  return a * b;",
+  "mutationChangesAnyTypeSignature": false,
+  "bothVersionsTypecheckUnderStrict": true,
+  "channelT_typeDerived": {
+    "before": "/**\n * Elephant Protocol Gym — tiny conventional TypeScript fixture.\n *\n * Intentional research note: the claimed contract on repeat is NOT enforced.\n * This discrepancy exists so agents can discover how to distinguish\n * author's meaning from mechanically established or tested behavior.\n *\n * No semantic annotation syntax is prescribed.\n */\nexport declare const MAX_RETRIES = 3;\nexport declare function add(a: number, b: number): number;\n/** Declared expectation: count is a nonnegative safe integer. Not enforced. */\nexport declare function repeat(count: number, emit: (value: number) => void): void;\nexport declare function classify(value: number): \"negative\" | \"zero\" | \"positive\";\nexport declare function accumulate(values: number[]): number;",
+    "after": "/**\n * Elephant Protocol Gym — tiny conventional TypeScript fixture.\n *\n * Intentional research note: the claimed contract on repeat is NOT enforced.\n * This discrepancy exists so agents can discover how to distinguish\n * author's meaning from mechanically established or tested behavior.\n *\n * No semantic annotation syntax is prescribed.\n */\nexport declare const MAX_RETRIES = 3;\nexport declare function add(a: number, b: number): number;\n/** Declared expectation: count is a nonnegative safe integer. Not enforced. */\nexport declare function repeat(count: number, emit: (value: number) => void): void;\nexport declare function classify(value: number): \"negative\" | \"zero\" | \"positive\";\nexport declare function accumulate(values: number[]): number;",
+    "identical": true,
+    "verdict": "UNDETECTED — every type-derived description is byte-identical after the mutation"
+  },
+  "channelO_observed": {
+    "before": [
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "after": [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    "identical": false,
+    "verdict": "DETECTED — witnessed divergence"
+  },
+  "sourceSha256": {
+    "original": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+    "mutated": "586aeaf1b7f28ce131d8e4f436b758442106a6830c17736dd123b95ec72fd4e8"
+  }
+}

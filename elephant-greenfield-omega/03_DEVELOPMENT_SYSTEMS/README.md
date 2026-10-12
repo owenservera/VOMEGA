@@ -1,8 +1,10 @@
 # 03 — Actual Independent Development Systems
 
-**Elephant Protocol Gym governing policy:** [Owner-approved Decisions 1–4](elephant-protocol-gym/LAUNCH_POLICY.md). Its short shared launch contract supersedes any more prescriptive readings of the individual exploratory run descriptions; the track remains prepared, not launched.
+**Elephant Protocol Gym governing policy:** [Owner-approved Decisions 1–4](elephant-protocol-gym/LAUNCH_POLICY.md). Its short shared launch contract supersedes any more prescriptive readings of the individual exploratory run descriptions.
 
-[Elephant Protocol Gym](elephant-protocol-gym/README.md) is a prepared four-arm semantic protocol conditioning experiment. It has not been launched, and does not change existing sessions or prescribe technical architecture.
+> **EXECUTION STATE — corrected 2026-10-12.** This track is **no longer "prepared, not launched."** Round 0 (arms A–D) and a Round 1 reviewer synthesis executed on **2026-10-12** at pinned commit `1199b38`, plus a follow-up master-assembly execution pass. Evidence, run notes, receipts and reproductions live in [`elephant-protocol-gym/runs/`](elephant-protocol-gym/runs/). **Nothing was ratified and no arm result was promoted to canon** — dispositions route through [`../DECISION_PROCESS_TRACKER.md`](../DECISION_PROCESS_TRACKER.md). A later prompt that repeats "prepared, not launched" is stale and must not be trusted over `runs/`.
+
+[Elephant Protocol Gym](elephant-protocol-gym/README.md) is a four-arm semantic protocol conditioning experiment. Round 0 and Round 1 have now been executed; the experiment remains exploratory and does not change existing sessions or prescribe technical architecture.
 
 **This is not a folder of architecture authors.** These are the real agentic execution environments that design, test, code, dogfood, benchmark and emit versioned capability-pack portfolios. A design proposal is a seed; a development system is the running or independently launchable research/build agent and its isolated state.
 

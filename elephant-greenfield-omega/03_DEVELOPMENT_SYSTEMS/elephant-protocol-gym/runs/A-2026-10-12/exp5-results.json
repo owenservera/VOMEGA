@@ -1,0 +1,63 @@
+{
+  "experiment": "EXP5 — does repeat() fail atomically under a throwing callback?",
+  "evidenceClass": "OBSERVED",
+  "sourceSha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+  "compiler": "typescript@6.0.3",
+  "rows": [
+    {
+      "callbackThrowsAtValue": 0,
+      "requestedCount": 100,
+      "valuesActuallyDelivered": 0,
+      "deliveredTail": [],
+      "threw": "callback refused value 0",
+      "partialEffect": false,
+      "callerRegainedControl": true
+    },
+    {
+      "callbackThrowsAtValue": 1,
+      "requestedCount": 100,
+      "valuesActuallyDelivered": 1,
+      "deliveredTail": [
+        0
+      ],
+      "threw": "callback refused value 1",
+      "partialEffect": true,
+      "callerRegainedControl": true
+    },
+    {
+      "callbackThrowsAtValue": 2,
+      "requestedCount": 100,
+      "valuesActuallyDelivered": 2,
+      "deliveredTail": [
+        0,
+        1
+      ],
+      "threw": "callback refused value 2",
+      "partialEffect": true,
+      "callerRegainedControl": true
+    },
+    {
+      "callbackThrowsAtValue": 99,
+      "requestedCount": 100,
+      "valuesActuallyDelivered": 99,
+      "deliveredTail": [
+        96,
+        97,
+        98
+      ],
+      "threw": "callback refused value 99",
+      "partialEffect": true,
+      "callerRegainedControl": true
+    }
+  ],
+  "summary": {
+    "partialEffectsObserved": 3,
+    "detail": [
+      "callback threw at value 1, yet 1 values had already been delivered",
+      "callback threw at value 2, yet 2 values had already been delivered",
+      "callback threw at value 99, yet 99 values had already been delivered"
+    ],
+    "verdict": "NOT ATOMIC"
+  },
+  "consequence": "repeat() has no rollback. A caller that supplies a partially-rejecting callback receives a partial effect and an exception, with no way to tell from the return path which values landed. Nothing in the file declares this, so a description built from comments or types alone will not warn a caller."
+}

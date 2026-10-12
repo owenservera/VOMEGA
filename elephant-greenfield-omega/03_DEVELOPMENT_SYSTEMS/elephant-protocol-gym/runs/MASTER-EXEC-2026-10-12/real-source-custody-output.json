@@ -1,0 +1,163 @@
+{
+  "schema": "elephant-gym.master-exec.real-source-custody.v1",
+  "pinned_commit": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+  "head_commit": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+  "head_matches_pin": true,
+  "repo_root": "C:\\0-BlackBoxProject-0\\VOMEGA",
+  "cohort": [
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/symbols.ts",
+      "exists": true,
+      "working_tree_sha256": "8f044e6546113a9efc65d0b8560eee85668e0fe4ce9a52969869410f2e63500e",
+      "working_tree_bytes": 4779,
+      "git_tracked": true,
+      "pinned_blob_sha256": "8f044e6546113a9efc65d0b8560eee85668e0fe4ce9a52969869410f2e63500e",
+      "pinned_blob_bytes": 4779,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/lexer.ts",
+      "exists": true,
+      "working_tree_sha256": "ac2d93d0abf764401cb8c9dfd1da89ea361f42823674cbaac771759ec4ddfe6a",
+      "working_tree_bytes": 5634,
+      "git_tracked": true,
+      "pinned_blob_sha256": "ac2d93d0abf764401cb8c9dfd1da89ea361f42823674cbaac771759ec4ddfe6a",
+      "pinned_blob_bytes": 5634,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/types.ts",
+      "exists": true,
+      "working_tree_sha256": "f44cfb653efd67582827a493ae39173a06c98b0494d2511a37b02fa140e42d59",
+      "working_tree_bytes": 12952,
+      "git_tracked": true,
+      "pinned_blob_sha256": "f44cfb653efd67582827a493ae39173a06c98b0494d2511a37b02fa140e42d59",
+      "pinned_blob_bytes": 12952,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/index.ts",
+      "exists": true,
+      "working_tree_sha256": "1ffcd9c7d75ebc0609602c83eca07ea6b7ddb1e8e67b7388c9385e3f6440a399",
+      "working_tree_bytes": 2998,
+      "git_tracked": true,
+      "pinned_blob_sha256": "1ffcd9c7d75ebc0609602c83eca07ea6b7ddb1e8e67b7388c9385e3f6440a399",
+      "pinned_blob_bytes": 2998,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/interpret.ts",
+      "exists": true,
+      "working_tree_sha256": "141d5cc169058caea3f47793ecf9e8d3f6f53d695588610b48b37de1b70b882f",
+      "working_tree_bytes": 11124,
+      "git_tracked": true,
+      "pinned_blob_sha256": "141d5cc169058caea3f47793ecf9e8d3f6f53d695588610b48b37de1b70b882f",
+      "pinned_blob_bytes": 11124,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/frames.ts",
+      "exists": true,
+      "working_tree_sha256": "d71dcd5b16fd6a96473a3a86f33a58e7fca8026601de826f5a0c70195956fb8b",
+      "working_tree_bytes": 8127,
+      "git_tracked": true,
+      "pinned_blob_sha256": "d71dcd5b16fd6a96473a3a86f33a58e7fca8026601de826f5a0c70195956fb8b",
+      "pinned_blob_bytes": 8127,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/grammar.ts",
+      "exists": true,
+      "working_tree_sha256": "e19b82788e8531642e6482c0432bde4c7ef6878d887e5d2f65a7a93676fb24fc",
+      "working_tree_bytes": 22836,
+      "git_tracked": true,
+      "pinned_blob_sha256": "e19b82788e8531642e6482c0432bde4c7ef6878d887e5d2f65a7a93676fb24fc",
+      "pinned_blob_bytes": 22836,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/recognize.ts",
+      "exists": true,
+      "working_tree_sha256": "1fd790075e8a8fcb54e42f9529a2da4988f913025376231c094ba7cb93dd2f16",
+      "working_tree_bytes": 17936,
+      "git_tracked": true,
+      "pinned_blob_sha256": "1fd790075e8a8fcb54e42f9529a2da4988f913025376231c094ba7cb93dd2f16",
+      "pinned_blob_bytes": 17936,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/ground.ts",
+      "exists": true,
+      "working_tree_sha256": "18f86ecf486e9b5defbf35c675ba7b4ff9d09e199794c305130fef2f140aa73c",
+      "working_tree_bytes": 7527,
+      "git_tracked": true,
+      "pinned_blob_sha256": "18f86ecf486e9b5defbf35c675ba7b4ff9d09e199794c305130fef2f140aa73c",
+      "pinned_blob_bytes": 7527,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/project.ts",
+      "exists": true,
+      "working_tree_sha256": "87a85d0e8011b4f9753d971d864e0b48c635f68ea1f5f8ae709b983f3827725d",
+      "working_tree_bytes": 4240,
+      "git_tracked": true,
+      "pinned_blob_sha256": "87a85d0e8011b4f9753d971d864e0b48c635f68ea1f5f8ae709b983f3827725d",
+      "pinned_blob_bytes": 4240,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/src/text.ts",
+      "exists": true,
+      "working_tree_sha256": "4045ef51cf5bce20418818311dba6ac8d0a16407a5c6e0fa7dfbad3439608cbf",
+      "working_tree_bytes": 3449,
+      "git_tracked": true,
+      "pinned_blob_sha256": "4045ef51cf5bce20418818311dba6ac8d0a16407a5c6e0fa7dfbad3439608cbf",
+      "pinned_blob_bytes": 3449,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    },
+    {
+      "rel": "omega-baseline/plugins/vivim-nlcl-pure/package.json",
+      "exists": true,
+      "working_tree_sha256": "1eea13c5df40ffbd8f41de3d5f88600c20241903d16a890fd7a6a203c2c917a6",
+      "working_tree_bytes": 376,
+      "git_tracked": true,
+      "pinned_blob_sha256": "1eea13c5df40ffbd8f41de3d5f88600c20241903d16a890fd7a6a203c2c917a6",
+      "pinned_blob_bytes": 376,
+      "matches_pinned_commit": true,
+      "custody": "CUSTODY_OK"
+    }
+  ],
+  "private_artifacts": [
+    {
+      "rel": "Elephant_Dogfood_Source_Seed_v2_2026-10-11.zip",
+      "present": false,
+      "status": "UNAVAILABLE_NOT_SUPPLIED"
+    },
+    {
+      "rel": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/dogfood-zai/source",
+      "present": false,
+      "status": "UNAVAILABLE_NOT_SUPPLIED"
+    }
+  ],
+  "summary": {
+    "cohort_total": 12,
+    "custody_ok": 12,
+    "uncommitted_drift": 0,
+    "missing": 0,
+    "cohort_sha256_concat": "f052ca28f10437ca3c35632ea76dd47c32acc27031fa4cf20ef7377e3edeb30e",
+    "real_source_available": true,
+    "private_seed_supplied": false,
+    "verdict": "REAL_SOURCE_COHORT_CUSTODY_OK"
+  }
+}

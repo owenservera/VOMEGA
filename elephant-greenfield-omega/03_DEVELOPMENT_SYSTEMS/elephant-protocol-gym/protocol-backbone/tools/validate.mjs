@@ -14,7 +14,7 @@ export function validate({root=home}={}){
   const errors=[],warnings=[];
   const load=p=>JSON.parse(readFileSync(join(root,p),'utf8'));
   const registry=load('registry.json');
-  if(registry.schema!=='epg.registry/0.1')errors.push('registry schema mismatch');
+  if(registry.schema!=='epg.registry/0.2')errors.push('registry schema mismatch: '+registry.schema);
   const ids=registry.protocols.map(p=>p.id);uniq(ids,'protocol',errors);
   uniq(registry.assets.map(a=>a.id),'asset',errors);
   const protocols=[];

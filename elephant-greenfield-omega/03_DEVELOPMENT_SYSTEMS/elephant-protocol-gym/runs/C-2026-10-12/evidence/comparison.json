@@ -1,0 +1,460 @@
+{
+  "subject": "repeat",
+  "generatedBy": "probe/compare.mjs",
+  "Q1_symbol": {
+    "v0": {
+      "tool": "rg -n repeat fixture/001-semantic-basics.ts",
+      "rawOutput": [
+        "4: * Intentional research note: the claimed contract on repeat is NOT enforced.\r",
+        "18:export function repeat(count: number, emit: (value: number) => void): void {"
+      ],
+      "provenance": "git-tracked file, caller must pin the commit themselves",
+      "separatesClaimFromWitness": false,
+      "contradictionSurfaced": false,
+      "note": "rg finds the token. It does NOT know the doc comment contradicts behaviour."
+    },
+    "v1": {
+      "status": "OK",
+      "queried": "repeat",
+      "known": true,
+      "kind": "function",
+      "signature": "repeat(count: number, emit: (value: number) => void): void",
+      "line": 18,
+      "evidence": {
+        "sourcePin": "fe0c651e51936074",
+        "file": "C:\\0-BlackBoxProject-0\\VOMEGA\\elephant-greenfield-omega\\03_DEVELOPMENT_SYSTEMS\\elephant-protocol-gym\\fixture\\001-semantic-basics.ts",
+        "basis": "lexical-scan"
+      }
+    },
+    "v2": {
+      "verdict": "TRUE",
+      "subject": "repeat",
+      "predicate": "exists",
+      "value": {
+        "kind": "function",
+        "signature": "repeat(count: number, emit: (value: number) => void): void",
+        "line": 18
+      },
+      "evidence": {
+        "sourcePin": "fe0c651e51936074",
+        "basis": "lexical-scan"
+      }
+    }
+  },
+  "Q2_explanation": {
+    "v1": {
+      "status": "OK",
+      "queried": "repeat",
+      "known": true,
+      "claimed": {
+        "text": "Declared expectation: count is a nonnegative safe integer. Not enforced.",
+        "epistemicStatus": "CLAIMED_BY_AUTHOR_NOT_MECHANICALLY_VERIFIED"
+      },
+      "observed": [
+        {
+          "probe": "repeat(3)",
+          "observed": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "probe": "repeat(0)",
+          "observed": []
+        },
+        {
+          "probe": "repeat(-1)  [declared: nonnegative integer]",
+          "observed": []
+        },
+        {
+          "probe": "repeat(-5)  [declared: nonnegative integer]",
+          "observed": []
+        },
+        {
+          "probe": "repeat(2.5) [declared: safe integer]",
+          "observed": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "probe": "repeat(0.5) [declared: safe integer]",
+          "observed": [
+            0
+          ]
+        },
+        {
+          "probe": "repeat(NaN) [declared: safe integer]",
+          "observed": []
+        },
+        {
+          "probe": "repeat(3.7) [declared: safe integer]",
+          "observed": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "epistemicWarning": "The claim above is AUTHOR-ASSERTED. Only `observed` entries are witnessed by execution.",
+      "evidence": {
+        "sourcePin": "fe0c651e51936074",
+        "executor": "node v24.11.1",
+        "basis": "compiled-and-executed"
+      }
+    },
+    "v2": {
+      "query": "explanation",
+      "answer": {
+        "documented": {
+          "verdict": "TRUE",
+          "subject": "repeat",
+          "predicate": "documented",
+          "value": "Declared expectation: count is a nonnegative safe integer. Not enforced.",
+          "epistemicStatus": "CLAIMED_BY_AUTHOR_NOT_MECHANICALLY_VERIFIED",
+          "evidence": {
+            "sourcePin": "fe0c651e51936074",
+            "basis": "doc-comment"
+          }
+        },
+        "witnessed": {
+          "verdict": "TRUE",
+          "subject": "repeat",
+          "predicate": "witnessed",
+          "property": "any-behaviour",
+          "observations": [
+            {
+              "probe": "repeat(3)",
+              "observed": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "probe": "repeat(0)",
+              "observed": []
+            },
+            {
+              "probe": "repeat(-1)  [declared: nonnegative integer]",
+              "observed": []
+            },
+            {
+              "probe": "repeat(-5)  [declared: nonnegative integer]",
+              "observed": []
+            },
+            {
+              "probe": "repeat(2.5) [declared: safe integer]",
+              "observed": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "probe": "repeat(0.5) [declared: safe integer]",
+              "observed": [
+                0
+              ]
+            },
+            {
+              "probe": "repeat(NaN) [declared: safe integer]",
+              "observed": []
+            },
+            {
+              "probe": "repeat(3.7) [declared: safe integer]",
+              "observed": [
+                0,
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "evidence": {
+            "sourcePin": "fe0c651e51936074",
+            "executor": "node v24.11.1",
+            "basis": "execution"
+          }
+        },
+        "composition": "TRUE(exists) ∧ TRUE(documented)",
+        "reading": "Existence is witnessed by scan; meaning is author-claimed unless witnessed."
+      }
+    }
+  },
+  "Q3_relationship": {
+    "v1": {
+      "status": "OK",
+      "queried": "repeat",
+      "known": true,
+      "outgoing": [],
+      "incoming": [],
+      "caveat": "edges are lexical within ONE file; cross-file callers are UNKNOWN, not zero",
+      "evidence": {
+        "sourcePin": "fe0c651e51936074",
+        "basis": "lexical-scan"
+      }
+    },
+    "v2": {
+      "query": "relationship",
+      "answer": {
+        "calls": [],
+        "externalCallers": {
+          "verdict": "UNKNOWN",
+          "subject": "repeat",
+          "predicate": "externalCallers",
+          "why": "no evidence gathered for this predicate; recorded as UNKNOWN, not FALSE"
+        }
+      }
+    }
+  },
+  "Q4_contradiction": {
+    "v1": {
+      "status": "CONTRADICTION_FOUND",
+      "queried": "repeat",
+      "known": true,
+      "claim": "Declared expectation: count is a nonnegative safe integer. Not enforced.",
+      "claimEpistemicStatus": "CLAIMED_BY_AUTHOR_NOT_MECHANICALLY_VERIFIED",
+      "typeSystemEnforcesPrecondition": false,
+      "runtimeHasGuard": false,
+      "findings": [
+        {
+          "violatedInput": "count = -1",
+          "threw": false,
+          "emissions": 0,
+          "contradictsClaim": true,
+          "detail": "silently produced 0 emissions instead of rejecting"
+        },
+        {
+          "violatedInput": "count = 2.5",
+          "threw": false,
+          "emissions": 3,
+          "contradictsClaim": true,
+          "detail": "silently produced 3 emissions instead of rejecting"
+        },
+        {
+          "violatedInput": "count = NaN",
+          "threw": false,
+          "emissions": 0,
+          "contradictsClaim": true,
+          "detail": "silently produced 0 emissions instead of rejecting"
+        }
+      ],
+      "verdict": "claim is DOCUMENTATION ONLY — unenforced at type level and at runtime",
+      "evidence": {
+        "sourcePin": "fe0c651e51936074",
+        "typecheckWitness": "CONTROL OK — typechecker is live and reported the real type error",
+        "basis": "tsc 7.0.2 --strict + node execution"
+      }
+    },
+    "v2": {
+      "query": "contradiction",
+      "answer": {
+        "precondition": {
+          "verdict": "FALSE",
+          "subject": "repeat",
+          "predicate": "enforced",
+          "property": "count is a nonnegative safe integer",
+          "components": {
+            "enforcedByTypeSystem": false,
+            "enforcedByRuntimeGuard": false,
+            "typecheckWitness": "COMPILER ACCEPTED ALL PRECONDITION VIOLATIONS (-1, 2.5, NaN) — declared precondition is NOT type-enforced",
+            "controlWitness": "CONTROL OK — typechecker is live and reported the real type error"
+          },
+          "meaning": "The precondition is stated in prose and enforced by NOTHING. Violations compile and run silently.",
+          "evidence": {
+            "sourcePin": "fe0c651e51936074",
+            "basis": "tsc --strict + execution"
+          }
+        },
+        "violations": [
+          {
+            "input": "-1",
+            "throws": {
+              "verdict": "FALSE",
+              "subject": "repeat",
+              "predicate": "throws_on",
+              "property": "-1",
+              "value": false,
+              "consequence": "silently emitted 0 values",
+              "evidence": {
+                "sourcePin": "fe0c651e51936074",
+                "basis": "execution"
+              }
+            }
+          },
+          {
+            "input": "2.5",
+            "throws": {
+              "verdict": "FALSE",
+              "subject": "repeat",
+              "predicate": "throws_on",
+              "property": "2.5",
+              "value": false,
+              "consequence": "silently emitted 3 values",
+              "evidence": {
+                "sourcePin": "fe0c651e51936074",
+                "basis": "execution"
+              }
+            }
+          },
+          {
+            "input": "NaN",
+            "throws": {
+              "verdict": "FALSE",
+              "subject": "repeat",
+              "predicate": "throws_on",
+              "property": "NaN",
+              "value": false,
+              "consequence": "silently emitted 0 values",
+              "evidence": {
+                "sourcePin": "fe0c651e51936074",
+                "basis": "execution"
+              }
+            }
+          }
+        ],
+        "composition": "documented ∧ ¬enforced  ⟹  a documented-but-unenforced precondition exists"
+      }
+    },
+    "v2_enforcedPredicate": {
+      "verdict": "FALSE",
+      "subject": "repeat",
+      "predicate": "enforced",
+      "property": "count is a nonnegative safe integer",
+      "components": {
+        "enforcedByTypeSystem": false,
+        "enforcedByRuntimeGuard": false,
+        "typecheckWitness": "COMPILER ACCEPTED ALL PRECONDITION VIOLATIONS (-1, 2.5, NaN) — declared precondition is NOT type-enforced",
+        "controlWitness": "CONTROL OK — typechecker is live and reported the real type error"
+      },
+      "meaning": "The precondition is stated in prose and enforced by NOTHING. Violations compile and run silently.",
+      "evidence": {
+        "sourcePin": "fe0c651e51936074",
+        "basis": "tsc --strict + execution"
+      }
+    }
+  },
+  "v0_control": {
+    "surface": "V0-NO-PROTOCOL",
+    "symbol": {
+      "tool": "rg -n repeat fixture/001-semantic-basics.ts",
+      "rawOutput": [
+        "4: * Intentional research note: the claimed contract on repeat is NOT enforced.\r",
+        "18:export function repeat(count: number, emit: (value: number) => void): void {"
+      ],
+      "provenance": "git-tracked file, caller must pin the commit themselves",
+      "separatesClaimFromWitness": false,
+      "contradictionSurfaced": false,
+      "note": "rg finds the token. It does NOT know the doc comment contradicts behaviour."
+    },
+    "enumsOwnUnknowns": false,
+    "elapsedMs": 850
+  },
+  "v2_unknowns": {
+    "predicate": "unknowns",
+    "verdict": "ENUMERATED",
+    "list": [
+      "whether repeat() has any caller outside this file",
+      "the author's intended behaviour for fractional counts",
+      "whether MAX_RETRIES relates to repeat() at all",
+      "how this code behaves under a non-JS runtime"
+    ],
+    "rule": "Anything absent from the witnessed set is UNKNOWN until a witness produces it."
+  },
+  "v1_capability": {
+    "status": "OK",
+    "vocabulary": "V1-VERBS",
+    "executableNow": [
+      "SYMBOL(name)",
+      "EXPLAIN(name)",
+      "RELATE(name)",
+      "CHALLENGE(name)",
+      "CAPABILITY()"
+    ],
+    "substrate": {
+      "file": "C:\\0-BlackBoxProject-0\\VOMEGA\\elephant-greenfield-omega\\03_DEVELOPMENT_SYSTEMS\\elephant-protocol-gym\\fixture\\001-semantic-basics.ts",
+      "pin": "fe0c651e51936074",
+      "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+    },
+    "notImplemented": [
+      "cross-file call resolution",
+      "type inference",
+      "staleness detection",
+      "any operation not listed in executableNow"
+    ],
+    "epistemicRule": "A verb not in executableNow is UNKNOWN, not absent."
+  },
+  "v2_canExecute": [
+    {
+      "op": "exists",
+      "verdict": "TRUE",
+      "predicate": "can_execute_now",
+      "subject": "exists",
+      "meaning": "implemented and runnable against the pinned fixture"
+    },
+    {
+      "op": "documented",
+      "verdict": "TRUE",
+      "predicate": "can_execute_now",
+      "subject": "documented",
+      "meaning": "implemented and runnable against the pinned fixture"
+    },
+    {
+      "op": "enforced",
+      "verdict": "TRUE",
+      "predicate": "can_execute_now",
+      "subject": "enforced",
+      "meaning": "implemented and runnable against the pinned fixture"
+    },
+    {
+      "op": "witnessed",
+      "verdict": "TRUE",
+      "predicate": "can_execute_now",
+      "subject": "witnessed",
+      "meaning": "implemented and runnable against the pinned fixture"
+    },
+    {
+      "op": "contradicts",
+      "verdict": "TRUE",
+      "predicate": "can_execute_now",
+      "subject": "contradicts",
+      "meaning": "implemented and runnable against the pinned fixture"
+    },
+    {
+      "op": "throws_on",
+      "verdict": "TRUE",
+      "predicate": "can_execute_now",
+      "subject": "throws_on",
+      "meaning": "implemented and runnable against the pinned fixture"
+    }
+  ],
+  "scores": {
+    "v0": {
+      "surfacedContradiction": false,
+      "attachesProvenance": true,
+      "canEnumerateUnknowns": false
+    },
+    "v1": {
+      "surfacedContradiction": true,
+      "attachesProvenance": true,
+      "separatesClaimFromWitness": true,
+      "canEnumerateUnknowns": true
+    },
+    "v2": {
+      "surfacedContradiction": true,
+      "attachesProvenance": true,
+      "separatesClaimFromWitness": true,
+      "canEnumerateUnknowns": true
+    }
+  },
+  "comparison": {
+    "surfacedContradiction": "v0=NO  v1=YES  v2=YES",
+    "attachesProvenance": "v0=YES  v1=YES  v2=YES",
+    "separatesClaimFromWitness": "v0=NO  v1=YES  v2=YES",
+    "canEnumerateUnknowns": "v0=NO  v1=YES  v2=YES"
+  }
+}

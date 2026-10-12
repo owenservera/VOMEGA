@@ -1,0 +1,110 @@
+
+========================================================================
+P0  INPUT CUSTODY
+========================================================================
+pinned repo commit      : 1199b38c1fd174e997c92b22d18d8c20c952eb9e
+pinned fixture sha256   : fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5
+fixture bytes on disk   : fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5
+custody match           : OK - fixture is byte-identical to the pinned canon
+tool under test         : sempub/0.1.0 (node 24.11.1)
+
+========================================================================
+P1  PUBLISH ONCE (static intake, no execution)
+========================================================================
+facts extracted         : 5
+  - const.MAX_RETRIES evidence=DERIVED  lines=11-11
+  - fn.add         evidence=DERIVED  lines=13-15
+  - fn.repeat      evidence=DECLARED lines=18-20
+  - fn.classify    evidence=DERIVED  lines=22-26
+  - fn.accumulate  evidence=DERIVED  lines=28-32
+DECLARED (author claims) : fn.repeat
+file-level declaration   : "Elephant Protocol Gym — tiny conventional TypeScript fixture.  Intentional research note: the claimed contract on repeat is NOT enforced. This discrepancy exists so agents can discover how to distinguish author's meaning from mechanically established or tested behavior.  No semantic annotation syntax is prescribed."
+
+========================================================================
+P2  VERIFY on pristine source (expect GREEN)
+========================================================================
+publication_id          : pub_ef04d49316cd8926
+publication digest      : ef04d49316cd89261ee0763a6f69ba4918d8d5089669417471987834fbbb9672
+  [PASS] publication_digest_recomputes              recomputed ef04d49316cd8926… vs pinned ef04d49316cd8926…
+  [PASS] source_file_still_matches_pinned_sha       pinned fe0c651e51936074… vs current fe0c651e51936074…
+  [PASS] per_fact_slices_unchanged                  all 5 fact slices match source bytes
+  [PASS] machine_carries_publication_digest         machine projection bound to publication
+  [PASS] human_carries_publication_digest           human projection carries the digest
+  [PASS] machine_links_human                        human.md
+  [PASS] human_links_machine                        machine.json
+  [PASS] every_fact_mutually_linked                 5 fact anchors present in both views
+  [PASS] no_unwitnessed_fact_presented_as_observed  no fact claims observed evidence it lacks a witness for
+P2 result               : GREEN
+wrote projections        : human.md, machine.json (both from ONE publication)
+
+========================================================================
+P3  BEHAVIOURAL WITNESS for the DECLARED contract
+========================================================================
+  repeat(3)      -> emitted [0,1,2], no error raised
+  repeat(-1)     -> emitted [], no error raised
+  repeat(2.5)    -> emitted [0,1,2], no error raised
+
+republished with witnesses: pub_571ac017d0a9e864
+publication digest (new)  : 571ac017d0a9e86436aed7d3bc2877798824f40b8fc8a5f40c97db5d3cc20d33
+  [PASS] publication_digest_recomputes              recomputed 571ac017d0a9e864… vs pinned 571ac017d0a9e864…
+  [PASS] source_file_still_matches_pinned_sha       pinned fe0c651e51936074… vs current fe0c651e51936074…
+  [PASS] per_fact_slices_unchanged                  all 5 fact slices match source bytes
+  [PASS] machine_carries_publication_digest         machine projection bound to publication
+  [PASS] human_carries_publication_digest           human projection carries the digest
+  [PASS] machine_links_human                        human.md
+  [PASS] human_links_machine                        machine.json
+  [PASS] every_fact_mutually_linked                 5 fact anchors present in both views
+  [PASS] no_unwitnessed_fact_presented_as_observed  no fact claims observed evidence it lacks a witness for
+P2b result (witnessed)   : GREEN
+
+========================================================================
+P4  DELIBERATE MUTATION -> is stale meaning visible, and how precisely?
+========================================================================
+mutation applied         : MAX_RETRIES 3 -> 5 (one constant, rest of file untouched)
+  [PASS] publication_digest_recomputes              recomputed 571ac017d0a9e864… vs pinned 571ac017d0a9e864…
+  [FAIL] source_file_still_matches_pinned_sha       pinned fe0c651e51936074… vs current 14b1c269c910422e…
+  [FAIL] per_fact_slices_unchanged                  stale: const.MAX_RETRIES
+  [PASS] machine_carries_publication_digest         machine projection bound to publication
+  [PASS] human_carries_publication_digest           human projection carries the digest
+  [PASS] machine_links_human                        human.md
+  [PASS] human_links_machine                        machine.json
+  [PASS] every_fact_mutually_linked                 5 fact anchors present in both views
+  [PASS] no_unwitnessed_fact_presented_as_observed  no fact claims observed evidence it lacks a witness for
+
+stale facts detected    : ["const.MAX_RETRIES"]
+unaffected facts         : ["fn.add","fn.repeat","fn.classify","fn.accumulate"]
+P4 result               : RED (staleness correctly detected)
+granularity finding     : WHOLE-FILE staleness would have marked all 5 facts stale; per-fact slicing marked exactly 1. Locality preserved.
+digest changes on mutation: true (571ac017d0a9… -> b8c42993004a…)
+
+========================================================================
+P5  HAND-DRIFT a projection -> is divergence detectable?
+========================================================================
+drift injected           : flipped enforces_declared_precondition false -> true in human.md only
+drift anchor found       : true (guard prevents a silent no-op)
+projections still agree   : YES (drift went UNDETECTED)
+P5 finding              : Drift was not detected.
+
+forged-digest projection : DETECTED (good) — human projection carries the digest
+
+========================================================================
+P5b  CLOSING THE GAP: regenerate-and-compare instead of trust the digest
+========================================================================
+re-render == on-disk view : IDENTICAL (pristine view is faithful)
+re-render catches drift  : YES — the P5 hole is closed by regeneration
+cost                     : one deterministic re-render + string compare
+first divergence at char : 2957
+  on-disk : …  }⏎  ],⏎  "enforces_declared_precondition": true,⏎  "finding": "repeat() does not validate `count`.…
+  re-render: …  }⏎  ],⏎  "enforces_declared_precondition": false,⏎  "finding": "repeat() does not validate `count`…
+
+========================================================================
+P6  MACHINE <-> HUMAN LEARNING SIGNAL (Decision 3)
+========================================================================
+  whole_file_sha_detects_mutation        true
+  per_fact_slicing_localises_mutation    true
+  digest_changes_on_republish            true
+  hand_drift_detected_by_digest          false
+  hand_drift_detected_by_regeneration    true
+  forged_digest_detected                 true
+
+wrote machine-human-signal.json

@@ -1,21 +1,104 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vomega.local/schemas/epg-registry-0.1.schema.json",
-  "title": "EPG protocol registry",
+  "$id": "https://vomega.local/schemas/epg-registry-0.2.schema.json",
+  "title": "EPG protocol and run registry",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema",
     "version",
     "protocols",
-    "assets"
+    "assets",
+    "runs"
   ],
   "properties": {
     "schema": {
-      "const": "epg.registry/0.1"
+      "const": "epg.registry/0.2"
     },
     "version": {
       "type": "string"
+    },
+    "runs": {
+      "description": "Executed and registered Gym runs. Added in 0.2. A run is listed here only when a receipt exists; the registry indexes runs, it does not judge them. `status` mirrors the receipt's status field and must agree — disagreement is an error, not a preference.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "dir",
+          "status",
+          "round",
+          "role",
+          "receipt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "dir": {
+            "description": "Run directory relative to the gym root, e.g. runs/A-2026-10-12",
+            "type": "string"
+          },
+          "receipt": {
+            "description": "Path to the minted run.json receipt, relative to the gym root",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "NOT_RUN",
+              "BLOCKED",
+              "RUNNING",
+              "SEALED",
+              "EVALUATED",
+              "CLOSED",
+              "UNKNOWN_TERMINAL"
+            ]
+          },
+          "round": {
+            "description": "Which round of the experiment sequence this run belongs to. Round 0 = independent arms; Round 1 = reviewer adjudication; PASS = execution/adjudication passes that are not arms.",
+            "enum": [
+              "R0_ARM",
+              "R1_REVIEWER",
+              "PASS"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "protocol_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "git_sha": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "independence": {
+            "description": "Whether the run saw other arms' material. Declared by the run itself; the registry records it, it does not verify it.",
+            "enum": [
+              "BLIND_DISCOVERY",
+              "LEGACY_SEEDED",
+              "PARTIAL_CONTAMINATION",
+              "PROCESS_REHEARSAL",
+              "ADJUDICATION"
+            ]
+          },
+          "entry_points": {
+            "description": "Commands that re-execute this run's evidence, relative to the run directory",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
     },
     "protocols": {
       "type": "array",

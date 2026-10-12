@@ -38,7 +38,9 @@
 > **OWNER DECISION 1 — FEEDER REUSE:** [Use the existing source feeder/custody chain](FEEDER_REUSE.md). The controlled TypeScript fixture and verified available real Elephant code are both first-class inputs; do not recreate ingestion, and do not claim private sources are remotely accessible.
 ## Semantic protocol-conditioning runs — lightweight launch pack
 
-**Status:** PREPARED, NOT RUN. **Scope:** the Elephant Lab's self-hosting semantic SDK/toolkit exploration. **Last revised:** 2026-10-11. This is a lightweight research track, not a replacement for existing Z.ai/Claude/Dogfood sessions or an approved architecture.
+**Status: EXECUTED IN PART (corrected 2026-10-12).** Round 0 (arms A, B, C, D) and a Round 1 reviewer synthesis **were executed on 2026-10-12** at pinned commit `1199b38`, followed by a master-assembly execution pass. Evidence is in [`runs/`](runs/). **Nothing was ratified, no arm result was promoted to canon, and no architecture was selected** — dispositions route through [`../DECISION_PROCESS_TRACKER.md`](../DECISION_PROCESS_TRACKER.md). **Scope:** the Elephant Lab's self-hosting semantic SDK/toolkit exploration. **Last revised:** 2026-10-12. This is a lightweight research track, not a replacement for existing Z.ai/Claude/Dogfood sessions or an approved architecture.
+
+> **What "executed" does and does not mean here.** Four independent qualitative probes ran against one toy fixture with one model family; they are **not** a four-arm measurement and estimate nothing about real source. Benchmark R1 (the first real-source, cross-file benchmark) is specified and **still NOT_RUN**. A future session that reads a stale "prepared, not run" banner must verify against `runs/` and the run receipts, not against prose.
 
 ### What this is, in plain language
 

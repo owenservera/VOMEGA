@@ -1,0 +1,223 @@
+{
+  "schema": "epg.run/0.1",
+  "run_id": "MASTER-EXEC-2026-10-12",
+  "protocol_id": "epg.research.library",
+  "protocol_version": "0.1.0-PROPOSED",
+  "status": "EVALUATED",
+  "basis": {
+    "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "protocol_sha256": null,
+    "requirement_epoch": "gym-decisions-1-4@2026-10-11",
+    "fixture_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "claims": [
+    {
+      "statement": "CORRECTION OF A PRIOR CONCLUSION: the Round 1 synthesis recorded REAL_SOURCE_UNAVAILABLE, unanimously, and routed Benchmark R1 onward as blocked on real source. That was a misdiagnosis. The R1 cohort (omega-baseline/plugins/vivim-nlcl-pure) is in this repository, tracked, and byte-identical to the pinned commit: 12/12 files, 0 uncommitted drift. Only the owner-private 191-file ZIP is genuinely unavailable. Decision 1 was UNEXERCISED, not unavailable, and R1 is blocked on agent budget, not source.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/MASTER-EXEC-2026-10-12/real-source-custody-output.json"
+      ]
+    },
+    {
+      "statement": "Master custody: all 26 embedded sections re-hash from disk and byte-compare to their sources, not merely hash-match, because a master claiming a correct hash over a corrupted body would otherwise pass. Verdict ALL_26_SECTIONS_CUSTODY_OK.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/MASTER-EXEC-2026-10-12/custody-check-output.json"
+      ]
+    },
+    {
+      "statement": "The custody checker is proven able to fail: 6/6 controls discriminate across four inverted properties (changed source bytes, edited embedded body only, falsified sha256, deleted source file, plus two no-false-alarm cases).",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/MASTER-EXEC-2026-10-12/custody-negative-control.mjs"
+      ]
+    },
+    {
+      "statement": "A real deviation the sha256 alone would have hidden: sections 18 and 19 render with a DISCLOSURE_RULE banner that is absent from the source files, because the assembler prepends it. For those two sections the sha256 attests the source while the rendered body differs, so a hash-only custody check would conclude 'verbatim' and be wrong for 2 of 26 sections.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/MASTER-EXEC-2026-10-12/custody-check-output.json",
+        "tools/build-full-dry-run-prompt.mjs"
+      ]
+    },
+    {
+      "statement": "Section 18's nine checkable claims about the NLCL implementation were verified against executing code (17 families declared; FAMILY_GLYPHS counts 18 because aliases; 0 glyphs lost; 0 orphan/unlexable; alias and arrow normalisation hold; a quoted glyph gains no family). Lexical layer only — interpret/ground/recognize/project were verified for custody, NOT executed, so L02 moves UNOBSERVED to PARTIAL, not to 'verified'.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/MASTER-EXEC-2026-10-12/symbolic-s1-output.json"
+      ]
+    },
+    {
+      "statement": "The run's own instrument had the blind spot this corpus is about: the 'is each declared family lexable' check is self-referential and cannot fail when a family is REMOVED, only when it is unlexable. A green result was partly unfalsifiable until a removal-detecting twin (every advertised glyph must map to a declared family) was added.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/MASTER-EXEC-2026-10-12/symbolic-s1-output.json"
+      ]
+    },
+    {
+      "statement": "The protocol backbone still validates at this commit: ok:true, 9 cards, 19 assets, 19 crosswalk entries, 4 profiles, 0 errors; tests 2 pass 0 fail. The 9 PARTIAL_MAPPING warnings are deliberate honesty labels, not defects.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "protocol-backbone/tools/validate.mjs"
+      ]
+    },
+    {
+      "statement": "This run is PROCESS_REHEARSAL with respect to arm behaviour: it read all four arm briefs and all four run notes, so every statement here about what an arm did is rehearsal, not independent observation. What it legitimately does is the work assigned to no arm.",
+      "evidence_class": "DESIGN"
+    },
+    {
+      "statement": "L02 semantic composition/grounding, visual 3D parity V1-V7, U0-U5 governance graduation and cost telemetry remain NOT_RUN. A green run here is evidence that these checks passed now, on one machine, at one moment — not that the system is correct.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    }
+  ],
+  "events": [
+    {
+      "id": "mx-start",
+      "kind": "execution_pass_start",
+      "time": "2026-10-12T14:15:00",
+      "time_source": "HOST",
+      "actor": "master-exec-session"
+    },
+    {
+      "id": "mx-custody",
+      "kind": "custody_verification",
+      "time": "2026-10-12T14:19:00",
+      "time_source": "HOST",
+      "actor": "master-exec-session",
+      "evidence_ref": "runs/MASTER-EXEC-2026-10-12/custody-check-output.json"
+    },
+    {
+      "id": "mx-close",
+      "kind": "run_closed",
+      "time": "2026-10-12T14:22:08",
+      "time_source": "HOST",
+      "actor": "master-exec-session"
+    },
+    {
+      "id": "mx-repro",
+      "kind": "independent_reproduction",
+      "time": "2026-10-12T15:08:00",
+      "time_source": "HOST",
+      "actor": "lab-ops",
+      "evidence_ref": "runs/MASTER-EXEC-2026-10-12/reproduce.sh"
+    }
+  ],
+  "artifacts": [
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/custody-check-output.json",
+      "sha256": "97f70591680722b14496516ce8b1c29102a02e0aa500199318e0e6c9a2c183c8",
+      "bytes": 17946,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/custody-check.mjs",
+      "sha256": "f202a10a92d8b1b7c0cecadd7e97fd5a8c559b4cb3067c63f65996bf4268fae2",
+      "bytes": 8452,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/custody-negative-control.mjs",
+      "sha256": "1b8dbff01172f346a33fef4a097da898535794d74a6ce2c44d5f0018137c3b6f",
+      "bytes": 5226,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/README.md",
+      "sha256": "58ba5c5e6e8dbe15e872c7f549afc2835eee534d4cdbbbfdbb6249e84ca8406f",
+      "bytes": 2166,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/real-source-custody-output.json",
+      "sha256": "e786e9c15520507e440a5c5987d3fa6291c995a0c51fbcfc9fcb055307337daa",
+      "bytes": 6453,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/real-source-custody.mjs",
+      "sha256": "85eb3557d0ccfdf341995fb1b172080adcb226d93c55d758c26b4a2a9a0698e5",
+      "bytes": 5593,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/reproduce.sh",
+      "sha256": "fac500f40c83f0a3c165451e337681575e965cd3df112dc73b1caaa0f1a34b8b",
+      "bytes": 1993,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/RUN-NOTE.md",
+      "sha256": "bd3dc69b16519294e427429391d09397137693e60106c6d209815d33b3d40e9e",
+      "bytes": 15567,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/symbolic-s1-output.json",
+      "sha256": "cc8a5e3a8ccf5c977abc07257a4bb31f918be243ff05c2252921feca2cad82bd",
+      "bytes": 6899,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/MASTER-EXEC-2026-10-12/symbolic-s1.mjs",
+      "sha256": "12f340d533b651c00ee06dfaa57721cd078cc3dd34106694e1d690bc649df1d2",
+      "bytes": 12424,
+      "state": "RUN_OUTPUT"
+    }
+  ],
+  "metrics": {
+    "custody_sections_verified": {
+      "value": 26,
+      "status": "MEASURED",
+      "unit": "sections"
+    },
+    "custody_controls_discriminating": {
+      "value": 6,
+      "status": "MEASURED",
+      "unit": "of 6"
+    },
+    "real_source_cohort_files": {
+      "value": 12,
+      "status": "MEASURED",
+      "unit": "of 12"
+    },
+    "symbolic_claims_verified": {
+      "value": 9,
+      "status": "MEASURED",
+      "unit": "of 9"
+    },
+    "backbone_cards_validated": {
+      "value": 9,
+      "status": "MEASURED",
+      "unit": "cards"
+    },
+    "l02_semantic_layer": {
+      "value": "NOT_RUN (lexical only)",
+      "status": "NOT_APPLICABLE",
+      "unit": "n/a"
+    },
+    "benchmark_r1": {
+      "value": "NOT_RUN",
+      "status": "NOT_APPLICABLE",
+      "unit": "n/a"
+    }
+  },
+  "publication": {
+    "status": "PUBLISHED",
+    "all_maturity_pack_index": "runs/MASTER-EXEC-2026-10-12/RUN-NOTE.md",
+    "reason": "Run note plus four machine-readable outputs and a reproduce.sh."
+  },
+  "extensions": {
+    "role": "not an arm — an execution pass over the assembled master, covering custody, Decision 1, Decision 2 and section 18 claims that no arm exercised",
+    "independence": "PROCESS_REHEARSAL for all arm-behaviour statements; LEGACY_SEEDED for section 18/19 claims (per their own disclosure rule)",
+    "refused_action": "Did not edit built/FULL_DRY_RUN_PROMPT_ALL.md's false 'PREPARED, NOT RUN' header, on the grounds that rewriting a launch artifact's header is an owner-facing act. Recorded the correction here instead; the header was subsequently corrected at its source in the generator under owner authorization."
+  }
+}

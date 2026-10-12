@@ -1,0 +1,129 @@
+{
+  "schema": "reviewer-independent-witness/1",
+  "written_by": "Round-1 reviewer (not arm A, B, C or D)",
+  "node": "v24.11.1",
+  "repo_commit_expected": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+  "source_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+  "predicates": {
+    "W1_repeat_precondition_unenforced_and_silent": true,
+    "W2_type_layer_silent": {
+      "note": "established by the emitted .d.ts and by tsc; see W3/W4 witnesses"
+    },
+    "W3_classify_nan_type_conforming_but_false": true,
+    "W4_max_retries_rigid_and_unreferenced": true,
+    "W5_repeat_not_atomic_partial_effect": true,
+    "W6_legal_precondition_exceeds_time_bound": true,
+    "W7_type_surface_blind_to_body_mutation": {
+      "body_changed": true,
+      "signature_before": "export function add(a: number, b: number): number",
+      "signature_after": "export function add(a: number, b: number): number",
+      "identical": true
+    },
+    "W8_fixture_is_closed": {
+      "default_export": false,
+      "imports": 0,
+      "classes": 0,
+      "async": false,
+      "generics": true
+    }
+  },
+  "evidence": {
+    "w1": {
+      "neg1": {
+        "emitted": 0,
+        "values": [],
+        "threw": null
+      },
+      "nan": {
+        "emitted": 0,
+        "values": [],
+        "threw": null
+      },
+      "frac25": {
+        "emitted": 3,
+        "values": [
+          0,
+          1,
+          2
+        ],
+        "threw": null
+      },
+      "frac05": {
+        "emitted": 1,
+        "values": [
+          0
+        ],
+        "threw": null
+      },
+      "frac37": {
+        "emitted": 4,
+        "values": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "threw": null
+      },
+      "zero": {
+        "emitted": 0,
+        "values": [],
+        "threw": null
+      },
+      "good3": {
+        "emitted": 3,
+        "values": [
+          0,
+          1,
+          2
+        ],
+        "threw": null
+      }
+    },
+    "w3": {
+      "nan": "positive",
+      "zero": "zero",
+      "negzero": "zero",
+      "neg1": "negative",
+      "pos1": "positive"
+    },
+    "w5": {
+      "at0": {
+        "delivered": 1,
+        "threw": "callback-failed"
+      },
+      "at1": {
+        "delivered": 2,
+        "threw": "callback-failed"
+      },
+      "at2": {
+        "delivered": 3,
+        "threw": "callback-failed"
+      },
+      "at99": {
+        "delivered": 10,
+        "threw": null
+      }
+    },
+    "w6": {
+      "1e7": {
+        "emitted": 10000000,
+        "ms": 101.7782
+      },
+      "1e8": {
+        "emitted": 100000000,
+        "ms": 1204.7706
+      },
+      "slope_ms_per_1e8": 11.84,
+      "ns_per_emission": 12.05,
+      "2^53_within_4s": "exceeded-4000ms-bound",
+      "Infinity_within_4s": "exceeded-4000ms-bound"
+    },
+    "w7": {
+      "body_changed": true,
+      "signature_before": "export function add(a: number, b: number): number",
+      "signature_after": "export function add(a: number, b: number): number",
+      "identical": true
+    }
+  }
+}

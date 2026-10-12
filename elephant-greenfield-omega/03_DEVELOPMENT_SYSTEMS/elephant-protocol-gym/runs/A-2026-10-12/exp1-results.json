@@ -1,0 +1,140 @@
+{
+  "experiment": "EXP1 — repeat() stated precondition vs actual behavior",
+  "evidenceClass": "OBSERVED",
+  "sourceSha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+  "compiler": "typescript@6.0.3",
+  "executionModel": "each case in an isolated child process, 4000ms hard bound, SIGKILL on overrun",
+  "corrections": [
+    "v1 array collector -> false RangeError attributed to repeat() (it was the probe)",
+    "v2 integer counter -> RangeError vanished, probe never finished, implied non-termination without witnessing it",
+    "v3 isolated bounded child processes -> non-termination is now a witnessed DID_NOT_RETURN"
+  ],
+  "results": [
+    {
+      "label": "count = 3 (happy path)",
+      "satisfiesStatedPrecondition": true,
+      "outcome": "RETURNED",
+      "emissionsObserved": 3,
+      "firstFiveEmitted": [
+        0,
+        1,
+        2
+      ],
+      "detail": null,
+      "elapsedMs": 0.17,
+      "violationIsSilent": null
+    },
+    {
+      "label": "count = 0",
+      "satisfiesStatedPrecondition": true,
+      "outcome": "RETURNED",
+      "emissionsObserved": 0,
+      "firstFiveEmitted": [],
+      "detail": null,
+      "elapsedMs": 0.16,
+      "violationIsSilent": null
+    },
+    {
+      "label": "count = -1 (NEGATIVE)",
+      "satisfiesStatedPrecondition": false,
+      "outcome": "RETURNED",
+      "emissionsObserved": 0,
+      "firstFiveEmitted": [],
+      "detail": null,
+      "elapsedMs": 0.19,
+      "violationIsSilent": true
+    },
+    {
+      "label": "count = -5 (NEGATIVE)",
+      "satisfiesStatedPrecondition": false,
+      "outcome": "RETURNED",
+      "emissionsObserved": 0,
+      "firstFiveEmitted": [],
+      "detail": null,
+      "elapsedMs": 0.16,
+      "violationIsSilent": true
+    },
+    {
+      "label": "count = 2.7 (FRACTIONAL)",
+      "satisfiesStatedPrecondition": false,
+      "outcome": "RETURNED",
+      "emissionsObserved": 3,
+      "firstFiveEmitted": [
+        0,
+        1,
+        2
+      ],
+      "detail": null,
+      "elapsedMs": 0.14,
+      "violationIsSilent": true
+    },
+    {
+      "label": "count = 0.4 (FRACTIONAL < 1)",
+      "satisfiesStatedPrecondition": false,
+      "outcome": "RETURNED",
+      "emissionsObserved": 1,
+      "firstFiveEmitted": [
+        0
+      ],
+      "detail": null,
+      "elapsedMs": 0.16,
+      "violationIsSilent": true
+    },
+    {
+      "label": "count = NaN",
+      "satisfiesStatedPrecondition": false,
+      "outcome": "RETURNED",
+      "emissionsObserved": 0,
+      "firstFiveEmitted": [],
+      "detail": null,
+      "elapsedMs": 0.09,
+      "violationIsSilent": true
+    },
+    {
+      "label": "count = 1e7 (large, finite, legal)",
+      "satisfiesStatedPrecondition": true,
+      "outcome": "RETURNED",
+      "emissionsObserved": 10000000,
+      "firstFiveEmitted": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "detail": null,
+      "elapsedMs": 59.02,
+      "violationIsSilent": null
+    },
+    {
+      "label": "count = 1e9 (large, finite, legal)",
+      "satisfiesStatedPrecondition": true,
+      "outcome": "DID_NOT_RETURN",
+      "emissionsObserved": null,
+      "firstFiveEmitted": [],
+      "detail": "no return within 4000ms wall-clock bound (process killed)",
+      "elapsedMs": 4021.98,
+      "violationIsSilent": null
+    },
+    {
+      "label": "count = 2^53 (beyond MAX_SAFE_INTEGER)",
+      "satisfiesStatedPrecondition": false,
+      "outcome": "DID_NOT_RETURN",
+      "emissionsObserved": null,
+      "firstFiveEmitted": [],
+      "detail": "no return within 4000ms wall-clock bound (process killed)",
+      "elapsedMs": 4063.54,
+      "violationIsSilent": null
+    },
+    {
+      "label": "count = Infinity",
+      "satisfiesStatedPrecondition": false,
+      "outcome": "DID_NOT_RETURN",
+      "emissionsObserved": null,
+      "firstFiveEmitted": [],
+      "detail": "no return within 4000ms wall-clock bound (process killed)",
+      "elapsedMs": 4070.98,
+      "violationIsSilent": null
+    }
+  ]
+}

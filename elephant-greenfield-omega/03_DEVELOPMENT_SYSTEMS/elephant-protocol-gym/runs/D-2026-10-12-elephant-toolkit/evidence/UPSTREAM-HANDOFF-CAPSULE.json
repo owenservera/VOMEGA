@@ -1,0 +1,55 @@
+{
+  "schema": "elephant-handoff-capsule/1",
+  "produced_by": "upstream-agent (simulated prior Elephant context)",
+  "produced_at": "2026-10-12",
+  "scope_note": "Time-boxed upstream pass. 001-semantic-basics.ts was analysed in full and executed. 002-consumer.ts was read and partially executed. Cross-file equivalence between the two files was NOT checked. Absence of a finding below is not evidence of absence.",
+  "source_pins": [
+    { "file": "source/001-semantic-basics.ts", "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5", "repo_commit": "1199b38c1fd174e997c92b22d18d8c20c952eb9e" },
+    { "file": "source/002-consumer.ts", "sha256": "PIN_ME_AT_BUILD", "repo_commit": "same" }
+  ],
+  "exports": [
+    { "name": "MAX_RETRIES", "kind": "const", "signature": "3", "status": "DERIVED_BY_UPSTREAM" },
+    { "name": "add", "kind": "function", "signature": "(a: number, b: number): number", "status": "DERIVED_BY_UPSTREAM" },
+    { "name": "repeat", "kind": "function", "signature": "(count: number, emit: (value: number) => void): void", "status": "CHECKED_BY_UPSTREAM" },
+    { "name": "classify", "kind": "function", "signature": "(value: number): \"negative\" | \"zero\" | \"positive\"", "status": "DERIVED_BY_UPSTREAM" },
+    { "name": "accumulate", "kind": "function", "signature": "(values: number[]): number", "status": "DERIVED_BY_UPSTREAM" },
+    { "name": "retryBudget", "kind": "function", "signature": "(attempts: number): number", "status": "READ_ONLY_BY_UPSTREAM" },
+    { "name": "summarizeBuckets", "kind": "function", "signature": "(values: number[]): string[]", "status": "READ_ONLY_BY_UPSTREAM" },
+    { "name": "mean", "kind": "function", "signature": "(values: number[]): number", "status": "READ_ONLY_BY_UPSTREAM" },
+    { "name": "fastClassify", "kind": "function", "signature": "(value: number): string", "status": "READ_ONLY_BY_UPSTREAM" }
+  ],
+  "claims": [
+    {
+      "subject": "repeat",
+      "label": "DECLARED",
+      "statement": "The doc comment states: count is a nonnegative safe integer. Not enforced.",
+      "evidence": "source/001-semantic-basics.ts doc comment"
+    },
+    {
+      "subject": "repeat",
+      "label": "OBSERVED_BY_UPSTREAM",
+      "observed_by": "upstream-agent",
+      "statement": "repeat(3) emits 0,1,2. repeat(-1) emits nothing. repeat(2.5) emits 0,1,2.",
+      "command": "node --input-type=module -e \"const m=await import('./source/001-semantic-basics.ts');const o=[];m.repeat(2.5,v=>o.push(v));console.log(o)\"",
+      "output": "[ 0, 1, 2 ]"
+    },
+    {
+      "subject": "repeat",
+      "label": "INFERRED_BY_UPSTREAM",
+      "statement": "Because the declared precondition is not enforced, the DECLARED contract does not describe runtime behaviour. Upstream treats this contract as documentation of intent only.",
+      "confidence": "not independently verified by any second agent"
+    },
+    {
+      "subject": "classify",
+      "label": "DERIVED_BY_UPSTREAM",
+      "statement": "value < 0 -> negative; value === 0 -> zero; otherwise positive.",
+      "evidence": "source/001-semantic-basics.ts lines 17-21"
+    }
+  ],
+  "explicitly_not_established": [
+    "No claim is made about retryBudget, summarizeBuckets, mean or fastClassify behaviour under any input.",
+    "No cross-file equivalence check was performed between 002-consumer.ts exports and 001-semantic-basics.ts exports.",
+    "The upstream agent did not attempt to prove any listed contract is enforced."
+  ],
+  "status_of_upstream_evidence": "first-party execution by one agent; no independent referee; NOT verified"
+}

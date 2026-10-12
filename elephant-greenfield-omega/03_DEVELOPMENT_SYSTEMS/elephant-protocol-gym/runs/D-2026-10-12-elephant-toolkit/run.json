@@ -1,0 +1,293 @@
+{
+  "schema": "epg.run/0.1",
+  "run_id": "D-2026-10-12-elephant-toolkit",
+  "protocol_id": "epg.runner.claude-v02",
+  "protocol_version": "0.1.0-PROPOSED",
+  "status": "EVALUATED",
+  "basis": {
+    "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "protocol_sha256": null,
+    "requirement_epoch": "gym-decisions-1-4@2026-10-11",
+    "fixture_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "claims": [
+    {
+      "statement": "HEADLINE HYPOTHESIS FAILED: on this corpus the handoff capsule did not improve cold-reader accuracy (4/4 traps found by both arms) and did not cause laundering (0/4).",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/D-2026-10-12-elephant-toolkit/coldreaders/B1.json",
+        "runs/D-2026-10-12-elephant-toolkit/coldreaders/C1.json",
+        "runs/D-2026-10-12-elephant-toolkit/evidence/telemetry.json"
+      ]
+    },
+    {
+      "statement": "Four isolated cold-reader trials actually executed (this was NOT_RUN in the prior round's design) with an executable oracle deriving ground truth by running the source rather than trusting any agent report.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/D-2026-10-12-elephant-toolkit/oracle.mjs"
+      ]
+    },
+    {
+      "statement": "The run's own booster v1 falsely flagged BOTH capsule trials as laundering, at a 100% false-positive rate on correct agents that were quoting a defective hash in order to REFUTE it. Fixed to inspect structured claim fields only, with a regression case added.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/D-2026-10-12-elephant-toolkit/booster/witness-check.mjs",
+        "runs/D-2026-10-12-elephant-toolkit/evidence/booster-witness-check-output.txt"
+      ]
+    },
+    {
+      "statement": "Booster self-test discriminates: perfect-passes, blind-fails, forged-hash-fails and prose-refutation-not-flagged all hold.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/D-2026-10-12-elephant-toolkit/booster/witness-check.mjs"
+      ]
+    },
+    {
+      "statement": "Oracle self-check passes 4/4 traps plus control; all four planted declared-vs-actual traps confirmed by execution.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/D-2026-10-12-elephant-toolkit/oracle.mjs"
+      ]
+    },
+    {
+      "statement": "Every planted value-contract violation type-checks CLEAN under tsc 7.0.2 --strict; only type-level violations (arity, void return) are caught at compile time.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/D-2026-10-12-elephant-toolkit/evidence/compile-time-enforcement-probe.txt"
+      ]
+    },
+    {
+      "statement": "EXECUTION IS UNVERIFIABLE from the artifacts: all four answers self-report executed:true and the oracle verifies what the code DOES, not what any agent DID. This is the run's central limitation and is not fixable within this design.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    },
+    {
+      "statement": "Capsule recall on real repo source is unresolved. The corpus was two toy files; the informative signal came from the handoff artifact's own defects, not the source. Any capsule-helps conclusion would be unsupported.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    },
+    {
+      "statement": "Four cold readers are four contexts of ONE model family; their agreement is not independent corroboration. n=2 per arm, so no statistical claim is supportable and the baseline arm's internal token spread (15k-42k) exceeds the between-arm gap.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/D-2026-10-12-elephant-toolkit/evidence/telemetry.json"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "d-start",
+      "kind": "run_start",
+      "time": "2026-10-12T13:00:00",
+      "time_source": "HOST",
+      "actor": "arm-D-session"
+    },
+    {
+      "id": "d-coldreaders",
+      "kind": "subagent_fanout",
+      "time": "2026-10-12T13:30:00",
+      "time_source": "HOST",
+      "actor": "arm-D-session",
+      "evidence_ref": "runs/D-2026-10-12-elephant-toolkit/coldreaders/"
+    },
+    {
+      "id": "d-close",
+      "kind": "run_closed",
+      "time": "2026-10-12T13:57:00",
+      "time_source": "HOST",
+      "actor": "arm-D-session"
+    }
+  ],
+  "artifacts": [
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/booster/witness-check.mjs",
+      "sha256": "f644ecc4a21dbec8858dd9bd18a9c3e35bf794562ff42c97c05148219719b816",
+      "bytes": 13968,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/CAPABILITY-PACK.json",
+      "sha256": "12dd3b5fc9c3e1363d12bc792b6a5eac95a16585b59ddab70e0943153e75f26a",
+      "bytes": 9741,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/coldreaders/B1.json",
+      "sha256": "888c4ce3b20c5a6bd43b0e91c44ab53f5d98d5da77bcafd0bd58cff2675c01b2",
+      "bytes": 40906,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/coldreaders/B2.json",
+      "sha256": "66a93d60bcb8d03a0f64e64ed28da5ac348870f782201077e37adaeb512eb256",
+      "bytes": 40914,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/coldreaders/C1.json",
+      "sha256": "3848d2d0657cd2ecd70b69aa7e27cb7f0f026fae0767cfe71a28459eb7b3d7bf",
+      "bytes": 43452,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/coldreaders/C2.json",
+      "sha256": "7133507dddceaf0902310bb18fe7c533ecfa794e3d92bdd984a887e0c3a997db",
+      "bytes": 50424,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/contract-violation-probe.ts",
+      "sha256": "40b03eb9bc8d3c8e0e686a13bd3c402af824d033368523d6f35ad0763c6984b9",
+      "bytes": 728,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/evidence/booster-witness-check-output.txt",
+      "sha256": "e5ade4d8c5dfc556493b92ed205ad67664b0262a7c1f3ab93c21404f85b713a7",
+      "bytes": 1206,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/evidence/compile-time-enforcement-probe.txt",
+      "sha256": "146975caa60b295d43ff7afd14d87c326b25225e7fceac96d47f0d42d9c32eb8",
+      "bytes": 358,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/evidence/machine-human-signal.json",
+      "sha256": "bd854968a79e58765aebb0a20d545f2484b3db292ba4f918ec265ad90f11b479",
+      "bytes": 7696,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/evidence/project-lead-private-probe.json",
+      "sha256": "63f680e9499ca535a9b7641e675782c2152ce9ec749c15531015ae9c68c53eb2",
+      "bytes": 1103,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/evidence/telemetry.json",
+      "sha256": "7852de3b2aae002b3abbf46d796c29f4be1c151e538e50198a44b69615d7427c",
+      "bytes": 3133,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/evidence/UPSTREAM-HANDOFF-CAPSULE.json",
+      "sha256": "7812cd949cfbdb5c242103c56c9eed70967c6dff47c673dc25d59d392a748265",
+      "bytes": 3580,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/oracle.mjs",
+      "sha256": "2ac8515c37dc90a16db94bdd0f39472664dd75b23b53c8acf63e6c74680f001d",
+      "bytes": 4912,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/publish-pack.mjs",
+      "sha256": "8ae38dce25a345e0a10bdb30a1d51ef0f72d843f092e043da01a57fd856cd3ac",
+      "bytes": 7860,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/README.md",
+      "sha256": "553032d86d2d9e41fba9ea88c0e3c31ac66042c840b0e51721dcf6c790fea73e",
+      "bytes": 5148,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/RUN-NOTE.md",
+      "sha256": "006c90466f84bc3a7b9e35a768a333e292272bb26d3b8f736c71c1c5475c5824",
+      "bytes": 17756,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/SCHEMA.json",
+      "sha256": "cc122da1d3fc335c4e00b5e48225605464c91c1bbe10163e9489d533e0d03a3b",
+      "bytes": 948,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/source/001-semantic-basics.ts",
+      "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+      "bytes": 1001,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/source/002-consumer.ts",
+      "sha256": "2ef3d2e201b17553cf43499a1881493fe7489979594e8dc8115da64078636c8a",
+      "bytes": 1568,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/D-2026-10-12-elephant-toolkit/TASK.md",
+      "sha256": "e31b4a6197a98ba25c8158dcd5148fbe69cba6ec0db98db3297939a8b48fac16",
+      "bytes": 2017,
+      "state": "RUN_OUTPUT"
+    }
+  ],
+  "metrics": {
+    "trap_recall_baseline": {
+      "value": 4,
+      "status": "MEASURED",
+      "unit": "of 4"
+    },
+    "trap_recall_capsule": {
+      "value": 4,
+      "status": "MEASURED",
+      "unit": "of 4"
+    },
+    "laundering_detected": {
+      "value": 0,
+      "status": "MEASURED",
+      "unit": "of 4"
+    },
+    "oracle_self_check": {
+      "value": "PASS 4/4 + control",
+      "status": "MEASURED",
+      "unit": "verdict"
+    },
+    "booster_selftest": {
+      "value": "PASS 5 cases",
+      "status": "MEASURED",
+      "unit": "verdict"
+    },
+    "cold_readers_per_arm": {
+      "value": 2,
+      "status": "MEASURED",
+      "unit": "count"
+    },
+    "competencies_not_probed": {
+      "value": "retrieving dependencies; asking peers for missing knowledge",
+      "status": "MEASURED",
+      "unit": "named gaps"
+    },
+    "tokens": {
+      "value": "15k-42k spread within baseline arm",
+      "status": "MEASURED",
+      "unit": "tokens"
+    }
+  },
+  "publication": {
+    "status": "PUBLISHED",
+    "all_maturity_pack_index": "runs/D-2026-10-12-elephant-toolkit/CAPABILITY-PACK.json",
+    "reason": "Run note, capability pack with computed hashes, four raw cold-reader answers, oracle, booster and evidence receipts."
+  },
+  "extensions": {
+    "independence": "INDEPENDENCE VIOLATION, SELF-DISCLOSED. A stray `head -60` of arm B's run note occurred before arm D authored its traps. Exposure was to Run B's fixture results only; the four cold readers were sealed and unaffected. The lead's framing of the experiment is partially informed.",
+    "decision_1_feeder": "pinned fixture (custody verified by digest) plus a file this run authored; real cohort not used",
+    "decision_2_automation": "Phase 0 toolkits not invoked — recorded as an UNUSED AUTOMATION OPPORTUNITY, not a finding that they are unsuitable",
+    "decision_3_signal": "OBSERVED_DISCREPANCY, but the discrepancy is CLAIM-vs-VERIFIABILITY rather than machine-vs-human",
+    "booster_count_disclosure": "Three programs written where one booster was permitted. The run states its own reading (oracle = referee apparatus, publish-pack = mandatory publication machinery) and flags the risk rather than hiding it.",
+    "proposed_new_behavior": "E11 — distinguish a HANDOFF CLAIM from a SELF-GAINED WITNESS. Proposed because every arm's central evidence is self-asserted and therefore unfalsifiable from the artifact alone."
+  }
+}

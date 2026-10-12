@@ -1,0 +1,216 @@
+{
+  "schema": "elephant-capability-publication/1",
+  "contract": "02_EVERY_TURN_PUBLICATION_CONTRACT.md (MUST-PUBLISH, every turn, regardless of maturity)",
+  "publisher": {
+    "session": "Run D project lead, isolated ZCode session",
+    "lab": "Elephant Protocol Gym",
+    "track": "Round 0 / Arm D",
+    "anchor": "RUN_D_ELEPHANT_TOOLKIT.md"
+  },
+  "turn": "D-2026-10-12",
+  "round": "R0",
+  "publication_timestamp": "2026-10-12T11:57:47.540Z",
+  "previous_publication_id": null,
+  "previous_publication_hash": null,
+  "previous_publication_note": "First Run D turn. No prior publication to diff against.",
+  "intake_hashes": {
+    "repo_commit": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "gym_fixture_001": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+    "note": "001-semantic-basics.ts in this run dir is a byte-identical copy of the Gym fixture; custody verified by digest, not assumed."
+  },
+  "manifest_hash": "3a23e6d5681196e6c3ed1d88f059fda6fabd73f456c736ba4064e2d3e5bc55b7",
+  "file_count": 21,
+  "files": [
+    {
+      "path": "booster/witness-check.mjs",
+      "bytes": 13968,
+      "sha256": "f644ecc4a21dbec8858dd9bd18a9c3e35bf794562ff42c97c05148219719b816"
+    },
+    {
+      "path": "CAPABILITY-PACK.json",
+      "bytes": 9741,
+      "sha256": "ee0e31b040f6158d154ff8772186a0f6f83e207b4c962affff56243ebf4d9e84"
+    },
+    {
+      "path": "coldreaders/B1.json",
+      "bytes": 40906,
+      "sha256": "888c4ce3b20c5a6bd43b0e91c44ab53f5d98d5da77bcafd0bd58cff2675c01b2"
+    },
+    {
+      "path": "coldreaders/B2.json",
+      "bytes": 40914,
+      "sha256": "66a93d60bcb8d03a0f64e64ed28da5ac348870f782201077e37adaeb512eb256"
+    },
+    {
+      "path": "coldreaders/C1.json",
+      "bytes": 43452,
+      "sha256": "3848d2d0657cd2ecd70b69aa7e27cb7f0f026fae0767cfe71a28459eb7b3d7bf"
+    },
+    {
+      "path": "coldreaders/C2.json",
+      "bytes": 50424,
+      "sha256": "7133507dddceaf0902310bb18fe7c533ecfa794e3d92bdd984a887e0c3a997db"
+    },
+    {
+      "path": "contract-violation-probe.ts",
+      "bytes": 728,
+      "sha256": "40b03eb9bc8d3c8e0e686a13bd3c402af824d033368523d6f35ad0763c6984b9"
+    },
+    {
+      "path": "evidence/booster-witness-check-output.txt",
+      "bytes": 1206,
+      "sha256": "e5ade4d8c5dfc556493b92ed205ad67664b0262a7c1f3ab93c21404f85b713a7"
+    },
+    {
+      "path": "evidence/compile-time-enforcement-probe.txt",
+      "bytes": 358,
+      "sha256": "146975caa60b295d43ff7afd14d87c326b25225e7fceac96d47f0d42d9c32eb8"
+    },
+    {
+      "path": "evidence/machine-human-signal.json",
+      "bytes": 7696,
+      "sha256": "bd854968a79e58765aebb0a20d545f2484b3db292ba4f918ec265ad90f11b479"
+    },
+    {
+      "path": "evidence/project-lead-private-probe.json",
+      "bytes": 1103,
+      "sha256": "63f680e9499ca535a9b7641e675782c2152ce9ec749c15531015ae9c68c53eb2"
+    },
+    {
+      "path": "evidence/telemetry.json",
+      "bytes": 3133,
+      "sha256": "7852de3b2aae002b3abbf46d796c29f4be1c151e538e50198a44b69615d7427c"
+    },
+    {
+      "path": "evidence/UPSTREAM-HANDOFF-CAPSULE.json",
+      "bytes": 3580,
+      "sha256": "7812cd949cfbdb5c242103c56c9eed70967c6dff47c673dc25d59d392a748265"
+    },
+    {
+      "path": "oracle.mjs",
+      "bytes": 4912,
+      "sha256": "2ac8515c37dc90a16db94bdd0f39472664dd75b23b53c8acf63e6c74680f001d"
+    },
+    {
+      "path": "publish-pack.mjs",
+      "bytes": 7860,
+      "sha256": "8ae38dce25a345e0a10bdb30a1d51ef0f72d843f092e043da01a57fd856cd3ac"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5148,
+      "sha256": "553032d86d2d9e41fba9ea88c0e3c31ac66042c840b0e51721dcf6c790fea73e"
+    },
+    {
+      "path": "RUN-NOTE.md",
+      "bytes": 17756,
+      "sha256": "006c90466f84bc3a7b9e35a768a333e292272bb26d3b8f736c71c1c5475c5824"
+    },
+    {
+      "path": "SCHEMA.json",
+      "bytes": 948,
+      "sha256": "cc122da1d3fc335c4e00b5e48225605464c91c1bbe10163e9489d533e0d03a3b"
+    },
+    {
+      "path": "source/001-semantic-basics.ts",
+      "bytes": 1001,
+      "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+    },
+    {
+      "path": "source/002-consumer.ts",
+      "bytes": 1568,
+      "sha256": "2ef3d2e201b17553cf43499a1881493fe7489979594e8dc8115da64078636c8a"
+    },
+    {
+      "path": "TASK.md",
+      "bytes": 2017,
+      "sha256": "e31b4a6197a98ba25c8158dcd5148fbe69cba6ec0db98db3297939a8b48fac16"
+    }
+  ],
+  "packs": [
+    {
+      "id": "D-PACK-01-ORACLE",
+      "name": "Independent executable cold-reader oracle",
+      "maturity": "CANDIDATE_IMPLEMENTED_SELF_VERIFIED",
+      "status": "RUNNING_IN_THIS_TURN",
+      "purpose": "Derive ground truth for the trial from executable predicates rather than from any agent's report, so scoring cannot inherit the agents' mistakes.",
+      "boundaries": "Scores a 2-file/4-trap corpus only. Does not judge whether an agent executed anything. Not a general semantic checker.",
+      "evidence": "oracle.mjs --check -> PASS (4/4 traps + control), exit 0",
+      "changes_since_prior_turn": "NEW — first appearance"
+    },
+    {
+      "id": "D-PACK-02-WITNESS-CHECK",
+      "name": "Tiny booster: answer witness/claim checker",
+      "maturity": "CANDIDATE_IMPLEMENTED_SELFTESTED",
+      "status": "RUNNING_IN_THIS_TURN",
+      "purpose": "Make a cold reader's self-reported evidence mechanically checkable: trap recall, source-digest agreement, and whether a capsule defect was ADOPTED as the answer's own fact.",
+      "boundaries": "CANNOT VERIFY EXECUTION. 'executed:true' is a self-report and is always returned as EXECUTION_UNVERIFIABLE_BY_THIS_CHECKER. v1 produced a false positive on 2/2 correct agents and was fixed; see discrepancy list.",
+      "evidence": "booster/witness-check.mjs --selftest -> PASS on 5 cases incl. a regression guard for the v1 false positive, exit 0",
+      "changes_since_prior_turn": "NEW this turn; internally revised v1->v2 after a real false positive"
+    },
+    {
+      "id": "D-PACK-03-HANDOFF-CAPSULE",
+      "name": "Bounded upstream handoff capsule (experiment input)",
+      "maturity": "EXPERIMENTAL_INPUT",
+      "status": "RETIRED_AFTER_USE",
+      "purpose": "The alternate-mode handoff payload. Deliberately faithful but bounded: it disclaims what it did not establish, which is where the substantive findings turned out to be.",
+      "boundaries": "Not a product format. Contains a deliberate placeholder digest defect that the trial was designed to expose.",
+      "evidence": "Both capsule-mode readers detected the placeholder and the mis-cited line range, and independently computed the correct digest.",
+      "changes_since_prior_turn": "NEW this turn"
+    },
+    {
+      "id": "D-PACK-04-COLDREADER-RESULTS",
+      "name": "Four isolated cold-reader answers",
+      "maturity": "RAW_EVIDENCE",
+      "status": "FROZEN",
+      "purpose": "The raw primary evidence of the run: two baseline, two capsule.",
+      "boundaries": "Self-reported execution. Same model family across all four. NOT independent corroboration.",
+      "evidence": "B1/B2/C1/C2.json, 40-50 KB each; all parse; all report 9 exports",
+      "changes_since_prior_turn": "NEW this turn"
+    }
+  ],
+  "case_status": {
+    "passed": [
+      "oracle self-check 4/4 + control",
+      "booster self-test 5/5",
+      "trap recall 4/4 in all four cold-reader trials",
+      "source digests correct 4/4"
+    ],
+    "failed": [
+      "booster v1 laundering detector — false positive on 2/2 correct agents (fixed in v2, regression test added)"
+    ],
+    "not_run": [
+      "no live provider/account action (none attempted, none authorized)",
+      "private Elephant Dogfood Source Seed bundle — not supplied, marked unavailable",
+      "no independent referee adjudication"
+    ],
+    "could_not_be_assessed": [
+      "whether any cold reader actually executed code — unfalsifiable from the artifact",
+      "statistical significance of any cost difference — n=2 per arm"
+    ]
+  },
+  "cost_observability": {
+    "source": "harness-reported subagent_tokens / tool_uses / duration_ms, plus self-reported probe_count in each answer",
+    "unknowns": "probe_count is a SELF-REPORT and is not corroborated by any independent measure. Token totals include the identical TASK.md prompt in both arms. No per-call billing signal was available."
+  },
+  "evidence_classification": {
+    "access": "PUBLIC_REPO_CONTENT — contains no credentials, no private artifacts, no personal data",
+    "handoff_audience": "any independent researcher or Elephant",
+    "redaction": "not required; nothing sensitive present"
+  },
+  "rollback": "Run D wrote only under runs/D-2026-10-12-elephant-toolkit/. Deleting that directory restores the repo exactly. main was never modified; no commit, no branch, no push.",
+  "unresolved_discrepancies": [
+    "Execution of the cold readers is unverifiable from their artifacts.",
+    "Capsule vs baseline recall is tied at 4/4 on a saturated toy corpus; the comparison is uninformative rather than favourable.",
+    "Cost direction favours the capsule descriptively, but baseline internal variance exceeds the between-arm gap.",
+    "One trial's novel compile-time finding was reproduced by the project lead, not by an independent second party."
+  ],
+  "judge_certification_status": "PENDING — no independent evaluation has occurred. Publication is not certification.",
+  "explicit_non_claims": [
+    "NOT a claim that the booster improves Elephant accuracy.",
+    "NOT a claim that capsules help or hurt; the comparison saturated.",
+    "NOT a claim that any Elephant actually executed the source.",
+    "NOT a claim of fine-tuning or any model-weight change of any kind. This conditions protocol and context only.",
+    "NOT a promotion, ratification or shared-canon change."
+  ]
+}

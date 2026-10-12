@@ -1,0 +1,263 @@
+{
+  "schema": "epg.run/0.1",
+  "run_id": "A-2026-10-12",
+  "protocol_id": "epg.research.library",
+  "protocol_version": "0.1.0-PROPOSED",
+  "status": "EVALUATED",
+  "basis": {
+    "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "protocol_sha256": null,
+    "requirement_epoch": "gym-decisions-1-4@2026-10-11",
+    "fixture_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "claims": [
+    {
+      "statement": "repeat() does not enforce its declared 'count is a nonnegative safe integer' precondition: -1, NaN, 2.5, 0.5 and 3.7 are all silently accepted and none throws.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/A-2026-10-12/exp1-results.json",
+        "runs/REVIEWER-R1-2026-10-12/reviewer-witness-output.json"
+      ]
+    },
+    {
+      "statement": "classify(NaN) returns 'positive', which is inside the declared union yet outside common sense.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/A-2026-10-12/exp4-results.json",
+        "runs/REVIEWER-R1-2026-10-12/reviewer-witness-output.json"
+      ]
+    },
+    {
+      "statement": "Mutating add()'s BODY (a+b to a*b) leaves the emitted .d.ts byte-identical, so the type surface cannot see a semantic-only change; mutating the signature does change it.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/A-2026-10-12/exp2-results.json",
+        "runs/REVIEWER-R1-2026-10-12/dts-mutation-check.mjs"
+      ]
+    },
+    {
+      "statement": "repeat() is not atomic: a throwing callback leaves values already delivered with no rollback.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/A-2026-10-12/exp5-results.json"
+      ]
+    },
+    {
+      "statement": "MAX_RETRIES carries the fixture's most rigid type (literal 3) and is referenced nowhere else in the file (1 textual occurrence: its own declaration).",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
+      "witness_refs": [
+        "runs/A-2026-10-12/facts-baseline.json"
+      ]
+    },
+    {
+      "statement": "Placement matters: a plain comment channel failed to detect the body mutation, while a generated sidecar did.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/A-2026-10-12/exp3-results.json"
+      ]
+    },
+    {
+      "statement": "All five experiment claims re-derive from execution via verify-run-note.mjs (exit 0).",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/A-2026-10-12/verify-run-note.mjs"
+      ]
+    },
+    {
+      "statement": "The run's descriptive verbosity transfers to other source. Nothing here measures real-code recall, cost or safety.",
+      "evidence_class": "DESIGN"
+    }
+  ],
+  "events": [
+    {
+      "id": "a-start",
+      "kind": "run_start",
+      "time": "2026-10-12T01:39:00",
+      "time_source": "HOST",
+      "actor": "arm-A-session"
+    },
+    {
+      "id": "a-verify",
+      "kind": "self_verification",
+      "time": "2026-10-12T02:15:00",
+      "time_source": "HOST",
+      "actor": "arm-A-session",
+      "evidence_ref": "runs/A-2026-10-12/verify-run-note.mjs"
+    },
+    {
+      "id": "a-close",
+      "kind": "run_closed",
+      "time": "2026-10-12T02:15:00",
+      "time_source": "HOST",
+      "actor": "arm-A-session"
+    }
+  ],
+  "artifacts": [
+    {
+      "uri": "runs/A-2026-10-12/baseline.ts",
+      "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+      "bytes": 1001,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp1-precondition.mjs",
+      "sha256": "569d063eba538ec14b69834f54bd633487ff569d84d478c8ad71ab2cfd62d76b",
+      "bytes": 6108,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp1-results.json",
+      "sha256": "1941928b14f3d99e6507c5e8b2452e12c6e070405ce3c22a8c92da562fc74ed2",
+      "bytes": 3978,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp2-mutation.mjs",
+      "sha256": "d366128eb8479348208e22f37fa77131363f8296d1fdef0ed162514afc31f9f6",
+      "bytes": 4564,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp2-results.json",
+      "sha256": "5bc914d65023d6dc76297fd64ce738cba8ea5f6ab8c477d1ecf31c71b26710a3",
+      "bytes": 2432,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp3-placement.mjs",
+      "sha256": "bdc97c38f8be31b89aa01d2fc55278f8ba725137b58a1971569664ec1c4d41e4",
+      "bytes": 6323,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp3-results.json",
+      "sha256": "43eefe5dde7ab24bc099b3e9df183e9b79bee2c3482886931a0f9a1fb2665a6c",
+      "bytes": 3364,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp4-classify.mjs",
+      "sha256": "d1813e56593a4585a091742833684295da787786e6b7d852676964e4877b1dbd",
+      "bytes": 3422,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp4-results.json",
+      "sha256": "03eb27b2cd110c330547fbacf6ce26785dd1c1cf37bc056fe4cd47ca5b3210a1",
+      "bytes": 2214,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp5-partial-effect.mjs",
+      "sha256": "8b4bb182df3e258e09f260c7add774a71f441c5fd22dea62c0cf74ae6cfad94d",
+      "bytes": 3028,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/exp5-results.json",
+      "sha256": "698f5dfa78d0bdb24229494d793679adc1c2a15315981c9923e85821e79fa7a2",
+      "bytes": 1984,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/extract-facts.mjs",
+      "sha256": "e007e3bf2fe2d84a4f644dcf08080ea1fafd24ce01d4c33b247c25edd0c61fd0",
+      "bytes": 6405,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/facts-baseline.json",
+      "sha256": "ffb9caf4a82828199090428a0824fd2ffd27d711e444199c0ffa6dbc554d7409",
+      "bytes": 4077,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/MACHINE_HUMAN_SIGNAL.md",
+      "sha256": "1694ac0b11049999b55249837a6e34110c3c09ae215a093bfab869825b2c420d",
+      "bytes": 4693,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/README.md",
+      "sha256": "c7920bd8b60a92efeb1f8554b612655f7fe8464257659b38ad153890a72f8090",
+      "bytes": 2619,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/RUN_NOTE.md",
+      "sha256": "de55cb9e4f8b4f292dcbb806ab36a4ff81dcf9d480baa622fe1e0bba4f208f11",
+      "bytes": 14607,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/SATURATION_DESCRIPTION.md",
+      "sha256": "d8c4c55781da152739305a9743b2995637d7ab6e1d23cd633acc0984a58dc2f1",
+      "bytes": 9048,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/sidecar.baseline.sem.json",
+      "sha256": "4df2cb7be2be2f3bcabdc87fc7aa19d822804101feb58c648299a12ab1c0cd55",
+      "bytes": 300,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/sidecar.mutated.sem.json",
+      "sha256": "2208add6da894bd49711c15fe1a12638aed281cea6edd25f86dd650223d28e5a",
+      "bytes": 300,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/A-2026-10-12/verify-run-note.mjs",
+      "sha256": "48248c87dafb54e622a42b24366f036bc5e3e0d40e51237203b3f5bf22317e82",
+      "bytes": 6314,
+      "state": "RUN_OUTPUT"
+    }
+  ],
+  "metrics": {
+    "experiments_executed": {
+      "value": 5,
+      "status": "MEASURED",
+      "unit": "count"
+    },
+    "run_note_claims_rederived": {
+      "value": "ALL",
+      "status": "MEASURED",
+      "unit": "verify-run-note verdict"
+    },
+    "real_source_cohort": {
+      "value": null,
+      "status": "NOT_APPLICABLE",
+      "unit": "n/a"
+    },
+    "tokens": {
+      "value": null,
+      "status": "UNKNOWN",
+      "unit": "tokens"
+    },
+    "wall_time": {
+      "value": null,
+      "status": "UNKNOWN",
+      "unit": "seconds"
+    }
+  },
+  "publication": {
+    "status": "PUBLISHED",
+    "all_maturity_pack_index": "runs/A-2026-10-12/RUN_NOTE.md",
+    "reason": "Full run note plus five result JSONs, a machine-human signal file and a self-verifying script."
+  },
+  "extensions": {
+    "independence": "BLIND_DISCOVERY",
+    "decision_1_feeder": "fixture only; real cohort not used",
+    "decision_2_automation": "author tools built directly; existing Phase 0 toolkit not replayed first",
+    "decision_3_signal": "runs/A-2026-10-12/MACHINE_HUMAN_SIGNAL.md",
+    "known_correction": "An earlier 1e9 'did not return' reading was a wall-clock threshold artefact (3189 ms), not a source property. Corrected in the run note."
+  }
+}

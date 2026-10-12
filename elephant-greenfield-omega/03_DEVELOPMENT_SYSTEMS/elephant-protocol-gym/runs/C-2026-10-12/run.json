@@ -1,0 +1,201 @@
+{
+  "schema": "epg.run/0.1",
+  "run_id": "C-2026-10-12",
+  "protocol_id": "epg.semantic.selfhosting",
+  "protocol_version": "0.1.0-PROPOSED",
+  "status": "EVALUATED",
+  "basis": {
+    "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "protocol_sha256": null,
+    "requirement_epoch": "gym-decisions-1-4@2026-10-11",
+    "fixture_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "claims": [
+    {
+      "statement": "The fixture typechecks clean on its own under tsc 7.0.2 with zero diagnostics; a contract-violating caller is the negative control.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/C-2026-10-12/evidence/groundtruth.json"
+      ]
+    },
+    {
+      "statement": "Two minimalist competing method vocabularies were built and compared as executable probes (v1-verbs, v2-predicates) with a deterministic comparison harness; the review round found them TIED on three of four criteria, so neither is selected.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/C-2026-10-12/evidence/comparison.json"
+      ]
+    },
+    {
+      "statement": "Arm C meets its prompt-derived acceptance checklist: 3/3 cross-checks pass, including that every TESTED numeric claim in the note is present in the evidence JSON and that all nine run artifacts exist and are non-empty.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/C-2026-10-12/probe/verify-acceptance.mjs",
+        "runs/C-2026-10-12/ACCEPTANCE.md"
+      ]
+    },
+    {
+      "statement": "Blind-discovery exclusions (other arms, the legacy alignment map) are disclosed in the run note rather than silently relied upon.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": [
+        "runs/C-2026-10-12/RUN_NOTE.md"
+      ]
+    },
+    {
+      "statement": "The three-operation vocabulary exists/witnessed/enforced is a live contender but NOT frozen: n=1 fixture cannot adjudicate it, and WikiCore remains a working name, not an approved protocol.",
+      "evidence_class": "DESIGN"
+    },
+    {
+      "statement": "Whether the recovered 17-family symbolic lexer is a better intake than the probes built here was not tested by this run.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    }
+  ],
+  "events": [
+    {
+      "id": "c-start",
+      "kind": "run_start",
+      "time": "2026-10-12T00:52:00",
+      "time_source": "HOST",
+      "actor": "arm-C-session"
+    },
+    {
+      "id": "c-probe",
+      "kind": "probe_execution",
+      "time": "2026-10-12T00:56:56",
+      "time_source": "HOST",
+      "actor": "arm-C-session",
+      "evidence_ref": "runs/C-2026-10-12/probe/verify-acceptance.mjs"
+    },
+    {
+      "id": "c-close",
+      "kind": "run_closed",
+      "time": "2026-10-12T02:20:00",
+      "time_source": "HOST",
+      "actor": "arm-C-session"
+    },
+    {
+      "id": "c-repro",
+      "kind": "independent_reproduction",
+      "time": "2026-10-12T15:02:00",
+      "time_source": "HOST",
+      "actor": "lab-ops",
+      "evidence_ref": "runs/C-2026-10-12/probe/verify-acceptance.mjs"
+    }
+  ],
+  "artifacts": [
+    {
+      "uri": "runs/C-2026-10-12/.gitignore",
+      "sha256": "f3171f3d230d4912cf4c2fa0638c6eeb56ecb08baa89106ede86e3f576345a83",
+      "bytes": 96,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/ACCEPTANCE.md",
+      "sha256": "d385e50067efbf25dff1b147115f60b1a991c75445564ac73034c48313a859f6",
+      "bytes": 3584,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/evidence/comparison.json",
+      "sha256": "266a403752d925da3c9c5bf0c3cac530c6a2e1ad692d7edc2ce34a3fa0f50e77",
+      "bytes": 14287,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/evidence/groundtruth.json",
+      "sha256": "0c4245ed9cbd5c4d046b35e9fbc556f079360d052f3c01af3a7077c39c986dac",
+      "bytes": 3531,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/probe/compare.mjs",
+      "sha256": "3aecd90c046c25e997a6b1ec785ad1cdd8060bfb39b681b885450830f985e35a",
+      "bytes": 5185,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/probe/groundtruth.mjs",
+      "sha256": "b12ffc444f91aa02ce15781a0b9046f4c61bfbb4f0602251e6a336bf395ba8fa",
+      "bytes": 11682,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/probe/index.mjs",
+      "sha256": "bb6f2ac65f6146b7969466e7a53e64937d1a9595833ad36f56667e371cc68bf6",
+      "bytes": 6618,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/probe/v1-verbs.mjs",
+      "sha256": "61a8a76c867b2d792e952c77c37099c665d4fce255a18d66f90f9229ecc4a0b4",
+      "bytes": 5090,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/probe/v2-predicates.mjs",
+      "sha256": "d80da716dfeb4e1d3aa1b71ceb12a4d8d50395058a031016fd951e5851bb2807",
+      "bytes": 7676,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/probe/verify-acceptance.mjs",
+      "sha256": "24cfacb48c35610774a84d9030775284cb900cd4369e8bf799ab502333e468bd",
+      "bytes": 14230,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/README.md",
+      "sha256": "64bfc020acb4edceeb46299ca09645f5aba3d1f938e5c730331a8c4d695e44dd",
+      "bytes": 2847,
+      "state": "RUN_OUTPUT"
+    },
+    {
+      "uri": "runs/C-2026-10-12/RUN_NOTE.md",
+      "sha256": "a5fe5cc35bc436ceee56fadcc3dec8109bc98ab485968488bc1b39b27a7836e2",
+      "bytes": 12996,
+      "state": "RUN_OUTPUT"
+    }
+  ],
+  "metrics": {
+    "acceptance_criteria_passed": {
+      "value": 3,
+      "status": "MEASURED",
+      "unit": "of 3"
+    },
+    "competing_vocabularies_built": {
+      "value": 2,
+      "status": "MEASURED",
+      "unit": "count"
+    },
+    "tsc_version": {
+      "value": "7.0.2",
+      "status": "MEASURED",
+      "unit": "version"
+    },
+    "real_source_cohort": {
+      "value": null,
+      "status": "NOT_APPLICABLE",
+      "unit": "n/a"
+    },
+    "tokens": {
+      "value": null,
+      "status": "UNKNOWN",
+      "unit": "tokens"
+    }
+  },
+  "publication": {
+    "status": "PUBLISHED",
+    "all_maturity_pack_index": "runs/C-2026-10-12/RUN_NOTE.md",
+    "reason": "Run note, acceptance checklist, evidence JSONs and executable probes."
+  },
+  "extensions": {
+    "independence": "BLIND_DISCOVERY (saw arm A's directory on disk and did not open it)",
+    "decision_1_feeder": "fixture plus a locally compiled ground-truth build; real cohort not used",
+    "decision_3_signal": "carried in the run note and comparison evidence"
+  }
+}

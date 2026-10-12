@@ -1,0 +1,122 @@
+{
+  "fixture": {
+    "path": "C:\\0-BlackBoxProject-0\\VOMEGA\\elephant-greenfield-omega\\03_DEVELOPMENT_SYSTEMS\\elephant-protocol-gym\\fixture\\001-semantic-basics.ts",
+    "bytes": 1001,
+    "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "typecheck": {
+    "tscVersion": "Version 7.0.2",
+    "compilerPath": "C:/Users/VIVIM.inc/AppData/Roaming/npm/node_modules/typescript/lib/tsc.js",
+    "fixtureAlone": {
+      "exitCode": 0,
+      "diagnostics": "(none)",
+      "verdict": "FIXTURE TYPECHECKS CLEAN"
+    },
+    "contractViolatingCaller": {
+      "exitCode": 0,
+      "diagnostics": "(none)",
+      "harnessResolutionError": false,
+      "verdict": "COMPILER ACCEPTED ALL PRECONDITION VIOLATIONS (-1, 2.5, NaN) — declared precondition is NOT type-enforced"
+    },
+    "typeViolationControl": {
+      "exitCode": 1,
+      "diagnostics": "probe/.gt-build/caller-type.ts(3,26): error TS2322: Type 'number' is not assignable to type 'string'.",
+      "harnessResolutionError": false,
+      "verdict": "CONTROL OK — typechecker is live and reported the real type error"
+    }
+  },
+  "runtime": {
+    "add(2,3)": 5,
+    "add(0.1,0.2)": 0.30000000000000004,
+    "classify(-1/0/5)": [
+      "negative",
+      "zero",
+      "positive"
+    ],
+    "accumulate([1,2,3])": 6,
+    "accumulate([])": 0,
+    "MAX_RETRIES": 3,
+    "repeat(3)": [
+      0,
+      1,
+      2
+    ],
+    "repeat(0)": [],
+    "repeat(-1)  [declared: nonnegative integer]": [],
+    "repeat(-5)  [declared: nonnegative integer]": [],
+    "repeat(2.5) [declared: safe integer]": [
+      0,
+      1,
+      2
+    ],
+    "repeat(0.5) [declared: safe integer]": [
+      0
+    ],
+    "repeat(NaN) [declared: safe integer]": [],
+    "repeat(3.7) [declared: safe integer]": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "violationBehaviour": [
+      {
+        "count": "-1",
+        "kind": "negative",
+        "threw": false,
+        "emitted": 0,
+        "error": null
+      },
+      {
+        "count": "2.5",
+        "kind": "fractional",
+        "threw": false,
+        "emitted": 3,
+        "error": null
+      },
+      {
+        "count": "NaN",
+        "kind": "NaN",
+        "threw": false,
+        "emitted": 0,
+        "error": null
+      }
+    ],
+    "hasGuardInEmittedJs": false,
+    "repeatEmittedBody": "(count, emit) {\n    for (let i = 0; i < count; i++)\n        emit(i);\n}"
+  },
+  "git": {
+    "repoRoot": "C:/0-BlackBoxProject-0/VOMEGA",
+    "fixturePathspec": "elephant-greenfield-omega/03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/fixture/001-semantic-basics.ts",
+    "blobSha": "d846b2e0c18be831b62f5deae0fa325779576021",
+    "workingTreeClean": true
+  },
+  "contradiction": {
+    "declared": {
+      "subject": "repeat(count, emit)",
+      "claim": "count is a nonnegative safe integer",
+      "enforcement": "Not enforced"
+    },
+    "observed": {
+      "count=-1": {
+        "emitted": 0,
+        "note": "silently empty, no error"
+      },
+      "count=2.5": {
+        "emitted": 3,
+        "note": "ceiling-ward: asked fractionally, got 3 emissions"
+      },
+      "count=NaN": {
+        "emitted": 0,
+        "note": "silently empty, no error"
+      },
+      "typeEnforced: false": {
+        "emitted": null,
+        "note": "tsc accepted -1, 2.5, NaN"
+      }
+    },
+    "typeSystemEnforcesPrecondition": true,
+    "runtimeThrowsOnViolation": false,
+    "verdict": "CONFIRMED: the declared precondition is documentation only. Neither tsc nor runtime enforces it, and no violation raises an error."
+  }
+}

@@ -1,0 +1,35 @@
+RUN D BOOSTER — witness-check
+
+B1 [baseline] recall 4/4 | hashes OK | laundering none | execution EXECUTION_UNVERIFIABLE_BY_THIS_CHECKER
+B2 [baseline] recall 4/4 | hashes OK | laundering none | execution EXECUTION_UNVERIFIABLE_BY_THIS_CHECKER
+C1 [capsule ] recall 4/4 | hashes OK | laundering none | execution EXECUTION_UNVERIFIABLE_BY_THIS_CHECKER
+C2 [capsule ] recall 4/4 | hashes OK | laundering none | execution EXECUTION_UNVERIFIABLE_BY_THIS_CHECKER
+
+aggregate: {
+  "baseline": {
+    "trials": 2,
+    "trap_recall_mean": 4,
+    "hash_match_count": 2,
+    "laundering_count": 0,
+    "probes_self_reported": [
+      11,
+      5
+    ]
+  },
+  "capsule": {
+    "trials": 2,
+    "trap_recall_mean": 4,
+    "hash_match_count": 2,
+    "laundering_count": 0,
+    "probes_self_reported": [
+      104,
+      42
+    ]
+  }
+}
+
+LIMITS:
+ - This checker CANNOT verify that any agent actually executed code. `executed:true` is a self-report.
+ - Trap recall measures whether an answer reports a trap, not whether its explanation of it is correct.
+ - It scores against a 2-file, 4-trap corpus. Recall numbers do not generalise to real source.
+ - n=2 per mode. Differences between arms are descriptive, not significant.

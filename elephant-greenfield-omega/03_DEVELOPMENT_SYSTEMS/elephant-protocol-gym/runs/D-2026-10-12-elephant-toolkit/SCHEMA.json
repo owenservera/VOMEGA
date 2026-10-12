@@ -1,0 +1,33 @@
+{
+  "schema": "run-d-cold-reader-answer/1",
+  "note": "Answer shape for the Run D cold-reader trial. Labels are the measured quantity; there is no partial credit for confident prose.",
+  "exports": [
+    {
+      "name": "string",
+      "kind": "const | function",
+      "signature": "string",
+      "claims": [
+        {
+          "label": "DECLARED | DERIVED | OBSERVED | UNKNOWN",
+          "statement": "string",
+          "evidence": "comment text, or file:line, or exact command + output"
+        }
+      ]
+    }
+  ],
+  "unenforced_or_contradicted": [
+    {
+      "claim": "string",
+      "declared_says": "string",
+      "actual_behaviour": "string",
+      "evidence": "exact command + output",
+      "independently_executed": true
+    }
+  ],
+  "unenforced_or_contradicted_found": true,
+  "sha256": [{ "file": "string", "sha256": "string" }],
+  "executed": true,
+  "commands_run": ["string"],
+  "probe_count": 0,
+  "summary_prose": "string"
+}

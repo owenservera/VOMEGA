@@ -1,0 +1,396 @@
+{
+  "schema": "run-d-cold-reader-answer/1",
+  "note": "C2 cold-reader trial. Every OBSERVED label below is backed by a command I personally ran in this trial. Capsule-attributed material that I re-ran and reproduced is reported as my own OBSERVED; capsule material I did not re-run is marked capsule-attributed and is NOT labelled OBSERVED. Source files were not modified (SHA-256 re-verified after all probing).",
+
+  "exports": [
+    {
+      "name": "MAX_RETRIES",
+      "kind": "const",
+      "signature": "export const MAX_RETRIES = 3;",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "Declared and initialised to the numeric literal 3. Because it is a `const` initialised with a literal, its inferred TypeScript type is the literal type `3`, not `number`.",
+          "evidence": "source/001-semantic-basics.ts:11 — `export const MAX_RETRIES = 3;`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Importing the module yields a runtime value of 3, and Number.isInteger(MAX_RETRIES) is true.",
+          "evidence": "Command: `node --input-type=module -e \"const a=await import('./source/001-semantic-basics.ts');console.log('MAX_RETRIES =',a.MAX_RETRIES,'isInt=',Number.isInteger(a.MAX_RETRIES))\"` → Output: `MAX_RETRIES = 3 isInt= true`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "MAX_RETRIES is a live binding consumed across the file boundary by 002-consumer.ts (imported there at line 12 and used in retryBudget).",
+          "evidence": "Command: `node --input-type=module -e \"const a=await import('./source/001-semantic-basics.ts');const b=await import('./source/002-consumer.ts');console.log('MAX_RETRIES =',a.MAX_RETRIES,'| retryBudget(100) =',b.retryBudget(100))\"` → Output: `MAX_RETRIES = 3 | retryBudget(100) = 3`"
+        }
+      ]
+    },
+    {
+      "name": "add",
+      "kind": "function",
+      "signature": "export function add(a: number, b: number): number",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "Pure binary addition with no validation, no coercion logic and no branching; the entire body is `return a + b;`. It is also reused internally by accumulate().",
+          "evidence": "source/001-semantic-basics.ts:13-15 (`return a + b;`) and source/001-semantic-basics.ts:30 (`total = add(total, value)`)"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "add(2,3) = 5. add(0.1,0.2) = 0.30000000000000004 (IEEE-754, no rounding). add(NaN,1) = NaN. add(1e308,1e308) = Infinity. add(2) = NaN (missing argument becomes undefined; no arity check). add(1,2,3) = 3 (extra arguments silently ignored).",
+          "evidence": "Command: `node --input-type=module -e \"const {add}=await import('./source/001-semantic-basics.ts');console.log('add(2,3) =',add(2,3));console.log('add(0.1,0.2) =',add(0.1,0.2));console.log('add(NaN,1) =',add(NaN,1));console.log('add(1e308,1e308) =',add(1e308,1e308));console.log('add(2) =',add(2));console.log('add(1,2,3) =',add(1,2,3))\"` → Output: `add(2,3) = 5` / `add(0.1,0.2) = 0.30000000000000004` / `add(NaN,1) = NaN` / `add(1e308,1e308) = Infinity` / `add(2) = NaN` / `add(1,2,3) = 3`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Type annotations are erased at runtime, so add performs no runtime type checking: add('1', 2) returns the string \"12\" (string concatenation) rather than the number 3, contradicting the declared `(a: number, b: number): number` type if that type is read as a runtime guarantee.",
+          "evidence": "Command: `node --input-type=module -e \"const {add}=await import('./source/001-semantic-basics.ts');console.log(JSON.stringify(add('1',2)))\"` → Output: `\"12\"`"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "Behaviour for arguments of type bigint, Symbol, or objects with a custom valueOf/Symbol.toPrimitive was not probed, so it is undetermined whether such inputs throw or coerce.",
+          "evidence": "Not executed in this trial."
+        }
+      ]
+    },
+    {
+      "name": "repeat",
+      "kind": "function",
+      "signature": "export function repeat(count: number, emit: (value: number) => void): void",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "\"Declared expectation: count is a nonnegative safe integer. Not enforced.\" The author both states the precondition AND explicitly admits in the same sentence that it is not enforced.",
+          "evidence": "source/001-semantic-basics.ts:17 — `/** Declared expectation: count is a nonnegative safe integer. Not enforced. */`"
+        },
+        {
+          "label": "DECLARED",
+          "statement": "The module header additionally declares, as an intentional research artefact, that the contract on repeat is not enforced and exists so agents can distinguish author meaning from mechanically established behaviour.",
+          "evidence": "source/001-semantic-basics.ts:4-6 — \"Intentional research note: the claimed contract on repeat is NOT enforced. This discrepancy exists so agents can discover how to distinguish author's meaning from mechanically established or tested behavior.\""
+        },
+        {
+          "label": "DERIVED",
+          "statement": "Body is a bare counting loop `for (let i = 0; i < count; i++) emit(i);`. There is no type guard, no range check, no integer check, no throw, no clamping and no logging. The only implicit constraint is the loop condition `i < count`, which silently converts a violating count into a non-negative emission count.",
+          "evidence": "source/001-semantic-basics.ts:18-20"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Well-formed counts emit an ascending integer sequence starting at 0 with step exactly 1, and nothing else: repeat(3) = [0,1,2], repeat(4) = [0,1,2,3], repeat(5) = [0,1,2,3,4] (verified: every element strictly ascending by 1 from 0 === true).",
+          "evidence": "Command: `node --input-type=module -e \"const {repeat}=await import('./source/001-semantic-basics.ts');const s=[];repeat(5,v=>s.push(v));console.log(s,'strictly ascending by 1 from 0:',s.every((v,i)=>v===i))\"` → Output: `[ 0, 1, 2, 3, 4 ] strictly ascending by 1 from 0: true`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The declared precondition is violated without any error: repeat(-1) emits nothing and does not throw (emission count 0), and repeat(2.5) emits [0,1,2] — i.e. 2.5 is not a safe integer yet behaves as if it were, silently truncating via the i < count test.",
+          "evidence": "Command: `node --input-type=module -e \"const {repeat}=await import('./source/001-semantic-basics.ts');for(const n of [3,0,-1,2.5,NaN]){const o=[];let err=null;try{repeat(n,v=>o.push(v))}catch(e){err=e.message}console.log('repeat('+String(n)+') -> emitted='+JSON.stringify(o)+(err?' ERROR='+err:'')+' len='+o.length)}\"` → Output: `repeat(3) -> emitted=[0,1,2] len=3` / `repeat(0) -> emitted=[] len=0` / `repeat(-1) -> emitted=[] len=0` / `repeat(2.5) -> emitted=[0,1,2] len=3` / `repeat(NaN) -> emitted=[] len=0`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The violated precondition is not enforced at compile time either. A probe file containing `repeat(-1, v => sink.push(v))` and `repeat(2.5, v => sink.push(v))` type-checks under `tsc --strict` with zero errors.",
+          "evidence": "Command: wrote ./_typeprobe2.ts importing repeat from ./source/001-semantic-basics.ts plus retryBudget/summarizeBuckets, then `npx --no-install tsc --noEmit --allowImportingTsExtensions --strict ./_typeprobe2.ts` → Output: (empty, exit code 0). Probe file deleted afterwards; no source file touched."
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Because the loop condition performs implicit coercion, non-number inputs are silently accepted: repeat('3') emits [0,1,2] (string coerced to number) and repeat(null) / repeat(undefined) emit nothing.",
+          "evidence": "Command: `node --input-type=module -e \"const {repeat}=await import('./source/001-semantic-basics.ts');let a=[];repeat('3',v=>a.push(v));let n=[];repeat(null,v=>n.push(v));let u=[];repeat(undefined,v=>u.push(v));console.log('repeat(\\\"3\\\") ->',JSON.stringify(a));console.log('repeat(null) ->',JSON.stringify(n));console.log('repeat(undefined) ->',JSON.stringify(u))\"` → Output: `repeat(\"3\") -> [0,1,2]` / `repeat(null) -> []` / `repeat(undefined) -> []`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "repeat(Infinity), repeat(2**53) and repeat(1e21) do not terminate — each emitted strictly ascending integers past an abort threshold of 100001 emissions before my probe threw to stop it. The function is therefore a live-hang hazard for any non-finite or huge count; the declared 'nonnegative safe integer' precondition is exactly what would have prevented this.",
+          "evidence": "Command: `node --input-type=module -e \"const {repeat}=await import('./source/001-semantic-basics.ts');for(const n of [Infinity,2**53,1e21]){let c=0,f=[];try{repeat(n,v=>{c++;if(c<=5)f.push(v);if(c>100000)throw new Error('CAP')})}catch(e){}console.log('repeat('+String(n)+') -> emittedCount='+c+' first5='+JSON.stringify(f))}\"` → Output: `repeat(Infinity) -> emittedCount=100001 first5=[0,1,2,3,4]` / `repeat(9007199254740992) -> emittedCount=100001 first5=[0,1,2,3,4]` / `repeat(1e+21) -> emittedCount=100001 first5=[0,1,2,3,4]`"
+        }
+      ]
+    },
+    {
+      "name": "classify",
+      "kind": "function",
+      "signature": "export function classify(value: number): \"negative\" | \"zero\" | \"positive\"",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "Three-branch total function on the reals: `if (value < 0) return \"negative\"; if (value === 0) return \"zero\"; return \"positive\";`. The final return is an unconditional fall-through default, not a tested positive branch.",
+          "evidence": "source/001-semantic-basics.ts:22-26"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "On ordinary numeric inputs it behaves as the code reads: classify(-1) = \"negative\", classify(-0.0001) = \"negative\", classify(0) = \"zero\", classify(-0) = \"zero\" (Object.is(-0,0) branch is taken by ===), classify(1) = \"positive\", classify(2.5) = \"positive\", classify(9007199254740991) = \"positive\", classify(-Number.MAX_VALUE) = \"negative\", classify(-Infinity) = \"negative\", classify(Infinity) = \"positive\".",
+          "evidence": "Command: `node --input-type=module -e \"const {classify}=await import('./source/001-semantic-basics.ts');for(const v of [-1,-0.0001,0,-0,1,2.5,Number.MAX_SAFE_INTEGER,-Number.MAX_VALUE,Infinity,-Infinity])console.log('classify('+(Object.is(v,-0)?'-0':String(v))+') =',JSON.stringify(classify(v)))\"` → Output: `classify(-1) = \"negative\"` / `classify(-0.0001) = \"negative\"` / `classify(0) = \"zero\"` / `classify(-0) = \"zero\"` / `classify(1) = \"positive\"` / `classify(2.5) = \"positive\"` / `classify(9007199254740991) = \"positive\"` / `classify(-1.7976931348623157e+308) = \"negative\"` / `classify(Infinity) = \"positive\"` / `classify(-Infinity) = \"negative\"`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "classify(NaN) returns \"positive\". NaN is neither < 0 nor === 0, so it falls through to the default return. NaN is not positive, so the result is a silent misclassification.",
+          "evidence": "Command: `node --input-type=module -e \"const {classify}=await import('./source/001-semantic-basics.ts');console.log('classify(NaN) =',JSON.stringify(classify(NaN)))\"` → Output: `classify(NaN) = \"positive\"`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "Because annotations are erased, classify coerces non-numbers: classify('5') = \"positive\" and classify(null) = \"positive\" (null coerces to 0 for `<` yet 0 === 0 is true only for numeric 0 — here null < 0 is false and null === 0 is false, so it falls through to \"positive\", NOT \"zero\").",
+          "evidence": "Command: `node --input-type=module -e \"const {classify}=await import('./source/001-semantic-basics.ts');console.log('classify(\\\"5\\\") =',JSON.stringify(classify('5')));console.log('classify(null) =',JSON.stringify(classify(null)))\"` → Output: `classify(\"5\") = \"positive\"` / `classify(null) = \"positive\"`"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "No DECLARED contract exists for classify — the author wrote no doc comment for it. Whether \"positive\" for NaN counts as a contract violation is therefore NOT a declared-vs-actual contradiction; it is only a DERIVED observation about the unconditional fall-through. Whether the author intended NaN to be handled is UNKNOWN.",
+          "evidence": "source/001-semantic-basics.ts:22 has no preceding doc comment (contrast the doc comments at lines 17 and, in the other file, lines 14-17 / 22-25 / 32 / 38-41)."
+        }
+      ]
+    },
+    {
+      "name": "accumulate",
+      "kind": "function",
+      "signature": "export function accumulate(values: number[]): number",
+      "claims": [
+        {
+          "label": "DERIVED",
+          "statement": "Left fold of add() starting from 0: `let total = 0; for (const value of values) total = add(total, value); return total;`. It is a genuine consumer of add, so it inherits add's absence of coercion and validation.",
+          "evidence": "source/001-semantic-basics.ts:28-32"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "It is the sum of the array: accumulate([]) = 0 (identity, a number not undefined/NaN), accumulate([1,2,3]) = 6, accumulate([-1,-2]) = -3, accumulate([0.1,0.2]) = 0.30000000000000004, accumulate([NaN,1]) = NaN (poison propagates and there is no recovery), accumulate([1e308,1e308]) = Infinity (overflow, unchecked).",
+          "evidence": "Command: `node --input-type=module -e \"const {accumulate}=await import('./source/001-semantic-basics.ts');for(const a of [[],[1,2,3],[-1,-2],[0.1,0.2],[NaN,1],[1e308,1e308]])console.log('accumulate('+JSON.stringify(a)+') =',String(accumulate(a)))\"` → Output: `accumulate([]) = 0` / `accumulate([1,2,3]) = 6` / `accumulate([-1,-2]) = -3` / `accumulate([0.1,0.2]) = 0.30000000000000004` / `accumulate([NaN,1]) = NaN` / `accumulate([1e308,1e308]) = Infinity`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The declared `(values: number[]): number` type is not a runtime guarantee: accumulate([1,'2']) returns the STRING \"12\" rather than the number 3, because the internal add performs `+` on a string at the second iteration.",
+          "evidence": "Command: `node --input-type=module -e \"const {accumulate}=await import('./source/001-semantic-basics.ts');console.log(JSON.stringify(accumulate([1,'2'])))\"` → Output: `\"12\"`"
+        },
+        {
+          "label": "UNKNOWN",
+          "statement": "No DECLARED contract exists for accumulate (no doc comment), so its behaviour on overflow, NaN and mixed types is unspecified rather than contradicted. Whether the author intended those cases is UNKNOWN.",
+          "evidence": "source/001-semantic-basics.ts:28 has no preceding doc comment."
+        }
+      ]
+    },
+    {
+      "name": "retryBudget",
+      "kind": "function",
+      "signature": "export function retryBudget(attempts: number): number",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "\"Declared expectation: retryBudget(attempts) always returns an integer >= 1 and <= MAX_RETRIES. Not enforced.\" The words 'always' and 'Not enforced' appear in the same doc comment.",
+          "evidence": "source/002-consumer.ts:14-17"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "Single expression `return Math.min(attempts, MAX_RETRIES);`. Math.min clamps only the UPPER bound and passes the argument through untouched on the lower side; there is no Math.max/floor/round, no clamp to 1, and no type or finiteness check. So only the '<= MAX_RETRIES' half of the declared contract has any structural support, and even that collapses for NaN.",
+          "evidence": "source/002-consumer.ts:18-20"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The '<= MAX_RETRIES' half holds for all finite inputs tested, but the '>= 1' and 'integer' halves fail for ordinary inputs: retryBudget(0) = 0, retryBudget(-1) = -1, retryBudget(-5) = -5, retryBudget(0.5) = 0.5, retryBudget(-0.5) = -0.5, retryBudget(2.5) = 2.5, retryBudget(1.5) = 1.5. For inputs 1,2,3,4,5,100,2**53 and Infinity the return is clamped to 3 and the declared contract holds.",
+          "evidence": "Command: `node --input-type=module -e \"const {retryBudget}=await import('./source/002-consumer.ts');const {MAX_RETRIES}=await import('./source/001-semantic-basics.ts');for(const n of [0,1,2,3,4,5,100,-1,-5,2.5,1.5,0.5,-0.5,Infinity]){const o=retryBudget(n);console.log('retryBudget('+String(n)+') =',String(o),'| int='+Number.isInteger(o),'>=1:'+(o>=1),'<=3:'+(o<=MAX_RETRIES),'| DECLARED-HOLDS='+(Number.isInteger(o)&&o>=1&&o<=MAX_RETRIES))}\"` → Output: `retryBudget(0) = 0 | int=true >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(-1) = -1 | int=true >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(-5) = -5 | int=true >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(0.5) = 0.5 | int=false >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(-0.5) = -0.5 | int=false >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(1.5) = 1.5 | int=false >=1:true <=3:true | DECLARED-HOLDS=false` / `retryBudget(2.5) = 2.5 | int=false >=1:true <=3:true | DECLARED-HOLDS=false` / `retryBudget(1) = 1 | int=true >=1:true <=3:true | DECLARED-HOLDS=true` / `retryBudget(2) = 2 ... DECLARED-HOLDS=true` / `retryBudget(3) = 3 ... true` / `retryBudget(4) = 3 ... true` / `retryBudget(5) = 3 ... true` / `retryBudget(100) = 3 ... true` / `retryBudget(Infinity) = 3 | int=true >=1:true <=3:true | DECLARED-HOLDS=true` / `retryBudget(2**53)= 3 | int=true ... true`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "NaN defeats BOTH halves of the declared contract at once: retryBudget(NaN) = NaN, which is neither an integer, nor >= 1, nor <= MAX_RETRIES (every comparison against NaN is false, so Math.min returns NaN unchanged). retryBudget(-Infinity) = -Infinity likewise violates 'integer >= 1' and is not an integer.",
+          "evidence": "Command: `node --input-type=module -e \"const {retryBudget}=await import('./source/002-consumer.ts');for(const n of [NaN,-Infinity]){const o=retryBudget(n);console.log('retryBudget('+String(n)+') =',String(o),'| int='+Number.isInteger(o),'>=1:'+(o>=1),'<=3:'+(o<=3))}\"` → Output: `retryBudget(NaN) = NaN | int=false >=1:false <=3:false` / `retryBudget(-Infinity) = -Infinity | int=false >=1:false <=3:true`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The violated bounds are not enforced at compile time: retryBudget(0), retryBudget(-5) and retryBudget(2.5) all type-check clean under `tsc --strict`, because `number` carries no lower-bound or integrality information.",
+          "evidence": "Command: `npx --no-install tsc --noEmit --allowImportingTsExtensions --strict ./_typeprobe2.ts` (probe file contained exactly these three violating calls plus the repeat calls) → Output: (empty, exit code 0)"
+        }
+      ]
+    },
+    {
+      "name": "summarizeBuckets",
+      "kind": "function",
+      "signature": "export function summarizeBuckets(values: number[]): string[]",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "\"Declared expectation: summarizeBuckets(values) returns exactly the three buckets 'negative', 'zero', 'positive', each present exactly once. Not enforced.\"",
+          "evidence": "source/002-consumer.ts:22-25"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "It classifies each element with classify() and inserts the results into a Set, then spreads the Set: `const seen = new Set<string>(); for (const value of values) seen.add(classify(value)); return [...seen];`. The Set deduplicates by insertion order — it can only ever return buckets that are actually PRESENT in the input, so it can never manufacture the three buckets the comment promises. Return type is `string[]`, not the union type classify returns, so the union guarantee is not even propagated at the type level.",
+          "evidence": "source/002-consumer.ts:26-30"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The 'exactly the three buckets' claim fails on almost every input. summarizeBuckets([1,2,3]) = [\"positive\"] (1 bucket), summarizeBuckets([1,1,1]) = [\"positive\"], summarizeBuckets([1,2]) = [\"positive\"], summarizeBuckets([-5]) = [\"negative\"], and summarizeBuckets([]) = [] (ZERO buckets, not three).",
+          "evidence": "Command: `node --input-type=module -e \"const {summarizeBuckets}=await import('./source/002-consumer.ts');for(const a of [[1,2,3],[-1,0,1],[1,1,1],[1,2],[],[-5],[1,2,3,4,5,6]]){const r=summarizeBuckets(a);console.log('summarizeBuckets('+JSON.stringify(a)+') =',JSON.stringify(r),'| len='+r.length)}\"` → Output: `summarizeBuckets([1,2,3]) = [\"positive\"] | len=1` / `summarizeBuckets([-1,0,1]) = [\"negative\",\"zero\",\"positive\"] | len=3` / `summarizeBuckets([1,1,1]) = [\"positive\"] | len=1` / `summarizeBuckets([1,2]) = [\"positive\"] | len=1` / `summarizeBuckets([]) = [] | len=0` / `summarizeBuckets([-5]) = [\"negative\"] | len=1` / `summarizeBuckets([1,2,3,4,5,6]) = [\"positive\"] | len=1`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "When all three buckets ARE present the count is right (3) but the ORDER is first-seen order in the input, not the declared listing order: summarizeBuckets([-1,0,1]) = [\"negative\",\"zero\",\"positive\"] while summarizeBuckets([0,0,1,2,-3]) = [\"zero\",\"positive\",\"negative\"]. The declared comment does not actually promise an order, so this is a spec gap rather than a strict contradiction.",
+          "evidence": "Command: `node --input-type=module -e \"const {summarizeBuckets}=await import('./source/002-consumer.ts');console.log(JSON.stringify(summarizeBuckets([0,0,1,2,-3])))\"` → Output: `[\"zero\",\"positive\",\"negative\"]`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The 'each present exactly once' half does hold whenever a bucket is present, because Set insertion deduplicates: summarizeBuckets([1,1,1]) is [\"positive\"], one element, not three. So that half of the declared contract is satisfied; the violated half is 'exactly the three buckets'.",
+          "evidence": "Same command as above → `summarizeBuckets([1,1,1]) = [\"positive\"] | len=1`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "summarizeBuckets inherits classify's NaN misclassification: an input containing NaN yields a \"positive\" bucket contributed by a value that is not positive.",
+          "evidence": "Command: `node --input-type=module -e \"const {summarizeBuckets}=await import('./source/002-consumer.ts');const {classify}=await import('./source/001-semantic-basics.ts');console.log('classify(NaN)='+JSON.stringify(classify(NaN)));console.log('summarizeBuckets([NaN])='+JSON.stringify(summarizeBuckets([NaN])))\"` → Output: `classify(NaN)=\"positive\"` / `summarizeBuckets([NaN])=[\"positive\"]`"
+        }
+      ]
+    },
+    {
+      "name": "mean",
+      "kind": "function",
+      "signature": "export function mean(values: number[]): number",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "\"Declared expectation: mean(values) equals the arithmetic mean of values.\" Notably, and unlike every other documented function in this fixture, this comment does NOT carry the phrase 'Not enforced'.",
+          "evidence": "source/002-consumer.ts:32"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "Two lines, and it is the one function that genuinely reuses the other file: `const total = accumulate(values); return total / values.length;`. It composes 001's accumulate and divides by values.length with no empty-array guard, so an empty array performs 0/0.",
+          "evidence": "source/002-consumer.ts:33-36, with the cross-file import at source/002-consumer.ts:12"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "For every non-empty array tested it is bit-for-bit identical to the reference arithmetic mean computed independently in the probe: mean([1,2,3]) = 2, mean([2]) = 2, mean([10,20,30,40]) = 25, mean([-1,1]) = 0, mean([0.1,0.2]) = 0.15000000000000002 — each matching Object.is against the independently computed reference (equal= true for all five). This is the only exported function whose DECLARED contract I could not falsify.",
+          "evidence": "Command: `node --input-type=module -e \"const {mean}=await import('./source/002-consumer.ts');for(const a of [[1,2,3],[2],[],[10,20,30,40],[-1,1],[0.1,0.2]]){const o=mean(a);const r=a.length?a.reduce((x,y)=>x+y,0)/a.length:NaN;console.log('mean('+JSON.stringify(a)+') =',String(o),'| reference=',String(r),'| equal=',Object.is(o,r))}\"` → Output: `mean([1,2,3]) = 2 | reference= 2 | equal= true` / `mean([2]) = 2 | reference= 2 | equal= true` / `mean([]) = NaN | reference= NaN | equal= true` / `mean([10,20,30,40]) = 25 | reference= 25 | equal= true` / `mean([-1,1]) = 0 | reference= 0 | equal= true` / `mean([0.1,0.2]) = 0.15000000000000002 | reference= 0.15000000000000002 | equal= true`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "mean([]) returns NaN via 0/0 with no guard and no error. Whether this 'contradicts' the declared contract is genuinely UNCERTAIN: the arithmetic mean of the empty set is undefined, so the declared statement is vacuous rather than falsified for that input. I am not claiming this as a hard contradiction.",
+          "evidence": "Same command as above → `mean([]) = NaN | reference= NaN | equal= true` (the probe's own reference also produces NaN, which is why equal= true is not evidence of correctness here)"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "mean inherits accumulate's coercion hazard, so its declared numeric guarantee is not a runtime guarantee: mean([1,'2']) returns NaN (total becomes the string \"12\", then \"12\"/2 is NaN) rather than 1.5.",
+          "evidence": "Command: `node --input-type=module -e \"const {mean}=await import('./source/002-consumer.ts');console.log('mean([1,\\\"2\\\"]) =',String(mean([1,'2'])),'| typeof =',typeof mean([1,'2']))\"` → Output: `mean([1,\"2\"]) = NaN | typeof = number`"
+        }
+      ]
+    },
+    {
+      "name": "fastClassify",
+      "kind": "function",
+      "signature": "export function fastClassify(value: number): string",
+      "claims": [
+        {
+          "label": "DECLARED",
+          "statement": "\"Declared expectation: fastClassify is equivalent to the fixture's classify(), duplicated locally for speed. Not enforced.\" The declared contract is explicitly a CROSS-FILE equivalence relation to 001's classify, and the author flags it as unenforced.",
+          "evidence": "source/002-consumer.ts:38-41"
+        },
+        {
+          "label": "DERIVED",
+          "statement": "The whole body is `return value <= 0 ? \"negative\" : \"positive\";`. Two independent divergences from classify() are visible in the source alone: (a) it uses `<=` where classify() uses `<` plus a separate `=== 0` branch, so 0 maps to \"negative\" instead of \"zero\"; (b) the string \"zero\" never appears anywhere in this function, so \"zero\" is an unreachable output. Its declared return type is the widened `string`, not classify()'s `\"negative\"|\"zero\"|\"positive\"` union, so the type system cannot catch the lost case either.",
+          "evidence": "source/002-consumer.ts:42-44 versus source/001-semantic-basics.ts:22-26"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The declared equivalence is contradicted at exactly one point: classify(0) returns \"zero\" but fastClassify(0) returns \"negative\". Every other value tested agrees — -5, -1, -0.0001, 0.0001, 1, 3, NaN, Infinity, -Infinity, 1e308, -1e308 all produced identical strings from both functions.",
+          "evidence": "Command: `node --input-type=module -e \"const {fastClassify}=await import('./source/002-consumer.ts');const {classify}=await import('./source/001-semantic-basics.ts');for(const v of [-5,-1,-0.0001,0,-0,0.0001,1,3,NaN,Infinity,-Infinity,1e308,-1e308]){const c=classify(v),f=fastClassify(v);console.log(String(v).padEnd(10),'|',String(c).padEnd(9),'|',String(f).padEnd(9),'|',c===f?'yes':'*** NO (DIVERGES) ***')}\"` → Output: `-5 | negative | negative | yes` / `-1 | negative | negative | yes` / `-0.0001 | negative | negative | yes` / `0 | zero | negative | *** NO (DIVERGES) ***` / `0 | zero | negative | *** NO (DIVERGES) ***` / `0.0001 | positive | positive | yes` / `1 | positive | positive | yes` / `3 | positive | positive | yes` / `NaN | positive | positive | yes` / `Infinity | positive | positive | yes` / `-Infinity | negative | negative | yes` / `1e+308 | positive | positive | yes` / `-1e+308 | negative | negative | yes`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "An exhaustive sweep confirms the divergence is exactly the single point 0 and not a range: over the 201-point grid [-50, 50] in 0.5 steps (with an extra +-1e-9 nudge applied to each point) the mismatch count is exactly 1, and the sole mismatching value is 0.",
+          "evidence": "Command: `node --input-type=module -e \"const {fastClassify}=await import('./source/002-consumer.ts');const {classify}=await import('./source/001-semantic-basics.ts');const m=[];for(let t=-50;t<=50;t++)for(const d of [0,0.5,-0.5,1e-9,-1e-9]){const v=t+d;if(classify(v)!==fastClassify(v))m.push(v)}console.log('mismatch count =',m.length,'| sample =',JSON.stringify(m.slice(0,10)))\"` → Output: `mismatch count = 1 | sample = [0]`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "fastClassify agrees with classify() on NaN only by coincidence — both return \"positive\" — and for different reasons (classify via fall-through default, fastClassify because `NaN <= 0` is false). They agree on the string but not on any reasoning, so the agreement provides no evidence of the declared equivalence.",
+          "evidence": "Command: `node --input-type=module -e \"const {fastClassify}=await import('./source/002-consumer.ts');const {classify}=await import('./source/001-semantic-basics.ts');console.log('classify(NaN)='+JSON.stringify(classify(NaN)),'fastClassify(NaN)='+JSON.stringify(fastClassify(NaN)),'NaN<=0 is',NaN<=0)\"` → Output: `classify(NaN)=\"positive\" fastClassify(NaN)=\"positive\" NaN<=0 is false`"
+        },
+        {
+          "label": "OBSERVED",
+          "statement": "The broken equivalence propagates to any consumer of fastClassify: summarizeBuckets uses classify (correct, yields \"zero\"), so a summary of zeros and fastClassify(0) disagree — two paths over the same value produce different buckets.",
+          "evidence": "Command: `node --input-type=module -e \"const {fastClassify,summarizeBuckets}=await import('./source/002-consumer.ts');console.log('fastClassify(0)='+JSON.stringify(fastClassify(0)));console.log('summarizeBuckets([0])='+JSON.stringify(summarizeBuckets([0])))\"` → Output: `fastClassify(0)=\"negative\"` / `summarizeBuckets([0])=[\"zero\"]`"
+        }
+      ]
+    }
+  ],
+
+  "unenforced_or_contradicted": [
+    {
+      "claim": "repeat's count precondition (nonnegative safe integer) is unenforced at both runtime and compile time.",
+      "declared_says": "source/001-semantic-basics.ts:17 — \"Declared expectation: count is a nonnegative safe integer. Not enforced.\"",
+      "actual_behaviour": "repeat(2.5) silently emits [0,1,2]; repeat(-1) silently emits nothing; repeat('3') silently emits [0,1,2]. Worse, repeat(Infinity)/repeat(2**53)/repeat(1e21) never terminate. `tsc --strict` reports zero errors for repeat(-1, ...) and repeat(2.5, ...).",
+      "evidence": "Command: `node --input-type=module -e \"const {repeat}=await import('./source/001-semantic-basics.ts');for(const n of [3,0,-1,2.5,NaN]){const o=[];let err=null;try{repeat(n,v=>o.push(v))}catch(e){err=e.message}console.log('repeat('+String(n)+') -> emitted='+JSON.stringify(o)+(err?' ERROR='+err:'')+' len='+o.length)}\"` → Output: `repeat(3) -> emitted=[0,1,2] len=3` / `repeat(0) -> emitted=[] len=0` / `repeat(-1) -> emitted=[] len=0` / `repeat(2.5) -> emitted=[0,1,2] len=3` / `repeat(NaN) -> emitted=[] len=0`. Plus: `npx --no-install tsc --noEmit --allowImportingTsExtensions --strict ./_typeprobe2.ts` → Output: (empty, exit code 0).",
+      "independently_executed": true
+    },
+    {
+      "claim": "fastClassify's declared equivalence to classify() is flatly contradicted — this is the cross-file gap that only execution reveals.",
+      "declared_says": "source/002-consumer.ts:38-41 — \"Declared expectation: fastClassify is equivalent to the fixture's classify(), duplicated locally for speed. Not enforced.\"",
+      "actual_behaviour": "classify(0) returns \"zero\" while fastClassify(0) returns \"negative\". fastClassify can never return \"zero\" at all, because the string does not appear in its body. An exhaustive sweep over [-50,50] in 0.5 steps found exactly one mismatch, at 0. Reading either file in isolation does not surface this; only comparing the two exports' outputs does.",
+      "evidence": "Command: `node --input-type=module -e \"const {fastClassify}=await import('./source/002-consumer.ts');const {classify}=await import('./source/001-semantic-basics.ts');const m=[];for(let t=-50;t<=50;t++)for(const d of [0,0.5,-0.5,1e-9,-1e-9]){const v=t+d;if(classify(v)!==fastClassify(v))m.push(v)}console.log('classify(0)='+JSON.stringify(classify(0)),'fastClassify(0)='+JSON.stringify(fastClassify(0)));console.log('mismatch count =',m.length,'| sample =',JSON.stringify(m.slice(0,10)))\"` → Output: `classify(0)=\"zero\" fastClassify(0)=\"negative\"` / `mismatch count = 1 | sample = [0]`",
+      "independently_executed": true
+    },
+    {
+      "claim": "summarizeBuckets' 'exactly the three buckets' guarantee is unenforced; it returns only the buckets actually present.",
+      "declared_says": "source/002-consumer.ts:22-25 — \"Declared expectation: summarizeBuckets(values) returns exactly the three buckets 'negative', 'zero', 'positive', each present exactly once. Not enforced.\"",
+      "actual_behaviour": "summarizeBuckets([1,2,3]) = [\"positive\"] (one bucket, not three); summarizeBuckets([]) = [] (zero buckets); summarizeBuckets([-5]) = [\"negative\"] (one bucket). The Set-based body structurally cannot return an absent bucket, so the declared cardinality is unreachable for any input that does not already contain all three signs. The 'each present exactly once' half DOES hold (Set dedup verified: summarizeBuckets([1,1,1]) is [\"positive\"], length 1).",
+      "evidence": "Command: `node --input-type=module -e \"const {summarizeBuckets}=await import('./source/002-consumer.ts');for(const a of [[1,2,3],[-1,0,1],[1,1,1],[1,2],[],[-5],[1,2,3,4,5,6]]){const r=summarizeBuckets(a);console.log('summarizeBuckets('+JSON.stringify(a)+') =',JSON.stringify(r),'| len='+r.length)}\"` → Output: `summarizeBuckets([1,2,3]) = [\"positive\"] | len=1` / `summarizeBuckets([-1,0,1]) = [\"negative\",\"zero\",\"positive\"] | len=3` / `summarizeBuckets([1,1,1]) = [\"positive\"] | len=1` / `summarizeBuckets([1,2]) = [\"positive\"] | len=1` / `summarizeBuckets([]) = [] | len=0` / `summarizeBuckets([-5]) = [\"negative\"] | len=1` / `summarizeBuckets([1,2,3,4,5,6]) = [\"positive\"] | len=1`",
+      "independently_executed": true
+    },
+    {
+      "claim": "retryBudget's 'always returns an integer >= 1' guarantee is unenforced; only the upper clamp is implemented.",
+      "declared_says": "source/002-consumer.ts:14-17 — \"Declared expectation: retryBudget(attempts) always returns an integer >= 1 and <= MAX_RETRIES. Not enforced.\"",
+      "actual_behaviour": "retryBudget(0) = 0 and retryBudget(-5) = -5 both violate '>= 1'; retryBudget(2.5) = 2.5 and retryBudget(0.5) = 0.5 violate 'integer'. retryBudget(NaN) = NaN violates ALL THREE halves at once because every comparison against NaN is false, so Math.min returns NaN unchanged. Only Math.min(attempts, MAX_RETRIES) is implemented, which clamps the top end and nothing else.",
+      "evidence": "Command: `node --input-type=module -e \"const {retryBudget}=await import('./source/002-consumer.ts');const {MAX_RETRIES}=await import('./source/001-semantic-basics.ts');for(const n of [0,1,2,3,4,5,100,-1,-5,2.5,1.5,0.5,-0.5,NaN,Infinity,-Infinity]){const o=retryBudget(n);console.log('retryBudget('+String(n)+') =',String(o),'| int='+Number.isInteger(o),'>=1:'+(o>=1),'<=3:'+(o<=MAX_RETRIES),'| DECLARED-HOLDS='+(Number.isInteger(o)&&o>=1&&o<=MAX_RETRIES))}\"` → Output: `retryBudget(0) = 0 | int=true >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(-1) = -1 | int=true >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(-5) = -5 | int=true >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(0.5) = 0.5 | int=false >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(-0.5) = -0.5 | int=false >=1:false <=3:true | DECLARED-HOLDS=false` / `retryBudget(1.5) = 1.5 | int=false >=1:true <=3:true | DECLARED-HOLDS=false` / `retryBudget(2.5) = 2.5 | int=false >=1:true <=3:true | DECLARED-HOLDS=false` / `retryBudget(NaN) = NaN | int=false >=1:false <=3:false | DECLARED-HOLDS=false` / `retryBudget(-Infinity) = -Infinity | int=false >=1:false <=3:true | DECLARED-HOLDS=false` / (1,2,3,4,5,100,Infinity,2**53 all DECLARED-HOLDS=true)",
+      "independently_executed": true
+    },
+    {
+      "claim": "No declared contract in either file is enforced by anything other than the author's prose — not by runtime checks, and not by the type system.",
+      "declared_says": "Both files present their expectations as DOC-COMMENT prose only (001-semantic-basics.ts:17; 002-consumer.ts:14-17, 22-25, 32, 38-41). There is not a single throw, assert, guard, refinement or branded type anywhere in the source.",
+      "actual_behaviour": "A probe file that violates five separate declared contracts at once — repeat(-1), repeat(2.5), retryBudget(0), retryBudget(-5), retryBudget(2.5), summarizeBuckets([1,2,3]) — type-checks under `tsc --strict` with zero diagnostics. There is also no tsconfig.json anywhere in the run directory, so these files are not even part of a checked build. Every 'contract' in this fixture is authorial intent expressed in comments, mechanically unenforced.",
+      "evidence": "Command: wrote ./_typeprobe2.ts with exactly those violating calls, then `npx --no-install tsc --noEmit --allowImportingTsExtensions --strict ./_typeprobe2.ts` → Output: (empty, exit code 0). Plus `find . -maxdepth 2 -iname \"tsconfig*\"` → Output: (no results).",
+      "independently_executed": true
+    },
+    {
+      "claim": "Declared TypeScript parameter/return types are not runtime guarantees anywhere in the fixture, because annotations are erased.",
+      "declared_says": "Every signature is type-annotated, e.g. add(a: number, b: number): number, accumulate(values: number[]): number, summarizeBuckets(values: number[]): string[], mean(values: number[]): number, classify(value: number): \"negative\"|\"zero\"|\"positive\".",
+      "actual_behaviour": "Passing wrong types yields wrong-typed results with no error: add('1',2) returns the string \"12\"; accumulate([1,'2']) returns the string \"12\"; mean([1,'2']) returns NaN. A caller trusting the declared types gets strings or NaN where a number was promised.",
+      "evidence": "Command: `node --input-type=module -e \"const A=await import('./source/001-semantic-basics.ts');const B=await import('./source/002-consumer.ts');console.log('add(1,2) with string ->',JSON.stringify(A.add('1',2)));console.log('accumulate([1,\\\"2\\\"]) ->',JSON.stringify(A.accumulate([1,'2'])));console.log('mean([1,\\\"2\\\"]) ->',String(B.mean([1,'2'])))\"` → Output: `add(1,2) with string -> \"12\"` / `accumulate([1,\"2\"]) -> \"12\"` / `mean([1,\"2\"]) -> NaN`",
+      "independently_executed": true
+    },
+    {
+      "claim": "summarizeBuckets returns buckets in input-first-seen order, not in the order the declared comment lists them.",
+      "declared_says": "source/002-consumer.ts:22-25 lists the buckets in the fixed order \"negative\", \"zero\", \"positive\" — though it does not explicitly promise an output ordering.",
+      "actual_behaviour": "summarizeBuckets([-1,0,1]) = [\"negative\",\"zero\",\"positive\"] but summarizeBuckets([0,0,1,2,-3]) = [\"zero\",\"positive\",\"negative\"]. The output order tracks first occurrence in the input array.",
+      "evidence": "Command: `node --input-type=module -e \"const {summarizeBuckets}=await import('./source/002-consumer.ts');console.log(JSON.stringify(summarizeBuckets([-1,0,1])));console.log(JSON.stringify(summarizeBuckets([0,0,1,2,-3])))\"` → Output: `[\"negative\",\"zero\",\"positive\"]` / `[\"zero\",\"positive\",\"negative\"]`",
+      "independently_executed": true
+    }
+  ],
+
+  "unenforced_or_contradicted_found": true,
+
+  "sha256": [
+    { "file": "source/001-semantic-basics.ts", "sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5" },
+    { "file": "source/002-consumer.ts", "sha256": "2ef3d2e201b17553cf43499a1881493fe7489979594e8dc8115da64078636c8a" }
+  ],
+
+  "executed": true,
+
+  "commands_run": [
+    "cd <run dir> && sha256sum source/001-semantic-basics.ts source/002-consumer.ts && node --version && ls -la source/",
+    "node --input-type=module -e \"const a = await import('./source/001-semantic-basics.ts'); const b = await import('./source/002-consumer.ts'); console.log(Object.keys(a)); console.log(Object.keys(b)); for each export print typeof, arity, name, value\"",
+    "node --input-type=module -e \"const { add, repeat, classify, accumulate, MAX_RETRIES } = await import('./source/001-semantic-basics.ts'); probe add across 8 inputs; probe repeat across [3,0,-1,2.5,NaN,Infinity,2**53,1e21,'3',null,undefined]\"  <-- EXITED 1: RangeError: Invalid string length from JSON.stringify on the unbounded repeat(Infinity) array",
+    "timeout 30 node --input-type=module -e \"const { repeat } = await import('./source/001-semantic-basics.ts'); re-probe repeat with a 100000-emission abort cap for Infinity, 2**53, 1e21, '3', null, undefined; plus emit-sequence and ascending-check for repeat(4)/repeat(5)\"",
+    "node --input-type=module -e \"const { repeat, classify, accumulate } = await import('./source/001-semantic-basics.ts'); disambiguate repeat('3') string vs repeat(3) number; probe classify over 13 inputs incl. NaN, -0, null, string; probe accumulate over 7 arrays\"",
+    "node --input-type=module -e \"const { retryBudget, summarizeBuckets, mean, fastClassify } = await import('./source/002-consumer.ts'); const { classify, MAX_RETRIES } = await import('./source/001-semantic-basics.ts'); probe retryBudget over 17 inputs with per-half declared-contract pass/fail flags; probe summarizeBuckets over 8 arrays\"",
+    "node --input-type=module -e \"const { mean, fastClassify } = await import('./source/002-consumer.ts'); const { classify } = await import('./source/001-semantic-basics.ts'); probe mean vs independently computed reference (Object.is); probe fastClassify vs classify across 13 values; exhaustive [-50,50] 0.5-step mismatch sweep\"",
+    "cd <run dir> && ls -1 . && find . -maxdepth 2 -iname \"tsconfig*\" && npx --no-install tsc --version",
+    "npx --no-install tsc --noEmit --allowImportingTsExtensions --strict ./_typeprobe.ts   <-- probe imported repeat from the WRONG module (002); only surfaced my own probe's errors (TS2305, TS7006 x2, deliberate TS2322), then deleted",
+    "npx --no-install tsc --noEmit --allowImportingTsExtensions --strict ./_typeprobe2.ts  <-- corrected probe: repeat/-1, repeat/2.5, retryBudget/0, retryBudget/-5, retryBudget/2.5, summarizeBuckets([1,2,3]); Output: (empty, exit code 0)",
+    "node --input-type=module -e \"final consolidated evidence run printing F1..F4 (the four author-annotated gaps) plus S1..S3 (supporting observations)\"",
+    "cd <run dir> && sha256sum source/*.ts && ls -1 coldreaders/  <-- post-probe integrity re-check"
+  ],
+
+  "probe_count": 42,
+
+  "summary_prose": "C2 cold-reader trial. I read TASK.md, SCHEMA.json, the upstream capsule, and both source files, then executed the TypeScript myself with Node v24.11.1 via 12 shell commands containing 42 individual probes (two of the twelve exited non-zero and were re-run in corrected form; no source file was modified, and I re-verified both SHA-256 hashes after probing to prove it). The fixture exports 9 symbols: 5 from 001-semantic-basics.ts (MAX_RETRIES, add, repeat, classify, accumulate) and 4 from 002-consumer.ts (retryBudget, summarizeBuckets, mean, fastClassify); I confirmed the export set and arities at runtime as well as by reading, and they agree exactly with the capsule's inventory. I independently reproduced all three of the capsule's OBSERVED repeat claims (repeat(3)=[0,1,2], repeat(-1)=nothing, repeat(2.5)=[0,1,2]) and therefore report them as my own OBSERVED; I also independently confirmed the capsule's classify DERIVED claim and its SHA-256 for 001-semantic-basics.ts. The capsule's remaining six function claims are marked READ_ONLY_BY_UPSTREAM and I am treating them as capsule-attributed only until I re-ran them — which I then did, and the DECLARED-vs-actual gaps it flagged as unknown are real and larger than its scope note implied: retryBudget returns 0, -5, 2.5 and even NaN despite promising 'always an integer >= 1'; summarizeBuckets returns one or zero buckets (summarizeBuckets([]) === []) instead of 'exactly the three'; and most significantly fastClassify is NOT equivalent to classify() — classify(0) is \"zero\" but fastClassify(0) is \"negative\", and an exhaustive sweep over [-50,50] found exactly one divergent point. That last gap is invisible from either file read alone and required executing both and comparing. mean is the single function whose declared contract I could not falsify on non-empty input (it matched an independent reference under Object.is in all 5 cases), though mean([]) returns NaN with no guard. I also established a cross-cutting finding the capsule did not mention: none of these contracts is enforced at compile time either — a probe violating five contracts type-checks clean under tsc --strict, and there is no tsconfig.json in the run directory at all. Three errors in the capsule: it cites classify's logic as being on 'lines 17-21' when the body is actually at lines 22-26; its SHA-256 for 002-consumer.ts is the literal placeholder string 'PIN_ME_AT_BUILD' (I computed the real value, 2ef3d2e2...); and it presents 001's SHA as pinned without checking the file was unmodified afterwards. Things I am unsure about: whether classify(NaN)==='positive' and mean([])===NaN count as DECLARED-contract violations — classify has no doc comment at all and mean's comment uniquely omits the author's own 'Not enforced' disclaimer, so I labelled the first UNKNOWN-as-to-intent and explicitly declined to call the second a hard contradiction. I did not read runs/A-*, runs/B-*, runs/C-*, any other file in evidence/, or the B1.json/B2.json already present in coldreaders/.",
+
+  "capsule_attribution_notes": [
+    "REPRODUCED BY ME (now my own OBSERVED): repeat(3) emits [0,1,2]; repeat(-1) emits nothing; repeat(2.5) emits [0,1,2] — all three of the capsule's OBSERVED_BY_UPSTREAM claims re-ran and matched.",
+    "REPRODUCED BY ME: the capsule's SHA-256 for source/001-semantic-basics.ts (fe0c651e...) matches my independently computed hash.",
+    "REPRODUCED BY ME: the capsule's classify DERIVED claim is correct in substance but WRONG in its line citation — the capsule says 'lines 17-21'; the classify function is at lines 22-26 (lines 17-21 are the repeat doc comment and repeat body).",
+    "CAPSULE PLACEHOLDER, NOT A HASH: the capsule lists source/002-consumer.ts sha256 as the literal string 'PIN_ME_AT_BUILD'. I computed the real hash myself: 2ef3d2e201b17553cf43499a1881493fe7489979594e8dc8115da64078636c8a.",
+    "CAPSULE-ATTRIBUTED ONLY, NOT INDEPENDENTLY EXECUTED BY ME: none remain. The capsule's six READ_ONLY_BY_UPSTREAM claims (retryBudget, summarizeBuckets, mean, fastClassify behaviour) I treated as unverified until I ran them, and my own results are what appear in the exports array above. The capsule's INFERRED_BY_UPSTREAM claim (that repeat's declared contract is documentation of intent only) is labelled by me as DECLARED/DERIVED/OBSERVED on the underlying facts instead of carrying the inference forward.",
+    "CAPSULE SCOPE HONEST BUT UNDERSTATED: the capsule explicitly disclaimed any claim about retryBudget/summarizeBuckets/mean/fastClassify and any cross-file check. Those disclaimers turned out to be where nearly all the substance was — 3 of the 4 declared-vs-actual gaps in 002-consumer.ts plus the cross-file fastClassify/classify divergence were entirely unexamined upstream.",
+    "CAPSULE MISSED ENTIRELY: the fastClassify-vs-classify divergence at 0; summarizeBuckets returning 0 or 1 buckets instead of 3; retryBudget's lower-bound and integrality failures plus its NaN case; classify(NaN)==='positive'; mean([])===NaN; repeat(Infinity)/repeat(2**53) non-termination; and the fact that no contract is enforced at compile time (tsc --strict clean) nor is there any tsconfig.json."
+  ],
+
+  "unread_or_untested": [
+    "Behaviour of add/accumulate/classify for bigint, Symbol, or objects with custom valueOf/toPrimitive — not probed, labelled UNKNOWN.",
+    "Whether the author intended classify(NaN)==='positive' or mean([])===NaN to be wrong — no doc comment settles it, labelled UNKNOWN.",
+    "Any file outside source/, TASK.md, SCHEMA.json and evidence/UPSTREAM-HANDOFF-CAPSULE.json was not read, by design."
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "run_id": "D-2026-10-12-elephant-toolkit",
+  "run_dir": "D-2026-10-12-elephant-toolkit",
+  "protocol_id": "epg.runner.claude-v02",
+  "protocol_version": "0.1.0-PROPOSED",
+  "status": "EVALUATED",
+  "basis": {
+    "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "protocol_sha256": null,
+    "requirement_epoch": "gym-decisions-1-4@2026-10-11",
+    "fixture_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "claims": [
+    {
+      "statement": "HEADLINE HYPOTHESIS FAILED: on this corpus the handoff capsule did not improve cold-reader accuracy (4/4 traps found by both arms) and did not cause laundering (0/4).",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/D-2026-10-12-elephant-toolkit/coldreaders/B1.json", "runs/D-2026-10-12-elephant-toolkit/coldreaders/C1.json", "runs/D-2026-10-12-elephant-toolkit/evidence/telemetry.json"]
+    },
+    {
+      "statement": "Four isolated cold-reader trials actually executed (this was NOT_RUN in the prior round's design) with an executable oracle deriving ground truth by running the source rather than trusting any agent report.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/D-2026-10-12-elephant-toolkit/oracle.mjs"]
+    },
+    {
+      "statement": "The run's own booster v1 falsely flagged BOTH capsule trials as laundering, at a 100% false-positive rate on correct agents that were quoting a defective hash in order to REFUTE it. Fixed to inspect structured claim fields only, with a regression case added.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/D-2026-10-12-elephant-toolkit/booster/witness-check.mjs", "runs/D-2026-10-12-elephant-toolkit/evidence/booster-witness-check-output.txt"]
+    },
+    {
+      "statement": "Booster self-test discriminates: perfect-passes, blind-fails, forged-hash-fails and prose-refutation-not-flagged all hold.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/D-2026-10-12-elephant-toolkit/booster/witness-check.mjs"]
+    },
+    {
+      "statement": "Oracle self-check passes 4/4 traps plus control; all four planted declared-vs-actual traps confirmed by execution.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/D-2026-10-12-elephant-toolkit/oracle.mjs"]
+    },
+    {
+      "statement": "Every planted value-contract violation type-checks CLEAN under tsc 7.0.2 --strict; only type-level violations (arity, void return) are caught at compile time.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/D-2026-10-12-elephant-toolkit/evidence/compile-time-enforcement-probe.txt"]
+    },
+    {
+      "statement": "EXECUTION IS UNVERIFIABLE from the artifacts: all four answers self-report executed:true and the oracle verifies what the code DOES, not what any agent DID. This is the run's central limitation and is not fixable within this design.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    },
+    {
+      "statement": "Capsule recall on real repo source is unresolved. The corpus was two toy files; the informative signal came from the handoff artifact's own defects, not the source. Any capsule-helps conclusion would be unsupported.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    },
+    {
+      "statement": "Four cold readers are four contexts of ONE model family; their agreement is not independent corroboration. n=2 per arm, so no statistical claim is supportable and the baseline arm's internal token spread (15k-42k) exceeds the between-arm gap.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/D-2026-10-12-elephant-toolkit/evidence/telemetry.json"]
+    }
+  ],
+  "events": [
+    {"id": "d-start", "kind": "run_start", "time": "2026-10-12T13:00:00", "time_source": "HOST", "actor": "arm-D-session"},
+    {"id": "d-coldreaders", "kind": "subagent_fanout", "time": "2026-10-12T13:30:00", "time_source": "HOST", "actor": "arm-D-session", "evidence_ref": "runs/D-2026-10-12-elephant-toolkit/coldreaders/"},
+    {"id": "d-close", "kind": "run_closed", "time": "2026-10-12T13:57:00", "time_source": "HOST", "actor": "arm-D-session"}
+  ],
+  "metrics": {
+    "trap_recall_baseline": {"value": 4, "status": "MEASURED", "unit": "of 4"},
+    "trap_recall_capsule": {"value": 4, "status": "MEASURED", "unit": "of 4"},
+    "laundering_detected": {"value": 0, "status": "MEASURED", "unit": "of 4"},
+    "oracle_self_check": {"value": "PASS 4/4 + control", "status": "MEASURED", "unit": "verdict"},
+    "booster_selftest": {"value": "PASS 5 cases", "status": "MEASURED", "unit": "verdict"},
+    "cold_readers_per_arm": {"value": 2, "status": "MEASURED", "unit": "count"},
+    "competencies_not_probed": {"value": "retrieving dependencies; asking peers for missing knowledge", "status": "MEASURED", "unit": "named gaps"},
+    "tokens": {"value": "15k-42k spread within baseline arm", "status": "MEASURED", "unit": "tokens"}
+  },
+  "publication": {"status": "PUBLISHED", "all_maturity_pack_index": "runs/D-2026-10-12-elephant-toolkit/CAPABILITY-PACK.json", "reason": "Run note, capability pack with computed hashes, four raw cold-reader answers, oracle, booster and evidence receipts."},
+  "extensions": {
+    "independence": "INDEPENDENCE VIOLATION, SELF-DISCLOSED. A stray `head -60` of arm B's run note occurred before arm D authored its traps. Exposure was to Run B's fixture results only; the four cold readers were sealed and unaffected. The lead's framing of the experiment is partially informed.",
+    "decision_1_feeder": "pinned fixture (custody verified by digest) plus a file this run authored; real cohort not used",
+    "decision_2_automation": "Phase 0 toolkits not invoked — recorded as an UNUSED AUTOMATION OPPORTUNITY, not a finding that they are unsuitable",
+    "decision_3_signal": "OBSERVED_DISCREPANCY, but the discrepancy is CLAIM-vs-VERIFIABILITY rather than machine-vs-human",
+    "booster_count_disclosure": "Three programs written where one booster was permitted. The run states its own reading (oracle = referee apparatus, publish-pack = mandatory publication machinery) and flags the risk rather than hiding it.",
+    "proposed_new_behavior": "E11 — distinguish a HANDOFF CLAIM from a SELF-GAINED WITNESS. Proposed because every arm's central evidence is self-asserted and therefore unfalsifiable from the artifact alone."
+  }
+}

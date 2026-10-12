@@ -1,0 +1,138 @@
+{
+  "schema": "reviewer-roundtrip-audit/1",
+  "gate_executed": "Independent round-trip reviewer can enumerate original preconditions, state transitions, unknown behaviors, failure paths and permissions from compact contract plus refs",
+  "scope": {
+    "original_protocols": [
+      "SDK_SELF_HOSTING_DOGFOOD.md",
+      "UNIVERSAL_SEMANTIC_GOVERNANCE.md",
+      "CORE_VISUAL_LANGUAGE.md"
+    ],
+    "cards": [
+      "epg.semantic.selfhosting",
+      "epg.visual.parity",
+      "epg.governance.universal"
+    ],
+    "obligations_enumerated": 44,
+    "by_category": {
+      "precondition": 11,
+      "state": 7,
+      "permission": 7,
+      "unknown": 6,
+      "failure": 13
+    }
+  },
+  "source_counts": {
+    "capability_groups_s1": 8,
+    "acceptance_path_steps_s1": 7,
+    "interface_governed_criteria_s2": 9,
+    "u_stages_s2": 6,
+    "visual_probes_s3": 7
+  },
+  "card_counts": {
+    "selfhosting_capability_group_field": 0,
+    "visual_probe_field": 0,
+    "governance_u_stage_phases": 6,
+    "governance_gates": 4,
+    "selfhosting_modules": 3,
+    "selfhosting_modules_include_governance": false
+  },
+  "profile_resolves_governance": [
+    "exploratory-five"
+  ],
+  "heuristics": {
+    "mentions_negative_control": false,
+    "mentions_not_run": true,
+    "mentions_single_ledger": false
+  },
+  "crosswalk_coverage": [
+    {
+      "source_file": "SDK_SELF_HOSTING_DOGFOOD.md",
+      "crosswalk_entries": [
+        "old/semantic"
+      ],
+      "states": [
+        "PARTIAL_MAPPING"
+      ],
+      "unmapped_requirements": 1
+    },
+    {
+      "source_file": "UNIVERSAL_SEMANTIC_GOVERNANCE.md",
+      "crosswalk_entries": [
+        "old/universal"
+      ],
+      "states": [
+        "PARTIAL_MAPPING"
+      ],
+      "unmapped_requirements": 1
+    },
+    {
+      "source_file": "CORE_VISUAL_LANGUAGE.md",
+      "crosswalk_entries": [
+        "old/visual"
+      ],
+      "states": [
+        "PARTIAL_MAPPING"
+      ],
+      "unmapped_requirements": 1
+    }
+  ],
+  "declared_unmapped_total": 3,
+  "findings": [
+    {
+      "id": "F-01",
+      "severity": "material",
+      "check": "capability_inventory_enumerable",
+      "statement": "SDK_SELF_HOSTING_DOGFOOD.md enumerates 8 discoverable capability groups as an owner-directed inventory; no card field enumerates them (card keys matching /capabilit/i: 0).",
+      "roundtrip_effect": "A consumer holding the three cards cannot name the eight groups from contract alone; it must open the source ref.",
+      "declared_in_crosswalk": false
+    },
+    {
+      "id": "F-02",
+      "severity": "material",
+      "check": "visual_probe_set_enumerable",
+      "statement": "CORE_VISUAL_LANGUAGE.md defines 7 mandatory probes V1-V7; the visual card carries 0 probe fields and no probe identifiers.",
+      "roundtrip_effect": "The named falsifier set — the source's own test obligations — is not recoverable from the contract.",
+      "declared_in_crosswalk": false
+    },
+    {
+      "id": "F-03",
+      "severity": "material",
+      "check": "interface_governed_criteria_enumerable",
+      "statement": "UNIVERSAL_SEMANTIC_GOVERNANCE.md lists 9 numbered criteria to mark a domain INTERFACE_GOVERNED; the governance card carries 4 gates.",
+      "roundtrip_effect": "Discovery/Read/Propose/Act/Test/Parity/Replay/Provenance/No-bypass cannot each be checked off against the contract.",
+      "declared_in_crosswalk": false
+    },
+    {
+      "id": "F-04",
+      "severity": "conditional",
+      "check": "u_stage_ladder_direction",
+      "statement": "All 6 U-stages are enumerated as phases in epg.governance.universal, but epg.semantic.selfhosting — whose FIRST authority source is that document — does not list epg.governance.universal among its 3 modules (include=false).",
+      "roundtrip_effect": "Forward module resolution from the self-hosting card never reaches the ladder; it is restored only by profile composition: [\"exploratory-five\"]. A card-only consumer is incomplete; a profile-driven consumer is not.",
+      "declared_in_crosswalk": false
+    },
+    {
+      "id": "F-05",
+      "severity": "material",
+      "check": "fault_injection_path_enumerable",
+      "statement": "SDK_SELF_HOSTING_DOGFOOD.md acceptance item 4 requires deliberately injecting a wrong wiki statement / stale fact / wrong symbol meaning and producing a minimal repro; no gate or phase in the self-hosting card or the governance card represents fault injection (only epg.visual.parity carries a negative_mutation phase).",
+      "roundtrip_effect": "The negative path that makes the positive path trustworthy is the part the contract drops.",
+      "declared_in_crosswalk": false
+    },
+    {
+      "id": "F-06",
+      "severity": "material",
+      "check": "declared_gap_covers_found_gaps",
+      "statement": "The three crosswalk entries for these sources declare 3 unmapped_requirement string(s) in total; this audit produced 5 distinct unnormalised obligation clusters.",
+      "roundtrip_effect": "PARTIAL_MAPPING is honestly labelled, but the single generic gap text does not tell a later reader WHICH obligations were dropped, so nothing prompts their recovery.",
+      "declared_in_crosswalk": true
+    }
+  ],
+  "controls": {
+    "anchors_resolve_in_sources": true,
+    "positive_control_findings_nonempty": true,
+    "negative_control_detector_can_fail": true,
+    "negative_control_gate_count_detector": true,
+    "negative_control_source_count_detector": true
+  },
+  "verdict": "PASS — audit executed and its detectors are falsifiable"
+}

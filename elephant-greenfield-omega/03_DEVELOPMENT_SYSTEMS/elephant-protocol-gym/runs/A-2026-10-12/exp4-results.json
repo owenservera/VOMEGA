@@ -1,0 +1,75 @@
+{
+  "experiment": "EXP4 — is the declared return union exhaustive?",
+  "evidenceClass": "OBSERVED",
+  "sourceSha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+  "compiler": "typescript@6.0.3",
+  "declaredReturnType": "\"negative\" | \"zero\" | \"positive\"",
+  "declaredReturnUnionExhaustsReals": false,
+  "whyNot": "the union covers every real number exactly once, but the input domain is number, which also includes NaN and +/-Infinity",
+  "rows": [
+    {
+      "input": "-1",
+      "returned": "negative",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": null
+    },
+    {
+      "input": "0",
+      "returned": "zero",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": "strict === treats -0 as zero"
+    },
+    {
+      "input": "1",
+      "returned": "positive",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": null
+    },
+    {
+      "input": "NaN",
+      "returned": "positive",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": "NaN fails every comparison, so control falls through to the final return"
+    },
+    {
+      "input": "Infinity",
+      "returned": "positive",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": null
+    },
+    {
+      "input": "-Infinity",
+      "returned": "negative",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": null
+    },
+    {
+      "input": "-0",
+      "returned": "zero",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": "strict === treats -0 as zero"
+    },
+    {
+      "input": "1e308 (finite, huge)",
+      "returned": "positive",
+      "threw": null,
+      "withinDeclaredUnion": true,
+      "note": null
+    }
+  ],
+  "summary": {
+    "inputsTested": 8,
+    "returnedOutsideDeclaredUnion": [],
+    "stillInsideUnionButSemanticallyWrong": [
+      "NaN -> \"positive\" (NaN is not positive)"
+    ]
+  },
+  "consequence": "The type is satisfied by a semantically wrong answer. NaN returns the literal \"positive\", which is inside the declared union and outside common sense. A verifier checking only type conformance would pass this. This is the same blindness as EXP2, in a second place."
+}

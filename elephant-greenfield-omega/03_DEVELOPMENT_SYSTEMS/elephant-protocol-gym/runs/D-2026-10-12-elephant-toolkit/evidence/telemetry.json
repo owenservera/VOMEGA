@@ -1,0 +1,43 @@
+{
+  "schema": "run-d-telemetry/1",
+  "note": "Cost/quality measures for the four cold-reader trials. TWO INDEPENDENT COST SOURCES ARE KEPT SEPARATE because they measure different things and disagree; neither is 'the' cost of a mode.",
+  "harness_telemetry": {
+    "source": "agent-harness reported subagent_tokens / tool_uses / duration_ms per trial",
+    "measured_by": "harness, not by the answer artifact",
+    "caveat": "n=2 per mode. Variance within an arm is large (baseline 15157 vs 42348), so no mean difference here is statistically meaningful. These are totals for a full isolated context including the identical TASK.md prompt.",
+    "trials": [
+      { "id": "B1", "mode": "baseline", "subagent_tokens": 15157, "tool_uses": 24, "duration_ms": 253126 },
+      { "id": "B2", "mode": "baseline", "subagent_tokens": 42348, "tool_uses": 17, "duration_ms": 253984 },
+      { "id": "C1", "mode": "capsule", "subagent_tokens": 17393, "tool_uses": 23, "duration_ms": 282183 },
+      { "id": "C2", "mode": "capsule", "subagent_tokens": 5374, "tool_uses": 19, "duration_ms": 293483 }
+    ],
+    "by_mode": {
+      "baseline_total_tokens": 57505,
+      "capsule_total_tokens": 22767,
+      "naive_ratio_capsule_vs_baseline": 0.396,
+      "verdict": "DESCRIPTIVE_ONLY — see caveat. Direction favours the capsule arm but the baseline arm's own spread (15k-42k) is larger than the between-arm gap."
+    }
+  },
+  "self_reported_probe_counts": {
+    "source": "the answer artifact's own probe_count field — a SELF-REPORT, not harness-measured",
+    "baseline": [11, 5],
+    "capsule": [104, 42],
+    "observation": "Direction is OPPOSITE to token cost: capsule readers self-reported ~10x MORE probes while using fewer tokens. Plausible reading: the capsule told them which ground was unverified, so they spent their effort probing rather than rediscovering. This reading is UNTESTED speculation, not a measured causal claim.",
+    "verdict": "SELF_REPORTED_UNVERIFIABLE"
+  },
+  "quality": {
+    "source": "booster/witness-check.mjs v2 (self-test PASS)",
+    "trap_recall": { "baseline": "4/4 both trials", "capsule": "4/4 both trials" },
+    "source_hash_match": "4/4 correct in both arms",
+    "laundering_detected": "0/4 (v1 of the booster falsely flagged 2/2 capsule trials; root-caused and fixed — see RUN-NOTE 'WHAT SURPRISED')",
+    "headline": "NO QUALITY DIFFERENCE BETWEEN MODES ON THIS CORPUS. Both modes saturated the oracle."
+  },
+  "cross_mode_difference": {
+    "finding": "Compile-time non-enforcement of declared contracts",
+    "reported_by": "C2 only (capsule arm), 1 of 4 trials",
+    "verified_by_project_lead": true,
+    "verification_witness": "evidence/compile-time-enforcement-probe.txt",
+    "result": "tsc 7.0.2 --strict reports only 2 errors, both type-level (repeat arity / void return). None of the four planted value-domain contract violations are compile errors: retryBudget(-5), summarizeBuckets([]), mean([]) and fastClassify(0) all type-check clean.",
+    "verdict": "SINGLE_OBSERVATION_N2 — reported by 1 trial; independently reproduced by the project lead. Not a rate, not generalisable."
+  }
+}

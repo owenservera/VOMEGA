@@ -1,0 +1,75 @@
+{
+  "schema": "elephant-machine-human-signal/1",
+  "governing_rule": "MACHINE_HUMAN_SIGNAL.md (Decision 3, OWNER-DIRECTED 2026-10-11)",
+  "signal_id": "RUN-D-SIGNAL-01",
+  "outcome_class": "OBSERVED_DISCREPANCY",
+
+  "1_subject": {
+    "what": "Two pinned TypeScript files and four fresh agent contexts asked the identical question about them.",
+    "source_pins": {
+      "001-semantic-basics.ts": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5",
+      "002-consumer.ts": "2ef3d2e201b17553cf43499a1881493fe7489979594e8dc8115da64078636c8a",
+      "repo_commit": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+      "001_is_byte_identical_copy_of_gym_fixture": true,
+      "002_is_authored_by_run_D": "NOT canonical Gym source; created only to give this trial a real cross-file dependency"
+    },
+    "task": "Enumerate exports; label each behaviour claim DECLARED / DERIVED / OBSERVED / UNKNOWN; name every declared contract that is not enforced or is contradicted by execution; report the source digests."
+  },
+
+  "2_machine_reading": {
+    "how_it_was_obtained": "Four isolated agent contexts (harness subagents, same model family) each returned a structured answer; scored mechanically against an independent executable oracle.",
+    "machine_position": {
+      "traps_found_per_trial": "4/4 in every trial, in BOTH handoff modes",
+      "source_digests_reported_correctly": "4/4",
+      "declared_capsule_defects_adopted_as_fact": "0/4"
+    },
+    "the_four_traps": [
+      { "id": "T1", "claim": "repeat declares count must be a nonnegative safe integer", "actual": "repeat(-1) emits nothing and throws nothing; repeat(2.5) emits 0,1,2; repeat(NaN) emits nothing" },
+      { "id": "T2", "claim": "retryBudget always returns an integer >= 1 and <= MAX_RETRIES", "actual": "retryBudget(0)=0, (-5)=-5, (2.5)=2.5, (NaN)=NaN; only the upper clamp is enforced" },
+      { "id": "T3", "claim": "summarizeBuckets returns exactly the three buckets", "actual": "returns only buckets present; [] returns []; order is first-occurrence, not declared order" },
+      { "id": "T4", "claim": "fastClassify is equivalent to classify()", "actual": "classify(0)='zero' but fastClassify(0)='negative'; the 'zero' bucket is unreachable through it" }
+    ],
+    "verified_independently_by": "oracle.mjs, which derives each verdict from an executable predicate, not from any agent's report. Self-check PASS 4/4 + control."
+  },
+
+  "3_human_reading": {
+    "account": "Reading these two files the way a careful engineer would, they look well behaved and almost completely documented. Every function has a clear signature; four of them carry a doc comment; three comments even volunteer that their contract is 'Not enforced'. The honest human summary is that the file is self-aware about its own gaps — and that is what makes it dangerous. A reader who skims for reassurance stops at 'Not enforced' and concludes 'fine, the author told me'. Actually running it shows the gaps are not edge cases at the margin: retryBudget(0) is 0, not 1, and that is the single most likely real-world call. The worst one is invisible: fastClassify is described as a faster copy of classify, and it silently deletes the 'zero' bucket, so a caller that only ever used fastClassify would never learn the category exists. Meanwhile the type system catches none of it — the compiler is happy with retryBudget(-5)."
+  },
+
+  "4_comparison": {
+    "agreement": "All four contexts and the oracle agree on every trap's existence and behaviour. There is no machine/human disagreement about WHAT the code does.",
+    "the_discrepancy_actually_found": "The discrepancy is not between machine and human readings of the source. It is between what the ARTIFACTS claim and what can be verified. Three concrete instances:",
+    "discrepancies": [
+      {
+        "id": "D1",
+        "kind": "evidence-vs-authority",
+        "statement": "Every answer file asserts executed:true and pastes command+output strings. Nothing in the artifact distinguishes a context that ran 42 probes from one that confabulated a plausible transcript. My own first scoring pass produced a FALSE RESULT (reported a digest mismatch on all four trials) purely from hand-comparing two JSON shapes.",
+        "consequence": "A reviewer's default trust in 'OBSERVED' is unwarranted and must be given a mechanical check or it becomes the weakest link in the whole handoff."
+      },
+      {
+        "id": "D2",
+        "kind": "tool-fails-quietly",
+        "statement": "The booster's first version substring-matched whole answer files and flagged BOTH capsule trials as having laundered the upstream capsule. They had done the opposite: they quoted the placeholder hash in order to REFUTE it and independently computed the real digest, which matched the oracle exactly.",
+        "consequence": "A laundering detector that cannot distinguish copying a defect from criticizing a defect will report a false accusation at 100% rate on correct agents. The fix (inspect only structured claim fields, plus a regression self-test) is the actual deliverable, not the detector."
+      },
+      {
+        "id": "D3",
+        "kind": "declared-vs-enforced-at-ANOTHER-layer",
+        "statement": "Reported by one trial and independently reproduced: none of the four declared contracts is enforced by the compiler either. tsc --strict emits errors only for repeat's arity and void return; retryBudget(-5), summarizeBuckets([]), mean([]) and fastClassify(0) all type-check clean.",
+        "consequence": "'Enforced' is not a single bit. A contract can be unenforced at runtime AND at compile time AND still read as documented and typed. An Elephant reporting 'this contract is unenforced' has not necessarily checked every enforcement layer."
+      }
+    ]
+  },
+
+  "5_feedback": {
+    "what_this_teaches": "The handoff mode was NOT the interesting variable. Both modes saturated the oracle. What actually carried the information was (a) whether the handoff artifact was mechanically checkable and (b) whether anyone noticed its own defects. Both capsule readers noticed; neither was harmed by it.",
+    "hypothesis_challenged": "The run began from the plausible hypothesis that a compact capsule would improve a cold reader's accuracy over plain code. On this corpus that hypothesis is NOT SUPPORTED: recall was 4/4 in both arms. The capsule cost nothing in quality; it may have saved context (descriptive only).",
+    "what_it_does_not_show": "That capsules are useless, or that these four traps are hard. The corpus is two toy files with four traps that a competent reader finds either way. This run cannot estimate recall on real source, where retrieval, staleness and dependency breadth are the actual difficulties.",
+    "smallest_next_test": "Re-run the identical design on REAL repo source (e.g. omega-baseline/plugins/vivim-nlcl-pure) where the capsule's 'what is NOT established' section dominates the file, and where an uncovered region is genuinely expensive rather than four lines long. Predict: the gap between arms appears only where the capsule's disclaimed scope is large.",
+    "authority_note": "This receipt is evidence, not permission. Nothing here promotes the booster or the capsule format into shared canon."
+  },
+
+  "evidence_class": "TESTED (oracle-verified) + OBSERVED (harness telemetry) + SELF_REPORTED (probe counts, unverified)",
+  "independent_referee": "NONE. No second human or second independent toolchain adjudicated these results.",
+  "same_model_family_caveat": "All four cold readers ran on the same model family. They are four contexts, not four independent implementations. Agreement among them is NOT independent corroboration."
+}

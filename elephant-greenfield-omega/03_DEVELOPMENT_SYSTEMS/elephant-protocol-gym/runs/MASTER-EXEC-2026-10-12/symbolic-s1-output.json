@@ -1,0 +1,225 @@
+{
+  "schema": "elephant-gym.master-exec.symbolic-s1.v1",
+  "source_root": "omega-baseline/plugins/vivim-nlcl-pure/src",
+  "disclosure": "LEGACY-SEEDED REUSE — Section 18 (SYMBOLIC_LANGUAGE_INTAKE.md) was read; its claims are under test, not independently discovered.",
+  "results": [
+    {
+      "id": "real/C1",
+      "kind": "claim",
+      "claim": "Section 18: \"symbols.ts declares the 17 families\"",
+      "expected": "17",
+      "observed": "17",
+      "pass": true
+    },
+    {
+      "id": "real/C2",
+      "kind": "claim",
+      "claim": "Section 18: counting FAMILY_GLYPHS does NOT yield 17 (aliases inflate it)",
+      "expected": "!=17 (expect 18)",
+      "observed": "18",
+      "pass": true
+    },
+    {
+      "id": "real/C3",
+      "kind": "claim",
+      "claim": "Every one of the 17 family glyphs is recognised by the lexer",
+      "expected": "0 lost",
+      "observed": "0 lost",
+      "pass": true
+    },
+    {
+      "id": "real/C3b",
+      "kind": "claim",
+      "claim": "Every advertised FAMILY_GLYPHS member maps to a DECLARED family (removal-detecting)",
+      "expected": "0 orphan, 0 unlexable",
+      "observed": "0 orphan, 0 unlexable",
+      "pass": true
+    },
+    {
+      "id": "real/C4",
+      "kind": "claim",
+      "claim": "Section 18: \"aliases both delta glyphs ∆/Δ and check marks ✓/✔\"",
+      "expected": "all 4 alias cases normalise",
+      "observed": "all 4 ok",
+      "pass": true
+    },
+    {
+      "id": "real/C5",
+      "kind": "claim",
+      "claim": "Section 18: lexer \"recognizes -> => → > as arrow tokens\"",
+      "expected": "all 4 forms are arrow/→",
+      "observed": "all 4 ok",
+      "pass": true
+    },
+    {
+      "id": "real/C6",
+      "kind": "claim",
+      "claim": "Section 18: lexer \"attaches @name, /cmd, #tag, $var\"",
+      "expected": "all 4 attach forms correct",
+      "observed": "all 4 ok",
+      "pass": true
+    },
+    {
+      "id": "real/C7",
+      "kind": "claim",
+      "claim": "A quoted glyph is preserved literally and gains no family (S1 falsifier)",
+      "expected": "0 families inside quotes",
+      "observed": "0 families (quote token only)",
+      "pass": true
+    },
+    {
+      "id": "real/C8",
+      "kind": "claim",
+      "claim": "Section 18: symbols.ts is \"labelled D-217 by source comment\"",
+      "expected": "D-217 present in header comment",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "id": "real/N1",
+      "kind": "negative-control",
+      "claim": "A non-family glyph (§) must not be assigned a family",
+      "expected": "no family",
+      "observed": "no family (punct)",
+      "pass": true
+    },
+    {
+      "id": "real/N2",
+      "kind": "negative-control",
+      "claim": "Aliases Δ/✔ must not be independent family identities",
+      "expected": "not in FAMILY_BY_CHAR",
+      "observed": "absent (correct)",
+      "pass": true
+    },
+    {
+      "id": "real/N3",
+      "kind": "negative-control",
+      "claim": "Loader liveness: empty input and a plain word lex sanely",
+      "expected": "0 tokens for \"\", kind=word for \"hello\"",
+      "observed": "empty=0 word=word",
+      "pass": true
+    },
+    {
+      "id": "real/N4",
+      "kind": "negative-control",
+      "claim": "An inverted count assertion (families === 18) must FAIL",
+      "expected": "false",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "id": "mutant/C1",
+      "kind": "claim",
+      "claim": "Section 18: \"symbols.ts declares the 17 families\"",
+      "expected": "17",
+      "observed": "16",
+      "pass": false
+    },
+    {
+      "id": "mutant/C2",
+      "kind": "claim",
+      "claim": "Section 18: counting FAMILY_GLYPHS does NOT yield 17 (aliases inflate it)",
+      "expected": "!=17 (expect 18)",
+      "observed": "18",
+      "pass": true
+    },
+    {
+      "id": "mutant/C3",
+      "kind": "claim",
+      "claim": "Every one of the 17 family glyphs is recognised by the lexer",
+      "expected": "0 lost",
+      "observed": "0 lost",
+      "pass": true
+    },
+    {
+      "id": "mutant/C3b",
+      "kind": "claim",
+      "claim": "Every advertised FAMILY_GLYPHS member maps to a DECLARED family (removal-detecting)",
+      "expected": "0 orphan, 0 unlexable",
+      "observed": "orphan:~; unlexable:~->none",
+      "pass": false
+    },
+    {
+      "id": "mutant/C4",
+      "kind": "claim",
+      "claim": "Section 18: \"aliases both delta glyphs ∆/Δ and check marks ✓/✔\"",
+      "expected": "all 4 alias cases normalise",
+      "observed": "all 4 ok",
+      "pass": true
+    },
+    {
+      "id": "mutant/C5",
+      "kind": "claim",
+      "claim": "Section 18: lexer \"recognizes -> => → > as arrow tokens\"",
+      "expected": "all 4 forms are arrow/→",
+      "observed": "all 4 ok",
+      "pass": true
+    },
+    {
+      "id": "mutant/C6",
+      "kind": "claim",
+      "claim": "Section 18: lexer \"attaches @name, /cmd, #tag, $var\"",
+      "expected": "all 4 attach forms correct",
+      "observed": "all 4 ok",
+      "pass": true
+    },
+    {
+      "id": "mutant/C7",
+      "kind": "claim",
+      "claim": "A quoted glyph is preserved literally and gains no family (S1 falsifier)",
+      "expected": "0 families inside quotes",
+      "observed": "0 families (quote token only)",
+      "pass": true
+    },
+    {
+      "id": "mutant/C8",
+      "kind": "claim",
+      "claim": "Section 18: symbols.ts is \"labelled D-217 by source comment\"",
+      "expected": "D-217 present in header comment",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "id": "mutant/N1",
+      "kind": "negative-control",
+      "claim": "A non-family glyph (§) must not be assigned a family",
+      "expected": "no family",
+      "observed": "no family (punct)",
+      "pass": true
+    },
+    {
+      "id": "mutant/N2",
+      "kind": "negative-control",
+      "claim": "Aliases Δ/✔ must not be independent family identities",
+      "expected": "not in FAMILY_BY_CHAR",
+      "observed": "absent (correct)",
+      "pass": true
+    },
+    {
+      "id": "mutant/N3",
+      "kind": "negative-control",
+      "claim": "Loader liveness: empty input and a plain word lex sanely",
+      "expected": "0 tokens for \"\", kind=word for \"hello\"",
+      "observed": "empty=0 word=word",
+      "pass": true
+    },
+    {
+      "id": "mutant/N4",
+      "kind": "negative-control",
+      "claim": "An inverted count assertion (families === 18) must FAIL",
+      "expected": "false",
+      "observed": "false",
+      "pass": true
+    }
+  ],
+  "discrimination": {
+    "real_all_claims_pass": true,
+    "real_all_negative_controls_hold": true,
+    "mutant_must_fail": 2,
+    "mutant_must_fail_expectation": ">=1 (C1 and C3 must both break when a family is removed)",
+    "mutant_controls_still_hold": 4,
+    "mutant_controls_total": 4,
+    "mutant_detector_discriminates": true
+  },
+  "verdict": "S1_CLAIMS_VERIFIED_AND_DETECTOR_DISCRIMINATES"
+}

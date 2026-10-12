@@ -1,0 +1,83 @@
+{
+  "run_id": "B-2026-10-12-compiler-boundary",
+  "run_dir": "B-2026-10-12-compiler-boundary",
+  "protocol_id": "epg.semantic.selfhosting",
+  "protocol_version": "0.1.0-PROPOSED",
+  "status": "EVALUATED",
+  "basis": {
+    "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "protocol_sha256": null,
+    "requirement_epoch": "gym-decisions-1-4@2026-10-11",
+    "fixture_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "claims": [
+    {
+      "statement": "NEGATIVE RESULT (round's cleanest): a publication digest binds WHICH publication a projection claims, not that the projection still faithfully renders it. A human hand-edit to human.md kept the correct digest and was NOT caught; only a forged digest was caught. Deterministic re-render-and-compare closed the hole at first-divergence char 2957.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/B-2026-10-12-compiler-boundary/RECEIPT.txt", "runs/B-2026-10-12-compiler-boundary/machine-human-signal.json"]
+    },
+    {
+      "statement": "On pristine source the verifier passes 9/9 checks, both before and after witness execution.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/B-2026-10-12-compiler-boundary/RECEIPT.txt"]
+    },
+    {
+      "statement": "Per-fact source slicing localises a MAX_RETRIES 3->5 mutation to exactly 1 stale fact of 5; digest changes 571ac017d0a9 -> b8c42993004a.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/B-2026-10-12-compiler-boundary/RECEIPT.txt"]
+    },
+    {
+      "statement": "Static compilation alone cannot produce an accurate human view of this fixture: whether the contract is enforced is invisible without execution. The load-bearing backend boundary is the WITNESS CHANNEL, not a service boundary.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/B-2026-10-12-compiler-boundary/RECEIPT.txt"]
+    },
+    {
+      "statement": "The run's own canonicalisation initially dropped the structural 'kind' field, rendering every function as an exported constant with type/value undefined — confidently wrong and invisible to the digest because the digest covered the lossy form.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/B-2026-10-12-compiler-boundary/RUN-NOTE.md"]
+    },
+    {
+      "statement": "No formal frontend/backend service split is justified at fixture scale by any constraint observed in this run.",
+      "evidence_class": "DESIGN"
+    },
+    {
+      "statement": "Whether two independent intake implementations derive the same DECLARED set is untested.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    },
+    {
+      "statement": "This design has not been compared against the existing Phase 0 Live/Experiment/Change toolkit; the reuse control was never replayed, so no claim is made that it beats existing automation.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    }
+  ],
+  "events": [
+    {"id": "b-start", "kind": "run_start", "time": "2026-10-12T00:20:00", "time_source": "HOST", "actor": "arm-B-session"},
+    {"id": "b-close", "kind": "run_closed", "time": "2026-10-12T00:56:56", "time_source": "HOST", "actor": "arm-B-session"},
+    {"id": "b-repro", "kind": "independent_reproduction", "time": "2026-10-12T15:00:00", "time_source": "HOST", "actor": "lab-ops", "evidence_ref": "runs/B-2026-10-12-compiler-boundary/run-b-experiment.mjs"}
+  ],
+  "metrics": {
+    "verifier_checks_passed": {"value": 9, "status": "MEASURED", "unit": "checks"},
+    "facts_extracted": {"value": 5, "status": "MEASURED", "unit": "count"},
+    "stale_facts_after_mutation": {"value": 1, "status": "MEASURED", "unit": "count"},
+    "sha256sums_verified": {"value": "8 artifacts OK, 1 FAILED", "status": "MEASURED", "unit": "sha256sum -c"},
+    "tokens": {"value": null, "status": "UNKNOWN", "unit": "tokens"},
+    "wall_time": {"value": null, "status": "UNKNOWN", "unit": "seconds"}
+  },
+  "publication": {"status": "PUBLISHED", "all_maturity_pack_index": "runs/B-2026-10-12-compiler-boundary/RUN-NOTE.md", "reason": "Run note, two projections, machine-human signal, full transcript receipt and checksums."},
+  "extensions": {
+    "independence": "BLIND_DISCOVERY on the compiler/boundary; LEGACY_SEEDED on symbols (self-disclosed)",
+    "decision_1_feeder": "fixture only; real cohort not used",
+    "known_defects": [
+      "SHA256SUMS.txt lists itself, an impossible self-reference; `sha256sum -c` therefore always reports exactly one FAILED line. All 8 real artifacts verify OK. Left as found and disclosed rather than rewritten.",
+      "run-b-experiment.mjs resolves source.ts relative to process.cwd(), so it only runs from inside the run directory. The README documents the cd; the script does not enforce it."
+    ]
+  }
+}

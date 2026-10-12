@@ -1,0 +1,68 @@
+{
+  "run_id": "C-2026-10-12",
+  "run_dir": "C-2026-10-12",
+  "protocol_id": "epg.semantic.selfhosting",
+  "protocol_version": "0.1.0-PROPOSED",
+  "status": "EVALUATED",
+  "basis": {
+    "git_sha": "1199b38c1fd174e997c92b22d18d8c20c952eb9e",
+    "protocol_sha256": null,
+    "requirement_epoch": "gym-decisions-1-4@2026-10-11",
+    "fixture_sha256": "fe0c651e51936074346c7dcabfef52785783e5a3d87f110c8365952b40a386d5"
+  },
+  "claims": [
+    {
+      "statement": "The fixture typechecks clean on its own under tsc 7.0.2 with zero diagnostics; a contract-violating caller is the negative control.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/C-2026-10-12/evidence/groundtruth.json"]
+    },
+    {
+      "statement": "Two minimalist competing method vocabularies were built and compared as executable probes (v1-verbs, v2-predicates) with a deterministic comparison harness; the review round found them TIED on three of four criteria, so neither is selected.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/C-2026-10-12/evidence/comparison.json"]
+    },
+    {
+      "statement": "Arm C meets its prompt-derived acceptance checklist: 3/3 cross-checks pass, including that every TESTED numeric claim in the note is present in the evidence JSON and that all nine run artifacts exist and are non-empty.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/C-2026-10-12/probe/verify-acceptance.mjs", "runs/C-2026-10-12/ACCEPTANCE.md"]
+    },
+    {
+      "statement": "Blind-discovery exclusions (other arms, the legacy alignment map) are disclosed in the run note rather than silently relied upon.",
+      "evidence_class": "MEASURED",
+      "witness_provenance": "SELF_WITNESSED",
+      "witness_refs": ["runs/C-2026-10-12/RUN_NOTE.md"]
+    },
+    {
+      "statement": "The three-operation vocabulary exists/witnessed/enforced is a live contender but NOT frozen: n=1 fixture cannot adjudicate it, and WikiCore remains a working name, not an approved protocol.",
+      "evidence_class": "DESIGN"
+    },
+    {
+      "statement": "Whether the recovered 17-family symbolic lexer is a better intake than the probes built here was not tested by this run.",
+      "evidence_class": "UNKNOWN",
+      "witness_provenance": "NONE",
+      "witness_refs": []
+    }
+  ],
+  "events": [
+    {"id": "c-start", "kind": "run_start", "time": "2026-10-12T00:52:00", "time_source": "HOST", "actor": "arm-C-session"},
+    {"id": "c-probe", "kind": "probe_execution", "time": "2026-10-12T00:56:56", "time_source": "HOST", "actor": "arm-C-session", "evidence_ref": "runs/C-2026-10-12/probe/verify-acceptance.mjs"},
+    {"id": "c-close", "kind": "run_closed", "time": "2026-10-12T02:20:00", "time_source": "HOST", "actor": "arm-C-session"},
+    {"id": "c-repro", "kind": "independent_reproduction", "time": "2026-10-12T15:02:00", "time_source": "HOST", "actor": "lab-ops", "evidence_ref": "runs/C-2026-10-12/probe/verify-acceptance.mjs"}
+  ],
+  "metrics": {
+    "acceptance_criteria_passed": {"value": 3, "status": "MEASURED", "unit": "of 3"},
+    "competing_vocabularies_built": {"value": 2, "status": "MEASURED", "unit": "count"},
+    "tsc_version": {"value": "7.0.2", "status": "MEASURED", "unit": "version"},
+    "real_source_cohort": {"value": null, "status": "NOT_APPLICABLE", "unit": "n/a"},
+    "tokens": {"value": null, "status": "UNKNOWN", "unit": "tokens"}
+  },
+  "publication": {"status": "PUBLISHED", "all_maturity_pack_index": "runs/C-2026-10-12/RUN_NOTE.md", "reason": "Run note, acceptance checklist, evidence JSONs and executable probes."},
+  "extensions": {
+    "independence": "BLIND_DISCOVERY (saw arm A's directory on disk and did not open it)",
+    "decision_1_feeder": "fixture plus a locally compiled ground-truth build; real cohort not used",
+    "decision_3_signal": "carried in the run note and comparison evidence"
+  }
+}
