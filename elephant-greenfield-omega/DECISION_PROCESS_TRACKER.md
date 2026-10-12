@@ -64,6 +64,30 @@ reviewer_notes: null
 | DECQ-0007 | Multi-stream capability/evidence intake, incremental standardization | LAB, DELIBERATION | OWNER_DIRECTION_PARTIAL / DESIGN_OPEN | [REV-015/016 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Both Agree; comments obscured or truncated | [TODO-009](MASTER_TODO.md), [TODO-010](MASTER_TODO.md) |
 | DECQ-0008 | Use conceptual Elephant DNA with unspecified Claude reference | DELIBERATION | NEEDS_CLARIFICATION | [REV-017 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Agree; visible text `with mments the Claude` ambiguous | [TODO-011](MASTER_TODO.md) |
 | DECQ-0009 | Semantic SDK as Wiki compiler embedded in Elephant | LAB, DELIBERATION, OWEN_GUIDANCE | OWNER_DIRECTION_RECORDED / DESIGN_OPEN | [REV-018 Batch 03](DECISION_INTERVIEW_BATCHES/2026-10-11_BATCH_03.md) | Agree; `I would reframe, the semantic sdk concept is the wiki compiler (Todo:` cropped | [TODO-012](MASTER_TODO.md), [TODO-001](MASTER_TODO.md) |
+| DECQ-0010 | Which definition governs "an Elephant" (4 incompatible candidates) | DELIBERATION → OWEN_GUIDANCE | DELIBERATION_RECORDED / **NEEDS_OWEN** | [Lab deliberation 2026-10-12](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/DELIBERATION_ELEPHANT_DEFINITION_2026-10-12.md) | Four definitions coexist unreconciled: cognitive role / entity / reloadable node / capsule+ledger. The sharpest conflict: node and capsule both say a single session is NOT an Elephant, so Round-0 arms were workers. | Choose a definition, or authorize operating on the conservative compatible reading |
+| DECQ-0011 | Which ECP grammar is design-of-record (v0.1 vs v0.2) | DELIBERATION → OWEN_GUIDANCE | DELIBERATION_RECORDED / **NEEDS_OWEN** | [Same deliberation](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/DELIBERATION_ELEPHANT_DEFINITION_2026-10-12.md) | `protocol/02_ECP_V0_SPEC.md` (v0.1, 14 commands) and `claude/ECP_SPEC.md` (v0.2, supersedes "for this submission only") both claim it. v0.2's anchor-quote verification is the valuable part and is currently submission-scoped. | Name the design-of-record, or keep both scoped |
+| DECQ-0012 | Whether unattended / elastic swarm execution is permitted | OWEN_GUIDANCE | **NEEDS_OWEN** (safety-scoped) | [Same deliberation](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/DELIBERATION_ELEPHANT_DEFINITION_2026-10-12.md) | `01_MASTER_CHARTER.md:31` excludes "unbounded 24/7 unattended execution"; `ADAPTIVE_SWARM.md` + launch manifest prepare exactly that. | **Blocks the adaptive swarm.** Keep `PREPARED_NOT_LAUNCHED` until answered |
+
+### DECQ-0002 — evidence gathered 2026-10-12 (DOCUMENTARY_RECONCILIATION, not a decision)
+
+**This entry records verified facts to reduce the scope of the outstanding owner choice. It decides nothing and clears no `NEEDS_OWEN`.**
+
+The open question is whether Ratchet governs greenfield or is historical reference. The evidence narrows it: **the machinery is intact and usable; it has simply not been used since 2026-10-09, and its own board projection is now stale.**
+
+| Check | Observed 2026-10-12 | Consequence |
+|---|---|---|
+| `omega-baseline/experimental/ratchet/src/cli.ts` | **exists** | Ratchet is not broken or missing; `bun run ratchet` is runnable |
+| `scripts/omega.ps1` (cited by `ratchet/OPERATING.md:3`) | **exists** | An earlier note claiming this path was absent was **wrong**; do not repeat it |
+| Commits touching `.project/ratchet/` or the ratchet source since 2026-10-09 | **0** | Dormant, not deleted |
+| `D1-BOARD.md` recorded probe HEAD | `ef9497329e67`; task list `db0cdd956eb7` | Stale against every commit since |
+| Repo HEAD when last checked | `d51089adb255` (was `1199b38` at the 2026-10-11 corpus pass) | Board counts (59/95 gates green, 54 promoted) are **not current truth** |
+| Commits since 2026-10-09 | all Elephant Protocol Gym work | The active workstream has not used Ratchet at all |
+
+**What this changes for whoever works next.** Ratchet is the *only* machine-enforced coordination layer in this repository — gate promotion, regression priority, reviewer separation by label, gate anchoring, and expiring claim leases all live there. Every other coordination mechanism (DESK, RACI, the lane roster, heartbeats, stuck detection, cost control, session claims, build-guidance telemetry) is prose-only, and the `ops/local-state` telemetry branch currently contains no snapshot. So the greenfield Elephant work is currently operating with **no enforced coordination layer at all**.
+
+That inverts the obvious reading. The live question is not "should we retire Ratchet?" but **"should greenfield adopt the existing Ratchet loop, or build lab-local enforcement instead?"** The Elephant labs now have lab-local enforcement (a run registry with re-hashed artifact custody, negative controls, and receipts that require a witness-provenance field) — but it is scoped to the Gym and does nothing for cross-team coordination.
+
+**Owner choice still required.** Which authority governs greenfield execution: (a) revive Ratchet as the governing loop, (b) keep it historical and treat lab-local enforcement as the greenfield mechanism, or (c) something else. **Not decided here.** Note that (a) and (b) are not mutually exclusive in practice, since Ratchet's lease and reviewer-separation mechanics are precisely what a lab fleet lacks.
 
 ## Reviewed batches (owner responses, not inferred history)
 
