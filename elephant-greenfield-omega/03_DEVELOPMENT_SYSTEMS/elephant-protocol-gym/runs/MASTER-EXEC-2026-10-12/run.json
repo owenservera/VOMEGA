@@ -114,8 +114,8 @@
   "artifacts": [
     {
       "uri": "runs/MASTER-EXEC-2026-10-12/custody-check-output.json",
-      "sha256": "97f70591680722b14496516ce8b1c29102a02e0aa500199318e0e6c9a2c183c8",
-      "bytes": 17946,
+      "sha256": "a22d87cbac807a8f1dd18d3c226357d7be49d027bf4dee832e77813726808357",
+      "bytes": 17948,
       "state": "RUN_OUTPUT"
     },
     {

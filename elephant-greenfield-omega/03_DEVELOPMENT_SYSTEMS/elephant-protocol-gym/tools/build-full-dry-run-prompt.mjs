@@ -84,18 +84,45 @@ function wanted(section, slice) {
 
 const fence = (lang, text) => ['```' + lang, text.replace(/\n+$/, ''), '```'].join('\n');
 
+// A prepended banner is decoration the assembler adds, not source text. It MUST be
+// recorded as decoration, because a custody check that hashes alone would otherwise
+// attest the source sha256 while the rendered body differs — and would conclude
+// "verbatim" about a body that is not. sha256 attests INPUT identity; only a body
+// comparison attests RENDER fidelity. Those are two claims and are reported as two.
+const DISCLOSURE_BANNER = section => section.disclose
+  ? `\n> **DISCLOSURE RULE:** if your run reads this document, the run note must say so and mark the affected result **LEGACY-SEEDED REUSE**, not a blind discovery.`
+  : '';
+
 function embed(section) {
   const path = join(home, section.file);
   if (!existsSync(path)) throw new Error(`missing canonical source: ${section.file}`);
   const raw = readFileSync(path, 'utf8');
   const sha = createHash('sha256').update(raw).digest('hex');
-  const body = section.lang ? fence(section.lang, raw) : raw.replace(/\n+$/, '');
+  const sourceBody = section.lang ? fence(section.lang, raw) : raw.replace(/\n+$/, '');
+  const banner = DISCLOSURE_BANNER(section);
+  const body = banner ? [banner, sourceBody].join('\n\n') : sourceBody;
+
+  // rendered_body_identical is false whenever the assembler decorated the body. It is
+  // computed, never asserted, so the two custody claims can never silently agree.
+  const renderedIdentical = banner === '';
+
+  // The BEGIN/END block is a WIRE FORMAT consumed by master-exec's custody-check.mjs, which
+  // (a) matches the marker with an anchored regex and (b) treats everything after the
+  // `*Source:` line as the body. So the marker stays byte-identical and every custody
+  // annotation is emitted BEFORE the block, never inside it. Putting decoration in either
+  // place silently breaks that checker's reproduction — which is how this was found, and is
+  // itself an instance of the round's own lesson: an instrument change that looked harmless
+  // turned a green reproduction red.
   const begin = `<!-- BEGIN VERBATIM ${section.file} sha256:${sha} bytes:${Buffer.byteLength(raw)} -->`;
   const end = `<!-- END VERBATIM ${section.file} -->`;
-  const disclose = section.disclose
-    ? `\n> **DISCLOSURE RULE:** if your run reads this document, the run note must say so and mark the affected result **LEGACY-SEEDED REUSE**, not a blind discovery.`
-    : '';
-  return {section, sha, bytes: Buffer.byteLength(raw), text: [begin, `## ${section.title}`, `*Source: \`${section.file}\` — embedded verbatim, do not edit here.*`, disclose, body, end].filter(Boolean).join('\n\n')};
+  const annotation = [
+    `<!-- CUSTODY sha256_match:true rendered_body_identical:${renderedIdentical}${renderedIdentical ? '' : ' reason:assembler-prepended-disclosure-banner'} -->`,
+    `*Custody: sha256 attests the source bytes (${Buffer.byteLength(raw)}); rendered_body_identical is ${renderedIdentical}${renderedIdentical ? '.' : ' — the assembler prepended a DISCLOSURE banner that is NOT in the source file.'}*`,
+  ].join('\n');
+  return {
+    section, sha, bytes: Buffer.byteLength(raw), renderedIdentical, body,
+    text: [annotation, begin, `## ${section.title}`, `*Source: \`${section.file}\` — embedded verbatim, do not edit here.*`, body, end].filter(Boolean).join('\n\n'),
+  };
 }
 
 function header(slice, parts) {
@@ -157,16 +184,62 @@ function header(slice, parts) {
   return lines.join('\n');
 }
 
+// A launch manifest says exactly what a session is being handed and what it must not read.
+// It is GENERATED from the same section table that built the slice, so the two can never
+// drift: if a section is added to an audience, it appears in both. The manifest is not a
+// curation surface — nobody hand-picks an arm's contents, which is what keeps the
+// dispatcher's power structural rather than editorial.
+function manifest(slice, parts, text) {
+  const included = parts.map(p => ({
+    file: p.section.file,
+    audience: p.section.audience,
+    sha256: p.sha,
+    bytes: p.bytes,
+    rendered_body_identical: p.renderedIdentical,
+  }));
+  const forbidden = SECTIONS.filter(s => !parts.some(p => p.section.id === s.id)).map(s => s.file);
+  return {
+    schema: 'epg.launch-manifest/0.1',
+    generated_by: 'tools/build-full-dry-run-prompt.mjs',
+    slice,
+    slice_sha256: createHash('sha256').update(text).digest('hex'),
+    slice_bytes: Buffer.byteLength(text),
+    arm_file: parts.find(p => p.section.audience.startsWith('arm:'))?.section.file ?? null,
+    independence: {
+      rule: 'This slice must be the ONLY Elephant Gym material the session reads before it starts.',
+      one_arm_per_session: true,
+      forbidden_before_start: forbidden,
+      disclosure: [
+        'A session that reads ANY other arm prompt or result is no longer an independent arm.',
+        'Label such a run PROCESS_REHEARSAL and state exactly what was read and when.',
+        'A self-reported transcript is not proof of execution; attach a reproducible command.',
+      ],
+    },
+    included_sections: included,
+    receipt_contract: {
+      run_note: 'RUN_NOTE.md following REVIEW.md, all ten template fields present',
+      machine_human_signal: 'Decision 3 — source/task, machine meaning, human reading, comparison, evidence status, next test',
+      labels_required: ['PROPOSED', 'OBSERVED', 'TESTED', 'NOT_RUN', 'UNKNOWN'],
+      mint_command: 'node tools/mint-receipt.mjs --run <RUN-ID>  (after writing runs/receipts/<RUN-ID>.decl.json)',
+    },
+    prohibitions: [
+      'No edits to the shared seed, this slice, or main.',
+      'No credential, provider or account configuration changes.',
+      'No spawning of further agents.',
+      'No claim of a launched system without real execution evidence.',
+      'This is protocol/tooling conditioning, NOT model weight training.',
+    ],
+  };
+}
+
 function build(slice) {
   const parts = SECTIONS.filter(s => wanted(s, slice)).map(embed);
   if (slice === 'reviewer' && !parts.some(p => p.section.audience === 'afterR0')) {
     throw new Error('reviewer slice must include the after-round-0 reviewer lens');
   }
   const body = parts.map((p, i) => `## Section ${i + 1} of ${parts.length} — ${p.section.title}\n\n${p.text}`).join('\n\n');
-  return {
-    text: [header(slice, parts), '---\n', body].join('\n\n'),
-    parts,
-  };
+  const text = [header(slice, parts), '---\n', body].join('\n\n');
+  return {text, parts, manifest: manifest(slice, parts, text)};
 }
 
 function main() {
@@ -181,19 +254,20 @@ function main() {
     if (slice !== 'all' && !ARMS.includes(slice) && slice !== 'reviewer') {
       throw new Error(`unknown slice "${slice}" (use A|B|C|D|reviewer|all)`);
     }
-    const {text, parts} = build(slice);
+    const {text, parts, manifest: man} = build(slice);
     const name = slice === 'all' ? 'FULL_DRY_RUN_PROMPT_ALL' : `FULL_DRY_RUN_PROMPT_${slice.toUpperCase()}`;
-    const out = outIdx === -1 ? join(home, 'built', `${name}.md`) : resolve(outIdx === -1 ? '' : argv[outIdx + 1]);
+    const out = outIdx === -1 ? join(home, 'built', `${name}.md`) : resolve(argv[outIdx + 1]);
     mkdirSync(dirname(out), {recursive: true});
     writeFileSync(out, text);
-    reports.push({slice, out, sections: parts.length, bytes: Buffer.byteLength(text), sources: parts.map(p => p.section.file)});
+    // The manifest is generated beside the slice so a launcher never hand-assembles one.
+    const manPath = join(dirname(out), `${name}.manifest.json`);
+    writeFileSync(manPath, JSON.stringify(man, null, 2) + '\n');
+    reports.push({slice, out, manifest: manPath, sections: parts.length, bytes: Buffer.byteLength(text), decorated: parts.filter(p => !p.renderedIdentical).length});
   }
   for (const r of reports) {
-    console.log(JSON.stringify({slice: r.slice, out: r.out, sections: r.sections, bytes: r.bytes}, null, 0));
+    console.log(JSON.stringify({slice: r.slice, out: r.out, manifest: r.manifest, sections: r.sections, bytes: r.bytes, decorated_sections: r.decorated}, null, 0));
   }
-  console.log('verbatim sources embedded with sha256 custody:');
-  for (const f of reports.flatMap(r => r.sources)) console.log('  - ' + f);
-  console.log('generated artifact: edit the canonical sources and rerun; do not hand-edit this file.');
+  console.log('generated artifacts: edit the canonical sources and rerun; do not hand-edit these files.');
 }
 
 if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) main();
