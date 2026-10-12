@@ -170,6 +170,59 @@ export function validateRegistry({root = backbone, registry = null, receiptOverr
     if (!existsSync(join(dir, 'run.json'))) errors.push(`${at}: run directory has no minted receipt (run tools/mint-receipt.mjs)`);
   }
 
+  // --- actor separation across the fleet ---
+  // The only machine-enforced authority constraint anywhere in this repository is Claude's
+  // SIMULATED kernel (F23: an elephant:* id may not originate a request; F24: it may not
+  // review an accepted commit). This is the same discipline, enforced on real runs instead
+  // of inside a kernel nobody executes: a reviewing round must not share an actor with the
+  // arms it adjudicates, and a run that declares BLIND_DISCOVERY must not share an actor
+  // with any other registered run.
+  //
+  // KNOWN LIMIT, stated rather than implied: this catches a FALSE DECLARATION and a reused
+  // actor. It CANNOT detect undisclosed reading — Arm D read 60 lines of arm B's run note
+  // and disclosed it; nothing machine-checkable would have caught it if it had not. That
+  // failure mode needs disclosure, not a validator, and no amount of checking here closes it.
+  //
+  // Reproduction events are deliberately excluded. A later actor re-running someone's
+  // entry point is the opposite of contamination — it is the independent check the receipt
+  // exists to support — so counting it as shared exposure produced a false positive on the
+  // fleet's own receipts and had to be modelled out rather than silenced.
+  const REPRODUCTION_KINDS = new Set(['independent_reproduction']);
+  const actorsByRun = new Map();
+  for (const r of reg.runs ?? []) {
+    // Honour in-memory overrides here too, or this second pass would silently disagree
+    // with the first one about what each receipt says.
+    let rec;
+    if (Object.prototype.hasOwnProperty.call(receiptOverrides, r.receipt)) {
+      rec = receiptOverrides[r.receipt];
+    } else {
+      const rp = join(gymRoot, r.receipt ?? '');
+      if (!existsSync(rp)) continue;
+      try { rec = readJSON(rp); } catch { continue; }
+    }
+    const discovery = (rec.events ?? []).filter(e => !REPRODUCTION_KINDS.has(e.kind));
+    actorsByRun.set(r.id, new Set(discovery.map(e => e.actor).filter(Boolean)));
+  }
+  const overlaps = (a, b) => [...a].filter(x => b.has(x));
+  for (const r of reg.runs ?? []) {
+    const mine = actorsByRun.get(r.id);
+    if (!mine || mine.size === 0) continue;
+    for (const other of reg.runs ?? []) {
+      if (other.id === r.id) continue;
+      const theirs = actorsByRun.get(other.id);
+      if (!theirs || theirs.size === 0) continue;
+      const shared = overlaps(mine, theirs);
+      if (shared.length === 0) continue;
+      const isReviewer = r.round === 'R1_REVIEWER' || r.round === 'PASS';
+      if (isReviewer) {
+        errors.push(`${r.id} (${r.round}) shares actor(s) ${shared.join(', ')} with ${other.id} — a reviewing/adjudicating pass must not share an actor with the runs it judges`);
+      }
+      if (r.independence === 'BLIND_DISCOVERY') {
+        errors.push(`${r.id} declares BLIND_DISCOVERY but shares actor(s) ${shared.join(', ')} with ${other.id} — the declaration and the ledger disagree`);
+      }
+    }
+  }
+
   return {ok: errors.length === 0, errors, warnings, checked};
 }
 

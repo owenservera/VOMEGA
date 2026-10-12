@@ -170,3 +170,40 @@ test('a non-duration metric is not forced to declare a bound (guard must not ove
     assert.ok(!v.errors.some(e => e.includes('no stated bound')), `a count metric needs no bound, got: ${v.errors.join('|')}`);
   });
 });
+
+test('the real fleet keeps reviewers and arms actor-separated', () => {
+  const v = validateRegistry();
+  assert.ok(!v.errors.some(e => e.includes('shares actor')), `actor separation violated: ${v.errors.join('|')}`);
+});
+
+test('N12 — a reviewing round sharing an actor with an arm is detected', () => {
+  // This is the fleet-level version of ECP F23/F24, enforced on real runs rather than
+  // inside a simulated kernel nobody executes.
+  const reg = baseRegistry();
+  const armReceipt = baseReceipt(0);
+  const reviewerIdx = reg.runs.findIndex(r => r.round === 'R1_REVIEWER');
+  const reviewerReceipt = JSON.parse(readFileSync(join(gymRoot, reg.runs[reviewerIdx].receipt), 'utf8'));
+  reviewerReceipt.events[0].actor = armReceipt.events[0].actor;
+  const v = validateRegistry({
+    registry: reg,
+    receiptOverrides: {[reg.runs[reviewerIdx].receipt]: reviewerReceipt},
+  });
+  assert.equal(v.ok, false);
+  assert.ok(v.errors.some(e => e.includes('shares actor')), `expected an actor-separation error, got: ${v.errors.join('|')}`);
+});
+
+test('N13 — a BLIND_DISCOVERY run sharing an actor with another run is detected', () => {
+  // Catches a false independence declaration. It does NOT catch undisclosed reading —
+  // that needs disclosure, and the limit is stated in registry.mjs.
+  const reg = baseRegistry();
+  const otherIdx = reg.runs.findIndex(r => r.round === 'PASS');
+  const a = baseReceipt(0);
+  const other = JSON.parse(readFileSync(join(gymRoot, reg.runs[otherIdx].receipt), 'utf8'));
+  other.events[0].actor = a.events[0].actor;
+  const v = validateRegistry({
+    registry: reg,
+    receiptOverrides: {[reg.runs[otherIdx].receipt]: other},
+  });
+  assert.equal(v.ok, false);
+  assert.ok(v.errors.some(e => e.includes('BLIND_DISCOVERY')), `expected an independence error, got: ${v.errors.join('|')}`);
+});
