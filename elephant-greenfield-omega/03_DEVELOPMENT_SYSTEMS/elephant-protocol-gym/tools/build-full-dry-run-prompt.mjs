@@ -16,7 +16,7 @@
 //   node tools/build-full-dry-run-prompt.mjs --arm A --out /tmp/prompt-A.md
 import {readFileSync, existsSync, mkdirSync, writeFileSync} from 'node:fs';
 import {resolve, dirname, join} from 'node:path';
-import {fileURLToPath} from 'node:url';
+import {fileURLToPath, pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 
 const home = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -270,4 +270,7 @@ function main() {
   console.log('generated artifacts: edit the canonical sources and rerun; do not hand-edit these files.');
 }
 
-if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) main();
+// Compare via pathToFileURL, not a hand-rolled "file://"+argv string: that form throws
+// Invalid URL when argv[1] is ALREADY a file URL (which is exactly what happens when
+// this module is imported by a child process), so the guard itself became the bug.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();

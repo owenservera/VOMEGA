@@ -16,7 +16,7 @@
 //   node tools/mint-receipt.mjs --check         # verify existing receipts, write nothing
 import {readFileSync, writeFileSync, existsSync, readdirSync, statSync} from 'node:fs';
 import {resolve, dirname, join, relative} from 'node:path';
-import {fileURLToPath} from 'node:url';
+import {fileURLToPath, pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 
 const home = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -194,4 +194,7 @@ function main() {
   }
 }
 
-if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) main();
+// Compare via pathToFileURL, not a hand-rolled "file://"+argv string: that form throws
+// Invalid URL when argv[1] is ALREADY a file URL (which is exactly what happens when
+// this module is imported by a child process), so the guard itself became the bug.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();
