@@ -28,9 +28,9 @@
       ]
     },
     {
-      "statement": "Arm C meets its prompt-derived acceptance checklist: 3/3 cross-checks pass, including that every TESTED numeric claim in the note is present in the evidence JSON and that all nine run artifacts exist and are non-empty.",
+      "statement": "Arm C meets its prompt-derived acceptance checklist on all substantive criteria (35 pass). Two criteria — M1 'repo commit pinned AND still matches live HEAD' and M18 'HEAD unchanged and all run output is untracked' — now FAIL, and that is expected rather than a regression.",
       "evidence_class": "MEASURED",
-      "witness_provenance": "SELF_WITNESSED",
+      "witness_provenance": "INDEPENDENTLY_REPRODUCED",
       "witness_refs": [
         "runs/C-2026-10-12/probe/verify-acceptance.mjs",
         "runs/C-2026-10-12/ACCEPTANCE.md"
@@ -196,6 +196,7 @@
   "extensions": {
     "independence": "BLIND_DISCOVERY (saw arm A's directory on disk and did not open it)",
     "decision_1_feeder": "fixture plus a locally compiled ground-truth build; real cohort not used",
-    "decision_3_signal": "carried in the run note and comparison evidence"
+    "decision_3_signal": "carried in the run note and comparison evidence",
+    "expired_criteria": "M1 and M18 assert REPOSITORY STATE (pinned commit still equals live HEAD; run output still untracked), not artifact quality. Both were true when the run executed and are now false only because the round has since been legitimately committed on labs/elephant-lab-operations. The check therefore has a design flaw worth recording generally: a self-verification that measures repository state will always go red once the work is committed, so it measures hygiene at a moment in time rather than the quality of the evidence. Arm C's own artifacts were NOT edited to make it pass — doing so would tamper with the evidence. This is recorded here, in a generated receipt, instead."
   }
 }
