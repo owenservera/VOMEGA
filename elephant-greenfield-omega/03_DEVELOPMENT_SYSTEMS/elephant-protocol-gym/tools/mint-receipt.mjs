@@ -39,6 +39,10 @@ function walk(dir, base = dir, acc = []) {
 }
 
 const EVIDENCE = new Set(['DESIGN', 'SIMULATED', 'AUTHOR_REPORTED', 'LIVE_RUN', 'MEASURED', 'UNKNOWN']);
+// Units that measure elapsed time. A value in one of these without a stated bound is a
+// number detached from the conditions that produced it.
+const DURATION_UNITS = /^(seconds?|milliseconds?|ms|minutes?|hours?|s)$/i;
+const isDuration = unit => typeof unit === 'string' && DURATION_UNITS.test(unit.trim());
 const PROVENANCE = new Set(['NONE', 'SELF_WITNESSED', 'CAPSULE_ATTRIBUTED', 'INDEPENDENTLY_REPRODUCED']);
 const STATUS = new Set(['NOT_RUN', 'BLOCKED', 'RUNNING', 'SEALED', 'EVALUATED', 'CLOSED', 'UNKNOWN_TERMINAL']);
 
@@ -70,6 +74,18 @@ function validate(receipt, errors) {
   for (const [k, m] of Object.entries(receipt.metrics ?? {})) {
     for (const f of ['value', 'status', 'unit']) if (m[f] === undefined) e.push(`${receipt.run_id}: metric ${k} missing ${f}`);
     if (!['MEASURED', 'ESTIMATED', 'UNKNOWN', 'NOT_APPLICABLE'].includes(m.status)) e.push(`${receipt.run_id}: metric ${k} invalid status ${m.status}`);
+    // Bound-before-reporting (Round 1 CORE_SEED fix 3). A measured DURATION is only a
+    // measurement if it states the envelope it was taken under. Round 0 produced a
+    // wall-clock threshold that reported a property of the source when it was a property
+    // of the machine, so a bare timing number is treated as an uncalibrated claim.
+    if (isDuration(m.unit) && m.status === 'MEASURED' && !m.bound) {
+      e.push(`${receipt.run_id}: metric ${k} is a MEASURED duration with no stated bound — add "bound" or downgrade its status`);
+    }
+    // Anything gating on wall clock needs its calibration envelope declared, or it is
+    // descriptive rather than a gate.
+    if (m.gates_on_wall_clock === true && !m.calibration_envelope) {
+      e.push(`${receipt.run_id}: metric ${k} gates on wall clock but declares no calibration_envelope — it may not be used as a gate`);
+    }
   }
   if (!receipt.publication || !['NOT_STARTED', 'PUBLISHED', 'BLOCKED', 'UNPUBLISHED'].includes(receipt.publication.status)) {
     e.push(`${receipt.run_id}: publication.status missing/invalid`);

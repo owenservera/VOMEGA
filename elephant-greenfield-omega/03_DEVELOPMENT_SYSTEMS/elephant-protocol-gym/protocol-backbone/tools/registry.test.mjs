@@ -130,3 +130,43 @@ test('a stale registry schema version is rejected', () => {
     assert.ok(v.errors.some(e => e.includes('schema mismatch')), `expected a schema error, got: ${v.errors.join('|')}`);
   });
 });
+
+test('N11 — a MEASURED duration with no stated bound is rejected', () => {
+  // Bound-before-reporting: Round 0's 4000 ms threshold reported a property of the source
+  // when it was a property of the machine. A bare timing number must not pass uncalibrated.
+  withMutations({mutateReceipt: rec => {
+    rec.metrics.wall_time = {value: 3.189, status: 'MEASURED', unit: 'seconds'};
+    return rec;
+  }}, v => {
+    assert.equal(v.ok, false);
+    assert.ok(v.errors.some(e => e.includes('no stated bound')), `expected a bound error, got: ${v.errors.join('|')}`);
+  });
+});
+
+test('the same duration with a stated bound passes', () => {
+  withMutations({mutateReceipt: rec => {
+    rec.metrics.wall_time = {value: 3.189, status: 'MEASURED', unit: 'seconds', bound: 'single pass on DESKTOP-9KB03LU, no concurrent arms'};
+    return rec;
+  }}, v => {
+    assert.ok(!v.errors.some(e => e.includes('no stated bound')), `a bounded duration should pass, got: ${v.errors.join('|')}`);
+  });
+});
+
+test('a wall-clock GATE without a calibration envelope is rejected', () => {
+  withMutations({mutateReceipt: rec => {
+    rec.metrics.gate = {value: 1, status: 'MEASURED', unit: 'boolean', gates_on_wall_clock: true};
+    return rec;
+  }}, v => {
+    assert.equal(v.ok, false);
+    assert.ok(v.errors.some(e => e.includes('calibration_envelope')), `expected a calibration error, got: ${v.errors.join('|')}`);
+  });
+});
+
+test('a non-duration metric is not forced to declare a bound (guard must not over-reach)', () => {
+  withMutations({mutateReceipt: rec => {
+    rec.metrics.recall = {value: 9, status: 'MEASURED', unit: 'checks'};
+    return rec;
+  }}, v => {
+    assert.ok(!v.errors.some(e => e.includes('no stated bound')), `a count metric needs no bound, got: ${v.errors.join('|')}`);
+  });
+});

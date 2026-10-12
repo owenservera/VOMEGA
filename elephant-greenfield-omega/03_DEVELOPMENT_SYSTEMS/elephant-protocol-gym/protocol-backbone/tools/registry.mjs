@@ -36,6 +36,11 @@ const BASIS_REQUIRED = ['git_sha', 'protocol_sha256', 'requirement_epoch', 'fixt
 // An entry point is a command line ("node oracle.mjs --check"). We care whether the FILE it
 // invokes still exists, so drop any interpreter prefix and everything from the first flag on.
 const INTERPRETERS = new Set(['node', 'bash', 'sh', 'pwsh', 'powershell', 'bun', 'python', 'python3']);
+
+// Units that measure elapsed time. Round 0 showed a bare wall-clock number is a fact about
+// the machine unless it states the envelope it was taken under.
+const DURATION_UNITS = /^(seconds?|milliseconds?|ms|minutes?|hours?|s)$/i;
+const isDuration = unit => typeof unit === 'string' && DURATION_UNITS.test(unit.trim());
 function entryPointFile(cmd) {
   const parts = String(cmd).trim().split(/\s+/).filter(Boolean);
   while (parts.length && INTERPRETERS.has(parts[0])) parts.shift();
@@ -132,6 +137,20 @@ export function validateRegistry({root = backbone, registry = null, receiptOverr
       if (!c.statement) errors.push(`${at}: claim ${ci} has no statement`);
       if (c.evidence_class !== 'DESIGN' && !c.witness_provenance) {
         errors.push(`${at}: claim ${ci} is ${c.evidence_class} with no witness_provenance`);
+      }
+    }
+
+    // Bound-before-reporting (Round 1 CORE_SEED fix 3). A measured duration without a
+    // stated envelope is an uncalibrated claim; a wall-clock gate without a re-verified
+    // calibration envelope is a machine fact masquerading as a source fact.
+    for (const [mk, m] of Object.entries(receipt.metrics ?? {})) {
+      for (const f of ['value', 'status', 'unit']) if (m[f] === undefined) errors.push(`${at}: metric ${mk} missing ${f}`);
+      if (!['MEASURED', 'ESTIMATED', 'UNKNOWN', 'NOT_APPLICABLE'].includes(m.status)) errors.push(`${at}: metric ${mk} invalid status ${m.status}`);
+      if (isDuration(m.unit) && m.status === 'MEASURED' && !m.bound) {
+        errors.push(`${at}: metric ${mk} is a MEASURED duration with no stated bound`);
+      }
+      if (m.gates_on_wall_clock === true && !m.calibration_envelope) {
+        errors.push(`${at}: metric ${mk} gates on wall clock without a calibration_envelope`);
       }
     }
 
