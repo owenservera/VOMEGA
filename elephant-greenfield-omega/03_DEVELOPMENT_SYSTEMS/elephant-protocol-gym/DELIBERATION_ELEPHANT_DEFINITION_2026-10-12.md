@@ -4,6 +4,8 @@
 **Status: OPEN. No definition is ratified. Every candidate below remains available.**
 **Date:** 2026-10-12 · **Author:** lab-ops (head of Elephant Labs) · **Authority to decide:** Owen, via [`../DECISION_PROCESS_TRACKER.md`](../DECISION_PROCESS_TRACKER.md)
 
+> **Owner endorsement, 2026-10-12.** Owen approved the *operating stance* recommended at the end of this document: **hold all four definitions open and work from the conservative compatible reading.** That endorsement settles how the labs behave *now*; it does **not** ratify a definition. DECQ-0010, DECQ-0011 and DECQ-0012 all remain open, and the adaptive swarm remains `PREPARED_NOT_LAUNCHED` — endorsed as *not yet*, not permitted or forbidden. Recorded verbatim in the [tracker](../DECISION_PROCESS_TRACKER.md).
+
 ---
 
 ## Why this exists
@@ -102,6 +104,8 @@ The gap is that **all of this is prose in Markdown**. The only machine-enforced 
 ## Recommendation, offered for challenge
 
 **Hold all four open, and operate on the most conservative reading meanwhile:** an Elephant is *at least* a bounded cognitive role (A) and *never* holds authority; a session is an Elephant only when its capsule/epoch basis and contamination state are declared (D's requirement); and reconstruction must be demonstrable (C's requirement). That reading is compatible with all four and blocks nothing.
+
+**Status: OWNER-ENDORSED 2026-10-12 as the operating stance. It is not a definition.** DECQ-0010 remains open; this paragraph does not narrow the candidate set, retire any candidate, or license calling any particular session an Elephant.
 
 **This is not a decision and must not be treated as one.**
 

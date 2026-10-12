@@ -68,6 +68,30 @@ reviewer_notes: null
 | DECQ-0011 | Which ECP grammar is design-of-record (v0.1 vs v0.2) | DELIBERATION → OWEN_GUIDANCE | DELIBERATION_RECORDED / **NEEDS_OWEN** | [Same deliberation](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/DELIBERATION_ELEPHANT_DEFINITION_2026-10-12.md) | `protocol/02_ECP_V0_SPEC.md` (v0.1, 14 commands) and `claude/ECP_SPEC.md` (v0.2, supersedes "for this submission only") both claim it. v0.2's anchor-quote verification is the valuable part and is currently submission-scoped. | Name the design-of-record, or keep both scoped |
 | DECQ-0012 | Whether unattended / elastic swarm execution is permitted | OWEN_GUIDANCE | **NEEDS_OWEN** (safety-scoped) | [Same deliberation](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/DELIBERATION_ELEPHANT_DEFINITION_2026-10-12.md) | `01_MASTER_CHARTER.md:31` excludes "unbounded 24/7 unattended execution"; `ADAPTIVE_SWARM.md` + launch manifest prepare exactly that. | **Blocks the adaptive swarm.** Keep `PREPARED_NOT_LAUNCHED` until answered |
 
+### Owner endorsement of lab recommendations — 2026-10-12
+
+Owen approved the lab-ops recommendations. **This endorsement is recorded precisely, because an endorsement of a *stance* is not a *decision* on the underlying question, and this tracker must not let the two blur together.**
+
+**Endorsed as operating practice (these are now settled):**
+
+| # | Recommendation | Resulting status |
+|---|---|---|
+| E1 | Do **not** build the ZCode staff-lane comms layer; reconcile the documents instead (mark each mechanism LIVE / HISTORICAL / ABANDONED) | **OWNER_ENDORSED — DO NOT BUILD.** Layer-2 comms stays out of scope. See [COMMS_LAYERS_2026-10-12.md](03_DEVELOPMENT_SYSTEMS/elephant-protocol-gym/COMMS_LAYERS_2026-10-12.md) |
+| E2 | Hold all four Elephant definitions open and **operate on the conservative compatible reading meanwhile**: an Elephant is *at least* a bounded cognitive role and *never* holds authority; a session qualifies as an Elephant only when its capsule/epoch basis and contamination state are declared; reconstruction must be demonstrable | **OWNER_ENDORSED — CONSERVATIVE READING IS THE OPERATING STANCE.** DECQ-0010 remains **OPEN** as a definition question |
+| E3 | Keep the adaptive swarm `PREPARED_NOT_LAUNCHED` | **OWNER_ENDORSED — HOLD.** DECQ-0012 remains **OPEN**; nothing was permitted or forbidden |
+| E4 | Leave everything unratified and unpromoted; Round 0 results stay evidence, not canon | **OWNER_ENDORSED** |
+| E5 | Ship the lab operations layer (receipts, registry, custody, provenance, bound-before-reporting, actor separation) on a branch, not main | **OWNER_ENDORSED — DELIVERED** on `labs/elephant-lab-operations` (`6d79f03`…`eb61e39`) |
+
+**Explicitly NOT closed by this endorsement**, because no recommendation was made on them:
+
+- **DECQ-0010 (which definition governs)** — E2 endorses a *holding* position. All four candidates remain live and available.
+- **DECQ-0011 (which ECP grammar is design-of-record)** — no recommendation was offered; E2's reading depends on capsule/epoch declaration, which is v0.2-flavoured but was not put to the owner as a choice.
+- **DECQ-0012 (unattended/elastic swarm execution)** — E3 endorses *not launching yet*. It is not a grant of permission and not a prohibition.
+- **DECQ-0002 (Ratchet for greenfield)** — the question was reframed, not answered. Ratchet is intact but unused since 2026-10-09; it remains the only machine-enforced coordination layer, so greenfield currently has none.
+- **The autonomy sentence** — no recommendation existed to approve. Lab-ops continued to operate on the narrow default (assemble, verify, backfill, route; commit to a branch; launch no arms). This remains an open request to Owen.
+
+**Recorded by:** lab-ops · **Status of this entry:** `OWNER_ENDORSED` (recommendations) · `NEEDS_OWEN` (underlying questions) · **Nothing here ratifies a protocol, promotes an arm result, or creates authority.**
+
 ### DECQ-0002 — evidence gathered 2026-10-12 (DOCUMENTARY_RECONCILIATION, not a decision)
 
 **This entry records verified facts to reduce the scope of the outstanding owner choice. It decides nothing and clears no `NEEDS_OWEN`.**
