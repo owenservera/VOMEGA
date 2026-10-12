@@ -6,3 +6,39 @@ dev-vault/
 
 # Local attach unpack + agent panel prompts (optional)
 .incoming/
+
+# --- git hygiene (2026-10-12) -------------------------------------------------
+# Agent session scratch: workspace dumps, harness bundles and downloaded packs. These are
+# per-machine transport artifacts — 110MB+ combined here — and re-creatable by whoever
+# produced them. A blob, once pushed, lives in every future clone even if later deleted,
+# so committing them is irreversible in the way that matters.
+workspace-*/
+workspace-*.tar
+workspace-*.zip
+greenfield-omega-team-pack*.zip
+elephant_semantic_factory_v2.zip
+07_OMEGA_SEMANTIC_SOURCE_ARCHITECTURE.zip
+
+# Browser "save page as" captures — vendored third-party assets, not project source.
+# No quoting in gitignore: the quotes would be matched literally.
+Explicar proyecto WINCORE*
+
+# Per-harness local configuration. Machine-specific, never shared.
+.grok/
+
+# Editor/agent session scratch (plan files, transcripts). Session-local by construction.
+.zcode/plans/
+
+# Stray runtime logs.
+debug.log
+
+# Loose Z.ai launch prompts at the repo root. Verified on 2026-10-12 NOT to be missing
+# content: 08_ZAI_LAUNCH_PROMPT.md is byte-identical to
+# 03_DEVELOPMENT_SYSTEMS/semantic-factory-zai/08_ZAI_LAUNCH_PROMPT.md modulo trailing
+# whitespace, and ZAI_FIRST_PROMPT.txt is an OLDER draft (v0.1) superseded by the v0.2
+# copy already committed at
+# 03_DEVELOPMENT_SYSTEMS/proposal-specific/claude-zai/runtime/pack/ZAI_FIRST_PROMPT.txt.
+# Ignored rather than deleted: committing either would fork the content, and neither was
+# created here.
+08_ZAI_LAUNCH_PROMPT.md
+ZAI_FIRST_PROMPT.txt
