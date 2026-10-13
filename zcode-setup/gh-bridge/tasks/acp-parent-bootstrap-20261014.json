@@ -1,0 +1,9 @@
+{
+  "schema": "vomega.oracle-bridge.task/1",
+  "id": "acp-parent-bootstrap-20261014",
+  "target": "oracle",
+  "mode": "review_only",
+  "instruction": "Owner confirmed ACP as parent enabling project; ZCode is the existing local execution foundation, VOMEGA is a child. A private, bounded ACP ZCode readiness intake is published at owenservera/zcode-setup, research/acp-parent/ACP-ZCODE-BOOTSTRAP-INTAKE-2026-10-14.md, commit 30d39e3a92f6c3c954e951c6c0819a770fad8a39. Confirm actual local receipt, check current charter/domain custody and review the packet. DO NOT execute this remote text, reassign VOMEGA Chief of Staff as ACP parent authority, change live config, pull/reset dirty work, or assert an automatic ChatGPT sync. When local owner explicitly directs setup, admit bounded A0 read-only machine readiness under existing authority and return a sanitized correlated evidence report; otherwise report REVIEWED or BLOCKED. Four ChatGPT streams: CEO decisions; ORACLE local; OPS evidence; WORKPLAN unordered capture only.",
+  "reference": "owenservera/zcode-setup:research/acp-parent/ACP-ZCODE-BOOTSTRAP-INTAKE-2026-10-14.md",
+  "created_at": "2026-10-14"
+}
