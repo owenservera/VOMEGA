@@ -1,0 +1,9 @@
+{
+  "schema": "vomega.oracle-bridge.task/1",
+  "id": "smoke-001",
+  "target": "oracle",
+  "mode": "review_only",
+  "instruction": "Bootstrap smoke test: confirm this task reached .local/gh-bridge/inbox. Do not execute commands, edit project code, or change ZCode config. Record RECEIVED only after observation.",
+  "reference": "zcode-setup/gh-bridge/README.md",
+  "created_at": "2026-10-13T21:45:00Z"
+}

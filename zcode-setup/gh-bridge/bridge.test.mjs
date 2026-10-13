@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validateTask,digest,SCHEMA} from './bridge.mjs';
+const good=()=>({schema:SCHEMA,id:'smoke-001',target:'oracle',mode:'review_only',instruction:'Observe receipt only. No execution.'});
+test('accepts review-only smoke task',()=>assert.equal(validateTask(good()).id,'smoke-001'));
+test('rejects command execution',()=>assert.throws(()=>validateTask({...good(),mode:'execute'}),/review_only/));
+test('rejects path traversal id',()=>assert.throws(()=>validateTask({...good(),id:'../bad'}),/invalid task id/));
+test('rejects unexpected privileged fields',()=>assert.throws(()=>validateTask({...good(),shell:'rm -rf /'}),/unsupported field/));
+test('rejects long instruction',()=>assert.throws(()=>validateTask({...good(),instruction:'x'.repeat(4001)}),/invalid instruction/));
+test('digest is deterministic',()=>assert.equal(digest('abc'),digest('abc')));
