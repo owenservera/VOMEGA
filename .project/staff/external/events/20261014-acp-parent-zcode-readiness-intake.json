@@ -1,0 +1,31 @@
+{
+  "schema": "vomega.external-op/1",
+  "event_id": "20261014-acp-parent-zcode-readiness-intake",
+  "occurred_at": "2026-10-14",
+  "stream_id": "unassigned",
+  "actor": "chatgpt:acp-ops",
+  "kind": "cross_project_handoff_published",
+  "scope": "external_collaboration_transport_only",
+  "summary": "Owner designated ACP the parent enabling project. ChatGPT OPS published a private ZCode read-only readiness intake and a public VOMEGA bridge review-only pointer, without transferring ACP authority to VOMEGA or asserting local receipt.",
+  "state": "published",
+  "evidence_level": "github_observed",
+  "authority": "observation_only",
+  "correlation_id": "acp-parent-bootstrap-20261014",
+  "evidence": [
+    {
+      "type": "private_context_commit",
+      "repo": "owenservera/zcode-setup",
+      "sha": "30d39e3a92f6c3c954e951c6c0819a770fad8a39",
+      "path": "research/acp-parent/ACP-ZCODE-BOOTSTRAP-INTAKE-2026-10-14.md"
+    },
+    {
+      "type": "review_only_bridge_task",
+      "repo": "owenservera/VOMEGA",
+      "sha": "5312c417edab69d32d8f6c59e8afbd98aaec9129",
+      "path": "zcode-setup/gh-bridge/tasks/acp-parent-bootstrap-20261014.json"
+    }
+  ],
+  "limitations": "Remote artifact publication does not establish that the local bridge is installed, Windows has fetched the commit, Oracle has reviewed, or ACP setup has been executed. The task mode is review_only. No local permissions, credentials, roles, charter or config were changed.",
+  "next_expected": "Local Oracle/CoS checks current custody, receives the safe review-only task through its actual admission mechanism, and returns a privacy-sanitized correlated status once verified.",
+  "supersedes_event_id": null
+}
