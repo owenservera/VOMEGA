@@ -1,0 +1,35 @@
+{
+  "schema": "vomega.chatgpt-monitor/1",
+  "id": "smoke-001-intake",
+  "request_id": "smoke-001",
+  "source_repository": "owenservera/VOMEGA",
+  "source_commit": "fb9f3f5d5c5e88c072d9a256289553e66a8e659c",
+  "request_path": "zcode-setup/gh-bridge/tasks/smoke-001.json",
+  "purpose": "Verify GitHub task intake, then observe a sanitized Oracle result via GitHub.",
+  "expected": {
+    "local": "RECEIVED receipt created by bridge.mjs ack after observing local inbox",
+    "remote": "correlated oracle-report: PR or sanitized ops/local-state evidence; not present until Oracle publishes it"
+  },
+  "monitoring": {
+    "work": {
+      "kind": "github_pull_request_event",
+      "configured": false,
+      "requires_user_setup": true
+    },
+    "chatgpt_timer": {
+      "kind": "hourly_condition_watch",
+      "desired_occurrences": 48,
+      "configured": false,
+      "needs_scheduler_confirmation": true
+    },
+    "windows": {
+      "kind": "local_scheduled_fetch",
+      "target_interval_seconds": 60,
+      "configured": false,
+      "requires_manual_apply": true
+    }
+  },
+  "execution_authority": "review_only",
+  "status": "PUBLISHED",
+  "note": "Fields reflect published intent, not actual activation of any timer or local receiver. The ChatGPT timer's actual ID is reported in the chat after creation, not stored as a fabricated ID."
+}
