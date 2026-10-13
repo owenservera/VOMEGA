@@ -1,0 +1,26 @@
+{
+  "schema": "vomega.external-op/1",
+  "event_id": "20261013T220532Z-smoke-watch",
+  "occurred_at": "2026-10-13T22:05:32Z",
+  "stream_id": "unassigned",
+  "actor": "chatgpt:scheduler",
+  "kind": "monitor_configured",
+  "scope": "zcode_transport",
+  "summary": "Oracle Bridge Smoke Watch created and enabled, hourly with 48 scheduled checks.",
+  "state": "monitor_active",
+  "evidence_level": "tool_observed",
+  "authority": "observation_only",
+  "correlation_id": "smoke-001",
+  "evidence": [
+    {
+      "type": "chatgpt_scheduled_task",
+      "title": "Oracle Bridge Smoke Watch",
+      "cadence": "hourly",
+      "occurrences": 48,
+      "confirmed_enabled": true
+    }
+  ],
+  "limitations": "The task is an hourly remote observer; it cannot read unpublished local ACKs, run per minute, or inject into a pinned ordinary chat. Task state is reported from its successful creation response, not independently verifiable via GitHub.",
+  "next_expected": "Notify only upon material GitHub-visible correlated Oracle report or relevant failure.",
+  "supersedes_event_id": null
+}

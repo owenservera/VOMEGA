@@ -1,0 +1,49 @@
+{
+  "schema": "vomega.external-streams/1",
+  "repository": "owenservera/VOMEGA",
+  "kind": "external_conversation_interfaces",
+  "lifecycle": "declared_not_verified_active",
+  "streams": [
+    {
+      "id": "ceo",
+      "label": "CEO — Executive Command",
+      "status": "planned",
+      "purpose": "Organization and project strategy, priorities, owner decisions when relevant",
+      "default_scope": "organization",
+      "publication": "selective_redacted_vomega_only",
+      "authority": "owner_decisions_only_with_attribution",
+      "conversation_url": null
+    },
+    {
+      "id": "oracle",
+      "label": "Oracle — Local Operations",
+      "status": "planned",
+      "purpose": "Project coordination, local machine and ZCode evidence, handoffs",
+      "default_scope": "vomega_execution",
+      "publication": "material_results_and_status",
+      "authority": "existing_zcode_chief_and_desk_charters",
+      "conversation_url": null
+    },
+    {
+      "id": "research",
+      "label": "You & Me — Research and Architecture",
+      "status": "planned",
+      "purpose": "Research, designs, experiments, proposals, verification",
+      "default_scope": "advisory",
+      "publication": "material_project_proposals_and_artifacts",
+      "authority": "none_without_existing_approval",
+      "conversation_url": null
+    }
+  ],
+  "transport": {
+    "project_record": "git",
+    "intake": "zcode-setup/gh-bridge/tasks",
+    "local_routing": ".project/staff/DESK",
+    "external_event_index": ".project/staff/external/events",
+    "local_status": "ops/local-state",
+    "work_event_trigger": "not_verified_configured",
+    "windows_watcher": "not_verified_installed",
+    "chatgpt_hourly_monitor": "tool_observed_active_for_smoke-001"
+  },
+  "important": "A declared chat stream is not evidence of an actual connected chat or a running agent. Publishing metadata does not confer execution authority."
+}

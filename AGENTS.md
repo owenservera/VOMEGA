@@ -4,6 +4,8 @@ Start at [.project/SITREP.md](.project/SITREP.md). It contains current mission, 
 
 **Product-loop entry:** [.project/staff/PRODUCT-LOOP.md](.project/staff/PRODUCT-LOOP.md) and [ZCode launch instructions](zcode-setup/PRODUCT-LOOP-LAUNCH.md) define the ten bounded product missions, including existing DEV and DevOps. These are operating and onboarding rules, not claims of live ZCode sessions; Ratchet, DESK, PM scope, and owner authority remain unchanged.
 
+**External ChatGPT collaboration visibility:** [External streams and project activity index](.project/staff/external/README.md) describe the planned CEO / Oracle / research interfaces and their *observational* event ledger. This is not an additional task board, authority source, or proof of live local delivery. Consult only if the current task needs external context.
+
 ## Default worker rule
 
 For bounded implementation, **do not reread the full documentation corpus**.

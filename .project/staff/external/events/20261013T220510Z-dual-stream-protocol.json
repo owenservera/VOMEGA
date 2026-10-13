@@ -1,0 +1,24 @@
+{
+  "schema": "vomega.external-op/1",
+  "event_id": "20261013T220510Z-dual-stream-protocol",
+  "occurred_at": "2026-10-13T22:05:10Z",
+  "stream_id": "unassigned",
+  "actor": "chatgpt:github-connector",
+  "kind": "artifact_published",
+  "scope": "zcode_transport",
+  "summary": "Work event and hourly ChatGPT fallback monitoring protocol published.",
+  "state": "published",
+  "evidence_level": "github_observed",
+  "authority": "observation_only",
+  "correlation_id": "smoke-001",
+  "evidence": [
+    {
+      "type": "github_commit",
+      "sha": "3fcffaaa2f8cab08b089fd5ed23a39e55b10d609",
+      "url": "https://github.com/owenservera/VOMEGA/commit/3fcffaaa2f8cab08b089fd5ed23a39e55b10d609"
+    }
+  ],
+  "limitations": "A documented Work trigger is not proof that Work automation has been configured.",
+  "next_expected": "Local bridge smoke test and optional authorized Work trigger setup.",
+  "supersedes_event_id": null
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "vomega.external-op/1",
+  "event_id": "20261014-external-streams-transparency-direction",
+  "occurred_at": "2026-10-14",
+  "stream_id": "unassigned",
+  "actor": "owner:direction",
+  "kind": "operating_requirement",
+  "scope": "external_collaboration",
+  "summary": "User directed that the three proposed ChatGPT streams' VOMEGA-relevant operations be transparent to the project.",
+  "state": "proposed",
+  "evidence_level": "user_reported",
+  "authority": "observation_only",
+  "correlation_id": null,
+  "evidence": [
+    {
+      "type": "conversation_directive",
+      "summary": "Make our operations transparent to the project; source conversation not publicly linked."
+    }
+  ],
+  "limitations": "The owner requested transparency; this event does not create chat streams, grant new powers, or prove the local receiver operates.",
+  "next_expected": "Project agents may inspect the public event registry and review relevant entries under current role boundaries.",
+  "supersedes_event_id": null
+}

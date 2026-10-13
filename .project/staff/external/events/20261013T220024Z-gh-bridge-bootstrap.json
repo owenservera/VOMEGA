@@ -1,0 +1,24 @@
+{
+  "schema": "vomega.external-op/1",
+  "event_id": "20261013T220024Z-gh-bridge-bootstrap",
+  "occurred_at": "2026-10-13T22:00:24Z",
+  "stream_id": "unassigned",
+  "actor": "chatgpt:github-connector",
+  "kind": "artifact_published",
+  "scope": "zcode_transport",
+  "summary": "Safe GitHub-to-Oracle intake bootstrap committed, including Windows smoke test.",
+  "state": "published",
+  "evidence_level": "github_observed",
+  "authority": "observation_only",
+  "correlation_id": "smoke-001",
+  "evidence": [
+    {
+      "type": "github_commit",
+      "sha": "fb9f3f5d5c5e88c072d9a256289553e66a8e659c",
+      "url": "https://github.com/owenservera/VOMEGA/commit/fb9f3f5d5c5e88c072d9a256289553e66a8e659c"
+    }
+  ],
+  "limitations": "No proof that Owen's Windows machine pulled, received, acknowledged, or executed the task.",
+  "next_expected": "Manual Windows bootstrap test and a sanitized reported intake result.",
+  "supersedes_event_id": null
+}

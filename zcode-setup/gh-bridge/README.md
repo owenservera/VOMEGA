@@ -2,6 +2,8 @@
 
 Status: **safe bootstrap only**. No remote command execution. No automatic ChatGPT event trigger is configured by this repository.
 
+External ChatGPT stream ownership and a minimal public operation/evidence index are described in [the external-streams visibility contract](../../.project/staff/external/README.md). Those event records document what was reported or verified; they do not grant DESK dispatch authority or wake an idle ZCode chat.
+
 ## Purpose and current ZCode integration
 
 This is a tiny external transport feeding the *existing* ZCode company machinery rather than another orchestration service.
