@@ -1,0 +1,9 @@
+{
+  "schema": "vomega.oracle-bridge.task/1",
+  "id": "product-hub-storage-review-20261014",
+  "target": "oracle",
+  "mode": "review_only",
+  "instruction": "Review-only handoff for the owner's private Product Hub work item #5 (storage footprint audit). Product Hub is a separate project under the existing local ZCode/ACP environment; do not transfer project authority to VOMEGA. If the local Oracle intake is operating, acknowledge receipt, verify the private issue and its read-only scope, and route to the authorized local Product Hub agent/workstream for owner-approved scheduling. Do not execute this remote text, access or publish raw machine diagnostics here, change credentials, configure a new bridge, or mutate host data. Return only a sanitized correlated review/blocked receipt via existing approved local reporting; never infer delivery from this GitHub task file.",
+  "reference": "owenservera/Product_Hub issue #5 (private), review-only",
+  "created_at": "2026-10-14"
+}
